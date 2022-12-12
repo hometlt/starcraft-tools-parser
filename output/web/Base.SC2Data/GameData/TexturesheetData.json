@@ -1,0 +1,30 @@
+{
+  "EmoticonsSheet1": {
+    "class": "CTextureSheet",
+    "Image": "Assets\\Textures\\UI_bnet_emoticons_sheet1.dds",
+    "Rows": 10,
+    "Columns": 10,
+    "default": "1"
+  },
+  "EmoticonsSheet2": {
+    "class": "CTextureSheet",
+    "Image": "Assets\\Textures\\UI_bnet_emoticons_sheet2.dds",
+    "Rows": 10,
+    "Columns": 10,
+    "default": "1"
+  },
+  "EmoticonsSheet3": {
+    "class": "CTextureSheet",
+    "Image": "Assets\\Textures\\UI_bnet_emoticons_sheet3.dds",
+    "Rows": 10,
+    "Columns": 10,
+    "default": "1"
+  },
+  "EmoticonPacksSheet1": {
+    "class": "CTextureSheet",
+    "Image": "Assets\\Textures\\UI_bnet_emoticonpacks_sheet1.dds",
+    "Rows": 8,
+    "Columns": 8,
+    "default": "1"
+  }
+}

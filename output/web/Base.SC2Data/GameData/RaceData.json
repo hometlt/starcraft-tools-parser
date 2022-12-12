@@ -1,0 +1,254 @@
+{
+  "Neut": {
+    "class": "CRace",
+    "Name": "Race/Name/Neut",
+    "RaceIcon": "@UI/RaceIcon/Neut",
+    "StartLocationAlert": "StartLocation",
+    "GameMusic": "Music_NeutLow",
+    "FoodCeiling": 200,
+    "ShowResource": {
+      "Minerals": 1,
+      "Vespene": 1
+    },
+    "MiniMapBorderColor": "255,0,0,0",
+    "PlacementGridColorBlindColor": "255,200,128,32",
+    "default": "1",
+    "AttributeId": "Neut"
+  },
+  "Terr": {
+    "class": "CRace",
+    "Name": "Race/Name/Terr",
+    "RaceIcon": "@UI/RaceIcon/Terr",
+    "StartLocationAlert": "StartLocation",
+    "GameMusic": "Music_TerrLow",
+    "FoodCeiling": 200,
+    "ShowResource": {
+      "Minerals": 1,
+      "Vespene": 1
+    },
+    "MiniMapBorderColor": "100,40,172,68",
+    "PlacementGridColorBlindColor": "255,90,255,133",
+    "default": "1",
+    "AttributeId": "Terr",
+    "ExpansionOrder": 1,
+    "StartingResource": {
+      "Minerals": 50
+    },
+    "Flags": {
+      "Selectable": 1,
+      "TrialAllowed": 1
+    },
+    "StartingUnitArray": [
+      {
+        "Flags": {
+          "ResourceSetRally": 1
+        },
+        "Unit": "CommandCenter"
+      },
+      {
+        "Flags": {
+          "ResourceRally": 1
+        },
+        "Offset": [
+          "0,-3",
+          "1,-3",
+          "2,-3",
+          "3,-3",
+          "3,-2",
+          "3,-1",
+          "3,0",
+          "3,1",
+          "3,2",
+          "3,3",
+          "2,3",
+          "1,3",
+          "0,3",
+          "-1,3",
+          "-2,3",
+          "-3,3",
+          "-3,2",
+          "-3,1",
+          "-3,0",
+          "-3,-1",
+          "-3,-2",
+          "-3,-3",
+          "-2,-3",
+          "-1,-3"
+        ],
+        "Count": 12,
+        "Unit": "SCV"
+      }
+    ],
+    "GlossaryTeamColorIndex": 1,
+    "VictorySound": "UI_MissionComplete",
+    "DefeatSound": "UI_MissionFailed",
+    "LevelAchievementId": 91475320767753
+  },
+  "Prot": {
+    "class": "CRace",
+    "Name": "Race/Name/Prot",
+    "RaceIcon": "@UI/RaceIcon/Prot",
+    "StartLocationAlert": "StartLocation",
+    "GameMusic": "Music_ProtLow",
+    "FoodCeiling": 200,
+    "ShowResource": {
+      "Minerals": 1,
+      "Vespene": 1
+    },
+    "MiniMapBorderColor": "100,12,149,250",
+    "PlacementGridColorBlindColor": "255,72,140,255",
+    "default": "1",
+    "AttributeId": "Prot",
+    "ExpansionOrder": 3,
+    "StartingResource": {
+      "Minerals": 50
+    },
+    "Flags": {
+      "Selectable": 1,
+      "TrialAllowed": 1
+    },
+    "StartingUnitArray": [
+      {
+        "Flags": {
+          "ResourceSetRally": 1
+        },
+        "Unit": "Nexus"
+      },
+      {
+        "Flags": {
+          "ResourceRally": 1
+        },
+        "Offset": [
+          "0,-3",
+          "1,-3",
+          "2,-3",
+          "3,-3",
+          "3,-2",
+          "3,-1",
+          "3,0",
+          "3,1",
+          "3,2",
+          "3,3",
+          "2,3",
+          "1,3",
+          "0,3",
+          "-1,3",
+          "-2,3",
+          "-3,3",
+          "-3,2",
+          "-3,1",
+          "-3,0",
+          "-3,-1",
+          "-3,-2",
+          "-3,-3",
+          "-2,-3",
+          "-1,-3"
+        ],
+        "Count": 12,
+        "Unit": "Probe"
+      }
+    ],
+    "GlossaryTeamColorIndex": 2,
+    "VictorySound": "UI_MissionComplete",
+    "DefeatSound": "UI_MissionFailed",
+    "LevelAchievementId": 91475320767755
+  },
+  "Zerg": {
+    "class": "CRace",
+    "Name": "Race/Name/Zerg",
+    "RaceIcon": "@UI/RaceIcon/Zerg",
+    "StartLocationAlert": "StartLocation",
+    "GameMusic": "Music_ZergLow",
+    "FoodCeiling": 200,
+    "ShowResource": {
+      "Minerals": 1,
+      "Vespene": 1
+    },
+    "MiniMapBorderColor": "100,245,140,70",
+    "PlacementGridColorBlindColor": "255,192,80,192",
+    "default": "1",
+    "AttributeId": "Zerg",
+    "ExpansionOrder": 2,
+    "StartingResource": {
+      "Minerals": 50
+    },
+    "Flags": {
+      "Selectable": 1,
+      "TrialAllowed": 1
+    },
+    "StartingUnitArray": [
+      {
+        "Flags": {
+          "ResourceSetRally": 1
+        },
+        "Unit": "Hatchery"
+      },
+      {
+        "Flags": {
+          "ResourceRally": 1
+        },
+        "Offset": [
+          "0,-3",
+          "1,-3",
+          "2,-3",
+          "3,-3",
+          "3,-2",
+          "3,-1",
+          "3,0",
+          "3,1",
+          "3,2",
+          "3,3",
+          "2,3",
+          "1,3",
+          "0,3",
+          "-1,3",
+          "-2,3",
+          "-3,3",
+          "-3,2",
+          "-3,1",
+          "-3,0",
+          "-3,-1",
+          "-3,-2",
+          "-3,-3",
+          "-2,-3",
+          "-1,-3"
+        ],
+        "Count": 12,
+        "Unit": "Drone"
+      },
+      {
+        "Offset": [
+          "0,-3",
+          "1,-3",
+          "2,-3",
+          "3,-3",
+          "3,-2",
+          "3,-1",
+          "3,0",
+          "3,1",
+          "3,2",
+          "3,3",
+          "2,3",
+          "1,3",
+          "0,3",
+          "-1,3",
+          "-2,3",
+          "-3,3",
+          "-3,2",
+          "-3,1",
+          "-3,0",
+          "-3,-1",
+          "-3,-2",
+          "-3,-3",
+          "-2,-3",
+          "-1,-3"
+        ],
+        "Unit": "Overlord"
+      }
+    ],
+    "GlossaryTeamColorIndex": 4,
+    "VictorySound": "UI_MissionComplete",
+    "DefeatSound": "UI_MissionFailed",
+    "LevelAchievementId": 91475320767751
+  }
+}

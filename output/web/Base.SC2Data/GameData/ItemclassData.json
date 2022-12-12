@@ -1,0 +1,162 @@
+{
+  "Head": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Head",
+    "default": "1"
+  },
+  "Neck": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Neck",
+    "default": "1"
+  },
+  "Shoulders": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Shoulders",
+    "default": "1"
+  },
+  "Back": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Back",
+    "default": "1"
+  },
+  "Chest": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Chest",
+    "default": "1"
+  },
+  "Wrist": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Wrist",
+    "default": "1"
+  },
+  "Hands": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Hands",
+    "default": "1"
+  },
+  "Waist": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Waist",
+    "default": "1"
+  },
+  "Legs": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Legs",
+    "default": "1"
+  },
+  "Feet": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Feet",
+    "default": "1"
+  },
+  "Shirt": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Shirt",
+    "default": "1"
+  },
+  "Tabard": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Tabard",
+    "default": "1"
+  },
+  "Ring": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Ring",
+    "default": "1"
+  },
+  "Trinket": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Trinket",
+    "default": "1"
+  },
+  "Axe": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Axe",
+    "default": "1"
+  },
+  "Dagger": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Dagger",
+    "default": "1"
+  },
+  "Fist": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Fist",
+    "default": "1"
+  },
+  "Mace": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Mace",
+    "default": "1"
+  },
+  "Polearm": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Polearm",
+    "default": "1"
+  },
+  "Staff": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Staff",
+    "default": "1"
+  },
+  "Sword": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Sword",
+    "default": "1"
+  },
+  "Bow": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Bow",
+    "default": "1"
+  },
+  "Crossbow": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Crossbow",
+    "default": "1"
+  },
+  "Gun": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Gun",
+    "default": "1"
+  },
+  "Thrown": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Thrown",
+    "default": "1"
+  },
+  "Wand": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Wand",
+    "default": "1"
+  },
+  "Shield": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Shield",
+    "default": "1"
+  },
+  "Relic": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Relic",
+    "default": "1"
+  },
+  "Ammo": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Ammo",
+    "default": "1"
+  },
+  "Potion": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Potion",
+    "default": "1"
+  },
+  "Scroll": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Scroll",
+    "default": "1"
+  },
+  "Bag": {
+    "class": "CItemClass",
+    "Name": "ItemClass/Name/Bag",
+    "default": "1"
+  }
+}

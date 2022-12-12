@@ -1,0 +1,459 @@
+{
+  "LastAttacker": {
+    "class": "CTargetFindLastAttacker",
+    "default": "1"
+  },
+  "OrderTarget": {
+    "class": "CTargetFindOrder",
+    "default": "1"
+  },
+  "AttackOrderTarget": {
+    "class": "CTargetFindOrder",
+    "default": "1",
+    "Abil": "attack"
+  },
+  "TacticalD8ChargeTarget": {
+    "class": "CTargetFindSet",
+    "default": "1",
+    "Type": "Successful",
+    "Array": [
+      "D8ChargeBuildingOnly",
+      "D8ChargeAllUnits"
+    ]
+  },
+  "D8ChargeBuildingOnly": {
+    "class": "CTargetFindEnumArea",
+    "default": "1",
+    "MaxCount": 4294967295,
+    "MinCountError": "CantFindEnoughTargets",
+    "LaunchLocation": {
+      "Value": "SourceUnit"
+    },
+    "ImpactLocation": {
+      "Value": "TargetUnitOrPoint"
+    },
+    "SearchFlags": {
+      "OffsetAreaByAngle": 1,
+      "ExtendByUnitRadius": 1
+    },
+    "CasterValidator": "CasterLifeLT60Percent",
+    "AreaArray": [
+      {}
+    ],
+    "Abil": "D8Charge",
+    "SearchFilters": "Ground,Structure;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable",
+    "TargetValidator": "D8ChargeTargetValidator"
+  },
+  "D8ChargeAllUnits": {
+    "class": "CTargetFindEnumArea",
+    "default": "1",
+    "MaxCount": 4294967295,
+    "MinCountError": "CantFindEnoughTargets",
+    "LaunchLocation": {
+      "Value": "SourceUnit"
+    },
+    "ImpactLocation": {
+      "Value": "TargetUnitOrPoint"
+    },
+    "SearchFlags": {
+      "OffsetAreaByAngle": 1,
+      "ExtendByUnitRadius": 1
+    },
+    "CasterValidator": "D8ChargeAllUnitValidator",
+    "AreaArray": [
+      {}
+    ],
+    "Abil": "D8Charge",
+    "SearchFilters": "Ground;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable",
+    "TargetValidator": "D8ChargeTargetValidator",
+    "parent": "D8ChargeBuildingOnly"
+  },
+  "GravitonBeamTarget": {
+    "class": "CTargetFindSet",
+    "default": "1",
+    "Type": "Successful",
+    "CasterValidator": "IdleAttackAirGroundValidator",
+    "Array": [
+      "GravitonBeamThreat",
+      "GravitonBeamHostileSomeEnergy",
+      "GravitonBeamHostileNearFullEnergy"
+    ]
+  },
+  "GravitonBeamThreat": {
+    "class": "CTargetFindEnumArea",
+    "default": "1",
+    "MaxCount": 4294967295,
+    "MinCountError": "CantFindEnoughTargets",
+    "LaunchLocation": {
+      "Value": "SourceUnit"
+    },
+    "ImpactLocation": {
+      "Value": "TargetUnitOrPoint"
+    },
+    "SearchFlags": {
+      "OffsetAreaByAngle": 1,
+      "ExtendByUnitRadius": 1
+    },
+    "ExtendRadius": 3,
+    "AreaArray": [
+      {}
+    ],
+    "TargetValidator": "GravitonBeamThreatValidatorTarget",
+    "Abil": "GravitonBeam",
+    "SearchFilters": "-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable",
+    "TargetSorts": {
+      "SortArray": [
+        "TSLife"
+      ]
+    }
+  },
+  "GravitonBeamHostileSomeEnergy": {
+    "class": "CTargetFindEnumArea",
+    "default": "1",
+    "MaxCount": 4294967295,
+    "MinCountError": "CantFindEnoughTargets",
+    "LaunchLocation": {
+      "Value": "SourceUnit"
+    },
+    "ImpactLocation": {
+      "Value": "TargetUnitOrPoint"
+    },
+    "SearchFlags": {
+      "OffsetAreaByAngle": 1,
+      "ExtendByUnitRadius": 1
+    },
+    "ExtendRadius": 3,
+    "AreaArray": [
+      {}
+    ],
+    "TargetValidator": "GravitonBeamHostileValidatorTargetSomeEnergy",
+    "Abil": "GravitonBeam",
+    "SearchFilters": "-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable",
+    "TargetSorts": {
+      "SortArray": [
+        "TSLife",
+        "TSLifeLargestFirst"
+      ]
+    },
+    "CasterValidator": "GravitonBeamHostileValidatorCasterSomeEnergy",
+    "parent": "GravitonBeamThreat"
+  },
+  "GravitonBeamHostileNearFullEnergy": {
+    "class": "CTargetFindEnumArea",
+    "default": "1",
+    "MaxCount": 4294967295,
+    "MinCountError": "CantFindEnoughTargets",
+    "LaunchLocation": {
+      "Value": "SourceUnit"
+    },
+    "ImpactLocation": {
+      "Value": "TargetUnitOrPoint"
+    },
+    "SearchFlags": {
+      "OffsetAreaByAngle": 1,
+      "ExtendByUnitRadius": 1
+    },
+    "ExtendRadius": 3,
+    "AreaArray": [
+      {}
+    ],
+    "TargetValidator": "GravitonBeamHostileValidatorTargetNearFullEnergy",
+    "Abil": "GravitonBeam",
+    "SearchFilters": "-;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Hallucination,Invulnerable",
+    "TargetSorts": {
+      "SortArray": [
+        "TSLife",
+        "TSLifeLargestFirst"
+      ]
+    },
+    "CasterValidator": "GravitonBeamHostileValidatorCasterNearFullEnergy",
+    "parent": "GravitonBeamThreat"
+  },
+  "WorkerRallyPoint": {
+    "class": "CTargetFindSet",
+    "default": "1",
+    "Type": "Sequential",
+    "Array": [
+      "TargetFindWorkerRallyPoint"
+    ]
+  },
+  "TargetFindWorkerRallyPoint": {
+    "class": "CTargetFindWorkerRallyPoint",
+    "default": "1"
+  },
+  "WorkerRallyPointHatchery": {
+    "class": "CTargetFindSet",
+    "default": "1",
+    "Type": "Sequential",
+    "Array": [
+      "TargetFindWorkerRallyPointHatchery"
+    ]
+  },
+  "TargetFindWorkerRallyPointHatchery": {
+    "class": "CTargetFindWorkerRallyPoint",
+    "default": "1",
+    "CommandIndex": 1,
+    "parent": "TargetFindWorkerRallyPoint"
+  },
+  "DefaultRallyPoint": {
+    "class": "CTargetFindSet",
+    "default": "1",
+    "Type": "Sequential",
+    "Array": [
+      "TargetFindDefaultRallyPoint"
+    ]
+  },
+  "TargetFindDefaultRallyPoint": {
+    "class": "CTargetFindRallyPoint",
+    "default": "1"
+  },
+  "EMP": {
+    "class": "CTargetFindSet",
+    "default": "1",
+    "Type": "Sequential",
+    "Array": [
+      "EMP2A",
+      "EMPBestPoint"
+    ]
+  },
+  "EMP2A": {
+    "class": "CTargetFindEffect",
+    "default": "1",
+    "Effect": "EMPSearch",
+    "TargetFilters": "Visible;Player,Ally,Neutral",
+    "TargetValidator": "EMPValidTargets"
+  },
+  "EMPBestPoint": {
+    "class": "CTargetFindBestPoint",
+    "default": "1",
+    "Effect": "EMPSearch",
+    "Flags": {
+      "EvaluateCmd": 1
+    },
+    "DamageBase": 20,
+    "MinCount": 4,
+    "MinScore": 1
+  },
+  "TacticalAutoTurret": {
+    "class": "CTargetFindSet",
+    "default": "1",
+    "Type": "Sequential",
+    "Array": [
+      "AutoTurret",
+      "AutoTurretBestPoint"
+    ]
+  },
+  "AutoTurret": {
+    "class": "CTargetFindEffect",
+    "default": "1",
+    "Effect": "AutoTurret",
+    "TargetFilters": "Visible;Player,Ally,Neutral"
+  },
+  "AutoTurretBestPoint": {
+    "class": "CTargetFindBestPoint",
+    "default": "1",
+    "Effect": "AutoTurret",
+    "Flags": {
+      "EvaluateCmd": 1
+    },
+    "DamageBase": 40,
+    "MinCount": 2,
+    "MinScore": 1.5
+  },
+  "InfestorDisease": {
+    "class": "CTargetFindSet",
+    "default": "1",
+    "Type": "Sequential",
+    "Array": [
+      "InfestorDiseaseSearch",
+      "InfestorDiseaseBestPoint"
+    ]
+  },
+  "InfestorDiseaseSearch": {
+    "class": "CTargetFindEffect",
+    "default": "1",
+    "Effect": "InfestorDiseaseSearch",
+    "TargetFilters": "Visible;Player,Ally,Neutral",
+    "TargetValidator": "DiseaseTestBuff"
+  },
+  "InfestorDiseaseBestPoint": {
+    "class": "CTargetFindBestPoint",
+    "default": "1",
+    "Effect": "InfestorDiseaseSearch",
+    "Flags": {
+      "EvaluateCmd": 1
+    },
+    "DamageBase": 50,
+    "MinCount": 4,
+    "MinScore": 2
+  },
+  "MissilePods": {
+    "class": "CTargetFindSet",
+    "default": "1",
+    "Type": "Sequential",
+    "Array": [
+      "HurricaneMissileDamage",
+      "MissilePodsBestPoint"
+    ]
+  },
+  "HurricaneMissileDamage": {
+    "class": "CTargetFindEffect",
+    "default": "1",
+    "Effect": "HurricaneMissileDamage",
+    "TargetFilters": "Visible;Player,Ally,Neutral"
+  },
+  "MissilePodsBestPoint": {
+    "class": "CTargetFindBestPoint",
+    "default": "1",
+    "Effect": "HurricaneMissileDamage",
+    "Flags": {
+      "EvaluateCmd": 1
+    },
+    "DamageBase": 40,
+    "MinCount": 3,
+    "MinScore": 2.5,
+    "BonusAttri": "Light"
+  },
+  "LokiMissilePods": {
+    "class": "CTargetFindSet",
+    "default": "1",
+    "Type": "Sequential",
+    "Array": [
+      "LokiHurricaneMissileDamage",
+      "LokiMissilePodsBestPoint"
+    ]
+  },
+  "LokiHurricaneMissileDamage": {
+    "class": "CTargetFindEffect",
+    "default": "1",
+    "Effect": "LokiHurricaneMissileDamage",
+    "TargetFilters": "Visible;Player,Ally,Neutral"
+  },
+  "LokiMissilePodsBestPoint": {
+    "class": "CTargetFindBestPoint",
+    "default": "1",
+    "Effect": "LokiHurricaneMissileDamage",
+    "Flags": {
+      "EvaluateCmd": 1
+    },
+    "DamageBase": 40,
+    "MinCount": 3,
+    "MinScore": 2,
+    "BonusAttri": "Light"
+  },
+  "PsiStorm": {
+    "class": "CTargetFindSet",
+    "default": "1",
+    "Type": "Successful",
+    "Array": [
+      "PsiStormNormal",
+      "PsiStormLow"
+    ]
+  },
+  "PsiStormNormal": {
+    "class": "CTargetFindSet",
+    "default": "1",
+    "Type": "Sequential",
+    "Array": [
+      "PsiStormSearch",
+      "PsiStormBestPointNormal"
+    ]
+  },
+  "PsiStormLow": {
+    "class": "CTargetFindSet",
+    "default": "1",
+    "CasterValidator": "CasterLifeLT60Percent",
+    "Type": "Sequential",
+    "Array": [
+      "PsiStormSearch",
+      "PsiStormBestPointLow"
+    ]
+  },
+  "PsiStormSearch": {
+    "class": "CTargetFindEffect",
+    "default": "1",
+    "Effect": "PsiStormSearch",
+    "TargetFilters": "Visible;Player,Ally,Neutral",
+    "TargetValidator": "PsiStormTestBuff"
+  },
+  "PsiStormBestPointNormal": {
+    "class": "CTargetFindBestPoint",
+    "default": "1",
+    "Effect": "PsiStormSearch",
+    "Flags": {
+      "EvaluateCmd": 1
+    },
+    "DamageBase": 40,
+    "MinCount": 3,
+    "MinScore": 2.5
+  },
+  "PsiStormBestPointLow": {
+    "class": "CTargetFindBestPoint",
+    "default": "1",
+    "Effect": "PsiStormSearch",
+    "Flags": {
+      "EvaluateCmd": 1
+    },
+    "DamageBase": 30,
+    "MinScore": 0.5
+  },
+  "Blink": {
+    "class": "CTargetFindSet",
+    "default": "1",
+    "CasterValidator": "CasterNotCampaign",
+    "Type": "Successful",
+    "Array": [
+      "BlinkRetreat",
+      "BlinkAttack"
+    ]
+  },
+  "BlinkRetreat": {
+    "class": "CTargetFindSet",
+    "default": "1",
+    "CasterValidator": "CasterVitalityLT60Percent",
+    "Type": "Sequential",
+    "Array": [
+      "BlinkAttacker",
+      "BlinkAwayOffset"
+    ]
+  },
+  "BlinkAttacker": {
+    "class": "CTargetFindLastAttacker",
+    "default": "1",
+    "TargetValidator": "TacticalBlinkRetreatTest"
+  },
+  "BlinkAwayOffset": {
+    "class": "CTargetFindOffset",
+    "default": "1",
+    "Flags": {
+      "EvaluateCmd": 1
+    },
+    "Angle": 180,
+    "Distance": "8,8"
+  },
+  "BlinkAttack": {
+    "class": "CTargetFindSet",
+    "default": "1",
+    "CasterValidator": "CasterVitalityGT70Percent",
+    "Type": "Sequential",
+    "Array": [
+      "BlinkAttackTarget",
+      "BlinkAttackOffset"
+    ]
+  },
+  "BlinkAttackTarget": {
+    "class": "CTargetFindOrder",
+    "default": "1",
+    "Abil": "attack",
+    "TargetValidator": "TacticalBlinkAttackRange",
+    "parent": "AttackOrderTarget"
+  },
+  "BlinkAttackOffset": {
+    "class": "CTargetFindOffset",
+    "default": "1",
+    "Flags": {
+      "EvaluateCmd": 1
+    },
+    "Distance": "-4,-4"
+  }
+}

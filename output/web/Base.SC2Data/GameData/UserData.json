@@ -1,0 +1,120 @@
+{
+  "SCEvent_Events": {
+    "class": "CUser",
+    "Fields": [
+      {
+        "Id": "Start",
+        "Type": "String",
+        "EditorColumn": 1
+      },
+      {
+        "Id": "End",
+        "Type": "String",
+        "EditorColumn": 2
+      },
+      {
+        "Id": "Upgrade",
+        "Type": "GameLink",
+        "GameLinkType": "Upgrade"
+      },
+      {
+        "Id": "Skin",
+        "Type": "GameLink",
+        "GameLinkType": "Skin",
+        "EditorColumn": 3
+      },
+      {
+        "Id": "Disabler",
+        "Type": "GameLink",
+        "GameLinkType": "Upgrade"
+      },
+      {
+        "Id": "Message",
+        "Type": "String",
+        "EditorColumn": 4
+      },
+      {
+        "Id": "MessageFilter",
+        "Type": "String",
+        "EditorColumn": 5
+      }
+    ],
+    "Instances": [
+      {
+        "GameLink": {
+          "Field": {
+            "Id": "Upgrade"
+          },
+          "GameLink": "GameHeartActive"
+        },
+        "String": [
+          {
+            "Field": {
+              "Id": "Message"
+            },
+            "String": "Signal Event_Preplaced"
+          }
+        ],
+        "Id": "[Default]"
+      },
+      {
+        "GameLink": {
+          "Field": {
+            "Id": "Skin"
+          },
+          "GameLink": "SCEvent_Anniversary"
+        },
+        "String": [
+          {
+            "Field": {
+              "Id": "Start"
+            },
+            "String": "2018:07:23:00:01:00"
+          },
+          {
+            "Field": {
+              "Id": "End"
+            },
+            "String": "2018:07:30:00:01:00"
+          },
+          {
+            "Field": {
+              "Id": "MessageFilter"
+            },
+            "String": "PreventReveal;-"
+          }
+        ],
+        "Id": "Anniversary"
+      },
+      {
+        "GameLink": {
+          "Field": {
+            "Id": "Skin"
+          },
+          "GameLink": "SCEvent_TotalBiscuit"
+        },
+        "String": [
+          {
+            "Field": {
+              "Id": "Start"
+            },
+            "String": "2018:07:21:00:01:00"
+          },
+          {
+            "Field": {
+              "Id": "End"
+            },
+            "String": "2018:07:23:00:01:00"
+          },
+          {
+            "Field": {
+              "Id": "MessageFilter"
+            },
+            "String": "Worker;-"
+          }
+        ],
+        "Id": "TotalBiscuit"
+      }
+    ]
+  }
+}

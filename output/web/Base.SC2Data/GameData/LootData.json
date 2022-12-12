@@ -1,0 +1,15 @@
+{
+  "TriggerRandomItemGenerator": {
+    "class": "CLootItem",
+    "default": "1",
+    "ClassArray": [
+      ""
+    ],
+    "MinLevel": 255
+  },
+  "TriggerRandomItemGeneratorAnyClass": {
+    "class": "CLootItem",
+    "default": "1",
+    "MinLevel": 255
+  }
+}

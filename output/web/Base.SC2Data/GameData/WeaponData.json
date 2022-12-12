@@ -1,0 +1,5443 @@
+{
+  "WizWeapon": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/WizWeapon",
+    "DisplayName": "Weapon/Name/WizWeapon",
+    "EditorCategories": "Race:Neutral",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-infantryweaponslevel0.dds",
+    "Tip": "Weapon/Tip/WizWeapon",
+    "DisplayEffect": "WizWeaponDamage",
+    "MinScanRange": 5,
+    "Range": 5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.8332,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/WizWeapon"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/WizWeapon"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "WizWeaponDamage",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "RenegadeLongboltMissile": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/RenegadeLongboltMissile",
+    "DisplayName": "Weapon/Name/RenegadeLongboltMissile",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-hisecautotracking.dds",
+    "Tip": "Weapon/Tip/RenegadeLongboltMissile",
+    "DisplayEffect": "RenegadeLongboltMissileU",
+    "MinScanRange": 5,
+    "Range": 7,
+    "RangeSlop": 0,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.8608,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/RenegadeLongboltMissile"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/RenegadeLongboltMissile"
+      }
+    },
+    "TargetFilters": "Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "RenegadeLongboltMissileCP",
+    "UninterruptibleDuration": 32767.9997,
+    "DisplayAttackCount": 2
+  },
+  "VolatileBurstDummy": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/VolatileBurstDummy",
+    "DisplayName": "Weapon/Name/VolatileBurstDummy",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-ability-zerg-banelingspooge.dds",
+    "Tip": "Weapon/Tip/VolatileBurstDummy",
+    "DisplayEffect": "VolatileBurstU",
+    "MinScanRange": 5,
+    "Range": 0.25,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.833,
+    "DamagePoint": 0,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Melee": 1
+    },
+    "Marker": {
+      "Link": "Weapon/VolatileBurstDummy"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/VolatileBurst"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Structure,Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "NoDeceleration": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Moving"
+  },
+  "HydraliskMelee": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/HydraliskMelee",
+    "DisplayName": "Weapon/Name/HydraliskMelee",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-meleeattacks-level0.dds",
+    "Tip": "Weapon/Tip/HydraliskMelee",
+    "DisplayEffect": "HydraliskMelee",
+    "MinScanRange": 5,
+    "Range": 0.5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.75,
+    "DamagePoint": 0.3,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Hidden": 1,
+      "Melee": 1
+    },
+    "Marker": {
+      "Link": "Weapon/NeedleSpines"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/NeedleSpines"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "HydraliskMelee",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "InfestedGuassRifle": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/InfestedGuassRifle",
+    "DisplayName": "Weapon/Name/InfestedGuassRifle",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-missileattacks-level0.dds",
+    "Tip": "Weapon/Tip/InfestedGuassRifle",
+    "DisplayEffect": "InfestedGuassRifle",
+    "MinScanRange": 5.5,
+    "Range": 5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.8608,
+    "DamagePoint": 0.25,
+    "Backswing": 0.75,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/InfestedGuassRifle"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/InfestedGuassRifle"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "InfestedGuassRifle",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "PointDefenseLaser": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/PointDefenseLaser",
+    "DisplayName": "Weapon/Name/PointDefenseLaser",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-shipweaponslevel0.dds",
+    "Tip": "Weapon/Tip/PointDefenseLaser",
+    "DisplayEffect": "PointDefenseLaser",
+    "MinScanRange": 5,
+    "Range": 8,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0,
+    "DamagePoint": 0,
+    "Backswing": 0,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Hidden": 1,
+      "ContinuousScan": 1
+    },
+    "Marker": {
+      "Link": "Weapon/PointDefenseLaser",
+      "MatchFlags": {
+        "Link": 1
+      }
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/PointDefenseLaser"
+      }
+    },
+    "TargetFilters": "Missile,Visible;Self,Player,Ally,Neutral,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": 0,
+    "RandomDelayMax": 0,
+    "Effect": "PointDefenseLaserInitialSet",
+    "UninterruptibleDuration": 32767.9997,
+    "AcquireFilters": "Missile,Visible;Self,Player,Ally,Neutral,Stasis,Dead,Hidden,Invulnerable"
+  },
+  "RoachMelee": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/RoachMelee",
+    "DisplayName": "Weapon/Name/RoachMelee",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-meleeattacks-level0.dds",
+    "Tip": "Weapon/Tip/RoachMelee",
+    "DisplayEffect": "RoachUMelee",
+    "MinScanRange": 5,
+    "Range": 0.5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 2,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Hidden": 1,
+      "Melee": 1
+    },
+    "Marker": {
+      "Link": "Weapon/AcidSaliva"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/AcidSaliva"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "RoachUMelee",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "AcidSpines": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/AcidSpines",
+    "DisplayName": "Weapon/Name/AcidSpines",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-missileattacks-level0.dds",
+    "Tip": "Weapon/Tip/AcidSpines",
+    "DisplayEffect": "AcidSpines",
+    "MinScanRange": 8.5,
+    "Range": 7,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/AcidSpines"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/AcidSpines"
+      }
+    },
+    "TargetFilters": "Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "AcidSpinesLM",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "NeedleClaws": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/NeedleClaws",
+    "DisplayName": "Weapon/Name/NeedleClaws",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-meleeattacks-level0.dds",
+    "Tip": "Weapon/Tip/NeedleClaws",
+    "DisplayEffect": "NeedleClaws",
+    "MinScanRange": 15,
+    "Range": 0.1,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.6455,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Melee": 1
+    },
+    "Marker": {
+      "Link": "Weapon/NeedleClaws"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/NeedleClaws"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "NeedleClaws",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "PrismaticBeam": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/PrismaticBeam",
+    "DisplayName": "Weapon/Name/PrismaticBeam",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-airweaponslevel0.dds",
+    "Tip": "Weapon/Tip/PrismaticBeam",
+    "DisplayEffect": "PrismaticBeamMUx1",
+    "MinScanRange": 5,
+    "Range": 6,
+    "RangeSlop": 2,
+    "TeleportResetRange": 500,
+    "ArcSlop": 39.9902,
+    "Period": 0.6,
+    "DamagePoint": 0.167,
+    "Backswing": 0.75,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 0,
+      "OnlyFireAtAttackOrderTarget": 0,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/PrismaticBeam"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/PrismaticBeam"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "CanRetargetWhileChanneling": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "PrismaticBeam",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Moving"
+  },
+  "TwinIbiksCannon": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/TwinIbiksCannon",
+    "DisplayName": "Weapon/Name/TwinIbiksCannon",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-hisecautotracking.dds",
+    "Tip": "Weapon/Tip/TwinIbiksCannon",
+    "DisplayEffect": "TwinIbiksCannon",
+    "MinScanRange": 5,
+    "Range": 6,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 2,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 0,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/TwinIbiksCannon"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/TwinIbiksCannon"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Self,Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "TwinIbiksCannon",
+    "UninterruptibleDuration": 32767.9997,
+    "Arc": 90
+  },
+  "ParticleBeam": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/ParticleBeam",
+    "DisplayName": "Weapon/Name/ParticleBeam",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-groundweaponslevel0.dds",
+    "Tip": "Weapon/Tip/ParticleBeam",
+    "DisplayEffect": "ParticleBeam",
+    "MinScanRange": 5,
+    "Range": 0.1,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.5,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Melee": 1
+    },
+    "Marker": {
+      "Link": "Weapon/ParticleBeam"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/ParticleBeam"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "ParticleBeam",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "PsiBlades": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/PsiBlades",
+    "DisplayName": "Weapon/Name/PsiBlades",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-groundweaponslevel0.dds",
+    "Tip": "Weapon/Tip/PsiBlades",
+    "DisplayEffect": "PsiBlades",
+    "MinScanRange": 5,
+    "Range": 0.1,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.2,
+    "DamagePoint": 0,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Melee": 1
+    },
+    "Marker": {
+      "Link": "Weapon/PsiBlades"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/PsiBlades"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "PsiBladesBurst",
+    "UninterruptibleDuration": 32767.9997,
+    "DisplayAttackCount": 2
+  },
+  "WarpBlades": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/WarpBlades",
+    "DisplayName": "Weapon/Name/WarpBlades",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-groundweaponslevel0.dds",
+    "Tip": "Weapon/Tip/WarpBlades",
+    "DisplayEffect": "WarpBlades",
+    "MinScanRange": 5,
+    "Range": 0.1,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.694,
+    "DamagePoint": 0.361,
+    "Backswing": 1.333,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Melee": 1
+    },
+    "Marker": {
+      "Link": "Weapon/WarpBlades"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/WarpBlades"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "WarpBlades",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "PsionicShockwave": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/PsionicShockwave",
+    "DisplayName": "Weapon/Name/PsionicShockwave",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-groundweaponslevel0.dds",
+    "Tip": "Weapon/Tip/PsionicShockwave",
+    "DisplayEffect": "PsionicShockwaveDamage",
+    "MinScanRange": 5,
+    "Range": 3,
+    "RangeSlop": 1,
+    "TeleportResetRange": 0,
+    "ArcSlop": 11.25,
+    "Period": 1.754,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/PsionicShockwave"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/PsionicShockwave",
+        "Location": "Unit"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "PsionicShockwaveDamage",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "IonCannons": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/IonCannons",
+    "DisplayName": "Weapon/Name/IonCannons",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-airweaponslevel0.dds",
+    "Tip": "Weapon/Tip/IonCannons",
+    "DisplayEffect": "IonCannonsU",
+    "MinScanRange": 4,
+    "Range": 5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 0,
+    "Period": 1.1,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 0,
+      "OnlyFireAtAttackOrderTarget": 0,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/IonCannons"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/IonCannons"
+      }
+    },
+    "TargetFilters": "Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "IonCannons",
+    "UninterruptibleDuration": 32767.9997,
+    "DisplayAttackCount": 2,
+    "AllowedMovement": "Moving",
+    "Arc": 4.9987
+  },
+  "FusionCutter": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/FusionCutter",
+    "DisplayName": "Weapon/Name/FusionCutter",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-infantryweaponslevel0.dds",
+    "Tip": "Weapon/Tip/FusionCutter",
+    "DisplayEffect": "FusionCutter",
+    "MinScanRange": 5,
+    "Range": 0.1,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.5,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Melee": 1
+    },
+    "Marker": {
+      "Link": "Weapon/FusionCutter"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/FusionCutter"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "FusionCutter",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "GuassRifle": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/GuassRifle",
+    "DisplayName": "Weapon/Name/GuassRifle",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-infantryweaponslevel0.dds",
+    "Tip": "Weapon/Tip/GuassRifle",
+    "DisplayEffect": "GuassRifle",
+    "MinScanRange": 5.5,
+    "Range": 5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.8608,
+    "DamagePoint": 0.05,
+    "Backswing": 0.75,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/GuassRifle"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/GuassRifle"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "GuassRifle",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "JavelinMissileLaunchers": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/JavelinMissileLaunchers",
+    "DisplayName": "Weapon/Name/JavelinMissileLaunchers",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleweaponslevel0.dds",
+    "Tip": "Weapon/Tip/JavelinMissileLaunchers",
+    "DisplayEffect": "JavelinMissileLaunchersDamage",
+    "MinScanRange": 10.5,
+    "Range": 10,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 3,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/JavelinMissileLaunchers"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/JavelinMissileLaunchers"
+      }
+    },
+    "TargetFilters": "Air,Visible;Ground,Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "KeepChanneling": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "JavelinMissileLaunchersPersistent",
+    "UninterruptibleDuration": 32767.9997,
+    "DisplayAttackCount": 4,
+    "AcquirePrioritization": "ByAngle",
+    "Arc": 5.625
+  },
+  "ThorsHammer": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/ThorsHammer",
+    "DisplayName": "Weapon/Name/ThorsHammer",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleweaponslevel0.dds",
+    "Tip": "Weapon/Tip/ThorsHammer",
+    "DisplayEffect": "ThorsHammerDamage",
+    "MinScanRange": 7.5,
+    "Range": 7,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.28,
+    "DamagePoint": 0.831,
+    "Backswing": 0.25,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/ThorsHammer"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/ThorsHammer"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "KeepChanneling": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "ThorsHammer",
+    "UninterruptibleDuration": 32767.9997,
+    "DisplayAttackCount": 2,
+    "AcquirePrioritization": "ByAngle"
+  },
+  "90mmCannons": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/90mmCannons",
+    "DisplayName": "Weapon/Name/90mmCannons",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleweaponslevel0.dds",
+    "Tip": "Weapon/Tip/90mmCannons",
+    "DisplayEffect": "90mmCannons",
+    "MinScanRange": 7.5,
+    "Range": 7,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.04,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/90mmCannons"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/90mmCannons"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "90mmCannons",
+    "UninterruptibleDuration": 32767.9997,
+    "Arc": 360
+  },
+  "PunisherGrenades": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/PunisherGrenades",
+    "DisplayName": "Weapon/Name/PunisherGrenades",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-infantryweaponslevel0.dds",
+    "Tip": "Weapon/Tip/PunisherGrenades",
+    "DisplayEffect": "PunisherGrenadesU",
+    "MinScanRange": 6.5,
+    "Range": 6,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.5,
+    "DamagePoint": 0,
+    "Backswing": 0,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/PunisherGrenades"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/PunisherGrenades"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "PunisherGrenadesLM",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "CrucioShockCannon": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/CrucioShockCannon",
+    "DisplayName": "Weapon/Name/CrucioShockCannon",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleweaponslevel0.dds",
+    "Tip": "Weapon/Tip/CrucioShockCannon",
+    "DisplayEffect": "CrucioShockCannonDummy",
+    "MinScanRange": 5,
+    "Range": 13,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 3,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "DisplayCooldown": 1
+    },
+    "Marker": {
+      "Link": "Weapon/CrucioShockCannon"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/CrucioShockCannon"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "CrucioShockCannonSwitch",
+    "UninterruptibleDuration": 32767.9997,
+    "MinimumRange": 2
+  },
+  "LanzerTorpedoes": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/LanzerTorpedoes",
+    "DisplayName": "Weapon/Name/LanzerTorpedoes",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-shipweaponslevel0.dds",
+    "Tip": "Weapon/Tip/LanzerTorpedoes",
+    "DisplayEffect": "LanzerTorpedoesDamage",
+    "MinScanRange": 5,
+    "Range": 9,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 2,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/LanzerTorpedoes"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/LanzerTorpedoes"
+      }
+    },
+    "TargetFilters": "Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "LanzerTorpedoes",
+    "UninterruptibleDuration": 32767.9997,
+    "DisplayAttackCount": 2,
+    "AllowedMovement": "Slowing"
+  },
+  "ATSLaserBattery": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/ATSLaserBattery",
+    "DisplayName": "Weapon/Name/ATSLaserBattery",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-shipweaponslevel0.dds",
+    "Tip": "Weapon/Tip/ATSLaserBattery",
+    "DisplayEffect": "ATSLaserBatteryU",
+    "MinScanRange": 5,
+    "Range": 6,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.225,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 0,
+      "OnlyFireAtAttackOrderTarget": 0,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/ATSLaserBattery"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/ATSLaserBattery",
+        "Location": "Unit",
+        "TimeUse": 0.225
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": 0,
+    "RandomDelayMax": 0,
+    "Effect": "ATSLaserBatteryLM",
+    "UninterruptibleDuration": 32767.9997,
+    "AcquirePrioritization": "ByAngle",
+    "AllowedMovement": "Moving",
+    "Arc": 360
+  },
+  "ATALaserBattery": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/ATALaserBattery",
+    "DisplayName": "Weapon/Name/ATALaserBattery",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-shipweaponslevel0.dds",
+    "Tip": "Weapon/Tip/ATALaserBattery",
+    "DisplayEffect": "ATALaserBatteryU",
+    "MinScanRange": 5,
+    "Range": 6,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.225,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 0,
+      "OnlyFireAtAttackOrderTarget": 0,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/ATALaserBattery"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/ATSLaserBattery",
+        "Location": "Unit",
+        "TimeUse": 0.225
+      }
+    },
+    "TargetFilters": "Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": 0,
+    "RandomDelayMax": 0,
+    "Effect": "ATALaserBatteryLM",
+    "UninterruptibleDuration": 32767.9997,
+    "AcquirePrioritization": "ByAngle",
+    "AllowedMovement": "Moving",
+    "Arc": 360
+  },
+  "LongboltMissile": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/LongboltMissile",
+    "DisplayName": "Weapon/Name/LongboltMissile",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-hisecautotracking.dds",
+    "Tip": "Weapon/Tip/LongboltMissile",
+    "DisplayEffect": "LongboltMissileU",
+    "MinScanRange": 5,
+    "Range": 7,
+    "RangeSlop": 0,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.8608,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/LongboltMissile"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/LongboltMissile"
+      }
+    },
+    "TargetFilters": "Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "LongboltMissile",
+    "UninterruptibleDuration": 32767.9997,
+    "DisplayAttackCount": 2
+  },
+  "AutoTurret": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/AutoTurret",
+    "DisplayName": "Weapon/Name/AutoTurret",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-hisecautotracking.dds",
+    "Tip": "Weapon/Tip/AutoTurret",
+    "DisplayEffect": "AutoTurret",
+    "MinScanRange": 5,
+    "Range": 6,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.8,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/AutoTurret"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/AutoTurret"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "AutoTurret",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "P38ScytheGuassPistol": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/P38ScytheGuassPistol",
+    "DisplayName": "Weapon/Name/P38ScytheGuassPistol",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-infantryweaponslevel0.dds",
+    "Tip": "Weapon/Tip/P38ScytheGuassPistol",
+    "DisplayEffect": "P38ScytheGuassPistol",
+    "MinScanRange": 5.5,
+    "Range": 5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.1,
+    "DamagePoint": 0,
+    "Backswing": 0.75,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/P38ScytheGuassPistol"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/P38ScytheGuassPistol"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "P38ScytheGuassPistolBurst",
+    "UninterruptibleDuration": 32767.9997,
+    "DisplayAttackCount": 2
+  },
+  "D8Charge": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/D8Charge",
+    "DisplayName": "Weapon/Name/D8Charge",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-infantryweaponslevel0.dds",
+    "Tip": "Weapon/Tip/D8Charge",
+    "DisplayEffect": "D8ChargeDamage",
+    "MinScanRange": 5,
+    "Range": 5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.8,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/D8Charge"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/D8Charge"
+      }
+    },
+    "TargetFilters": "Ground,Structure,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": 0.1,
+    "RandomDelayMax": 0.5,
+    "Effect": "D8ChargeLaunchMissile",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "AcidSaliva": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/AcidSaliva",
+    "DisplayName": "Weapon/Name/AcidSaliva",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-missileattacks-level0.dds",
+    "Tip": "Weapon/Tip/AcidSaliva",
+    "DisplayEffect": "AcidSalivaU",
+    "MinScanRange": 5,
+    "Range": 4,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 2,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/AcidSaliva"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/AcidSaliva"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "AcidSalivaLM",
+    "UninterruptibleDuration": 32767.9997,
+    "MinimumRange": 0.6
+  },
+  "Spines": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/Spines",
+    "DisplayName": "Weapon/Name/Spines",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-meleeattacks-level0.dds",
+    "Tip": "Weapon/Tip/Spines",
+    "DisplayEffect": "Spines",
+    "MinScanRange": 5,
+    "Range": 0.1,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.5,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Melee": 1
+    },
+    "Marker": {
+      "Link": "Weapon/Spines"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/Spines"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "Spines",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "Claws": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/Claws",
+    "DisplayName": "Weapon/Name/Claws",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-meleeattacks-level0.dds",
+    "Tip": "Weapon/Tip/Claws",
+    "DisplayEffect": "Claws",
+    "MinScanRange": 5,
+    "Range": 0.1,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.696,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Melee": 1
+    },
+    "Marker": {
+      "Link": "Weapon/Claws"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/Claws"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "Claws",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "ImpalerTentacle": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/ImpalerTentacle",
+    "DisplayName": "Weapon/Name/ImpalerTentacle",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-seismicspines.dds",
+    "Tip": "Weapon/Tip/ImpalerTentacle",
+    "DisplayEffect": "ImpalerTentacleU",
+    "MinScanRange": 5,
+    "Range": 7,
+    "RangeSlop": 0,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.85,
+    "DamagePoint": 0.3332,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/ImpalerTentacle"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/ImpalerTentacle"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "ImpalerTentacleLM",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "AcidSpew": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/AcidSpew",
+    "DisplayName": "Weapon/Name/AcidSpew",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-missileattacks-level0.dds",
+    "Tip": "Weapon/Tip/AcidSpew",
+    "DisplayEffect": "SporeCrawlerU",
+    "MinScanRange": 5,
+    "Range": 7,
+    "RangeSlop": 0,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.8608,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/AcidSpew"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/AcidSpew"
+      }
+    },
+    "TargetFilters": "Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "SporeCrawler",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "NeedleSpines": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/NeedleSpines",
+    "DisplayName": "Weapon/Name/NeedleSpines",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-missileattacks-level0.dds",
+    "Tip": "Weapon/Tip/NeedleSpines",
+    "DisplayEffect": "NeedleSpinesDamage",
+    "MinScanRange": 5.5,
+    "Range": 5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.825,
+    "DamagePoint": 0.208,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/NeedleSpines"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/NeedleSpines"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "NeedleSpinesLaunchMissile",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "GlaiveWurm": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/GlaiveWurm",
+    "DisplayName": "Weapon/Name/GlaiveWurm",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-airattacks-level0.dds",
+    "Tip": "Weapon/Tip/GlaiveWurm",
+    "DisplayEffect": "GlaiveWurmU1",
+    "MinScanRange": 5,
+    "Range": 3,
+    "RangeSlop": 2,
+    "TeleportResetRange": 500,
+    "ArcSlop": 45,
+    "Period": 1.5246,
+    "DamagePoint": 0,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/GlaiveWurm",
+      "MatchFlags": {
+        "Id": 1
+      }
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/GlaiveWurm"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "NoDeceleration": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "GlaiveWurm",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Slowing"
+  },
+  "BroodlingStrike": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/BroodlingStrike",
+    "DisplayName": "Weapon/Name/BroodlingStrike",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-airattacks-level0.dds",
+    "Tip": "Weapon/Tip/BroodlingStrike",
+    "DisplayEffect": "BroodlingEscortDamage",
+    "MinScanRange": 10.5,
+    "Range": 10,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 2.5,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/BroodlingStrike"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/BroodlingStrike"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Slowing"
+  },
+  "BroodlingEscort": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/BroodlingEscort",
+    "DisplayName": "Weapon/Name/BroodlingEscort",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-airattacks-level0.dds",
+    "Tip": "Weapon/Tip/BroodlingEscort",
+    "DisplayEffect": "BroodlingEscort",
+    "MinScanRange": 5,
+    "Range": 9,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 10,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Hidden": 1
+    },
+    "Marker": {
+      "Link": "Weapon/BroodlingEscort"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/BroodlingEscort"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "BroodlingEscort",
+    "UninterruptibleDuration": 32767.9997,
+    "Arc": 360
+  },
+  "KaiserBlades": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/KaiserBlades",
+    "DisplayName": "Weapon/Name/KaiserBlades",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-meleeattacks-level0.dds",
+    "Tip": "Weapon/Tip/KaiserBlades",
+    "DisplayEffect": "KaiserBladesDamage",
+    "MinScanRange": 5,
+    "Range": 1,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.86,
+    "DamagePoint": 0.3332,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Melee": 1
+    },
+    "Marker": {
+      "Link": "Weapon/KaiserBlades"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Abil/UltraliskWeaponCooldown",
+        "Location": "Unit",
+        "TimeUse": 0.86
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "KaiserBladesDamage",
+    "UninterruptibleDuration": 32767.9997,
+    "AcquirePrioritization": "ByAngle"
+  },
+  "Ram": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/Ram",
+    "DisplayName": "Weapon/Name/Ram",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-meleeattacks-level0.dds",
+    "Tip": "Weapon/Tip/Ram",
+    "DisplayEffect": "Ram",
+    "MinScanRange": 5,
+    "Range": 1,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.6665,
+    "DamagePoint": 0.6665,
+    "Backswing": 1,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Melee": 1
+    },
+    "Marker": {
+      "Link": "Weapon/Ram"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/Ram"
+      }
+    },
+    "TargetFilters": "Ground,Structure,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "KeepChanneling": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "Ram",
+    "UninterruptibleDuration": 32767.9997,
+    "AcquirePrioritization": "ByAngle"
+  },
+  "TwinGatlingCannon": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/TwinGatlingCannon",
+    "DisplayName": "Weapon/Name/TwinGatlingCannon",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-shipweaponslevel0.dds",
+    "Tip": "Weapon/Tip/TwinGatlingCannon",
+    "DisplayEffect": "TwinGatlingCannons",
+    "MinScanRange": 6.5,
+    "Range": 6,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/TwinGatlingCannon"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/TwinGatlingCannon"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "TwinGatlingCannons",
+    "UninterruptibleDuration": 32767.9997,
+    "Arc": 5.625
+  },
+  "VolatileBurst": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/VolatileBurst",
+    "DisplayName": "Weapon/Name/VolatileBurst",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-ability-zerg-explode.dds",
+    "Tip": "Weapon/Tip/VolatileBurst",
+    "DisplayEffect": "VolatileBurst",
+    "MinScanRange": 5,
+    "Range": 0.25,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.833,
+    "DamagePoint": 0,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Hidden": 1,
+      "Melee": 1,
+      "Disabled": 0
+    },
+    "Marker": {
+      "Link": "Weapon/VolatileBurst"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/VolatileBurst"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "NoDeceleration": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "VolatileBurst",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Moving",
+    "AcquireFilters": "Ground,Visible;Self,Player,Ally,Neutral,Structure,Missile,Stasis,Dead,Hidden,Invulnerable"
+  },
+  "Talons": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/Talons",
+    "DisplayName": "Weapon/Name/Talons",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-missileattacks-level0.dds",
+    "Tip": "Weapon/Tip/Talons",
+    "DisplayEffect": "Talons",
+    "MinScanRange": 5.5,
+    "Range": 3,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Hidden": 1
+    },
+    "Marker": {
+      "Link": "Weapon/Talons"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/Talons"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "TalonsBurst",
+    "UninterruptibleDuration": 32767.9997,
+    "DisplayAttackCount": 2
+  },
+  "ParticleDisruptors": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/ParticleDisruptors",
+    "DisplayName": "Weapon/Name/ParticleDisruptors",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-groundweaponslevel0.dds",
+    "Tip": "Weapon/Tip/ParticleDisruptors",
+    "DisplayEffect": "ParticleDisruptorsU",
+    "MinScanRange": 6.5,
+    "Range": 6,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.87,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/ParticleDisruptors"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/ParticleDisruptors"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "ParticleDisruptors",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "ThermalLances": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/ThermalLances",
+    "DisplayName": "Weapon/Name/ThermalLances",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-groundweaponslevel0.dds",
+    "Tip": "Weapon/Tip/ThermalLances",
+    "DisplayEffect": "ThermalLancesMU",
+    "MinScanRange": 7.5,
+    "Range": 7,
+    "RangeSlop": 0,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.5,
+    "DamagePoint": 0.0832,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 0,
+      "OnlyFireAtAttackOrderTarget": 0,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/ThermalLances"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/ThermalLances"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "KeepChanneling": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "ThermalLances",
+    "UninterruptibleDuration": 32767.9997,
+    "AcquirePrioritization": "ByDistanceFromTarget",
+    "Arc": 90,
+    "DisplayAttackCount": 2
+  },
+  "PhaseDisruptors": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/PhaseDisruptors",
+    "DisplayName": "Weapon/Name/PhaseDisruptors",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-groundweaponslevel0.dds",
+    "Tip": "Weapon/Tip/PhaseDisruptors",
+    "DisplayEffect": "PhaseDisruptors",
+    "MinScanRange": 6.5,
+    "Range": 6,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.45,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 0,
+      "OnlyFireAtAttackOrderTarget": 0,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/PhaseDisruptors"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/PhaseDisruptors"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "PhaseDisruptors",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "MothershipBeam": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/MothershipBeam",
+    "DisplayName": "Weapon/Name/MothershipBeam",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-airweaponslevel0.dds",
+    "Tip": "Weapon/Tip/MothershipBeam",
+    "DisplayEffect": "MothershipBeamDamage",
+    "MinScanRange": 5,
+    "Range": 7,
+    "RangeSlop": 1,
+    "TeleportResetRange": 0,
+    "ArcSlop": 11.25,
+    "Period": 2.21,
+    "DamagePoint": 0,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 0,
+      "OnlyFireAtAttackOrderTarget": 0,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/MothershipBeam"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/MothershipBeam"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "MothershipBeamSet",
+    "UninterruptibleDuration": 32767.9997,
+    "DisplayAttackCount": 6,
+    "Arc": 360,
+    "AllowedMovement": "Moving"
+  },
+  "PhotonCannon": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/PhotonCannon",
+    "DisplayName": "Weapon/Name/PhotonCannon",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-building-protoss-photoncannon.dds",
+    "Tip": "Weapon/Tip/PhotonCannon",
+    "DisplayEffect": "PhotonCannonU",
+    "MinScanRange": 5,
+    "Range": 7,
+    "RangeSlop": 0,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.25,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/PhotonCannon"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/PhotonCannon"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "PhotonCannonLM",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "DisruptionBeam": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/DisruptionBeam",
+    "DisplayName": "Weapon/Name/DisruptionBeam",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-groundweaponslevel0.dds",
+    "Tip": "Weapon/Tip/DisruptionBeam",
+    "DisplayEffect": "DisruptionBeamDamage",
+    "MinScanRange": 5.5,
+    "Range": 5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 0,
+    "ArcSlop": 11.25,
+    "Period": 1,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Hidden": 1
+    },
+    "Marker": {
+      "Link": "Weapon/DisruptionBeam"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/DisruptionBeam",
+        "Location": "Unit",
+        "TimeUse": 1
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "CanRetargetWhileChanneling": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "DisruptionBeam",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "BacklashRockets": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/BacklashRockets",
+    "DisplayName": "Weapon/Name/BacklashRockets",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-shipweaponslevel0.dds",
+    "Tip": "Weapon/Tip/BacklashRockets",
+    "DisplayEffect": "BacklashRocketsU",
+    "MinScanRange": 6,
+    "Range": 6,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.25,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/BacklashRockets",
+      "MatchFlags": {
+        "Id": 1
+      }
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/BacklashRockets"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "KeepChanneling": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "BacklashRockets",
+    "UninterruptibleDuration": 32767.9997,
+    "DisplayAttackCount": 2,
+    "AllowedMovement": "Slowing"
+  },
+  "ParasiteSpore": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/ParasiteSpore",
+    "DisplayName": "Weapon/Name/ParasiteSpore",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-airattacks-level0.dds",
+    "Tip": "Weapon/Tip/ParasiteSpore",
+    "DisplayEffect": "ParasiteSporeDamage",
+    "MinScanRange": 5,
+    "Range": 6,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.9,
+    "DamagePoint": 0.0625,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/ParasiteSpore"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/ParasiteSpore"
+      }
+    },
+    "TargetFilters": "Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "ParasiteSporeLaunchMissile",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Slowing"
+  },
+  "C10CanisterRifle": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/C10CanisterRifle",
+    "DisplayName": "Weapon/Name/C10CanisterRifle",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-infantryweaponslevel0.dds",
+    "Tip": "Weapon/Tip/C10CanisterRifle",
+    "DisplayEffect": "C10CanisterRifle",
+    "MinScanRange": 6.5,
+    "Range": 6,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.5,
+    "DamagePoint": 0.083,
+    "Backswing": 1.167,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/C10CanisterRifle"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/C10CanisterRifle"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "C10CanisterRifle",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "InfernalFlameThrower": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/InfernalFlameThrower",
+    "DisplayName": "Weapon/Name/InfernalFlameThrower",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleweaponslevel0.dds",
+    "Tip": "Weapon/Tip/InfernalFlameThrower",
+    "DisplayEffect": "InfernalFlameThrower",
+    "MinScanRange": 5.5,
+    "Range": 5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 2.5,
+    "DamagePoint": 0.25,
+    "Backswing": 0.75,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/InfernalFlameThrower",
+      "MatchFlags": {
+        "Id": 1
+      }
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/InfernalFlameThrower"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "LockTurretWhileFiring": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "InfernalFlameThrowerCP",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "AutoTestAttackerWeapon": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/AutoTestAttackerWeapon",
+    "DisplayName": "Weapon/Name/AutoTestAttackerWeapon",
+    "EditorCategories": "Race:Neutral",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-missing-kaeo.dds",
+    "Tip": "Weapon/Tip/AutoTestAttackerWeapon",
+    "DisplayEffect": "AutoTestAttackerWeapon",
+    "MinScanRange": 5,
+    "Range": 10,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.2,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/AutoTestAttackerWeapon"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/AutoTestAttackerWeapon"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "AutoTestAttackerWeapon",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "InterceptorLaunch": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/InterceptorLaunch",
+    "DisplayName": "Weapon/Name/InterceptorLaunch",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-unit-protoss-interceptor.dds",
+    "Tip": "Weapon/Tip/InterceptorLaunch",
+    "DisplayEffect": "Carrier",
+    "MinScanRange": 5,
+    "Range": 8,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.5,
+    "DamagePoint": 0,
+    "Backswing": 0,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Hidden": 1
+    },
+    "Marker": {
+      "Link": "Weapon/InterceptorLaunch"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/InterceptorLaunch"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "InterceptorLaunchPersistent",
+    "UninterruptibleDuration": 32767.9997,
+    "Arc": 360,
+    "AllowedMovement": "Slowing"
+  },
+  "InterceptorsDummy": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/InterceptorsDummy",
+    "DisplayName": "Weapon/Name/InterceptorsDummy",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-unit-protoss-interceptor.dds",
+    "Tip": "Weapon/Tip/InterceptorsDummy",
+    "DisplayEffect": "InterceptorBeamDamage",
+    "MinScanRange": 5,
+    "Range": 8,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 3,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/InterceptorsDummy"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/InterceptorsDummy"
+      }
+    },
+    "TargetFilters": "Visible;Player,Ally,Neutral,Enemy",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "CarrierInterceptor",
+    "UninterruptibleDuration": 32767.9997,
+    "DisplayAttackCount": 2,
+    "Arc": 360
+  },
+  "InterceptorBeam": {
+    "class": "CWeaponStrafe",
+    "Name": "Weapon/Name/InterceptorBeam",
+    "DisplayName": "Weapon/Name/InterceptorBeam",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-airweaponslevel0.dds",
+    "Tip": "Weapon/Tip/InterceptorBeam",
+    "DisplayEffect": "InterceptorBeamDamage",
+    "MinScanRange": 5,
+    "Range": 2,
+    "RangeSlop": 1,
+    "TeleportResetRange": 0,
+    "ArcSlop": 11.25,
+    "Period": 3,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/InterceptorBeam"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/InterceptorBeam"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LoiterInnerRadius": 2,
+    "LoiterRadius": 4,
+    "Effect": "InterceptorBeamPersistent",
+    "DisplayAttackCount": 2,
+    "Arc": 19.6875
+  },
+  "Sheep": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/Sheep",
+    "DisplayName": "Weapon/Name/Sheep",
+    "EditorCategories": "Race:Neutral",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-meleeattacks-level0.dds",
+    "Tip": "Weapon/Tip/Sheep",
+    "DisplayEffect": "Sheep",
+    "MinScanRange": 5,
+    "Range": 0.1,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Hidden": 1,
+      "Melee": 1
+    },
+    "Marker": {
+      "Link": "Weapon/Sheep"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/Sheep"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "Sheep",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "WidowMineDummy": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/WidowMineDummy",
+    "DisplayName": "Weapon/Name/WidowMineDummy",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleweaponslevel0.dds",
+    "Tip": "Weapon/Tip/WidowMineDummy",
+    "DisplayEffect": "WidowMineExplodeDirect",
+    "MinScanRange": 5,
+    "Range": 5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Hidden": 1
+    },
+    "Marker": {
+      "Link": "Weapon/WidowMineDummy"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/WidowMineDummy"
+      }
+    },
+    "TargetFilters": "Visible;Ally,Structure,Worker,Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "WidowMineAttack",
+    "UninterruptibleDuration": 32767.9997,
+    "Arc": 360
+  },
+  "NydusCanalAttackerWeapon": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/NydusCanalAttackerWeapon",
+    "DisplayName": "Weapon/Name/NydusCanalAttackerWeapon",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-missileattacks-level0.dds",
+    "Tip": "Weapon/Tip/NydusCanalAttackerWeapon",
+    "DisplayEffect": "NydusCanalAttackerDamage",
+    "MinScanRange": 5,
+    "Range": 7,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 2,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/NydusCanalAttackerWeapon"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/NydusCanalAttackerWeapon"
+      }
+    },
+    "TargetFilters": "Structure,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "NydusCanalAttackerLaunchMissile",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "MothershipCoreWeapon": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/MothershipCoreWeapon",
+    "DisplayName": "Weapon/Name/MothershipCoreWeapon",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-airweaponslevel0.dds",
+    "Tip": "Weapon/Tip/MothershipCoreWeapon",
+    "DisplayEffect": "MothershipCoreWeaponDamage",
+    "MinScanRange": 7,
+    "Range": 7,
+    "RangeSlop": 0,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/MothershipCoreWeapon"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/MothershipCoreWeapon"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": 0,
+    "RandomDelayMax": 0,
+    "Effect": "MothershipCoreWeaponLM",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Slowing",
+    "Arc": 360
+  },
+  "MothershipPurifyWeapon": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/MothershipPurifyWeapon",
+    "DisplayName": "Weapon/Name/MothershipPurifyWeapon",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-airweaponslevel0.dds",
+    "Tip": "Weapon/Tip/MothershipPurifyWeapon",
+    "DisplayEffect": "MothershipCoreWeaponDamage",
+    "MinScanRange": 5,
+    "Range": 10,
+    "RangeSlop": 0,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.25,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 0,
+      "OnlyFireAtAttackOrderTarget": 0,
+      "LinkedCooldown": 0,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Disabled": 1
+    },
+    "Marker": {
+      "Link": "Weapon/MothershipPurifyWeapon"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/MothershipPurifyWeapon"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "MothershipCoreWeaponLM",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Moving"
+  },
+  "Tempest": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/Tempest",
+    "DisplayName": "Weapon/Name/Tempest",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-airweaponslevel0.dds",
+    "Tip": "Weapon/Tip/Tempest",
+    "DisplayEffect": "TempestDamage",
+    "MinScanRange": 5,
+    "Range": 14,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 3.3,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/Tempest"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/Tempest"
+      }
+    },
+    "TargetFilters": "Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "TempestLaunchMissile",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Slowing"
+  },
+  "CycloneMissiles": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/CycloneMissiles",
+    "DisplayName": "Weapon/Name/CycloneMissiles",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleweaponslevel0.dds",
+    "Tip": "Weapon/Tip/CycloneMissiles",
+    "DisplayEffect": "CycloneMissilesDamage",
+    "MinScanRange": 5,
+    "Range": 7,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 2.25,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/CycloneMissiles"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/CycloneMissiles"
+      }
+    },
+    "TargetFilters": "Air,Visible;Ground,Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "CycloneMissilesLM",
+    "UninterruptibleDuration": 32767.9997,
+    "DisplayAttackCount": 1
+  },
+  "BuildingShield": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/BuildingShield",
+    "DisplayName": "Weapon/Name/BuildingShield",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-building-protoss-photoncannon.dds",
+    "Tip": "Weapon/Tip/BuildingShield",
+    "DisplayEffect": "BuildingShield",
+    "MinScanRange": 5,
+    "Range": 7,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.25,
+    "DamagePoint": 0.1,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 0,
+      "OnlyFireWhileInAttackOrder": 0,
+      "OnlyFireAtAttackOrderTarget": 0,
+      "LinkedCooldown": 0,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "ContinuousScan": 1
+    },
+    "Marker": {
+      "Link": "Weapon/BuildingShield"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/BuildingShield"
+      }
+    },
+    "TargetFilters": "Visible;Self,Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "CanRetargetWhileChanneling": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "BuildingShield",
+    "UninterruptibleDuration": 32767.9997,
+    "Arc": 360,
+    "AllowedMovement": "Moving"
+  },
+  "InfestedSwarmClaws": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/InfestedSwarmClaws",
+    "DisplayName": "Weapon/Name/InfestedSwarmClaws",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-meleeattacks-level0.dds",
+    "Tip": "Weapon/Tip/InfestedSwarmClaws",
+    "DisplayEffect": "InfestedSwarmClawsDamage",
+    "MinScanRange": 6,
+    "Range": 0.1,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.2,
+    "DamagePoint": 0.2666,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Melee": 1
+    },
+    "Marker": {
+      "Link": "Weapon/InfestedSwarmClaws"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/InfestedSwarmClaws"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "InfestedSwarmClawsDamage",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "LocustMPMelee": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/LocustMPMelee",
+    "DisplayName": "Weapon/Name/LocustMPMelee",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-missileattacks-level0.dds",
+    "Tip": "Weapon/Tip/LocustMPMelee",
+    "DisplayEffect": "LocustMPMeleeDamage",
+    "MinScanRange": 6,
+    "Range": 0.5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.6,
+    "DamagePoint": 0.2666,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Hidden": 1,
+      "Melee": 1
+    },
+    "Marker": {
+      "Link": "Weapon/LocustMP"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/LocustMP"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "LocustMPMeleeDamage",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "LocustMP": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/LocustMP",
+    "DisplayName": "Weapon/Name/LocustMP",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-missileattacks-level0.dds",
+    "Tip": "Weapon/Tip/LocustMP",
+    "DisplayEffect": "LocustMPDamage",
+    "MinScanRange": 6,
+    "Range": 3,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.6,
+    "DamagePoint": 0.2666,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/LocustMP"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/LocustMP"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "LocustMPLM",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "HellionTank": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/HellionTank",
+    "DisplayName": "Weapon/Name/HellionTank",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleweaponslevel0.dds",
+    "Tip": "Weapon/Tip/HellionTank",
+    "DisplayEffect": "HellionTankDamage",
+    "MinScanRange": 5,
+    "Range": 2,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 2,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/HellionTank"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/HellionTank"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "HellionTank",
+    "UninterruptibleDuration": 32767.9997,
+    "AcquirePrioritization": "ByAngle"
+  },
+  "WarHoundMelee": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/WarHoundMelee",
+    "DisplayName": "Weapon/Name/WarHoundMelee",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleweaponslevel0.dds",
+    "Tip": "Weapon/Tip/WarHoundMelee",
+    "DisplayEffect": "WarHoundMelee",
+    "MinScanRange": 5,
+    "Range": 0.5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.3,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Hidden": 1,
+      "Melee": 1
+    },
+    "Marker": {
+      "Link": "Weapon/WarHound"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/WarHound"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "WarHoundMelee",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "WarHound": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/WarHound",
+    "DisplayName": "Weapon/Name/WarHound",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleweaponslevel0.dds",
+    "Tip": "Weapon/Tip/WarHound",
+    "DisplayEffect": "WarHound",
+    "MinScanRange": 10,
+    "Range": 7,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.3,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/WarHound"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/WarHound"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "WarHoundLM",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "VolatileBurstBuilding": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/VolatileBurstBuilding",
+    "DisplayName": "Weapon/Name/VolatileBurstBuilding",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-ability-zerg-explode.dds",
+    "Tip": "Weapon/Tip/VolatileBurstBuilding",
+    "DisplayEffect": "VolatileBurst",
+    "MinScanRange": 5,
+    "Range": 0.25,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.833,
+    "DamagePoint": 0,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Hidden": 1,
+      "Melee": 1,
+      "Disabled": 1
+    },
+    "Marker": {
+      "Link": "Weapon/VolatileBurstBuilding"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/VolatileBurstBuilding"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "NoDeceleration": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "VolatileBurst",
+    "UninterruptibleDuration": 32767.9997,
+    "AcquireFilters": "Ground,Visible;Self,Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AllowedMovement": "Moving"
+  },
+  "LurkerMP": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/LurkerMP",
+    "DisplayName": "Weapon/Name/LurkerMP",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-missileattacks-level0.dds",
+    "Tip": "Weapon/Tip/LurkerMP",
+    "DisplayEffect": "LurkerMPDamage",
+    "MinScanRange": 5,
+    "Range": 8,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 2,
+    "DamagePoint": 0,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/LurkerMP",
+      "MatchFlags": {
+        "Id": 1
+      }
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/LurkerMP"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "KeepChanneling": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "LurkerMP",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "TalonsMissile": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/TalonsMissile",
+    "DisplayName": "Weapon/Name/TalonsMissile",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-missileattacks-level0.dds",
+    "Tip": "Weapon/Tip/TalonsMissile",
+    "DisplayEffect": "TalonsMissileDamage",
+    "MinScanRange": 5,
+    "Range": 5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/TalonsMissile"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/TalonsMissile"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "TalonsMissileBurst",
+    "UninterruptibleDuration": 32767.9997,
+    "MinimumRange": 3,
+    "DisplayAttackCount": 2
+  },
+  "TalonsDummy": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/TalonsDummy",
+    "DisplayName": "Weapon/Name/TalonsDummy",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-missileattacks-level0.dds",
+    "Tip": "Weapon/Tip/TalonsDummy",
+    "DisplayEffect": "TalonsMissileDamage",
+    "MinScanRange": 5,
+    "Range": 5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/TalonsDummy"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/TalonsDummy"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "TalonsBurst",
+    "UninterruptibleDuration": 32767.9997,
+    "DisplayAttackCount": 2
+  },
+  "DigesterCreepSprayWeapon": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/DigesterCreepSprayWeapon",
+    "DisplayName": "Weapon/Name/DigesterCreepSprayWeapon",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-missileattacks-level0.dds",
+    "Tip": "Weapon/Tip/DigesterCreepSprayWeapon",
+    "DisplayEffect": "DigesterCreepSprayWeaponAttackSet",
+    "MinScanRange": 0,
+    "Range": 500,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Hidden": 1
+    },
+    "Marker": {
+      "Link": "Weapon/DigesterCreepSprayWeapon"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/DigesterCreepSprayWeapon"
+      }
+    },
+    "TargetFilters": "Armored,Biological,Mechanical,Massive,Structure,Heroic,Visible,Invulnerable;Missile,Stasis,Dead,Hidden",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "DigesterCreepSprayWeaponAttackSet",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "RepulsorCannon": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/RepulsorCannon",
+    "DisplayName": "Weapon/Name/RepulsorCannon",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-airweaponslevel0.dds",
+    "Tip": "Weapon/Tip/RepulsorCannon",
+    "DisplayEffect": "MothershipCoreRepulsorCannonDamage",
+    "MinScanRange": 5,
+    "Range": 5,
+    "RangeSlop": 0,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.85,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/RepulsorCannon"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/RepulsorCannon"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "NoDeceleration": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "MothershipCorePlasmaDisruptorLaunchMissile",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Slowing"
+  },
+  "LocustMPFlyingSwoopWeapon": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/LocustMPFlyingSwoopWeapon",
+    "DisplayName": "Weapon/Name/LocustMPFlyingSwoopWeapon",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-ability-neutral-ursadonleap.dds",
+    "Tip": "Weapon/Tip/LocustMPFlyingSwoopWeapon",
+    "DisplayEffect": "LocustMPMeleeDamage",
+    "MinScanRange": 10,
+    "Range": 6,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.8,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Hidden": 1
+    },
+    "Marker": {
+      "Link": "Weapon/LocustMPFlyingSwoopWeapon"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/LocustMPFlyingSwoopWeapon"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "LocustMPFlyingSwoopAttackIssueOrder",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "MoopyStick": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/MoopyStick",
+    "DisplayName": "Weapon/Name/MoopyStick",
+    "EditorCategories": "Race:Critter",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-groundweaponslevel0.dds",
+    "Tip": "Weapon/Tip/MoopyStick",
+    "DisplayEffect": "MoopyStickDamage",
+    "MinScanRange": 5,
+    "Range": 0.1,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/MoopyStick"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/MoopyStick"
+      }
+    },
+    "TargetFilters": "Visible;-",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "MoopyStickDamage",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "TyphoonMissilePod": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/TyphoonMissilePod",
+    "DisplayName": "Weapon/Name/TyphoonMissilePod",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleweaponslevel0.dds",
+    "Tip": "Weapon/Tip/TyphoonMissilePod",
+    "DisplayEffect": "CycloneAttackWeaponDamage",
+    "MinScanRange": 5.5,
+    "Range": 5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/TyphoonMissilePod"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/TyphoonMissilePod"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "CycloneAttackWeaponLaunchMissileSwitch",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "CycloneLockOnDummy": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/CycloneLockOnDummy",
+    "DisplayName": "Weapon/Name/CycloneLockOnDummy",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-missing-kaeo.dds",
+    "Tip": "Weapon/Tip/CycloneLockOnDummy",
+    "DisplayEffect": "CycloneLockOnDummy",
+    "MinScanRange": 7.5,
+    "Range": 7,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Hidden": 1
+    },
+    "Marker": {
+      "Link": "Weapon/CycloneLockOnDummy"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/CycloneLockOnDummy"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "CycloneFakeWeaponDummyDamage",
+    "UninterruptibleDuration": 32767.9997,
+    "Arc": 360
+  },
+  "CycloneFakeWeapon": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/CycloneFakeWeapon",
+    "DisplayName": "Weapon/Name/CycloneFakeWeapon",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleweaponslevel0.dds",
+    "Tip": "Weapon/Tip/CycloneFakeWeapon",
+    "DisplayEffect": "CycloneWeaponDamage",
+    "MinScanRange": 6,
+    "Range": 5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Hidden": 1
+    },
+    "Marker": {
+      "Link": "Weapon/CycloneFakeWeapon"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/CycloneFakeWeapon"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "CycloneFakeWeaponDummyDamage",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "PhaseDisruptersAir": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/PhaseDisruptersAir",
+    "DisplayName": "Weapon/Name/PhaseDisruptersAir",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-groundweaponslevel0.dds",
+    "Tip": "Weapon/Tip/PhaseDisruptersAir",
+    "DisplayEffect": "PhaseDisruptors",
+    "MinScanRange": 5,
+    "Range": 6,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.45,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Disabled": 1
+    },
+    "Marker": {
+      "Link": "Weapon/PhaseDisruptersAir"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/PhaseDisruptersAir"
+      }
+    },
+    "TargetFilters": "Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "PhaseDisruptors",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "TempestGround": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/TempestGround",
+    "DisplayName": "Weapon/Name/TempestGround",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-airweaponslevel0.dds",
+    "Tip": "Weapon/Tip/TempestGround",
+    "DisplayEffect": "TempestDamageGround",
+    "MinScanRange": 10.5,
+    "Range": 10,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 3.3,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/TempestGround"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/TempestGround"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "TempestLaunchMissileGround",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Slowing"
+  },
+  "LanceMissileLaunchers": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/LanceMissileLaunchers",
+    "DisplayName": "Weapon/Name/LanceMissileLaunchers",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleweaponslevel0.dds",
+    "Tip": "Weapon/Tip/LanceMissileLaunchers",
+    "DisplayEffect": "LanceMissileLaunchersDamage",
+    "MinScanRange": 5,
+    "Range": 11,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.28,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/LanceMissileLaunchers"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/LanceMissileLaunchers"
+      }
+    },
+    "TargetFilters": "Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "KeepChanneling": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "LanceMissileLaunchersDamage",
+    "UninterruptibleDuration": 32767.9997,
+    "AcquirePrioritization": "ByAngle",
+    "Arc": 5.625
+  },
+  "Oracle": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/Oracle",
+    "DisplayName": "Weapon/Name/Oracle",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-ability-protoss-oraclepulsarcannonon.dds",
+    "Tip": "Weapon/Tip/Oracle",
+    "DisplayEffect": "OracleWeaponDamage",
+    "MinScanRange": 5,
+    "Range": 4,
+    "RangeSlop": 0,
+    "TeleportResetRange": 0,
+    "ArcSlop": 11.25,
+    "Period": 0.86,
+    "DamagePoint": 0.167,
+    "Backswing": 0.75,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Disabled": 1,
+      "Hidden": 1
+    },
+    "Marker": {
+      "Link": "Weapon/Oracle"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/Oracle",
+        "TimeUse": 0.86
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "CanRetargetWhileChanneling": 1,
+      "NoDeceleration": 1
+    },
+    "RandomDelayMin": 0,
+    "RandomDelayMax": 0,
+    "Effect": "OracleWeaponCreatePersistent",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Slowing"
+  },
+  "RipField": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/RipField",
+    "DisplayName": "Weapon/Name/RipField",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-groundweaponslevel0.dds",
+    "Tip": "Weapon/Tip/RipField",
+    "DisplayEffect": "RipFieldDamage",
+    "MinScanRange": 5,
+    "Range": 5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 2,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Hidden": 1
+    },
+    "Marker": {
+      "Link": "Weapon/RipField"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/RipField"
+      }
+    },
+    "TargetFilters": "Structure,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "CanRetargetWhileChanneling": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "RipFieldCreatePersistent",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Slowing"
+  },
+  "ThermalLanceAir": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/ThermalLanceAir",
+    "DisplayName": "Weapon/Name/ThermalLanceAir",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-groundweaponslevel0.dds",
+    "Tip": "Weapon/Tip/ThermalLanceAir",
+    "DisplayEffect": "ThermalLancesMUAir",
+    "MinScanRange": 5,
+    "Range": 6,
+    "RangeSlop": 0,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.65,
+    "DamagePoint": 0.0832,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Disabled": 1
+    },
+    "Marker": {
+      "Link": "Weapon/ThermalLanceAir"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/ThermalLanceAir"
+      }
+    },
+    "TargetFilters": "Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "KeepChanneling": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "ThermalLancesAir",
+    "UninterruptibleDuration": 32767.9997,
+    "DisplayAttackCount": 2,
+    "AcquirePrioritization": "ByDistanceFromTarget",
+    "Arc": 90
+  },
+  "RavagerWeapon": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/RavagerWeapon",
+    "DisplayName": "Weapon/Name/RavagerWeapon",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-missileattacks-level0.dds",
+    "Tip": "Weapon/Tip/RavagerWeapon",
+    "DisplayEffect": "RavagerWeaponDamage",
+    "MinScanRange": 6.5,
+    "Range": 6,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.6,
+    "DamagePoint": 0.2,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/RavagerWeapon"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/RavagerWeapon"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "RavagerWeaponLM",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "VoidRaySwarmDummy": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/VoidRaySwarmDummy",
+    "DisplayName": "Weapon/Name/VoidRaySwarmDummy",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-airweaponslevel0.dds",
+    "Tip": "Weapon/Tip/VoidRaySwarmDummy",
+    "DisplayEffect": "VoidRaySwarmDamage",
+    "MinScanRange": 5,
+    "Range": 6,
+    "RangeSlop": 2,
+    "TeleportResetRange": 500,
+    "ArcSlop": 39.9902,
+    "Period": 0.5,
+    "DamagePoint": 0.167,
+    "Backswing": 0.75,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/VoidRaySwarmDummy"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/VoidRaySwarmDummy"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "CanRetargetWhileChanneling": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "VoidRaySwarmDummy",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Moving"
+  },
+  "VoidRaySwarm": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/VoidRaySwarm",
+    "DisplayName": "Weapon/Name/VoidRaySwarm",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-airweaponslevel0.dds",
+    "Tip": "Weapon/Tip/VoidRaySwarm",
+    "DisplayEffect": "VoidRaySwarmDamage",
+    "MinScanRange": 5,
+    "Range": 6,
+    "RangeSlop": 2,
+    "TeleportResetRange": 0,
+    "ArcSlop": 39.9902,
+    "Period": 0.5,
+    "DamagePoint": 0.167,
+    "Backswing": 0.75,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Hidden": 1
+    },
+    "Marker": {
+      "Link": "Weapon/VoidRaySwarm"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/VoidRaySwarm",
+        "TimeUse": 0.5
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "CanRetargetWhileChanneling": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "VoidRaySwarm",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Moving"
+  },
+  "VoidRaySwarmEnhanced": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/VoidRaySwarmEnhanced",
+    "DisplayName": "Weapon/Name/VoidRaySwarmEnhanced",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-airweaponslevel0.dds",
+    "Tip": "Weapon/Tip/VoidRaySwarmEnhanced",
+    "DisplayEffect": "VoidRaySwarmEnhancedDamage",
+    "MinScanRange": 5,
+    "Range": 6,
+    "RangeSlop": 2,
+    "TeleportResetRange": 0,
+    "ArcSlop": 39.9902,
+    "Period": 0.5,
+    "DamagePoint": 0.167,
+    "Backswing": 0.75,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 0,
+      "OnlyFireAtAttackOrderTarget": 0,
+      "LinkedCooldown": 0,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Disabled": 1,
+      "Hidden": 1
+    },
+    "Marker": {
+      "Link": "Weapon/VoidRaySwarmEnhanced"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/VoidRaySwarmEnhanced"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "CanRetargetWhileChanneling": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "VoidRaySwarmEnhanced",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Moving"
+  },
+  "NeutronFlare": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/NeutronFlare",
+    "DisplayName": "Weapon/Name/NeutronFlare",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-airweaponslevel0.dds",
+    "Tip": "Weapon/Tip/NeutronFlare",
+    "DisplayEffect": "NeutronFlare",
+    "MinScanRange": 5,
+    "Range": 5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.4724,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/NeutronFlare"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/NeutronFlare"
+      }
+    },
+    "TargetFilters": "Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "NeutronFlare",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "ScoutMPGround": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/ScoutMPGround",
+    "DisplayName": "Weapon/Name/ScoutMPGround",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-airweaponslevel0.dds",
+    "Tip": "Weapon/Tip/ScoutMPGround",
+    "DisplayEffect": "ScoutMPGround",
+    "MinScanRange": 5,
+    "Range": 4,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.694,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/ScoutMPGround"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/ScoutMPGround"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "ScoutMPGround",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Slowing"
+  },
+  "ScoutMPAir": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/ScoutMPAir",
+    "DisplayName": "Weapon/Name/ScoutMPAir",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-airweaponslevel0.dds",
+    "Tip": "Weapon/Tip/ScoutMPAir",
+    "DisplayEffect": "ScoutMPAirU",
+    "MinScanRange": 5,
+    "Range": 4,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.25,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/ScoutMPAir"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/ScoutMPAir"
+      }
+    },
+    "TargetFilters": "Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "ScoutMPAir",
+    "UninterruptibleDuration": 32767.9997,
+    "DisplayAttackCount": 2,
+    "AllowedMovement": "Slowing"
+  },
+  "ArbiterMPWeapon": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/ArbiterMPWeapon",
+    "DisplayName": "Weapon/Name/ArbiterMPWeapon",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-airweaponslevel0.dds",
+    "Tip": "Weapon/Tip/ArbiterMPWeapon",
+    "DisplayEffect": "ArbiterMPWeaponDamage",
+    "MinScanRange": 5,
+    "Range": 5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.5,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/ArbiterMPWeapon"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/ArbiterMPWeapon"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "ArbiterMPWeaponLaunch",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Slowing"
+  },
+  "GuardianMPWeapon": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/GuardianMPWeapon",
+    "DisplayName": "Weapon/Name/GuardianMPWeapon",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-airattacks-level0.dds",
+    "Tip": "Weapon/Tip/GuardianMPWeapon",
+    "DisplayEffect": "GuardianMPWeaponDamage",
+    "MinScanRange": 5,
+    "Range": 9,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.3,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/GuardianMPWeapon"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/GuardianMPWeapon"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "GuardianMPWeaponLM",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Slowing"
+  },
+  "DevourerMPWeapon": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/DevourerMPWeapon",
+    "DisplayName": "Weapon/Name/DevourerMPWeapon",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-airattacks-level0.dds",
+    "Tip": "Weapon/Tip/DevourerMPWeapon",
+    "DisplayEffect": "DevourerMPWeaponDamage",
+    "MinScanRange": 5,
+    "Range": 5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 3,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/DevourerMPWeapon"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/DevourerMPWeapon"
+      }
+    },
+    "TargetFilters": "Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "DevourerMPWeaponLaunch",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Slowing"
+  },
+  "ScourgeMPWeapon": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/ScourgeMPWeapon",
+    "DisplayName": "Weapon/Name/ScourgeMPWeapon",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-airattacks-level0.dds",
+    "Tip": "Weapon/Tip/ScourgeMPWeapon",
+    "DisplayEffect": "ScourgeMPWeaponDamage",
+    "MinScanRange": 5,
+    "Range": 0,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.8332,
+    "DamagePoint": 0,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/ScourgeMPWeapon"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/ScourgeMPWeapon"
+      }
+    },
+    "TargetFilters": "Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "NoDeceleration": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "ScourgeMPWeaponSet",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Moving"
+  },
+  "HERCWeapon": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/HERCWeapon",
+    "DisplayName": "Weapon/Name/HERCWeapon",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-infantryweaponslevel0.dds",
+    "Tip": "Weapon/Tip/HERCWeapon",
+    "DisplayEffect": "HERCWeaponDamage",
+    "MinScanRange": 5,
+    "Range": 6,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.5,
+    "DamagePoint": 0.2,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/HERCWeapon"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/HERCWeapon"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "HERCWeaponDamage",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "Adept": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/Adept",
+    "DisplayName": "Weapon/Name/Adept",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-groundweaponslevel0.dds",
+    "Tip": "Weapon/Tip/Adept",
+    "DisplayEffect": "AdeptDamage",
+    "MinScanRange": 5,
+    "Range": 4,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 2.25,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/Adept"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/Adept"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "AdeptLM",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "LiberatorMissileLaunchers": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/LiberatorMissileLaunchers",
+    "DisplayName": "Weapon/Name/LiberatorMissileLaunchers",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-shipweaponslevel0.dds",
+    "Tip": "Weapon/Tip/LiberatorMissileLaunchers",
+    "DisplayEffect": "LiberatorMissileDamage",
+    "MinScanRange": 5,
+    "Range": 5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.8,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/LiberatorMissileLaunchers"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/LiberatorMissileLaunchers"
+      }
+    },
+    "TargetFilters": "Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "LiberatorMissileBurstPersistent",
+    "UninterruptibleDuration": 32767.9997,
+    "DisplayAttackCount": 2,
+    "AllowedMovement": "Slowing"
+  },
+  "LiberatorAGWeapon": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/LiberatorAGWeapon",
+    "DisplayName": "Weapon/Name/LiberatorAGWeapon",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-shipweaponslevel0.dds",
+    "Tip": "Weapon/Tip/LiberatorAGWeapon",
+    "DisplayEffect": "LiberatorAGDamage",
+    "MinScanRange": 5,
+    "Range": 10,
+    "RangeSlop": 0,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.6,
+    "DamagePoint": 0.125,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/LiberatorAGWeapon"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/LiberatorAGWeapon"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Structure,Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "LiberatorAGMissileLMSet",
+    "UninterruptibleDuration": 32767.9997,
+    "Arc": 360
+  },
+  "SlaynElementalWeapon": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/SlaynElementalWeapon",
+    "DisplayName": "Weapon/Name/SlaynElementalWeapon",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-missileattacks-level0.dds",
+    "Tip": "Weapon/Tip/SlaynElementalWeapon",
+    "DisplayEffect": "SlaynElementalWeaponDamage",
+    "MinScanRange": 5,
+    "Range": 5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.83,
+    "DamagePoint": 0.208,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Hidden": 1
+    },
+    "Marker": {
+      "Link": "Weapon/SlaynElementalWeapon"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/SlaynElementalWeapon"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "SlaynElementalWeaponDamage",
+    "UninterruptibleDuration": 32767.9997,
+    "Arc": 360
+  },
+  "90mmCannonsFake": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/90mmCannonsFake",
+    "DisplayName": "Weapon/Name/90mmCannonsFake",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleweaponslevel0.dds",
+    "Tip": "Weapon/Tip/90mmCannonsFake",
+    "DisplayEffect": "90mmCannonsFake",
+    "MinScanRange": 7.5,
+    "Range": 7,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.04,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 0,
+      "OnlyFireWhileInAttackOrder": 0,
+      "OnlyFireAtAttackOrderTarget": 0,
+      "LinkedCooldown": 0,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Hidden": 1
+    },
+    "Marker": {
+      "Link": "Weapon/90mmCannonsFake"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/90mmCannonsFake"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "90mmCannonsDummy",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "BattlecruiserWeaponSwitch": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/BattlecruiserWeaponSwitch",
+    "DisplayName": "Weapon/Name/BattlecruiserWeaponSwitch",
+    "EditorCategories": "Race:Terran",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-terran-shipweaponslevel0.dds",
+    "Tip": "Weapon/Tip/BattlecruiserWeaponSwitch",
+    "DisplayEffect": "ATSLaserBatteryU",
+    "MinScanRange": 5,
+    "Range": 6,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 0.225,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 0,
+      "OnlyFireAtAttackOrderTarget": 0,
+      "LinkedCooldown": 0,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Hidden": 1,
+      "IgnoreThreat": 1,
+      "IgnoreAttackPriority": 1
+    },
+    "Marker": {
+      "Link": "Effect/BattlecruiserAttackTrackerCP",
+      "MatchFlags": {
+        "CasterUnit": 1
+      },
+      "Count": 0
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/BattlecruiserWeaponSwitch"
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": 0,
+    "RandomDelayMax": 0,
+    "Effect": "BattlecruiserDamageSet",
+    "UninterruptibleDuration": 32767.9997,
+    "AcquireTargetSorts": {
+      "SortArray": [
+        "TSTrackedByBattlecruiser",
+        "TSThreatenBattlecruiser",
+        "TSPriorityDesc",
+        "TSTransientBattlecruiser",
+        "GroundTarget"
+      ]
+    },
+    "Arc": 360,
+    "AllowedMovement": "Moving"
+  },
+  "DisruptionBeamDisplayDummy": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/DisruptionBeamDisplayDummy",
+    "DisplayName": "Weapon/Name/DisruptionBeamDisplayDummy",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-groundweaponslevel0.dds",
+    "Tip": "Weapon/Tip/DisruptionBeamDisplayDummy",
+    "DisplayEffect": "DisruptionBeamDamage",
+    "MinScanRange": 5.5,
+    "Range": 5,
+    "RangeSlop": 1,
+    "TeleportResetRange": 0,
+    "ArcSlop": 11.25,
+    "Period": 1,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/DisruptionBeamDisplayDummy"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/DisruptionBeamDisplayDummy",
+        "Location": "Unit",
+        "TimeUse": 1
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "CanRetargetWhileChanneling": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "DisruptionBeam",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "OracleDisplayDummy": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/OracleDisplayDummy",
+    "DisplayName": "Weapon/Name/OracleDisplayDummy",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-ability-protoss-oraclepulsarcannonon.dds",
+    "Tip": "Weapon/Tip/OracleDisplayDummy",
+    "DisplayEffect": "OracleWeaponDamage",
+    "MinScanRange": 5,
+    "Range": 4,
+    "RangeSlop": 0,
+    "TeleportResetRange": 0,
+    "ArcSlop": 11.25,
+    "Period": 0.86,
+    "DamagePoint": 0.167,
+    "Backswing": 0.75,
+    "Options": {
+      "CanInitiateAttackOrder": 0,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Disabled": 1
+    },
+    "Marker": {
+      "Link": "Weapon/OracleDisplayDummy"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/OracleDisplayDummy",
+        "TimeUse": 1
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "CanRetargetWhileChanneling": 1,
+      "NoDeceleration": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "OracleWeaponCreatePersistent",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Slowing"
+  },
+  "ThermalBeam": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/ThermalBeam",
+    "DisplayName": "Weapon/Name/ThermalBeam",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-groundweaponslevel0.dds",
+    "Tip": "Weapon/Tip/ThermalBeam",
+    "DisplayEffect": "ThermalBeamDamage",
+    "MinScanRange": 5,
+    "Range": 9,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/ThermalBeam"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/ThermalBeam"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Air,Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "CanRetargetWhileChanneling": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "ThermalBeamPersistent",
+    "UninterruptibleDuration": 32767.9997,
+    "DisplayAttackCount": 2,
+    "AllowedMovement": "Moving"
+  },
+  "BypassArmorDroneWeapon": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/BypassArmorDroneWeapon",
+    "DisplayName": "Weapon/Name/BypassArmorDroneWeapon",
+    "EditorCategories": "Race:Neutral",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-missing-kaeo.dds",
+    "Tip": "Weapon/Tip/BypassArmorDroneWeapon",
+    "DisplayEffect": "BypassArmorDroneWeapon",
+    "MinScanRange": 6,
+    "Range": 6,
+    "RangeSlop": 1,
+    "TeleportResetRange": 0,
+    "ArcSlop": 11.25,
+    "Period": 0.25,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "Hidden": 1
+    },
+    "Marker": {
+      "Link": "Weapon/BypassArmorDroneWeapon"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/BypassArmorDroneWeapon"
+      }
+    },
+    "TargetFilters": "Visible;Player,Ally,Neutral,Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "CanRetargetWhileChanneling": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "BypassArmorCreatePersistent",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Moving"
+  },
+  "HighTemplarWeapon": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/PsiBlast",
+    "DisplayName": "Weapon/Name/HighTemplarWeapon",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-groundweaponslevel0.dds",
+    "Tip": "Weapon/Tip/HighTemplarWeapon",
+    "DisplayEffect": "HighTemplarWeaponDamage",
+    "MinScanRange": 6.5,
+    "Range": 6,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.754,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/HighTemplarWeapon"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/HighTemplarWeapon"
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "HighTemplarWeaponLM",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "InfestedAcidSpines": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/InfestedAcidSpines",
+    "DisplayName": "Weapon/Name/InfestedAcidSpines",
+    "EditorCategories": "Race:Zerg",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-zerg-missileattacks-level0.dds",
+    "Tip": "Weapon/Tip/InfestedAcidSpines",
+    "DisplayEffect": "InfestedAcidSpines",
+    "MinScanRange": 6.5,
+    "Range": 6,
+    "RangeSlop": 1,
+    "TeleportResetRange": 500,
+    "ArcSlop": 11.25,
+    "Period": 1.33,
+    "DamagePoint": 0.25,
+    "Backswing": 0.75,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/InfestedAcidSpines"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/InfestedAcidSpines"
+      }
+    },
+    "TargetFilters": "Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "InfestedAcidSpinesLM",
+    "UninterruptibleDuration": 32767.9997
+  },
+  "InterceptorBeamAA": {
+    "class": "CWeaponStrafe",
+    "Name": "Weapon/Name/InterceptorBeamAA",
+    "DisplayName": "Weapon/Name/InterceptorBeamAA",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-airweaponslevel0.dds",
+    "Tip": "Weapon/Tip/InterceptorBeamAA",
+    "DisplayEffect": "InterceptorBeamAADamage",
+    "MinScanRange": 5,
+    "Range": 2,
+    "RangeSlop": 1,
+    "TeleportResetRange": 0,
+    "ArcSlop": 11.25,
+    "Period": 3,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "DisplayCooldown": 1
+    },
+    "Marker": {
+      "Link": "Weapon/InterceptorBeamAA"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/InterceptorBeam",
+        "TimeUse": 3
+      }
+    },
+    "TargetFilters": "Air,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LoiterInnerRadius": 2,
+    "LoiterRadius": 4,
+    "Effect": "InterceptorBeamAAPersistent",
+    "DisplayAttackCount": 2,
+    "Arc": 19.6875
+  },
+  "InterceptorBeamAG": {
+    "class": "CWeaponStrafe",
+    "Name": "Weapon/Name/InterceptorBeamAG",
+    "DisplayName": "Weapon/Name/InterceptorBeamAG",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-airweaponslevel0.dds",
+    "Tip": "Weapon/Tip/InterceptorBeamAG",
+    "DisplayEffect": "InterceptorBeamAGDamage",
+    "MinScanRange": 5,
+    "Range": 2,
+    "RangeSlop": 1,
+    "TeleportResetRange": 0,
+    "ArcSlop": 11.25,
+    "Period": 3,
+    "DamagePoint": 0.167,
+    "Backswing": 0.5,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1,
+      "DisplayCooldown": 1
+    },
+    "Marker": {
+      "Link": "Weapon/InterceptorBeamAG"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/InterceptorBeam",
+        "TimeUse": 3
+      }
+    },
+    "TargetFilters": "Ground,Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LoiterInnerRadius": 2,
+    "LoiterRadius": 4,
+    "Effect": "InterceptorBeamAGPersistent",
+    "DisplayAttackCount": 2,
+    "Arc": 19.6875
+  },
+  "VoidRaySwarmDisplayDummy": {
+    "class": "CWeaponLegacy",
+    "Name": "Weapon/Name/VoidRaySwarmDisplayDummy",
+    "DisplayName": "Weapon/Name/VoidRaySwarmDisplayDummy",
+    "EditorCategories": "Race:Protoss",
+    "InfoTooltipPriority": 1,
+    "Icon": "Assets\\Textures\\btn-upgrade-protoss-airweaponslevel0.dds",
+    "Tip": "Weapon/Tip/VoidRaySwarmDisplayDummy",
+    "DisplayEffect": "VoidRaySwarmDamage",
+    "MinScanRange": 5,
+    "Range": 6,
+    "RangeSlop": 2,
+    "TeleportResetRange": 0,
+    "ArcSlop": 39.9902,
+    "Period": 0.5,
+    "DamagePoint": 0.167,
+    "Backswing": 0.75,
+    "Options": {
+      "CanInitiateAttackOrder": 1,
+      "OnlyFireWhileInAttackOrder": 1,
+      "OnlyFireAtAttackOrderTarget": 1,
+      "LinkedCooldown": 1,
+      "RequireEnabledAttackAbil": 1,
+      "NeverMiss": 1
+    },
+    "Marker": {
+      "Link": "Weapon/VoidRaySwarmDisplayDummy"
+    },
+    "Cost": {
+      "Cooldown": {
+        "Link": "Weapon/VoidRaySwarmDisplayDummy",
+        "TimeUse": 1
+      }
+    },
+    "TargetFilters": "Visible;Missile,Stasis,Dead,Hidden,Invulnerable",
+    "AttackType": "Unknown",
+    "SupportedFilters": "-;-",
+    "default": "1",
+    "LegacyOptions": {
+      "FaceTargetWhileInCooldown": 1,
+      "CanRetargetWhileChanneling": 1
+    },
+    "RandomDelayMin": -0.0625,
+    "RandomDelayMax": 0.125,
+    "Effect": "VoidRaySwarm",
+    "UninterruptibleDuration": 32767.9997,
+    "AllowedMovement": "Moving"
+  }
+}
