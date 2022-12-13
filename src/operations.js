@@ -3,6 +3,53 @@ import {SCGame} from "./sc-game.js";
 import * as yaml from "js-yaml";
 import xml2js from "xml2js";
 
+
+export const TYPES = {
+    BIT: 'bit',
+    INT: 'int',
+    REAL: 'real',
+    INTS: 'ints',
+    REALS: 'reals',
+    FILTERS: 'filters',
+    CATEGORIES: 'categories',
+    FILE: 'file',
+    LINK: 'link',
+    WORD: 'word',
+}
+
+let regexps  = {
+    bit: /^[01]$/,
+    int: /^-?(0|[1-9]\d*)$/,
+    real: /^(-?(0|[1-9]\d*)(\.\d+)?)$/,
+    ints: /^-?(0|[1-9]\d*)(,-?(0|[1-9]\d*))+$/,
+    reals: /^(-?(0|[1-9]\d*)(\.\d+)?)(\,-?(0|[1-9]\d*)(\.\d+)?)*$/,
+    filters: /^(-|\w+(,\w+){0,});(-|\w+(,\w+){0,})$/,
+    categories: /^(\w+\:\w*)(,\w+\:\w*)*$/,
+    // file: /^[a-z_#'0-9\-]+[\\/a-z_#'0-9\-. ]+\.(dds|fxa|m3|tga|m3a)$/i,
+    file: /^.*$/,
+    link: /^[A-Za-z_@#0-9-]+(\/+[A-Za-z_@#0-9-]+)+\/?$/,
+    word: /^[\w@_#]+$/,
+    abilcmd: /^([\w@_#]+[.,][\w]+|255)$/,
+    words: /^[\w@_#]+(,[\w@_#]+)*$/,
+    reference: /^.*$/,
+    subject: /^.*$/,
+    send: /^.*$/,
+    terms: /^.*$/
+}
+
+export function matchType(value, type){
+    if(type === 'link'){
+        if(regexps.word.test(value))return true
+    }
+    if(type === 'string'){
+        return value.constructor === String
+    }
+    if(!regexps[type]){
+        type = 'word'
+    }
+    return regexps[type].test(value)
+}
+
 export function getAllFiles (dirPath, relativePath, arrayOfFiles = []) {
     let files = fs.readdirSync(dirPath)
     files.forEach(function (file) {
@@ -100,7 +147,7 @@ export function matchPath(path1,path2){
 }
 
 export function resolveSchemaType(schema,property,schemaForResolvedArrays = false){
-    let type = schema[property] || schema['*']
+    let type = schema[property] || schema['$' + property] || schema['*']
     if(!type)return false
     if(type.constructor === String && type.startsWith("{")) {
         let valueType = type.replace("{", "").replace("}", "")
@@ -440,10 +487,17 @@ export function resolveArrays(object, schema, path) {
  * property: "value"         => property: {$: {token: "value"}}
  */
 export function optimiseForXML(object,schema = object.$$schema, path = [object.class]) {
+
     if(!schema) return;
+
+
     for(let property in object){
         let type = resolveSchemaType(schema,property), value = object[property]
-        if(['id', 'parent', 'default', 'index', 'removed','tokens'].includes(property)) {
+
+        let isToken =  /[a-z]/.test(property[0]) || schema['$'+property]
+
+
+        if(['id', 'parent', 'default', 'index', 'removed'].includes(property)) {
             type = 'string'
         }
 
@@ -456,18 +510,10 @@ export function optimiseForXML(object,schema = object.$$schema, path = [object.c
 
         if(type.constructor === String) {
 
-            function isToken(){
-                if( /[a-z]/.test(property[0]))return true
-
-                if(schema.tokens?.includes(property)){
-                    return true;
-                }
-                return false;
-            }
-
+            value = value.replace('"','&quot;')
 
             //['id', 'class', 'parent', 'default', 'index', 'removed']
-            if(path.length > 1 || isToken()) {
+            if(isToken || (path.length > 1 && !isToken)) {
                 if (!object.$) object.$ = {}
                 object.$[property] = value
                 delete object[property]
@@ -504,7 +550,12 @@ export function optimiseForXML(object,schema = object.$$schema, path = [object.c
 
                 for(let index  in value){
                     if(value[index].constructor !== Object){
-                        value[index] = {$: {value: value[index]}}
+                        if(type['%value']){
+                            value[index] = {_: value[index]}
+                        }
+                        else{
+                            value[index] = {$: {value: value[index]}}
+                        }
                     }
                     else{
                         optimiseForXML(value[index],type, _path)
@@ -597,6 +648,7 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
     if(!schema) return;
     for(let property in object){
         let type = resolveSchemaType(schema,property), value = object[property]
+
         if (['id', 'class', 'parent', 'default', 'index', 'removed'].includes(property)) continue;
         let _path = [...path,property];
         if(value === undefined ||
@@ -611,8 +663,13 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
         }
 
         if(type.constructor === Object){
+            //relpace 'value' with '{value: value}'
+            if(value.constructor === String && type.value.constructor === String){
+                value = [{value}]
+            }
             if(value.constructor !== Array || value.length !== 1){
-                console.warn("wrong value"); continue;
+                console.warn(`wrong value, expect object. Got ${JSON.stringify(object[property])}. path: ${JSON.stringify(_path)}`)
+                continue;
             }
             value = value[0]
             optimizeObject(value, type, _path)
@@ -640,6 +697,7 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
             }
         }
         else if(type.constructor === String){
+
             if (value.constructor === Array){
                 if (value.length === 1) {
                     value = value[0]
@@ -648,15 +706,10 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
                     value = value.value
                 }
             }
-            switch(type){
-                case "bit":
-                case "real":
-                case "int": {
-                    value = +value
-                    if(isNaN(value)){
-                        console.warn("wrong numberic value")
-                    }
-                }
+
+            if(value && !matchType(value,type)){
+                matchType(value,type)
+                console.warn("wrong value", JSON.stringify(_path), JSON.stringify(object[property]))
             }
         }
         object[property] = value
@@ -722,7 +775,7 @@ export function filterTypedProperties(object, filter, schema = object.$$schema) 
         }
 
         if(type.constructor === Object){
-            value = value[0]
+                value = value[0]
             filterTypedProperties(value, filter, type)
         }
         else if(type.constructor === Array){
@@ -781,7 +834,23 @@ export function filterTypedProperties(object, filter, schema = object.$$schema) 
 export function formatData(data, format) {
     switch(format){
         case 'xml':
-            return (new xml2js.Builder()).buildObject(data);
+            try{
+                return (new xml2js.Builder()).buildObject(data);
+            }
+            catch(e){
+                function debugx(data){
+                    for(let i in data){
+                        try{
+                            return (new xml2js.Builder()).buildObject(data[i]);
+                        }
+                        catch(e){
+                            console.log(i)
+                            debugx(data[i])
+                        }
+                    }
+                }
+                debugx(data)
+            }
         case 'ini':
             return Object.entries(data).map(([key, value]) => `${key}=${value}`).join("\n")
         case 'json':

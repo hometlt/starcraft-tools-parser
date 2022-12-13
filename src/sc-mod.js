@@ -1,9 +1,14 @@
 import fs from 'fs'
+import path from 'path'
+import url from 'url'
 import xml2js from 'xml2js'
 import * as yaml from "js-yaml";
 import {SCGame} from "./sc-game.js";
 import {SCEntity} from "./sc-entity.js";
+import {LibrarySchema} from "./sc-schema.js";
 import {deep,formatData, optimizeObject, optimizeJSONObject, fromXMLToObject, capitalize, optimiseForXML, convertObjectsToIndexedArray, stringValues} from "./operations.js";
+const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+
 
 export class SCMod {
     constructor(mod){
@@ -14,39 +19,58 @@ export class SCMod {
 
         mod && this.read(mod)
     }
-    async read (path){
+    directory(url){
+        if(!url.endsWith('/'))url += '/'
+        this._directory = url
+    }
+    async read (...input) {
+        for (let item of input) {
+            if(item){
+                await this._read(item)
+            }
+        }
+        return this
+    }
+    async _read (input){
         let data
-        if(path.constructor === String){
+        if(input.constructor === String){
+
+            if(!'./'.includes(input[0])){
+                input = this._directory + input
+            }
             data = {};
 
-            let format;
-            if(path.toLowerCase().endsWith('.json')){
-                format = 'JSON'
+            //supports json, xml, yaml, sc2mod
+            let format = path.extname(input).substr(1).toUpperCase()
+
+            if(!format){
+                for(let formatTemp of ['JSON', 'XML', 'YAML', 'SC2MOD'])
+                if(fs.existsSync(input + '.' + formatTemp)){
+                    format = formatTemp
+                    input += '.' + formatTemp
+                    break;
+                }
             }
-            else if(path.toLowerCase().endsWith('.xml')){
-                format = 'XML'
-            }
-            else if(path.toLowerCase().endsWith('.yaml')){
-                format = 'YAML'
-            }
-            else{
-                format = 'SC2MOD'
-            }
+
 
             if(format === 'SC2MOD') {
-                if(!path.endsWith("/"))path += "/"
+                if(!input.endsWith("/"))input += "/"
 
-                let ComponentsData = await this._readXMLFile(path + "ComponentList.SC2Components")
+                let componentsData = await this._readXMLFile(input + "ComponentList.SC2Components")
+                if(componentsData?.Components?.DataComponent){
+                    data.components = componentsData.Components.DataComponent
+                }
+
                 ////////     Assets     ////////////////////////////////////////////////////////////////////////////////////
                 {
-                    let assetsTextData = await this._readTextFile(path + "Base.SC2Data/GameData/Assets.txt")
+                    let assetsTextData = await this._readTextFile(input + "Base.SC2Data/GameData/Assets.txt")
                     if(assetsTextData){
                         data.assets = assetsTextData
                     }
                 }
                 ////////     dependencies     //////////////////////////////////////////////////////////////////////////////
                 {
-                    let documentInfo = await this._readXMLFile(path + "DocumentInfo")
+                    let documentInfo = await this._readXMLFile(input + "DocumentInfo")
                     let dependencies = documentInfo?.DocInfo?.Dependencies?.[0].Value
                     if(dependencies) {
                         data.dependencies = dependencies
@@ -54,7 +78,7 @@ export class SCMod {
                 }
                 ////////     styles     ////////////////////////////////////////////////////////////////////////////////////
                 {
-                    let stylesData = await this._readXMLFile(path + "Base.SC2Data/UI/FontStyles.SC2Style")
+                    let stylesData = await this._readXMLFile(input + "Base.SC2Data/UI/FontStyles.SC2Style")
                     if(stylesData){
                         data.styles = stylesData
                     }
@@ -63,12 +87,12 @@ export class SCMod {
                 {
                     let textFiles = ["GameHotkeys", "GameStrings", "ObjectStrings", "TriggerStrings", "ConversationStrings"]
                     let locales = {}
-                    let LocaleData = ComponentsData?.Components?.DataComponent?.filter(entity => entity.$?.Type.toLowerCase() === "text").map(entity => entity.$.Locale) || ["enUS"];
+                    let LocaleData = data.components?.filter(entity => entity.$?.Type.toLowerCase() === "text").map(entity => entity.$.Locale) || ["enUS"];
                     if(LocaleData){
                         for (let locale of LocaleData) {
                             locales[locale] = {}
                             for (let textFile of textFiles) {
-                                let data = this._readTextFile(`${path}${locale}.sc2data/LocalizedData/${textFile}.txt`)
+                                let data = this._readTextFile(`${input}${locale}.sc2data/LocalizedData/${textFile}.txt`)
                                 if (data) {
                                     locales[locale][textFile] = data
                                 }
@@ -79,17 +103,24 @@ export class SCMod {
                 }
                 ////////     Triggers     //////////////////////////////////////////////////////////////////////////////////
                 {
-                    let triggersFile = path + "Triggers"
-                    let triggersDataParsed = await this._readXMLFile(path + "Triggers", true)
-                    let triggersData = triggersDataParsed?.TriggerData
-                    if(triggersData){
-                        fromXMLToObject(triggersData)
-                        data.triggers = triggersData.Library
+                    let triggersFile = input + "Triggers"
+
+                    let raw = fs.existsSync(triggersFile) && fs.readFileSync(triggersFile, {encoding: 'utf-8'})
+                    if(raw){
+                        data.triggers = raw.substring(raw.indexOf("<TriggerData>") + 13, raw.indexOf("</TriggerData>"))
                     }
+
+                    //todo : parse triggers
+                    // let triggersDataParsed = await this._readXMLFile(triggersFile, true)
+                    // let triggersData = triggersDataParsed?.TriggerData
+                    // if(triggersData){
+                    //     fromXMLToObject(triggersData)
+                    //     data.triggers = triggersData.Library
+                    // }
                 }
                 ////////     layouts     ///////////////////////////////////////////////////////////////////////////////////
                 {
-                    let layoutsData = await this._readXMLFile(path + "Base.SC2Data/UI/Layout/DescIndex.SC2Layout")
+                    let layoutsData = await this._readXMLFile(input + "Base.SC2Data/UI/Layout/DescIndex.SC2Layout")
                     let layouts = layoutsData?.Desc?.Include
                     if(layouts){
                         data.layouts = layouts
@@ -97,7 +128,7 @@ export class SCMod {
                 }
                 ////////     Files     /////////////////////////////////////////////////////////////////////////////////////
                 {
-                    // this._getAllFiles(path).forEach(file => files[file] = path + file)//.filter(file => file.endsWith("m3"))
+                    // this._getAllFiles(input).forEach(file => files[file] = input + file)//.filter(file => file.endsWith("m3"))
                     // for(let m3File of files){
                     //     let raw = fs.readFileSync(m3File, {encoding: 'utf-8'})
                     //     const indexes = raw.matchAll(new RegExp(`Assets\\[\\\w_]+\.dds`, 'gi'))
@@ -105,12 +136,12 @@ export class SCMod {
                     //
                     // }
                     let files = {}
-                    let galaxyFiles = fs.readdirSync(path + "Base.SC2Data").filter(file => file.endsWith(".galaxy"))
+                    let galaxyFiles = fs.readdirSync(input + "Base.SC2Data").filter(file => file.endsWith(".galaxy"))
 
                     if(data.layouts){
                         for (let include of data.layouts) {
                             files["Base.SC2Data/" + include.$.path] = {
-                                path: (path + "Base.SC2Data/" + include.$.path),
+                                path: (input + "Base.SC2Data/" + include.$.path),
                                 scope: 'layouts'
                             }
                         }
@@ -118,7 +149,7 @@ export class SCMod {
 
                     for (let file of galaxyFiles) {
                         files["Base.SC2Data/" + file] = {
-                            path: (path + "Base.SC2Data/" + file),
+                            path: (input + "Base.SC2Data/" + file),
                             scope: 'triggers'
                         }
                     }
@@ -129,18 +160,18 @@ export class SCMod {
                 }
                 ////////     GameData     //////////////////////////////////////////////////////////////////////////////////
                 {
-                    let includesData = await this._readXMLFile(path + "Base.SC2Data/GameData.xml")
+                    let includesData = await this._readXMLFile(input + "Base.SC2Data/GameData.xml")
                     let commonFiles = SCGame.datafiles.map(el => "Base.SC2Data/GameData/" + el + "data.xml");
-                    let includes = commonFiles.filter(file => fs.existsSync(path + file))
+                    let includes = commonFiles.filter(file => fs.existsSync(input + file))
                     let additionalFiles = includesData?.Includes?.Catalog?.map(catalog => "Base.SC2Data/" + catalog.$.path)
                     if (additionalFiles) {
                         includes.push(...additionalFiles)
                     }
                     let catalogs = []
                     for (let file of includes) {
-                        let data = await this._readXMLFile(path + file, true)
+                        let data = await this._readXMLFile(input + file, true)
                         if (!data) {
-                            console.log("File not found: " + path + file)
+                            console.log("File not found: " + input + file)
                         } else {
                             catalogs.push({id: file, data: data.Catalog?.constructor === Object ? data : {}});
                         }
@@ -165,9 +196,9 @@ export class SCMod {
                 }
             }
             else{
-                if(!fs.existsSync(path))return
+                if(!fs.existsSync(input))return
 
-                let raw = fs.readFileSync(path, {encoding: 'utf-8'})
+                let raw = fs.readFileSync(input, {encoding: 'utf-8'})
 
                 if (format === 'JSON') {
                     data = JSON.parse(raw)
@@ -184,23 +215,28 @@ export class SCMod {
             }
         }
         else{
-            data = path
+            data = input
         }
 
 
         ////////     triggers     /////////////////////////////////////////////////////////////////////////////////////
 
         if(data.triggers){
-            if (!this.triggers) this.triggers = []
-            this.triggers.push(...data.triggers)
+
+            if (!this.triggers) this.triggers = ""
+            this.triggers += data.triggers
+
+            //todo parsed triggers
+            // if (!this.triggers) this.triggers = []
+            // this.triggers.push(...data.triggers)
         }
         ////////     dependencies     /////////////////////////////////////////////////////////////////////////////////////
         if(data.dependencies){
             if (!this.dependencies) this.dependencies = []
             for (let dependency of data.dependencies) {
-                let dependencyFile = dependency.substring(dependency.lastIndexOf("file:") + 5)
-                if (!this.dependencies.includes(dependencyFile)) {
-                    this.dependencies.push(dependencyFile)
+                // dependency = dependency.substring(dependency.lastIndexOf("file:") + 5)
+                if (!this.dependencies.includes(dependency)) {
+                    this.dependencies.push(dependency)
                 }
             }
         }
@@ -224,7 +260,7 @@ export class SCMod {
             Object.assign(this.files, data.files)
         }
         if(data.layouts){
-            if (!this.layouts) this.layouts = {}
+            if (!this.layouts) this.layouts = []
             this.layouts.push(...data.layouts)
         }
 
@@ -250,31 +286,38 @@ export class SCMod {
             }
         }
     }
-
     /**
      *
-     * @param path {string}
+     * @param destpath {string}
      * @param resolve { boolean } add full entity info, including info inherited from its class and parent
      * @param format { 'xml', 'json', 'yaml', 'auto' } output data fromat
      * @param structure { 'file', 'components' | 'compact' | 'auto' } put all data in single file or in a folder with multiple components. compact is components structure but with all data catalogs merged together
-     * @param scopes { ['assets', 'triggers', 'locales', 'styles', 'layouts', 'data'] | 'all' } which mod components to save
+     * @param scopes { ['components','documentinfo', 'assets', 'triggers', 'locales', 'styles', 'layouts', 'data'] | 'all' } which mod components to save
      * @returns {Promise<SCMod>}
      */
-    async write (path,{resolve = false, format = 'auto', structure = 'auto', scopes = 'all'} = {}){
+    async write (destpath,{resolve = false, format = 'auto', structure = 'auto', scopes = 'all'} = {}){
         if(scopes.constructor === String){
             scopes = [scopes]
         }
         if(scopes.includes('all')){
-            scopes = ['assets', 'triggers', 'locales', 'styles', 'layouts', 'data']
+            scopes = [
+                'assets',
+                'triggers',
+                'locales',
+                'styles',
+                'layouts',
+                'data',
+                'components',
+                'documentinfo'
+            ]
         }
         if(structure === 'auto'){
-            structure = /.*\.[A-Za-z]+$/.test(path) ? 'file' : 'components'
+            structure = /.*\.[A-Za-z]+$/.test(destpath) ? 'file' : 'components'
         }
         if(format === 'auto'){
-            format = /.*\.([A-Za-z]+)$/.exec(path)?.[1] || 'auto'
+            format = /.*\.([A-Za-z]+)$/.exec(destpath)?.[1] || 'auto'
         }
 
-        
         if(structure === 'file'){
             let output = {}
             for(let scope of scopes){
@@ -284,57 +327,128 @@ export class SCMod {
                 output['entities'] = this['entities']
             }
 
-            fs.writeFileSync(path, formatData(output, format))
+            fs.writeFileSync(destpath, formatData(output, format))
             return this
         }
 
-
-        if(!path.endsWith("/"))path += "/"
+        if(!destpath.endsWith("/"))destpath += "/"
 
         let output = {}
 
-
         let extension, formatting;
 
-
-        extension = format === 'auto' ? 'txt' : format
-        formatting = format === 'auto' ? 'ini' : format;
+        if(scopes.includes('header')){
+            output[`DocumentHeader`] = ``
+        }
+        if(scopes.includes('components')){
+            extension = format === 'auto' ? 'SC2Components' : format
+            formatting = format === 'auto' ? 'xml' : format;
+            let components = [
+                {_: 'DocumentInfo', $: {Type: "info"}}
+            ]
+            if(this.entities) {
+                components.push({_: 'GameData', $: {Type: "gada"}})
+            }
+            if(this.layouts) {
+                components.push({_: 'UI/Layout/DescIndex.SC2Layout', $: {Type: "uiui"}})
+            }
+            if(this.styles) {
+                components.push({_: 'UI/FontStyles.SC2Style', $: {Type: "font"}})
+            }
+            if(this.triggers) {
+                components.push({_: 'Triggers', $: {Type: "trig"}})
+            }
+            if(this.locales) {
+                for(let locale in this.locales){
+                    components.push({_: 'GameText', $: {Type: "text", Locale: locale}})
+                }
+            }
+            output[`ComponentList.${extension}`] = formatData({Components: {DataComponent: components}}, formatting)
+        }
+        if(scopes.includes('documentinfo')){
+            let info = {
+                DocInfo: {
+                    ModType: {
+                        Value: {
+                            _: 'Interface'
+                        }
+                    },
+                    Dependencies: {
+                        // Value: this.dependencies.map(dep => ({_: dep})),
+                        // Value: [{_: 'bnet:Void (Mod)/0.0/999,file:Mods/Void.SC2Mod'}]
+                        Value: [{_: 'bnet:Void (Campaign)/0.0/999,file:Campaigns/Void.SC2Campaign'}]
+                    }
+                }
+            }
+            output[`DocumentInfo`] = formatData(info , 'xml')
+            if(format === 'auto'){
+                fs.copyFileSync(path.resolve(__dirname ,'versions/DocumentInfo.version'), destpath + `DocumentInfo.version`)
+            }
+        }
+        if(scopes.includes('preload')){
+            output[`Preload.xml`] = formatData({Preload: {}} , 'xml')
+            output[`PreloadAssetDB.txt`] = ''
+        }
         if(scopes.includes('assets') && this.assets){
+            extension = format === 'auto' ? 'txt' : format
+            formatting = format === 'auto' ? 'ini' : format;
             output[`Base.SC2Data/GameData/Assets.${extension}`] = formatData(this.assets, formatting)
         }
         if(scopes.includes('locales') && this.locales){
-            for (let locale in this.locales) for (let type in this.locales[locale]) {
-                output[`${locale}.SC2Data/LocalizedData/${type}.${extension}`] = formatData(this.locales[locale][type], formatting)
+            extension = format === 'auto' ? 'txt' : format
+            formatting = format === 'auto' ? 'ini' : format;
+            let baseLocale = this.locales['enUS'] && 'enUS'
+
+            for (let locale in this.locales) {
+
+                for (let type in this.locales[baseLocale || locale]) {
+                    let localeData
+                    if (locale !== baseLocale && this.locales[baseLocale]) {
+                        localeData = {}
+                        deep(localeData, this.locales[baseLocale][type])
+                        deep(localeData, this.locales[locale][type])
+                    } else {
+                        localeData = this.locales[locale][type]
+                    }
+
+                    output[`${locale}.SC2Data/LocalizedData/${type}.${extension}`] = formatData(localeData, formatting)
+                }
+            }
+
+            if(format === 'auto'){
+                fs.copyFileSync(path.resolve(__dirname ,'versions/GameText.version'), destpath + `GameText.version`)
             }
         }
-
-        extension = format === 'auto' ? 'SC2Style' : format
-        formatting = format === 'auto' ? 'xml' : format;
         if(scopes.includes('styles') && this.styles){
+            extension = format === 'auto' ? 'SC2Style' : format
+            formatting = format === 'auto' ? 'xml' : format;
             output[`Base.SC2Data/UI/FontStyles.${extension}`] = formatData(this.styles, formatting)
+            if(format === 'auto'){
+                fs.copyFileSync(path.resolve(__dirname ,'versions/FontStyles.version'), destpath + `Base.SC2Data/UI/FontStyles.version`)
+            }
         }
-
-        extension = format === 'auto' ? 'SC2Layout' : format
-        formatting = format === 'auto' ? 'xml' : format;
         if(scopes.includes('layouts') && this.layouts){
+            extension = format === 'auto' ? 'SC2Layout' : format
+            formatting = format === 'auto' ? 'xml' : format;
             output[`Base.SC2Data/UI/Layout/DescIndex.${extension}`] = formatData({Desc: {Include: this.layouts }}, formatting)
         }
-
-        extension = format === 'auto' ? 'xml' : format
-        formatting = format === 'auto' ? 'xml' : format;
         if(scopes.includes('data') && this.entities){
+            extension = format === 'auto' ? 'xml' : format
+            formatting = format === 'auto' ? 'xml' : format;
             let data = (structure === 'compact') ? {mod: this.entities} : this.catalogs
             for (let cat in data) {
                 let outputCatalogData
+
+                let entities = data[cat].filter(entity => !entity.$overriden)
                 if(formatting === "xml") {
                     // let catalogXMLObjectData = data.map(entity => entity.getXMLObject())
                     // output[`Base.SC2Data/GameData/${capitalize(cat)}Data.xml`] = formatData({Catalog: catalogXMLObjectData}, 'xml')
-                    let catalogXML = data[cat].reduce((acc, entity) => {return acc + entity.getXML(resolve)}, '')
+                    let catalogXML =entities .reduce((acc, entity) => {return acc + entity.getXML(resolve)}, '')
                     outputCatalogData = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Catalog>\n${catalogXML}\n</Catalog>`
                 }
                 else {
                     let catalogCache = {}
-                    for(let entity of data[cat]){
+                    for(let entity of entities){
                         let entityData = {...(resolve ? entity.$$resolved : entity)}
                         catalogCache[entityData.id] = entityData
                         delete entityData.id;
@@ -342,17 +456,27 @@ export class SCMod {
                     outputCatalogData = formatData(catalogCache, formatting)
                 }
                 output[`Base.SC2Data/GameData/${capitalize(cat)}Data.${extension}`] = outputCatalogData
+                if(format === 'auto'){
+                    fs.copyFileSync(path.resolve(__dirname ,'versions/GameData.version'), destpath + `GameData.version`)
+                }
             }
         }
-
         if(scopes.includes('triggers') && this.triggers){
-            output[`Triggers`] = `<?xml version="1.0" encoding="utf-8"?>\n<TriggerData>\n${this.triggers}\n</TriggerData>`
-        }
 
+            output[`Triggers`]  = `<?xml version="1.0" encoding="utf-8"?>\n<TriggerData>\n${this.triggers}\n</TriggerData>`
+
+            //todo parsed triggers
+            // let libraries = this.triggers.map(lib => optimiseForXML(lib, LibrarySchema))
+            // output[`Triggers`] = formatData({TriggerData: {Library: libraries}}, format === 'auto' ? 'xml' : format)
+
+            if(format === 'auto'){
+                fs.copyFileSync(path.resolve(__dirname ,'versions/Triggers.version'), destpath + `Triggers.version`)
+            }
+        }
         for (let file in this.files) {
             if(scopes.includes(this.files[file].scope)){
 
-                let foutput = path + file.replace(/\\/g, "\/")
+                let foutput = destpath + file.replace(/\\/g, "\/")
                 fs.mkdirSync(foutput.substring(0, foutput.lastIndexOf("/")), {recursive: true});
 
                 let finput = this.files[file].path.replace(/\\/g, "\/")
@@ -361,7 +485,7 @@ export class SCMod {
         }
 
         for(let file in output){
-            let foutput = path + file.replace(/\\/g, "\/")
+            let foutput = destpath + file.replace(/\\/g, "\/")
             fs.mkdirSync(foutput.substring(0, foutput.lastIndexOf("/")), {recursive: true});
             fs.writeFileSync(foutput, output[file])
         }

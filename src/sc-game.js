@@ -1,8 +1,7 @@
 import {SCMod} from "./sc-mod.js";
-import {deep, deepReplaceMatch, isNumeric} from "./operations.js";
+import {deep, deepReplaceMatch, isNumeric, matchType, TYPES} from "./operations.js";
 import {SCEntity} from "./sc-entity.js";
 import {StarcraftSchema} from './sc-schema.js';
-import {deepFreeze} from "./console-debug.js";
 
 export const SCGame = {
     datafiles: [
@@ -380,63 +379,63 @@ export const SCGame = {
             else if (value.constructor === Object) {
                 this._objectScheme(value, type,[...path,property],options)
             }
-            else if (value === '0' || value === '1') {
+            else if (matchType(value,TYPES.BIT)) {
                 newtypeoptions = {
                     type: 'bit',
                     bigger: ['reals','real','int']
                 }
             }
-            else if (/^-?(0|[1-9]\d*)$/.test(value)) {
+            else if (matchType(value,TYPES.INT)) {
                 newtypeoptions = {
                     type: 'int',
                     smaller: ['bit'],
                     bigger: ['reals','real']
                 }
             }
-            else if (/^(-?(0|[1-9]\d*)(\.\d+)?)$/.test(value)) {
+            else if (matchType(value,TYPES.REAL)) {
                 newtypeoptions = {
                     type: 'real',
                     smaller: ['int','ints','bit'],
                     bigger: ['reals']
                 }
             }
-            else if (/^-?(0|[1-9]\d*)(,-?(0|[1-9]\d*))+$/.test(value)) {
+            else if (matchType(value,TYPES.INTS)) {
                 newtypeoptions = {
                     type: 'ints',
                     smaller: ['int','bit'],
                     bigger: ['reals']
                 }
             }
-            else if (/^(-?(0|[1-9]\d*)(\.\d+)?)(\,-?(0|[1-9]\d*)(\.\d+)?)*$/.test(value)) {
+            else if (matchType(value,TYPES.REALS)) {
                 newtypeoptions = {
                     type: 'reals',
                     smaller: ['ints','real','int','bit']
                 }
             }
-            else if (/^(-|\w+(,\w+){0,});(-|\w+(,\w+){0,})$/.test(value)) {
+            else if (matchType(value,TYPES.FILTERS)) {
                 newtypeoptions = {
                     type: 'filters'
                 }
             }
-            else if (/^(\w+\:\w*)(,\w+\:\w*){0,}$/.test(value)) {
+            else if (matchType(value,TYPES.CATEGORIES)) {
                 newtypeoptions = {
                     type: 'categories',
                     smaller: ['word']
                 }
             }
-            else if (/^Assets[\\/][\\/\w\-. ]\.\w+$/.test(value) || property.endsWith("Icon")) {
+            else if (matchType(value,TYPES.FILE)|| property.endsWith("Icon")) {
                 newtypeoptions = {
                     type: 'file',
                     smaller: ['word']
                 }
             }
-            else if (/^[A-Za-z_@#0-9]+(\/+[A-Za-z_@#0-9]+)+\/?$/.test(value)) {
+            else if (matchType(value,TYPES.LINK)) {
                 newtypeoptions = {
                     type: 'link',
                     smaller: ['word']
                 }
             }
-            else if (/^[\w+@_#]+$/.test(value)) {
+            else if (matchType(value,TYPES.WORD)) {
                 let catalog;
                 for (let compareCatalog in this.cache) {
                     // let compareCatalogCapitalized = compareCatalog.substr(0, 1).toUpperCase() + compareCatalog.substr(1);
