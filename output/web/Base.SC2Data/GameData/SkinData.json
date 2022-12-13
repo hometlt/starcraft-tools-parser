@@ -19,7 +19,7 @@
     "InfoText": "Skin/Info/CollectionSkinBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Neutral-##unit##-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -57,7 +57,7 @@
     "InfoText": "Skin/Info/CollectionSkinProtossDefault",
     "VariationIcon": "Assets\\Textures\\btn-unit-protoss-##unit##.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "##unit##",
     "DisplayModel": [
@@ -71,7 +71,7 @@
     "InfoText": "Skin/Info/CollectionSkinTerranDefault",
     "VariationIcon": "Assets\\Textures\\btn-unit-terran-##unit##.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "##unit##",
     "DisplayModel": [
@@ -85,7 +85,7 @@
     "InfoText": "Skin/Info/CollectionSkinZergDefault",
     "VariationIcon": "Assets\\Textures\\btn-unit-zerg-##unit##.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "##unit##",
     "DisplayModel": [
@@ -99,7 +99,7 @@
     "InfoText": "Skin/Info/CollectionSkinZergBuildingDefault",
     "VariationIcon": "Assets\\Textures\\btn-building-zerg-CollectionSkinZergBuildingDefault.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "##unit##",
     "DisplayModel": [
@@ -113,7 +113,7 @@
     "InfoText": "Skin/Info/CollectionSkinProtossBuildingDefault",
     "VariationIcon": "Assets\\Textures\\btn-building-protoss-CollectionSkinProtossBuildingDefault.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "##unit##",
     "DisplayModel": [
@@ -127,7 +127,7 @@
     "InfoText": "Skin/Info/CollectionSkinTerranBuildingDefault",
     "VariationIcon": "Assets\\Textures\\btn-building-terran-##unit##.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "##unit##",
     "DisplayModel": [
@@ -141,7 +141,7 @@
     "InfoText": "Skin/Info/CollectionSkinProtossWarpIn",
     "VariationIcon": "Assets\\Textures\\btn-unit-Neutral-##unit##-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -185,7 +185,7 @@
     "InfoText": "Skin/Info/CollectionSkinProtossAir",
     "VariationIcon": "Assets\\Textures\\btn-unit-Neutral-##unit##-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -229,7 +229,7 @@
     "InfoText": "Skin/Info/CollectionSkinZergGround",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-##unit##-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -278,7 +278,7 @@
     "InfoText": "Skin/Info/CollectionSkinBuildingNoPlacement",
     "VariationIcon": "Assets\\Textures\\btn-building-Neutral-##unit##-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -306,7 +306,7 @@
     "InfoText": "Skin/Info/CollectionSkinBuilding",
     "VariationIcon": "Assets\\Textures\\btn-building-Neutral-##unit##-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -355,7 +355,7 @@
     "InfoText": "Skin/Info/CollectionSkinBuildingProtoss",
     "VariationIcon": "Assets\\Textures\\btn-building-Neutral-##unit##-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -409,7 +409,7 @@
     "InfoText": "Skin/Info/GhostAlternateBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Ghost-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -479,7 +479,7 @@
     "InfoText": "Skin/Info/MarineBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Marine-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -540,7 +540,7 @@
     "InfoText": "Skin/Info/SCVBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-SCV-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -581,7 +581,7 @@
     "InfoText": "Skin/Info/MarauderBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Marauder-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -627,7 +627,7 @@
     "InfoText": "Skin/Info/ReaperBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Reaper-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -668,7 +668,7 @@
     "InfoText": "Skin/Info/GhostBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Ghost-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -729,7 +729,7 @@
     "InfoText": "Skin/Info/HellionBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Hellion-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -793,7 +793,7 @@
     "InfoText": "Skin/Info/SiegeTankBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-SiegeTank-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -857,7 +857,7 @@
     "InfoText": "Skin/Info/ThorBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Thor-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -959,7 +959,7 @@
       "Viking_Bogus_Fighter"
     ],
     "Camera": "Star2CameraMid06",
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Bogus",
     "CollectionDisplayModel": "Viking_Bogus_Fighter",
     "CollectionDisplayUnit": "VikingFighter",
@@ -975,7 +975,7 @@
     "InfoText": "Skin/Info/BansheeBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Banshee-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -1016,7 +1016,7 @@
     "InfoText": "Skin/Info/LiberatorBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Liberator-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -1069,7 +1069,7 @@
     "InfoText": "Skin/Info/RavenBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Raven-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -1125,7 +1125,7 @@
     "InfoText": "Skin/Info/BattlecruiserBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Battlecruiser-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -1201,7 +1201,7 @@
     "InfoText": "Skin/Info/DroneBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Drone-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -1252,7 +1252,7 @@
     "InfoText": "Skin/Info/ZerglingBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Zergling-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -1366,7 +1366,7 @@
       "Baneling_Bogus"
     ],
     "Camera": "Star2CameraMid02",
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Bogus",
     "CollectionDisplayModel": "Baneling_Bogus",
     "CollectionDisplayUnit": "Baneling",
@@ -1416,7 +1416,7 @@
       "Baneling_Bogus"
     ],
     "Camera": "Star2CameraMid02",
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Bogus",
     "CollectionDisplayModel": "Baneling_Bogus",
     "CollectionDisplayUnit": "Baneling",
@@ -1431,7 +1431,7 @@
     "InfoText": "Skin/Info/RoachBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Roach-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -1489,7 +1489,7 @@
     "InfoText": "Skin/Info/RavagerBaseNoMorph",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Ravager-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -1540,7 +1540,7 @@
     "InfoText": "Skin/Info/RavagerBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Ravager-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -1601,7 +1601,7 @@
     "InfoText": "Skin/Info/HydraliskBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Hydralisk-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -1688,7 +1688,7 @@
       "Lurker_Bogus"
     ],
     "Camera": "Star2CameraMid06",
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Bogus",
     "CollectionDisplayModel": "Lurker_Bogus",
     "CollectionDisplayUnit": "LurkerMP",
@@ -1748,7 +1748,7 @@
       "Lurker_Bogus"
     ],
     "Camera": "Star2CameraMid06",
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Bogus",
     "CollectionDisplayModel": "Lurker_Bogus",
     "CollectionDisplayUnit": "LurkerMP",
@@ -1763,7 +1763,7 @@
     "InfoText": "Skin/Info/OverlordBaseNoMorph",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Overlord-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -1816,7 +1816,7 @@
     "InfoText": "Skin/Info/OverlordBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Overlord-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -1879,7 +1879,7 @@
     "InfoText": "Skin/Info/OverseerBaseNoMorph",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Overseer-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -1920,7 +1920,7 @@
     "InfoText": "Skin/Info/OverseerBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Overseer-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -1976,7 +1976,7 @@
     "InfoText": "Skin/Info/QueenBaseNoTumor",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Queen-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -2027,7 +2027,7 @@
     "InfoText": "Skin/Info/QueenBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Queen-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -2103,7 +2103,7 @@
     "InfoText": "Skin/Info/InfestorBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Infestor-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -2154,7 +2154,7 @@
     "InfoText": "Skin/Info/SwarmHostBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-SwarmHost-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -2265,7 +2265,7 @@
     "InfoText": "Skin/Info/MutaliskBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Mutalisk-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -2306,7 +2306,7 @@
     "InfoText": "Skin/Info/CorruptorBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Corruptor-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -2368,7 +2368,7 @@
       "Viper_Bogus"
     ],
     "Camera": "Star2CameraMid06",
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Bogus",
     "CollectionDisplayModel": "Viper_Bogus",
     "CollectionDisplayUnit": "Viper",
@@ -2382,7 +2382,7 @@
     "InfoText": "Skin/Info/BroodLordBaseNoMorph",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-BroodLord-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -2468,7 +2468,7 @@
     "InfoText": "Skin/Info/BroodLordBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-BroodLord-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -2564,7 +2564,7 @@
     "InfoText": "Skin/Info/UltraliskBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Ultralisk-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -2615,7 +2615,7 @@
     "InfoText": "Skin/Info/ProbeBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Probe-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -2656,7 +2656,7 @@
     "InfoText": "Skin/Info/ZealotBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Zealot-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -2702,7 +2702,7 @@
     "InfoText": "Skin/Info/AdeptBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Adept-Bogus.dds",
     "default": "1",
-    "Rotation": 345,
+    "Rotation": "345",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -2748,7 +2748,7 @@
     "InfoText": "Skin/Info/StalkerBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Stalker-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -2799,7 +2799,7 @@
     "InfoText": "Skin/Info/SentryBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Sentry-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -2845,7 +2845,7 @@
     "InfoText": "Skin/Info/HighTemplarBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-HighTemplar-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -2914,7 +2914,7 @@
     "InfoText": "Skin/Info/DarkTemplarBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-DarkTemplar-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -2975,7 +2975,7 @@
     "InfoText": "Skin/Info/ImmortalBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Immortal-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -3016,7 +3016,7 @@
     "InfoText": "Skin/Info/ColossusBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Colossus-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -3057,7 +3057,7 @@
     "InfoText": "Skin/Info/PhoenixBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Phoenix-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -3103,7 +3103,7 @@
     "InfoText": "Skin/Info/VoidRayBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-VoidRay-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -3149,7 +3149,7 @@
     "InfoText": "Skin/Info/CarrierBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Carrier-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -3210,7 +3210,7 @@
     "InfoText": "Skin/Info/MothershipBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Mothership-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -3267,7 +3267,7 @@
     "InfoText": "Skin/Info/ObserverBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Observer-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -3313,7 +3313,7 @@
     "InfoText": "Skin/Info/CycloneBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Cyclone-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -3353,7 +3353,7 @@
     "InfoText": "Skin/Info/MedivacBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Medivac-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -3393,7 +3393,7 @@
     "InfoText": "Skin/Info/WidowMineBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-WidowMine-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -3438,7 +3438,7 @@
     "InfoText": "Skin/Info/DisruptorBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Disruptor-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -3478,7 +3478,7 @@
     "InfoText": "Skin/Info/ArchonBase",
     "VariationIcon": "Assets/Textures/ui_glues_heroselect_skin_ArchonBase.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "CollectionDisplayUnit": "Archon",
     "CollectionDisplayModel": "Archon"
   },
@@ -3488,7 +3488,7 @@
     "InfoText": "Skin/Info/TempestBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Tempest-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -3533,7 +3533,7 @@
     "InfoText": "Skin/Info/WarpPrismBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-WarpPrism-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -3596,7 +3596,7 @@
     "InfoText": "Skin/Info/OracleBase",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Oracle-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -3671,7 +3671,7 @@
     "InfoText": "Skin/Info/DarkTemplar00Base",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-DarkTemplar-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -3759,7 +3759,7 @@
     "InfoText": "Skin/Info/DarkTemplar01Base",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-DarkTemplar-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -3872,7 +3872,7 @@
     "InfoText": "Skin/Info/BanelingNestBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-BanelingNest-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -3922,7 +3922,7 @@
     "InfoText": "Skin/Info/CreepTumorBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-CreepTumor-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -3977,7 +3977,7 @@
     "InfoText": "Skin/Info/EvolutionChamberBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-EvolutionChamber-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -4027,7 +4027,7 @@
     "InfoText": "Skin/Info/ExtractorBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-Extractor-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -4092,7 +4092,7 @@
     "InfoText": "Skin/Info/HatcheryBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-Hatchery-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -4174,7 +4174,7 @@
     "InfoText": "Skin/Info/HydraliskDenBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-HydraliskDen-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -4224,7 +4224,7 @@
     "InfoText": "Skin/Info/InfestationPitBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-InfestationPit-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -4309,7 +4309,7 @@
     "DisplayModel": [
       "LurkerDen_Bogus"
     ],
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Bogus",
     "CollectionDisplayModel": "LurkerDen_Bogus",
     "CollectionDisplayUnit": "LurkerDenMP",
@@ -4323,7 +4323,7 @@
     "InfoText": "Skin/Info/NydusCanalBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-NydusCanal-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -4393,7 +4393,7 @@
     "InfoText": "Skin/Info/NydusNetworkBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-NydusNetwork-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -4480,7 +4480,7 @@
     "InfoText": "Skin/Info/RoachWarrenBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-RoachWarren-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -4530,7 +4530,7 @@
     "InfoText": "Skin/Info/SpawningPoolBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-SpawningPool-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -4580,7 +4580,7 @@
     "InfoText": "Skin/Info/SpineCrawlerBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-SpineCrawler-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -4635,7 +4635,7 @@
     "InfoText": "Skin/Info/SporeCrawlerBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-SporeCrawler-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -4690,7 +4690,7 @@
     "InfoText": "Skin/Info/SpireBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-Spire-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -4762,7 +4762,7 @@
     "InfoText": "Skin/Info/UltraliskCavernBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-UltraliskCavern-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -4837,7 +4837,7 @@
     "DisplayModel": [
       "Larva_Bogus"
     ],
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Bogus",
     "CollectionDisplayModel": "Larva_Bogus",
     "CollectionDisplayUnit": "Larva",
@@ -4853,7 +4853,7 @@
     "InfoText": "Skin/Info/ArmoryBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-Armory-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -4903,7 +4903,7 @@
     "InfoText": "Skin/Info/BarracksBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-Barracks-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -4958,7 +4958,7 @@
     "InfoText": "Skin/Info/BunkerBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-Bunker-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -5030,7 +5030,7 @@
     "InfoText": "Skin/Info/CommandCenterBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-CommandCenter-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -5112,7 +5112,7 @@
     "InfoText": "Skin/Info/EngineeringBayBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-EngineeringBay-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -5162,7 +5162,7 @@
     "InfoText": "Skin/Info/FactoryBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-Factory-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -5217,7 +5217,7 @@
     "InfoText": "Skin/Info/FusionCoreBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-FusionCore-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -5267,7 +5267,7 @@
     "InfoText": "Skin/Info/GhostAcademyBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-GhostAcademy-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -5317,7 +5317,7 @@
     "InfoText": "Skin/Info/MissileTurretBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-MissileTurret-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -5367,7 +5367,7 @@
     "InfoText": "Skin/Info/ReactorBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-Reactor-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -5437,7 +5437,7 @@
     "InfoText": "Skin/Info/RefineryBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-Refinery-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -5502,7 +5502,7 @@
     "InfoText": "Skin/Info/SensorTowerBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-SensorTower-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -5552,7 +5552,7 @@
     "InfoText": "Skin/Info/StarportBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-Starport-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -5607,7 +5607,7 @@
     "InfoText": "Skin/Info/SupplyDepotBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-SupplyDepot-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -5683,7 +5683,7 @@
     "InfoText": "Skin/Info/TechLabBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-TechLab-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -5753,7 +5753,7 @@
     "InfoText": "Skin/Info/NexusBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-Nexus-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -5808,7 +5808,7 @@
     "InfoText": "Skin/Info/AssimilatorBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-Assimilator-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -5878,7 +5878,7 @@
     "InfoText": "Skin/Info/PylonBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-Pylon-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -5934,7 +5934,7 @@
     "InfoText": "Skin/Info/GatewayBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-Gateway-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -5996,7 +5996,7 @@
     "InfoText": "Skin/Info/ForgeBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-Forge-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -6051,7 +6051,7 @@
     "InfoText": "Skin/Info/PhotonCannonBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-PhotonCannon-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -6111,7 +6111,7 @@
     "InfoText": "Skin/Info/ShieldBatteryBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-ShieldBattery-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -6171,7 +6171,7 @@
     "InfoText": "Skin/Info/CyberneticsCoreBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-CyberneticsCore-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -6226,7 +6226,7 @@
     "InfoText": "Skin/Info/RoboticsFacilityBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-RoboticsFacility-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -6286,7 +6286,7 @@
     "InfoText": "Skin/Info/RoboticsBayBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-RoboticsBay-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -6346,7 +6346,7 @@
     "InfoText": "Skin/Info/TwilightCouncilBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-TwilightCouncil-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -6401,7 +6401,7 @@
     "InfoText": "Skin/Info/StargateBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-Stargate-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -6461,7 +6461,7 @@
     "InfoText": "Skin/Info/DarkShrineBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-DarkShrine-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -6516,7 +6516,7 @@
     "InfoText": "Skin/Info/TemplarArchiveBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-TemplarArchive-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -6571,7 +6571,7 @@
     "InfoText": "Skin/Info/FleetBeaconBase",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-FleetBeacon-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -6631,7 +6631,7 @@
     "InfoText": "Skin/Info/Base",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-##unit##-Bogus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -6685,7 +6685,7 @@
     "InfoText": "Skin/Info/SCV",
     "VariationIcon": "Assets\\Textures\\btn-unit-terran-SCV.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid05",
     "CollectionDisplayUnit": "SCV",
     "DisplayModel": [
@@ -6701,14 +6701,14 @@
     "InfoText": "Skin/Info/Marine",
     "VariationIcon": "Assets\\Textures\\btn-unit-terran-Marine.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid02",
     "CollectionDisplayUnit": "Marine",
     "DisplayModel": [
       "Marine"
     ],
     "CollectionDisplayModel": "Marine",
-    "IsDefaultSkin": 1,
+    "IsDefaultSkin": "1",
     "parent": "CollectionSkinTerranDefault",
     "unit": "Marine"
   },
@@ -6718,7 +6718,7 @@
     "InfoText": "Skin/Info/Marauder",
     "VariationIcon": "Assets\\Textures\\btn-unit-terran-Marauder.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid02",
     "CollectionDisplayUnit": "Marauder",
     "DisplayModel": [
@@ -6734,7 +6734,7 @@
     "InfoText": "Skin/Info/Reaper",
     "VariationIcon": "Assets\\Textures\\btn-unit-terran-Reaper.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid02",
     "CollectionDisplayUnit": "Reaper",
     "DisplayModel": [
@@ -6750,7 +6750,7 @@
     "InfoText": "Skin/Info/Ghost",
     "VariationIcon": "Assets\\Textures\\btn-unit-terran-Ghost.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid02",
     "CollectionDisplayUnit": "Ghost",
     "DisplayModel": [
@@ -6766,7 +6766,7 @@
     "InfoText": "Skin/Info/Hellion",
     "VariationIcon": "Assets\\Textures\\btn-unit-terran-Hellion.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Hellion",
     "DisplayModel": [
@@ -6784,7 +6784,7 @@
     "InfoText": "Skin/Info/Cyclone",
     "VariationIcon": "Assets\\Textures\\btn-unit-terran-Cyclone.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Cyclone",
     "DisplayModel": [
@@ -6800,7 +6800,7 @@
     "InfoText": "Skin/Info/WidowMine",
     "VariationIcon": "Assets\\Textures\\btn-unit-terran-WidowMine.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "WidowMine",
     "DisplayModel": [
@@ -6816,7 +6816,7 @@
     "InfoText": "Skin/Info/SiegeTank",
     "VariationIcon": "Assets\\Textures\\btn-unit-terran-SiegeTank.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "SiegeTank",
     "DisplayModel": [
@@ -6834,7 +6834,7 @@
     "InfoText": "Skin/Info/Thor",
     "VariationIcon": "Assets\\Textures\\btn-unit-terran-Thor.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraHigher10",
     "CollectionDisplayUnit": "Thor",
     "DisplayModel": [
@@ -6850,7 +6850,7 @@
     "InfoText": "Skin/Info/Medivac",
     "VariationIcon": "Assets\\Textures\\btn-unit-terran-Medivac.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Medivac",
     "DisplayModel": [
@@ -6866,7 +6866,7 @@
     "InfoText": "Skin/Info/Banshee",
     "VariationIcon": "Assets\\Textures\\btn-unit-terran-Banshee.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Banshee",
     "DisplayModel": [
@@ -6882,7 +6882,7 @@
     "InfoText": "Skin/Info/Viking",
     "VariationIcon": "Assets\\Textures\\btn-unit-terran-vikingfighter.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "VikingFighter",
     "DisplayModel": [
@@ -6901,7 +6901,7 @@
     "InfoText": "Skin/Info/Liberator",
     "VariationIcon": "Assets\\Textures\\btn-unit-terran-Liberator.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraHigher10",
     "CollectionDisplayUnit": "Liberator",
     "DisplayModel": [
@@ -6919,7 +6919,7 @@
     "InfoText": "Skin/Info/Raven",
     "VariationIcon": "Assets\\Textures\\btn-unit-terran-Raven.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Raven",
     "DisplayModel": [
@@ -6935,7 +6935,7 @@
     "InfoText": "Skin/Info/Battlecruiser",
     "VariationIcon": "Assets\\Textures\\btn-unit-terran-Battlecruiser.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Battlecruiser",
     "DisplayModel": [
@@ -6951,7 +6951,7 @@
     "InfoText": "Skin/Info/Pylon",
     "VariationIcon": "Assets\\Textures\\btn-building-protoss-pylon.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraHigh05",
     "CollectionDisplayUnit": "Pylon",
     "DisplayModel": [
@@ -6967,7 +6967,7 @@
     "InfoText": "Skin/Info/Assimilator",
     "VariationIcon": "Assets\\Textures\\btn-building-protoss-assimilator.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Assimilator",
     "DisplayModel": [
@@ -6983,7 +6983,7 @@
     "InfoText": "Skin/Info/PhotonCannon",
     "VariationIcon": "Assets\\Textures\\btn-building-protoss-photoncannon.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "PhotonCannon",
     "DisplayModel": [
@@ -6999,7 +6999,7 @@
     "InfoText": "Skin/Info/Gateway",
     "VariationIcon": "Assets\\Textures\\btn-building-protoss-gateway.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Gateway",
     "DisplayModel": [
@@ -7017,7 +7017,7 @@
     "InfoText": "Skin/Info/Forge",
     "VariationIcon": "Assets\\Textures\\btn-building-protoss-forge.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Forge",
     "DisplayModel": [
@@ -7033,7 +7033,7 @@
     "InfoText": "Skin/Info/RoboticsFacility",
     "VariationIcon": "Assets\\Textures\\btn-building-protoss-roboticsfacility.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "RoboticsFacility",
     "DisplayModel": [
@@ -7049,7 +7049,7 @@
     "InfoText": "Skin/Info/RoboticsSupportBay",
     "VariationIcon": "Assets\\Textures\\btn-building-protoss-roboticssupportbay.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "RoboticsSupportBay",
     "DisplayModel": [
@@ -7065,7 +7065,7 @@
     "InfoText": "Skin/Info/Stargate",
     "VariationIcon": "Assets\\Textures\\btn-building-protoss-stargate.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Stargate",
     "DisplayModel": [
@@ -7081,7 +7081,7 @@
     "InfoText": "Skin/Info/FleetBeacon",
     "VariationIcon": "Assets\\Textures\\btn-building-protoss-fleetbeacon.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "FleetBeacon",
     "DisplayModel": [
@@ -7097,7 +7097,7 @@
     "InfoText": "Skin/Info/Probe",
     "VariationIcon": "Assets\\Textures\\btn-unit-protoss-Probe.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Probe",
     "DisplayModel": [
@@ -7113,7 +7113,7 @@
     "InfoText": "Skin/Info/Zealot",
     "VariationIcon": "Assets\\Textures\\btn-unit-protoss-Zealot.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid02",
     "CollectionDisplayUnit": "Zealot",
     "DisplayModel": [
@@ -7129,7 +7129,7 @@
     "InfoText": "Skin/Info/Sentry",
     "VariationIcon": "Assets\\Textures\\btn-unit-protoss-Sentry.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Sentry",
     "DisplayModel": [
@@ -7145,7 +7145,7 @@
     "InfoText": "Skin/Info/Adept",
     "VariationIcon": "Assets\\Textures\\btn-unit-protoss-Adept.dds",
     "default": "1",
-    "Rotation": 345,
+    "Rotation": "345",
     "Camera": "Star2CameraMid02",
     "CollectionDisplayUnit": "Adept",
     "DisplayModel": [
@@ -7161,7 +7161,7 @@
     "InfoText": "Skin/Info/Stalker",
     "VariationIcon": "Assets\\Textures\\btn-unit-protoss-Stalker.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Stalker",
     "DisplayModel": [
@@ -7177,7 +7177,7 @@
     "InfoText": "Skin/Info/HighTemplar",
     "VariationIcon": "Assets\\Textures\\btn-unit-protoss-HighTemplar.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "HighTemplar",
     "DisplayModel": [
@@ -7195,7 +7195,7 @@
     "InfoText": "Skin/Info/DarkTemplar",
     "VariationIcon": "Assets\\Textures\\btn-unit-protoss-DarkTemplar.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "DarkTemplar",
     "DisplayModel": [
@@ -7211,7 +7211,7 @@
     "InfoText": "Skin/Info/Archon",
     "VariationIcon": "Assets\\Textures\\btn-unit-protoss-Archon.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Archon",
     "DisplayModel": [
@@ -7227,7 +7227,7 @@
     "InfoText": "Skin/Info/Observer",
     "VariationIcon": "Assets\\Textures\\btn-unit-protoss-Observer.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraHigher12",
     "CollectionDisplayUnit": "Observer",
     "DisplayModel": [
@@ -7243,7 +7243,7 @@
     "InfoText": "Skin/Info/WarpPrism",
     "VariationIcon": "Assets\\Textures\\btn-unit-protoss-WarpPrism.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "WarpPrismPhasing",
     "DisplayModel": [
@@ -7261,7 +7261,7 @@
     "InfoText": "Skin/Info/Immortal",
     "VariationIcon": "Assets\\Textures\\btn-unit-protoss-Immortal.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraHigh08",
     "CollectionDisplayUnit": "Immortal",
     "DisplayModel": [
@@ -7277,7 +7277,7 @@
     "InfoText": "Skin/Info/Disruptor",
     "VariationIcon": "Assets\\Textures\\btn-unit-protoss-Disruptor.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Disruptor",
     "DisplayModel": [
@@ -7293,7 +7293,7 @@
     "InfoText": "Skin/Info/Colossus",
     "VariationIcon": "Assets\\Textures\\btn-unit-protoss-Colossus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraHigher12",
     "CollectionDisplayUnit": "Colossus",
     "DisplayModel": [
@@ -7309,7 +7309,7 @@
     "InfoText": "Skin/Info/Oracle",
     "VariationIcon": "Assets\\Textures\\btn-unit-protoss-Oracle.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Oracle",
     "DisplayModel": [
@@ -7325,7 +7325,7 @@
     "InfoText": "Skin/Info/Phoenix",
     "VariationIcon": "Assets\\Textures\\btn-unit-protoss-Phoenix.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraHigher12",
     "CollectionDisplayUnit": "Phoenix",
     "DisplayModel": [
@@ -7341,7 +7341,7 @@
     "InfoText": "Skin/Info/VoidRay",
     "VariationIcon": "Assets\\Textures\\btn-unit-protoss-warpray.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraHigher12",
     "CollectionDisplayUnit": "VoidRay",
     "DisplayModel": [
@@ -7357,7 +7357,7 @@
     "InfoText": "Skin/Info/Tempest",
     "VariationIcon": "Assets\\Textures\\btn-unit-protoss-Tempest.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Tempest",
     "DisplayModel": [
@@ -7373,7 +7373,7 @@
     "InfoText": "Skin/Info/Carrier",
     "VariationIcon": "Assets\\Textures\\btn-unit-protoss-Carrier.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraHigher12",
     "CollectionDisplayUnit": "Carrier",
     "DisplayModel": [
@@ -7389,7 +7389,7 @@
     "InfoText": "Skin/Info/Mothership",
     "VariationIcon": "Assets\\Textures\\btn-unit-protoss-Mothership.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraHigher12",
     "CollectionDisplayUnit": "Mothership",
     "DisplayModel": [
@@ -7405,7 +7405,7 @@
     "InfoText": "Skin/Info/Drone",
     "VariationIcon": "Assets\\Textures\\btn-unit-zerg-Drone.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid02",
     "CollectionDisplayUnit": "Drone",
     "DisplayModel": [
@@ -7421,7 +7421,7 @@
     "InfoText": "Skin/Info/Overlord",
     "VariationIcon": "Assets\\Textures\\btn-unit-zerg-Overlord.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraLow05",
     "CollectionDisplayUnit": "Overlord",
     "DisplayModel": [
@@ -7439,7 +7439,7 @@
     "InfoText": "Skin/Info/Overseer",
     "VariationIcon": "Assets\\Textures\\btn-unit-zerg-Overseer.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraLow05",
     "CollectionDisplayUnit": "Overseer",
     "DisplayModel": [
@@ -7455,7 +7455,7 @@
     "InfoText": "Skin/Info/Zergling",
     "VariationIcon": "Assets\\Textures\\btn-unit-zerg-Zergling.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid02",
     "CollectionDisplayUnit": "Zergling",
     "DisplayModel": [
@@ -7473,7 +7473,7 @@
     "InfoText": "Skin/Info/Baneling",
     "VariationIcon": "Assets\\Textures\\btn-unit-zerg-Baneling.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid02",
     "CollectionDisplayUnit": "Baneling",
     "DisplayModel": [
@@ -7489,7 +7489,7 @@
     "InfoText": "Skin/Info/Queen",
     "VariationIcon": "Assets\\Textures\\btn-unit-zerg-Queen.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Queen",
     "DisplayModel": [
@@ -7505,7 +7505,7 @@
     "InfoText": "Skin/Info/Roach",
     "VariationIcon": "Assets\\Textures\\btn-unit-zerg-Roach.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid02",
     "CollectionDisplayUnit": "Roach",
     "DisplayModel": [
@@ -7523,7 +7523,7 @@
     "InfoText": "Skin/Info/Ravager",
     "VariationIcon": "Assets\\Textures\\btn-unit-zerg-Ravager.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid08",
     "CollectionDisplayUnit": "Ravager",
     "DisplayModel": [
@@ -7539,7 +7539,7 @@
     "InfoText": "Skin/Info/Hydralisk",
     "VariationIcon": "Assets\\Textures\\btn-unit-zerg-Hydralisk.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Hydralisk",
     "DisplayModel": [
@@ -7555,7 +7555,7 @@
     "InfoText": "Skin/Info/Lurker",
     "VariationIcon": "Assets\\Textures\\btn-unit-zerg-lurker.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "LurkerMP",
     "DisplayModel": [
@@ -7571,7 +7571,7 @@
     "InfoText": "Skin/Info/Infestor",
     "VariationIcon": "Assets\\Textures\\btn-unit-zerg-Infestor.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Infestor",
     "DisplayModel": [
@@ -7587,7 +7587,7 @@
     "InfoText": "Skin/Info/SwarmHost",
     "VariationIcon": "Assets\\Textures\\btn-unit-zerg-swarmhost.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "SwarmHostMP",
     "DisplayModel": [
@@ -7603,7 +7603,7 @@
     "InfoText": "Skin/Info/Ultralisk",
     "VariationIcon": "Assets\\Textures\\btn-unit-zerg-Ultralisk.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid07",
     "CollectionDisplayUnit": "Ultralisk",
     "DisplayModel": [
@@ -7619,7 +7619,7 @@
     "InfoText": "Skin/Info/Mutalisk",
     "VariationIcon": "Assets\\Textures\\btn-unit-zerg-Mutalisk.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Mutalisk",
     "DisplayModel": [
@@ -7635,7 +7635,7 @@
     "InfoText": "Skin/Info/Corruptor",
     "VariationIcon": "Assets\\Textures\\btn-unit-zerg-Corruptor.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Corruptor",
     "DisplayModel": [
@@ -7651,7 +7651,7 @@
     "InfoText": "Skin/Info/Viper",
     "VariationIcon": "Assets\\Textures\\btn-unit-zerg-Viper.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Viper",
     "DisplayModel": [
@@ -7667,7 +7667,7 @@
     "InfoText": "Skin/Info/BroodLord",
     "VariationIcon": "Assets\\Textures\\btn-unit-zerg-BroodLord.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraLow05",
     "CollectionDisplayUnit": "BroodLord",
     "DisplayModel": [
@@ -7683,7 +7683,7 @@
     "InfoText": "Skin/Info/ThorCE",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-thor-collectoredition.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -7734,7 +7734,7 @@
     "InfoText": "Skin/Info/UltraliskCE",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-ultralisk-collectoredition.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -7785,7 +7785,7 @@
     "InfoText": "Skin/Info/ColossusCE",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-colossus-collectoredition.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -7826,7 +7826,7 @@
     "InfoText": "Skin/Info/AdeptCE",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-adept-collectoredition.dds",
     "default": "1",
-    "Rotation": 345,
+    "Rotation": "345",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -7877,7 +7877,7 @@
     "InfoText": "Skin/Info/GhostEidolon",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-ghost-eidolon.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -7938,7 +7938,7 @@
     "InfoText": "Skin/Info/DroneBlizzcon17",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Blizzcon17-Drone.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -7989,7 +7989,7 @@
     "InfoText": "Skin/Info/ProbeBlizzcon17",
     "VariationIcon": "Assets\\Textures\\btn-unit-protoss-blizzcon17-probe.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -8030,7 +8030,7 @@
     "InfoText": "Skin/Info/SCVBlizzcon17",
     "VariationIcon": "Assets\\Textures\\btn-unit-terran-blizzcon17-scv.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -8071,7 +8071,7 @@
     "InfoText": "Skin/Info/MarauderDeluxe",
     "VariationIcon": "Assets\\Textures\\btn-unit-maurader-collectionskin-deluxe.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -8117,7 +8117,7 @@
     "InfoText": "Skin/Info/RoachDeluxe",
     "VariationIcon": "Assets\\Textures\\btn-unit-roach-collectionskin-deluxe.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -8175,7 +8175,7 @@
     "InfoText": "Skin/Info/RavagerBone",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Bone-Ravager.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -8236,7 +8236,7 @@
     "InfoText": "Skin/Info/BroodLord_PremiumSkin_Aquatic",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Aquatic-BroodLord.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -8362,7 +8362,7 @@
     "InfoText": "Skin/Info/StalkerDeluxe",
     "VariationIcon": "Assets\\Textures\\btn-unit-stalker-collectionskin-deluxe.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -8413,7 +8413,7 @@
     "InfoText": "Skin/Info/ImmortalAdun",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-adun-immortal.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -8504,7 +8504,7 @@
     "InfoText": "Skin/Info/Carrier_AmonBrood_Collection",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-amonbroodr-carrier.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -8751,7 +8751,7 @@
       "Viking_Mecha_Fighter"
     ],
     "Camera": "Star2CameraMid06",
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Mecha",
     "CollectionDisplayModel": "Viking_Mecha_Fighter",
     "CollectionDisplayUnit": "VikingFighter",
@@ -8768,7 +8768,7 @@
     "InfoText": "Skin/Info/HellionJunker",
     "VariationIcon": "Assets\\Textures\\btn-unit-terran-hellion-junker.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -8962,7 +8962,7 @@
     "InfoText": "Skin/Info/ColossusTal",
     "VariationIcon": "Assets\\Textures\\btn-unit-protoss-colossus-taldarim.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -9003,7 +9003,7 @@
     "InfoText": "Skin/Info/HydraliskNoxious",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Noxious-Hydralisk.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -9054,7 +9054,7 @@
     "InfoText": "Skin/Info/SiegeTankMerc",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-siegetank-commando.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -9118,7 +9118,7 @@
     "InfoText": "Skin/Info/WarpPrismNerazim",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Nerazim-WarpPrism.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -9181,7 +9181,7 @@
     "InfoText": "Skin/Info/GhostNova",
     "VariationIcon": "Assets\\Textures\\btn-unit-terran-dom-femaleghost.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -9252,7 +9252,7 @@
     "InfoText": "Skin/Info/MarineXPR",
     "VariationIcon": "Assets\\Textures\\btn-unit-terran-merc-marine.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -9349,7 +9349,7 @@
       "SupplyDepotXPR"
     ],
     "Camera": "Star2CameraMid07",
-    "Rotation": 35,
+    "Rotation": "35",
     "CollectionDisplayModel": "SupplyDepotXPR",
     "CollectionDisplayUnit": "SupplyDepot",
     "collection": "Bogus",
@@ -9362,7 +9362,7 @@
     "InfoText": "Skin/Info/ZerglingXPR",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-zergling-mutant.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -9450,7 +9450,7 @@
     "InfoText": "Skin/Info/OverlordXPR",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-overlord-mutant.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -9513,7 +9513,7 @@
     "InfoText": "Skin/Info/ZealotXPR",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-zealot-judicator.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -9585,7 +9585,7 @@
       "PylonXPR"
     ],
     "Camera": "Star2CameraHigh05",
-    "Rotation": 35,
+    "Rotation": "35",
     "CollectionDisplayModel": "PylonXPR",
     "CollectionDisplayUnit": "Pylon"
   },
@@ -9611,7 +9611,7 @@
       "Pylon_Taldarim"
     ],
     "Camera": "Star2CameraHigh05",
-    "Rotation": 35,
+    "Rotation": "35",
     "CollectionDisplayModel": "Pylon",
     "CollectionDisplayUnit": "Pylon"
   },
@@ -9641,7 +9641,7 @@
     "DisplayModel": [
       "PhotonCannon_Taldarim"
     ],
-    "Rotation": 35,
+    "Rotation": "35",
     "CollectionDisplayModel": "PhotonCannon",
     "CollectionDisplayUnit": "PhotonCannon"
   },
@@ -9666,7 +9666,7 @@
     "DisplayModel": [
       "Assimilator_Taldarim"
     ],
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Taldarim",
     "CollectionDisplayModel": "Assimilator_Taldarim",
     "CollectionDisplayUnit": "Assimilator"
@@ -9697,7 +9697,7 @@
     "DisplayModel": [
       "Gateway_Taldarim"
     ],
-    "Rotation": 35,
+    "Rotation": "35",
     "CollectionDisplayModel": "Gateway",
     "CollectionDisplayUnit": "Gateway"
   },
@@ -9722,7 +9722,7 @@
     "DisplayModel": [
       "Forge_Taldarim"
     ],
-    "Rotation": 35,
+    "Rotation": "35",
     "CollectionDisplayModel": "Forge",
     "CollectionDisplayUnit": "Forge"
   },
@@ -9752,7 +9752,7 @@
     "DisplayModel": [
       "RoboticsFacility_Taldarim"
     ],
-    "Rotation": 35,
+    "Rotation": "35",
     "CollectionDisplayModel": "RoboticsFacility",
     "CollectionDisplayUnit": "RoboticsFacility"
   },
@@ -9782,7 +9782,7 @@
     "DisplayModel": [
       "RoboticsSupportBay_Taldarim"
     ],
-    "Rotation": 35,
+    "Rotation": "35",
     "CollectionDisplayModel": "RoboticsBay",
     "CollectionDisplayUnit": "RoboticsSupportBay"
   },
@@ -9812,7 +9812,7 @@
     "DisplayModel": [
       "Stargate_Taldarim"
     ],
-    "Rotation": 35,
+    "Rotation": "35",
     "CollectionDisplayModel": "Stargate",
     "CollectionDisplayUnit": "Stargate"
   },
@@ -9842,7 +9842,7 @@
     "DisplayModel": [
       "FleetBeacon_Taldarim"
     ],
-    "Rotation": 35,
+    "Rotation": "35",
     "CollectionDisplayModel": "FleetBeacon",
     "CollectionDisplayUnit": "FleetBeacon"
   },
@@ -9852,7 +9852,7 @@
     "InfoText": "Skin/Info/ProbeTaldarim",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Taldarim-Probe.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -9893,7 +9893,7 @@
     "InfoText": "Skin/Info/ZealotTaldarim",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Taldarim-Zealot.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -9939,7 +9939,7 @@
     "InfoText": "Skin/Info/SentryTaldarim",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Taldarim-Sentry.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -9985,7 +9985,7 @@
     "InfoText": "Skin/Info/AdeptTaldarim",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Taldarim-Adept.dds",
     "default": "1",
-    "Rotation": 345,
+    "Rotation": "345",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -10031,7 +10031,7 @@
     "InfoText": "Skin/Info/StalkerTaldarim",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Taldarim-Stalker.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -10082,7 +10082,7 @@
     "InfoText": "Skin/Info/HighTemplarTaldarim",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-taldarim-HighTemplar.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -10151,7 +10151,7 @@
     "InfoText": "Skin/Info/DarkTemplarTaldarim",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Taldarim-DarkTemplar.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -10239,7 +10239,7 @@
     "InfoText": "Skin/Info/ObserverTaldarim",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Taldarim-Observer.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -10285,7 +10285,7 @@
     "InfoText": "Skin/Info/WarpPrismTaldarim",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-taldarim-WarpPrism.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -10348,7 +10348,7 @@
     "InfoText": "Skin/Info/ImmortalTaldarim",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-taldarim-Immortal.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -10389,7 +10389,7 @@
     "InfoText": "Skin/Info/DisruptorTaldarim",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-taldarim-Disruptor.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -10429,7 +10429,7 @@
     "InfoText": "Skin/Info/ColossusTaldarim",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-taldarim-Colossus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -10470,7 +10470,7 @@
     "InfoText": "Skin/Info/OracleTaldarim",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Taldarim-Oracle.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -10560,7 +10560,7 @@
     "InfoText": "Skin/Info/PhoenixTaldarim",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-taldarim-Phoenix.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -10606,7 +10606,7 @@
     "InfoText": "Skin/Info/VoidRayTaldarim",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Taldarim-VoidRay.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -10652,7 +10652,7 @@
     "InfoText": "Skin/Info/CarrierTaldarim",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-taldarim-Carrier.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -10713,7 +10713,7 @@
     "InfoText": "Skin/Info/TempestTaldarim",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-taldarim-Tempeest.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -10758,7 +10758,7 @@
     "InfoText": "Skin/Info/MothershipTaldarim",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Taldarim-Mothership.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -10815,7 +10815,7 @@
     "InfoText": "Skin/Info/DroneWebby",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Webby-Drone.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -10866,7 +10866,7 @@
     "InfoText": "Skin/Info/ZerglingWebby",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Webby-Zergling.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -10990,7 +10990,7 @@
       "Baneling_Webby"
     ],
     "Camera": "Star2CameraMid02",
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Webby",
     "CollectionDisplayModel": "Baneling_Webby",
     "CollectionDisplayUnit": "Baneling",
@@ -11005,7 +11005,7 @@
     "InfoText": "Skin/Info/RoachWebby",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Webby-Roach.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -11063,7 +11063,7 @@
     "InfoText": "Skin/Info/RavagerWebby",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Webby-Ravager.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -11124,7 +11124,7 @@
     "InfoText": "Skin/Info/HydraliskWebby",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-webby-hydra.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -11221,7 +11221,7 @@
       "Lurker_Webby"
     ],
     "Camera": "Star2CameraMid06",
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Webby",
     "CollectionDisplayModel": "Lurker_Webby",
     "CollectionDisplayUnit": "LurkerMP",
@@ -11236,7 +11236,7 @@
     "InfoText": "Skin/Info/QueenWebby",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Webby-Queen.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -11312,7 +11312,7 @@
     "InfoText": "Skin/Info/OverlordWebby",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Webby-Overlord.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -11375,7 +11375,7 @@
     "InfoText": "Skin/Info/OverSeerWebby",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Webby-Overseer.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -11431,7 +11431,7 @@
     "InfoText": "Skin/Info/InfestorWebby",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Webby-Infestor.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -11482,7 +11482,7 @@
     "InfoText": "Skin/Info/SwarmHostWebby",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Webby-SwarmHost.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -11614,7 +11614,7 @@
       "Viper_Webby"
     ],
     "Camera": "Star2CameraMid06",
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Webby",
     "CollectionDisplayModel": "Viper_Webby",
     "CollectionDisplayUnit": "Viper",
@@ -11629,7 +11629,7 @@
     "InfoText": "Skin/Info/MutaliskWebby",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Webby-Mutalisk.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -11670,7 +11670,7 @@
     "InfoText": "Skin/Info/CorruptorWebby",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Webby-Corruptor.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -11711,7 +11711,7 @@
     "InfoText": "Skin/Info/BroodLordWebby",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Webby-BroodLord.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -11807,7 +11807,7 @@
     "InfoText": "Skin/Info/UltraliskWebby",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Webby-Ultralisk.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -11858,7 +11858,7 @@
     "InfoText": "Skin/Info/SCVCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-scv-covertops.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -11899,7 +11899,7 @@
     "InfoText": "Skin/Info/MarineCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-marine-covertops.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -11960,7 +11960,7 @@
     "InfoText": "Skin/Info/MarauderCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-marauder-covertops.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -12006,7 +12006,7 @@
     "InfoText": "Skin/Info/ReaperCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-reaper-covertops.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -12047,7 +12047,7 @@
     "InfoText": "Skin/Info/GhostCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-ghost-covertops.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -12108,7 +12108,7 @@
     "InfoText": "Skin/Info/HellionCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-hellion-covertops.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -12172,7 +12172,7 @@
     "InfoText": "Skin/Info/CycloneCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-cyclone-covertops.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -12212,7 +12212,7 @@
     "InfoText": "Skin/Info/SiegeTankCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-siegetank-covertops.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -12276,7 +12276,7 @@
     "InfoText": "Skin/Info/WidowMineCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-widowmine-covertops.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -12321,7 +12321,7 @@
     "InfoText": "Skin/Info/ThorCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-thor-covertops.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -12372,7 +12372,7 @@
     "InfoText": "Skin/Info/MedivacCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-medivac-covertops.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -12463,7 +12463,7 @@
       "Viking_CovertOps_Fighter"
     ],
     "Camera": "Star2CameraMid06",
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_CovertOps",
     "CollectionDisplayModel": "Viking_CovertOps_Fighter",
     "CollectionDisplayUnit": "VikingFighter",
@@ -12480,7 +12480,7 @@
     "InfoText": "Skin/Info/BansheeCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-banshee-covertops.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -12521,7 +12521,7 @@
     "InfoText": "Skin/Info/RavenCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-raven-covertops.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -12607,7 +12607,7 @@
     "InfoText": "Skin/Info/LiberatorCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-liberator-covertops.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -12660,7 +12660,7 @@
     "InfoText": "Skin/Info/BattlecruiserCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-battlecruiser-covertops.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -12736,7 +12736,7 @@
     "InfoText": "Skin/Info/DronePrimal",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Primal-Drone.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -12787,7 +12787,7 @@
     "InfoText": "Skin/Info/OverlordPrimal",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Primal-Overlord.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -12850,7 +12850,7 @@
     "InfoText": "Skin/Info/OverseerPrimal",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Primal-Overseer.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -12906,7 +12906,7 @@
     "InfoText": "Skin/Info/ZerglingPrimal",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Primal-Zergling.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -13030,7 +13030,7 @@
       "Baneling_Primal"
     ],
     "Camera": "Star2CameraMid02",
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Primal",
     "CollectionDisplayModel": "Baneling_Primal",
     "CollectionDisplayUnit": "Baneling",
@@ -13045,7 +13045,7 @@
     "InfoText": "Skin/Info/RoachPrimal",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Primal-Roach.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -13103,7 +13103,7 @@
     "InfoText": "Skin/Info/RavagerPrimal",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Primal-Ravager.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -13164,7 +13164,7 @@
     "InfoText": "Skin/Info/HydraliskPrimal",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Primal-Hydralisk.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -13261,7 +13261,7 @@
       "Lurker_Primal"
     ],
     "Camera": "Star2CameraMid06",
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Primal",
     "CollectionDisplayModel": "Lurker_Primal",
     "CollectionDisplayUnit": "LurkerMP",
@@ -13276,7 +13276,7 @@
     "InfoText": "Skin/Info/QueenPrimal",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Primal-Queen.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -13352,7 +13352,7 @@
     "InfoText": "Skin/Info/SwarmHostPrimal",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Primal-SwarmHost.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -13463,7 +13463,7 @@
     "InfoText": "Skin/Info/InfestorPrimal",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Primal-Infestor.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -13514,7 +13514,7 @@
     "InfoText": "Skin/Info/MutaliskPrimal",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Primal-Mutalisk.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -13555,7 +13555,7 @@
     "InfoText": "Skin/Info/CorruptorPrimal",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Primal-Corruptor.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -13617,7 +13617,7 @@
       "Viper_Primal"
     ],
     "Camera": "Star2CameraMid06",
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Primal",
     "CollectionDisplayModel": "Viper_Primal",
     "CollectionDisplayUnit": "Viper",
@@ -13632,7 +13632,7 @@
     "InfoText": "Skin/Info/BroodLordPrimal",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Primal-BroodLord.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -13728,7 +13728,7 @@
     "InfoText": "Skin/Info/UltraliskPrimal",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Primal-Ultralisk.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -13779,7 +13779,7 @@
     "InfoText": "Skin/Info/SCVJunker",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-scv-junker.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -13820,7 +13820,7 @@
     "InfoText": "Skin/Info/MarineJunker",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-marine-junker.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -13881,7 +13881,7 @@
     "InfoText": "Skin/Info/ReaperJunker",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-reaper-junker.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -13922,7 +13922,7 @@
     "InfoText": "Skin/Info/MarauderJunker",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-marauder-junker.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -13968,7 +13968,7 @@
     "InfoText": "Skin/Info/GhostJunker",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-ghost-junker.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -14039,7 +14039,7 @@
     "InfoText": "Skin/Info/HellionJunkerMM",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-hellion-junker.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -14103,7 +14103,7 @@
     "InfoText": "Skin/Info/WidowMineJunker",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-widowmine-junker.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -14148,7 +14148,7 @@
     "InfoText": "Skin/Info/CycloneJunker",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-cyclone-junker.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -14188,7 +14188,7 @@
     "InfoText": "Skin/Info/SiegeTankJunker",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-tank-junker.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -14252,7 +14252,7 @@
     "InfoText": "Skin/Info/ThorJunker",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-thor-junker.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -14303,7 +14303,7 @@
     "InfoText": "Skin/Info/MedivacJunker",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-medivac-junker.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -14394,7 +14394,7 @@
       "Viking_Junker_Fighter"
     ],
     "Camera": "Star2CameraMid06",
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Junker",
     "CollectionDisplayModel": "Viking_Junker_Fighter",
     "CollectionDisplayUnit": "VikingFighter",
@@ -14411,7 +14411,7 @@
     "InfoText": "Skin/Info/BansheeJunker",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-banshee-junker.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -14452,7 +14452,7 @@
     "InfoText": "Skin/Info/LiberatorJunker",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-liberator-junker.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -14505,7 +14505,7 @@
     "InfoText": "Skin/Info/RavenJunker",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-ravenmp-junker.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -14561,7 +14561,7 @@
     "InfoText": "Skin/Info/BattlecruiserJunker",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-battlecruiser-junker.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -14637,7 +14637,7 @@
     "InfoText": "Skin/Info/ProbePurifier",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-purifier-Probe.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -14678,7 +14678,7 @@
     "InfoText": "Skin/Info/ZealotPurifier",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-purifier-Zealot.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -14724,7 +14724,7 @@
     "InfoText": "Skin/Info/SentryPurifier",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Purifier-Sentry.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -14770,7 +14770,7 @@
     "InfoText": "Skin/Info/AdeptPurifier",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Purifier-Adept.dds",
     "default": "1",
-    "Rotation": 345,
+    "Rotation": "345",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -14821,7 +14821,7 @@
     "InfoText": "Skin/Info/StalkerPurifier",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-purifier-Stalker.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -14872,7 +14872,7 @@
     "InfoText": "Skin/Info/HighTemplarPurifier",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-purifier-HighTemplar.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -14941,7 +14941,7 @@
     "InfoText": "Skin/Info/DarkTemplarPurifier",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-purifier-darktemplar.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -15029,7 +15029,7 @@
     "InfoText": "Skin/Info/ObserverPurifier",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-purifier-Observer.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -15075,7 +15075,7 @@
     "InfoText": "Skin/Info/WarpPrismPurifier",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-purifier-warpprism.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -15138,7 +15138,7 @@
     "InfoText": "Skin/Info/ImmortalPurifier",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-purifier-Immortal.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -15179,7 +15179,7 @@
     "InfoText": "Skin/Info/DisruptorPurifier",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-purifier-disruptor.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -15219,7 +15219,7 @@
     "InfoText": "Skin/Info/ColossusPurifier",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-purifier-Colossus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -15260,7 +15260,7 @@
     "InfoText": "Skin/Info/OraclePurifier",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-purifier-Oracle.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -15335,7 +15335,7 @@
     "InfoText": "Skin/Info/PhoenixPurifier",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-purifier-phoenix.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -15381,7 +15381,7 @@
     "InfoText": "Skin/Info/VoidRayPurifier",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Purifier-VoidRay.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -15427,7 +15427,7 @@
     "InfoText": "Skin/Info/CarrierPurifier",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-purifier-Carrier.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -15488,7 +15488,7 @@
     "InfoText": "Skin/Info/TempestPurifier",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-purifier-tempest.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -15533,7 +15533,7 @@
     "InfoText": "Skin/Info/MothershipPurifier",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-Purifier-Mothership.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -15590,7 +15590,7 @@
     "InfoText": "Skin/Info/BanelingNest",
     "VariationIcon": "Assets\\Textures\\btn-building-zerg-BanelingNest.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "BanelingNest",
     "DisplayModel": [
@@ -15606,7 +15606,7 @@
     "InfoText": "Skin/Info/EvolutionChamber",
     "VariationIcon": "Assets\\Textures\\btn-building-zerg-EvolutionChamber.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "EvolutionChamber",
     "DisplayModel": [
@@ -15622,7 +15622,7 @@
     "InfoText": "Skin/Info/Extractor",
     "VariationIcon": "Assets\\Textures\\btn-building-zerg-Extractor.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Extractor",
     "DisplayModel": [
@@ -15638,7 +15638,7 @@
     "InfoText": "Skin/Info/Hatchery",
     "VariationIcon": "Assets\\Textures\\btn-building-zerg-Hatchery.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Hatchery",
     "DisplayModel": [
@@ -15656,7 +15656,7 @@
     "InfoText": "Skin/Info/HydraliskDen",
     "VariationIcon": "Assets\\Textures\\btn-building-zerg-HydraliskDen.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "HydraliskDen",
     "DisplayModel": [
@@ -15672,7 +15672,7 @@
     "InfoText": "Skin/Info/InfestationPit",
     "VariationIcon": "Assets\\Textures\\btn-building-zerg-InfestationPit.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "InfestationPit",
     "DisplayModel": [
@@ -15688,7 +15688,7 @@
     "InfoText": "Skin/Info/LurkerDen",
     "VariationIcon": "Assets\\Textures\\btn-building-zerg-LurkerDen.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "LurkerDenMP",
     "DisplayModel": [
@@ -15704,7 +15704,7 @@
     "InfoText": "Skin/Info/NydusNetwork",
     "VariationIcon": "Assets\\Textures\\btn-building-zerg-NydusNetwork.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "NydusNetwork",
     "DisplayModel": [
@@ -15722,7 +15722,7 @@
     "InfoText": "Skin/Info/RoachWarren",
     "VariationIcon": "Assets\\Textures\\btn-building-zerg-RoachWarren.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "RoachWarren",
     "DisplayModel": [
@@ -15738,7 +15738,7 @@
     "InfoText": "Skin/Info/SpawningPool",
     "VariationIcon": "Assets\\Textures\\btn-building-zerg-SpawningPool.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "SpawningPool",
     "DisplayModel": [
@@ -15754,7 +15754,7 @@
     "InfoText": "Skin/Info/SpineCrawler",
     "VariationIcon": "Assets\\Textures\\btn-building-zerg-SpineCrawler.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "SpineCrawler",
     "DisplayModel": [
@@ -15770,7 +15770,7 @@
     "InfoText": "Skin/Info/SporeCrawler",
     "VariationIcon": "Assets\\Textures\\btn-building-zerg-SporeCrawler.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "SporeCrawler",
     "DisplayModel": [
@@ -15786,7 +15786,7 @@
     "InfoText": "Skin/Info/Spire",
     "VariationIcon": "Assets\\Textures\\btn-building-zerg-Spire.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Spire",
     "DisplayModel": [
@@ -15804,7 +15804,7 @@
     "InfoText": "Skin/Info/UltraliskCavern",
     "VariationIcon": "Assets\\Textures\\btn-building-zerg-UltraliskCavern.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "UltraliskCavern",
     "DisplayModel": [
@@ -15820,7 +15820,7 @@
     "InfoText": "Skin/Info/Larva",
     "VariationIcon": "Assets\\Textures\\btn-unit-zerg-Larva.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Larva",
     "DisplayModel": [
@@ -15838,7 +15838,7 @@
     "InfoText": "Skin/Info/Armory",
     "VariationIcon": "Assets\\Textures\\btn-building-terran-Armory.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Armory",
     "DisplayModel": [
@@ -15854,7 +15854,7 @@
     "InfoText": "Skin/Info/Barracks",
     "VariationIcon": "Assets\\Textures\\btn-building-terran-Barracks.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Barracks",
     "DisplayModel": [
@@ -15870,7 +15870,7 @@
     "InfoText": "Skin/Info/Bunker",
     "VariationIcon": "Assets\\Textures\\btn-building-terran-Bunker.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Bunker",
     "DisplayModel": [
@@ -15888,7 +15888,7 @@
     "InfoText": "Skin/Info/CommandCenter",
     "VariationIcon": "Assets\\Textures\\btn-building-terran-CommandCenter.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "CommandCenter",
     "DisplayModel": [
@@ -15906,7 +15906,7 @@
     "InfoText": "Skin/Info/EngineeringBay",
     "VariationIcon": "Assets\\Textures\\btn-building-terran-EngineeringBay.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "EngineeringBay",
     "DisplayModel": [
@@ -15922,7 +15922,7 @@
     "InfoText": "Skin/Info/Factory",
     "VariationIcon": "Assets\\Textures\\btn-building-terran-Factory.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Factory",
     "DisplayModel": [
@@ -15938,7 +15938,7 @@
     "InfoText": "Skin/Info/FusionCore",
     "VariationIcon": "Assets\\Textures\\btn-building-terran-FusionCore.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "FusionCore",
     "DisplayModel": [
@@ -15954,7 +15954,7 @@
     "InfoText": "Skin/Info/GhostAcademy",
     "VariationIcon": "Assets\\Textures\\btn-building-terran-GhostAcademy.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "GhostAcademy",
     "DisplayModel": [
@@ -15970,7 +15970,7 @@
     "InfoText": "Skin/Info/MissileTurret",
     "VariationIcon": "Assets\\Textures\\btn-building-terran-MissileTurret.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "MissileTurret",
     "DisplayModel": [
@@ -15986,7 +15986,7 @@
     "InfoText": "Skin/Info/Reactor",
     "VariationIcon": "Assets\\Textures\\btn-building-terran-Reactor.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Reactor",
     "DisplayModel": [
@@ -16002,7 +16002,7 @@
     "InfoText": "Skin/Info/Refinery",
     "VariationIcon": "Assets\\Textures\\btn-building-terran-Refinery.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Refinery",
     "DisplayModel": [
@@ -16018,7 +16018,7 @@
     "InfoText": "Skin/Info/SensorTower",
     "VariationIcon": "Assets\\Textures\\btn-building-terran-sensordome.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "SensorTower",
     "DisplayModel": [
@@ -16034,7 +16034,7 @@
     "InfoText": "Skin/Info/Starport",
     "VariationIcon": "Assets\\Textures\\btn-building-terran-Starport.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Starport",
     "DisplayModel": [
@@ -16050,7 +16050,7 @@
     "InfoText": "Skin/Info/SupplyDepot",
     "VariationIcon": "Assets\\Textures\\btn-building-terran-supplydepot.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid07",
     "CollectionDisplayUnit": "SupplyDepot",
     "DisplayModel": [
@@ -16066,7 +16066,7 @@
     "InfoText": "Skin/Info/TechLab",
     "VariationIcon": "Assets\\Textures\\btn-building-terran-TechLab.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "TechLab",
     "DisplayModel": [
@@ -16082,7 +16082,7 @@
     "InfoText": "Skin/Info/Nexus",
     "VariationIcon": "Assets\\Textures\\btn-building-protoss-Nexus.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "Nexus",
     "DisplayModel": [
@@ -16098,7 +16098,7 @@
     "InfoText": "Skin/Info/CyberneticsCore",
     "VariationIcon": "Assets\\Textures\\btn-building-protoss-CyberneticsCore.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "CyberneticsCore",
     "DisplayModel": [
@@ -16114,7 +16114,7 @@
     "InfoText": "Skin/Info/RoboticsBay",
     "VariationIcon": "Assets\\Textures\\btn-building-protoss-RoboticsBay.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "RoboticsBay",
     "DisplayModel": [
@@ -16130,7 +16130,7 @@
     "InfoText": "Skin/Info/ShieldBattery",
     "VariationIcon": "Assets\\Textures\\btn-building-protoss-ShieldBattery.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "ShieldBattery",
     "DisplayModel": [
@@ -16146,7 +16146,7 @@
     "InfoText": "Skin/Info/TemplarArchive",
     "VariationIcon": "Assets\\Textures\\btn-building-protoss-TemplarArchive.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "TemplarArchive",
     "DisplayModel": [
@@ -16162,7 +16162,7 @@
     "InfoText": "Skin/Info/TwilightCouncil",
     "VariationIcon": "Assets\\Textures\\btn-building-protoss-TwilightCouncil.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "TwilightCouncil",
     "DisplayModel": [
@@ -16178,7 +16178,7 @@
     "InfoText": "Skin/Info/DarkShrine",
     "VariationIcon": "Assets\\Textures\\btn-building-protoss-DarkShrine.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "Camera": "Star2CameraMid06",
     "CollectionDisplayUnit": "DarkShrine",
     "DisplayModel": [
@@ -16389,7 +16389,7 @@
     "InfoText": "Skin/Info/BansheeUmojan",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Banshee-Umojan.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -16430,7 +16430,7 @@
     "InfoText": "Skin/Info/BattlecruiserUmojan",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Battlecruiser-Umojan.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -16506,7 +16506,7 @@
     "InfoText": "Skin/Info/CycloneUmojan",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Cyclone-Umojan.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -16546,7 +16546,7 @@
     "InfoText": "Skin/Info/GhostUmojan",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Ghost-Umojan.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -16607,7 +16607,7 @@
     "InfoText": "Skin/Info/HellionUmojan",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Hellion-Umojan.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -16671,7 +16671,7 @@
     "InfoText": "Skin/Info/LiberatorUmojan",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Liberator-Umojan.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -16724,7 +16724,7 @@
     "InfoText": "Skin/Info/MarauderUmojan",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Marauder-Umojan.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -16770,7 +16770,7 @@
     "InfoText": "Skin/Info/MarineUmojan",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Marine-Umojan.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -16831,7 +16831,7 @@
     "InfoText": "Skin/Info/MedivacUmojan",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Medivac-Umojan.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -16871,7 +16871,7 @@
     "InfoText": "Skin/Info/RavenUmojan",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Raven-Umojan.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -16927,7 +16927,7 @@
     "InfoText": "Skin/Info/ReaperUmojan",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Reaper-Umojan.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -16968,7 +16968,7 @@
     "InfoText": "Skin/Info/SCVUmojan",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-SCV-Umojan.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -17009,7 +17009,7 @@
     "InfoText": "Skin/Info/SiegeTankUmojan",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-SiegeTank-Umojan.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -17073,7 +17073,7 @@
     "InfoText": "Skin/Info/ThorUmojan",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Thor-Umojan.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -17175,7 +17175,7 @@
       "Viking_Umojan_Fighter"
     ],
     "Camera": "Star2CameraMid06",
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Umojan",
     "CollectionDisplayModel": "Viking_Umojan_Fighter",
     "CollectionDisplayUnit": "VikingFighter",
@@ -17192,7 +17192,7 @@
     "InfoText": "Skin/Info/WidowMineUmojan",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-WidowMine-Umojan.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -17273,7 +17273,7 @@
       "Baneling_Mecha"
     ],
     "Camera": "Star2CameraMid02",
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Mecha",
     "CollectionDisplayModel": "Baneling_Mecha",
     "CollectionDisplayUnit": "Baneling",
@@ -17288,7 +17288,7 @@
     "InfoText": "Skin/Info/BroodLordMecha",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-BroodLord-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -17384,7 +17384,7 @@
     "InfoText": "Skin/Info/CorruptorMecha",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Corruptor-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -17425,7 +17425,7 @@
     "InfoText": "Skin/Info/DroneMecha",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Drone-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -17476,7 +17476,7 @@
     "InfoText": "Skin/Info/HydraliskMecha",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Hydralisk-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -17527,7 +17527,7 @@
     "InfoText": "Skin/Info/InfestorMecha",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Infestor-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -17629,7 +17629,7 @@
       "Lurker_Mecha"
     ],
     "Camera": "Star2CameraMid06",
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Mecha",
     "CollectionDisplayModel": "Lurker_Mecha",
     "CollectionDisplayUnit": "LurkerMP",
@@ -17644,7 +17644,7 @@
     "InfoText": "Skin/Info/MutaliskMecha",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Mutalisk-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -17685,7 +17685,7 @@
     "InfoText": "Skin/Info/OverlordMecha",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Overlord-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -17748,7 +17748,7 @@
     "InfoText": "Skin/Info/OverseerMecha",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Overseer-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -17809,7 +17809,7 @@
     "InfoText": "Skin/Info/QueenMecha",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Queen-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -17885,7 +17885,7 @@
     "InfoText": "Skin/Info/RavagerMecha",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Ravager-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -17946,7 +17946,7 @@
     "InfoText": "Skin/Info/RoachMecha",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Roach-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -18004,7 +18004,7 @@
     "InfoText": "Skin/Info/SwarmHostMecha",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-SwarmHost-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -18115,7 +18115,7 @@
     "InfoText": "Skin/Info/UltraliskMecha",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Ultralisk-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -18187,7 +18187,7 @@
       "Viper_Mecha"
     ],
     "Camera": "Star2CameraMid06",
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Mecha",
     "CollectionDisplayModel": "Viper_Mecha",
     "CollectionDisplayUnit": "Viper",
@@ -18202,7 +18202,7 @@
     "InfoText": "Skin/Info/ZerglingMecha",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Zergling-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -18290,7 +18290,7 @@
     "InfoText": "Skin/Info/AdeptGolden",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Adept-Golden.dds",
     "default": "1",
-    "Rotation": 345,
+    "Rotation": "345",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -18336,7 +18336,7 @@
     "InfoText": "Skin/Info/CarrierGolden",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Carrier-Golden.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -18397,7 +18397,7 @@
     "InfoText": "Skin/Info/ColossusGolden",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Colossus-Golden.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -18438,7 +18438,7 @@
     "InfoText": "Skin/Info/DarkTemplarGolden",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-DarkTemplar-Golden.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -18551,7 +18551,7 @@
     "InfoText": "Skin/Info/DisruptorGolden",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Disruptor-Golden.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -18591,7 +18591,7 @@
     "InfoText": "Skin/Info/HighTemplarGolden",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-HighTemplar-Golden.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -18660,7 +18660,7 @@
     "InfoText": "Skin/Info/ImmortalGolden",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Immortal-Golden.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -18701,7 +18701,7 @@
     "InfoText": "Skin/Info/MothershipGolden",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Mothership-Golden.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -18758,7 +18758,7 @@
     "InfoText": "Skin/Info/ObserverGolden",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Observer-Golden.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -18804,7 +18804,7 @@
     "InfoText": "Skin/Info/OracleGolden",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Oracle-Golden.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -18879,7 +18879,7 @@
     "InfoText": "Skin/Info/PhoenixGolden",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Phoenix-Golden.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -18925,7 +18925,7 @@
     "InfoText": "Skin/Info/ProbeGolden",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Probe-Golden.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -18966,7 +18966,7 @@
     "InfoText": "Skin/Info/SentryGolden",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Sentry-Golden.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -19012,7 +19012,7 @@
     "InfoText": "Skin/Info/StalkerGolden",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Stalker-Golden.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -19063,7 +19063,7 @@
     "InfoText": "Skin/Info/TempestGolden",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Tempest-Golden.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -19108,7 +19108,7 @@
     "InfoText": "Skin/Info/VoidRayGolden",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-VoidRay-Golden.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -19154,7 +19154,7 @@
     "InfoText": "Skin/Info/WarpPrismGolden",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-WarpPrism-Golden.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -19217,7 +19217,7 @@
     "InfoText": "Skin/Info/ZealotGolden",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Zealot-Golden.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -19263,7 +19263,7 @@
     "InfoText": "Skin/Info/DroneRemastered",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-drone-remastered.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -19324,7 +19324,7 @@
     "InfoText": "Skin/Info/ProbeRemastered",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-probe-remastered.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -19365,7 +19365,7 @@
     "InfoText": "Skin/Info/SCVRemastered",
     "VariationIcon": "Assets\\Textures\\btn-unit-collection-scv-remastered.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -19406,7 +19406,7 @@
     "InfoText": "Skin/Info/CarrierRemastered",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Carrier-Remastered.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -19467,7 +19467,7 @@
     "InfoText": "Skin/Info/UltraliskRemastered",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Ultralisk-Remastered.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -19518,7 +19518,7 @@
     "InfoText": "Skin/Info/BattlecruiserRemastered",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Battlecruiser-Remastered.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -19594,7 +19594,7 @@
     "InfoText": "Skin/Info/BanelingNestMecha",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-BanelingNest-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -19644,7 +19644,7 @@
     "InfoText": "Skin/Info/EvolutionChamberMecha",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-EvolutionChamber-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -19694,7 +19694,7 @@
     "InfoText": "Skin/Info/ExtractorMecha",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-Extractor-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -19759,7 +19759,7 @@
     "InfoText": "Skin/Info/HatcheryMecha",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-Hatchery-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -19841,7 +19841,7 @@
     "InfoText": "Skin/Info/HydraliskDenMecha",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-HydraliskDen-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -19891,7 +19891,7 @@
     "InfoText": "Skin/Info/InfestationPitMecha",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-InfestationPit-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -19976,7 +19976,7 @@
     "DisplayModel": [
       "LurkerDen_Mecha"
     ],
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Mecha",
     "CollectionDisplayModel": "LurkerDen_Mecha",
     "CollectionDisplayUnit": "LurkerDenMP",
@@ -19991,7 +19991,7 @@
     "InfoText": "Skin/Info/NydusNetworkMecha",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-NydusNetwork-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -20078,7 +20078,7 @@
     "InfoText": "Skin/Info/RoachWarrenMecha",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-RoachWarren-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -20128,7 +20128,7 @@
     "InfoText": "Skin/Info/SpawningPoolMecha",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-SpawningPool-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -20178,7 +20178,7 @@
     "InfoText": "Skin/Info/SpineCrawlerMecha",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-SpineCrawler-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -20233,7 +20233,7 @@
     "InfoText": "Skin/Info/SporeCrawlerMecha",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-SporeCrawler-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -20288,7 +20288,7 @@
     "InfoText": "Skin/Info/SpireMecha",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-Spire-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -20360,7 +20360,7 @@
     "InfoText": "Skin/Info/UltraliskCavernMecha",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-UltraliskCavern-Mecha.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -20470,7 +20470,7 @@
     "DisplayModel": [
       "Larva_Mecha"
     ],
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Mecha",
     "CollectionDisplayModel": "Larva_Mecha",
     "CollectionDisplayUnit": "Larva",
@@ -20487,7 +20487,7 @@
     "InfoText": "Skin/Info/ArmoryCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-Armory-CovertOps.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -20537,7 +20537,7 @@
     "InfoText": "Skin/Info/BarracksCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-Barracks-CovertOps.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -20592,7 +20592,7 @@
     "InfoText": "Skin/Info/BunkerCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-Bunker-CovertOps.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -20664,7 +20664,7 @@
     "InfoText": "Skin/Info/CommandCenterCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-CommandCenter-CovertOps.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -20746,7 +20746,7 @@
     "InfoText": "Skin/Info/EngineeringBayCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-EngineeringBay-CovertOps.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -20796,7 +20796,7 @@
     "InfoText": "Skin/Info/FactoryCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-Factory-CovertOps.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -20851,7 +20851,7 @@
     "InfoText": "Skin/Info/FusionCoreCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-FusionCore-CovertOps.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -20901,7 +20901,7 @@
     "InfoText": "Skin/Info/GhostAcademyCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-GhostAcademy-CovertOps.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -20951,7 +20951,7 @@
     "InfoText": "Skin/Info/MissileTurretCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-MissileTurret-CovertOps.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -21001,7 +21001,7 @@
     "InfoText": "Skin/Info/ReactorCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-Reactor-CovertOps.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -21071,7 +21071,7 @@
     "InfoText": "Skin/Info/RefineryCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-Refinery-CovertOps.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -21136,7 +21136,7 @@
     "InfoText": "Skin/Info/SensorTowerCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-SensorTower-CovertOps.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -21186,7 +21186,7 @@
     "InfoText": "Skin/Info/StarportCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-Starport-CovertOps.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -21241,7 +21241,7 @@
     "InfoText": "Skin/Info/SupplyDepotCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-SupplyDepot-CovertOps.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -21317,7 +21317,7 @@
     "InfoText": "Skin/Info/TechLabCovertOps",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-TechLab-CovertOps.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -21387,7 +21387,7 @@
     "InfoText": "Skin/Info/NexusForged",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-Nexus-Forged.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -21442,7 +21442,7 @@
     "InfoText": "Skin/Info/AssimilatorForged",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-Assimilator-Forged.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -21512,7 +21512,7 @@
     "InfoText": "Skin/Info/PylonForged",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-Pylon-Forged.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -21568,7 +21568,7 @@
     "InfoText": "Skin/Info/GatewayForged",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-Gateway-Forged.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -21630,7 +21630,7 @@
     "InfoText": "Skin/Info/ForgeForged",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-Forge-Forged.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -21685,7 +21685,7 @@
     "InfoText": "Skin/Info/PhotonCannonForged",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-PhotonCannon-Forged.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -21745,7 +21745,7 @@
     "InfoText": "Skin/Info/ShieldBatteryForged",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-ShieldBattery-Forged.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -21805,7 +21805,7 @@
     "InfoText": "Skin/Info/CyberneticsCoreForged",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-CyberneticsCore-Forged.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -21860,7 +21860,7 @@
     "InfoText": "Skin/Info/RoboticsFacilityForged",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-RoboticsFacility-Forged.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -21920,7 +21920,7 @@
     "InfoText": "Skin/Info/RoboticsBayForged",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-RoboticsBay-Forged.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -21980,7 +21980,7 @@
     "InfoText": "Skin/Info/TwilightCouncilForged",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-TwilightCouncil-Forged.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -22035,7 +22035,7 @@
     "InfoText": "Skin/Info/StargateForged",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-Stargate-Forged.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -22095,7 +22095,7 @@
     "InfoText": "Skin/Info/TemplarArchiveForged",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-TemplarArchive-Forged.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -22150,7 +22150,7 @@
     "InfoText": "Skin/Info/DarkShrineForged",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-DarkShrine-Forged.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -22205,7 +22205,7 @@
     "InfoText": "Skin/Info/FleetBeaconForged",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-FleetBeacon-Forged.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -22289,7 +22289,7 @@
     "InfoText": "Skin/Info/BansheeSilver",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Banshee-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -22330,7 +22330,7 @@
     "InfoText": "Skin/Info/BattlecruiserSilver",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Battlecruiser-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -22406,7 +22406,7 @@
     "InfoText": "Skin/Info/CycloneSilver",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Cyclone-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -22446,7 +22446,7 @@
     "InfoText": "Skin/Info/GhostSilver",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Ghost-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -22517,7 +22517,7 @@
     "InfoText": "Skin/Info/HellionSilver",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Hellion-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -22581,7 +22581,7 @@
     "InfoText": "Skin/Info/LiberatorSilver",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Liberator-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -22634,7 +22634,7 @@
     "InfoText": "Skin/Info/MarauderSilver",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Marauder-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -22680,7 +22680,7 @@
     "InfoText": "Skin/Info/MarineSilver",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Marine-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -22741,7 +22741,7 @@
     "InfoText": "Skin/Info/MedivacSilver",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Medivac-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -22781,7 +22781,7 @@
     "InfoText": "Skin/Info/RavenSilver",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Raven-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -22837,7 +22837,7 @@
     "InfoText": "Skin/Info/ReaperSilver",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Reaper-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -22878,7 +22878,7 @@
     "InfoText": "Skin/Info/SCVSilver",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-SCV-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -22919,7 +22919,7 @@
     "InfoText": "Skin/Info/SiegeTankSilver",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-SiegeTank-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -22983,7 +22983,7 @@
     "InfoText": "Skin/Info/ThorSilver",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Thor-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -23085,7 +23085,7 @@
       "Viking_Silver_Fighter"
     ],
     "Camera": "Star2CameraMid06",
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_Silver",
     "CollectionDisplayModel": "Viking_Silver_Fighter",
     "CollectionDisplayUnit": "VikingFighter",
@@ -23102,7 +23102,7 @@
     "InfoText": "Skin/Info/WidowMineSilver",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-WidowMine-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -23173,7 +23173,7 @@
       "Baneling_RCZ"
     ],
     "Camera": "Star2CameraMid02",
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_RCZ",
     "CollectionDisplayModel": "Baneling_RCZ",
     "CollectionDisplayUnit": "Baneling",
@@ -23188,7 +23188,7 @@
     "InfoText": "Skin/Info/BroodLordRCZ",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-BroodLord-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -23274,7 +23274,7 @@
     "InfoText": "Skin/Info/CorruptorRCZ",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Corruptor-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -23315,7 +23315,7 @@
     "InfoText": "Skin/Info/DroneRCZ",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Drone-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -23366,7 +23366,7 @@
     "InfoText": "Skin/Info/HydraliskRCZ",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Hydralisk-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -23417,7 +23417,7 @@
     "InfoText": "Skin/Info/InfestorRCZ",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Infestor-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -23504,7 +23504,7 @@
       "Lurker_RCZ"
     ],
     "Camera": "Star2CameraMid06",
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_RCZ",
     "CollectionDisplayModel": "Lurker_RCZ",
     "CollectionDisplayUnit": "LurkerMP",
@@ -23519,7 +23519,7 @@
     "InfoText": "Skin/Info/MutaliskRCZ",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Mutalisk-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -23560,7 +23560,7 @@
     "InfoText": "Skin/Info/OverlordRCZ",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Overlord-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -23613,7 +23613,7 @@
     "InfoText": "Skin/Info/OverseerRCZ",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Overseer-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -23654,7 +23654,7 @@
     "InfoText": "Skin/Info/QueenRCZ",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Queen-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -23705,7 +23705,7 @@
     "InfoText": "Skin/Info/RavagerRCZ",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Ravager-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -23756,7 +23756,7 @@
     "InfoText": "Skin/Info/RoachRCZ",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Roach-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -23814,7 +23814,7 @@
     "InfoText": "Skin/Info/SwarmHostRCZ",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-SwarmHost-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -23925,7 +23925,7 @@
     "InfoText": "Skin/Info/UltraliskRCZ",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Ultralisk-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -23997,7 +23997,7 @@
       "Viper_RCZ"
     ],
     "Camera": "Star2CameraMid06",
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_RCZ",
     "CollectionDisplayModel": "Viper_RCZ",
     "CollectionDisplayUnit": "Viper",
@@ -24012,7 +24012,7 @@
     "InfoText": "Skin/Info/ZerglingRCZ",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Zergling-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -24100,7 +24100,7 @@
     "InfoText": "Skin/Info/AdeptIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Adept-Ihanrii.dds",
     "default": "1",
-    "Rotation": 345,
+    "Rotation": "345",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -24146,7 +24146,7 @@
     "InfoText": "Skin/Info/CarrierIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Carrier-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -24207,7 +24207,7 @@
     "InfoText": "Skin/Info/ColossusIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Colossus-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -24248,7 +24248,7 @@
     "InfoText": "Skin/Info/DarkTemplarIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-DarkTemplar-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -24361,7 +24361,7 @@
     "InfoText": "Skin/Info/DisruptorIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Disruptor-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -24401,7 +24401,7 @@
     "InfoText": "Skin/Info/HighTemplarIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-HighTemplar-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -24470,7 +24470,7 @@
     "InfoText": "Skin/Info/ImmortalIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Immortal-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -24511,7 +24511,7 @@
     "InfoText": "Skin/Info/MothershipIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Mothership-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -24568,7 +24568,7 @@
     "InfoText": "Skin/Info/ObserverIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Observer-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -24614,7 +24614,7 @@
     "InfoText": "Skin/Info/OracleIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Oracle-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -24689,7 +24689,7 @@
     "InfoText": "Skin/Info/PhoenixIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Phoenix-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -24735,7 +24735,7 @@
     "InfoText": "Skin/Info/ProbeIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Probe-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -24776,7 +24776,7 @@
     "InfoText": "Skin/Info/SentryIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Sentry-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -24822,7 +24822,7 @@
     "InfoText": "Skin/Info/StalkerIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Stalker-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -24873,7 +24873,7 @@
     "InfoText": "Skin/Info/TempestIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Tempest-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -24918,7 +24918,7 @@
     "InfoText": "Skin/Info/VoidRayIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-VoidRay-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -24964,7 +24964,7 @@
     "InfoText": "Skin/Info/WarpPrismIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-WarpPrism-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -25027,7 +25027,7 @@
     "InfoText": "Skin/Info/ZealotIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Zealot-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -25073,7 +25073,7 @@
     "InfoText": "Skin/Info/MarineRemastered",
     "VariationIcon": "Assets\\Textures\\btn-unit-Terran-Marine-Remastered.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -25134,7 +25134,7 @@
     "InfoText": "Skin/Info/ZealotRemastered",
     "VariationIcon": "Assets\\Textures\\btn-unit-Protoss-Zealot-Remastered.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -25180,7 +25180,7 @@
     "InfoText": "Skin/Info/HydraliskRemastered",
     "VariationIcon": "Assets\\Textures\\btn-unit-Zerg-Hydralisk-Remastered.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -25231,7 +25231,7 @@
     "InfoText": "Skin/Info/BanelingNestRCZ",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-BanelingNest-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -25281,7 +25281,7 @@
     "InfoText": "Skin/Info/EvolutionChamberRCZ",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-EvolutionChamber-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -25331,7 +25331,7 @@
     "InfoText": "Skin/Info/ExtractorRCZ",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-Extractor-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -25396,7 +25396,7 @@
     "InfoText": "Skin/Info/HatcheryRCZ",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-Hatchery-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -25478,7 +25478,7 @@
     "InfoText": "Skin/Info/HydraliskDenRCZ",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-HydraliskDen-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -25528,7 +25528,7 @@
     "InfoText": "Skin/Info/InfestationPitRCZ",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-InfestationPit-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -25613,7 +25613,7 @@
     "DisplayModel": [
       "LurkerDen_RCZ"
     ],
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_RCZ",
     "CollectionDisplayModel": "LurkerDen_RCZ",
     "CollectionDisplayUnit": "LurkerDenMP",
@@ -25628,7 +25628,7 @@
     "InfoText": "Skin/Info/NydusNetworkRCZ",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-NydusNetwork-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -25715,7 +25715,7 @@
     "InfoText": "Skin/Info/RoachWarrenRCZ",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-RoachWarren-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -25765,7 +25765,7 @@
     "InfoText": "Skin/Info/SpawningPoolRCZ",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-SpawningPool-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -25815,7 +25815,7 @@
     "InfoText": "Skin/Info/SpineCrawlerRCZ",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-SpineCrawler-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -25870,7 +25870,7 @@
     "InfoText": "Skin/Info/SporeCrawlerRCZ",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-SporeCrawler-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -25925,7 +25925,7 @@
     "InfoText": "Skin/Info/SpireRCZ",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-Spire-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -25997,7 +25997,7 @@
     "InfoText": "Skin/Info/UltraliskCavernRCZ",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-UltraliskCavern-RCZ.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -26072,7 +26072,7 @@
     "DisplayModel": [
       "Larva_RCZ"
     ],
-    "Rotation": 35,
+    "Rotation": "35",
     "WarChestUILight": "WarChestSkinPreview_RCZ",
     "CollectionDisplayModel": "Larva_RCZ",
     "CollectionDisplayUnit": "Larva",
@@ -26089,7 +26089,7 @@
     "InfoText": "Skin/Info/ArmorySilver",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-Armory-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -26139,7 +26139,7 @@
     "InfoText": "Skin/Info/BarracksSilver",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-Barracks-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -26194,7 +26194,7 @@
     "InfoText": "Skin/Info/BunkerSilver",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-Bunker-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -26266,7 +26266,7 @@
     "InfoText": "Skin/Info/CommandCenterSilver",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-CommandCenter-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -26348,7 +26348,7 @@
     "InfoText": "Skin/Info/EngineeringBaySilver",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-EngineeringBay-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -26398,7 +26398,7 @@
     "InfoText": "Skin/Info/FactorySilver",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-Factory-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -26453,7 +26453,7 @@
     "InfoText": "Skin/Info/FusionCoreSilver",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-FusionCore-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -26503,7 +26503,7 @@
     "InfoText": "Skin/Info/GhostAcademySilver",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-GhostAcademy-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -26553,7 +26553,7 @@
     "InfoText": "Skin/Info/MissileTurretSilver",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-MissileTurret-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -26603,7 +26603,7 @@
     "InfoText": "Skin/Info/ReactorSilver",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-Reactor-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -26673,7 +26673,7 @@
     "InfoText": "Skin/Info/RefinerySilver",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-Refinery-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -26738,7 +26738,7 @@
     "InfoText": "Skin/Info/SensorTowerSilver",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-SensorTower-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -26788,7 +26788,7 @@
     "InfoText": "Skin/Info/StarportSilver",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-Starport-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -26843,7 +26843,7 @@
     "InfoText": "Skin/Info/SupplyDepotSilver",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-SupplyDepot-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -26919,7 +26919,7 @@
     "InfoText": "Skin/Info/TechLabSilver",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-TechLab-Silver.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -26989,7 +26989,7 @@
     "InfoText": "Skin/Info/NexusIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-Nexus-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -27044,7 +27044,7 @@
     "InfoText": "Skin/Info/AssimilatorIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-Assimilator-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -27114,7 +27114,7 @@
     "InfoText": "Skin/Info/PylonIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-Pylon-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -27170,7 +27170,7 @@
     "InfoText": "Skin/Info/GatewayIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-Gateway-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -27232,7 +27232,7 @@
     "InfoText": "Skin/Info/ForgeIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-Forge-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -27287,7 +27287,7 @@
     "InfoText": "Skin/Info/PhotonCannonIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-PhotonCannon-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -27347,7 +27347,7 @@
     "InfoText": "Skin/Info/ShieldBatteryIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-ShieldBattery-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -27407,7 +27407,7 @@
     "InfoText": "Skin/Info/CyberneticsCoreIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-CyberneticsCore-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -27462,7 +27462,7 @@
     "InfoText": "Skin/Info/RoboticsFacilityIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-RoboticsFacility-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -27522,7 +27522,7 @@
     "InfoText": "Skin/Info/RoboticsBayIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-RoboticsBay-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -27582,7 +27582,7 @@
     "InfoText": "Skin/Info/TwilightCouncilIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-TwilightCouncil-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -27637,7 +27637,7 @@
     "InfoText": "Skin/Info/StargateIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-Stargate-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -27697,7 +27697,7 @@
     "InfoText": "Skin/Info/TemplarArchiveIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-TemplarArchive-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -27752,7 +27752,7 @@
     "InfoText": "Skin/Info/DarkShrineIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-DarkShrine-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -27807,7 +27807,7 @@
     "InfoText": "Skin/Info/FleetBeaconIhanrii",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-FleetBeacon-Ihanrii.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -27867,7 +27867,7 @@
     "InfoText": "Skin/Info/CommandCenterRemastered",
     "VariationIcon": "Assets\\Textures\\btn-building-Terran-CommandCenter-Remastered.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -27949,7 +27949,7 @@
     "InfoText": "Skin/Info/NexusRemastered",
     "VariationIcon": "Assets\\Textures\\btn-building-Protoss-Nexus-Remastered.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",
@@ -28004,7 +28004,7 @@
     "InfoText": "Skin/Info/HatcheryRemastered",
     "VariationIcon": "Assets\\Textures\\btn-building-Zerg-Hatchery-Remastered.dds",
     "default": "1",
-    "Rotation": 35,
+    "Rotation": "35",
     "ReplacementArray": [
       {
         "Catalog": "Model",

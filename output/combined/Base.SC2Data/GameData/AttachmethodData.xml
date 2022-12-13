@@ -15,19 +15,20 @@
 </CAttachMethodFilter>
 <CAttachMethodIncoming id="AMIncoming"/>
 <CAttachMethodReduction id="AMReductionForBodySquibs">
-  <RequestCount value="3"/>
-  <PassChanceEach value="70"/>
+  <RequestCount value="2"/>
+  <PassChanceEach value="100.000000"/>
+  <RequestCountRange value="2"/>
 </CAttachMethodReduction>
 <CAttachMethodReduction id="AMReductionForBodySquibsHeavy">
   <RequestCount value="1000"/>
-  <PassChanceEach value="70"/>
+  <PassChanceEach value="70.000000"/>
 </CAttachMethodReduction>
 <CAttachMethodReduction id="AMReductionForBodySquibsReduced">
   <RequestCount value="2"/>
-  <PassChanceEach value="50"/>
+  <PassChanceEach value="50.000000"/>
 </CAttachMethodReduction>
 <CAttachMethodReduction id="AMReductionForBloodGroundSpew">
-  <PassChanceFull value="50"/>
+  <PassChanceFull value="50.000000"/>
 </CAttachMethodReduction>
 <CAttachMethodNodeOccupancy2 id="AMNodeOccupancyDeathBlood">
   <Targets value="BloodSquibDeathRagdoll"/>
@@ -220,9 +221,9 @@
 <CAttachMethodVolumesRequery id="AMVolumesRequery"/>
 <CAttachMethodVolumesTargets id="AMVolumesTargets"/>
 <CAttachMethodVolumesWeightedPick id="AMVolumesWeightedPick">
-  <VolumeFactor value="1"/>
-  <ProximityFactorNear value="3"/>
-  <ProximityFactorFar value="1"/>
+  <VolumeFactor value="1.000000"/>
+  <ProximityFactorNear value="3.000000"/>
+  <ProximityFactorFar value="1.000000"/>
 </CAttachMethodVolumesWeightedPick>
 <CAttachMethodNodeOccupancy id="AMNodeOccupancyNoSpam">
   <Logic value="RequireNone"/>
@@ -241,10 +242,10 @@
   <Location Value="TargetUnitOrPoint"/>
 </CAttachMethodProximity>
 <CAttachMethodRandom id="AMRandom">
-  <ExponentialMean value="0.3333"/>
+  <ExponentialMean value="0.333300"/>
 </CAttachMethodRandom>
 <CAttachMethodRandom id="AMRandomExpTight">
-  <ExponentialMean value="0.1"/>
+  <ExponentialMean value="0.100000"/>
 </CAttachMethodRandom>
 <CAttachMethodRandom id="AMRandomUniform">
   <Distribution value="Uniform"/>
@@ -256,12 +257,12 @@
 <CAttachMethodReduction id="AMReduction"/>
 <CAttachMethodReduction id="AMReductionQtr">
   <ReductionType value="Percentage"/>
-  <RequestPercentage value="0.25"/>
+  <RequestPercentage value="0.250000"/>
 </CAttachMethodReduction>
 <CAttachMethodReduction id="AMReductionFire">
   <ReductionType value="Percentage"/>
   <RequestCount value="2"/>
-  <RequestPercentage value="0.25"/>
+  <RequestPercentage value="0.250000"/>
 </CAttachMethodReduction>
 <CAttachMethodNodeOccupancy id="AMNodeOccupancyTerranFlames">
   <Targets value="Assets\Effects\Terran\TerranBuildingFireLarge\TerranBuildingFireLarge.m3"/>
@@ -323,5 +324,87 @@
   <Keys Keyword="Head"/>
   <Keys Keyword="Top"/>
 </CAttachMethodFilter>
+<CAttachMethodPattern id="AMPatternMPOdin">
+  <Keyword value="Weapon"/>
+  <Driver value="MPOdinsGugnirDamage"/>
+</CAttachMethodPattern>
+<CAttachMethodFilter id="AMFilterTurret">
+  <Keys Keyword="TurretZ"/>
+</CAttachMethodFilter>
+<CAttachMethodPattern id="AMPatternSJMercSentryTower">
+  <Keyword value="Weapon"/>
+  <Base value="::RollingIndex"/>
+  <Multiplier value="2"/>
+  <Driver value="SJMercSentryTowerLM"/>
+</CAttachMethodPattern>
+<CAttachMethodPattern id="AMPatternMengskGoliath">
+  <Keyword value="SetB"/>
+  <Base value="::RollingIndex"/>
+  <Multiplier value="2"/>
+  <Driver value="MengskGoliathALM"/>
+</CAttachMethodPattern>
+<CAttachMethodPattern id="AMPatternMengskViking">
+  <Keyword value="Weapon"/>
+  <Driver value="MengskVikingFighterLM"/>
+</CAttachMethodPattern>
+<CAttachMethodFilter id="AMFilterWarHound">
+  <Logic value="OR"/>
+  <Keys Keyword="Weapon" Index="1"/>
+  <Keys Keyword="Weapon" Index="2"/>
+  <Keys Keyword="Weapon" Index="3"/>
+</CAttachMethodFilter>
+<CAttachMethodPattern id="AMPatternWarHound">
+  <Keyword value="Weapon"/>
+  <Driver value="TornadoMissileLM"/>
+</CAttachMethodPattern>
+<CAttachMethodFilter id="AMFilterWarHoundDummy">
+  <Logic value="OR"/>
+  <Keys Keyword="Weapon" Index="3"/>
+  <Keys Keyword="Weapon" Index="2"/>
+  <Keys Keyword="Weapon" Index="1"/>
+</CAttachMethodFilter>
+<CAttachMethodPattern id="AMPatternWarHoundDummy">
+  <Keyword value="Weapon"/>
+  <Driver value="TornadoMissileLM"/>
+</CAttachMethodPattern>
+<CAttachMethodPattern id="AMPatternMengskBanshee">
+  <Keyword value="Weapon"/>
+  <Driver value="MengskBansheeLM"/>
+</CAttachMethodPattern>
+<CAttachMethodFilter id="AMFilterMengskBCCannons">
+  <Logic value="OR"/>
+  <Keys Keyword="Weapon" Index="10"/>
+  <Keys Keyword="Weapon" Index="11"/>
+</CAttachMethodFilter>
+<CAttachMethodPattern id="AMPatternMengskBCCannonsG">
+  <Keyword value="Weapon"/>
+  <Base value="::RollingIndex"/>
+  <Driver value="MengskBCCannonsG"/>
+</CAttachMethodPattern>
+<CAttachMethodPattern id="AMPatternMengskBCCannonsA">
+  <Keyword value="Weapon"/>
+  <Base value="::RollingIndex"/>
+  <Driver value="MengskBCCannonsA"/>
+</CAttachMethodPattern>
+<CAttachMethodPattern id="AMPatternMagni">
+  <Keyword value="Weapon"/>
+  <Base value="::RollingIndex"/>
+  <Driver value="MagnisHammerDamage"/>
+</CAttachMethodPattern>
+<CAttachMethodFilter id="AMFilterBroodLordWings">
+  <Logic value="OR"/>
+  <Keys Keyword="Target" Index="1"/>
+  <Keys Keyword="Target" Index="2"/>
+</CAttachMethodFilter>
+<CAttachMethodPattern id="AMPatternThorAALance">
+  <Keyword value="Weapon"/>
+  <Driver value="LanceMissileLaunchersDamage"/>
+  <Base value="::RollingIndex"/>
+</CAttachMethodPattern>
+<CAttachMethodPattern id="AMPatternLiberator">
+  <Keyword value="Weapon"/>
+  <Base value="::RollingIndex"/>
+  <Driver value="LiberatorDamageMissileLM"/>
+</CAttachMethodPattern>
 
 </Catalog>

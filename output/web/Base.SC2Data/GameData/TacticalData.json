@@ -4,7 +4,7 @@
     "default": "1",
     "Abil": "D8Charge",
     "TargetFind": "TacticalD8ChargeTarget",
-    "Retreat": 1
+    "Retreat": "1"
   },
   "Phoenix": {
     "class": "CTacticalOrder",
@@ -133,7 +133,7 @@
     "class": "CTacticalOrder",
     "default": "1",
     "Abil": "Rally",
-    "AbilCmdIndex": 1,
+    "AbilCmdIndex": "1",
     "TargetFind": "WorkerRallyPointHatchery"
   },
   "Nexus": {
@@ -200,7 +200,7 @@
     "class": "CTacticalOrder",
     "default": "1",
     "Abil": "GhostCloak",
-    "AbilCmdIndex": 1,
+    "AbilCmdIndex": "1",
     "Validator": "TacticalGhostCloakOff"
   },
   "GhostDeCloaked": {
@@ -229,7 +229,7 @@
     "class": "CTacticalOrder",
     "default": "1",
     "Abil": "BansheeCloak",
-    "AbilCmdIndex": 1,
+    "AbilCmdIndex": "1",
     "Validator": "TacticalBansheeCloakOff"
   },
   "BansheeDeCloaked": {

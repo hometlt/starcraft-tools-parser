@@ -1981,7 +1981,7 @@ export const StarcraftSchema = {
     ],
     MaxAttackSpeedMultiplier: 'int',
     MinAttackSpeedMultiplier: 'real',
-    TargetFilters: '[filters]',
+    TargetFilters: '{filters}',
     Range: '[real]',
     EnumRange: 'int',
     HaltCmdButton: {
@@ -3422,7 +3422,7 @@ export const StarcraftSchema = {
     Range: 'real',
     Flags: '{bit}',
     ShareFilters: '{filters}',
-    TargetFilters: 'filters',
+    TargetFilters: '{filters}',
     XPFraction: '{bit}',
     TimeLimitFactor: 'bit',
     DurationRandomMax: 'real',
@@ -4073,18 +4073,8 @@ export const StarcraftSchema = {
     VitalArray: [
       {
         index: 'word',
-        ChangeFraction:  [
-          {
-            AccumulatorArray: '[accumulator]',
-            value: 'real'
-          }
-        ],
-        Change:  [
-          {
-            AccumulatorArray: '[accumulator]',
-            value: 'real'
-          }
-        ]
+        ChangeFraction: {AccumulatorArray: '[accumulator]', value: 'real'},
+        Change: {AccumulatorArray: '[accumulator]', value: 'real'}
       }
     ],
     TrackedUnit: {

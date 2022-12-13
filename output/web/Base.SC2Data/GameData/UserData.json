@@ -5,12 +5,12 @@
       {
         "Id": "Start",
         "Type": "String",
-        "EditorColumn": 1
+        "EditorColumn": "1"
       },
       {
         "Id": "End",
         "Type": "String",
-        "EditorColumn": 2
+        "EditorColumn": "2"
       },
       {
         "Id": "Upgrade",
@@ -21,7 +21,7 @@
         "Id": "Skin",
         "Type": "GameLink",
         "GameLinkType": "Skin",
-        "EditorColumn": 3
+        "EditorColumn": "3"
       },
       {
         "Id": "Disabler",
@@ -31,22 +31,24 @@
       {
         "Id": "Message",
         "Type": "String",
-        "EditorColumn": 4
+        "EditorColumn": "4"
       },
       {
         "Id": "MessageFilter",
         "Type": "String",
-        "EditorColumn": 5
+        "EditorColumn": "5"
       }
     ],
     "Instances": [
       {
-        "GameLink": {
-          "Field": {
-            "Id": "Upgrade"
-          },
-          "GameLink": "GameHeartActive"
-        },
+        "GameLink": [
+          {
+            "Field": {
+              "Id": "Upgrade"
+            },
+            "GameLink": "GameHeartActive"
+          }
+        ],
         "String": [
           {
             "Field": {
@@ -58,12 +60,14 @@
         "Id": "[Default]"
       },
       {
-        "GameLink": {
-          "Field": {
-            "Id": "Skin"
-          },
-          "GameLink": "SCEvent_Anniversary"
-        },
+        "GameLink": [
+          {
+            "Field": {
+              "Id": "Skin"
+            },
+            "GameLink": "SCEvent_Anniversary"
+          }
+        ],
         "String": [
           {
             "Field": {
@@ -87,12 +91,14 @@
         "Id": "Anniversary"
       },
       {
-        "GameLink": {
-          "Field": {
-            "Id": "Skin"
-          },
-          "GameLink": "SCEvent_TotalBiscuit"
-        },
+        "GameLink": [
+          {
+            "Field": {
+              "Id": "Skin"
+            },
+            "GameLink": "SCEvent_TotalBiscuit"
+          }
+        ],
         "String": [
           {
             "Field": {

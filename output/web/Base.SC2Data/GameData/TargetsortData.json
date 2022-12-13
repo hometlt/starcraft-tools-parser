@@ -73,7 +73,7 @@
       "Value": "Unknown"
     },
     "default": "1",
-    "Descending": 1
+    "Descending": "1"
   },
   "TSInterruptible": {
     "class": "CTargetSortInterruptible",
@@ -81,7 +81,7 @@
       "Value": "Unknown"
     },
     "default": "1",
-    "Value": 1
+    "Value": "1"
   },
   "TSMarker": {
     "class": "CTargetSortMarker",
@@ -131,7 +131,7 @@
       "Value": "Unknown"
     },
     "default": "1",
-    "Descending": 1
+    "Descending": "1"
   },
   "TSShields": {
     "class": "CTargetSortVital",
@@ -179,7 +179,7 @@
     },
     "default": "1",
     "Field": "PlaneArray[Ground]",
-    "Value": 1
+    "Value": "1"
   },
   "TSGroundOrFiring": {
     "class": "CTargetSortValidator",
@@ -195,7 +195,7 @@
       "Value": "Unknown"
     },
     "default": "1",
-    "Descending": 1
+    "Descending": "1"
   },
   "TSPriorityDesc": {
     "class": "CTargetSortPriority",
@@ -203,7 +203,7 @@
       "Value": "Unknown"
     },
     "default": "1",
-    "Descending": 1
+    "Descending": "1"
   },
   "TSThreatenBattlecruiser": {
     "class": "CTargetSortValidator",

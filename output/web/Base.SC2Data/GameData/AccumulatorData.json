@@ -19,6 +19,8 @@
     "class": "CAccumulatorConstant",
     "default": "1",
     "ApplicationRule": "Multiply",
-    "Amount": 1
+    "Amount": [
+      "1"
+    ]
   }
 }

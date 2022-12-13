@@ -3,13 +3,13 @@
     "class": "CLootItem",
     "default": "1",
     "ClassArray": [
-      ""
+      null
     ],
-    "MinLevel": 255
+    "MinLevel": "255"
   },
   "TriggerRandomItemGeneratorAnyClass": {
     "class": "CLootItem",
     "default": "1",
-    "MinLevel": 255
+    "MinLevel": "255"
   }
 }

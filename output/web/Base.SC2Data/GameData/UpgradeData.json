@@ -2,29 +2,29 @@
   "Research": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/Research",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "Research",
     "default": "1",
-    "InfoTooltipPriority": 1
+    "InfoTooltipPriority": "1"
   },
   "TerranInfantryWeapons": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranInfantryWeapons",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TechInfantryWeapons",
     "default": "1",
     "Race": "Terr",
@@ -86,19 +86,19 @@
       "Marine",
       "Reaper"
     ],
-    "InfoTooltipPriority": 61
+    "InfoTooltipPriority": "61"
   },
   "TerranInfantryArmors": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranInfantryArmors",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TechInfantryArmors",
     "default": "1",
     "Race": "Terr",
@@ -161,19 +161,19 @@
       "Reaper",
       "SCV"
     ],
-    "InfoTooltipPriority": 51
+    "InfoTooltipPriority": "51"
   },
   "TerranVehicleWeapons": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranVehicleWeapons",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TechVehicleWeapons",
     "default": "1",
     "Race": "Terr",
@@ -251,14 +251,14 @@
   "TerranVehicleArmors": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranVehicleArmors",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TerranVehicleArmors",
     "default": "1",
     "Race": "Terr",
@@ -308,14 +308,14 @@
   "TerranShipWeapons": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranShipWeapons",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TerranShipWeapons",
     "default": "1",
     "Race": "Terr",
@@ -376,14 +376,14 @@
   "TerranShipArmors": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranShipArmors",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TerranShipArmors",
     "default": "1",
     "Race": "Terr",
@@ -451,14 +451,14 @@
   "ProtossGroundArmors": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ProtossGroundArmors",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ProtossGroundArmors",
     "default": "1",
     "Race": "Prot",
@@ -553,14 +553,14 @@
   "ProtossGroundWeapons": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ProtossGroundWeapons",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ProtossGroundWeapons",
     "default": "1",
     "Race": "Prot",
@@ -646,14 +646,14 @@
   "ProtossShields": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ProtossShields",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ProtossShields",
     "default": "1",
     "Race": "Prot",
@@ -955,14 +955,14 @@
   "ProtossAirArmors": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ProtossAirArmors",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyCount",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ProtossAirArmors",
     "default": "1",
     "Race": "Prot",
@@ -1048,14 +1048,14 @@
   "ProtossAirWeapons": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ProtossAirWeapons",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ProtossAirWeapons",
     "default": "1",
     "Race": "Prot",
@@ -1129,14 +1129,14 @@
   "ZergMeleeWeapons": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ZergMeleeWeapons",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ZergMeleeArmors",
     "default": "1",
     "Race": "Zerg",
@@ -1217,14 +1217,14 @@
   "ZergMissileWeapons": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ZergMissileWeapons",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ZergMissileWeapons",
     "default": "1",
     "Race": "Zerg",
@@ -1292,14 +1292,14 @@
   "ZergGroundArmors": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ZergGroundArmors",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ZergGroundArmors",
     "default": "1",
     "Race": "Zerg",
@@ -1490,14 +1490,14 @@
   "ZergFlyerArmors": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/Zerg Flyer Armors",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ZergFlyerArmors",
     "default": "1",
     "Race": "Zerg",
@@ -1572,14 +1572,14 @@
   "ZergFlyerWeapons": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ZergFlyerWeapons",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ZergFlyerWeapons",
     "default": "1",
     "Race": "Zerg",
@@ -1636,15 +1636,15 @@
   "CollectionSkinDeluxe": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/CollectionSkinDeluxe",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "CollectionSkinDeluxe",
     "default": "1",
     "EditorCategories": "Race:##race##",
     "EffectArray": [
@@ -1673,15 +1673,15 @@
   "CollectionSkinDeluxeProtoss": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/CollectionSkinDeluxeProtoss",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "CollectionSkinDeluxeProtoss",
     "default": "1",
     "EditorCategories": "Race:##race##",
     "EffectArray": [
@@ -1726,22 +1726,22 @@
   "BattlecruiserEnableSpecializations": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/BattlecruiserEnableSpecializations",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "BattlecruiserEnableSpecializations",
     "default": "1",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EditorCategories": "Race:Terran,UpgradeType:Talents",
     "Icon": "Assets\\Textures\\btn-ability-terran-yamatogun-color.dds",
     "Race": "Terr",
-    "InfoTooltipPriority": 1,
+    "InfoTooltipPriority": "1",
     "AffectedUnitArray": [
       "Battlecruiser"
     ]
@@ -1749,18 +1749,18 @@
   "BattlecruiserBehemothReactor": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/BattlecruiserBehemothReactor",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "BattlecruiserBehemothReactor",
     "default": "1",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -1771,7 +1771,7 @@
     "EditorCategories": "Race:Terran,UpgradeType:Talents",
     "Icon": "Assets\\Textures\\btn-upgrade-terran-behemothreactor.dds",
     "Race": "Terr",
-    "InfoTooltipPriority": 11,
+    "InfoTooltipPriority": "11",
     "AffectedUnitArray": [
       "Battlecruiser"
     ]
@@ -1779,18 +1779,18 @@
   "CarrierLaunchSpeedUpgrade": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/CarrierLaunchSpeedUpgrade",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "CarrierLaunchSpeedUpgrade",
     "default": "1",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -1809,19 +1809,19 @@
   "AnabolicSynthesis": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/AnabolicSynthesis",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "AnabolicSynthesis",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-anabolicsynthesis.dds",
     "Race": "Zerg",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -1842,33 +1842,33 @@
   "Confetti": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/Confetti",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "Confetti",
     "default": "1",
     "EditorCategories": "Race:Terran,UpgradeType:SpellResearch"
   },
   "GhostMoebiusReactor": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/GhostMoebiusReactor",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "GhostMoebiusReactor",
     "default": "1",
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -1894,14 +1894,14 @@
   "ObverseIncubation": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/ObverseIncubation",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "ObverseIncubation",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-enduringcorruption.dds",
@@ -1914,15 +1914,15 @@
   "SnowVisualMP": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/SnowVisualMP",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "SnowVisualMP",
     "default": "1",
     "AffectedUnitArray": [
       "CommandCenter",
@@ -1935,20 +1935,20 @@
   "TunnelingClaws": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/TunnelingClaws",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "TunnelingClaws",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-tunnelingclaws.dds",
     "Race": "Zerg",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -1973,17 +1973,17 @@
   "HighTemplarKhaydarinAmulet": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/HighTemplarKhaydarinAmulet",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "HighTemplarKhaydarinAmulet",
     "default": "1",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -2001,18 +2001,18 @@
   "InfestorEnergyUpgrade": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/InfestorEnergyUpgrade",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "InfestorEnergyUpgrade",
     "default": "1",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -2031,18 +2031,18 @@
   "MedivacCaduceusReactor": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/MedivacCaduceusReactor",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "MedivacCaduceusReactor",
     "default": "1",
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -2060,18 +2060,18 @@
   "RavenCorvidReactor": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/RavenCorvidReactor",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "RavenCorvidReactor",
     "default": "1",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -2089,15 +2089,15 @@
   "ReaperSpeed": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/ReaperSpeed",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "ReaperSpeed",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-terran-reapernitropacks.dds",
@@ -2109,21 +2109,21 @@
     ],
     "EditorCategories": "Race:Terran,UpgradeType:Talents",
     "Race": "Terr",
-    "ScoreAmount": 100,
+    "ScoreAmount": "100",
     "ScoreResult": "BuildOrder",
     "AffectedUnitArray": []
   },
   "TerranBuildingArmor": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranBuildingArmor",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "TerranBuildingArmor",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-terran-buildingarmor.dds",
@@ -2465,21 +2465,21 @@
       "RavenRepairDrone",
       "RefineryRich"
     ],
-    "ScoreAmount": 300,
-    "InfoTooltipPriority": 41
+    "ScoreAmount": "300",
+    "InfoTooltipPriority": "41"
   },
   "DurableMaterials": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/DurableMaterials",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "DurableMaterials",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-terran-durablematerials.dds",
@@ -2502,20 +2502,20 @@
     "AffectedUnitArray": [
       "Raven"
     ],
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "Race": "Terr"
   },
   "HunterSeeker": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/HunterSeeker",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "HunterSeeker",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-ability-terran-huntermissile-color.dds",
@@ -2525,20 +2525,20 @@
     "AffectedUnitArray": [
       "Raven"
     ],
-    "ScoreAmount": 300
+    "ScoreAmount": "300"
   },
   "NeosteelFrame": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/NeosteelFrame",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "NeosteelFrame",
     "default": "1",
     "EffectArray": [
@@ -2577,26 +2577,26 @@
       "CommandCenter",
       "CommandCenterFlying"
     ],
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "Race": "Terr",
-    "InfoTooltipPriority": 21
+    "InfoTooltipPriority": "21"
   },
   "PunisherGrenades": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/PunisherGrenades",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "PunisherGrenades",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-ability-terran-punishergrenade-color.dds",
     "Race": "Terr",
-    "ScoreAmount": 100,
+    "ScoreAmount": "100",
     "ScoreResult": "BuildOrder",
     "EditorCategories": "Race:Terran,UpgradeType:Talents",
     "AffectedUnitArray": [
@@ -2606,20 +2606,20 @@
   "ChitinousPlating": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/ChitinousPlating",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "ChitinousPlating",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-chitinousplating.dds",
     "Race": "Zerg",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -2648,14 +2648,14 @@
   "VikingJotunBoosters": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/VikingJotunBoosters",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "VikingJotunBoosters",
     "default": "1",
     "Race": "Terr",
@@ -2671,22 +2671,22 @@
     "AffectedUnitArray": [
       "VikingFighter"
     ],
-    "ScoreAmount": 200
+    "ScoreAmount": "200"
   },
   "VoidRaySpeedUpgrade": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/VoidRaySpeedUpgrade",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "VoidRaySpeedUpgrade",
     "default": "1",
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -2720,14 +2720,14 @@
   "haltech": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/haltech",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "haltech",
     "default": "1",
     "Race": "Prot",
@@ -2737,20 +2737,20 @@
     "AffectedUnitArray": [
       "Sentry"
     ],
-    "ScoreAmount": 200
+    "ScoreAmount": "200"
   },
   "CentrificalHooks": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/CentrificalHooks",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "CentrificalHooks",
     "default": "1",
     "AffectedUnitArray": [
@@ -2783,21 +2783,21 @@
     ],
     "EditorCategories": "Race:Zerg,UpgradeType:Talents",
     "ScoreResult": "BuildOrder",
-    "ScoreAmount": 300,
-    "InfoTooltipPriority": 1
+    "ScoreAmount": "300",
+    "InfoTooltipPriority": "1"
   },
   "ExtendedThermalLance": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/ExtendedThermalLance",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "ExtendedThermalLance",
     "default": "1",
     "Race": "Prot",
@@ -2821,20 +2821,20 @@
     "AffectedUnitArray": [
       "Colossus"
     ],
-    "ScoreAmount": 400
+    "ScoreAmount": "400"
   },
   "HighCapacityBarrels": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/HighCapacityBarrels",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "HighCapacityBarrels",
     "default": "1",
     "Race": "Terr",
@@ -2866,7 +2866,7 @@
     ],
     "EditorCategories": "Race:Terran,UpgradeType:SpellResearch",
     "ScoreResult": "BuildOrder",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "AffectedUnitArray": [
       "Hellion",
       "HellionTank"
@@ -2875,18 +2875,18 @@
   "HiSecAutoTracking": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/HiSecAutoTracking",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "HiSecAutoTracking",
     "default": "1",
-    "InfoTooltipPriority": 31,
+    "InfoTooltipPriority": "31",
     "Icon": "Assets\\Textures\\BTN-Upgrade-Terran-hisecautotracking.dds",
     "EffectArray": [
       {
@@ -2918,21 +2918,21 @@
       "PlanetaryFortress",
       "PointDefenseDrone"
     ],
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "Race": "Terr",
     "parent": "Research"
   },
   "TerranInfantryWeaponsLevel1": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranInfantryWeaponsLevel1",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TechInfantryWeapons",
     "default": "1",
     "Race": "Terr",
@@ -3033,23 +3033,23 @@
       "Reaper",
       "HERC"
     ],
-    "InfoTooltipPriority": 0,
+    "InfoTooltipPriority": "0",
     "Icon": "Assets\\Textures\\btn-upgrade-terran-infantryweaponslevel1.dds",
-    "ScoreAmount": 200,
-    "LeaderLevel": 1,
+    "ScoreAmount": "200",
+    "LeaderLevel": "1",
     "parent": "TerranInfantryWeapons"
   },
   "TerranInfantryWeaponsLevel2": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranInfantryWeaponsLevel2",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TechInfantryWeapons",
     "default": "1",
     "Race": "Terr",
@@ -3150,23 +3150,23 @@
       "Reaper",
       "HERC"
     ],
-    "InfoTooltipPriority": 0,
+    "InfoTooltipPriority": "0",
     "Icon": "Assets\\Textures\\btn-upgrade-terran-infantryweaponslevel2.dds",
-    "ScoreAmount": 350,
-    "LeaderLevel": 2,
+    "ScoreAmount": "350",
+    "LeaderLevel": "2",
     "parent": "TerranInfantryWeapons"
   },
   "TerranInfantryWeaponsLevel3": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranInfantryWeaponsLevel3",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TechInfantryWeapons",
     "default": "1",
     "Race": "Terr",
@@ -3267,23 +3267,23 @@
       "Reaper",
       "HERC"
     ],
-    "InfoTooltipPriority": 0,
+    "InfoTooltipPriority": "0",
     "Icon": "Assets\\Textures\\btn-upgrade-terran-infantryweaponslevel3.dds",
-    "ScoreAmount": 500,
-    "LeaderLevel": 3,
+    "ScoreAmount": "500",
+    "LeaderLevel": "3",
     "parent": "TerranInfantryWeapons"
   },
   "TerranInfantryArmorsLevel1": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranInfantryArmorsLevel1",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TechInfantryArmors",
     "default": "1",
     "Race": "Terr",
@@ -3418,23 +3418,23 @@
       "GhostAlternate",
       "GhostNova"
     ],
-    "InfoTooltipPriority": 0,
+    "InfoTooltipPriority": "0",
     "Icon": "Assets\\Textures\\btn-upgrade-terran-infantryarmorlevel1.dds",
-    "ScoreAmount": 200,
-    "LeaderLevel": 1,
+    "ScoreAmount": "200",
+    "LeaderLevel": "1",
     "parent": "TerranInfantryArmors"
   },
   "TerranInfantryArmorsLevel2": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranInfantryArmorsLevel2",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TechInfantryArmors",
     "default": "1",
     "Race": "Terr",
@@ -3569,23 +3569,23 @@
       "GhostAlternate",
       "GhostNova"
     ],
-    "InfoTooltipPriority": 0,
+    "InfoTooltipPriority": "0",
     "Icon": "Assets\\Textures\\btn-upgrade-terran-infantryarmorlevel2.dds",
-    "ScoreAmount": 350,
-    "LeaderLevel": 2,
+    "ScoreAmount": "350",
+    "LeaderLevel": "2",
     "parent": "TerranInfantryArmors"
   },
   "TerranInfantryArmorsLevel3": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranInfantryArmorsLevel3",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TechInfantryArmors",
     "default": "1",
     "Race": "Terr",
@@ -3720,23 +3720,23 @@
       "GhostAlternate",
       "GhostNova"
     ],
-    "InfoTooltipPriority": 0,
+    "InfoTooltipPriority": "0",
     "Icon": "Assets\\Textures\\btn-upgrade-terran-infantryarmorlevel3.dds",
-    "ScoreAmount": 500,
-    "LeaderLevel": 3,
+    "ScoreAmount": "500",
+    "LeaderLevel": "3",
     "parent": "TerranInfantryArmors"
   },
   "TerranVehicleWeaponsLevel1": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranVehicleWeaponsLevel1",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TechVehicleWeapons",
     "default": "1",
     "Race": "Terr",
@@ -3935,21 +3935,21 @@
       "ThorAP"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleweaponslevel1.dds",
-    "ScoreAmount": 200,
-    "LeaderLevel": 1,
+    "ScoreAmount": "200",
+    "LeaderLevel": "1",
     "parent": "TerranVehicleWeapons"
   },
   "TerranVehicleWeaponsLevel2": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranVehicleWeaponsLevel2",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TechVehicleWeapons",
     "default": "1",
     "Race": "Terr",
@@ -4148,21 +4148,21 @@
       "ThorAP"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleweaponslevel2.dds",
-    "ScoreAmount": 350,
-    "LeaderLevel": 2,
+    "ScoreAmount": "350",
+    "LeaderLevel": "2",
     "parent": "TerranVehicleWeapons"
   },
   "TerranVehicleWeaponsLevel3": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranVehicleWeaponsLevel3",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TechVehicleWeapons",
     "default": "1",
     "Race": "Terr",
@@ -4361,21 +4361,21 @@
       "ThorAP"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleweaponslevel3.dds",
-    "ScoreAmount": 500,
-    "LeaderLevel": 3,
+    "ScoreAmount": "500",
+    "LeaderLevel": "3",
     "parent": "TerranVehicleWeapons"
   },
   "TerranVehicleArmorsLevel1": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranVehicleArmorsLevel1",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TerranVehicleArmors",
     "default": "1",
     "Race": "Terr",
@@ -4516,21 +4516,21 @@
       "ThorAP"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleplatinglevel1.dds",
-    "ScoreAmount": 200,
-    "LeaderLevel": 1,
+    "ScoreAmount": "200",
+    "LeaderLevel": "1",
     "parent": "TerranVehicleArmors"
   },
   "TerranVehicleArmorsLevel2": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranVehicleArmorsLevel2",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TerranVehicleArmors",
     "default": "1",
     "Race": "Terr",
@@ -4671,21 +4671,21 @@
       "ThorAP"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleplatinglevel2.dds",
-    "ScoreAmount": 350,
-    "LeaderLevel": 2,
+    "ScoreAmount": "350",
+    "LeaderLevel": "2",
     "parent": "TerranVehicleArmors"
   },
   "TerranVehicleArmorsLevel3": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranVehicleArmorsLevel3",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TerranVehicleArmors",
     "default": "1",
     "Race": "Terr",
@@ -4826,21 +4826,21 @@
       "ThorAP"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleplatinglevel3.dds",
-    "ScoreAmount": 500,
-    "LeaderLevel": 3,
+    "ScoreAmount": "500",
+    "LeaderLevel": "3",
     "parent": "TerranVehicleArmors"
   },
   "TerranShipWeaponsLevel1": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranShipWeaponsLevel1",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TerranShipWeapons",
     "default": "1",
     "Race": "Terr",
@@ -4953,21 +4953,21 @@
       "VikingFighter"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-terran-shipweaponslevel1.dds",
-    "ScoreAmount": 200,
-    "LeaderLevel": 1,
+    "ScoreAmount": "200",
+    "LeaderLevel": "1",
     "parent": "TerranShipWeapons"
   },
   "TerranShipWeaponsLevel2": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranShipWeaponsLevel2",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TerranShipWeapons",
     "default": "1",
     "Race": "Terr",
@@ -5080,21 +5080,21 @@
       "VikingFighter"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-terran-shipweaponslevel2.dds",
-    "ScoreAmount": 350,
-    "LeaderLevel": 2,
+    "ScoreAmount": "350",
+    "LeaderLevel": "2",
     "parent": "TerranShipWeapons"
   },
   "TerranShipWeaponsLevel3": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranShipWeaponsLevel3",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TerranShipWeapons",
     "default": "1",
     "Race": "Terr",
@@ -5207,21 +5207,21 @@
       "VikingFighter"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-terran-shipweaponslevel3.dds",
-    "ScoreAmount": 500,
-    "LeaderLevel": 3,
+    "ScoreAmount": "500",
+    "LeaderLevel": "3",
     "parent": "TerranShipWeapons"
   },
   "TerranShipArmorsLevel1": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranShipArmorsLevel1",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TerranShipArmors",
     "default": "1",
     "Race": "Terr",
@@ -5347,21 +5347,21 @@
       "VikingFighter"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-terran-shipplatinglevel1.dds",
-    "ScoreAmount": 300,
-    "LeaderLevel": 1,
+    "ScoreAmount": "300",
+    "LeaderLevel": "1",
     "parent": "TerranShipArmors"
   },
   "TerranShipArmorsLevel2": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranShipArmorsLevel2",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TerranShipArmors",
     "default": "1",
     "Race": "Terr",
@@ -5487,21 +5487,21 @@
       "VikingFighter"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-terran-shipplatinglevel2.dds",
-    "ScoreAmount": 450,
-    "LeaderLevel": 2,
+    "ScoreAmount": "450",
+    "LeaderLevel": "2",
     "parent": "TerranShipArmors"
   },
   "TerranShipArmorsLevel3": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranShipArmorsLevel3",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TerranShipArmors",
     "default": "1",
     "Race": "Terr",
@@ -5627,21 +5627,21 @@
       "VikingFighter"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-terran-shipplatinglevel3.dds",
-    "ScoreAmount": 600,
-    "LeaderLevel": 3,
+    "ScoreAmount": "600",
+    "LeaderLevel": "3",
     "parent": "TerranShipArmors"
   },
   "ProtossGroundArmorsLevel1": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ProtossGroundArmorsLevel1",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ProtossGroundArmors",
     "default": "1",
     "Race": "Prot",
@@ -5815,21 +5815,21 @@
       "DisruptorPhased"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-protoss-groundarmorlevel1.dds",
-    "ScoreAmount": 200,
-    "LeaderLevel": 1,
+    "ScoreAmount": "200",
+    "LeaderLevel": "1",
     "parent": "ProtossGroundArmors"
   },
   "ProtossGroundArmorsLevel2": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ProtossGroundArmorsLevel2",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ProtossGroundArmors",
     "default": "1",
     "Race": "Prot",
@@ -6003,21 +6003,21 @@
       "DisruptorPhased"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-protoss-groundarmorlevel2.dds",
-    "ScoreAmount": 300,
-    "LeaderLevel": 2,
+    "ScoreAmount": "300",
+    "LeaderLevel": "2",
     "parent": "ProtossGroundArmors"
   },
   "ProtossGroundArmorsLevel3": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ProtossGroundArmorsLevel3",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ProtossGroundArmors",
     "default": "1",
     "Race": "Prot",
@@ -6191,21 +6191,21 @@
       "DisruptorPhased"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-protoss-groundarmorlevel3.dds",
-    "ScoreAmount": 400,
-    "LeaderLevel": 3,
+    "ScoreAmount": "400",
+    "LeaderLevel": "3",
     "parent": "ProtossGroundArmors"
   },
   "ProtossGroundWeaponsLevel1": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ProtossGroundWeaponsLevel1",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ProtossGroundWeapons",
     "default": "1",
     "Race": "Prot",
@@ -6414,21 +6414,21 @@
       "Adept"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-protoss-groundweaponslevel1.dds",
-    "ScoreAmount": 200,
-    "LeaderLevel": 1,
+    "ScoreAmount": "200",
+    "LeaderLevel": "1",
     "parent": "ProtossGroundWeapons"
   },
   "ProtossGroundWeaponsLevel2": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ProtossGroundWeaponsLevel2",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ProtossGroundWeapons",
     "default": "1",
     "Race": "Prot",
@@ -6637,21 +6637,21 @@
       "Adept"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-protoss-groundweaponslevel2.dds",
-    "ScoreAmount": 300,
-    "LeaderLevel": 2,
+    "ScoreAmount": "300",
+    "LeaderLevel": "2",
     "parent": "ProtossGroundWeapons"
   },
   "ProtossGroundWeaponsLevel3": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ProtossGroundWeaponsLevel3",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ProtossGroundWeapons",
     "default": "1",
     "Race": "Prot",
@@ -6860,21 +6860,21 @@
       "Adept"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-protoss-groundweaponslevel3.dds",
-    "ScoreAmount": 400,
-    "LeaderLevel": 3,
+    "ScoreAmount": "400",
+    "LeaderLevel": "3",
     "parent": "ProtossGroundWeapons"
   },
   "ProtossShieldsLevel1": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ProtossShieldsLevel1",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ProtossShields",
     "default": "1",
     "Race": "Prot",
@@ -7454,21 +7454,21 @@
       "ObserverSiegeMode"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-protoss-shieldslevel1.dds",
-    "ScoreAmount": 300,
-    "LeaderLevel": 1,
+    "ScoreAmount": "300",
+    "LeaderLevel": "1",
     "parent": "ProtossShields"
   },
   "ProtossShieldsLevel2": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ProtossShieldsLevel2",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ProtossShields",
     "default": "1",
     "Race": "Prot",
@@ -8047,21 +8047,21 @@
       "ObserverSiegeMode"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-protoss-shieldslevel2.dds",
-    "ScoreAmount": 450,
-    "LeaderLevel": 2,
+    "ScoreAmount": "450",
+    "LeaderLevel": "2",
     "parent": "ProtossShields"
   },
   "ProtossShieldsLevel3": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ProtossShieldsLevel3",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ProtossShields",
     "default": "1",
     "Race": "Prot",
@@ -8640,21 +8640,21 @@
       "ObserverSiegeMode"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-protoss-shieldslevel3.dds",
-    "ScoreAmount": 600,
-    "LeaderLevel": 3,
+    "ScoreAmount": "600",
+    "LeaderLevel": "3",
     "parent": "ProtossShields"
   },
   "ProtossAirArmorsLevel1": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ProtossAirArmorsLevel1",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ProtossAirArmors",
     "default": "1",
     "Race": "Prot",
@@ -8825,21 +8825,21 @@
       "ObserverSiegeMode"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-protoss-airarmorlevel1.dds",
-    "ScoreAmount": 300,
-    "LeaderLevel": 1,
+    "ScoreAmount": "300",
+    "LeaderLevel": "1",
     "parent": "ProtossAirArmors"
   },
   "ProtossAirArmorsLevel2": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ProtossAirArmorsLevel2",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ProtossAirArmors",
     "default": "1",
     "Race": "Prot",
@@ -9010,21 +9010,21 @@
       "ObserverSiegeMode"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-protoss-airarmorlevel2.dds",
-    "ScoreAmount": 450,
-    "LeaderLevel": 2,
+    "ScoreAmount": "450",
+    "LeaderLevel": "2",
     "parent": "ProtossAirArmors"
   },
   "ProtossAirArmorsLevel3": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ProtossAirArmorsLevel3",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ProtossAirArmors",
     "default": "1",
     "Race": "Prot",
@@ -9195,21 +9195,21 @@
       "ObserverSiegeMode"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-protoss-airarmorlevel3.dds",
-    "ScoreAmount": 600,
-    "LeaderLevel": 3,
+    "ScoreAmount": "600",
+    "LeaderLevel": "3",
     "parent": "ProtossAirArmors"
   },
   "ProtossAirWeaponsLevel1": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ProtossAirWeaponsLevel1",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ProtossAirWeapons",
     "default": "1",
     "Race": "Prot",
@@ -9386,21 +9386,21 @@
       "VoidRay"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-protoss-airweaponslevel1.dds",
-    "ScoreAmount": 200,
-    "LeaderLevel": 1,
+    "ScoreAmount": "200",
+    "LeaderLevel": "1",
     "parent": "ProtossAirWeapons"
   },
   "ProtossAirWeaponsLevel2": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ProtossAirWeaponsLevel2",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ProtossAirWeapons",
     "default": "1",
     "Race": "Prot",
@@ -9577,21 +9577,21 @@
       "VoidRay"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-protoss-airweaponslevel2.dds",
-    "ScoreAmount": 350,
-    "LeaderLevel": 2,
+    "ScoreAmount": "350",
+    "LeaderLevel": "2",
     "parent": "ProtossAirWeapons"
   },
   "ProtossAirWeaponsLevel3": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ProtossAirWeaponsLevel3",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ProtossAirWeapons",
     "default": "1",
     "Race": "Prot",
@@ -9768,21 +9768,21 @@
       "VoidRay"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-protoss-airweaponslevel3.dds",
-    "ScoreAmount": 500,
-    "LeaderLevel": 3,
+    "ScoreAmount": "500",
+    "LeaderLevel": "3",
     "parent": "ProtossAirWeapons"
   },
   "ZergGroundArmorsLevel1": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ZergGroundArmorsLevel1",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ZergGroundArmors",
     "default": "1",
     "Race": "Zerg",
@@ -10145,21 +10145,21 @@
       "InfestorTerranBurrowed"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-groundcarapace-level1.dds",
-    "ScoreAmount": 300,
-    "LeaderLevel": 1,
+    "ScoreAmount": "300",
+    "LeaderLevel": "1",
     "parent": "ZergGroundArmors"
   },
   "ZergGroundArmorsLevel2": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ZergGroundArmorsLevel2",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ZergGroundArmors",
     "default": "1",
     "Race": "Zerg",
@@ -10522,21 +10522,21 @@
       "InfestorTerranBurrowed"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-groundcarapace-level2.dds",
-    "ScoreAmount": 450,
-    "LeaderLevel": 2,
+    "ScoreAmount": "450",
+    "LeaderLevel": "2",
     "parent": "ZergGroundArmors"
   },
   "ZergGroundArmorsLevel3": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ZergGroundArmorsLevel3",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ZergGroundArmors",
     "default": "1",
     "Race": "Zerg",
@@ -10899,21 +10899,21 @@
       "InfestorTerranBurrowed"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-groundcarapace-level3.dds",
-    "ScoreAmount": 600,
-    "LeaderLevel": 3,
+    "ScoreAmount": "600",
+    "LeaderLevel": "3",
     "parent": "ZergGroundArmors"
   },
   "ZergFlyerArmorsLevel1": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ZergFlyerArmorsLevel1",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ZergFlyerArmors",
     "default": "1",
     "Race": "Zerg",
@@ -11071,21 +11071,21 @@
       "OverseerSiegeMode"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-flyercarapace-level1.dds",
-    "ScoreAmount": 300,
-    "LeaderLevel": 1,
+    "ScoreAmount": "300",
+    "LeaderLevel": "1",
     "parent": "ZergFlyerArmors"
   },
   "ZergFlyerArmorsLevel2": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ZergFlyerArmorsLevel2",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ZergFlyerArmors",
     "default": "1",
     "Race": "Zerg",
@@ -11243,21 +11243,21 @@
       "OverseerSiegeMode"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-flyercarapace-level2.dds",
-    "ScoreAmount": 450,
-    "LeaderLevel": 2,
+    "ScoreAmount": "450",
+    "LeaderLevel": "2",
     "parent": "ZergFlyerArmors"
   },
   "ZergFlyerArmorsLevel3": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ZergFlyerArmorsLevel3",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ZergFlyerArmors",
     "default": "1",
     "Race": "Zerg",
@@ -11415,21 +11415,21 @@
       "OverseerSiegeMode"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-flyercarapace-level3.dds",
-    "ScoreAmount": 600,
-    "LeaderLevel": 3,
+    "ScoreAmount": "600",
+    "LeaderLevel": "3",
     "parent": "ZergFlyerArmors"
   },
   "ZergFlyerWeaponsLevel1": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ZergFlyerWeaponsLevel1",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ZergFlyerWeapons",
     "default": "1",
     "Race": "Zerg",
@@ -11498,21 +11498,21 @@
       "Mutalisk"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-airattacks-level1.dds",
-    "ScoreAmount": 200,
-    "LeaderLevel": 1,
+    "ScoreAmount": "200",
+    "LeaderLevel": "1",
     "parent": "ZergFlyerWeapons"
   },
   "ZergFlyerWeaponsLevel2": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ZergFlyerWeaponsLevel2",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ZergFlyerWeapons",
     "default": "1",
     "Race": "Zerg",
@@ -11581,21 +11581,21 @@
       "Mutalisk"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-airattacks-level2.dds",
-    "ScoreAmount": 350,
-    "LeaderLevel": 2,
+    "ScoreAmount": "350",
+    "LeaderLevel": "2",
     "parent": "ZergFlyerWeapons"
   },
   "ZergFlyerWeaponsLevel3": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ZergFlyerWeaponsLevel3",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ZergFlyerWeapons",
     "default": "1",
     "Race": "Zerg",
@@ -11664,21 +11664,21 @@
       "Mutalisk"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-airattacks-level3.dds",
-    "ScoreAmount": 500,
-    "LeaderLevel": 3,
+    "ScoreAmount": "500",
+    "LeaderLevel": "3",
     "parent": "ZergFlyerWeapons"
   },
   "ZergMeleeWeaponsLevel1": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ZergMeleeWeaponsLevel1",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ZergMeleeArmors",
     "default": "1",
     "Race": "Zerg",
@@ -11785,21 +11785,21 @@
       "LocustMP"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-meleeattacks-level1.dds",
-    "ScoreAmount": 200,
-    "LeaderLevel": 1,
+    "ScoreAmount": "200",
+    "LeaderLevel": "1",
     "parent": "ZergMeleeWeapons"
   },
   "ZergMeleeWeaponsLevel2": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ZergMeleeWeaponsLevel2",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ZergMeleeArmors",
     "default": "1",
     "Race": "Zerg",
@@ -11906,21 +11906,21 @@
       "LocustMP"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-meleeattacks-level2.dds",
-    "ScoreAmount": 300,
-    "LeaderLevel": 2,
+    "ScoreAmount": "300",
+    "LeaderLevel": "2",
     "parent": "ZergMeleeWeapons"
   },
   "ZergMeleeWeaponsLevel3": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ZergMeleeWeaponsLevel3",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ZergMeleeArmors",
     "default": "1",
     "Race": "Zerg",
@@ -12027,21 +12027,21 @@
       "LocustMP"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-meleeattacks-level3.dds",
-    "ScoreAmount": 400,
-    "LeaderLevel": 3,
+    "ScoreAmount": "400",
+    "LeaderLevel": "3",
     "parent": "ZergMeleeWeapons"
   },
   "ZergMissileWeaponsLevel1": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ZergMissileWeaponsLevel1",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ZergMissileWeapons",
     "default": "1",
     "Race": "Zerg",
@@ -12232,21 +12232,21 @@
       "InfestorTerranBurrowed"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-missileattacks-level1.dds",
-    "ScoreAmount": 200,
-    "LeaderLevel": 1,
+    "ScoreAmount": "200",
+    "LeaderLevel": "1",
     "parent": "ZergMissileWeapons"
   },
   "ZergMissileWeaponsLevel2": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ZergMissileWeaponsLevel2",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ZergMissileWeapons",
     "default": "1",
     "Race": "Zerg",
@@ -12437,21 +12437,21 @@
       "InfestorTerranBurrowed"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-missileattacks-level2.dds",
-    "ScoreAmount": 300,
-    "LeaderLevel": 2,
+    "ScoreAmount": "300",
+    "LeaderLevel": "2",
     "parent": "ZergMissileWeapons"
   },
   "ZergMissileWeaponsLevel3": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ZergMissileWeaponsLevel3",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "ZergMissileWeapons",
     "default": "1",
     "Race": "Zerg",
@@ -12642,21 +12642,21 @@
       "InfestorTerranBurrowed"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-missileattacks-level3.dds",
-    "ScoreAmount": 400,
-    "LeaderLevel": 3,
+    "ScoreAmount": "400",
+    "LeaderLevel": "3",
     "parent": "ZergMissileWeapons"
   },
   "OrganicCarapace": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/OrganicCarapace",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "OrganicCarapace",
     "default": "1",
     "Race": "Zerg",
@@ -12673,22 +12673,22 @@
       "Roach",
       "RoachBurrowed"
     ],
-    "ScoreAmount": 300
+    "ScoreAmount": "300"
   },
   "Stimpack": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/Stimpack",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "Stimpack",
     "default": "1",
-    "InfoTooltipPriority": 1,
+    "InfoTooltipPriority": "1",
     "Race": "Terr",
     "Icon": "Assets\\Textures\\btn-ability-terran-stimpack-color.dds",
     "EditorCategories": "Race:Terran,UpgradeType:SpellResearch",
@@ -12697,20 +12697,20 @@
       "Marine",
       "Marauder"
     ],
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "parent": "Research"
   },
   "PersonalCloaking": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/PersonalCloaking",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "PersonalCloaking",
     "default": "1",
     "Race": "Terr",
@@ -12722,19 +12722,19 @@
       "GhostAlternate",
       "GhostNova"
     ],
-    "ScoreAmount": 300
+    "ScoreAmount": "300"
   },
   "SiegeTech": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/SiegeTech",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "SiegeTech",
     "default": "1",
     "Race": "Terr",
@@ -12744,19 +12744,19 @@
     "AffectedUnitArray": [
       "SiegeTank"
     ],
-    "ScoreAmount": 200
+    "ScoreAmount": "200"
   },
   "BansheeCloak": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/BansheeCloak",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "BansheeCloak",
     "default": "1",
     "Race": "Terr",
@@ -12766,20 +12766,20 @@
     "AffectedUnitArray": [
       "Banshee"
     ],
-    "ScoreAmount": 400
+    "ScoreAmount": "400"
   },
   "ObserverGraviticBooster": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/ObserverGraviticBooster",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "ObserverGraviticBooster",
     "default": "1",
     "Race": "Prot",
@@ -12799,19 +12799,19 @@
     "AffectedUnitArray": [
       "Observer"
     ],
-    "ScoreAmount": 200
+    "ScoreAmount": "200"
   },
   "PsiStormTech": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/PsiStormTech",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "PsiStormTech",
     "default": "1",
     "Race": "Prot",
@@ -12821,20 +12821,20 @@
     "AffectedUnitArray": [
       "HighTemplar"
     ],
-    "ScoreAmount": 400
+    "ScoreAmount": "400"
   },
   "GraviticDrive": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/GraviticDrive",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "GraviticDrive",
     "default": "1",
     "Race": "Prot",
@@ -12855,20 +12855,20 @@
       "WarpPrismPhasing",
       "WarpPrism"
     ],
-    "ScoreAmount": 200
+    "ScoreAmount": "200"
   },
   "Charge": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/Charge",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "Charge",
     "default": "1",
     "Race": "Prot",
@@ -12878,7 +12878,7 @@
     "AffectedUnitArray": [
       "Zealot"
     ],
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "EffectArray": [
       {
         "Reference": "Unit,Zealot,Speed",
@@ -12889,15 +12889,15 @@
   "zerglingattackspeed": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/zerglingattackspeed",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "zerglingattackspeed",
     "default": "1",
     "Race": "Zerg",
@@ -12914,7 +12914,7 @@
         "Value": "0.2"
       }
     ],
-    "ScoreAmount": 400,
+    "ScoreAmount": "400",
     "AffectedUnitArray": [
       "Zergling",
       "ZerglingBurrowed"
@@ -12923,15 +12923,15 @@
   "zerglingmovementspeed": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/zerglingmovementspeed",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "zerglingmovementspeed",
     "default": "1",
     "Race": "Zerg",
@@ -12958,20 +12958,20 @@
       "Zergling",
       "ZerglingBurrowed"
     ],
-    "ScoreAmount": 200
+    "ScoreAmount": "200"
   },
   "hydraliskspeed": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/hydraliskspeed",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "hydraliskspeed",
     "default": "1",
     "Race": "Zerg",
@@ -12993,7 +12993,7 @@
         "Value": "1"
       }
     ],
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "AffectedUnitArray": [
       "Hydralisk",
       "HydraliskBurrowed"
@@ -13002,21 +13002,21 @@
   "Burrow": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/Burrow",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "Burrow",
     "default": "1",
     "Race": "Zerg",
     "Icon": "Assets\\Textures\\btn-ability-zerg-burrow-color.dds",
     "EditorCategories": "Race:Zerg,UpgradeType:Talents",
     "ScoreResult": "BuildOrder",
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "AffectedUnitArray": [
       "Zergling",
       "ZerglingBurrowed",
@@ -13045,21 +13045,21 @@
   "overlordtransport": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/overlordtransport",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "overlordtransport",
     "default": "1",
     "Race": "Zerg",
     "EditorCategories": "Race:Zerg,UpgradeType:Talents",
     "ScoreResult": "BuildOrder",
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-ventralsacs.dds",
-    "ScoreAmount": 400,
+    "ScoreAmount": "400",
     "AffectedUnitArray": [
       "Overlord"
     ]
@@ -13067,15 +13067,15 @@
   "overlordspeed": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/overlordspeed",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "overlordspeed",
     "default": "1",
     "Race": "Zerg",
@@ -13098,7 +13098,7 @@
         "Value": "1.879000"
       }
     ],
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "AffectedUnitArray": [
       "Overlord",
       "Overseer",
@@ -13111,14 +13111,14 @@
   "InfestorPeristalsis": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/InfestorPeristalsis",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "InfestorPeristalsis",
     "default": "1",
     "Race": "Zerg",
@@ -13133,20 +13133,20 @@
         "Value": "1.000000"
       }
     ],
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-peristalsis.dds"
   },
   "BlinkTech": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/BlinkTech",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "BlinkTech",
     "default": "1",
     "Race": "Prot",
@@ -13156,20 +13156,20 @@
     "AffectedUnitArray": [
       "Stalker"
     ],
-    "ScoreAmount": 300
+    "ScoreAmount": "300"
   },
   "GlialReconstitution": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/GlialReconstitution",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "GlialReconstitution",
     "default": "1",
     "EditorCategories": "Race:Zerg,UpgradeType:Talents",
@@ -13185,7 +13185,7 @@
       }
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-glialreconstitution.dds",
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "Race": "Zerg",
     "AffectedUnitArray": [
       "Roach",
@@ -13195,14 +13195,14 @@
   "AbdominalFortitude": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/AbdominalFortitude",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "AbdominalFortitude",
     "default": "1",
     "EditorCategories": "Race:Zerg,UpgradeType:Talents",
@@ -13215,18 +13215,18 @@
   "ShieldWall": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/ShieldWall",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "ShieldWall",
     "default": "1",
-    "InfoTooltipPriority": 2,
+    "InfoTooltipPriority": "2",
     "Race": "Terr",
     "Icon": "Assets\\Textures\\btn-techupgrade-terran-combatshield-color.dds",
     "EditorCategories": "Race:Terran,UpgradeType:Talents",
@@ -13234,7 +13234,7 @@
     "AffectedUnitArray": [
       "Marine"
     ],
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "EffectArray": [
       {
         "Reference": "Unit,Marine,LifeMax",
@@ -13260,14 +13260,14 @@
   "WarpGateResearch": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/WarpGateResearch",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "WarpGateResearch",
     "default": "1",
     "Race": "Prot",
@@ -13277,20 +13277,20 @@
     "AffectedUnitArray": [
       "Gateway"
     ],
-    "ScoreAmount": 100
+    "ScoreAmount": "100"
   },
   "ThorSkin": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ThorSkin",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "ThorSkin",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-unit-terran-thor.dds",
     "AffectedUnitArray": [
@@ -13301,15 +13301,15 @@
   "GhostAlternate": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/GhostAlternate",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "GhostAlternate",
     "default": "1",
     "AffectedUnitArray": [
       "Ghost"
@@ -13318,15 +13318,15 @@
   "SprayTerran": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/SprayTerran",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "SprayTerran",
     "default": "1",
     "AffectedUnitArray": [
       "SCV"
@@ -13335,15 +13335,15 @@
   "SprayZerg": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/SprayZerg",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "SprayZerg",
     "default": "1",
     "AffectedUnitArray": [
       "Drone"
@@ -13352,15 +13352,15 @@
   "SprayProtoss": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/SprayProtoss",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "SprayProtoss",
     "default": "1",
     "AffectedUnitArray": [
       "Probe"
@@ -13369,15 +13369,15 @@
   "GhostSkinNova": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/GhostSkinNova",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "GhostSkinNova",
     "default": "1",
     "EffectArray": [
       {
@@ -13418,15 +13418,15 @@
   "GhostSkinJunker": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/GhostSkinJunker",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "GhostSkinJunker",
     "default": "1",
     "AffectedUnitArray": [
       "Ghost"
@@ -13435,15 +13435,15 @@
   "ZerglingSkin": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ZerglingSkin",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "ZerglingSkin",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-unit-zerg-zergling.dds",
     "EffectArray": [
@@ -13476,15 +13476,15 @@
   "OverlordSkin": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/OverlordSkin",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "OverlordSkin",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-unit-zerg-overlord.dds",
     "EffectArray": [
@@ -13506,15 +13506,15 @@
   "MarineSkin": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/MarineSkin",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "MarineSkin",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-unit-terran-marine.dds",
     "EffectArray": [
@@ -13536,15 +13536,15 @@
   "SupplyDepotSkin": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/SupplyDepotSkin",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "SupplyDepotSkin",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-building-terran-supplydepot.dds",
     "EffectArray": [
@@ -13567,15 +13567,15 @@
   "ZealotSkin": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ZealotSkin",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "ZealotSkin",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-unit-protoss-zealot.dds",
     "AffectedUnitArray": [
@@ -13592,15 +13592,15 @@
   "PylonSkin": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/PylonSkin",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "PylonSkin",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-building-protoss-pylon.dds",
     "EffectArray": [
@@ -13647,15 +13647,15 @@
   "UltraliskSkin": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/UltraliskSkin",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "UltraliskSkin",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-unit-zerg-ultralisk.dds",
     "Race": "Zerg",
@@ -13679,15 +13679,15 @@
   "RewardDanceOracle": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/RewardDanceOracle",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "RewardDanceOracle",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-unit-protoss-oracle.dds",
     "EffectArray": [
@@ -13705,15 +13705,15 @@
   "RewardDanceStalker": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/RewardDanceStalker",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "RewardDanceStalker",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-unit-protoss-stalker.dds",
     "EffectArray": [
@@ -13731,15 +13731,15 @@
   "RewardDanceColossus": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/RewardDanceColossus",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "RewardDanceColossus",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-unit-protoss-Colossus.dds",
     "EffectArray": [
@@ -13757,15 +13757,15 @@
   "RewardDanceOverlord": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/RewardDanceOverlord",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "RewardDanceOverlord",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-unit-zerg-Overlord.dds",
     "EffectArray": [
@@ -13783,15 +13783,15 @@
   "RewardDanceRoach": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/RewardDanceRoach",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "RewardDanceRoach",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-unit-zerg-roach.dds",
     "EffectArray": [
@@ -13810,15 +13810,15 @@
   "RewardDanceInfestor": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/RewardDanceInfestor",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "RewardDanceInfestor",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-unit-zerg-infestor.dds",
     "EffectArray": [
@@ -13837,15 +13837,15 @@
   "RewardDanceMule": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/RewardDanceMule",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "RewardDanceMule",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-unit-terran-mule.dds",
     "EffectArray": [
@@ -13863,15 +13863,15 @@
   "RewardDanceGhost": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/RewardDanceGhost",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "RewardDanceGhost",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-unit-terran-ghost.dds",
     "EffectArray": [
@@ -13901,15 +13901,15 @@
   "RewardDanceViking": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/RewardDanceViking",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "RewardDanceViking",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-unit-terran-ghost.dds",
     "EffectArray": [
@@ -13933,18 +13933,18 @@
   "OracleEnergyUpgrade": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/OracleEnergyUpgrade",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "OracleEnergyUpgrade",
     "default": "1",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -13962,18 +13962,18 @@
   "RestoreShields": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/RestoreShields",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "RestoreShields",
     "default": "1",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -13991,19 +13991,19 @@
   "PhoenixRangeUpgrade": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/PhoenixRangeUpgrade",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "PhoenixRangeUpgrade",
     "default": "1",
     "Race": "Prot",
-    "InfoTooltipPriority": 1,
-    "ScoreAmount": 300,
+    "InfoTooltipPriority": "1",
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -14020,19 +14020,19 @@
   "HydraliskSpeedUpgrade": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/HydraliskSpeedUpgrade",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "HydraliskSpeedUpgrade",
     "default": "1",
     "Icon": "Assets\\Textures\\BTN-Upgrade-Zerg-EvolveMuscularAugments.dds",
-    "InfoTooltipPriority": 1,
-    "ScoreAmount": 300,
+    "InfoTooltipPriority": "1",
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -14055,18 +14055,18 @@
   "BanelingBurrowMove": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/BanelingBurrowMove",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "BanelingBurrowMove",
     "default": "1",
-    "InfoTooltipPriority": 1,
-    "ScoreAmount": 300,
+    "InfoTooltipPriority": "1",
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -14084,20 +14084,20 @@
   "ReaperJump": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/ReaperJump",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "ReaperJump",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-ability-terran-jetpack-color.dds",
     "Race": "Terr",
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -14114,20 +14114,20 @@
   "CombatDrugs": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/CombatDrugs",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "CombatDrugs",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-terran-reapercombatdrugs.dds",
     "Race": "Terr",
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "ScoreResult": "BuildOrder",
     "EditorCategories": "Race:Terran,UpgradeType:SpellResearch",
     "AffectedUnitArray": [
@@ -14137,19 +14137,19 @@
   "StrikeCannons": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/StrikeCannons",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "StrikeCannons",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-ability-terran-bombardmentstrike-color.dds",
     "Race": "Terr",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EditorCategories": "Race:Terran,UpgradeType:SpellResearch",
     "AffectedUnitArray": [
@@ -14159,19 +14159,19 @@
   "IncreasedRange": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/IncreasedRange",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "IncreasedRange",
     "default": "1",
     "Icon": "Assets\\Textures\\aoe_splatterran1c.dds",
     "Race": "Prot",
-    "ScoreAmount": 400,
+    "ScoreAmount": "400",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -14187,19 +14187,19 @@
   "NeuralParasite": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/NeuralParasite",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "NeuralParasite",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-ability-zerg-neuralparasite-color.dds",
     "Race": "Zerg",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EditorCategories": "Race:Zerg,UpgradeType:SpellResearch",
     "AffectedUnitArray": [
@@ -14209,14 +14209,14 @@
   "ZergBurrowMove": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ZergBurrowMove",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "ZergBurrowMove",
     "default": "1",
     "EffectArray": [
@@ -14271,18 +14271,18 @@
   "LocustLifetimeIncrease": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/LocustLifetimeIncrease",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "LocustLifetimeIncrease",
     "default": "1",
-    "ScoreAmount": 400,
+    "ScoreAmount": "400",
     "ScoreResult": "BuildOrder",
     "Icon": "Assets\\Textures\\BTN-Upgrade-Zerg-EvolveIncreasedLocustLifetime.dds",
     "EditorCategories": "Race:Protoss,UpgradeType:Talents",
@@ -14300,20 +14300,20 @@
   "TempestRangeUpgrade": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TempestRangeUpgrade",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "TempestRangeUpgrade",
     "default": "1",
     "Icon": "Assets\\Textures\\BTN-Upgrade-Protoss-ResearchGravitySling.dds",
     "Race": "Prot",
-    "InfoTooltipPriority": 1,
-    "ScoreAmount": 300,
+    "InfoTooltipPriority": "1",
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -14330,20 +14330,20 @@
   "UltraliskBurrowChargeUpgrade": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/UltraliskBurrowChargeUpgrade",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "UltraliskBurrowChargeUpgrade",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-burrowcharge.dds",
     "Race": "Zerg",
-    "InfoTooltipPriority": 1,
-    "ScoreAmount": 400,
+    "InfoTooltipPriority": "1",
+    "ScoreAmount": "400",
     "ScoreResult": "BuildOrder",
     "EditorCategories": "Race:Zerg,UpgradeType:Talents",
     "AffectedUnitArray": [
@@ -14354,19 +14354,19 @@
   "AnionPulseCrystals": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/AnionPulseCrystals",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "AnionPulseCrystals",
     "default": "1",
     "Race": "Prot",
-    "InfoTooltipPriority": 1,
-    "ScoreAmount": 300,
+    "InfoTooltipPriority": "1",
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -14388,20 +14388,20 @@
   "TransformationServos": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/TransformationServos",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "TransformationServos",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-terran-transformationservos.dds",
     "Race": "Terr",
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "ScoreResult": "BuildOrder",
     "EditorCategories": "Race:Terran,UpgradeType:Talents",
     "AffectedUnitArray": [
@@ -14413,14 +14413,14 @@
   "TerranVehicleAndShipWeapons": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranVehicleAndShipWeapons",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TechVehicleAndShipWeapons",
     "default": "1",
     "Race": "Terr",
@@ -14590,14 +14590,14 @@
   "TerranVehicleAndShipArmors": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranVehicleAndShipArmors",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TerranVehicleAndShipArmors",
     "default": "1",
     "Race": "Terr",
@@ -14739,15 +14739,15 @@
   "AdeptTaldarim": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/AdeptTaldarim",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "AdeptTaldarim",
     "default": "1",
     "Race": "Prot",
     "EffectArray": [
@@ -14792,14 +14792,14 @@
   "FlyingLocusts": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/FlyingLocusts",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "FlyingLocusts",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-unit-zerg-locustflyer.dds",
@@ -14811,14 +14811,14 @@
   "ImmortalRevive": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ImmortalRevive",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "ImmortalRevive",
     "default": "1",
     "Race": "Prot",
@@ -14828,19 +14828,19 @@
     "AffectedUnitArray": [
       "Immortal"
     ],
-    "ScoreAmount": 200
+    "ScoreAmount": "200"
   },
   "TerranVehicleAndShipWeaponsLevel1": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranVehicleAndShipWeaponsLevel1",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TechVehicleAndShipWeapons",
     "default": "1",
     "Race": "Terr",
@@ -15111,21 +15111,21 @@
       "WidowMineBurrowed"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleweaponslevel1.dds",
-    "ScoreAmount": 200,
-    "LeaderLevel": 1,
+    "ScoreAmount": "200",
+    "LeaderLevel": "1",
     "parent": "TerranVehicleAndShipWeapons"
   },
   "TerranVehicleAndShipWeaponsLevel2": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranVehicleAndShipWeaponsLevel2",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TechVehicleAndShipWeapons",
     "default": "1",
     "Race": "Terr",
@@ -15396,21 +15396,21 @@
       "WidowMineBurrowed"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleweaponslevel2.dds",
-    "ScoreAmount": 350,
-    "LeaderLevel": 2,
+    "ScoreAmount": "350",
+    "LeaderLevel": "2",
     "parent": "TerranVehicleAndShipWeapons"
   },
   "TerranVehicleAndShipWeaponsLevel3": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranVehicleAndShipWeaponsLevel3",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "WeaponTechnologyCount",
     "ScoreValue": "WeaponTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TechVehicleAndShipWeapons",
     "default": "1",
     "Race": "Terr",
@@ -15681,21 +15681,21 @@
       "WidowMineBurrowed"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleweaponslevel3.dds",
-    "ScoreAmount": 500,
-    "LeaderLevel": 3,
+    "ScoreAmount": "500",
+    "LeaderLevel": "3",
     "parent": "TerranVehicleAndShipWeapons"
   },
   "TerranVehicleAndShipArmorsLevel1": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranVehicleAndShipArmorsLevel1",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TerranVehicleAndShipArmors",
     "default": "1",
     "Race": "Terr",
@@ -15938,21 +15938,21 @@
       "LiberatorAG"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleplatinglevel1.dds",
-    "ScoreAmount": 200,
-    "LeaderLevel": 1,
+    "ScoreAmount": "200",
+    "LeaderLevel": "1",
     "parent": "TerranVehicleAndShipArmors"
   },
   "TerranVehicleAndShipArmorsLevel2": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranVehicleAndShipArmorsLevel2",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TerranVehicleAndShipArmors",
     "default": "1",
     "Race": "Terr",
@@ -16195,21 +16195,21 @@
       "LiberatorAG"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleplatinglevel2.dds",
-    "ScoreAmount": 350,
-    "LeaderLevel": 2,
+    "ScoreAmount": "350",
+    "LeaderLevel": "2",
     "parent": "TerranVehicleAndShipArmors"
   },
   "TerranVehicleAndShipArmorsLevel3": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TerranVehicleAndShipArmorsLevel3",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "ArmorTechnologyCount",
     "ScoreValue": "ArmorTechnologyValue",
-    "WebPriority": 0,
+    "WebPriority": "0",
     "LeaderAlias": "TerranVehicleAndShipArmors",
     "default": "1",
     "Race": "Terr",
@@ -16452,27 +16452,27 @@
       "LiberatorAG"
     ],
     "Icon": "Assets\\Textures\\btn-upgrade-terran-vehicleplatinglevel3.dds",
-    "ScoreAmount": 500,
-    "LeaderLevel": 3,
+    "ScoreAmount": "500",
+    "LeaderLevel": "3",
     "parent": "TerranVehicleAndShipArmors"
   },
   "DrillClaws": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/DrillClaws",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "DrillClaws",
     "default": "1",
     "Icon": "Assets\\Textures\\BTN-Upgrade-Terran-ResearchDrillingClaws.dds",
     "Race": "Terr",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -16495,14 +16495,14 @@
   "RoachSupply": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/RoachSupply",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "RoachSupply",
     "default": "1",
     "EffectArray": [
@@ -16520,20 +16520,20 @@
   "CycloneLockOnRangeUpgrade": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/CycloneLockOnRangeUpgrade",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "CycloneLockOnRangeUpgrade",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-terran-durablematerials.dds",
     "Race": "Terr",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -16565,19 +16565,19 @@
   "CycloneAirUpgrade": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/CycloneAirUpgrade",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "CycloneAirUpgrade",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-ability-terran-surfacetoairtargeting.dds",
     "Race": "Terr",
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -16604,14 +16604,14 @@
   "ImmortalBarrier": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/ImmortalBarrier",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "ImmortalBarrier",
     "default": "1",
     "Race": "Prot",
@@ -16621,24 +16621,24 @@
     "AffectedUnitArray": [
       "Immortal"
     ],
-    "ScoreAmount": 200
+    "ScoreAmount": "200"
   },
   "AdeptKillBounce": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/AdeptKillBounce",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "AdeptKillBounce",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-techupgrade-terran-consumption.dds",
     "Race": "Prot",
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -16655,14 +16655,14 @@
   "AdeptPiercingAttack": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/AdeptPiercingAttack",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "AdeptPiercingAttack",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-protoss-resonatingglaives-orange.dds",
@@ -16676,20 +16676,20 @@
     "AffectedUnitArray": [
       "Adept"
     ],
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "ScoreResult": "BuildOrder"
   },
   "CinematicMode": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/CinematicMode",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "CinematicMode",
     "default": "1",
     "AffectedUnitArray": [
@@ -16708,19 +16708,19 @@
   "LiberatorMorph": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/LiberatorMorph",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "LiberatorMorph",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-terran-liberator-agmode.dds",
     "Race": "Terr",
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "ScoreResult": "BuildOrder",
     "EditorCategories": "Race:Terran,UpgradeType:Talents",
     "AffectedUnitArray": [
@@ -16730,19 +16730,19 @@
   "AdeptShieldUpgrade": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/AdeptShieldUpgrade",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "AdeptShieldUpgrade",
     "default": "1",
     "Icon": "Assets\\Textures\\BTN-Upgrade-Protoss-AdeptShieldUpgrade.dds",
     "Race": "Prot",
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -16762,29 +16762,29 @@
   "CursorDebug": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/CursorDebug",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "CursorDebug",
     "default": "1"
   },
   "AdeptSkin": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/AdeptSkin",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "AdeptSkin",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-unit-protoss-adept.dds",
     "Race": "Prot",
@@ -16847,15 +16847,15 @@
   "ColossusSkin": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/ColossusSkin",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "ColossusSkin",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-unit-protoss-colossus.dds",
     "Race": "Prot",
@@ -16908,15 +16908,15 @@
   "ColossusTal": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/ColossusTal",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
-    "LeaderAlias": "",
+    "WebPriority": "1",
+    "LeaderAlias": "ColossusTal",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-unit-protoss-colossus.dds",
     "Race": "Prot",
@@ -16969,18 +16969,18 @@
   "TempestGroundAttackUpgrade": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/TempestGroundAttackUpgrade",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "TempestGroundAttackUpgrade",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-ability-protoss-disruptionblast.dds",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -16995,18 +16995,18 @@
   "AmplifiedShielding": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/AmplifiedShielding",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "AmplifiedShielding",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-protoss-adeptshieldupgrade.dds",
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -17026,19 +17026,19 @@
   "MicrobialShroud": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/MicrobialShroud",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "MicrobialShroud",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-ability-zerg-darkswarm.dds",
     "Race": "Zerg",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EditorCategories": "Race:Zerg,UpgradeType:SpellResearch",
     "AffectedUnitArray": [
@@ -17048,18 +17048,18 @@
   "PsionicAmplifiers": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/PsionicAmplifiers",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "PsionicAmplifiers",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-ability-protoss-phasedisruptor.dds",
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -17075,19 +17075,19 @@
   "BansheeSpeed": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/BansheeSpeed",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "BansheeSpeed",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-terran-hyperflightrotors.dds",
     "Race": "Terr",
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -17103,20 +17103,20 @@
   "SunderingImpact": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/SunderingImpact",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "Charge",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-ability-protoss-shadowblade.dds",
     "Race": "Prot",
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "ScoreResult": "BuildOrder",
     "EditorCategories": "Race:Protoss,UpgradeType:Talents",
     "AffectedUnitArray": [
@@ -17126,20 +17126,20 @@
   "SecretedCoating": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/SecretedCoating",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "SecretedCoating",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-demolition.dds",
     "Race": "Zerg",
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -17182,14 +17182,14 @@
   "LiberatorAGRangeUpgrade": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/LiberatorAGRangeUpgrade",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "LiberatorAGRangeUpgrade",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-terran-advanceballistics.dds",
@@ -17208,25 +17208,25 @@
       "Liberator",
       "LiberatorAG"
     ],
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder"
   },
   "EnhancedShockwaves": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/EnhancedShockwaves",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "EnhancedShockwaves",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-ability-terran-electricfield.dds",
     "Race": "Terr",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -17244,14 +17244,14 @@
   "RavagerRange": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/RavagerRange",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "RavagerRange",
     "default": "1",
     "EffectArray": [
@@ -17268,20 +17268,20 @@
   "LurkerRange": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/LurkerRange",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "LurkerRange",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-kerrigan-seismicspines.dds",
     "Race": "Zerg",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -17302,14 +17302,14 @@
   "MedivacRapidDeployment": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/MedivacRapidDeployment",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "MedivacRapidDeployment",
     "default": "1",
     "EffectArray": [
@@ -17328,14 +17328,14 @@
   "RavenRecalibratedExplosives": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/RavenRecalibratedExplosives",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "RavenRecalibratedExplosives",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-terran-recalibratedexplosives.dds",
@@ -17349,20 +17349,20 @@
     "AffectedUnitArray": [
       "Raven"
     ],
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder"
   },
   "RavenDamageUpgrade": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/RavenDamageUpgrade",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "RavenDamageUpgrade",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-terran-explosiveshrapnelshells.dds",
@@ -17381,25 +17381,25 @@
       "Raven",
       "AutoTurret"
     ],
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder"
   },
   "CycloneLockOnDamageUpgrade": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/CycloneLockOnDamageUpgrade",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "CycloneLockOnDamageUpgrade",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-terran-magfieldaccelerator.dds",
     "Race": "Terr",
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -17429,14 +17429,14 @@
   "MedivacIncreaseSpeedBoost": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 0
+      "UpgradeCheat": "0"
     },
     "Name": "Upgrade/Name/MedivacIncreaseSpeedBoost",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "MedivacIncreaseSpeedBoost",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-terran-highcapacityfueltanks.dds",
@@ -17461,25 +17461,25 @@
     "AffectedUnitArray": [
       "Medivac"
     ],
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "ScoreResult": "BuildOrder"
   },
   "DarkTemplarBlinkUpgrade": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/DarkTemplarBlinkUpgrade",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "DarkTemplarBlinkUpgrade",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-ability-protoss-stealth-blink.dds",
     "Race": "Prot",
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "ScoreResult": "BuildOrder",
     "EditorCategories": "Race:Protoss,UpgradeType:SpellResearch",
     "AffectedUnitArray": [
@@ -17489,20 +17489,20 @@
   "EvolveMuscularAugments": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/EvolveMuscularAugments",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "EvolveMuscularAugments",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-evolvemuscularaugments.dds",
     "Race": "Zerg",
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -17520,20 +17520,20 @@
   "EvolveGroovedSpines": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/EvolveGroovedSpines",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "EvolveGroovedSpines",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-hotsgroovedspines.dds",
     "Race": "Zerg",
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -17554,19 +17554,19 @@
   "MagFieldLaunchers": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/MagFieldLaunchers",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "MagFieldLaunchers",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-terran-cyclonerangeupgrade.dds",
     "Race": "Terr",
-    "ScoreAmount": 200,
+    "ScoreAmount": "200",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -17582,20 +17582,20 @@
   "DiggingClaws": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/DiggingClaws",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "DiggingClaws",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-zerg-adaptivetalons.dds",
     "Race": "Terr",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -17632,20 +17632,20 @@
   "SmartServos": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/SmartServos",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "SmartServos",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-terran-transformationservos.dds",
     "Race": "Terr",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EditorCategories": "Race:Terran,UpgradeType:Talents",
     "EffectArray": [
@@ -17806,20 +17806,20 @@
   "ArmorPiercingRockets": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/ArmorPiercingRockets",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "ArmorPiercingRockets",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-ability-terran-ignorearmor.dds",
     "Race": "Terr",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -17849,20 +17849,20 @@
   "CycloneRapidFireLaunchers": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/CycloneRapidFireLaunchers",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "CycloneRapidFireLaunchers",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-raynor-ripwavemissiles.dds",
     "Race": "Terr",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -17964,18 +17964,18 @@
   "RavenEnhancedMunitions": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1
+      "UpgradeCheat": "1"
     },
     "Name": "Upgrade/Name/RavenEnhancedMunitions",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "UpgradeComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "RavenEnhancedMunitions",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-upgrade-terran-enhancedmunitions.dds",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -18003,20 +18003,20 @@
   "CarrierCarrierCapacity": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/CarrierCarrierCapacity",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "CarrierCarrierCapacity",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-unit-protoss-interceptor.dds",
     "Race": "Prot",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {
@@ -18037,20 +18037,20 @@
   "CarrierLeashRangeUpgrade": {
     "class": "CUpgrade",
     "Flags": {
-      "UpgradeCheat": 1,
-      "TechTreeCheat": 1
+      "UpgradeCheat": "1",
+      "TechTreeCheat": "1"
     },
     "Name": "Upgrade/Name/CarrierLeashRangeUpgrade",
-    "MaxLevel": 1,
+    "MaxLevel": "1",
     "Alert": "ResearchComplete",
     "ScoreCount": "MiscTechnologyCount",
     "ScoreValue": "MiscTechnologyValue",
-    "WebPriority": 1,
+    "WebPriority": "1",
     "LeaderAlias": "CarrierLeashRangeUpgrade",
     "default": "1",
     "Icon": "Assets\\Textures\\btn-unit-protoss-interceptor.dds",
     "Race": "Prot",
-    "ScoreAmount": 300,
+    "ScoreAmount": "300",
     "ScoreResult": "BuildOrder",
     "EffectArray": [
       {

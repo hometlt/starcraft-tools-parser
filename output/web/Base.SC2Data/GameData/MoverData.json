@@ -2,12 +2,12 @@
   "Ground": {
     "class": "CMoverAvoid",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "PlacementArray": {
       "Prevent": {
         "Bits": {
-          "GroundNoSpawn": 1
+          "GroundNoSpawn": "1"
         }
       }
     }
@@ -15,14 +15,14 @@
   "MissileDefault": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18.75,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18.75",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -34,12 +34,12 @@
   "WizSimpleMissile": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Speed": 20,
+        "Speed": "20",
         "RotationLaunchActorType": "LaunchToTarget",
         "YawPitchRoll": "MAX"
       }
@@ -48,31 +48,31 @@
   "WizSimpleBallistic": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Ballistic",
-        "Speed": 10,
-        "Gravity": 9.8
+        "Speed": "10",
+        "Gravity": "9.8"
       }
     ]
   },
   "FungalGrowthWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 1000,
-        "Speed": 100,
-        "MaxSpeed": 12,
-        "IgnoresTerrain": 1,
+        "Acceleration": "1000",
+        "Speed": "100",
+        "MaxSpeed": "12",
+        "IgnoresTerrain": "1",
         "ActorTracking": "Actual",
         "YawPitchRoll": "119.8828",
-        "YawPitchRollAccel": 180,
+        "YawPitchRollAccel": "180",
         "ThrowBandYaw": "-360,-360,-360,-360",
         "ThrowBandPitch": "-360,-360,-360,-360"
       }
@@ -81,13 +81,13 @@
   "BroodLordBWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 40,
-        "MaxSpeed": 40,
+        "Acceleration": "40",
+        "MaxSpeed": "40",
         "YawPitchRoll": "MAX"
       }
     ]
@@ -95,30 +95,32 @@
   "BroodLordWeaponRight": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "Flags": {
-      "IgnoreNoFlyZones": 1
+      "IgnoreNoFlyZones": "1"
     },
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Acceleration": 3,
-        "Speed": 5,
-        "MaxSpeed": 8,
-        "Gravity": 5,
+        "Acceleration": "3",
+        "Speed": "5",
+        "MaxSpeed": "8",
+        "Gravity": "5",
         "Outro": "1.5,4.5",
         "ThrowRotationType": "LookAtTarget2D",
         "ThrowVector": "0.8,-1,0.75"
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 20,
-        "MaxSpeed": 40,
+        "Acceleration": "20",
+        "MaxSpeed": "40",
         "YawPitchRoll": "MAX",
-        "Overlays": {
-          "Scale": "0.75"
-        }
+        "Overlays": [
+          {
+            "Scale": "0.75"
+          }
+        ]
       }
     ],
     "MotionOverlays": [
@@ -133,30 +135,30 @@
   "SiphonTentacle": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 20,
-        "MaxSpeed": 10,
-        "IgnoresTerrain": 1,
+        "Acceleration": "20",
+        "MaxSpeed": "10",
+        "IgnoresTerrain": "1",
         "TurnType": "RevertToUp",
         "YawPitchRoll": "180",
-        "YawPitchRollAccel": 1440
+        "YawPitchRollAccel": "1440"
       }
     ]
   },
   "D8Charge": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Speed": 20,
-        "MaxSpeed": 20,
+        "Speed": "20",
+        "MaxSpeed": "20",
         "YawPitchRoll": "MAX"
       }
     ]
@@ -164,14 +166,14 @@
   "Corruption": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18.75,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18.75",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -184,34 +186,34 @@
   "InfestedTerransWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "AdaptableParabola",
-        "MinSpeed": 10,
-        "MaxSpeed": 10,
+        "MinSpeed": "10",
+        "MaxSpeed": "10",
         "ActorTracking": "Actual",
         "Outro": "-0.5,-0.2",
-        "AdaptableParabolaIsUpright": 1,
+        "AdaptableParabolaIsUpright": "1",
         "AdaptableParabolaClearance": "4,0.1",
         "AdaptableParabolaDistances": {
-          "Launch": 1,
-          "PreApex": 0.3,
-          "PostApex": 0.3,
-          "Land": 1
+          "Launch": "1",
+          "PreApex": "0.3",
+          "PostApex": "0.3",
+          "Land": "1"
         },
         "AdaptableParabolaAccels": {
-          "Launch": 0,
-          "Ascent": 0,
-          "Apex": 0,
-          "Descent": 0,
-          "Land": 0
+          "Launch": "0",
+          "Ascent": "0",
+          "Apex": "0",
+          "Descent": "0",
+          "Land": "0"
         }
       },
       {
         "Driver": "Guidance",
-        "MaxSpeed": 40,
+        "MaxSpeed": "40",
         "YawPitchRoll": "MAX"
       }
     ]
@@ -219,20 +221,20 @@
   "InfestorNeuralParasite": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 20,
-        "MaxSpeed": 12,
+        "Acceleration": "20",
+        "MaxSpeed": "12",
         "Outro": "4,5",
         "YawPitchRoll": "MAX"
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 20,
-        "MaxSpeed": 40,
+        "Acceleration": "20",
+        "MaxSpeed": "40",
         "YawPitchRoll": "MAX"
       }
     ]
@@ -240,14 +242,14 @@
   "GlaiveWurmMissile": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18.75,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18.75",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968",
         "ActorTracking": "Actual"
@@ -261,14 +263,14 @@
   "GlaiveWurmBounceMissile": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18.75,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18.75",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968",
         "ActorTracking": "Actual",
@@ -283,12 +285,12 @@
   "Construction": {
     "class": "CMoverAvoid",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "PlacementArray": {
       "Prevent": {
         "Bits": {
-          "GroundNoSpawn": 1
+          "GroundNoSpawn": "1"
         }
       }
     },
@@ -298,62 +300,62 @@
   "HunterSeekerMissile": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Acceleration": 3200,
-        "MaxSpeed": 1,
-        "Clearance": 0.5,
-        "ClearanceLookahead": 3,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "1",
+        "Clearance": "0.5",
+        "ClearanceLookahead": "3",
+        "ClearanceAcceleration": "75",
         "Outro": "0.9",
         "ThrowVector": "0,-1,0",
-        "Speed": 1,
-        "ClearanceIgnoresTargetProximity": 1,
-        "Timeout": 0.9,
+        "Speed": "1",
+        "ClearanceIgnoresTargetProximity": "1",
+        "Timeout": "0.9",
         "FlightTime": "0.9"
       },
       {
         "Driver": "Throw",
-        "Acceleration": 0,
-        "MaxSpeed": 0.0078,
-        "Clearance": 0.5,
-        "ClearanceLookahead": 3,
+        "Acceleration": "0",
+        "MaxSpeed": "0.0078",
+        "Clearance": "0.5",
+        "ClearanceLookahead": "3",
         "Outro": "4.9",
         "YawPitchRoll": "MAX",
-        "Speed": 0.0078,
-        "ClearanceAcceleration": 75,
-        "ClearanceIgnoresTargetProximity": 1,
-        "Timeout": 4.1,
+        "Speed": "0.0078",
+        "ClearanceAcceleration": "75",
+        "ClearanceIgnoresTargetProximity": "1",
+        "Timeout": "4.1",
         "ThrowVector": "0,-1,0",
         "FlightTime": "4.1"
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 4,
-        "MaxSpeed": 16,
-        "Clearance": 0.5,
-        "ClearanceLookahead": 3,
+        "Acceleration": "4",
+        "MaxSpeed": "16",
+        "Clearance": "0.5",
+        "ClearanceLookahead": "3",
         "Outro": "5",
         "YawPitchRoll": "MAX"
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 4,
-        "MaxSpeed": 16,
-        "Clearance": 0.5,
-        "ClearanceLookahead": 3,
+        "Acceleration": "4",
+        "MaxSpeed": "16",
+        "Clearance": "0.5",
+        "ClearanceLookahead": "3",
         "YawPitchRoll": "MAX",
         "Outro": "-2.25,-2"
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 16,
-        "MaxSpeed": 16,
-        "Clearance": 0.25,
-        "ClearanceLookahead": 3,
+        "Acceleration": "16",
+        "MaxSpeed": "16",
+        "Clearance": "0.25",
+        "ClearanceLookahead": "3",
         "YawPitchRoll": "MAX"
       }
     ]
@@ -361,25 +363,27 @@
   "NoxiousTurret": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Acceleration": 3200,
-        "MaxSpeed": 8.5,
+        "Acceleration": "3200",
+        "MaxSpeed": "8.5",
         "Outro": "1.5,4",
         "ThrowVector": "-0.5,-0.5,0"
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 12,
-        "Timeout": 7,
+        "Acceleration": "3200",
+        "MaxSpeed": "12",
+        "Timeout": "7",
         "YawPitchRoll": "MAX",
-        "Overlays": {
-          "Scale": "0.85"
-        }
+        "Overlays": [
+          {
+            "Scale": "0.85"
+          }
+        ]
       }
     ],
     "MotionOverlays": [
@@ -389,20 +393,20 @@
         "PolarityDriver": "::RollingIndex",
         "Axis": "1,0,0",
         "Wavelength": "4",
-        "WavelengthChangeProbability": 0
+        "WavelengthChangeProbability": "0"
       }
     ]
   },
   "ThorAA": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 20,
+        "Acceleration": "3200",
+        "MaxSpeed": "20",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -414,12 +418,12 @@
   "Burrowed": {
     "class": "CMoverAvoid",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "PlacementArray": {
       "Prevent": {
         "Bits": {
-          "GroundNoSpawn": 1
+          "GroundNoSpawn": "1"
         }
       }
     },
@@ -428,12 +432,12 @@
   "Colossus": {
     "class": "CMoverAvoid",
     "HeightMap": "Glide",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "PlacementArray": {
       "Prevent": {
         "Bits": {
-          "GroundNoSpawn": 1
+          "GroundNoSpawn": "1"
         }
       }
     },
@@ -443,12 +447,12 @@
   "CliffJumper": {
     "class": "CMoverAvoid",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "PlacementArray": {
       "Prevent": {
         "Bits": {
-          "GroundNoSpawn": 1
+          "GroundNoSpawn": "1"
         }
       }
     },
@@ -458,17 +462,17 @@
   "Creep": {
     "class": "CMoverAvoid",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "PlacementArray": {
       "Prevent": {
         "Bits": {
-          "GroundNoSpawn": 1
+          "GroundNoSpawn": "1"
         }
       },
       "Require": {
         "Bits": {
-          "Creep": 1
+          "Creep": "1"
         }
       }
     },
@@ -477,22 +481,22 @@
   "Fly": {
     "class": "CMoverFlock",
     "HeightMap": "Air",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "PathMode": "Flying"
   },
   "SpineCrawlerTentacleExtendShort": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Acceleration": 10,
-        "Speed": 1,
-        "MaxSpeed": 20,
-        "IgnoresTerrain": 1,
+        "Acceleration": "10",
+        "Speed": "1",
+        "MaxSpeed": "20",
+        "IgnoresTerrain": "1",
         "Outro": "0.2,0.4",
         "RotationLaunchActorType": "Supplied",
         "ThrowRotationType": "LookAtTarget",
@@ -500,28 +504,28 @@
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 140,
-        "MaxSpeed": 200,
-        "IgnoresTerrain": 1,
+        "Acceleration": "140",
+        "MaxSpeed": "200",
+        "IgnoresTerrain": "1",
         "TurnType": "RevertToUp",
         "ActorTracking": "Actual",
         "YawPitchRoll": "180",
-        "YawPitchRollAccel": 1440
+        "YawPitchRollAccel": "1440"
       }
     ]
   },
   "SpineCrawlerTentacleExtendLong": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 140,
-        "Speed": 12,
-        "MaxSpeed": 200,
-        "IgnoresTerrain": 1,
+        "Acceleration": "140",
+        "Speed": "12",
+        "MaxSpeed": "200",
+        "IgnoresTerrain": "1",
         "TurnType": "RevertToUp",
         "ActorTracking": "Actual",
         "RotationLaunchActorType": "Supplied",
@@ -532,32 +536,32 @@
   "SpineCrawlerTentacleRetractShort": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Speed": 8.5,
-        "MaxSpeed": 8.5,
-        "IgnoresTerrain": 1,
+        "Speed": "8.5",
+        "MaxSpeed": "8.5",
+        "IgnoresTerrain": "1",
         "Outro": "0.5,0.75",
         "ThrowVector": "0,-1,6"
       },
       {
         "Driver": "Throw",
-        "Speed": 8.5,
-        "MaxSpeed": 8.5,
-        "IgnoresTerrain": 1,
+        "Speed": "8.5",
+        "MaxSpeed": "8.5",
+        "IgnoresTerrain": "1",
         "Outro": "0.9,1.5",
         "ThrowRotationType": "LookAtTarget2D",
         "ThrowVector": "0,-1,0"
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 40,
-        "Speed": 8.5,
-        "MaxSpeed": 49,
-        "IgnoresTerrain": 1,
+        "Acceleration": "40",
+        "Speed": "8.5",
+        "MaxSpeed": "49",
+        "IgnoresTerrain": "1",
         "TurnType": "RevertToUp",
         "ActorTracking": "Actual",
         "RotationActorType": "Docking",
@@ -568,14 +572,14 @@
   "SpineCrawlerTentacleRetractLong": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Speed": 10,
-        "MaxSpeed": 10,
-        "IgnoresTerrain": 1,
+        "Speed": "10",
+        "MaxSpeed": "10",
+        "IgnoresTerrain": "1",
         "TurnType": "RevertToUp",
         "Outro": "1,3.8,0.1,0.1",
         "ThrowVector": "0,-1,1",
@@ -584,27 +588,27 @@
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 20,
-        "MaxSpeed": 45,
-        "IgnoresTerrain": 1,
+        "Acceleration": "20",
+        "MaxSpeed": "45",
+        "IgnoresTerrain": "1",
         "ActorTracking": "Actual",
         "RotationActorType": "Docking",
         "YawPitchRoll": "119.8828",
-        "YawPitchRollAccel": 180
+        "YawPitchRollAccel": "180"
       }
     ]
   },
   "EMP2Weapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 30,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "30",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -617,14 +621,14 @@
   "AcidSporesWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Speed": 10,
-        "MaxSpeed": 10,
-        "IgnoresTerrain": 1,
+        "Speed": "10",
+        "MaxSpeed": "10",
+        "IgnoresTerrain": "1",
         "TurnType": "RevertToUp",
         "Outro": "1,3.8,0.1,0.1",
         "ThrowVector": "0,-1,1",
@@ -633,89 +637,89 @@
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 20,
-        "MaxSpeed": 45,
-        "IgnoresTerrain": 1,
+        "Acceleration": "20",
+        "MaxSpeed": "45",
+        "IgnoresTerrain": "1",
         "ActorTracking": "Actual",
         "YawPitchRoll": "119.8828",
-        "YawPitchRollAccel": 180
+        "YawPitchRollAccel": "180"
       }
     ]
   },
   "ReaperJumpUp": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "PathMode": "Jumper",
     "MotionPhases": [
       {
         "Driver": "AdaptableParabola",
-        "MinSpeed": 2,
-        "MaxSpeed": 7,
+        "MinSpeed": "2",
+        "MaxSpeed": "7",
         "ActorTracking": "Actual",
-        "AdaptableParabolaIsUpright": 1,
+        "AdaptableParabolaIsUpright": "1",
         "AdaptableParabolaClearance": "1.75,0.5",
         "AdaptableParabolaDistances": {
-          "Launch": 2,
-          "PreApex": 1.2,
-          "PostApex": 0,
-          "Land": 1.2
+          "Launch": "2",
+          "PreApex": "1.2",
+          "PostApex": "0",
+          "Land": "1.2"
         },
         "AdaptableParabolaAccels": {
-          "Launch": 10,
-          "Ascent": 1,
-          "Apex": -14,
-          "Descent": 10,
-          "Land": -15
+          "Launch": "10",
+          "Ascent": "1",
+          "Apex": "-14",
+          "Descent": "10",
+          "Land": "-15"
         }
       }
     ],
-    "RespectUnitHeightAtDestination": 1
+    "RespectUnitHeightAtDestination": "1"
   },
   "ReaperJumpDown": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "PathMode": "Jumper",
     "MotionPhases": [
       {
         "Driver": "AdaptableParabola",
-        "Speed": 7,
-        "MinSpeed": 7,
-        "MaxSpeed": 7,
+        "Speed": "7",
+        "MinSpeed": "7",
+        "MaxSpeed": "7",
         "ActorTracking": "Actual",
-        "AdaptableParabolaIsUpright": 1,
+        "AdaptableParabolaIsUpright": "1",
         "AdaptableParabolaClearance": "1.25,0.5",
         "AdaptableParabolaDistances": {
-          "Launch": 1,
-          "PreApex": 0.9,
-          "PostApex": 0.1,
-          "Land": 3
+          "Launch": "1",
+          "PreApex": "0.9",
+          "PostApex": "0.1",
+          "Land": "3"
         },
         "AdaptableParabolaAccels": {
-          "Launch": 15,
-          "Ascent": 1,
-          "Apex": -13,
-          "Descent": 12,
-          "Land": -6
+          "Launch": "15",
+          "Ascent": "1",
+          "Apex": "-13",
+          "Descent": "12",
+          "Land": "-6"
         }
       }
     ],
-    "RespectUnitHeightAtDestination": 1
+    "RespectUnitHeightAtDestination": "1"
   },
   "PhotonCannonWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -728,24 +732,24 @@
   "MothershipBeamWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Acceleration": 10,
-        "Speed": 0,
-        "MaxSpeed": 10,
+        "Acceleration": "10",
+        "Speed": "0",
+        "MaxSpeed": "10",
         "Outro": "2,6",
         "ThrowRotationType": "ThrowForward",
         "ThrowVector": "0,-1,0"
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 10,
-        "MaxSpeed": 20,
+        "Acceleration": "10",
+        "MaxSpeed": "20",
         "Outro": "-2,-1",
-        "YawPitchRollAccel": 29.5312
+        "YawPitchRollAccel": "29.5312"
       },
       {
         "YawPitchRoll": "MAX"
@@ -755,14 +759,14 @@
   "InterceptorWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 36,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "36",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -775,13 +779,13 @@
   "IonCannonsWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Speed": 6,
-        "MaxSpeed": 6,
+        "Speed": "6",
+        "MaxSpeed": "6",
         "Outro": "0.4,0.85",
         "ThrowRotationType": "ThrowForward",
         "ThrowVector": "0,-1,0"
@@ -792,8 +796,8 @@
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 60,
-        "MaxSpeed": 40,
+        "Acceleration": "60",
+        "MaxSpeed": "40",
         "YawPitchRoll": "MAX"
       }
     ]
@@ -801,13 +805,13 @@
   "IonCannonsWeaponLeft": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Speed": 6,
-        "MaxSpeed": 6,
+        "Speed": "6",
+        "MaxSpeed": "6",
         "Outro": "0.4,0.85",
         "ThrowRotationType": "ThrowForward",
         "ThrowVector": "1.75,-1.25,-0.7"
@@ -818,8 +822,8 @@
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 60,
-        "MaxSpeed": 40,
+        "Acceleration": "60",
+        "MaxSpeed": "40",
         "YawPitchRoll": "MAX"
       }
     ],
@@ -828,13 +832,13 @@
   "IonCannonsWeaponRight": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Speed": 6,
-        "MaxSpeed": 6,
+        "Speed": "6",
+        "MaxSpeed": "6",
         "Outro": "0.4,0.85",
         "ThrowRotationType": "ThrowForward",
         "ThrowVector": "-1.75,-1.25,-0.7"
@@ -845,8 +849,8 @@
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 60,
-        "MaxSpeed": 40,
+        "Acceleration": "60",
+        "MaxSpeed": "40",
         "YawPitchRoll": "MAX"
       }
     ],
@@ -855,56 +859,62 @@
   "BacklashRocketsLMWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 20,
-        "Speed": 10,
-        "MaxSpeed": 50,
+        "Acceleration": "20",
+        "Speed": "10",
+        "MaxSpeed": "50",
         "Outro": "2.5",
         "YawPitchRoll": "719.2968",
-        "Overlays": {
-          "Scale": "0"
-        }
+        "Overlays": [
+          {
+            "Scale": "0"
+          }
+        ]
       },
       {
-        "Overlays": {
-          "Scale": "0.2,0.2"
-        },
+        "Overlays": [
+          {
+            "Scale": "0.2,0.2"
+          }
+        ],
         "Outro": "-1"
       },
       {
-        "Overlays": {
-          "Scale": "0"
-        },
+        "Overlays": [
+          {
+            "Scale": "0"
+          }
+        ],
         "YawPitchRoll": "MAX"
       }
     ],
     "MotionOverlays": [
       {
         "Type": "Revolver",
-        "RevolverSpeed": 179.2968,
-        "RevolverSpeedRange": 179.2968,
-        "RevolverMaxSpeed": 719.2968,
-        "RevolverMaxSpeedRange": 0,
-        "RevolverAccel": 337.5,
-        "RevolverAccelRange": 337.5
+        "RevolverSpeed": "179.2968",
+        "RevolverSpeedRange": "179.2968",
+        "RevolverMaxSpeed": "719.2968",
+        "RevolverMaxSpeedRange": "0",
+        "RevolverAccel": "337.5",
+        "RevolverAccelRange": "337.5"
       }
     ]
   },
   "ATALaserBatteryLMWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 150,
-        "MaxSpeed": 18.75,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "150",
+        "MaxSpeed": "18.75",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -917,14 +927,14 @@
   "ATSLaserBatteryLMWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 150,
-        "MaxSpeed": 18.75,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "150",
+        "MaxSpeed": "18.75",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -937,42 +947,42 @@
   "VikingFighterMissile": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "PathMode": "Flying",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Speed": 2,
-        "MaxSpeed": 2,
+        "Speed": "2",
+        "MaxSpeed": "2",
         "Outro": "0.125,0.25",
-        "Timeout": 10,
+        "Timeout": "10",
         "ThrowVector": "0,-1,0",
         "YawPitchRoll": "506.25"
       },
       {
         "Driver": "Throw",
-        "Speed": 2,
-        "MaxSpeed": 2,
-        "Gravity": 30,
+        "Speed": "2",
+        "MaxSpeed": "2",
+        "Gravity": "30",
         "Outro": "0.625,0.75",
-        "Timeout": 10,
+        "Timeout": "10",
         "ThrowVector": "0,-1,0",
         "YawPitchRoll": "506.25"
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 56,
-        "Speed": 2,
-        "MaxSpeed": 28,
+        "Acceleration": "56",
+        "Speed": "2",
+        "MaxSpeed": "28",
         "Outro": "2,2.5",
-        "Timeout": 10,
+        "Timeout": "10",
         "YawPitchRoll": "MAX"
       },
       {
         "Driver": "Guidance",
-        "MaxSpeed": 28,
-        "Timeout": 10,
+        "MaxSpeed": "28",
+        "Timeout": "10",
         "YawPitchRoll": "5568.75"
       }
     ]
@@ -980,14 +990,14 @@
   "YamatoWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 20,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "20",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -1000,17 +1010,17 @@
   "AutoTurretReleaseWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 12,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "12",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968",
-        "Speed": 12
+        "Speed": "12"
       },
       {
         "YawPitchRoll": "MAX"
@@ -1021,34 +1031,34 @@
   "LongboltMissileWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Speed": 10,
-        "MaxSpeed": 10,
+        "Speed": "10",
+        "MaxSpeed": "10",
         "ActorTracking": "Actual",
         "Outro": "-4",
         "YawPitchRoll": "MAX"
       },
       {
-        "Acceleration": 200,
-        "MaxSpeed": 20
+        "Acceleration": "200",
+        "MaxSpeed": "20"
       }
     ]
   },
   "StalkerWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18.75,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18.75",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -1061,13 +1071,13 @@
   "NeedleSpinesWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Speed": 40,
-        "MaxSpeed": 40,
+        "Speed": "40",
+        "MaxSpeed": "40",
         "YawPitchRoll": "MAX"
       }
     ]
@@ -1075,13 +1085,13 @@
   "AcidSpinesWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Speed": 40,
-        "MaxSpeed": 40,
+        "Speed": "40",
+        "MaxSpeed": "40",
         "ActorTracking": "Actual",
         "RotationLaunchActorType": "LaunchToTarget",
         "YawPitchRoll": "MAX"
@@ -1091,27 +1101,29 @@
   "BroodLordWeaponLeft": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Acceleration": 3,
-        "Speed": 5,
-        "MaxSpeed": 8,
-        "Gravity": 5,
+        "Acceleration": "3",
+        "Speed": "5",
+        "MaxSpeed": "8",
+        "Gravity": "5",
         "Outro": "1.5,4.5",
         "ThrowRotationType": "LookAtTarget2D",
         "ThrowVector": "-0.8,-1,0.75"
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 20,
-        "MaxSpeed": 40,
+        "Acceleration": "20",
+        "MaxSpeed": "40",
         "YawPitchRoll": "MAX",
-        "Overlays": {
-          "Scale": "0.75"
-        }
+        "Overlays": [
+          {
+            "Scale": "0.75"
+          }
+        ]
       }
     ],
     "MotionOverlays": [
@@ -1126,22 +1138,22 @@
   "LarvaReleaseMissile": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Acceleration": 3,
-        "Speed": 6,
-        "MaxSpeed": 6,
-        "Gravity": 5,
+        "Acceleration": "3",
+        "Speed": "6",
+        "MaxSpeed": "6",
+        "Gravity": "5",
         "Outro": "1.5,4.5",
         "ThrowVector": "0,0,5"
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 2,
-        "MaxSpeed": 10,
+        "Acceleration": "2",
+        "MaxSpeed": "10",
         "YawPitchRoll": "MAX"
       }
     ]
@@ -1149,13 +1161,13 @@
   "PunisherGrenadesWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 20,
+        "Acceleration": "3200",
+        "MaxSpeed": "20",
         "YawPitchRoll": "MAX"
       }
     ]
@@ -1163,13 +1175,13 @@
   "AcidSalivaWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18.75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18.75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -1181,14 +1193,14 @@
   "Frenzy": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18.75,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18.75",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -1201,14 +1213,14 @@
   "Contaminate": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18.75,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18.75",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -1221,14 +1233,14 @@
   "InfestedTerransLayEggWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 10,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "10",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -1241,268 +1253,270 @@
   "UnitKnockbackMover2": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "Flags": {
-      "IgnoreMovementSuppression": 1
+      "IgnoreMovementSuppression": "1"
     },
     "MotionPhases": [
       {
         "Driver": "Ballistic",
-        "Acceleration": -1,
-        "Gravity": 20,
+        "Acceleration": "-1",
+        "Gravity": "20",
         "RotationActorType": "Upright",
         "YawPitchRoll": "MAX",
         "FlightTime": "0.8"
       }
     ],
-    "RotationIgnoredByUnit": 1,
+    "RotationIgnoredByUnit": "1",
     "PathMode": "Flying"
   },
   "UnitKnockbackMover3": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "Flags": {
-      "IgnoreMovementSuppression": 1
+      "IgnoreMovementSuppression": "1"
     },
     "MotionPhases": [
       {
         "Driver": "Ballistic",
-        "Acceleration": -1,
-        "Gravity": 20,
+        "Acceleration": "-1",
+        "Gravity": "20",
         "RotationActorType": "Upright",
         "YawPitchRoll": "MAX",
         "FlightTime": "0.9"
       }
     ],
-    "RotationIgnoredByUnit": 1,
+    "RotationIgnoredByUnit": "1",
     "PathMode": "Flying"
   },
   "UnitKnockbackMover4": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "Flags": {
-      "IgnoreMovementSuppression": 1
+      "IgnoreMovementSuppression": "1"
     },
     "MotionPhases": [
       {
         "Driver": "Ballistic",
-        "Acceleration": -1,
-        "Gravity": 20,
+        "Acceleration": "-1",
+        "Gravity": "20",
         "RotationActorType": "Upright",
         "YawPitchRoll": "MAX",
         "FlightTime": "1"
       }
     ],
-    "RotationIgnoredByUnit": 1,
+    "RotationIgnoredByUnit": "1",
     "PathMode": "Flying"
   },
   "UnitKnockbackMover5": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "Flags": {
-      "IgnoreMovementSuppression": 1
+      "IgnoreMovementSuppression": "1"
     },
     "MotionPhases": [
       {
         "Driver": "Ballistic",
-        "Acceleration": -1,
-        "Gravity": 20,
+        "Acceleration": "-1",
+        "Gravity": "20",
         "RotationActorType": "Upright",
         "YawPitchRoll": "MAX",
         "FlightTime": "1.1"
       }
     ],
-    "RotationIgnoredByUnit": 1,
+    "RotationIgnoredByUnit": "1",
     "PathMode": "Flying"
   },
   "UnitKnockbackMover6": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "Flags": {
-      "IgnoreMovementSuppression": 1
+      "IgnoreMovementSuppression": "1"
     },
     "MotionPhases": [
       {
         "Driver": "Ballistic",
-        "Acceleration": -1,
-        "Gravity": 20,
+        "Acceleration": "-1",
+        "Gravity": "20",
         "RotationActorType": "Upright",
         "YawPitchRoll": "MAX",
         "FlightTime": "1.2"
       }
     ],
-    "RotationIgnoredByUnit": 1,
+    "RotationIgnoredByUnit": "1",
     "PathMode": "Flying"
   },
   "UnitKnockbackMover7": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "Flags": {
-      "IgnoreMovementSuppression": 1
+      "IgnoreMovementSuppression": "1"
     },
     "MotionPhases": [
       {
         "Driver": "Ballistic",
-        "Acceleration": -1,
-        "Gravity": 20,
+        "Acceleration": "-1",
+        "Gravity": "20",
         "RotationActorType": "Upright",
         "YawPitchRoll": "MAX",
         "FlightTime": "1.3"
       }
     ],
-    "RotationIgnoredByUnit": 1,
+    "RotationIgnoredByUnit": "1",
     "PathMode": "Flying"
   },
   "UnitKnockbackMover8": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "Flags": {
-      "IgnoreMovementSuppression": 1
+      "IgnoreMovementSuppression": "1"
     },
     "MotionPhases": [
       {
         "Driver": "Ballistic",
-        "Acceleration": -1,
-        "Gravity": 20,
+        "Acceleration": "-1",
+        "Gravity": "20",
         "RotationActorType": "Upright",
         "YawPitchRoll": "MAX",
         "FlightTime": "1.4"
       }
     ],
-    "RotationIgnoredByUnit": 1,
+    "RotationIgnoredByUnit": "1",
     "PathMode": "Flying"
   },
   "UnitKnockbackMover9": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "Flags": {
-      "IgnoreMovementSuppression": 1
+      "IgnoreMovementSuppression": "1"
     },
     "MotionPhases": [
       {
         "Driver": "Ballistic",
-        "Acceleration": -1,
-        "Gravity": 20,
+        "Acceleration": "-1",
+        "Gravity": "20",
         "RotationActorType": "Upright",
         "YawPitchRoll": "MAX",
         "FlightTime": "1.5"
       }
     ],
-    "RotationIgnoredByUnit": 1,
+    "RotationIgnoredByUnit": "1",
     "PathMode": "Flying"
   },
   "UnitKnockbackMover10": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "Flags": {
-      "IgnoreMovementSuppression": 1
+      "IgnoreMovementSuppression": "1"
     },
     "MotionPhases": [
       {
         "Driver": "Ballistic",
-        "Acceleration": -1,
-        "Gravity": 20,
+        "Acceleration": "-1",
+        "Gravity": "20",
         "RotationActorType": "Upright",
         "YawPitchRoll": "MAX",
         "FlightTime": "1.6"
       }
     ],
-    "RotationIgnoredByUnit": 1,
+    "RotationIgnoredByUnit": "1",
     "PathMode": "Flying"
   },
   "UnitKnockbackMover11": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "Flags": {
-      "IgnoreMovementSuppression": 1
+      "IgnoreMovementSuppression": "1"
     },
     "MotionPhases": [
       {
         "Driver": "Ballistic",
-        "Acceleration": -1,
-        "Gravity": 20,
+        "Acceleration": "-1",
+        "Gravity": "20",
         "RotationActorType": "Upright",
         "YawPitchRoll": "MAX",
         "FlightTime": "1.7"
       }
     ],
-    "RotationIgnoredByUnit": 1,
+    "RotationIgnoredByUnit": "1",
     "PathMode": "Flying"
   },
   "UnitKnockbackMover12": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "Flags": {
-      "IgnoreMovementSuppression": 1
+      "IgnoreMovementSuppression": "1"
     },
     "MotionPhases": [
       {
         "Driver": "Ballistic",
-        "Acceleration": -1,
-        "Gravity": 20,
+        "Acceleration": "-1",
+        "Gravity": "20",
         "RotationActorType": "Upright",
         "YawPitchRoll": "MAX",
         "FlightTime": "1.8"
       }
     ],
-    "RotationIgnoredByUnit": 1,
+    "RotationIgnoredByUnit": "1",
     "PathMode": "Flying"
   },
   "TornadoMissileWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Acceleration": 3200,
-        "MaxSpeed": 12,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "12",
+        "ClearanceAcceleration": "75",
         "Outro": "2.5,3",
         "YawPitchRoll": "MAX",
-        "Speed": 10,
-        "Timeout": 10,
+        "Speed": "10",
+        "Timeout": "10",
         "ThrowRotationType": "ThrowForward",
         "ThrowVector": "0,-1,0"
       },
       {
         "YawPitchRoll": "MAX",
         "Driver": "Guidance",
-        "Acceleration": 56,
-        "Speed": 14,
-        "MaxSpeed": 28,
+        "Acceleration": "56",
+        "Speed": "14",
+        "MaxSpeed": "28",
         "Outro": "3.5,4",
-        "Timeout": 10,
-        "Overlays": {
-          "Scale": "1,0.5"
-        }
+        "Timeout": "10",
+        "Overlays": [
+          {
+            "Scale": "1,0.5"
+          }
+        ]
       },
       {
         "Driver": "Guidance",
-        "MaxSpeed": 3200,
-        "Timeout": 10,
+        "MaxSpeed": "3200",
+        "Timeout": "10",
         "YawPitchRoll": "5568.75"
       }
     ],
@@ -1518,40 +1532,44 @@
   "TornadoMissileDummyWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Acceleration": 0,
-        "MaxSpeed": 3,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "0",
+        "MaxSpeed": "3",
+        "ClearanceAcceleration": "75",
         "Outro": "1,1.4",
         "YawPitchRoll": "506.25",
-        "Speed": 3,
-        "Timeout": 10,
+        "Speed": "3",
+        "Timeout": "10",
         "ThrowRotationType": "ThrowForward",
         "ThrowVector": "0,-1,1",
-        "Overlays": {
-          "Scale": "0.5,0.5"
-        }
+        "Overlays": [
+          {
+            "Scale": "0.5,0.5"
+          }
+        ]
       },
       {
         "YawPitchRoll": "MAX",
         "Driver": "Guidance",
-        "Acceleration": 56,
-        "Speed": 3,
-        "MaxSpeed": 12,
+        "Acceleration": "56",
+        "Speed": "3",
+        "MaxSpeed": "12",
         "Outro": "1.5,2",
-        "Timeout": 10,
-        "Overlays": {
-          "Scale": "0.5,0.5"
-        }
+        "Timeout": "10",
+        "Overlays": [
+          {
+            "Scale": "0.5,0.5"
+          }
+        ]
       },
       {
         "Driver": "Guidance",
-        "MaxSpeed": 3200,
-        "Timeout": 10,
+        "MaxSpeed": "3200",
+        "Timeout": "10",
         "YawPitchRoll": "5568.75"
       }
     ],
@@ -1567,37 +1585,39 @@
   "TornadoMissileWeaponClose": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Acceleration": 3200,
-        "MaxSpeed": 12,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "12",
+        "ClearanceAcceleration": "75",
         "Outro": "0.5,1",
         "YawPitchRoll": "MAX",
-        "Speed": 10,
-        "Timeout": 10,
+        "Speed": "10",
+        "Timeout": "10",
         "ThrowRotationType": "ThrowForward",
         "ThrowVector": "0,-1,0"
       },
       {
         "YawPitchRoll": "MAX",
         "Driver": "Guidance",
-        "Acceleration": 56,
-        "Speed": 14,
-        "MaxSpeed": 28,
+        "Acceleration": "56",
+        "Speed": "14",
+        "MaxSpeed": "28",
         "Outro": "1.5,2",
-        "Timeout": 10,
-        "Overlays": {
-          "Scale": "0.5,0.25"
-        }
+        "Timeout": "10",
+        "Overlays": [
+          {
+            "Scale": "0.5,0.25"
+          }
+        ]
       },
       {
         "Driver": "Guidance",
-        "MaxSpeed": 3200,
-        "Timeout": 10,
+        "MaxSpeed": "3200",
+        "Timeout": "10",
         "YawPitchRoll": "5568.75"
       }
     ],
@@ -1613,14 +1633,14 @@
   "BurrowChargeWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 5,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "5",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968",
         "ThrowBandYaw": "-360,-360,-360,-360",
@@ -1635,14 +1655,14 @@
   "ViperConsumeStructureWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18.75,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18.75",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968",
         "RotationLaunchActorType": "LaunchToTarget"
@@ -1656,14 +1676,14 @@
   "YoinkMissile": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18.75,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18.75",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968",
         "RotationLaunchActorType": "LaunchToTarget"
@@ -1677,14 +1697,14 @@
   "YoinkVikingAirMissile": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18.75,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18.75",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968",
         "RotationLaunchActorType": "LaunchToTarget"
@@ -1698,14 +1718,14 @@
   "YoinkVikingGroundMissile": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18.75,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18.75",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968",
         "RotationLaunchActorType": "LaunchToTarget"
@@ -1719,14 +1739,14 @@
   "YoinkSiegeTankMissile": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18.75,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18.75",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968",
         "RotationLaunchActorType": "LaunchToTarget"
@@ -1740,102 +1760,102 @@
   "YoinkMover": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "Flags": {
-      "IgnoreMovementSuppression": 1,
-      "RestoreHeight": 1
+      "IgnoreMovementSuppression": "1",
+      "RestoreHeight": "1"
     },
     "MotionPhases": [
       {
         "Driver": "Ballistic",
-        "Acceleration": -1,
-        "Gravity": 10,
+        "Acceleration": "-1",
+        "Gravity": "10",
         "RotationActorType": "Upright",
         "YawPitchRoll": "MAX",
         "FlightTime": "1"
       }
     ],
-    "RotationIgnoredByUnit": 1,
+    "RotationIgnoredByUnit": "1",
     "PathMode": "Flying"
   },
   "YoinkMoverAir": {
     "class": "CMoverMissile",
     "HeightMap": "Air",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "Flags": {
-      "IgnoreMovementSuppression": 1,
-      "RestoreHeight": 1
+      "IgnoreMovementSuppression": "1",
+      "RestoreHeight": "1"
     },
     "MotionPhases": [
       {
         "Driver": "Ballistic",
-        "Acceleration": -1,
-        "Gravity": 10,
+        "Acceleration": "-1",
+        "Gravity": "10",
         "RotationActorType": "Upright",
         "YawPitchRoll": "MAX",
         "FlightTime": "1"
       }
     ],
-    "RotationIgnoredByUnit": 1,
+    "RotationIgnoredByUnit": "1",
     "PathMode": "Flying",
     "parent": "YoinkMover"
   },
   "YoinkMoverGlide": {
     "class": "CMoverMissile",
     "HeightMap": "Glide",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "Flags": {
-      "IgnoreMovementSuppression": 1,
-      "RestoreHeight": 1
+      "IgnoreMovementSuppression": "1",
+      "RestoreHeight": "1"
     },
     "MotionPhases": [
       {
         "Driver": "Ballistic",
-        "Acceleration": -1,
-        "Gravity": 10,
+        "Acceleration": "-1",
+        "Gravity": "10",
         "RotationActorType": "Upright",
         "YawPitchRoll": "MAX",
         "FlightTime": "1"
       }
     ],
-    "RotationIgnoredByUnit": 1,
+    "RotationIgnoredByUnit": "1",
     "PathMode": "Flying",
     "parent": "YoinkMover"
   },
   "BurrowChargeImpactMover": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "Flags": {
-      "IgnoreMovementSuppression": 1
+      "IgnoreMovementSuppression": "1"
     },
     "MotionPhases": [
       {
         "Driver": "Ballistic",
-        "Acceleration": -1,
-        "Gravity": 20,
+        "Acceleration": "-1",
+        "Gravity": "20",
         "RotationActorType": "Upright",
         "YawPitchRoll": "MAX",
         "FlightTime": "1"
       }
     ],
-    "RotationIgnoredByUnit": 1,
+    "RotationIgnoredByUnit": "1",
     "PathMode": "Flying"
   },
   "BulwarkAA": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 10,
+        "Acceleration": "3200",
+        "MaxSpeed": "10",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -1847,14 +1867,14 @@
   "ZergArtilleryWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18.75,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18.75",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -1867,14 +1887,14 @@
   "DoomWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18.75,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18.75",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -1887,14 +1907,14 @@
   "EyeStalkWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18.75,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18.75",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -1907,14 +1927,14 @@
   "DubiousTentacles": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18.75,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18.75",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -1927,42 +1947,42 @@
   "MissileTankMissile": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Acceleration": 3200,
-        "MaxSpeed": 1,
-        "Clearance": 0.5,
-        "ClearanceLookahead": 3,
+        "Acceleration": "3200",
+        "MaxSpeed": "1",
+        "Clearance": "0.5",
+        "ClearanceLookahead": "3",
         "Outro": "1,1.25",
         "ThrowVector": "0,-1,0"
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 2.5,
-        "Clearance": 0.5,
-        "ClearanceLookahead": 3,
+        "Acceleration": "3200",
+        "MaxSpeed": "2.5",
+        "Clearance": "0.5",
+        "ClearanceLookahead": "3",
         "Outro": "-4.5,-4.25",
         "YawPitchRoll": "MAX"
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 4,
-        "MaxSpeed": 2.5,
-        "Clearance": 0.5,
-        "ClearanceLookahead": 3,
+        "Acceleration": "4",
+        "MaxSpeed": "2.5",
+        "Clearance": "0.5",
+        "ClearanceLookahead": "3",
         "Outro": "-2.25,-2",
         "YawPitchRoll": "MAX"
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 16,
-        "MaxSpeed": 20,
-        "Clearance": 0.25,
-        "ClearanceLookahead": 3,
+        "Acceleration": "16",
+        "MaxSpeed": "20",
+        "Clearance": "0.25",
+        "ClearanceLookahead": "3",
         "YawPitchRoll": "MAX"
       }
     ]
@@ -1970,34 +1990,34 @@
   "MissileLauncherMine": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "AdaptableParabola",
-        "MinSpeed": 15,
-        "MaxSpeed": 15,
+        "MinSpeed": "15",
+        "MaxSpeed": "15",
         "ActorTracking": "Actual",
         "Outro": "-0.5,-0.2",
-        "AdaptableParabolaIsUpright": 1,
+        "AdaptableParabolaIsUpright": "1",
         "AdaptableParabolaClearance": "6,0.1",
         "AdaptableParabolaDistances": {
-          "Launch": 1,
-          "PreApex": 0.3,
-          "PostApex": 0.3,
-          "Land": 1
+          "Launch": "1",
+          "PreApex": "0.3",
+          "PostApex": "0.3",
+          "Land": "1"
         },
         "AdaptableParabolaAccels": {
-          "Launch": 0,
-          "Ascent": 0,
-          "Apex": 0,
-          "Descent": 0,
-          "Land": 0
+          "Launch": "0",
+          "Ascent": "0",
+          "Apex": "0",
+          "Descent": "0",
+          "Land": "0"
         }
       },
       {
         "Driver": "Guidance",
-        "MaxSpeed": 40,
+        "MaxSpeed": "40",
         "YawPitchRoll": "MAX"
       }
     ]
@@ -2005,31 +2025,31 @@
   "WidowMineWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "PathMode": "Flying",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Speed": 3,
-        "MaxSpeed": 3,
+        "Speed": "3",
+        "MaxSpeed": "3",
         "Outro": "1.4,1.45",
-        "Timeout": 10,
+        "Timeout": "10",
         "ThrowVector": "0,0,1",
         "YawPitchRoll": "506.25"
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 56,
-        "MaxSpeed": 28,
+        "Acceleration": "56",
+        "MaxSpeed": "28",
         "Outro": "1.5,2.5",
-        "Timeout": 10,
+        "Timeout": "10",
         "YawPitchRoll": "MAX"
       },
       {
         "Driver": "Guidance",
-        "MaxSpeed": 28,
-        "Timeout": 10,
+        "MaxSpeed": "28",
+        "Timeout": "10",
         "YawPitchRoll": "5568.75"
       }
     ]
@@ -2037,31 +2057,31 @@
   "WidowMineAirWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "PathMode": "Flying",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Speed": 3,
-        "MaxSpeed": 3,
+        "Speed": "3",
+        "MaxSpeed": "3",
         "Outro": "1.4,1.45",
-        "Timeout": 10,
+        "Timeout": "10",
         "ThrowVector": "0,0,1",
         "YawPitchRoll": "506.25"
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 56,
-        "MaxSpeed": 28,
+        "Acceleration": "56",
+        "MaxSpeed": "28",
         "Outro": "1.5,2.5",
-        "Timeout": 10,
+        "Timeout": "10",
         "YawPitchRoll": "MAX"
       },
       {
         "Driver": "Guidance",
-        "MaxSpeed": 28,
-        "Timeout": 10,
+        "MaxSpeed": "28",
+        "Timeout": "10",
         "YawPitchRoll": "5568.75"
       }
     ]
@@ -2069,14 +2089,14 @@
   "MothershipCoreWeaponWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 36,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "36",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -2089,14 +2109,14 @@
   "MothershipCoreWeaponWeaponClose": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 12,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "12",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -2109,13 +2129,13 @@
   "TalonsMissileWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Speed": 40,
-        "MaxSpeed": 40,
+        "Speed": "40",
+        "MaxSpeed": "40",
         "ActorTracking": "Actual",
         "RotationLaunchActorType": "LaunchToTarget",
         "YawPitchRoll": "MAX"
@@ -2125,14 +2145,14 @@
   "WarHoundWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 40,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "40",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968",
         "ActorTracking": "Actual",
@@ -2147,17 +2167,17 @@
   "CreepTumorMissile": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 4,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "4",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968",
-        "ClearanceLookahead": 2,
+        "ClearanceLookahead": "2",
         "ActorTracking": "Actual"
       },
       {
@@ -2169,13 +2189,13 @@
   "LocustMPEggMissile": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Ballistic",
-        "Acceleration": -1,
-        "Gravity": 25,
+        "Acceleration": "-1",
+        "Gravity": "25",
         "RotationActorType": "Upright",
         "YawPitchRoll": "MAX",
         "FlightTime": "0.5"
@@ -2185,14 +2205,14 @@
   "MothershipCoreWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -2205,14 +2225,14 @@
   "MissileTankLaserBatteryLMWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 150,
-        "MaxSpeed": 18.75,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "150",
+        "MaxSpeed": "18.75",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -2225,14 +2245,14 @@
   "OracleWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -2245,13 +2265,13 @@
   "ThorAALance": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 20,
+        "Acceleration": "3200",
+        "MaxSpeed": "20",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -2260,8 +2280,8 @@
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 20,
+        "Acceleration": "3200",
+        "MaxSpeed": "20",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -2273,14 +2293,14 @@
   "ScoutMPGroundWeaponLeft": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Acceleration": 10,
-        "Speed": 5,
-        "MaxSpeed": 15,
+        "Acceleration": "10",
+        "Speed": "5",
+        "MaxSpeed": "15",
         "Outro": "0.3,0.75",
         "ThrowRotationType": "ThrowForward",
         "ThrowVector": "-0.4,-1,0"
@@ -2295,22 +2315,22 @@
         "YawPitchRoll": "MAX"
       },
       {
-        "Acceleration": 60,
-        "MaxSpeed": 40
+        "Acceleration": "60",
+        "MaxSpeed": "40"
       }
     ]
   },
   "ScoutMPGroundWeaponRight": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Acceleration": 10,
-        "Speed": 5,
-        "MaxSpeed": 15,
+        "Acceleration": "10",
+        "Speed": "5",
+        "MaxSpeed": "15",
         "Outro": "0.3,0.75",
         "ThrowRotationType": "ThrowForward",
         "ThrowVector": "0.4,-1,0"
@@ -2325,22 +2345,22 @@
         "YawPitchRoll": "MAX"
       },
       {
-        "Acceleration": 60,
-        "MaxSpeed": 40
+        "Acceleration": "60",
+        "MaxSpeed": "40"
       }
     ]
   },
   "ScoutMPAirWeaponLeft": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Acceleration": 10,
-        "Speed": 5,
-        "MaxSpeed": 15,
+        "Acceleration": "10",
+        "Speed": "5",
+        "MaxSpeed": "15",
         "Outro": "0.4,0.85",
         "ThrowRotationType": "ThrowForward",
         "ThrowVector": "-0.4,-1,0"
@@ -2351,8 +2371,8 @@
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 60,
-        "MaxSpeed": 40,
+        "Acceleration": "60",
+        "MaxSpeed": "40",
         "YawPitchRoll": "MAX"
       }
     ]
@@ -2360,14 +2380,14 @@
   "ScoutMPAirWeaponRight": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Acceleration": 10,
-        "Speed": 5,
-        "MaxSpeed": 15,
+        "Acceleration": "10",
+        "Speed": "5",
+        "MaxSpeed": "15",
         "Outro": "0.4,0.85",
         "ThrowRotationType": "ThrowForward",
         "ThrowVector": "0.4,-1,0"
@@ -2378,8 +2398,8 @@
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 60,
-        "MaxSpeed": 40,
+        "Acceleration": "60",
+        "MaxSpeed": "40",
         "YawPitchRoll": "MAX"
       }
     ]
@@ -2387,13 +2407,13 @@
   "ArbiterMPWeaponMissile": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 20,
+        "Acceleration": "3200",
+        "MaxSpeed": "20",
         "YawPitchRoll": "MAX"
       }
     ]
@@ -2401,13 +2421,13 @@
   "DevourerMPWeaponMissile": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 20,
+        "Acceleration": "3200",
+        "MaxSpeed": "20",
         "YawPitchRoll": "MAX"
       }
     ]
@@ -2415,14 +2435,14 @@
   "HydraliskImpaleMissile": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18.75,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18.75",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -2435,14 +2455,14 @@
   "RavagerCorrosiveBile": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 30,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "30",
+        "ClearanceAcceleration": "75",
         "ArrivalTestType": "3D",
         "Outro": "-1",
         "ThrowBandYaw": "-360,-360,-360,-360",
@@ -2454,32 +2474,32 @@
   "LocustMPFlyingSwoop": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0,
+    "RestoreHeightDuration": "0",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 20,
-        "MaxSpeed": 40,
+        "Acceleration": "20",
+        "MaxSpeed": "40",
         "YawPitchRoll": "MAX"
       }
     ],
     "Flags": {
-      "RestoreHeight": 1,
-      "IgnoreNoFlyZones": 1
+      "RestoreHeight": "1",
+      "IgnoreNoFlyZones": "1"
     }
   },
   "LightningBombWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 15,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "15",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "RotationActorType": "Upright",
         "ThrowBandYaw": "-360,-360,-360,-360",
@@ -2494,106 +2514,114 @@
   "GrappleLaunchCaster": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "Flags": {
-      "IgnoreMovementSuppression": 1
+      "IgnoreMovementSuppression": "1"
     },
     "MotionPhases": [
       {
         "Driver": "Ballistic",
-        "Acceleration": -1,
-        "Gravity": 10,
+        "Acceleration": "-1",
+        "Gravity": "10",
         "RotationActorType": "Upright",
         "YawPitchRoll": "MAX",
         "FlightTime": "0.75"
       }
     ],
-    "RotationIgnoredByUnit": 1,
+    "RotationIgnoredByUnit": "1",
     "PathMode": "Flying"
   },
   "CycloneMissileLeft": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 5,
-        "Speed": 20,
-        "MaxSpeed": 35,
+        "Acceleration": "5",
+        "Speed": "20",
+        "MaxSpeed": "35",
         "Outro": "-1",
         "YawPitchRoll": "719.2968",
-        "Overlays": {
-          "Scale": "0.2,0.2"
-        }
+        "Overlays": [
+          {
+            "Scale": "0.2,0.2"
+          }
+        ]
       },
       {
-        "Overlays": {
-          "Scale": "0"
-        },
+        "Overlays": [
+          {
+            "Scale": "0"
+          }
+        ],
         "YawPitchRoll": "MAX"
       }
     ],
     "MotionOverlays": [
       {
         "Type": "Revolver",
-        "RevolverSpeed": 179.2968,
-        "RevolverSpeedRange": 179.2968,
-        "RevolverMaxSpeed": 719.2968,
-        "RevolverMaxSpeedRange": 0,
-        "RevolverAccel": 337.5,
-        "RevolverAccelRange": 337.5
+        "RevolverSpeed": "179.2968",
+        "RevolverSpeedRange": "179.2968",
+        "RevolverMaxSpeed": "719.2968",
+        "RevolverMaxSpeedRange": "0",
+        "RevolverAccel": "337.5",
+        "RevolverAccelRange": "337.5"
       }
     ]
   },
   "CycloneMissileRight": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 5,
-        "Speed": 20,
-        "MaxSpeed": 35,
+        "Acceleration": "5",
+        "Speed": "20",
+        "MaxSpeed": "35",
         "Outro": "-1",
         "YawPitchRoll": "719.2968",
-        "Overlays": {
-          "Scale": "0.2,0.2"
-        }
+        "Overlays": [
+          {
+            "Scale": "0.2,0.2"
+          }
+        ]
       },
       {
-        "Overlays": {
-          "Scale": "0"
-        },
+        "Overlays": [
+          {
+            "Scale": "0"
+          }
+        ],
         "YawPitchRoll": "MAX"
       }
     ],
     "MotionOverlays": [
       {
         "Type": "Revolver",
-        "RevolverSpeed": 179.2968,
-        "RevolverSpeedRange": 179.2968,
-        "RevolverMaxSpeed": 719.2968,
-        "RevolverMaxSpeedRange": 0,
-        "RevolverAccel": 337.5,
-        "RevolverAccelRange": 337.5
+        "RevolverSpeed": "179.2968",
+        "RevolverSpeedRange": "179.2968",
+        "RevolverMaxSpeed": "719.2968",
+        "RevolverMaxSpeedRange": "0",
+        "RevolverAccel": "337.5",
+        "RevolverAccelRange": "337.5"
       }
     ]
   },
   "CausticSprayMissile": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Speed": 10,
-        "MaxSpeed": 10,
+        "Speed": "10",
+        "MaxSpeed": "10",
         "Outro": "0.1,4,0.1,0.1",
         "ThrowVector": "0,-1,0.25",
         "ThrowBandYaw": "-360,-360,-360,-360",
@@ -2602,24 +2630,24 @@
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 20,
-        "MaxSpeed": 20,
+        "Acceleration": "20",
+        "MaxSpeed": "20",
         "ActorTracking": "Actual",
         "YawPitchRoll": "119.8828",
-        "YawPitchRollAccel": 180
+        "YawPitchRollAccel": "180"
       }
     ]
   },
   "CausticSprayMissileClose": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Speed": 10,
-        "MaxSpeed": 10,
+        "Speed": "10",
+        "MaxSpeed": "10",
         "Outro": "0.1,4,0.1,0.1",
         "ThrowVector": "0,-1,-0.25",
         "ThrowBandYaw": "-360,-360,-360,-360",
@@ -2628,46 +2656,46 @@
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 20,
-        "MaxSpeed": 20,
+        "Acceleration": "20",
+        "MaxSpeed": "20",
         "ActorTracking": "Actual",
         "YawPitchRoll": "119.8828",
-        "YawPitchRollAccel": 180
+        "YawPitchRollAccel": "180"
       }
     ]
   },
   "GrappleUnitKnockbackMover5": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "Flags": {
-      "IgnoreMovementSuppression": 1
+      "IgnoreMovementSuppression": "1"
     },
     "MotionPhases": [
       {
         "Driver": "Ballistic",
-        "Acceleration": -1,
-        "Gravity": 20,
+        "Acceleration": "-1",
+        "Gravity": "20",
         "RotationActorType": "Upright",
         "YawPitchRoll": "MAX",
         "FlightTime": "0.5"
       }
     ],
-    "RotationIgnoredByUnit": 1,
+    "RotationIgnoredByUnit": "1",
     "PathMode": "Flying"
   },
   "ParasiticBombMissile": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 13,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "13",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -2680,14 +2708,14 @@
   "AdeptWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18.75,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18.75",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -2700,14 +2728,14 @@
   "AdeptUpgradeWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18.75,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18.75",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -2720,14 +2748,14 @@
   "HERCJump": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 30,
-        "ClearanceAcceleration": 1000,
+        "Acceleration": "3200",
+        "MaxSpeed": "30",
+        "ClearanceAcceleration": "1000",
         "Outro": "-1",
         "ThrowBandYaw": "-360,-360,-360,-360",
         "ThrowBandPitch": "-360,-360,-360,-360",
@@ -2738,14 +2766,14 @@
   "LiberatorMissile": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Throw",
-        "Acceleration": 3200,
-        "Speed": 1,
-        "MaxSpeed": 8,
+        "Acceleration": "3200",
+        "Speed": "1",
+        "MaxSpeed": "8",
         "Outro": "2.5,3.5",
         "ThrowRotationType": "ThrowForward",
         "ThrowVector": "0,-1,0",
@@ -2754,49 +2782,53 @@
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "AccelerationRange": 7,
-        "MaxSpeed": 16,
+        "Acceleration": "3200",
+        "AccelerationRange": "7",
+        "MaxSpeed": "16",
         "ActorTracking": "Actual",
         "Outro": "-2.5,-1.5",
         "YawPitchRoll": "359.2968",
-        "Overlays": {
-          "Scale": "1,1"
-        }
+        "Overlays": [
+          {
+            "Scale": "1,1"
+          }
+        ]
       },
       {
         "Driver": "Guidance",
         "ThrowBandYaw": "-360,-360,-360,-360",
         "ThrowBandPitch": "-360,-360,-360,-360",
         "YawPitchRoll": "5759.6484",
-        "Overlays": {
-          "Scale": "0.5,0.5"
-        }
+        "Overlays": [
+          {
+            "Scale": "0.5,0.5"
+          }
+        ]
       }
     ],
     "MotionOverlays": [
       {
         "Type": "Revolver",
-        "RevolverSpeed": 119.5312,
-        "RevolverSpeedRange": 119.5312,
-        "RevolverMaxSpeed": 719.2968,
-        "RevolverMaxSpeedRange": 719.2968,
-        "RevolverAccel": 45,
-        "RevolverAccelRange": 337.5
+        "RevolverSpeed": "119.5312",
+        "RevolverSpeedRange": "119.5312",
+        "RevolverMaxSpeed": "719.2968",
+        "RevolverMaxSpeedRange": "719.2968",
+        "RevolverAccel": "45",
+        "RevolverAccelRange": "337.5"
       }
     ]
   },
   "LiberatorAGMissile": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 40,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "40",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968",
         "ActorTracking": "Actual",
@@ -2811,44 +2843,88 @@
   "KD8Charge": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 20,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "20",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "MAX",
-        "Speed": 20
+        "Speed": "20"
       },
       {
         "YawPitchRoll": "MAX"
       },
       {
         "Driver": "Guidance",
-        "Speed": 20,
-        "MaxSpeed": 20,
+        "Speed": "20",
+        "MaxSpeed": "20",
         "YawPitchRoll": "MAX"
       }
     ],
     "parent": "MissileDefault"
   },
+  "UnitLaunchToTargetPoint": {
+    "class": "CMoverMissile",
+    "HeightMap": "Ground",
+    "RestoreHeightDuration": "0.25",
+    "default": "1",
+    "Flags": {
+      "IgnoreMovementSuppression": "1"
+    },
+    "MotionPhases": [
+      {
+        "Driver": "Ballistic",
+        "Acceleration": "-1",
+        "MinSpeed": "10",
+        "MaxSpeed": "10",
+        "Gravity": "20",
+        "RotationActorType": "Upright",
+        "YawPitchRoll": "MAX"
+      }
+    ],
+    "RotationIgnoredByUnit": "1",
+    "PathMode": "Flying"
+  },
+  "UnitLaunchToTargetPointSlower": {
+    "class": "CMoverMissile",
+    "HeightMap": "Ground",
+    "RestoreHeightDuration": "0.25",
+    "default": "1",
+    "Flags": {
+      "IgnoreMovementSuppression": "1"
+    },
+    "MotionPhases": [
+      {
+        "Driver": "Ballistic",
+        "Acceleration": "-1",
+        "MinSpeed": "5",
+        "MaxSpeed": "5",
+        "Gravity": "20",
+        "RotationActorType": "Upright",
+        "YawPitchRoll": "MAX"
+      }
+    ],
+    "RotationIgnoredByUnit": "1",
+    "PathMode": "Flying"
+  },
   "KD8ChargeWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 12,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "12",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968",
-        "Speed": 12
+        "Speed": "12"
       },
       {
         "YawPitchRoll": "MAX"
@@ -2859,17 +2935,17 @@
   "KD8ChargeWeaponCloseRange": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 6,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "6",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968",
-        "Speed": 6
+        "Speed": "6"
       },
       {
         "YawPitchRoll": "MAX"
@@ -2877,60 +2953,16 @@
     ],
     "parent": "MissileDefault"
   },
-  "UnitLaunchToTargetPoint": {
-    "class": "CMoverMissile",
-    "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
-    "default": "1",
-    "Flags": {
-      "IgnoreMovementSuppression": 1
-    },
-    "MotionPhases": [
-      {
-        "Driver": "Ballistic",
-        "Acceleration": -1,
-        "MinSpeed": 10,
-        "MaxSpeed": 10,
-        "Gravity": 20,
-        "RotationActorType": "Upright",
-        "YawPitchRoll": "MAX"
-      }
-    ],
-    "RotationIgnoredByUnit": 1,
-    "PathMode": "Flying"
-  },
-  "UnitLaunchToTargetPointSlower": {
-    "class": "CMoverMissile",
-    "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
-    "default": "1",
-    "Flags": {
-      "IgnoreMovementSuppression": 1
-    },
-    "MotionPhases": [
-      {
-        "Driver": "Ballistic",
-        "Acceleration": -1,
-        "MinSpeed": 5,
-        "MaxSpeed": 5,
-        "Gravity": 20,
-        "RotationActorType": "Upright",
-        "YawPitchRoll": "MAX"
-      }
-    ],
-    "RotationIgnoredByUnit": 1,
-    "PathMode": "Flying"
-  },
   "AdeptPiercingMover": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 1600,
-        "MaxSpeed": 20,
+        "Acceleration": "1600",
+        "MaxSpeed": "20",
         "ThrowBandYaw": "-360,-360,-360,-360",
         "ThrowBandPitch": "-360,-360,-360,-360"
       }
@@ -2939,14 +2971,14 @@
   "HighTemplarWeaponMover": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 18.75,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "18.75",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968"
       },
@@ -2959,14 +2991,14 @@
   "RavenScramblerMissile": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 16,
-        "MaxSpeed": 30,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "16",
+        "MaxSpeed": "30",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968",
         "ThrowBandYaw": "-360,-360,-360,-360",
@@ -2981,15 +3013,15 @@
   "RavenShredderMissile": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 16,
-        "MaxSpeed": 30,
-        "Clearance": 0.5,
-        "ClearanceLookahead": 3,
+        "Acceleration": "16",
+        "MaxSpeed": "30",
+        "Clearance": "0.5",
+        "ClearanceLookahead": "3",
         "Outro": "5",
         "ThrowBandYaw": "-360,-360,-360,-360",
         "ThrowBandPitch": "-360,-360,-360,-360",
@@ -2997,10 +3029,10 @@
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 16,
-        "MaxSpeed": 30,
-        "Clearance": 0.5,
-        "ClearanceLookahead": 3,
+        "Acceleration": "16",
+        "MaxSpeed": "30",
+        "Clearance": "0.5",
+        "ClearanceLookahead": "3",
         "Outro": "-2.25,-2",
         "ThrowBandYaw": "-360,-360,-360,-360",
         "ThrowBandPitch": "-360,-360,-360,-360",
@@ -3008,10 +3040,10 @@
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 16,
-        "MaxSpeed": 30,
-        "Clearance": 0.25,
-        "ClearanceLookahead": 3,
+        "Acceleration": "16",
+        "MaxSpeed": "30",
+        "Clearance": "0.25",
+        "ClearanceLookahead": "3",
         "ThrowBandYaw": "-360,-360,-360,-360",
         "ThrowBandPitch": "-360,-360,-360,-360",
         "YawPitchRoll": "5759.6484"
@@ -3021,15 +3053,15 @@
   "RavenShredderMissileDirect": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 4,
-        "MaxSpeed": 16,
-        "Clearance": 0.5,
-        "ClearanceLookahead": 3,
+        "Acceleration": "4",
+        "MaxSpeed": "16",
+        "Clearance": "0.5",
+        "ClearanceLookahead": "3",
         "Outro": "5",
         "ThrowBandYaw": "-360,-360,-360,-360",
         "ThrowBandPitch": "-360,-360,-360,-360",
@@ -3037,10 +3069,10 @@
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 4,
-        "MaxSpeed": 16,
-        "Clearance": 0.5,
-        "ClearanceLookahead": 3,
+        "Acceleration": "4",
+        "MaxSpeed": "16",
+        "Clearance": "0.5",
+        "ClearanceLookahead": "3",
         "Outro": "-2.25,-2",
         "ThrowBandYaw": "-360,-360,-360,-360",
         "ThrowBandPitch": "-360,-360,-360,-360",
@@ -3048,10 +3080,10 @@
       },
       {
         "Driver": "Guidance",
-        "Acceleration": 16,
-        "MaxSpeed": 16,
-        "Clearance": 0.25,
-        "ClearanceLookahead": 3,
+        "Acceleration": "16",
+        "MaxSpeed": "16",
+        "Clearance": "0.25",
+        "ClearanceLookahead": "3",
         "ThrowBandYaw": "-360,-360,-360,-360",
         "ThrowBandPitch": "-360,-360,-360,-360",
         "YawPitchRoll": "5759.6484"
@@ -3061,13 +3093,13 @@
   "InfestedAcidSpinesWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Speed": 30,
-        "MaxSpeed": 30,
+        "Speed": "30",
+        "MaxSpeed": "30",
         "ActorTracking": "Actual",
         "RotationLaunchActorType": "LaunchToTarget",
         "YawPitchRoll": "MAX"
@@ -3077,17 +3109,17 @@
   "RavenRepairDroneReleaseWeapon": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 12,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "12",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968",
-        "Speed": 12
+        "Speed": "12"
       },
       {
         "YawPitchRoll": "MAX"
@@ -3098,17 +3130,17 @@
   "LaunchTargetToAPathableLocationSlow": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "Flags": {
-      "IgnoreMovementSuppression": 1
+      "IgnoreMovementSuppression": "1"
     },
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 3,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "3",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "RotationActorType": "Upright",
         "YawPitchRoll": "719.2968"
@@ -3117,19 +3149,19 @@
         "YawPitchRoll": "MAX"
       }
     ],
-    "RotationIgnoredByUnit": 1
+    "RotationIgnoredByUnit": "1"
   },
   "InfestorEnsnareAirLaunchMover": {
     "class": "CMoverMissile",
     "HeightMap": "Ground",
-    "RestoreHeightDuration": 0.25,
+    "RestoreHeightDuration": "0.25",
     "default": "1",
     "MotionPhases": [
       {
         "Driver": "Guidance",
-        "Acceleration": 3200,
-        "MaxSpeed": 16,
-        "ClearanceAcceleration": 75,
+        "Acceleration": "3200",
+        "MaxSpeed": "16",
+        "ClearanceAcceleration": "75",
         "Outro": "-1",
         "YawPitchRoll": "719.2968",
         "ActorTracking": "Actual",
@@ -3139,7 +3171,7 @@
         "YawPitchRoll": "MAX"
       }
     ],
-    "RotationIgnoredByUnit": 1,
+    "RotationIgnoredByUnit": "1",
     "parent": "MissileDefault"
   }
 }

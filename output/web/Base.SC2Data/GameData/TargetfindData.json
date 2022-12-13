@@ -24,7 +24,7 @@
   "D8ChargeBuildingOnly": {
     "class": "CTargetFindEnumArea",
     "default": "1",
-    "MaxCount": 4294967295,
+    "MaxCount": "4294967295",
     "MinCountError": "CantFindEnoughTargets",
     "LaunchLocation": {
       "Value": "SourceUnit"
@@ -33,8 +33,8 @@
       "Value": "TargetUnitOrPoint"
     },
     "SearchFlags": {
-      "OffsetAreaByAngle": 1,
-      "ExtendByUnitRadius": 1
+      "OffsetAreaByAngle": "1",
+      "ExtendByUnitRadius": "1"
     },
     "CasterValidator": "CasterLifeLT60Percent",
     "AreaArray": [
@@ -47,7 +47,7 @@
   "D8ChargeAllUnits": {
     "class": "CTargetFindEnumArea",
     "default": "1",
-    "MaxCount": 4294967295,
+    "MaxCount": "4294967295",
     "MinCountError": "CantFindEnoughTargets",
     "LaunchLocation": {
       "Value": "SourceUnit"
@@ -56,8 +56,8 @@
       "Value": "TargetUnitOrPoint"
     },
     "SearchFlags": {
-      "OffsetAreaByAngle": 1,
-      "ExtendByUnitRadius": 1
+      "OffsetAreaByAngle": "1",
+      "ExtendByUnitRadius": "1"
     },
     "CasterValidator": "D8ChargeAllUnitValidator",
     "AreaArray": [
@@ -82,7 +82,7 @@
   "GravitonBeamThreat": {
     "class": "CTargetFindEnumArea",
     "default": "1",
-    "MaxCount": 4294967295,
+    "MaxCount": "4294967295",
     "MinCountError": "CantFindEnoughTargets",
     "LaunchLocation": {
       "Value": "SourceUnit"
@@ -91,10 +91,10 @@
       "Value": "TargetUnitOrPoint"
     },
     "SearchFlags": {
-      "OffsetAreaByAngle": 1,
-      "ExtendByUnitRadius": 1
+      "OffsetAreaByAngle": "1",
+      "ExtendByUnitRadius": "1"
     },
-    "ExtendRadius": 3,
+    "ExtendRadius": "3",
     "AreaArray": [
       {}
     ],
@@ -110,7 +110,7 @@
   "GravitonBeamHostileSomeEnergy": {
     "class": "CTargetFindEnumArea",
     "default": "1",
-    "MaxCount": 4294967295,
+    "MaxCount": "4294967295",
     "MinCountError": "CantFindEnoughTargets",
     "LaunchLocation": {
       "Value": "SourceUnit"
@@ -119,10 +119,10 @@
       "Value": "TargetUnitOrPoint"
     },
     "SearchFlags": {
-      "OffsetAreaByAngle": 1,
-      "ExtendByUnitRadius": 1
+      "OffsetAreaByAngle": "1",
+      "ExtendByUnitRadius": "1"
     },
-    "ExtendRadius": 3,
+    "ExtendRadius": "3",
     "AreaArray": [
       {}
     ],
@@ -141,7 +141,7 @@
   "GravitonBeamHostileNearFullEnergy": {
     "class": "CTargetFindEnumArea",
     "default": "1",
-    "MaxCount": 4294967295,
+    "MaxCount": "4294967295",
     "MinCountError": "CantFindEnoughTargets",
     "LaunchLocation": {
       "Value": "SourceUnit"
@@ -150,10 +150,10 @@
       "Value": "TargetUnitOrPoint"
     },
     "SearchFlags": {
-      "OffsetAreaByAngle": 1,
-      "ExtendByUnitRadius": 1
+      "OffsetAreaByAngle": "1",
+      "ExtendByUnitRadius": "1"
     },
-    "ExtendRadius": 3,
+    "ExtendRadius": "3",
     "AreaArray": [
       {}
     ],
@@ -192,7 +192,7 @@
   "TargetFindWorkerRallyPointHatchery": {
     "class": "CTargetFindWorkerRallyPoint",
     "default": "1",
-    "CommandIndex": 1,
+    "CommandIndex": "1",
     "parent": "TargetFindWorkerRallyPoint"
   },
   "DefaultRallyPoint": {
@@ -228,11 +228,11 @@
     "default": "1",
     "Effect": "EMPSearch",
     "Flags": {
-      "EvaluateCmd": 1
+      "EvaluateCmd": "1"
     },
-    "DamageBase": 20,
-    "MinCount": 4,
-    "MinScore": 1
+    "DamageBase": "20",
+    "MinCount": "4",
+    "MinScore": "1"
   },
   "TacticalAutoTurret": {
     "class": "CTargetFindSet",
@@ -254,11 +254,11 @@
     "default": "1",
     "Effect": "AutoTurret",
     "Flags": {
-      "EvaluateCmd": 1
+      "EvaluateCmd": "1"
     },
-    "DamageBase": 40,
-    "MinCount": 2,
-    "MinScore": 1.5
+    "DamageBase": "40",
+    "MinCount": "2",
+    "MinScore": "1.5"
   },
   "InfestorDisease": {
     "class": "CTargetFindSet",
@@ -281,11 +281,11 @@
     "default": "1",
     "Effect": "InfestorDiseaseSearch",
     "Flags": {
-      "EvaluateCmd": 1
+      "EvaluateCmd": "1"
     },
-    "DamageBase": 50,
-    "MinCount": 4,
-    "MinScore": 2
+    "DamageBase": "50",
+    "MinCount": "4",
+    "MinScore": "2"
   },
   "MissilePods": {
     "class": "CTargetFindSet",
@@ -307,11 +307,11 @@
     "default": "1",
     "Effect": "HurricaneMissileDamage",
     "Flags": {
-      "EvaluateCmd": 1
+      "EvaluateCmd": "1"
     },
-    "DamageBase": 40,
-    "MinCount": 3,
-    "MinScore": 2.5,
+    "DamageBase": "40",
+    "MinCount": "3",
+    "MinScore": "2.5",
     "BonusAttri": "Light"
   },
   "LokiMissilePods": {
@@ -334,11 +334,11 @@
     "default": "1",
     "Effect": "LokiHurricaneMissileDamage",
     "Flags": {
-      "EvaluateCmd": 1
+      "EvaluateCmd": "1"
     },
-    "DamageBase": 40,
-    "MinCount": 3,
-    "MinScore": 2,
+    "DamageBase": "40",
+    "MinCount": "3",
+    "MinScore": "2",
     "BonusAttri": "Light"
   },
   "PsiStorm": {
@@ -381,21 +381,21 @@
     "default": "1",
     "Effect": "PsiStormSearch",
     "Flags": {
-      "EvaluateCmd": 1
+      "EvaluateCmd": "1"
     },
-    "DamageBase": 40,
-    "MinCount": 3,
-    "MinScore": 2.5
+    "DamageBase": "40",
+    "MinCount": "3",
+    "MinScore": "2.5"
   },
   "PsiStormBestPointLow": {
     "class": "CTargetFindBestPoint",
     "default": "1",
     "Effect": "PsiStormSearch",
     "Flags": {
-      "EvaluateCmd": 1
+      "EvaluateCmd": "1"
     },
-    "DamageBase": 30,
-    "MinScore": 0.5
+    "DamageBase": "30",
+    "MinScore": "0.5"
   },
   "Blink": {
     "class": "CTargetFindSet",
@@ -426,9 +426,9 @@
     "class": "CTargetFindOffset",
     "default": "1",
     "Flags": {
-      "EvaluateCmd": 1
+      "EvaluateCmd": "1"
     },
-    "Angle": 180,
+    "Angle": "180",
     "Distance": "8,8"
   },
   "BlinkAttack": {
@@ -452,7 +452,7 @@
     "class": "CTargetFindOffset",
     "default": "1",
     "Flags": {
-      "EvaluateCmd": 1
+      "EvaluateCmd": "1"
     },
     "Distance": "-4,-4"
   }

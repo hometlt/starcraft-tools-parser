@@ -24,13 +24,13 @@ let regexps  = {
     ints: /^-?(0|[1-9]\d*)(,-?(0|[1-9]\d*))+$/,
     reals: /^(-?(0|[1-9]\d*)(\.\d+)?)(\,-?(0|[1-9]\d*)(\.\d+)?)*$/,
     filters: /^(-|\w+(,\w+){0,});(-|\w+(,\w+){0,})$/,
-    categories: /^(\w+\:\w*)(,\w+\:\w*)*$/,
+    categories: /^(\w+\:[\w#]+)(,\w+\:[\w#]+)*$/,
     // file: /^[a-z_#'0-9\-]+[\\/a-z_#'0-9\-. ]+\.(dds|fxa|m3|tga|m3a)$/i,
     file: /^.*$/,
     link: /^[A-Za-z_@#0-9-]+(\/+[A-Za-z_@#0-9-]+)+\/?$/,
-    word: /^[\w@_#]+$/,
+    word: /^[\w@_%#]+$/,
     abilcmd: /^([\w@_#]+[.,][\w]+|255)$/,
-    words: /^[\w@_#]+(,[\w@_#]+)*$/,
+    words: /^[\w@_%#]+(,[\w@_%#]+)*$/,
     reference: /^.*$/,
     subject: /^.*$/,
     send: /^.*$/,
@@ -95,6 +95,8 @@ export function deep(a,b,c = 'merge'){
     for(let i in b){
         let value = b[i]
         let target = a[i]
+
+        if(!value)continue;
 
 
         if(value.constructor === Array){
@@ -668,7 +670,7 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
                 value = [{value}]
             }
             if(value.constructor !== Array || value.length !== 1){
-                console.warn(`wrong value, expect object. Got ${JSON.stringify(object[property])}. path: ${JSON.stringify(_path)}`)
+                console.warn(`wrong value.  path: ${JSON.stringify(_path)}. ${JSON.stringify(object[property])}.`)
                 continue;
             }
             value = value[0]
@@ -709,7 +711,7 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
 
             if(value && !matchType(value,type)){
                 matchType(value,type)
-                console.warn("wrong value", JSON.stringify(_path), JSON.stringify(object[property]))
+                console.warn("potentially wrong value", JSON.stringify(_path), JSON.stringify(object[property]))
             }
         }
         object[property] = value
