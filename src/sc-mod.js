@@ -296,6 +296,9 @@ export class SCMod {
      * @returns {Promise<SCMod>}
      */
     async write (destpath,{resolve = false, format = 'auto', structure = 'auto', scopes = 'all'} = {}){
+
+
+        destpath = path.resolve(destpath)
         if(scopes.constructor === String){
             scopes = [scopes]
         }
@@ -336,6 +339,9 @@ export class SCMod {
         let output = {}
 
         let extension, formatting;
+
+
+        fs.mkdirSync(destpath, {recursive: true});
 
         if(scopes.includes('header')){
             output[`DocumentHeader`] = ``
@@ -381,6 +387,7 @@ export class SCMod {
                 }
             }
             output[`DocumentInfo`] = formatData(info , 'xml')
+
             if(format === 'auto'){
                 fs.copyFileSync(path.resolve(__dirname ,'versions/DocumentInfo.version'), destpath + `DocumentInfo.version`)
             }
@@ -424,6 +431,7 @@ export class SCMod {
             formatting = format === 'auto' ? 'xml' : format;
             output[`Base.SC2Data/UI/FontStyles.${extension}`] = formatData(this.styles, formatting)
             if(format === 'auto'){
+                fs.mkdirSync(destpath+  `Base.SC2Data/UI/`, {recursive: true});
                 fs.copyFileSync(path.resolve(__dirname ,'versions/FontStyles.version'), destpath + `Base.SC2Data/UI/FontStyles.version`)
             }
         }

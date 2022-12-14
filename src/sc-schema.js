@@ -148,6 +148,18 @@ export const ModificationSchema = {
   HealDealtMultiplier: 'int'
 }
 
+
+export const ConditionSchema ={
+    Value: "int",
+    "User": [{
+      "Instance":"word",
+      "Type":"word",
+      "Field":"word"
+    }],
+    "FixedId":"word",
+    "Operation":"word"
+  }
+
 export const StarcraftSchema = {
   CAbil: {
     catalog: 'abil'
@@ -862,11 +874,42 @@ export const StarcraftSchema = {
   CButton: {
     catalog: 'button'
   },
+  camera: {
+    ZoomTable: [{
+      "Param":[{"index":"word","Modify":"real","Value":"real"}]
+    }]
+  },
   CCamera: {
     catalog: 'camera'
   },
   CCampaign: {
     catalog: 'campaign'
+  },
+  character: {
+    Name: 'link',
+    RaceCustom: 'link',
+    Attitude: 'link',
+    Timbre: 'link',
+    Dialect: 'link',
+    VoiceRef: 'link',
+    Description: 'link',
+    Gender: 'word',
+    Voice: 'string',
+    Race: 'race',
+    Unit: 'unit',
+    Color: 'ints',
+    Age: 'int',
+    Image: 'string',
+    Variations: [
+      {
+        Model: 'model',
+        DefaultCategories: '[string]',
+        Name: 'link',
+        Actor: 'actor'
+      }
+    ],
+    Relevance: 'word',
+    Pitch: 'int'
   },
   CCharacter: {
     catalog: 'character'
@@ -1082,6 +1125,392 @@ export const StarcraftSchema = {
   CGameUI: {
     catalog: 'gameui'
   },
+  gameui: {
+    ResourceArray: [{
+      index: "word",
+      Icon: 'file'
+    }],
+    SoundQuality: [
+      {
+        AutoDetectCPUCoreMaximum: 'int',
+        Channels: 'int',
+        Name: 'link',
+        Format: 'word',
+        SampleRate: 'int',
+        SpeakerMode: 'word',
+        VariationMaximum: '{int}',
+        Resampler: 'word',
+        Flags: '{bit}'
+      }
+    ],
+    RegionNameSize: 'int',
+    SelectionData: {
+      SelectionWidth: 'real',
+      SelectionFallOff: 'real',
+      SelectionAlpha: 'reals',
+      SelectionTiming: 'reals',
+      SelectionSegmentCount: 'bit',
+      SelectionSegmentPercentSolid: 'real',
+      SelectionInnerOffsetRatio: 'real',
+      SelectionInnerBoundaryRatio: 'real',
+      SelectionInnerBoundaryFallOffRatio: 'real',
+      PreselectionWidth: 'real',
+      PreselectionFallOff: 'real',
+      PreselectionAlpha: 'reals',
+      PreselectionTiming: 'reals',
+      PreselectionSegmentCount: 'int',
+      PreselectionSegmentPercentSolid: 'real',
+      PreselectionRotationSpeed: 'real'
+    },
+    SoundData: [
+      {
+        index: 'word',
+        MixerPriority: 'int',
+        Volume: 'real',
+        MuteControl: 'word',
+        MuteFadeOut: [
+          {
+            Time: 'int'
+          }
+        ],
+        VolumeRolloffPoints: [
+          {
+            Distance: 'real'
+          }
+        ],
+        VolumeControl: 'word',
+        DupeFadeOut: [
+          {
+            Time: 'int'
+          }
+        ],
+        AlertFadeVolume: 'reals',
+        ThresholdPoints: [
+          {
+            Count: 'int',
+            Volume: 'real'
+          }
+        ],
+        VolumeBaseline: 'real',
+        AlertFadeTimeOut: 'int',
+        AlertFadeTimeIn: 'int',
+        DSPArray: '[dsp]'
+      }
+    ],
+    LookAtTypes: [
+      {
+        $Id: 'word',
+        Name: 'link',
+        Start: [
+          {
+            Group: 'word',
+            Weight: 'real',
+            Time: 'int'
+          }
+        ],
+        Stop: [
+          {
+            Group: 'word',
+            Weight: 'bit',
+            Time: 'int'
+          }
+        ]
+      }
+    ],
+    CameraShakeAmplitudes: [
+      {
+        $Id: 'word',
+        Name: 'link',
+        Position: 'reals',
+        Rotation: {
+          Yaw: 'real',
+          Pitch: 'real',
+          Roll: 'real'
+        }
+      }
+    ],
+    CameraShakeFrequencies: [
+      {
+        $Id: 'word',
+        Name: 'link',
+        Position: 'reals',
+        Rotation: {
+          Yaw: 'real',
+          Pitch: 'real',
+          Roll: 'real'
+        }
+      }
+    ],
+    ListenerAngleRolloff: [
+      {
+        CameraValue: 'real',
+        ListenerFactor: 'real'
+      }
+    ],
+    ListenerDistanceRolloff: [
+      {
+        CameraValue: 'real',
+        ListenerFactor: 'real'
+      }
+    ],
+    PlanetPanelDefaultBackground: 'word',
+    WayPointMultiUnitFadePoint: 'real',
+    WayPointMultiUnitFadeAlpha: 'real',
+    WayPointLineWidth: 'real',
+    WayPointTileLength: 'real',
+    DefaultPathColor: '{ints}',
+    DefaultPathLineWidth: '{real}',
+    DefaultPathTexture: '{string}',
+    DefaultPathTileLength: '{real}',
+    DefaultPathStepModel: '{string}',
+    DefaultPathStepModelScale: '{real}',
+    PointModels: [
+      {
+        index: 'word',
+        Model: 'file',
+        Scale: 'real',
+        NameSize: 'int',
+        SelectionOffset: 'reals',
+        SelectionRadius: 'real'
+      }
+    ],
+    OverrideColors: [
+      {
+        index: 'word',
+        Value: '{reals}'
+      }
+    ],
+    ColorBlindColors: [
+      {
+        index: 'word',
+        Value: '{reals}'
+      }
+    ],
+    RadarAlpha: 'int',
+    PlayerIdObserverColorMap: '{word}',
+    InfoColorBuffed: 'ints',
+    InfoColorDebuffed: 'ints',
+    InfoColorUpgraded: 'ints',
+    RequirementsSatisfiedColor: 'ints',
+    RequirementsUnsatisfiedColor: 'ints',
+    UnitDamageFlashDuration: 'int',
+    UnitDamageNotificationCooldown: 'int',
+    UnitDamageNotificationDelay: 'int',
+    CancelTargetModeButtonFace: 'button',
+    CancelPlacementModeButtonFace: 'button',
+    PlacementDisplayBonusRadius: 'int',
+    PlacementErrorColor: 'ints',
+    PlacementWarningColor: 'ints',
+    PlacementPerfectColor: 'ints',
+    PlacementColorBlindErrorColor: 'ints',
+    PlacementColorBlindWarningColor: 'ints',
+    PlacementColorBlindDefaultColor: 'ints',
+    PlacementGridDimensions: 'ints',
+    ScreenModeTransitionDuration: 'int',
+    PossibleEnemyPlacementPingDuration: 'int',
+    PossibleEnemyPlacementPingModel: 'model',
+    PossibleEnemyPlacementPingColor: 'ints',
+    CostDisplayFade: 'int',
+    CostDisplayHeight: 'int',
+    CostDisplayHeightOffset: 'real',
+    CostDisplaySpeed: 'int',
+    CostDisplayTime: 'int',
+    MinimapData: {
+      InnerBorderColor: 'ints',
+      OuterBorderColor: 'ints',
+      FrustumColor: 'ints',
+      ResourceUnitColor: 'ints',
+      ResourceUnitColorBlindColor: 'ints',
+      BlipUnitColor: 'ints',
+      UnitBorderColor: 'ints',
+      SelectedUnitBorderColor: 'ints',
+      BackGroundColor: 'ints',
+      BorderSize: 'real',
+      SelectedBorderSize: 'real',
+      MinUnitDotSize: 'real',
+      RadarAlpha: 'int'
+    },
+    BehaviorIconColors: '{ints}',
+    BehaviorBorderColors: '{ints}',
+    VitalColors: [
+      {
+        index: 'word',
+        ColorArray: '[ints]'
+      }
+    ],
+    SelectionColors: '{ints}',
+    SelectionColorBlindColors: '{ints}',
+    WireframeColorArray: '[ints]',
+    CostDisplayColor: '{ints}',
+    GlowPeakMultiplier: 'reals',
+    TransmissionSoundDepth: 'real',
+    AlertPanMaxVelocity: 'real',
+    AlertPanMaxDuration: 'real',
+    AlertPanMinDuration: 'real',
+    BeaconMinimapIcon: 'file',
+    BeaconMinimapRenderPriority: 'word',
+    DefaultInfoTooltipTypes: 'words',
+    CameraEventThresholdDistance: 'real',
+    CameraEventThresholdPitch: 'real',
+    CameraEventThresholdYaw: 'real',
+    CameraEventThresholdTarget: 'real',
+    GameCategories: [
+      {
+        Info: {
+          $Id: 'int',
+          Name: 'link',
+          Description: 'link'
+        },
+        Modes: [
+          {
+            $Id: 'int',
+            CanOverrideText: 'bit',
+            Name: 'link',
+            Description: 'link',
+            IsTutorial: 'bit'
+          }
+        ],
+        Usage: 'word'
+      }
+    ],
+    AutoVariantArcade: {
+      CategoryId: 'bit',
+      ModeId: 'bit',
+      Options: '{bit}'
+    },
+    AutoVariantMelee: {
+      CategoryId: 'int',
+      ModeId: 'bit',
+      Options: '{bit}'
+    },
+    DefaultVariants: [
+      {
+        CategoryId: 'int',
+        ModeId: 'int',
+        MinPlayers: 'int',
+        MaxPlayers: 'int',
+        TeamCount: 'int',
+        PlayersPerTeam: 'int',
+        Options: '{bit}',
+        AIDifficulty: 'int',
+        PlayersPerTandem: 'int'
+      }
+    ],
+    DefaultUIRace: 'race',
+    MinCooldownDisplayDuration: 'int',
+    MinTimeDisplayDuration: 'int',
+    AchievementTags: '[word]',
+    AltSoundtrack: [
+      {
+        AltSoundtrackName: 'link',
+        Suffix: 'word'
+      }
+    ],
+    TargetModeValidation: 'word',
+    MusicArray: '[word]',
+    IntroMusic: 'word',
+    PostGameMusic: 'word',
+    CreditsMusic: 'word',
+    LoopAmbience: 'word',
+    ObjectGroupData: [
+      {
+        MinimapIcon: 'file',
+        MinLevel: 'int'
+      }
+    ],
+    LoadingScreenHelpIntro: [
+      {
+        Text: 'link'
+      }
+    ],
+    LoadingScreenHelp: [
+      {
+        Text: 'link',
+        Race: 'race'
+      }
+    ],
+    LoadingBars: [
+      {
+        Name: 'link',
+        FrameSuffix: 'word'
+      }
+    ],
+    UnitKillRank: [
+      {
+        Text: 'link',
+        MinKills: 'int'
+      }
+    ],
+    ObserverSoundtrack: 'soundtrack',
+    StrobeHaloEmission: 'real',
+    StrobeHighlightColor: 'ints',
+    TutorialArray: [
+      {
+        Title: 'link',
+        Icon: 'file',
+        Movie: 'string'
+      }
+    ],
+    MixRouting: [
+      {
+        index: 'word',
+        ParentCategory: 'word'
+      }
+    ],
+    StartupMovieArray: [
+      {
+        Name: 'link',
+        Path: 'string',
+        Source: 'string'
+      }
+    ],
+    HelpTechTitle: 'link',
+    HelpGameMechanics: [
+      {
+        Icon: 'file',
+        IconBackground: 'link',
+        Name: 'link',
+        Description: 'link'
+      }
+    ],
+    HelpControlCategories: [
+      {
+        Name: 'link',
+        Description: 'link'
+      }
+    ],
+    HelpControls: [
+      {
+        Category: 'link',
+        Name: 'link',
+        Description: 'link',
+        Basic: 'bit'
+      }
+    ],
+    HotkeyInfoArray: [
+      {
+        index: 'word',
+        Category: 'link',
+        Name: 'link',
+        Tooltip: 'link'
+      }
+    ],
+    CutsceneAssetPath: [
+      {
+        Path: 'string',
+        Theme: 'word'
+      }
+    ],
+    CutsceneThemeChoiceArray: '[link]',
+    CutsceneLatest: 'word',
+    StrobeCycleLength: 'int',
+    StrobeFalloff: 'real',
+    StrobeHeight: 'real',
+    HelpTechTreeSuffix: 'word',
+    DSPArray: '[dsp]',
+    HelpHiddenInGlue: 'bit',
+    DisplayScaledTime: 'bit'
+  },
   CHerd: {
     catalog: 'herd'
   },
@@ -1241,13 +1670,16 @@ export const StarcraftSchema = {
   CRaceBannerPack: {
     catalog: 'racebannerpack'
   },
+  racebannerpack: {
+    Default: 'int',
+    RaceBannerArray: '[word]'
+  },
   CRace: {
     catalog: 'race'
   },
   CRequirement: {
     catalog: 'requirement'
   },
-
   requirementnode: {
     Tooltip: 'string',
     Flags: '{bit}',
@@ -1350,6 +1782,27 @@ export const StarcraftSchema = {
 
   CReverb: {
     catalog: 'reverb'
+  },
+  reward: {
+    $thumbnail: 'word',
+    $voicepack: 'word',
+    $prefix: 'word',
+    Category: {"File":"word","Tag":"word"},
+    Flags: '{bit}',
+    IconSlot: 'int',
+    IgnorePlayerRace: 'int',
+    Race: 'race',
+    RaceBannerPack: 'word',
+    Image1v1: 'file',
+    Image2v2: 'file',
+    Image3v3: 'file',
+    Image4v4: 'file',
+    ReplacementArray : [{
+      "Catalog":"word",
+      "From":"word",
+      "To":"word"
+    }],
+    License: 'string'
   },
   CReward: {
     catalog: 'reward'
@@ -1908,6 +2361,18 @@ export const StarcraftSchema = {
   CWeaponStrafe: {
     prototype: 'CWeapon'
   },
+  scorevalue: {
+    Type: 'word'
+  },
+  achievementterm: {
+    AbilCmd: [{"value":"abilcmd"}],
+    Effect: [{"value":"effect"}],
+    ChildTable: [{"value":"word"}],
+    Flags: [{"index":"word","value":"int"}],
+    Quantity: [{"value":"int"}],
+    Unit: [{"value":"word"}],
+    ValidatorArray: [{"value":"word"}]
+  },
   abil: {
     Name: 'link',
     TechPlayer: 'word',
@@ -1981,7 +2446,7 @@ export const StarcraftSchema = {
     ],
     MaxAttackSpeedMultiplier: 'int',
     MinAttackSpeedMultiplier: 'real',
-    TargetFilters: '{filters}',
+    TargetFilters: '[filters]',
     Range: '[real]',
     EnumRange: 'int',
     HaltCmdButton: {
@@ -3422,7 +3887,7 @@ export const StarcraftSchema = {
     Range: 'real',
     Flags: '{bit}',
     ShareFilters: '{filters}',
-    TargetFilters: '{filters}',
+    TargetFilters: '[filters]',
     XPFraction: '{bit}',
     TimeLimitFactor: 'bit',
     DurationRandomMax: 'real',
@@ -3565,31 +4030,6 @@ export const StarcraftSchema = {
     $originButton: 'button',
     $num: 'int'
   },
-  character: {
-    Name: 'link',
-    RaceCustom: 'link',
-    Attitude: 'link',
-    Timbre: 'link',
-    Dialect: 'link',
-    VoiceRef: 'link',
-    Description: 'link',
-    Gender: 'word',
-    Voice: 'string',
-    Race: 'race',
-    Color: 'ints',
-    Age: 'int',
-    Image: 'string',
-    Variations: [
-      {
-        Model: 'model',
-        DefaultCategories: '[string]',
-        Name: 'link',
-        Actor: 'actor'
-      }
-    ],
-    Relevance: 'word',
-    Pitch: 'int'
-  },
   cliff: {
     CliffMesh: 'cliff',
     CliffMaterial: 'string',
@@ -3621,6 +4061,7 @@ export const StarcraftSchema = {
   commander: {
     RequiredRewardArray: '[word]',
     Name: 'link',
+    UserReference: 'string',
     StoreName: 'link',
     Description: 'link',
     PurchaseMessage: 'link',
@@ -4247,388 +4688,6 @@ export const StarcraftSchema = {
     UnhideRadius: 'int',
     Expand: 'bit'
   },
-  gameui: {
-    SoundQuality: [
-      {
-        AutoDetectCPUCoreMaximum: 'int',
-        Channels: 'int',
-        Name: 'link',
-        Format: 'word',
-        SampleRate: 'int',
-        SpeakerMode: 'word',
-        VariationMaximum: '{int}',
-        Resampler: 'word',
-        Flags: '{bit}'
-      }
-    ],
-    RegionNameSize: 'int',
-    SelectionData: {
-      SelectionWidth: 'real',
-      SelectionFallOff: 'real',
-      SelectionAlpha: 'reals',
-      SelectionTiming: 'reals',
-      SelectionSegmentCount: 'bit',
-      SelectionSegmentPercentSolid: 'real',
-      SelectionInnerOffsetRatio: 'real',
-      SelectionInnerBoundaryRatio: 'real',
-      SelectionInnerBoundaryFallOffRatio: 'real',
-      PreselectionWidth: 'real',
-      PreselectionFallOff: 'real',
-      PreselectionAlpha: 'reals',
-      PreselectionTiming: 'reals',
-      PreselectionSegmentCount: 'int',
-      PreselectionSegmentPercentSolid: 'real',
-      PreselectionRotationSpeed: 'real'
-    },
-    SoundData: [
-      {
-        index: 'word',
-        MixerPriority: 'int',
-        Volume: 'real',
-        MuteControl: 'word',
-        MuteFadeOut: [
-          {
-            Time: 'int'
-          }
-        ],
-        VolumeRolloffPoints: [
-          {
-            Distance: 'real'
-          }
-        ],
-        VolumeControl: 'word',
-        DupeFadeOut: [
-          {
-            Time: 'int'
-          }
-        ],
-        AlertFadeVolume: 'reals',
-        ThresholdPoints: [
-          {
-            Count: 'int',
-            Volume: 'real'
-          }
-        ],
-        VolumeBaseline: 'real',
-        AlertFadeTimeOut: 'int',
-        AlertFadeTimeIn: 'int',
-        DSPArray: '[dsp]'
-      }
-    ],
-    LookAtTypes: [
-      {
-        $Id: 'word',
-        Name: 'link',
-        Start: [
-          {
-            Group: 'word',
-            Weight: 'real',
-            Time: 'int'
-          }
-        ],
-        Stop: [
-          {
-            Group: 'word',
-            Weight: 'bit',
-            Time: 'int'
-          }
-        ]
-      }
-    ],
-    CameraShakeAmplitudes: [
-      {
-        $Id: 'word',
-        Name: 'link',
-        Position: 'reals',
-        Rotation: {
-          Yaw: 'real',
-          Pitch: 'real',
-          Roll: 'real'
-        }
-      }
-    ],
-    CameraShakeFrequencies: [
-      {
-        $Id: 'word',
-        Name: 'link',
-        Position: 'reals',
-        Rotation: {
-          Yaw: 'real',
-          Pitch: 'real',
-          Roll: 'real'
-        }
-      }
-    ],
-    ListenerAngleRolloff: [
-      {
-        CameraValue: 'real',
-        ListenerFactor: 'real'
-      }
-    ],
-    ListenerDistanceRolloff: [
-      {
-        CameraValue: 'real',
-        ListenerFactor: 'real'
-      }
-    ],
-    PlanetPanelDefaultBackground: 'word',
-    WayPointMultiUnitFadePoint: 'real',
-    WayPointMultiUnitFadeAlpha: 'real',
-    WayPointLineWidth: 'real',
-    WayPointTileLength: 'real',
-    DefaultPathColor: '{ints}',
-    DefaultPathLineWidth: '{real}',
-    DefaultPathTexture: '{string}',
-    DefaultPathTileLength: '{real}',
-    DefaultPathStepModel: '{string}',
-    DefaultPathStepModelScale: '{real}',
-    PointModels: [
-      {
-        index: 'word',
-        Model: 'file',
-        Scale: 'real',
-        NameSize: 'int',
-        SelectionOffset: 'reals',
-        SelectionRadius: 'real'
-      }
-    ],
-    OverrideColors: [
-      {
-        index: 'word',
-        Value: '{reals}'
-      }
-    ],
-    ColorBlindColors: [
-      {
-        index: 'word',
-        Value: '{reals}'
-      }
-    ],
-    RadarAlpha: 'int',
-    PlayerIdObserverColorMap: '{word}',
-    InfoColorBuffed: 'ints',
-    InfoColorDebuffed: 'ints',
-    InfoColorUpgraded: 'ints',
-    RequirementsSatisfiedColor: 'ints',
-    RequirementsUnsatisfiedColor: 'ints',
-    UnitDamageFlashDuration: 'int',
-    UnitDamageNotificationCooldown: 'int',
-    UnitDamageNotificationDelay: 'int',
-    CancelTargetModeButtonFace: 'button',
-    CancelPlacementModeButtonFace: 'button',
-    PlacementDisplayBonusRadius: 'int',
-    PlacementErrorColor: 'ints',
-    PlacementWarningColor: 'ints',
-    PlacementPerfectColor: 'ints',
-    PlacementColorBlindErrorColor: 'ints',
-    PlacementColorBlindWarningColor: 'ints',
-    PlacementColorBlindDefaultColor: 'ints',
-    PlacementGridDimensions: 'ints',
-    ScreenModeTransitionDuration: 'int',
-    PossibleEnemyPlacementPingDuration: 'int',
-    PossibleEnemyPlacementPingModel: 'model',
-    PossibleEnemyPlacementPingColor: 'ints',
-    CostDisplayFade: 'int',
-    CostDisplayHeight: 'int',
-    CostDisplayHeightOffset: 'real',
-    CostDisplaySpeed: 'int',
-    CostDisplayTime: 'int',
-    MinimapData: {
-      InnerBorderColor: 'ints',
-      OuterBorderColor: 'ints',
-      FrustumColor: 'ints',
-      ResourceUnitColor: 'ints',
-      ResourceUnitColorBlindColor: 'ints',
-      BlipUnitColor: 'ints',
-      UnitBorderColor: 'ints',
-      SelectedUnitBorderColor: 'ints',
-      BackGroundColor: 'ints',
-      BorderSize: 'real',
-      SelectedBorderSize: 'real',
-      MinUnitDotSize: 'real',
-      RadarAlpha: 'int'
-    },
-    BehaviorIconColors: '{ints}',
-    BehaviorBorderColors: '{ints}',
-    VitalColors: [
-      {
-        index: 'word',
-        ColorArray: '[ints]'
-      }
-    ],
-    SelectionColors: '{ints}',
-    SelectionColorBlindColors: '{ints}',
-    WireframeColorArray: '[ints]',
-    CostDisplayColor: '{ints}',
-    GlowPeakMultiplier: 'reals',
-    TransmissionSoundDepth: 'real',
-    AlertPanMaxVelocity: 'real',
-    AlertPanMaxDuration: 'real',
-    AlertPanMinDuration: 'real',
-    BeaconMinimapIcon: 'file',
-    BeaconMinimapRenderPriority: 'word',
-    DefaultInfoTooltipTypes: 'words',
-    CameraEventThresholdDistance: 'real',
-    CameraEventThresholdPitch: 'real',
-    CameraEventThresholdYaw: 'real',
-    CameraEventThresholdTarget: 'real',
-    GameCategories: [
-      {
-        Info: {
-          $Id: 'int',
-          Name: 'link',
-          Description: 'link'
-        },
-        Modes: [
-          {
-            $Id: 'int',
-            CanOverrideText: 'bit',
-            Name: 'link',
-            Description: 'link',
-            IsTutorial: 'bit'
-          }
-        ],
-        Usage: 'word'
-      }
-    ],
-    AutoVariantArcade: {
-      CategoryId: 'bit',
-      ModeId: 'bit',
-      Options: '{bit}'
-    },
-    AutoVariantMelee: {
-      CategoryId: 'int',
-      ModeId: 'bit',
-      Options: '{bit}'
-    },
-    DefaultVariants: [
-      {
-        CategoryId: 'int',
-        ModeId: 'int',
-        MinPlayers: 'int',
-        MaxPlayers: 'int',
-        TeamCount: 'int',
-        PlayersPerTeam: 'int',
-        Options: '{bit}',
-        AIDifficulty: 'int',
-        PlayersPerTandem: 'int'
-      }
-    ],
-    DefaultUIRace: 'race',
-    MinCooldownDisplayDuration: 'int',
-    MinTimeDisplayDuration: 'int',
-    AchievementTags: '[word]',
-    AltSoundtrack: [
-      {
-        AltSoundtrackName: 'link',
-        Suffix: 'word'
-      }
-    ],
-    TargetModeValidation: 'word',
-    MusicArray: '[word]',
-    IntroMusic: 'word',
-    PostGameMusic: 'word',
-    CreditsMusic: 'word',
-    LoopAmbience: 'word',
-    ObjectGroupData: [
-      {
-        MinimapIcon: 'file',
-        MinLevel: 'int'
-      }
-    ],
-    LoadingScreenHelpIntro: [
-      {
-        Text: 'link'
-      }
-    ],
-    LoadingScreenHelp: [
-      {
-        Text: 'link',
-        Race: 'race'
-      }
-    ],
-    LoadingBars: [
-      {
-        Name: 'link',
-        FrameSuffix: 'word'
-      }
-    ],
-    UnitKillRank: [
-      {
-        Text: 'link',
-        MinKills: 'int'
-      }
-    ],
-    ObserverSoundtrack: 'soundtrack',
-    StrobeHaloEmission: 'real',
-    StrobeHighlightColor: 'ints',
-    TutorialArray: [
-      {
-        Title: 'link',
-        Icon: 'file',
-        Movie: 'string'
-      }
-    ],
-    MixRouting: [
-      {
-        index: 'word',
-        ParentCategory: 'word'
-      }
-    ],
-    StartupMovieArray: [
-      {
-        Name: 'link',
-        Path: 'string',
-        Source: 'string'
-      }
-    ],
-    HelpTechTitle: 'link',
-    HelpGameMechanics: [
-      {
-        Icon: 'file',
-        IconBackground: 'link',
-        Name: 'link',
-        Description: 'link'
-      }
-    ],
-    HelpControlCategories: [
-      {
-        Name: 'link',
-        Description: 'link'
-      }
-    ],
-    HelpControls: [
-      {
-        Category: 'link',
-        Name: 'link',
-        Description: 'link',
-        Basic: 'bit'
-      }
-    ],
-    HotkeyInfoArray: [
-      {
-        index: 'word',
-        Category: 'link',
-        Name: 'link',
-        Tooltip: 'link'
-      }
-    ],
-    CutsceneAssetPath: [
-      {
-        Path: 'string',
-        Theme: 'word'
-      }
-    ],
-    CutsceneThemeChoiceArray: '[link]',
-    CutsceneLatest: 'word',
-    StrobeCycleLength: 'int',
-    StrobeFalloff: 'real',
-    StrobeHeight: 'real',
-    HelpTechTreeSuffix: 'word',
-    DSPArray: '[dsp]',
-    HelpHiddenInGlue: 'bit',
-    DisplayScaledTime: 'bit'
-  },
   herd: {
     PositionBias: 'real',
     NodeSearchRadius: 'real',
@@ -4926,6 +4985,11 @@ export const StarcraftSchema = {
     $baseKey: 'word',
     $race: 'race'
   },
+  objective: {
+    UserReference:  [{"value":"string"}],
+    Type: 'word',
+    RequiredCount: 'number'
+  },
   mount: {
     Name: 'link',
     InfoText: 'link',
@@ -5020,6 +5084,8 @@ export const StarcraftSchema = {
   playerresponse: {
     Location: 'word',
     Chance: 'bit',
+    ModifyFraction: 'real',
+    Handled: 'effect',
     CasterFilters: 'filters',
     TargetFilters: 'filters',
     DeathType: '{bit}'
@@ -6078,6 +6144,11 @@ export const StarcraftSchema = {
     AnimBlendDefault: 'int',
     AnimBlendOut: 'int',
     ObjectStates: '{word}',
+    SoundParent: 'sound',
+    FixedConditions: [{
+      Conditions: [ConditionSchema],
+      Text: 'link'
+    }],
     FacialAnims: [
       {
         $Id: 'word',
@@ -6101,14 +6172,21 @@ export const StarcraftSchema = {
         Objects: '{word}',
         Variations: '{word}',
         FacialBlend: 'int',
-        LookAtAttach: 'word'
+        LookAtAttach: 'word',
+        Conditions: [ConditionSchema]
       }
     ],
     Groups: [
       {
         $Id: 'word',
         Name: 'link',
-        Children: '[word]'
+        LineSelection: 'word',
+        MaxLines: 'int',
+        Children: '[word]',
+        NoWait: 'int',
+        Tags: '[word]',
+        ConditionCheck: '[word]',
+        Conditions: [ConditionSchema]
       }
     ],
     Comments: [
@@ -6218,7 +6296,12 @@ export const StarcraftSchema = {
     QCollideWithLower: 'word',
     QCollideWithEqual: 'word',
     QCollideWithHigher: 'word',
+    InterruptFadeBlend: 'word',
+    SuppressGroups: '[int]',
+    Flags: '{bit}',
     Priority: 'real',
+    InterruptDelay: 'real',
+    QDelay: 'real',
     QTimeout: 'int'
   },
   soundmixsnapshot: {
@@ -6226,7 +6309,8 @@ export const StarcraftSchema = {
     Hold: 'int',
     Release: 'int',
     Flags: '{bit}',
-    MixGlobal: '{real}'
+    MixGlobal: '{real}',
+    MixNonLocal: '{real}'
   },
   tactical: {
     Abil: 'abil',
@@ -6287,6 +6371,9 @@ export const StarcraftSchema = {
         String: [{String: 'string', Field: FieldSchema}]
       }
     ]
+  },
+  talent: {
+    Face: 'button',
   },
   taccooldown: {
     UnitLink: 'unit',

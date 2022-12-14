@@ -773,7 +773,8 @@ export function filterTypedProperties(object, filter, schema = object.$$schema) 
         let type = resolveSchemaType(schema,property), value = object[property]
 
         if(!type){
-            console.warn("unknown field", JSON.stringify(value) );continue;
+            console.warn("unknown field", JSON.stringify(value) );
+            continue;
         }
 
         if(type.constructor === Object){
