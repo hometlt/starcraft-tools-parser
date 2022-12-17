@@ -394,7 +394,7 @@ export class SCMod {
             }
 
             if(scopes.includes('binary')){
-                output[`DocumentHeader`] = ``
+                fs.copyFileSync(path.resolve(__dirname ,'versions/DocumentHeader VOID'), destpath + `DocumentHeader`)
             }
         }
         if(scopes.includes('preload')){
