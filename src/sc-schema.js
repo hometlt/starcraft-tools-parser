@@ -161,9 +161,14 @@ export const ConditionSchema ={
   }
 
 export const StarcraftSchema = {
-  CAbil: {
-    catalog: 'abil'
-  },
+  CEffectAddTrackedUnits: {catalog: 'effect'},
+  CEffectEnumTrackedUnits: {catalog: 'effect'},
+  CEffectRemoveTrackedUnit: {catalog: 'effect'},
+  CEffectMorph: {catalog: 'effect'},
+  CValidatorCompareTrackedUnitsCount: {catalog: 'validator'},
+  CActorBlob: {catalog: 'actor'},
+  CActorMinimap: {catalog: 'actor'},
+  CAbil: {catalog: 'abil'},
   CAbilArmMagazine: {
     prototype: 'CAbil',
     InfoArray: [
@@ -325,6 +330,9 @@ export const StarcraftSchema = {
     prototype: 'CAccumulator'
   },
   CAccumulatorAttributePoints: {
+    prototype: 'CAccumulator'
+  },
+  CAccumulatorVeterancyLevel: {
     prototype: 'CAccumulator'
   },
   CAccumulatorBehavior: {
@@ -2337,6 +2345,9 @@ export const StarcraftSchema = {
   CValidatorUnitWeaponPlane: {
     prototype: 'CValidator'
   },
+  CValidatorUnitCompareAbilLevel: {
+    prototype: 'CValidator'
+  },
   CVoiceOver: {
     catalog: 'voiceover'
   },
@@ -2699,6 +2710,7 @@ export const StarcraftSchema = {
     MaxAccumulation: 'real',
     VitalType: 'string',
     ModificationType: 'string',
+    BonusPerLevel: 'real',
     UnitSource: {
       "Value": "word"
     },
@@ -2990,7 +3002,7 @@ export const StarcraftSchema = {
       BackgroundImage: 'string'
     },
     $Sub : 'string',
-    MaxScale: 'real',
+    MaxScale: 'reals',
     AutoScaleFromSelectionFactor: 'real',
     EndYawPeriod: 'reals',
     EndRadiusInner: 'real',
@@ -4654,6 +4666,19 @@ export const StarcraftSchema = {
       CooldownAmount: 'real',
       CooldownFraction: 'real'
     },
+
+    MorphFlags: '{bit}',
+    MorphUnit: 'unit',
+    AbilKeyFallback: 'unit',
+
+    SourceBehaviorLink: 'behavior',
+    TargetBehaviorLink: 'behavior',
+    TargetTrackerUnit: [{"Value":"word"}],
+    TrackedUnitFilters: 'filters',
+
+
+
+
     $abil: 'abil',
     $weaponid: 'weapon'
   },
@@ -6015,7 +6040,10 @@ export const StarcraftSchema = {
     IfArray: [{
       Test: 'validator',
       Return: 'validator'
-    }]
+    }],
+    BehaviorLink: 'behavior',
+    TrackerUnit:  [{"Value":"word"}],
+    TrackedUnitValidatorArray: '[validator]'
   },
   voicepack: {
     Name: 'link',

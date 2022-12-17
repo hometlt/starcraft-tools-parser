@@ -335,7 +335,11 @@ export function _propertyRelations(value,type,result,patharray,ignorelist){
 
 }
 export function relations(object,schema,path = [], ignorelist = {}, result = []){
-    if(!object || !schema) return
+    if(!object) return
+    if( !schema){
+        console.log("no schema",path)
+        return;
+    }
     for(let property in object){
         if(["index",'class', "removed" ,'id','parent','default'].includes(property))continue;
         // if(property !== 'value' && /[a-z]/.test(property))continue;
@@ -404,7 +408,11 @@ export function stringValues(object = this) {
 }
 
 export function resolveArrays(object, schema, path) {
-    if(!schema || schema.constructor === String) return;
+    if(!schema){
+        console.log("no schema",path)
+        return;
+    }
+    if( schema.constructor === String) return;
 
     for(let property in object){
         let type = resolveSchemaType(schema,property), value = object[property]
@@ -490,7 +498,10 @@ export function resolveArrays(object, schema, path) {
  */
 export function optimiseForXML(object,schema = object.$$schema, path = [object.class]) {
 
-    if(!schema) return;
+    if(!schema){
+        console.log("no schema",path)
+        return;
+    }
 
 
     for(let property in object){
@@ -647,7 +658,10 @@ export function fromXMLToObject (object) {
 }
 */
 export function optimizeObject(object, schema = object.$$schema, path = [object.class]) {
-    if(!schema) return;
+    if(!schema) {
+        console.log("no schema", path )
+        return;
+    }
     for(let property in object){
         let type = resolveSchemaType(schema,property), value = object[property]
 
@@ -722,7 +736,10 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
 
 
 export function optimizeJSONObject(object, schema = object.$$schema, path = [object.class]) {
-    if(!schema) return;
+    if(!schema){
+        console.log("no schema",path)
+        return;
+    }
     for(let property in object){
         let type = resolveSchemaType(schema,property), value = object[property]
         if (['id', 'class', 'parent', 'default', 'index', 'removed'].includes(property)) continue;
@@ -765,7 +782,10 @@ export function optimizeJSONObject(object, schema = object.$$schema, path = [obj
 
 
 export function filterTypedProperties(object, filter, schema = object.$$schema) {
-    if(!schema) return;
+    if(!schema){
+        console.log("no schema",path)
+        return;
+    }
     for(let property in object){
         if (['id', 'class', 'parent', 'default', 'index', 'removed'].includes(property)) {
             continue;

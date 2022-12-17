@@ -182,6 +182,9 @@ export class SCMod {
                             if (catalog.data.Catalog.$$) {
                                 for (let entity of catalog.data.Catalog.$$) {
                                     fromXMLToObject(entity)
+                                    if(!SCGame.classlist[entity.class]?.$$namespace){
+                                        console.log(entity.class)
+                                    }
                                     if(SCGame.classlist[entity.class]?.$$namespace && !SCGame.ignoredNamespaces.includes(SCGame.classlist[entity.class]?.$$namespace)){
                                         optimizeObject(entity, SCGame.classlist[entity.class].$$schema)
                                         entities.push(entity)
@@ -311,7 +314,7 @@ export class SCMod {
                 'layouts',
                 'data',
                 'components',
-                'documentinfo'
+                // 'documentinfo'
             ]
         }
         if(structure === 'auto'){
@@ -343,9 +346,7 @@ export class SCMod {
 
         fs.mkdirSync(destpath, {recursive: true});
 
-        if(scopes.includes('header')){
-            output[`DocumentHeader`] = ``
-        }
+
         if(scopes.includes('components')){
             extension = format === 'auto' ? 'SC2Components' : format
             formatting = format === 'auto' ? 'xml' : format;
@@ -388,8 +389,12 @@ export class SCMod {
             }
             output[`DocumentInfo`] = formatData(info , 'xml')
 
-            if(format === 'auto'){
+            if(scopes.includes('binary') && format === 'auto'){
                 fs.copyFileSync(path.resolve(__dirname ,'versions/DocumentInfo.version'), destpath + `DocumentInfo.version`)
+            }
+
+            if(scopes.includes('binary')){
+                output[`DocumentHeader`] = ``
             }
         }
         if(scopes.includes('preload')){
@@ -422,7 +427,7 @@ export class SCMod {
                 }
             }
 
-            if(format === 'auto'){
+            if(scopes.includes('binary') && format === 'auto'){
                 fs.copyFileSync(path.resolve(__dirname ,'versions/GameText.version'), destpath + `GameText.version`)
             }
         }
@@ -430,7 +435,7 @@ export class SCMod {
             extension = format === 'auto' ? 'SC2Style' : format
             formatting = format === 'auto' ? 'xml' : format;
             output[`Base.SC2Data/UI/FontStyles.${extension}`] = formatData(this.styles, formatting)
-            if(format === 'auto'){
+            if(scopes.includes('binary') && format === 'auto'){
                 fs.mkdirSync(destpath+  `Base.SC2Data/UI/`, {recursive: true});
                 fs.copyFileSync(path.resolve(__dirname ,'versions/FontStyles.version'), destpath + `Base.SC2Data/UI/FontStyles.version`)
             }
@@ -464,7 +469,7 @@ export class SCMod {
                     outputCatalogData = formatData(catalogCache, formatting)
                 }
                 output[`Base.SC2Data/GameData/${capitalize(cat)}Data.${extension}`] = outputCatalogData
-                if(format === 'auto'){
+                if(scopes.includes('binary') && format === 'auto'){
                     fs.copyFileSync(path.resolve(__dirname ,'versions/GameData.version'), destpath + `GameData.version`)
                 }
             }
@@ -477,7 +482,7 @@ export class SCMod {
             // let libraries = this.triggers.map(lib => optimiseForXML(lib, LibrarySchema))
             // output[`Triggers`] = formatData({TriggerData: {Library: libraries}}, format === 'auto' ? 'xml' : format)
 
-            if(format === 'auto'){
+            if(scopes.includes('binary') && format === 'auto'){
                 fs.copyFileSync(path.resolve(__dirname ,'versions/Triggers.version'), destpath + `Triggers.version`)
             }
         }
