@@ -2,6 +2,7 @@ import {SCMod} from "./sc-mod.js";
 import {deep, deepReplaceMatch, isNumeric, matchType, TYPES} from "./operations.js";
 import {SCEntity} from "./sc-entity.js";
 import {StarcraftSchema} from './sc-schema.js';
+import {CoreSchema} from "./make-schema.js";
 
 export const SCGame = {
     datafiles: [
@@ -500,49 +501,44 @@ export const SCGame = {
             schema[property] = type
         }
     },
-    async makeSchema({files,path = '*',group = 'catalog' }){
+    async makeSchema({mod,path = '*',group = 'catalog' }){
         let schema = deep({},CoreSchema)
-        let mod = new SCMod()
-        //Make Catalogs Data Schema and Save Catalogs Data as JSON
-        for(let file of files){
-            await mod.read(files);
 
-            mod.resolveTokens()
 
-            this._schemaValues = {}
-            for(let catalog in mod.catalogs){
-                if(SCGame.ignoredNamespaces.includes(catalog))continue;
+        this._schemaValues = {}
+        for(let catalog in mod.catalogs){
+            if(SCGame.ignoredNamespaces.includes(catalog))continue;
 
-                for(let entity of mod.catalogs[catalog]) {
-                    let schemaName
-                    if(group === "catalog"){
-                        schemaName = catalog
-                    }
-                    if(group === "class"){
-                        schemaName = entity.class
-                    }
-                    if(!schema[schemaName])schema[schemaName] = {}
-                    this._objectScheme(entity,schema[schemaName],[schemaName] ,{path})
+            for(let entity of mod.catalogs[catalog]) {
+                let schemaName
+                if(group === "catalog"){
+                    schemaName = catalog
                 }
+                if(group === "class"){
+                    schemaName = entity.class
+                }
+                if(!schema[schemaName])schema[schemaName] = {}
+                this._objectScheme(entity,schema[schemaName],[schemaName] ,{path})
             }
-
-            deepReplaceMatch(schema, val => val.constructor===Object && Object.keys(val).length === 0,null, ({val, obj, prop,x ,path,crumbs}) => {
-                let index
-                if(obj.constructor === Object){
-                    index = path.length -1
-                }
-                if(obj.constructor === Array){
-                    index = path.length -2
-                }
-                delete path[index][crumbs[index]]
-                while(index> 0 && path[index].constructor===Object && Object.keys(path[index]).length === 0){
-                    index--
-                    delete path[index][crumbs[index]]
-                }
-            })
-
-            delete this._schemaValues
         }
+
+        deepReplaceMatch(schema, val => val.constructor===Object && Object.keys(val).length === 0,null, ({val, obj, prop,x ,path,crumbs}) => {
+            let index
+            if(obj.constructor === Object){
+                index = path.length -1
+            }
+            if(obj.constructor === Array){
+                index = path.length -2
+            }
+            delete path[index][crumbs[index]]
+            while(index> 0 && path[index].constructor===Object && Object.keys(path[index]).length === 0){
+                index--
+                delete path[index][crumbs[index]]
+            }
+        })
+
+        delete this._schemaValues
+
 
         deep(schema,{
             requirementnode: {OperandArray:  "{string}"},

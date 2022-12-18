@@ -86,7 +86,11 @@ export const ModificationSchema = {
     Type: '{bit}'
   },
   TimeScale: 'real',
-  VitalRegenArray: [{index: "string", AccumulatorArray: [{value:"accumulator"}],value:"real"}],
+  VitalRegenArray: [{
+    index: "string",
+    AccumulatorArray: [{value:"accumulator"}],
+    value:"real"
+  }],
   WeaponDisableArray: '[weapon]',
   Height: 'real',
   HeightTime: '{real}',
@@ -177,24 +181,12 @@ export const StarcraftSchema = {
       }
     ]
   },
-  CAbilAttack: {
-    prototype: 'CAbil'
-  },
-  CAbilAttackModifier: {
-    prototype: 'CAbil'
-  },
-  CAbilAugment: {
-    prototype: 'CAbil'
-  },
-  CAbilBattery: {
-    prototype: 'CAbil'
-  },
-  CAbilBeacon: {
-    prototype: 'CAbil'
-  },
-  CAbilBehavior: {
-    prototype: 'CAbil'
-  },
+  CAbilAttack: { prototype: 'CAbil'},
+  CAbilAttackModifier: { prototype: 'CAbil'},
+  CAbilAugment: { prototype: 'CAbil'},
+  CAbilBattery: { prototype: 'CAbil'},
+  CAbilBeacon: { prototype: 'CAbil'},
+  CAbilBehavior: { prototype: 'CAbil'},
   CAbilBuild: {
     prototype: 'CAbil',
     InfoArray: [
@@ -203,23 +195,13 @@ export const StarcraftSchema = {
       }
     ]
   },
-  CAbilBuildable: {
-    prototype: 'CAbil'
-  },
-  CAbilEffect: {
-    prototype: 'CAbil'
-  },
+  CAbilBuildable: { prototype: 'CAbil'},
+  CAbilEffect: { prototype: 'CAbil'},
   CAbilEffectInstant: {prototype: 'CAbilEffect'},
   CAbilEffectTarget: {prototype: 'CAbilEffect'},
-  CAbilHarvest: {
-    prototype: 'CAbil'
-  },
-  CAbilInteract: {
-    prototype: 'CAbil'
-  },
-  CAbilInventory: {
-    prototype: 'CAbil'
-  },
+  CAbilHarvest: { prototype: 'CAbil'},
+  CAbilInteract: { prototype: 'CAbil'},
+  CAbilInventory: { prototype: 'CAbil'},
   CAbilLearn: {
     prototype: 'CAbil',
     InfoArray: [
@@ -228,21 +210,11 @@ export const StarcraftSchema = {
       }
     ]
   },
-  CAbilMerge: {
-    prototype: 'CAbil'
-  },
-  CAbilMergeable: {
-    prototype: 'CAbil'
-  },
-  CAbilMorph: {
-    prototype: 'CAbil'
-  },
-  CAbilMorphPlacement: {
-    prototype: 'CAbil'
-  },
-  CAbilMove: {
-    prototype: 'CAbil'
-  },
+  CAbilMerge: { prototype: 'CAbil'},
+  CAbilMergeable: { prototype: 'CAbil'},
+  CAbilMorph: { prototype: 'CAbil'},
+  CAbilMorphPlacement: { prototype: 'CAbil'},
+  CAbilMove: { prototype: 'CAbil'},
   CAbilPawn: {
     prototype: 'CAbil',
     InfoArray: [
@@ -251,27 +223,13 @@ export const StarcraftSchema = {
       }
     ]
   },
-  CAbilProgress: {
-    prototype: 'CAbil'
-  },
-  CAbilQueue: {
-    prototype: 'CAbil'
-  },
-  CAbilQueueable: {
-    prototype: 'CAbil'
-  },
-  CAbilRally: {
-    prototype: 'CAbil'
-  },
-  CAbilRedirect: {
-    prototype: 'CAbil'
-  },
-  CAbilRedirectInstant: {
-    prototype: 'CAbil'
-  },
-  CAbilRedirectTarget: {
-    prototype: 'CAbil'
-  },
+  CAbilProgress: { prototype: 'CAbil'},
+  CAbilQueue: { prototype: 'CAbil'},
+  CAbilQueueable: { prototype: 'CAbil'},
+  CAbilRally: { prototype: 'CAbil'},
+  CAbilRedirect: { prototype: 'CAbil'},
+  CAbilRedirectInstant: { prototype: 'CAbil'},
+  CAbilRedirectTarget: { prototype: 'CAbil'},
   CAbilResearch: {
     prototype: 'CAbil',
     InfoArray: [
@@ -280,9 +238,7 @@ export const StarcraftSchema = {
       }
     ]
   },
-  CAbilRevive: {
-    prototype: 'CAbil'
-  },
+  CAbilRevive: { prototype: 'CAbil'},
   CAbilSpecialize: {
     prototype: 'CAbil',
     InfoArray: [
@@ -291,9 +247,7 @@ export const StarcraftSchema = {
       }
     ]
   },
-  CAbilStop: {
-    prototype: 'CAbil'
-  },
+  CAbilStop: { prototype: 'CAbil'},
   CAbilTrain: {
     prototype: 'CAbil',
     InfoArray: [
@@ -303,9 +257,7 @@ export const StarcraftSchema = {
       }
     ]
   },
-  CAbilTransport: {
-    prototype: 'CAbil'
-  },
+  CAbilTransport: { prototype: 'CAbil'},
   CAbilWarpTrain: {
     prototype: 'CAbil',
     InfoArray: [
@@ -314,249 +266,110 @@ export const StarcraftSchema = {
       }
     ]
   },
-  CAbilWarpable: {
-    prototype: 'CAbil'
-  },
-  CAccumulator: {
-    catalog: 'accumulator'
-  },
-  CAccumulatorConstant: {
-    prototype: 'CAccumulator'
-  },
-  CAccumulatorAbilLevel: {
-    prototype: 'CAccumulator'
-  },
-  CAccumulatorArithmetic: {
-    prototype: 'CAccumulator'
-  },
-  CAccumulatorAttributePoints: {
-    prototype: 'CAccumulator'
-  },
-  CAccumulatorVeterancyLevel: {
-    prototype: 'CAccumulator'
-  },
-  CAccumulatorBehavior: {
-    prototype: 'CAccumulator'
-  },
-  CAccumulatorCargo: {
-    prototype: 'CAccumulator'
-  },
-  CAccumulatorDistance: {
-    prototype: 'CAccumulator'
-  },
-  CAccumulatorEffectAmount: {
-    prototype: 'CAccumulator'
-  },
-  CAccumulatorSwitch: {
-    prototype: 'CAccumulator'
-  },
-  CAccumulatorUnitCustomValue: {
-    prototype: 'CAccumulator'
-  },
-  CAccumulatorUserData: {
-    prototype: 'CAccumulator'
-  },
-  CAccumulatorVitals: {
-    prototype: 'CAccumulator'
-  },
-  CAchievement: {
-    catalog: 'achievement'
-  },
-  CAchievementTerm: {
-    catalog: 'achievementterm'
-  },
-  CAchievementTermAbilInteract: {
-    prototype: 'CAchievementTerm'
-  },
-  CAchievementTermAbilLoad: {
-    prototype: 'CAchievementTerm'
-  },
-  CAchievementTermAbilUse: {
-    prototype: 'CAchievementTerm'
-  },
-  CAchievementTermAchievement: {
-    prototype: 'CAchievementTerm'
-  },
-  CAchievementTermBehaviorCount: {
-    prototype: 'CAchievementTerm'
-  },
-  CAchievementTermBehaviorState: {
-    prototype: 'CAchievementTerm'
-  },
-  CAchievementTermCombine: {
-    prototype: 'CAchievementTerm'
-  },
-  CAchievementTermEffectAbsorbed: {
-    prototype: 'CAchievementTerm'
-  },
-  CAchievementTermEffectDamaged: {
-    prototype: 'CAchievementTerm'
-  },
-  CAchievementTermEffectDodged: {
-    prototype: 'CAchievementTerm'
-  },
-  CAchievementTermEffectHealed: {
-    prototype: 'CAchievementTerm'
-  },
-  CAchievementTermEffectKilled: {
-    prototype: 'CAchievementTerm'
-  },
-  CAchievementTermEffectUse: {
-    prototype: 'CAchievementTerm'
-  },
-  CAchievementTermGeneric: {
-    prototype: 'CAchievementTerm'
-  },
-  CAchievementTermReplay: {
-    prototype: 'CAchievementTerm'
-  },
-  CAchievementTermScoreValue: {
-    prototype: 'CAchievementTerm'
-  },
-  CAchievementTermTime: {
-    prototype: 'CAchievementTerm'
-  },
-  CAchievementTermUnitBirth: {
-    prototype: 'CAchievementTerm'
-  },
-  CAchievementTermUnitDeath: {
-    prototype: 'CAchievementTerm'
-  },
-  CAchievementTermUnitKills: {
-    prototype: 'CAchievementTerm'
-  },
-  CAchievementTermUnitRegen: {
-    prototype: 'CAchievementTerm'
-  },
-  CAchievementTermUnitSupplyLoss: {
-    prototype: 'CAchievementTerm'
-  },
-  CActor: {
-    catalog: 'actor'
-  },
-  CActorAction: {
-    prototype: 'CActor'
-  },
-  CActorActionOverride: {
-    prototype: 'CActor'
-  },
-  CActorArc: {
-    prototype: 'CActor'
-  },
-  CActorBase: {
-    prototype: 'CActor'
-  },
-  CActorBatch: {
-    prototype: 'CActor'
-  },
-  CActorBeamStandard: {
-    prototype: 'CActor'
-  },
-  CActorBearings: {
-    prototype: 'CActor'
-  },
-  CActorCamera: {
-    prototype: 'CActor'
-  },
-  CActorCameraModel: {
-    prototype: 'CActor'
-  },
-  CActorCreep: {
-    prototype: 'CActor'
-  },
-  CActorCutscene: {
-    prototype: 'CActor'
-  },
-  CActorDoodad: {
-    prototype: 'CActor'
-  },
-  CActorDoodadPreserver: {
-    prototype: 'CActor'
-  },
-  CActorEditorCamera: {
-    prototype: 'CActor'
-  },
-  CActorEventMacro: {
-    prototype: 'CActor'
-  },
-  CActorFoliageFXSpawner: {
-    prototype: 'CActor'
-  },
-  CActorForce: {
-    prototype: 'CActor'
-  },
-  CActorForceBox: {
-    prototype: 'CActor'
-  },
-  CActorForceConeRoundedEnd: {
-    prototype: 'CActor'
-  },
-  CActorForceCylinder: {
-    prototype: 'CActor'
-  },
-  CActorForceSphere: {
-    prototype: 'CActor'
-  },
-  CActorGlobalConfig: {
-    prototype: 'CActor'
-  },
-  CActorLightModel: {
-    prototype: 'CActor'
-  },
-  CActorLightOmni: {
-    prototype: 'CActor'
-  },
-  CActorLightOmniModel: {
-    prototype: 'CActor'
-  },
-  CActorLightSpot: {
-    prototype: 'CActor'
-  },
-  CActorLightSpotModel: {
-    prototype: 'CActor'
-  },
-  CActorList: {
-    prototype: 'CActor'
-  },
-  CActorLookAt: {
-    prototype: 'CActor'
-  },
-  CActorModel: {
-    prototype: 'CActor'
-  },
-  CActorBeamSimple: {
-    prototype: 'CActorModel'
-  },
-  CActorEditorPoint: {
-    prototype: 'CActorModel'
-  },
-  CActorModelMaterial: {
-    prototype: 'CActorModel'
-  },
-  CActorPortrait: {
-    prototype: 'CActor'
-  },
-  CActorPower: {
-    prototype: 'CActor'
-  },
-  CActorProgress: {
-    prototype: 'CActor'
-  },
-  CActorPropertyCurveSet: {
-    prototype: 'CActor'
-  },
-  CActorQuad: {
-    prototype: 'CActor'
-  },
-  CActorQueryResponse: {
-    prototype: 'CActor'
-  },
-  CActorRange: {
-    prototype: 'CActor'
-  },
-  CActorRegion: {
-    prototype: 'CActor'
-  },
+  CAbilWarpable: { prototype: 'CAbil'},
+  CAccumulator: { catalog: 'accumulator'},
+  CAccumulatorConstant: { prototype: 'CAccumulator'},
+  CAccumulatorAbilLevel: { prototype: 'CAccumulator'},
+  CAccumulatorArithmetic: { prototype: 'CAccumulator'},
+  CAccumulatorAttributePoints: { prototype: 'CAccumulator'},
+  CAccumulatorVeterancyLevel: { prototype: 'CAccumulator'},
+  CAccumulatorBehavior: { prototype: 'CAccumulator'},
+  CAccumulatorCargo: { prototype: 'CAccumulator'},
+  CAccumulatorDistance: { prototype: 'CAccumulator'},
+  CAccumulatorEffectAmount: { prototype: 'CAccumulator'},
+  CAccumulatorSwitch: { prototype: 'CAccumulator'},
+  CAccumulatorUnitCustomValue: { prototype: 'CAccumulator'},
+  CAccumulatorUserData: { prototype: 'CAccumulator'},
+  CAccumulatorVitals: { prototype: 'CAccumulator'},
+  achievement: {
+    Name: 'link',
+    Filters: '{bit}',
+    Flags: '{bit}',
+    Icon: 'file',
+    Points: 'int',
+    TermTable: '[word]',
+    RewardTable: "[word]",
+    Tags: [{"Value":"word","Check":"word"}],
+  },
+  achievementterm: {
+    Name: 'link',
+    Description: 'link',
+    Compare: 'word',
+    Evaluate: 'word',
+    AbilCmd: [{"value":"abilcmd"}],
+    Effect: [{"value":"effect"}],
+    ChildTable: [{"value":"word"}],
+    Flags: [{"index":"word","value":"int"}],
+    Quantity: [{"value":"int"}],
+    Unit: [{"value":"word"}],
+    ValidatorArray: [{"value":"word"}]
+  },
+  //CAchievement: { catalog: 'achievement'},
+  //CAchievementTerm: {catalog: 'achievementterm'},
+  //CAchievementTermAbilInteract: { prototype: 'CAchievementTerm'},
+  //CAchievementTermAbilLoad: { prototype: 'CAchievementTerm'},
+  //CAchievementTermAbilUse: { prototype: 'CAchievementTerm'},
+  //CAchievementTermAchievement: { prototype: 'CAchievementTerm'},
+  //CAchievementTermBehaviorCount: { prototype: 'CAchievementTerm'},
+  //CAchievementTermBehaviorState: { prototype: 'CAchievementTerm'},
+  //CAchievementTermCombine: { prototype: 'CAchievementTerm'},
+  //CAchievementTermEffectAbsorbed: { prototype: 'CAchievementTerm'},
+  //CAchievementTermEffectDamaged: { prototype: 'CAchievementTerm'},
+  //CAchievementTermEffectDodged: { prototype: 'CAchievementTerm'},
+  //CAchievementTermEffectHealed: { prototype: 'CAchievementTerm'},
+  //CAchievementTermEffectKilled: { prototype: 'CAchievementTerm'},
+  //CAchievementTermEffectUse: { prototype: 'CAchievementTerm'},
+  //CAchievementTermGeneric: { prototype: 'CAchievementTerm'},
+  //CAchievementTermReplay: { prototype: 'CAchievementTerm'},
+  //CAchievementTermScoreValue: { prototype: 'CAchievementTerm'},
+  //CAchievementTermTime: { prototype: 'CAchievementTerm'},
+  //CAchievementTermUnitBirth: { prototype: 'CAchievementTerm'},
+  //CAchievementTermUnitDeath: { prototype: 'CAchievementTerm'},
+  //CAchievementTermUnitKills: { prototype: 'CAchievementTerm'},
+  //CAchievementTermUnitRegen: { prototype: 'CAchievementTerm'},
+  //CAchievementTermUnitSupplyLoss: { prototype: 'CAchievementTerm'},
+  CActor: { catalog: 'actor'},
+  CActorAction: { prototype: 'CActor'},
+  CActorActionOverride: { prototype: 'CActor'},
+  CActorArc: { prototype: 'CActor'},
+  CActorBase: { prototype: 'CActor'},
+  CActorBatch: { prototype: 'CActor'},
+  CActorBeamStandard: { prototype: 'CActor'},
+  CActorBearings: { prototype: 'CActor'},
+  CActorCamera: { prototype: 'CActor'},
+  CActorCameraModel: { prototype: 'CActor'},
+  CActorCreep: { prototype: 'CActor'},
+  CActorCutscene: { prototype: 'CActor'},
+  CActorDoodad: { prototype: 'CActor'},
+  CActorDoodadPreserver: { prototype: 'CActor'},
+  CActorEditorCamera: { prototype: 'CActor'},
+  CActorEventMacro: { prototype: 'CActor'},
+  CActorFoliageFXSpawner: { prototype: 'CActor'},
+  CActorForce: { prototype: 'CActor'},
+  CActorForceBox: { prototype: 'CActor'},
+  CActorForceConeRoundedEnd: { prototype: 'CActor'},
+  CActorForceCylinder: { prototype: 'CActor'},
+  CActorForceSphere: { prototype: 'CActor'},
+  CActorGlobalConfig: { prototype: 'CActor'},
+  CActorLightModel: { prototype: 'CActor'},
+  CActorLightOmni: { prototype: 'CActor'},
+  CActorLightOmniModel: { prototype: 'CActor'},
+  CActorLightSpot: { prototype: 'CActor'},
+  CActorLightSpotModel: { prototype: 'CActor'},
+  CActorList: { prototype: 'CActor'},
+  CActorLookAt: { prototype: 'CActor'},
+  CActorModel: { prototype: 'CActor'},
+  CActorBeamSimple: { prototype: 'CActorModel'},
+  CActorEditorPoint: { prototype: 'CActorModel'},
+  CActorModelMaterial: { prototype: 'CActorModel'},
+  CActorPortrait: { prototype: 'CActor'},
+  CActorPower: { prototype: 'CActor'},
+  CActorProgress: { prototype: 'CActor'},
+  CActorPropertyCurveSet: { prototype: 'CActor'},
+  CActorQuad: { prototype: 'CActor'},
+  CActorQueryResponse: { prototype: 'CActor'},
+  CActorRange: { prototype: 'CActor'},
+  CActorRegion: { prototype: 'CActor'},
   CActorRegionArc: {prototype: 'CActorRegion'},
   CActorRegionCircle: {prototype: 'CActorRegion'},
   CActorRegionQuad: {prototype: 'CActorRegion'},
@@ -564,335 +377,173 @@ export const StarcraftSchema = {
   CActorRegionGame: {prototype: 'CActorRegion'},
 
 
-  CActorScene: {
-    prototype: 'CActor'
-  },
-  CActorSelection: {
-    prototype: 'CActor'
-  },
-  CActorSetQueried: {
-    prototype: 'CActor'
-  },
-  CActorShadow: {
-    prototype: 'CActor'
-  },
-  CActorShield: {
-    prototype: 'CActor'
-  },
-  CActorShieldImpact: {
-    prototype: 'CActor'
-  },
-  CActorSimple: {
-    prototype: 'CActor'
-  },
-  CActorSite: {
-    prototype: 'CActor'
-  },
-  CActorSiteBillboard: {
-    prototype: 'CActor'
-  },
-  CActorSiteMover: {
-    prototype: 'CActor'
-  },
-  CActorSiteOp2DRotation: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpAction: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpAttach: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpAttachVolume: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpBanker: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpBankerUnit: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpBasic: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpCursor: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpDeathMotion: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpEffect: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpForward: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpGameCameraFollow: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpHeight: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpHigherOfTerrainAndWater: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpHostBearings: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpHostedOffset: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpIncoming: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpLocalOffset: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpOrbiter: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpPatch: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpPhysicsImpact: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpRandomPointInCircle: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpRandomPointInCrossbar: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpRandomPointInSphere: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpRotationExplicit: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpRotationRandom: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpRotationSmooth: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpRotationVariancer: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpRotator: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpSelectionOffset: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpSerpentHead: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpSerpentSegment: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpShadow: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpTilter: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpTipability: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpUp: {
-    prototype: 'CActor'
-  },
-  CActorSiteOpZ: {
-    prototype: 'CActor'
-  },
-  CActorSiteOrbiter: {
-    prototype: 'CActor'
-  },
-  CActorSiteRocker: {
-    prototype: 'CActor'
-  },
-  CActorSnapshot: {
-    prototype: 'CActor'
-  },
-  CActorSound: {
-    prototype: 'CActor'
-  },
-  CActorSplat: {
-    prototype: 'CActor'
-  },
-  CActorSquib: {
-    prototype: 'CActor'
-  },
-  CActorStateMonitor: {
-    prototype: 'CActor'
-  },
-  CActorTerrain: {
-    prototype: 'CActor'
-  },
-  CActorTerrainDeformer: {
-    prototype: 'CActor'
-  },
-  CActorText: {
-    prototype: 'CActor'
-  },
-  CActorTurret: {
-    prototype: 'CActor'
-  },
-  CActorUnit: {
-    prototype: 'CActor'
-  },
-  CActorMissile: {
-    prototype: 'CActorUnit'
-  },
-  CAlert: {
-    catalog: 'alert'
-  },
-  CArmyCategory: {
-    catalog: 'armycategory'
-  },
-  CArmyUnit: {
-    catalog: 'armyunit'
-  },
-  CArmyUpgrade: {
-    catalog: 'armyupgrade'
-  },
-  CArtifact: {
-    catalog: 'artifact'
-  },
-  CArtifactSlot: {
-    catalog: 'artifactslot'
-  },
-  CAttachMethod: {
-    catalog: 'attachmethod'
-  },
-  CAttachMethodArcTest: {
-    prototype: 'CAttachMethod'
-  },
-  CAttachMethodAttachType: {
-    prototype: 'CAttachMethod'
-  },
-  CAttachMethodBestMatch: {
-    prototype: 'CAttachMethod'
-  },
-  CAttachMethodFilter: {
-    prototype: 'CAttachMethod'
-  },
-  CAttachMethodIncoming: {
-    prototype: 'CAttachMethod'
-  },
-  CAttachMethodNodeOccupancy: {
-    prototype: 'CAttachMethod'
-  },
-  CAttachMethodNodeOccupancy2: {
-    prototype: 'CAttachMethod'
-  },
-  CAttachMethodNumericField: {
-    prototype: 'CAttachMethod'
-  },
-  CAttachMethodPattern: {
-    prototype: 'CAttachMethod'
-  },
-  CAttachMethodPortAllocator: {
-    prototype: 'CAttachMethod'
-  },
-  CAttachMethodProximity: {
-    prototype: 'CAttachMethod'
-  },
-  CAttachMethodRandom: {
-    prototype: 'CAttachMethod'
-  },
-  CAttachMethodReduction: {
-    prototype: 'CAttachMethod'
-  },
-  CAttachMethodVolumesRequery: {
-    prototype: 'CAttachMethod'
-  },
-  CAttachMethodVolumesTargets: {
-    prototype: 'CAttachMethod'
-  },
-  CAttachMethodVolumesWeightedPick: {
-    prototype: 'CAttachMethod'
-  },
-  CBankConditionCompare: {
-    catalog: 'bankcondition'
-  },
-  CBankConditionCompareValueCount: {
-    prototype: 'CBankConditionCompare'
-  },
-  CBankConditionCompareValueSum: {
-    prototype: 'CBankConditionCompare'
-  },
-  CBeamAsyncLinear: {
-    catalog: 'beam'
-  },
-  CBehavior: {
-    catalog: 'behavior'
-  },
-  CBehaviorAttackModifier: {
-    prototype: 'CBehavior'
-  },
-  CBehaviorAttribute: {
-    prototype: 'CBehavior'
-  },
-  CBehaviorBuff: {
-    prototype: 'CBehavior'
-  },
-  CBehaviorClickResponse: {
-    prototype: 'CBehavior'
-  },
-  CBehaviorConjoined: {
-    prototype: 'CBehavior'
-  },
-  CBehaviorCreepSource: {
-    prototype: 'CBehavior'
-  },
-  CBehaviorJump: {
-    prototype: 'CBehavior'
-  },
-  CBehaviorPowerSource: {
-    prototype: 'CBehavior'
-  },
-  CBehaviorPowerUser: {
-    prototype: 'CBehavior'
-  },
-  CBehaviorResource: {
-    prototype: 'CBehavior'
-  },
-  CBehaviorReveal: {
-    prototype: 'CBehavior'
-  },
-  CBehaviorSpawn: {
-    prototype: 'CBehavior'
-  },
-  CBehaviorUnitTracker: {
-    prototype: 'CBehavior'
-  },
-  CBehaviorVeterancy: {
-    prototype: 'CBehavior'
-  },
-  CBehaviorWander: {
-    prototype: 'CBehavior'
-  },
-  CBoost: {
-    catalog: 'boost'
-  },
-  CBundle: {
-    catalog: 'bundle'
-  },
-  CButton: {
-    catalog: 'button'
-  },
+  CActorScene: { prototype: 'CActor'},
+  CActorSelection: { prototype: 'CActor'},
+  CActorSetQueried: { prototype: 'CActor'},
+  CActorShadow: { prototype: 'CActor'},
+  CActorShield: { prototype: 'CActor'},
+  CActorShieldImpact: { prototype: 'CActor'},
+  CActorSimple: { prototype: 'CActor'},
+  CActorSite: { prototype: 'CActor'},
+  CActorSiteBillboard: { prototype: 'CActor'},
+  CActorSiteMover: { prototype: 'CActor'},
+  CActorSiteOp2DRotation: { prototype: 'CActor'},
+  CActorSiteOpAction: { prototype: 'CActor'},
+  CActorSiteOpAttach: { prototype: 'CActor'},
+  CActorSiteOpAttachVolume: { prototype: 'CActor'},
+  CActorSiteOpBanker: { prototype: 'CActor'},
+  CActorSiteOpBankerUnit: { prototype: 'CActor'},
+  CActorSiteOpBasic: { prototype: 'CActor'},
+  CActorSiteOpCursor: { prototype: 'CActor'},
+  CActorSiteOpDeathMotion: { prototype: 'CActor'},
+  CActorSiteOpEffect: { prototype: 'CActor'},
+  CActorSiteOpForward: { prototype: 'CActor'},
+  CActorSiteOpGameCameraFollow: { prototype: 'CActor'},
+  CActorSiteOpHeight: { prototype: 'CActor'},
+  CActorSiteOpHigherOfTerrainAndWater: { prototype: 'CActor'},
+  CActorSiteOpHostBearings: { prototype: 'CActor'},
+  CActorSiteOpHostedOffset: { prototype: 'CActor'},
+  CActorSiteOpIncoming: { prototype: 'CActor'},
+  CActorSiteOpLocalOffset: { prototype: 'CActor'},
+  CActorSiteOpOrbiter: { prototype: 'CActor'},
+  CActorSiteOpPatch: { prototype: 'CActor'},
+  CActorSiteOpPhysicsImpact: { prototype: 'CActor'},
+  CActorSiteOpRandomPointInCircle: { prototype: 'CActor'},
+  CActorSiteOpRandomPointInCrossbar: { prototype: 'CActor'},
+  CActorSiteOpRandomPointInSphere: { prototype: 'CActor'},
+  CActorSiteOpRotationExplicit: { prototype: 'CActor'},
+  CActorSiteOpRotationRandom: { prototype: 'CActor'},
+  CActorSiteOpRotationSmooth: { prototype: 'CActor'},
+  CActorSiteOpRotationVariancer: { prototype: 'CActor'},
+  CActorSiteOpRotator: { prototype: 'CActor'},
+  CActorSiteOpSelectionOffset: { prototype: 'CActor'},
+  CActorSiteOpSerpentHead: { prototype: 'CActor'},
+  CActorSiteOpSerpentSegment: { prototype: 'CActor'},
+  CActorSiteOpShadow: { prototype: 'CActor'},
+  CActorSiteOpTilter: { prototype: 'CActor'},
+  CActorSiteOpTipability: { prototype: 'CActor'},
+  CActorSiteOpUp: { prototype: 'CActor'},
+  CActorSiteOpZ: { prototype: 'CActor'},
+  CActorSiteOrbiter: { prototype: 'CActor'},
+  CActorSiteRocker: { prototype: 'CActor'},
+  CActorSnapshot: { prototype: 'CActor'},
+  CActorSound: { prototype: 'CActor'},
+  CActorSplat: { prototype: 'CActor'},
+  CActorSquib: { prototype: 'CActor'},
+  CActorStateMonitor: { prototype: 'CActor'},
+  CActorTerrain: { prototype: 'CActor'},
+  CActorTerrainDeformer: { prototype: 'CActor'},
+  CActorText: { prototype: 'CActor'},
+  CActorTurret: { prototype: 'CActor'},
+  CActorUnit: { prototype: 'CActor'},
+  CActorMissile: { prototype: 'CActorUnit'},
+  CAlert: { catalog: 'alert'},
+  armycategory: {
+   Name: 'link',
+   Description: 'link',
+   BankPath: 'word',
+  },
+  // CArmyCategory: {catalog: 'armycategory'},
+  armyunit: {},
+  // CArmyUnit: {catalog: 'armyunit'},
+  armyupgrade: {},
+  // CArmyUpgrade: {catalog: 'armyupgrade'},
+  CArtifact: { catalog: 'artifact'},
+  CArtifactSlot: { catalog: 'artifactslot'},
+  CAttachMethod: { catalog: 'attachmethod'},
+  CAttachMethodArcTest: { prototype: 'CAttachMethod'},
+  CAttachMethodAttachType: { prototype: 'CAttachMethod'},
+  CAttachMethodBestMatch: { prototype: 'CAttachMethod'},
+  CAttachMethodFilter: { prototype: 'CAttachMethod'},
+  CAttachMethodIncoming: { prototype: 'CAttachMethod'},
+  CAttachMethodNodeOccupancy: { prototype: 'CAttachMethod'},
+  CAttachMethodNodeOccupancy2: { prototype: 'CAttachMethod'},
+  CAttachMethodNumericField: { prototype: 'CAttachMethod'},
+  CAttachMethodPattern: { prototype: 'CAttachMethod'},
+  CAttachMethodPortAllocator: { prototype: 'CAttachMethod'},
+  CAttachMethodProximity: { prototype: 'CAttachMethod'},
+  CAttachMethodRandom: { prototype: 'CAttachMethod'},
+  CAttachMethodReduction: { prototype: 'CAttachMethod'},
+  CAttachMethodVolumesRequery: { prototype: 'CAttachMethod'},
+  CAttachMethodVolumesTargets: { prototype: 'CAttachMethod'},
+  CAttachMethodVolumesWeightedPick: { prototype: 'CAttachMethod'},
+  bankcondition: {catalog: 'bankcondition'},
+  // CBankConditionCompare: {catalog: 'bankcondition'},
+  // CBankConditionCompareValueCount: {prototype: 'CBankConditionCompare'},
+  // CBankConditionCompareValueSum: {prototype: 'CBankConditionCompare'},
+  CBeamAsyncLinear: { catalog: 'beam'},
+  CBehavior: { catalog: 'behavior'},
+  CBehaviorAttackModifier: { prototype: 'CBehavior'},
+  CBehaviorAttribute: { prototype: 'CBehavior'},
+  CBehaviorBuff: { prototype: 'CBehavior'},
+  CBehaviorClickResponse: { prototype: 'CBehavior'},
+  CBehaviorConjoined: { prototype: 'CBehavior'},
+  CBehaviorCreepSource: { prototype: 'CBehavior'},
+  CBehaviorJump: { prototype: 'CBehavior'},
+  CBehaviorPowerSource: { prototype: 'CBehavior'},
+  CBehaviorPowerUser: { prototype: 'CBehavior'},
+  CBehaviorResource: { prototype: 'CBehavior'},
+  CBehaviorReveal: { prototype: 'CBehavior'},
+  CBehaviorSpawn: { prototype: 'CBehavior'},
+  CBehaviorUnitTracker: { prototype: 'CBehavior'},
+  CBehaviorVeterancy: { prototype: 'CBehavior'},
+  CBehaviorWander: { prototype: 'CBehavior'},
+  // CBoost: {catalog: 'boost'},
+  // CBundle: {catalog: 'bundle'},
+  CButton: { catalog: 'button'},
   camera: {
+    FieldOfViewMin: 'real',
+    FieldOfViewMax: 'real',
+    FieldOfViewIncrement: 'real',
+    DistanceMin: 'real',
+    DistanceMax: 'real',
+    DistanceIncrement: 'real',
+    PitchMin: 'real',
+    PitchMax: 'real',
+    PitchIncrement: 'real',
+    YawLeft: 'real',
+    YawRight: 'real',
+    YawMax: 'real',
+    YawIncrement: 'real',
+    FollowOffsetUpdateBandX: 'reals',
+    FollowOffsetUpdateBandY: 'reals',
+    FollowScrollLeash: 'reals',
+    BorderSizeX:'int',
+    BorderSizeY:'int',
+    ParamInitial:  '{real}',
+    ZoomTableObserver: [{"Param":[{"index":"word","Modify":"int","Value":"real"}]}],
+    ParamSmooth: [{"index":"word","SmoothTimeMax":"real","VelocityMax":"real","SmoothTimeMin":"real"}],
+    TargetSmooth: [{"SmoothTimeMin":"real","SmoothTimeMax":"real","VelocityMax":"real"}],
+    MaxScrollRate: '{real}',
+    MaxScrollDistance:  '{real}',
+    VerticalScrollRateMultiplier: '{real}',
+    ScrollAccelerationPeriod:  '{real}',
+    ScrollDecelerationPeriod:  '{real}',
+    ForwardScale: '{real}',
+    StrafeScale:  '{real}',
+    HeightMap: 'word',
+    RotateScale: 'real',
+    FollowScrollLimit: 'real',
+    SmartPanJumpDistance: 'real',
+    SmartPanSkipDistance: 'real',
+    HeightDisplacementFactor: 'real',
+    HeightDisplacementPitchMin: 'real',
+    HeightDisplacementPitchMax: 'real',
+    HeightDisplacementMax: 'real',
+    FollowResetDecayDuration: 'real',
+    FollowResetDecayFactor: 'real',
+    FollowResetJumpDelay: 'real',
+    FollowResetJumpDistance: 'real',
+    FollowResetTimeoutNormal: 'real',
+    FollowResetTimeoutLeashed: 'real',
+    FollowResetTimeoutUnleashed: 'real',
     ZoomTable: [{
       "Param":[{"index":"word","Modify":"real","Value":"real"}]
     }]
   },
-  CCamera: {
-    catalog: 'camera'
-  },
-  CCampaign: {
-    catalog: 'campaign'
-  },
+  CCamera: { catalog: 'camera'},
+  campaign: {},
+ // CCampaign: {catalog: 'campaign'},
   character: {
     Name: 'link',
     RaceCustom: 'link',
@@ -919,220 +570,80 @@ export const StarcraftSchema = {
     Relevance: 'word',
     Pitch: 'int'
   },
-  CCharacter: {
-    catalog: 'character'
-  },
-  CCliff: {
-    catalog: 'cliff'
-  },
-  CCliffDoodad: {
-    prototype: 'CCliff'
-  },
-  CCliffMesh: {
-    catalog: 'cliffmesh'
-  },
-  CColorStyle: {
-    catalog: 'colorstyle'
-  },
-  CCommander: {
-    catalog: 'commander'
-  },
-  CConfig: {
-    catalog: 'config'
-  },
-  CConsoleSkin: {
-    catalog: 'consoleskin'
-  },
-  CConversation: {
-    catalog: 'conversation'
-  },
-  CConversationState: {
-    catalog: 'conversationstate'
-  },
-  CCursor: {
-    catalog: 'cursor'
-  },
-  CDataCollection: {
-    catalog: 'datacollection'
-  },
-  CDataCollectionAbil: {
-    prototype: 'CDataCollection'
-  },
-  CDataCollectionUnit: {
-    prototype: 'CDataCollection'
-  },
-  CDataCollectionUpgrade: {
-    prototype: 'CDataCollection'
-  },
-  CDataCollectionPattern: {
-    catalog: 'datacollectionpattern'
-  },
-  CDecalPack: {
-    catalog: 'decalpack'
-  },
-  CDSPChorus: {
-    catalog: 'dsp'
-  },
-  CDSPCompressor: {
-    prototype: 'CDSPChorus'
-  },
-  CDSPCustomCompressor: {
-    prototype: 'CDSPChorus'
-  },
-  CDSPDistortion: {
-    prototype: 'CDSPChorus'
-  },
-  CDSPEcho: {
-    prototype: 'CDSPChorus'
-  },
-  CDSPFlange: {
-    prototype: 'CDSPChorus'
-  },
-  CDSPHighPass: {
-    prototype: 'CDSPChorus'
-  },
-  CDSPLimiter: {
-    prototype: 'CDSPChorus'
-  },
-  CDSPLowPass: {
-    prototype: 'CDSPChorus'
-  },
-  CDSPLowPassSimple: {
-    prototype: 'CDSPChorus'
-  },
-  CDSPNormalize: {
-    prototype: 'CDSPChorus'
-  },
-  CDSPParamEQ: {
-    prototype: 'CDSPChorus'
-  },
-  CDSPPitchShift: {
-    prototype: 'CDSPChorus'
-  },
-  CDSPReverb: {
-    prototype: 'CDSPChorus'
-  },
-  CEffect: {
-    catalog: 'effect'
-  },
-  CEffectAddTrackedUnit: {
-    prototype: 'CEffect'
-  },
-  CEffectApplyBehavior: {
-    prototype: 'CEffect'
-  },
-  CEffectApplyForce: {
-    prototype: 'CEffect'
-  },
-  CEffectApplyKinetic: {
-    prototype: 'CEffect'
-  },
-  CEffectCancelOrder: {
-    prototype: 'CEffect'
-  },
-  CEffectCreateHealer: {
-    prototype: 'CEffect'
-  },
-  CEffectCreatePersistent: {
-    prototype: 'CEffect'
-  },
-  CEffectCreateUnit: {
-    prototype: 'CEffect'
-  },
-  CEffectCreep: {
-    prototype: 'CEffect'
-  },
-  CEffectDamage: {
-    prototype: 'CEffect'
-  },
-  CEffectDestroyPersistent: {
-    prototype: 'CEffect'
-  },
-  CEffectEnumArea: {
-    prototype: 'CEffect'
-  },
-  CEffectEnumMagazine: {
-    prototype: 'CEffect'
-  },
-  CEffectEnumTransport: {
-    prototype: 'CEffect'
-  },
-  CEffectIssueOrder: {
-    prototype: 'CEffect'
-  },
-  CEffectLastTarget: {
-    prototype: 'CEffect'
-  },
-  CEffectLaunchMissile: {
-    prototype: 'CEffect'
-  },
-  CEffectLoadContainer: {
-    prototype: 'CEffect'
-  },
-  CEffectModifyPlayer: {
-    prototype: 'CEffect'
-  },
+  CCharacter: { catalog: 'character'},
+  CCliff: { catalog: 'cliff'},
+  CCliffDoodad: { prototype: 'CCliff'},
+  CCliffMesh: { catalog: 'cliffmesh'},
+  CColorStyle: { catalog: 'colorstyle'},
+  CCommander: { catalog: 'commander'},
+  CConfig: { catalog: 'config'},
+  CConsoleSkin: { catalog: 'consoleskin'},
+  CConversation: { catalog: 'conversation'},
+  CConversationState: { catalog: 'conversationstate'},
+  CCursor: { catalog: 'cursor'},
+  CDataCollection: { catalog: 'datacollection'},
+  CDataCollectionAbil: { prototype: 'CDataCollection'},
+  CDataCollectionUnit: { prototype: 'CDataCollection'},
+  CDataCollectionUpgrade: { prototype: 'CDataCollection'},
+  CDataCollectionPattern: { catalog: 'datacollectionpattern'},
+  CDecalPack: { catalog: 'decalpack'},
+  CDSPChorus: { catalog: 'dsp'},
+  CDSPCompressor: { prototype: 'CDSPChorus'},
+  CDSPCustomCompressor: { prototype: 'CDSPChorus'},
+  CDSPDistortion: { prototype: 'CDSPChorus'},
+  CDSPEcho: { prototype: 'CDSPChorus'},
+  CDSPFlange: { prototype: 'CDSPChorus'},
+  CDSPHighPass: { prototype: 'CDSPChorus'},
+  CDSPLimiter: { prototype: 'CDSPChorus'},
+  CDSPLowPass: { prototype: 'CDSPChorus'},
+  CDSPLowPassSimple: { prototype: 'CDSPChorus'},
+  CDSPNormalize: { prototype: 'CDSPChorus'},
+  CDSPParamEQ: { prototype: 'CDSPChorus'},
+  CDSPPitchShift: { prototype: 'CDSPChorus'},
+  CDSPReverb: { prototype: 'CDSPChorus'},
+  CEffect: { catalog: 'effect'},
+  CEffectAddTrackedUnit: { prototype: 'CEffect'},
+  CEffectApplyBehavior: { prototype: 'CEffect'},
+  CEffectApplyForce: { prototype: 'CEffect'},
+  CEffectApplyKinetic: { prototype: 'CEffect'},
+  CEffectCancelOrder: { prototype: 'CEffect'},
+  CEffectCreateHealer: { prototype: 'CEffect'},
+  CEffectCreatePersistent: { prototype: 'CEffect'},
+  CEffectCreateUnit: { prototype: 'CEffect'},
+  CEffectCreep: { prototype: 'CEffect'},
+  CEffectDamage: { prototype: 'CEffect'},
+  CEffectDestroyPersistent: { prototype: 'CEffect'},
+  CEffectEnumArea: { prototype: 'CEffect'},
+  CEffectEnumMagazine: { prototype: 'CEffect'},
+  CEffectEnumTransport: { prototype: 'CEffect'},
+  CEffectIssueOrder: { prototype: 'CEffect'},
+  CEffectLastTarget: { prototype: 'CEffect'},
+  CEffectLaunchMissile: { prototype: 'CEffect'},
+  CEffectLoadContainer: { prototype: 'CEffect'},
+  CEffectModifyPlayer: { prototype: 'CEffect'},
   CEffectModifyUnit: {
     prototype: 'CEffect',
     Resources: 'int'
   },
-  CEffectRandomPointInCircle: {
-    prototype: 'CEffect'
-  },
-  CEffectRedirectMissile: {
-    prototype: 'CEffect'
-  },
-  CEffectReleaseMagazine: {
-    prototype: 'CEffect'
-  },
-  CEffectRemoveBehavior: {
-    prototype: 'CEffect'
-  },
-  CEffectRemoveKinetic: {
-    prototype: 'CEffect'
-  },
-  CEffectReturnMagazine: {
-    prototype: 'CEffect'
-  },
-  CEffectSet: {
-    prototype: 'CEffect'
-  },
-  CEffectSwitch: {
-    prototype: 'CEffect'
-  },
-  CEffectTeleport: {
-    prototype: 'CEffect'
-  },
-  CEffectTransferBehavior: {
-    prototype: 'CEffect'
-  },
-  CEffectUseCalldown: {
-    prototype: 'CEffect'
-  },
-  CEffectUseMagazine: {
-    prototype: 'CEffect'
-  },
-  CEffectUserData: {
-    prototype: 'CEffect'
-  },
-  CEmoticon: {
-    catalog: 'emoticon'
-  },
-  CEmoticonPack: {
-    catalog: 'emoticonpack'
-  },
-  CFootprint: {
-    catalog: 'footprint'
-  },
-  CFoW: {
-    catalog: 'fow'
-  },
-  CGame: {
-    catalog: 'game'
-  },
-  CGameUI: {
-    catalog: 'gameui'
-  },
+  CEffectRandomPointInCircle: { prototype: 'CEffect'},
+  CEffectRedirectMissile: { prototype: 'CEffect'},
+  CEffectReleaseMagazine: { prototype: 'CEffect'},
+  CEffectRemoveBehavior: { prototype: 'CEffect'},
+  CEffectRemoveKinetic: { prototype: 'CEffect'},
+  CEffectReturnMagazine: { prototype: 'CEffect'},
+  CEffectSet: { prototype: 'CEffect'},
+  CEffectSwitch: { prototype: 'CEffect'},
+  CEffectTeleport: { prototype: 'CEffect'},
+  CEffectTransferBehavior: { prototype: 'CEffect'},
+  CEffectUseCalldown: { prototype: 'CEffect'},
+  CEffectUseMagazine: { prototype: 'CEffect'},
+  CEffectUserData: { prototype: 'CEffect'},
+  //CEmoticon: { catalog: 'emoticon'},
+  //CEmoticonPack: {catalog: 'emoticonpack'},
+  CFootprint: { catalog: 'footprint'},
+  CFoW: { catalog: 'fow'},
+  //CGame: { catalog: 'game'},
+  //CGameUI: { catalog: 'gameui'},
   gameui: {
     ResourceArray: [{
       index: "word",
@@ -1519,175 +1030,69 @@ export const StarcraftSchema = {
     HelpHiddenInGlue: 'bit',
     DisplayScaledTime: 'bit'
   },
-  CHerd: {
-    catalog: 'herd'
-  },
-  CHerdNode: {
-    catalog: 'herdnode'
-  },
-  CHero: {
-    catalog: 'hero'
-  },
-  CHeroAbil: {
-    catalog: 'heroabil'
-  },
-  CHeroStat: {
-    catalog: 'herostat'
-  },
-  CItem: {
-    catalog: 'item'
-  },
-  CItemAbil: {
-    prototype: 'CItem'
-  },
-  CItemEffect: {
-    prototype: 'CItem'
-  },
-  CItemEffectInstant: {
-    prototype: 'CItem'
-  },
-  CItemEffectTarget: {
-    prototype: 'CItem'
-  },
-  CItemClass: {
-    catalog: 'itemclass'
-  },
-  CItemContainer: {
-    catalog: 'itemcontainer'
-  },
-  CKinetic: {
-    catalog: 'kinetic'
-  },
-  CKineticDistance: {
-    prototype: 'CKinetic'
-  },
-  CKineticFollow: {
-    prototype: 'CKinetic'
-  },
-  CKineticRotate: {
-    prototype: 'CKinetic'
-  },
-  CKineticSequence: {
-    prototype: 'CKinetic'
-  },
-  CKineticSet: {
-    prototype: 'CKinetic'
-  },
-  CKineticTranslate: {
-    prototype: 'CKinetic'
-  },
-  CLensFlareSet: {
-    catalog: 'lensflareset'
-  },
-  CLight: {
-    catalog: 'light'
-  },
-  CLocation: {
-    catalog: 'location'
-  },
-  CLoot: {
-    catalog: 'loot'
-  },
-  CLootEffect: {
-    prototype: 'CLoot'
-  },
-  CLootItem: {
-    prototype: 'CLoot'
-  },
-  CLootSet: {
-    prototype: 'CLoot'
-  },
-  CLootSpawn: {
-    prototype: 'CLoot'
-  },
-  CLootUnit: {
-    prototype: 'CLoot'
-  },
-  CMap: {
-    catalog: 'map'
-  },
-  CModel: {
-    catalog: 'model'
-  },
-  CModelFoliage: {
-    prototype: 'CModel'
-  },
-  CMount: {
-    catalog: 'mount'
-  },
-  CMover: {
-    catalog: 'mover'
-  },
-  CMoverAvoid: {
-    prototype: 'CMover'
-  },
-  CMoverFlock: {
-    prototype: 'CMover'
-  },
-  CMoverMissile: {
-    prototype: 'CMover'
-  },
+  CHerd: { catalog: 'herd'},
+  CHerdNode: { catalog: 'herdnode'},
+  CHero: { catalog: 'hero'},
+  CHeroAbil: { catalog: 'heroabil'},
+  CHeroStat: { catalog: 'herostat'},
+  CItem: { catalog: 'item'},
+  CItemAbil: { prototype: 'CItem'},
+  CItemEffect: { prototype: 'CItem'},
+  CItemEffectInstant: { prototype: 'CItem'},
+  CItemEffectTarget: { prototype: 'CItem'},
+  CItemClass: { catalog: 'itemclass'},
+  CItemContainer: { catalog: 'itemcontainer'},
+  CKinetic: { catalog: 'kinetic'},
+  CKineticDistance: { prototype: 'CKinetic'},
+  CKineticFollow: { prototype: 'CKinetic'},
+  CKineticRotate: { prototype: 'CKinetic'},
+  CKineticSequence: { prototype: 'CKinetic'},
+  CKineticSet: { prototype: 'CKinetic'},
+  CKineticTranslate: { prototype: 'CKinetic'},
+  CLensFlareSet: { catalog: 'lensflareset'},
+  CLight: { catalog: 'light'},
+  CLocation: { catalog: 'location'},
+  CLoot: { catalog: 'loot'},
+  CLootEffect: { prototype: 'CLoot'},
+  CLootItem: { prototype: 'CLoot'},
+  CLootSet: { prototype: 'CLoot'},
+  CLootSpawn: { prototype: 'CLoot'},
+  CLootUnit: { prototype: 'CLoot'},
+  CMap: { catalog: 'map'},
+  CModel: { catalog: 'model'},
+  CModelFoliage: { prototype: 'CModel'},
+  CMount: { catalog: 'mount'},
+  CMover: { catalog: 'mover'},
+  CMoverAvoid: { prototype: 'CMover'},
+  CMoverFlock: { prototype: 'CMover'},
+  CMoverMissile: { prototype: 'CMover'},
   CObjective: {
-    catalog: 'objective'
+    catalog: 'objective',
+    Name: 'link',
+    Description: 'link'
   },
-  CPhysicsMaterial: {
-    catalog: 'physicsmaterial'
-  },
-  CPing: {
-    catalog: 'ping'
-  },
-  CPlayerResponse: {
-    catalog: 'playerresponse'
-  },
-  CPlayerResponseUnit: {
-    prototype: 'CPlayerResponse'
-  },
-  CPlayerResponseUnitBirth: {
-    prototype: 'CPlayerResponse'
-  },
-  CPlayerResponseUnitDamage: {
-    prototype: 'CPlayerResponse'
-  },
-  CPlayerResponseUnitDeath: {
-    prototype: 'CPlayerResponse'
-  },
-  CPortraitPack: {
-    catalog: 'portraitpack'
-  },
-  CPreload: {
-    catalog: 'preload'
-  },
-  CPreloadActor: {
-    prototype: 'CPreload'
-  },
-  CPreloadConversation: {
-    prototype: 'CPreload'
-  },
-  CPreloadModel: {
-    prototype: 'CPreload'
-  },
-  CPreloadSound: {
-    prototype: 'CPreload'
-  },
-  CPreloadUnit: {
-    prototype: 'CPreload'
-  },
-  CPremiumMap: {
-    catalog: 'premiummap'
-  },
-  CRaceBannerPack: {
-    catalog: 'racebannerpack'
-  },
+  CPhysicsMaterial: { catalog: 'physicsmaterial'},
+  CPing: { catalog: 'ping'},
+  CPlayerResponse: { catalog: 'playerresponse'},
+  CPlayerResponseUnit: { prototype: 'CPlayerResponse'},
+  CPlayerResponseUnitBirth: { prototype: 'CPlayerResponse'},
+  CPlayerResponseUnitDamage: { prototype: 'CPlayerResponse'},
+  CPlayerResponseUnitDeath: { prototype: 'CPlayerResponse'},
+  CPortraitPack: { catalog: 'portraitpack'},
+  // CPreload: { catalog: 'preload'},
+  // CPreloadActor: { prototype: 'CPreload'},
+  // CPreloadConversation: { prototype: 'CPreload'},
+  // CPreloadModel: { prototype: 'CPreload'},
+  // CPreloadSound: { prototype: 'CPreload'},
+  // CPreloadUnit: { prototype: 'CPreload'},
+  //CPremiumMap: { catalog: 'premiummap'},
+  //CRaceBannerPack: { catalog: 'racebannerpack'},
   racebannerpack: {
     Default: 'int',
     RaceBannerArray: '[word]'
   },
-  CRace: {
-    catalog: 'race'
-  },
-  CRequirement: {
-    catalog: 'requirement'
-  },
+  CRace: { catalog: 'race'},
+  CRequirement: { catalog: 'requirement'},
   requirementnode: {
     Tooltip: 'string',
     Flags: '{bit}',
@@ -1709,24 +1114,12 @@ export const StarcraftSchema = {
     prototype: 'CRequirementAllowAbil',
     OperandArray: '[requirementnode]'
   },
-  CRequirementAllowAbil: {
-    catalog: 'requirementnode'
-  },
-  CRequirementAllowBehavior: {
-    prototype: 'CRequirementAllowAbil'
-  },
-  CRequirementAllowUnit: {
-    prototype: 'CRequirementAllowAbil'
-  },
-  CRequirementAllowUpgrade: {
-    prototype: 'CRequirementAllowAbil'
-  },
-  CRequirementConst: {
-    prototype: 'CRequirementAllowAbil'
-  },
-  CRequirementCountAbil: {
-    prototype: 'CRequirementAllowAbil'
-  },
+  CRequirementAllowAbil: { catalog: 'requirementnode'},
+  CRequirementAllowBehavior: { prototype: 'CRequirementAllowAbil'},
+  CRequirementAllowUnit: { prototype: 'CRequirementAllowAbil'},
+  CRequirementAllowUpgrade: { prototype: 'CRequirementAllowAbil'},
+  CRequirementConst: { prototype: 'CRequirementAllowAbil'},
+  CRequirementCountAbil: { prototype: 'CRequirementAllowAbil'},
   CRequirementCountBehavior: {
     prototype: 'CRequirementAllowAbil',
     Count: {
@@ -1745,52 +1138,22 @@ export const StarcraftSchema = {
       Link: 'upgrade'
     }
   },
-  CRequirementDiv: {
-    prototype: 'CRequirementAllowAbil'
-  },
-  CRequirementEq: {
-    prototype: 'CRequirementAllowAbil'
-  },
-  CRequirementGT: {
-    prototype: 'CRequirementAllowAbil'
-  },
-  CRequirementGTE: {
-    prototype: 'CRequirementAllowAbil'
-  },
-  CRequirementLT: {
-    prototype: 'CRequirementAllowAbil'
-  },
-  CRequirementLTE: {
-    prototype: 'CRequirementAllowAbil'
-  },
-  CRequirementMod: {
-    prototype: 'CRequirementAllowAbil'
-  },
-  CRequirementMul: {
-    prototype: 'CRequirementAllowAbil'
-  },
-  CRequirementNE: {
-    prototype: 'CRequirementAllowAbil'
-  },
-  CRequirementNode: {
-    prototype: 'CRequirementAllowAbil'
-  },
-  CRequirementNot: {
-    prototype: 'CRequirementAllowAbil'
-  },
-  CRequirementOdd: {
-    prototype: 'CRequirementAllowAbil'
-  },
-  CRequirementSum: {
-    prototype: 'CRequirementAllowAbil'
-  },
-  CRequirementXor: {
-    prototype: 'CRequirementAllowAbil'
-  },
+  CRequirementDiv: { prototype: 'CRequirementAllowAbil'},
+  CRequirementEq: { prototype: 'CRequirementAllowAbil'},
+  CRequirementGT: { prototype: 'CRequirementAllowAbil'},
+  CRequirementGTE: { prototype: 'CRequirementAllowAbil'},
+  CRequirementLT: { prototype: 'CRequirementAllowAbil'},
+  CRequirementLTE: { prototype: 'CRequirementAllowAbil'},
+  CRequirementMod: { prototype: 'CRequirementAllowAbil'},
+  CRequirementMul: { prototype: 'CRequirementAllowAbil'},
+  CRequirementNE: { prototype: 'CRequirementAllowAbil'},
+  CRequirementNode: { prototype: 'CRequirementAllowAbil'},
+  CRequirementNot: { prototype: 'CRequirementAllowAbil'},
+  CRequirementOdd: { prototype: 'CRequirementAllowAbil'},
+  CRequirementSum: { prototype: 'CRequirementAllowAbil'},
+  CRequirementXor: { prototype: 'CRequirementAllowAbil'},
 
-  CReverb: {
-    catalog: 'reverb'
-  },
+  CReverb: { catalog: 'reverb'},
   reward: {
     $thumbnail: 'word',
     $voicepack: 'word',
@@ -1812,577 +1175,227 @@ export const StarcraftSchema = {
     }],
     License: 'string'
   },
-  CReward: {
-    catalog: 'reward'
-  },
-  CRewardConsoleSkin: {
-    prototype: 'CReward'
-  },
-  CRewardDecal: {
-    prototype: 'CReward'
-  },
-  CRewardEmoticon: {
-    prototype: 'CReward'
-  },
-  CRewardIcon: {
-    prototype: 'CReward'
-  },
-  CRewardModel: {
-    prototype: 'CReward'
-  },
-  CRewardPoints: {
-    prototype: 'CReward'
-  },
-  CRewardPortrait: {
-    prototype: 'CReward'
-  },
-  CRewardPortraitInGame: {
-    prototype: 'CReward'
-  },
-  CRewardRaceBanner: {
-    prototype: 'CReward'
-  },
-  CRewardSpray: {
-    prototype: 'CReward'
-  },
-  CRewardSprayUseDecal: {
-    prototype: 'CReward'
-  },
-  CRewardTrophy: {
-    prototype: 'CReward'
-  },
-  CRewardVoicePack: {
-    prototype: 'CReward'
-  },
+  //CReward: { catalog: 'reward'},
+  //CRewardConsoleSkin: { prototype: 'CReward'},
+  //CRewardDecal: { prototype: 'CReward'},
+  //CRewardEmoticon: { prototype: 'CReward'},
+  //CRewardIcon: { prototype: 'CReward'},
+  //CRewardModel: {prototype: 'CReward'},
+  //CRewardPoints: {prototype: 'CReward'},
+  //CRewardPortrait: {prototype: 'CReward'},
+  //CRewardPortraitInGame: {prototype: 'CReward'},
+  //CRewardRaceBanner: {prototype: 'CReward'},
+  //CRewardSpray: {prototype: 'CReward'},
+  //CRewardSprayUseDecal: { prototype: 'CReward'},
+  //CRewardTrophy: { prototype: 'CReward'},
+  //CRewardVoicePack: { prototype: 'CReward'},
   CScoreResult: {
-    catalog: 'scoreresult'
+    catalog: 'scoreresult',
+    Name : 'link',
+    PublishName : 'link',
+    Tooltip: 'link',
+    UniqueTag: 'word',
+    Operation: 'word',
+    Icon: 'file',
+    Flags: '{bit}',
+    HeaderTable: '[word]',
+    ValueTable: '[word]'
+
   },
-  CScoreResultBuildOrder: {
-    prototype: 'CScoreResult'
-  },
-  CScoreResultExperience: {
-    prototype: 'CScoreResult'
-  },
-  CScoreResultGraph: {
-    prototype: 'CScoreResult'
-  },
-  CScoreResultPerformance: {
-    prototype: 'CScoreResult'
-  },
-  CScoreResultRoot: {
-    prototype: 'CScoreResult'
-  },
-  CScoreResultScore: {
-    prototype: 'CScoreResult'
-  },
+  CScoreResultBuildOrder: { prototype: 'CScoreResult'},
+  CScoreResultExperience: { prototype: 'CScoreResult'},
+  CScoreResultGraph: { prototype: 'CScoreResult'},
+  CScoreResultPerformance: { prototype: 'CScoreResult'},
+  CScoreResultRoot: { prototype: 'CScoreResult'},
+  CScoreResultScore: { prototype: 'CScoreResult'},
   CScoreValue: {
-    catalog: 'scorevalue'
-  },
-  CScoreValueCustom: {
-    prototype: 'CScoreValue'
-  },
-  CScoreValueCombine: {
-    prototype: 'CScoreValueCustom'
-  },
-  CScoreValueStandard: {
-    prototype: 'CScoreValue'
-  },
-  CShape: {
-    catalog: 'shape'
-  },
-  CShapeArc: {
-    prototype: 'CShape'
-  },
-  CShapeQuad: {
-    prototype: 'CShape'
-  },
-  CSkin: {
-    catalog: 'skin'
-  },
-  CSkinPack: {
-    catalog: 'skinpack'
-  },
-  CSound: {
-    catalog: 'sound'
-  },
-  CSoundExclusivity: {
-    catalog: 'soundexclusivity'
-  },
-  CSoundMixSnapshot: {
-    catalog: 'soundmixsnapshot'
-  },
-  CSoundtrack: {
-    catalog: 'soundtrack'
-  },
-  CSpray: {
-    catalog: 'spray'
-  },
-  CSprayPack: {
-    catalog: 'spraypack'
-  },
-  CStimPack: {
-    catalog: 'stimpack'
-  },
-  CTacCooldown: {
-    catalog: 'taccooldown'
-  },
-  CTactical: {
-    catalog: 'tactical'
-  },
-  CTacticalOrder: {
-    prototype: 'CTactical'
-  },
-  CTacticalSet: {
-    prototype: 'CTactical'
-  },
-  CTalent: {
-    catalog: 'talent'
-  },
-  CTalentProfile: {
-    catalog: 'talentprofile'
-  },
-  CTargetFind: {
-    catalog: 'targetfind'
-  },
-  CTargetFindBestPoint: {
-    prototype: 'CTargetFind'
-  },
-  CTargetFindEffect: {
-    prototype: 'CTargetFind'
-  },
-  CTargetFindEnumArea: {
-    prototype: 'CTargetFind'
-  },
-  CTargetFindLastAttacker: {
-    prototype: 'CTargetFind'
-  },
-  CTargetFindOffset: {
-    prototype: 'CTargetFind'
-  },
-  CTargetFindOrder: {
-    prototype: 'CTargetFind'
-  },
-  CTargetFindRallyPoint: {
-    prototype: 'CTargetFind'
-  },
-  CTargetFindSet: {
-    prototype: 'CTargetFind'
-  },
-  CTargetFindWorkerRallyPoint: {
-    prototype: 'CTargetFind'
-  },
-  CTargetSort: {
-    catalog: 'targetsort'
-  },
-  CTargetSortValidator: {
-    prototype: 'CTargetSort'
-  },
-  CTargetSortField: {
-    prototype: 'CTargetSort'
-  },
-  CTargetSortAlliance: {
-    prototype: 'CTargetSort'
-  },
-  CTargetSortAngle: {
-    prototype: 'CTargetSort'
-  },
-  CTargetSortBehaviorCount: {
-    prototype: 'CTargetSort'
-  },
-  CTargetSortChargeCount: {
-    prototype: 'CTargetSort'
-  },
-  CTargetSortChargeRegen: {
-    prototype: 'CTargetSort'
-  },
-  CTargetSortCooldown: {
-    prototype: 'CTargetSort'
-  },
-  CTargetSortDistance: {
-    prototype: 'CTargetSort'
-  },
-  CTargetSortInterruptible: {
-    prototype: 'CTargetSort'
-  },
-  CTargetSortMarker: {
-    prototype: 'CTargetSort'
-  },
-  CTargetSortPowerSourceLevel: {
-    prototype: 'CTargetSort'
-  },
-  CTargetSortPowerUserLevel: {
-    prototype: 'CTargetSort'
-  },
-  CTargetSortPriority: {
-    prototype: 'CTargetSort'
-  },
-  CTargetSortRandom: {
-    prototype: 'CTargetSort'
-  },
-  CTargetSortVital: {
-    prototype: 'CTargetSort'
-  },
-  CTargetSortVitalFraction: {
-    prototype: 'CTargetSort'
-  },
-  CTerrain: {
-    catalog: 'terrain'
-  },
-  CTerrainObject: {
-    catalog: 'terrainobject'
-  },
-  CTerrainTex: {
-    catalog: 'terraintex'
-  },
-  CTexture: {
-    catalog: 'texture'
-  },
-  CTextureSheet: {
-    catalog: 'texturesheet'
-  },
-  CTile: {
-    catalog: 'tile'
-  },
-  CTrophy: {
-    catalog: 'trophy'
-  },
-  CTurret: {
-    catalog: 'turret'
-  },
-  CUnit: {
-    catalog: 'unit'
-  },
-  CUpgrade: {
-    catalog: 'upgrade'
-  },
-  CUser: {
-    catalog: 'user'
-  },
-  CValidator: {
-    catalog: 'validator'
-  },
-  CValidatorUnitCompareCooldown: {
-    prototype: 'CValidator'
-  },
-  CValidatorCombine: {
-    prototype: 'CValidator'
-  },
-  CValidatorCondition: {
-    prototype: 'CValidator'
-  },
-  CValidatorEffect: {
-    prototype: 'CValidator'
-  },
-  CValidatorEffectCompareDodged: {
-    prototype: 'CValidator'
-  },
-  CValidatorEffectCompareEvaded: {
-    prototype: 'CValidator'
-  },
-  CValidatorEffectTreeUserData: {
-    prototype: 'CValidator'
-  },
-  CValidatorFunction: {
-    prototype: 'CValidator'
-  },
-  CValidatorGameCommanderActive: {
-    prototype: 'CValidator'
-  },
-  CValidatorGameCompareTerrain: {
-    prototype: 'CValidator'
-  },
-  CValidatorGameCompareTimeEvent: {
-    prototype: 'CValidator'
-  },
-  CValidatorGameCompareTimeOfDay: {
-    prototype: 'CValidator'
-  },
-  CValidatorLocation: {
-    prototype: 'CValidator'
-  },
-  CValidatorLocationArc: {
-    prototype: 'CValidator'
-  },
-  CValidatorLocationCompareCliffLevel: {
-    prototype: 'CValidator'
-  },
-  CValidatorLocationComparePower: {
-    prototype: 'CValidator'
-  },
-  CValidatorLocationCompareRange: {
-    prototype: 'CValidator'
-  },
-  CValidatorLocationCreep: {
-    prototype: 'CValidator'
-  },
-  CValidatorLocationCrossChasm: {
-    prototype: 'CValidator'
-  },
-  CValidatorLocationCrossCliff: {
-    prototype: 'CValidator'
-  },
-  CValidatorLocationEnumArea: {
-    prototype: 'CValidator'
-  },
-  CValidatorLocationInPlayableMapArea: {
-    prototype: 'CValidator'
-  },
-  CValidatorLocationPathable: {
-    prototype: 'CValidator'
-  },
-  CValidatorLocationPlacement: {
-    prototype: 'CValidator'
-  },
-  CValidatorLocationShrub: {
-    prototype: 'CValidator'
-  },
-  CValidatorLocationType: {
-    prototype: 'CValidator'
-  },
-  CValidatorLocationVision: {
-    prototype: 'CValidator'
-  },
-  CValidatorPlayer: {
-    prototype: 'CValidator'
-  },
-  CValidatorPlayerAlliance: {
-    prototype: 'CValidator'
-  },
-  CValidatorPlayerCompareDifficulty: {
-    prototype: 'CValidator'
-  },
-  CValidatorPlayerCompareFoodAvailable: {
-    prototype: 'CValidator'
-  },
-  CValidatorPlayerCompareFoodUsed: {
-    prototype: 'CValidator'
-  },
-  CValidatorPlayerCompareRace: {
-    prototype: 'CValidator'
-  },
-  CValidatorPlayerCompareResource: {
-    prototype: 'CValidator'
-  },
-  CValidatorPlayerCompareResult: {
-    prototype: 'CValidator'
-  },
-  CValidatorPlayerCompareType: {
-    prototype: 'CValidator'
-  },
-  CValidatorPlayerFood: {
-    prototype: 'CValidator'
-  },
+    catalog: 'scorevalue',
+    Collapse: 'word',
+    Flags: '{bit}',
+    Name : 'link',
+    PublishName : 'link',
+    Tooltip: 'link',
+    UniqueTag: 'word',
+    Operation: 'word',
+    Report: 'word',
+    Sort: 'word',
+    Value: 'word',
+    Icon: 'file',
+    HeaderTable: '[word]',
+    ValueTable: '[word]'
+  },
+  CScoreValueCustom: { prototype: 'CScoreValue'},
+  CScoreValueCombine: { prototype: 'CScoreValueCustom'},
+  CScoreValueStandard: { prototype: 'CScoreValue'},
+  CShape: { catalog: 'shape'},
+  CShapeArc: { prototype: 'CShape'},
+  CShapeQuad: { prototype: 'CShape'},
+  CSkin: { catalog: 'skin'},
+  CSkinPack: { catalog: 'skinpack'},
+  CSound: { catalog: 'sound'},
+  CSoundExclusivity: { catalog: 'soundexclusivity'},
+  CSoundMixSnapshot: { catalog: 'soundmixsnapshot'},
+  CSoundtrack: { catalog: 'soundtrack'},
+  CSpray: { catalog: 'spray'},
+  CSprayPack: { catalog: 'spraypack'},
+  //CStimPack: { catalog: 'stimpack'},
+  CTacCooldown: { catalog: 'taccooldown'},
+  CTactical: { catalog: 'tactical'},
+  CTacticalOrder: { prototype: 'CTactical'},
+  CTacticalSet: { prototype: 'CTactical'},
+  //CTalent: { catalog: 'talent'},
+  //CTalentProfile: { catalog: 'talentprofile'},
+  CTargetFind: { catalog: 'targetfind'},
+  CTargetFindBestPoint: { prototype: 'CTargetFind'},
+  CTargetFindEffect: { prototype: 'CTargetFind'},
+  CTargetFindEnumArea: { prototype: 'CTargetFind'},
+  CTargetFindLastAttacker: { prototype: 'CTargetFind'},
+  CTargetFindOffset: { prototype: 'CTargetFind'},
+  CTargetFindOrder: { prototype: 'CTargetFind'},
+  CTargetFindRallyPoint: { prototype: 'CTargetFind'},
+  CTargetFindSet: { prototype: 'CTargetFind'},
+  CTargetFindWorkerRallyPoint: { prototype: 'CTargetFind'},
+  CTargetSort: { catalog: 'targetsort'},
+  CTargetSortValidator: { prototype: 'CTargetSort'},
+  CTargetSortField: { prototype: 'CTargetSort'},
+  CTargetSortAlliance: { prototype: 'CTargetSort'},
+  CTargetSortAngle: { prototype: 'CTargetSort'},
+  CTargetSortBehaviorCount: { prototype: 'CTargetSort'},
+  CTargetSortChargeCount: { prototype: 'CTargetSort'},
+  CTargetSortChargeRegen: { prototype: 'CTargetSort'},
+  CTargetSortCooldown: { prototype: 'CTargetSort'},
+  CTargetSortDistance: { prototype: 'CTargetSort'},
+  CTargetSortInterruptible: { prototype: 'CTargetSort'},
+  CTargetSortMarker: { prototype: 'CTargetSort'},
+  CTargetSortPowerSourceLevel: { prototype: 'CTargetSort'},
+  CTargetSortPowerUserLevel: { prototype: 'CTargetSort'},
+  CTargetSortPriority: { prototype: 'CTargetSort'},
+  CTargetSortRandom: { prototype: 'CTargetSort'},
+  CTargetSortVital: { prototype: 'CTargetSort'},
+  CTargetSortVitalFraction: { prototype: 'CTargetSort'},
+  CTerrain: { catalog: 'terrain'},
+  CTerrainObject: { catalog: 'terrainobject'},
+  CTerrainTex: { catalog: 'terraintex'},
+  CTexture: { catalog: 'texture'},
+  CTextureSheet: { catalog: 'texturesheet'},
+  CTile: { catalog: 'tile'},
+  // CTrophy: { catalog: 'trophy'},
+  CTurret: { catalog: 'turret'},
+  CUnit: { catalog: 'unit'},
+  CUpgrade: { catalog: 'upgrade'},
+  CUser: { catalog: 'user'},
+  CValidator: { catalog: 'validator'},
+  CValidatorUnitCompareCooldown: { prototype: 'CValidator'},
+  CValidatorCombine: { prototype: 'CValidator'},
+  CValidatorCondition: { prototype: 'CValidator'},
+  CValidatorEffect: { prototype: 'CValidator'},
+  CValidatorEffectCompareDodged: { prototype: 'CValidator'},
+  CValidatorEffectCompareEvaded: { prototype: 'CValidator'},
+  CValidatorEffectTreeUserData: { prototype: 'CValidator'},
+  CValidatorFunction: { prototype: 'CValidator'},
+  CValidatorGameCommanderActive: { prototype: 'CValidator'},
+  CValidatorGameCompareTerrain: { prototype: 'CValidator'},
+  CValidatorGameCompareTimeEvent: { prototype: 'CValidator'},
+  CValidatorGameCompareTimeOfDay: { prototype: 'CValidator'},
+  CValidatorLocation: { prototype: 'CValidator'},
+  CValidatorLocationArc: { prototype: 'CValidator'},
+  CValidatorLocationCompareCliffLevel: { prototype: 'CValidator'},
+  CValidatorLocationComparePower: { prototype: 'CValidator'},
+  CValidatorLocationCompareRange: { prototype: 'CValidator'},
+  CValidatorLocationCreep: { prototype: 'CValidator'},
+  CValidatorLocationCrossChasm: { prototype: 'CValidator'},
+  CValidatorLocationCrossCliff: { prototype: 'CValidator'},
+  CValidatorLocationEnumArea: { prototype: 'CValidator'},
+  CValidatorLocationInPlayableMapArea: { prototype: 'CValidator'},
+  CValidatorLocationPathable: { prototype: 'CValidator'},
+  CValidatorLocationPlacement: { prototype: 'CValidator'},
+  CValidatorLocationShrub: { prototype: 'CValidator'},
+  CValidatorLocationType: { prototype: 'CValidator'},
+  CValidatorLocationVision: { prototype: 'CValidator'},
+  CValidatorPlayer: { prototype: 'CValidator'},
+  CValidatorPlayerAlliance: { prototype: 'CValidator'},
+  CValidatorPlayerCompareDifficulty: { prototype: 'CValidator'},
+  CValidatorPlayerCompareFoodAvailable: { prototype: 'CValidator'},
+  CValidatorPlayerCompareFoodUsed: { prototype: 'CValidator'},
+  CValidatorPlayerCompareRace: { prototype: 'CValidator'},
+  CValidatorPlayerCompareResource: { prototype: 'CValidator'},
+  CValidatorPlayerCompareResult: { prototype: 'CValidator'},
+  CValidatorPlayerCompareType: { prototype: 'CValidator'},
+  CValidatorPlayerFood: { prototype: 'CValidator'},
   CValidatorPlayerRequirement: {
     prototype: 'CValidator',
     Value: 'requirement'
   },
-  CValidatorUnit: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitAI: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitAbil: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitAlliance: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitBehaviorStackAlias: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitBehaviorState: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCombatAI: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareAIAreaEvalRatio: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareAbilSkillPoint: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareAttackPriority: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareBehaviorCount: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareCargo: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareChargeUsed: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareDamageDealtTime: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareDamageTakenTime: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareDeath: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareField: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareHeight: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareKillCount: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareMarkerCount: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareMoverPhase: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareOrderCount: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareOrderTargetRange: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitComparePowerSourceLevel: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitComparePowerUserLevel: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareRallyPointCount: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareResourceContents: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareResourceHarvesters: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareSpeed: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareVeterancyLevel: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareVital: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareVitality: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitDetected: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitFilters: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitFlying: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitInWeaponRange: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitInventory: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitInventoryContainsItem: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitInventoryIsFull: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitKinetic: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitLastDamagePlayer: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitMissileNullified: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitMover: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitOrder: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitOrderQueue: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitOrderTargetPathable: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitOrderTargetType: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitPathable: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitPathing: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitScanning: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitState: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitTestWeaponType: {
-    prototype: 'CValidator'
-  },
+  CValidatorUnit: { prototype: 'CValidator'},
+  CValidatorUnitAI: { prototype: 'CValidator'},
+  CValidatorUnitAbil: { prototype: 'CValidator'},
+  CValidatorUnitAlliance: { prototype: 'CValidator'},
+  CValidatorUnitBehaviorStackAlias: { prototype: 'CValidator'},
+  CValidatorUnitBehaviorState: { prototype: 'CValidator'},
+  CValidatorUnitCombatAI: { prototype: 'CValidator'},
+  CValidatorUnitCompareAIAreaEvalRatio: { prototype: 'CValidator'},
+  CValidatorUnitCompareAbilSkillPoint: { prototype: 'CValidator'},
+  CValidatorUnitCompareAttackPriority: { prototype: 'CValidator'},
+  CValidatorUnitCompareBehaviorCount: { prototype: 'CValidator'},
+  CValidatorUnitCompareCargo: { prototype: 'CValidator'},
+  CValidatorUnitCompareChargeUsed: { prototype: 'CValidator'},
+  CValidatorUnitCompareDamageDealtTime: { prototype: 'CValidator'},
+  CValidatorUnitCompareDamageTakenTime: { prototype: 'CValidator'},
+  CValidatorUnitCompareDeath: { prototype: 'CValidator'},
+  CValidatorUnitCompareField: { prototype: 'CValidator'},
+  CValidatorUnitCompareHeight: { prototype: 'CValidator'},
+  CValidatorUnitCompareKillCount: { prototype: 'CValidator'},
+  CValidatorUnitCompareMarkerCount: { prototype: 'CValidator'},
+  CValidatorUnitCompareMoverPhase: { prototype: 'CValidator'},
+  CValidatorUnitCompareOrderCount: { prototype: 'CValidator'},
+  CValidatorUnitCompareOrderTargetRange: { prototype: 'CValidator'},
+  CValidatorUnitComparePowerSourceLevel: { prototype: 'CValidator'},
+  CValidatorUnitComparePowerUserLevel: { prototype: 'CValidator'},
+  CValidatorUnitCompareRallyPointCount: { prototype: 'CValidator'},
+  CValidatorUnitCompareResourceContents: { prototype: 'CValidator'},
+  CValidatorUnitCompareResourceHarvesters: { prototype: 'CValidator'},
+  CValidatorUnitCompareSpeed: { prototype: 'CValidator'},
+  CValidatorUnitCompareVeterancyLevel: { prototype: 'CValidator'},
+  CValidatorUnitCompareVital: { prototype: 'CValidator'},
+  CValidatorUnitCompareVitality: { prototype: 'CValidator'},
+  CValidatorUnitDetected: { prototype: 'CValidator'},
+  CValidatorUnitFilters: { prototype: 'CValidator'},
+  CValidatorUnitFlying: { prototype: 'CValidator'},
+  CValidatorUnitInWeaponRange: { prototype: 'CValidator'},
+  CValidatorUnitInventory: { prototype: 'CValidator'},
+  CValidatorUnitInventoryContainsItem: { prototype: 'CValidator'},
+  CValidatorUnitInventoryIsFull: { prototype: 'CValidator'},
+  CValidatorUnitKinetic: { prototype: 'CValidator'},
+  CValidatorUnitLastDamagePlayer: { prototype: 'CValidator'},
+  CValidatorUnitMissileNullified: { prototype: 'CValidator'},
+  CValidatorUnitMover: { prototype: 'CValidator'},
+  CValidatorUnitOrder: { prototype: 'CValidator'},
+  CValidatorUnitOrderQueue: { prototype: 'CValidator'},
+  CValidatorUnitOrderTargetPathable: { prototype: 'CValidator'},
+  CValidatorUnitOrderTargetType: { prototype: 'CValidator'},
+  CValidatorUnitPathable: { prototype: 'CValidator'},
+  CValidatorUnitPathing: { prototype: 'CValidator'},
+  CValidatorUnitScanning: { prototype: 'CValidator'},
+  CValidatorUnitState: { prototype: 'CValidator'},
+  CValidatorUnitTestWeaponType: { prototype: 'CValidator'},
   CValidatorUnitType: {
     prototype: 'CValidator',
     Value: 'unit'
   },
-  CValidatorUnitWeaponAnimating: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitWeaponFiring: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitWeaponPlane: {
-    prototype: 'CValidator'
-  },
-  CValidatorUnitCompareAbilLevel: {
-    prototype: 'CValidator'
-  },
-  CVoiceOver: {
-    catalog: 'voiceover'
-  },
-  CVoicePack: {
-    catalog: 'voicepack'
-  },
-  CWarChest: {
-    catalog: 'warchest'
-  },
-  CWarChestSeason: {
-    catalog: 'warchestseason'
-  },
-  CWater: {
-    catalog: 'water'
-  },
-  CWeapon: {
-    catalog: 'weapon'
-  },
-  CWeaponLegacy: {
-    prototype: 'CWeapon'
-  },
-  CWeaponStrafe: {
-    prototype: 'CWeapon'
-  },
+  CValidatorUnitWeaponAnimating: { prototype: 'CValidator'},
+  CValidatorUnitWeaponFiring: { prototype: 'CValidator'},
+  CValidatorUnitWeaponPlane: { prototype: 'CValidator'},
+  CValidatorUnitCompareAbilLevel: { prototype: 'CValidator'},
+  CVoiceOver: { catalog: 'voiceover'},
+  CVoicePack: { catalog: 'voicepack'},
+  // CWarChest: { catalog: 'warchest'},
+  // CWarChestSeason: { catalog: 'warchestseason'},
+  CWater: { catalog: 'water'},
+  CWeapon: { catalog: 'weapon'},
+  CWeaponLegacy: { prototype: 'CWeapon'},
+  CWeaponStrafe: { prototype: 'CWeapon'},
   scorevalue: {
     Type: 'word'
-  },
-  achievementterm: {
-    AbilCmd: [{"value":"abilcmd"}],
-    Effect: [{"value":"effect"}],
-    ChildTable: [{"value":"word"}],
-    Flags: [{"index":"word","value":"int"}],
-    Quantity: [{"value":"int"}],
-    Unit: [{"value":"word"}],
-    ValidatorArray: [{"value":"word"}]
   },
   abil: {
     Name: 'link',

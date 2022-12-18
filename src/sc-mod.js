@@ -43,6 +43,10 @@ export class SCMod {
             //supports json, xml, yaml, sc2mod
             let format = path.extname(input).substr(1).toUpperCase()
 
+            if(format && !['JSON', 'XML', 'YAML', 'SC2MOD'].includes(format)){
+                format  = false
+            }
+
             if(!format){
                 for(let formatTemp of ['JSON', 'XML', 'YAML', 'SC2MOD'])
                 if(fs.existsSync(input + '.' + formatTemp)){
@@ -51,9 +55,11 @@ export class SCMod {
                     break;
                 }
             }
+            if(!fs.existsSync(input))return
 
+            let isdir = fs.lstatSync(input).isDirectory()
 
-            if(format === 'SC2MOD') {
+            if(format === 'SC2MOD' || isdir) {
                 if(!input.endsWith("/"))input += "/"
 
                 let componentsData = await this._readXMLFile(input + "ComponentList.SC2Components")
@@ -92,8 +98,14 @@ export class SCMod {
                         for (let locale of LocaleData) {
                             locales[locale] = {}
                             for (let textFile of textFiles) {
-                                let data = this._readTextFile(`${input}${locale}.sc2data/LocalizedData/${textFile}.txt`)
+                                let filename = `${input}${locale}.sc2data/LocalizedData/${textFile}.txt`
+                                let data = this._readTextFile(filename)
                                 if (data) {
+                                    locales[locale][textFile] = data
+                                }
+                                filename = `${input}${locale}.sc2data/LocalizedData/${textFile}.json`
+                                if(fs.existsSync(filename)){
+                                    let data = JSON.parse(fs.readFileSync(filename, {encoding: 'utf-8'}))
                                     locales[locale][textFile] = data
                                 }
                             }
@@ -182,8 +194,9 @@ export class SCMod {
                             if (catalog.data.Catalog.$$) {
                                 for (let entity of catalog.data.Catalog.$$) {
                                     fromXMLToObject(entity)
-                                    if(!SCGame.classlist[entity.class]?.$$namespace){
-                                        console.log(entity.class)
+                                    if(SCGame.classlist[entity.class] === undefined){
+                                        console.log('ignored entity class: ' + entity.class)
+                                        SCGame.classlist[entity.class] = false;
                                     }
                                     if(SCGame.classlist[entity.class]?.$$namespace && !SCGame.ignoredNamespaces.includes(SCGame.classlist[entity.class]?.$$namespace)){
                                         optimizeObject(entity, SCGame.classlist[entity.class].$$schema)
@@ -193,13 +206,24 @@ export class SCMod {
                             }
                         }
                     }
+
+                    let commonFilesJSON = SCGame.datafiles.map(el => "Base.SC2Data/GameData/" + el + "data.json");
+                    for (let file of commonFilesJSON) {
+                        if(fs.existsSync(input + file)){
+                            let data = JSON.parse(fs.readFileSync(input + file, {encoding: 'utf-8'}))
+                            for(let entityID in data){
+                                data[entityID].id = entityID
+                                entities.push(data[entityID])
+                            }
+                        }
+                    }
                     if(entities.length){
                         data.entities = entities
                     }
                 }
             }
             else{
-                if(!fs.existsSync(input))return
+
 
                 let raw = fs.readFileSync(input, {encoding: 'utf-8'})
 
@@ -298,7 +322,7 @@ export class SCMod {
      * @param scopes { ['components','documentinfo', 'assets', 'triggers', 'locales', 'styles', 'layouts', 'data'] | 'all' } which mod components to save
      * @returns {Promise<SCMod>}
      */
-    async write (destpath,{resolve = false, format = 'auto', structure = 'auto', scopes = 'all'} = {}){
+    async write (destpath,{catalogs= 'all',resolve = false, format = 'auto', structure = 'auto', scopes = 'all'} = {}){
 
 
         destpath = path.resolve(destpath)
@@ -450,28 +474,32 @@ export class SCMod {
             formatting = format === 'auto' ? 'xml' : format;
             let data = (structure === 'compact') ? {mod: this.entities} : this.catalogs
             for (let cat in data) {
-                let outputCatalogData
+                if(catalogs === 'all' || catalogs.includes(cat)){
 
-                let entities = data[cat].filter(entity => !entity.$overriden)
-                if(formatting === "xml") {
-                    // let catalogXMLObjectData = data.map(entity => entity.getXMLObject())
-                    // output[`Base.SC2Data/GameData/${capitalize(cat)}Data.xml`] = formatData({Catalog: catalogXMLObjectData}, 'xml')
-                    let catalogXML =entities .reduce((acc, entity) => {return acc + entity.getXML(resolve)}, '')
-                    outputCatalogData = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Catalog>\n${catalogXML}\n</Catalog>`
-                }
-                else {
-                    let catalogCache = {}
-                    for(let entity of entities){
-                        let entityData = {...(resolve ? entity.$$resolved : entity)}
-                        catalogCache[entityData.id] = entityData
-                        delete entityData.id;
+                    let outputCatalogData
+
+                    let entities = data[cat].filter(entity => !entity.$overriden)
+                    if(formatting === "xml") {
+                        // let catalogXMLObjectData = data.map(entity => entity.getXMLObject())
+                        // output[`Base.SC2Data/GameData/${capitalize(cat)}Data.xml`] = formatData({Catalog: catalogXMLObjectData}, 'xml')
+                        let catalogXML =entities .reduce((acc, entity) => {return acc + entity.getXML(resolve)}, '')
+                        outputCatalogData = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Catalog>\n${catalogXML}\n</Catalog>`
                     }
-                    outputCatalogData = formatData(catalogCache, formatting)
+                    else {
+                        let catalogCache = {}
+                        for(let entity of entities){
+                            let entityData = {...(resolve ? entity.$$resolved : entity)}
+                            catalogCache[entityData.id] = entityData
+                            delete entityData.id;
+                        }
+                        outputCatalogData = formatData(catalogCache, formatting)
+                    }
+                    output[`Base.SC2Data/GameData/${capitalize(cat)}Data.${extension}`] = outputCatalogData
+                    if(scopes.includes('binary') && format === 'auto'){
+                        fs.copyFileSync(path.resolve(__dirname ,'versions/GameData.version'), destpath + `GameData.version`)
+                    }
                 }
-                output[`Base.SC2Data/GameData/${capitalize(cat)}Data.${extension}`] = outputCatalogData
-                if(scopes.includes('binary') && format === 'auto'){
-                    fs.copyFileSync(path.resolve(__dirname ,'versions/GameData.version'), destpath + `GameData.version`)
-                }
+
             }
         }
         if(scopes.includes('triggers') && this.triggers){
@@ -810,6 +838,13 @@ export class SCMod {
             return entityclass
         }
         else{
+            if(entityclass === undefined){
+                SCGame.classlist[classname] = false
+                console.log('ignored class ' + classname)
+            }
+            if(!entityclass){
+                return
+            }
             let namespace = entityclass.$$namespace
             if(!namespace || SCGame.ignoredNamespaces.includes(namespace))return;
             if(!this.cache[namespace])this.cache[namespace] ={}

@@ -309,6 +309,7 @@ export function _propertyRelations(value,type,result,patharray,ignorelist){
         case 'turret':
         case 'upgrade':
         case 'button':
+        case 'accumulator':
         case 'requirementnode':
         case 'requirement':
         case 'behavior':
@@ -360,6 +361,9 @@ export function relations(object,schema,path = [], ignorelist = {}, result = [])
             if(value.constructor === Array){
                 for(let index =0; index< value.length; index++){
                     let _value = value[index]
+                    if(!_value){
+                        continue;
+                    }
                     if(_value.constructor === Object){
                         _value = _value.value
                     }
@@ -374,11 +378,30 @@ export function relations(object,schema,path = [], ignorelist = {}, result = [])
             let typed = type.constructor === Array ? type[0] : type
             if(value.constructor === Array){
                 for(let index =0; index< value.length; index++){
-                    relations(value[index],typed, [..._path,index],ignorelist, result)
+
+                    if(!value[index])continue;
+
+                    if(value[index].constructor === String){
+                        _propertyRelations(value[index],typed.value,result,[..._path,index],ignorelist)
+                    }
+                    else{
+                        relations(value[index],typed, [..._path,index],ignorelist, result)
+                    }
+
+
+
                 }
             }
             if(value.constructor === Object){
-                relations(value, typed, [..._path],ignorelist, result)
+                if(type.constructor === Array){
+
+                    for(let index in value){
+                        relations(value[index],typed, [..._path,index],ignorelist, result)
+                    }
+                }
+                else{
+                    relations(value, typed, [..._path],ignorelist, result)
+                }
             }
         }
     }

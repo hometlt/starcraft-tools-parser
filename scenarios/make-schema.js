@@ -1,20 +1,23 @@
 import fs from "fs";
-import {SCGame} from './sc-game.js'
+import {SCGame} from '../src/sc-game.js'
+import {SCMod} from "../src/sc-mod.js";
 
 
-let schema1 = SCGame.makeSchema({
+const mod = new SCMod()
+mod.directory('../../data-input')
+await mod.read('0.Core','1.Liberty','2.Liberty Campaign','4.Swarm','5.Swarm Campaign','7.Void','8.Void Campaign')
+
+mod.directory('../../../Mods/all-races-mods')
+await mod.read('VoidBalance','Campaign','Scion','UED','Hybrids','Dragons','UPL','UPLCampaign','UPLBalance')
+
+mod.directory('../../../Mods/all-races-core')
+await mod.read('Core')
+
+
+let schema1 = await SCGame.makeSchema({
     group: 'catalog',
     path: '*',
-    files: [
-        "./input/Core.SC2Mod",
-        "./input/Liberty.SC2Mod",
-        "./input/Swarm.SC2Mod",
-        "./input/Void.SC2Mod",
-        "./input/LibertyCampaign.SC2Mod",
-        "./input/SwarmCampaign.SC2Mod",
-        "./input/VoidCampaign.SC2Mod",
-        "./input/VoidBalance.SC2Mod"
-    ]
+    mod
 })
 fs.writeFileSync("./input/schema.json", JSON.stringify(schema1, null,"  "))
 
