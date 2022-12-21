@@ -5257,7 +5257,7 @@ export const StarcraftSchema = {
         Variations: [
           {
             Value: 'word',
-            DefaultCategories: '[categories]'
+            DefaultCategories: '[string]'
           }
         ],
         InfoText: [
