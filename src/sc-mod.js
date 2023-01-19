@@ -244,7 +244,7 @@ export class SCMod {
                 }
             }
         }
-        elsx`e{
+        else{
             data = input
         }
 

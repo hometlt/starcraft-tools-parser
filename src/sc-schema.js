@@ -14,7 +14,7 @@ const Host = {
 
 export const TargetSorts = {
   SortArray: '[targetsort]',
-  RequestCount: Bit,
+  RequestCount: Int,
   RequestPercentage: Real
 }
 
