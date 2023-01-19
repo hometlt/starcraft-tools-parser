@@ -229,6 +229,12 @@ export const SCGame = {
                     $schema: schema
                 });
                 classlist[entityID] = entity
+
+                //todo remvoe this
+                if(schema.OperandArray){
+                    Object.freeze(entity.$$schema.OperandArray[0])
+                }
+
             }
         }
         for (let entityID in schemaData){

@@ -5,8 +5,8 @@ import xml2js from 'xml2js'
 import * as yaml from "js-yaml";
 import {SCGame} from "./sc-game.js";
 import {SCEntity} from "./sc-entity.js";
-import {LibrarySchema} from "./sc-schema.js";
-import {deep,formatData, optimizeObject, optimizeJSONObject, fromXMLToObject, capitalize, optimiseForXML, convertObjectsToIndexedArray, stringValues} from "./operations.js";
+
+import {deep,formatData, optimizeObject, optimizeJSONObject, fromXMLToObject, capitalize, optimiseForXML, convertObjectsToIndexedArray, stringValues,eventEntityType, eventConditionEntityType} from "./operations.js";
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
 
@@ -194,6 +194,9 @@ export class SCMod {
                             if (catalog.data.Catalog.$$) {
                                 for (let entity of catalog.data.Catalog.$$) {
                                     fromXMLToObject(entity)
+                                    if(entity.class[0] === 'S'){
+                                        continue;
+                                    }
                                     if(SCGame.classlist[entity.class] === undefined){
                                         console.log('ignored entity class: ' + entity.class)
                                         SCGame.classlist[entity.class] = false;
@@ -241,7 +244,7 @@ export class SCMod {
                 }
             }
         }
-        else{
+        elsx`e{
             data = input
         }
 
@@ -338,7 +341,8 @@ export class SCMod {
                 'layouts',
                 'data',
                 'components',
-                // 'documentinfo'
+                'binary',
+                'documentinfo'
             ]
         }
         if(structure === 'auto'){
@@ -397,6 +401,23 @@ export class SCMod {
             output[`ComponentList.${extension}`] = formatData({Components: {DataComponent: components}}, formatting)
         }
         if(scopes.includes('documentinfo')){
+            // let deps = []
+            let voidCampaign = "bnet:Void (Campaign)/0.0/999,file:Campaigns/Void.SC2Campaign"
+            let voidMod = "bnet:Void (Mod)/0.0/999,file:Mods/Void.SC2Mod"
+
+            let includeCampaign = false;
+            let includeVoid = false;
+            // if(this.dependencies?.includes(voidCampaign)){
+            //     deps.push({_: voidCampaign})
+            //     includeCampaign = true;
+            // }
+            // else if(this.dependencies?.includes(voidMod)){
+            //     deps.push({_: voidMod})
+            //     includeVoid = true;
+            // }
+
+
+
             let info = {
                 DocInfo: {
                     ModType: {
@@ -404,12 +425,16 @@ export class SCMod {
                             _: 'Interface'
                         }
                     },
-                    Dependencies: {
-                        // Value: this.dependencies.map(dep => ({_: dep})),
-                        // Value: [{_: 'bnet:Void (Mod)/0.0/999,file:Mods/Void.SC2Mod'}]
-                        Value: [{_: 'bnet:Void (Campaign)/0.0/999,file:Campaigns/Void.SC2Campaign'}]
-                    }
                 }
+            }
+            if(this.dependencies?.length){
+                Object.assign(info,{
+                    Dependencies: {
+                        Value: this.dependencies.map(dep => ({_: dep})),
+                        // Value: [{_: 'bnet:Void (Mod)/0.0/999,file:Mods/Void.SC2Mod'}]
+                        // Value: [{_: deps}]
+                    }
+                })
             }
             output[`DocumentInfo`] = formatData(info , 'xml')
 
@@ -418,7 +443,12 @@ export class SCMod {
             }
 
             if(scopes.includes('binary')){
-                fs.copyFileSync(path.resolve(__dirname ,'versions/DocumentHeader VOID'), destpath + `DocumentHeader`)
+                if(includeVoid){
+                    fs.copyFileSync(path.resolve(__dirname ,'versions/DocumentHeader VOID'), destpath + `DocumentHeader`)
+                }
+                if(includeCampaign) {
+                    fs.copyFileSync(path.resolve(__dirname ,'versions/DocumentHeader VOID CAMPAIGN'), destpath + `DocumentHeader`)
+                }
             }
         }
         if(scopes.includes('preload')){
@@ -482,7 +512,9 @@ export class SCMod {
                     if(formatting === "xml") {
                         // let catalogXMLObjectData = data.map(entity => entity.getXMLObject())
                         // output[`Base.SC2Data/GameData/${capitalize(cat)}Data.xml`] = formatData({Catalog: catalogXMLObjectData}, 'xml')
-                        let catalogXML =entities .reduce((acc, entity) => {return acc + entity.getXML(resolve)}, '')
+                        let catalogXML =entities .reduce((acc, entity) => {
+                            return acc + entity.getXML(resolve)
+                        }, '')
                         outputCatalogData = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Catalog>\n${catalogXML}\n</Catalog>`
                     }
                     else {
@@ -591,12 +623,20 @@ export class SCMod {
         }
     }
     pickEntity(entity){
+
+
         if(!entity) {
             return
         }
         if(SCGame.pickIgnoreObjects[entity.$$namespace]?.includes(entity.id)){
             return
         }
+
+        if(entity.__picked){
+            return
+        }
+        Object.defineProperty(entity, '__picked',{ configurable:true, writable: true,enumerable: false,value: true })
+
         // console.log(entity.class +" " + entity.id)
         for(let relation of entity.$$relations){
             let linkedEntity = this.cache[relation.namespace][relation.link]
@@ -687,6 +727,31 @@ export class SCMod {
 
         }
     }
+    saveCore(){
+
+        for(let entity of this.entities){
+            Object.defineProperty(entity, '__core',{ configurable:true, writable: true,enumerable: false,value: true })
+        }
+
+    }
+    removeCore(){
+        for(let catalog in this.catalogs){
+            for(let entity of this.catalogs[catalog]){
+                if(entity.__core){
+                    if(this.cache[catalog][entity.id] === entity){
+                        delete this.cache[catalog][entity.id]
+                    }
+                }
+            }
+            this.catalogs[catalog] = this.catalogs[catalog].filter(item => !item.__core)
+
+            if(!this.catalogs[catalog].length){
+                delete this.catalogs[catalog]
+                delete this.cache[catalog]
+            }
+        }
+        this.entities = this.entities.filter(item => !item.__core)
+    }
     filter(){
         for(let catalog in this.catalogs){
             for(let entity of this.catalogs[catalog]){
@@ -705,15 +770,61 @@ export class SCMod {
         }
         this.entities = this.entities.filter(item => item.$$references)
     }
+    pickAll(){
+        for(let catalog in this.catalogs) {
+            for (let entity of this.catalogs[catalog]) {
+                this.pickEntity(entity)
+            }
+        }
+    }
+    resolveAssets(){
+        for(let catalog in this.catalogs) {
+            for (let entity of this.catalogs[catalog]) {
+                entity.resolveAssets()
+            }
+        }
+    }
+    resolveText(mask){
+        let picked = []
+        for(let catalog in this.catalogs) {
+            for (let entity of this.catalogs[catalog]) {
+                entity.resolveText(mask,picked)
+            }
+        }
+        for(let locale in this.locales){
+            for(let localeCat in this.locales[locale]){
+                for(let localeCatString in this.locales[locale][localeCat]){
+                    let parts = localeCatString.split("/")
+                    parts[parts.length - 1]  = mask.replace("*", parts[parts.length - 1])
+                    this.locales[locale][localeCat][parts.join("/")] =  this.locales[locale][localeCat][localeCatString]
+
+                    delete this.locales[locale][localeCat][localeCatString]
+
+                    //
+                    // // if(picked.includes(localeCatString)){
+                    // this.locales[locale][localeCat][localeCatString + 'Legacy'] =
+                    // // }
+                }
+            }
+        }
+    }
     renameEntities(mask){
+        this.pickAll()
+        this.resolveAssets()
+        this.resolveText(mask)
+
         for(let catalog in this.catalogs) {
             // if(catalog === 'actor')continue
             for (let entity of this.catalogs[catalog]) {
+                if(entity.__core){
+                    continue
+                }
+
                 let oldName = entity.id
                 entity.id = mask.replace("*", oldName)
                 if (entity.$$references) {
                     for (let reference of entity.$$references) {
-                        if(reference === "")continue //nothing to rename
+                        if(reference === "") continue //nothing to rename
                         let _path = reference.split(".")
                         let value,valueObject,valueProperty, valueEntity, newvalue
                         let referenceEntity = this.cache[_path[0]][_path[1]]
@@ -745,45 +856,40 @@ export class SCMod {
                         }
                         //todo objects????
 
-
                         if(value.includes(".") || value.includes(" ") || value.includes(";")){
-                            //this is a term
+                            if(_path[_path.length - 1] === "Ops"){
+                                let actors = value.split(" ")
+                                for(let index =0; index < actors.length; index++){
 
-                            let [event,...conditions] = value.split(";").map(term => term.trim())
-                            let eventParts = event.split(".")
-                            let namespace = {
-                                Behavior: "behavior",
-                                Abil: "abil",
-                                WeaponStart: "weapon",
-                                Upgrade: "upgrade",
-                                Confirmation: "unit",
-                                UnitConstruction: "unit",
-                                UnitDeath: "unit",
-                                UnitBirth: "unit",
-                                UnitRevive: "unit",
-                                Effect: "effect",
-                            }[eventParts[0]]
-
-
-                            if(namespace === entity.$$namespace && eventParts[1] === oldName){
-                                eventParts[1] = entity.id
-                                event = eventParts.join(".")
+                                    if(actors[index] === oldName){
+                                        actors[index] = entity.id
+                                    }
+                                }
+                                newvalue = actors.join(" ")
                             }
-                            for(let index =0; index < conditions.length; index++){
-                                let condition = conditions[index]
-                                let eventParts = condition.split(" ").map(term => term.trim())
-                                let namespace = {
-                                    // ModelSwap: "model",
-                                    ValidateUnit: "validator",
-                                    MorphFrom: "unit",
-                                    MorphTo: "unit",
-                                }[eventParts[0]]
+                            else{
+                                //this is a term
+
+                                let [event,...conditions] = value.split(";").map(term => term.trim())
+                                let eventParts = event.split(".")
+                                let namespace = eventEntityType(eventParts[0])
+
                                 if(namespace === entity.$$namespace && eventParts[1] === oldName){
                                     eventParts[1] = entity.id
-                                    conditions[index] = eventParts.join(" ")
+                                    event = eventParts.join(".")
                                 }
+                                for(let index =0; index < conditions.length; index++){
+                                    let condition = conditions[index]
+                                    let eventParts = condition.split(" ").map(term => term.trim())
+                                    let namespace = eventConditionEntityType(eventParts[0])
+
+                                    if(namespace === entity.$$namespace && eventParts[1] === oldName){
+                                        eventParts[1] = entity.id
+                                        conditions[index] = eventParts.join(" ")
+                                    }
+                                }
+                                newvalue = [event, ...conditions].join(";")
                             }
-                            newvalue = [event, ...conditions].join(";")
                         }
                         else if(value.includes(",") && value.lastIndexOf(",") !==  value.indexOf(","))  {
                             //this is a reference
@@ -803,6 +909,12 @@ export class SCMod {
                     }
                 }
             }
+        }
+
+
+        for(let entity of this.entities) {
+            delete entity.__resolved
+            delete entity.__data
         }
     }
     _readTextFile(localeFile) {
@@ -874,3 +986,43 @@ export class SCMod {
         }
     }
 }
+
+
+
+/**
+ *
+ //we can read the previously saved combined mod
+ // await mod.read('./output/combined.json')
+ *
+ * Mod Filtering
+ //pick the instances and all related data from the mod. prevent from adding too much data using exclude option
+
+ mod.pick({race: ["Terr","Zerg","Prot"]},{ exclude: {}})
+mod.pick({race: ["Zerg"]},{
+    exclude: {
+        validator: ['IsNotWarpingIn', 'IsNotPhaseShifted', 'BattlecruiserNotJumping', 'IsBunker', 'IsVikingAir', 'IsVikingGround'],
+        unit: ["Zealot", "Marine", "VikingAssault", "VikingFighter"],
+        behavior: ['Precursor', 'LockOnDisableAttack', 'MothershipCoreRecalling', 'Recalling'],
+        weapon: ['PsiBlades', 'GuassRifle'],
+        abil: ['Stimpack', 'InfestedTerrans',]
+    }
+})
+mod.pick({race: ["Prot"]},{
+    exclude: {
+        effect: ['InstantUnburrow', 'InstantMorphUnburrowAB',],
+        unit: [],
+        abil: ['ResourceStun']
+    }
+})
+
+ //pick all actors for picked instances. todo: actors are ignored in pick function
+ mod.pickActors()
+
+ //only leave picked entities.
+ mod.filter()
+
+ //get the count of picked entities
+ console.log("Picked Entities: " + mod.entities.length)
+
+ **/
+

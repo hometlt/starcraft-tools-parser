@@ -4,6 +4,8 @@ import * as yaml from "js-yaml";
 import xml2js from "xml2js";
 
 
+const unknowns = {}
+
 export const TYPES = {
     BIT: 'bit',
     INT: 'int',
@@ -28,9 +30,10 @@ let regexps  = {
     // file: /^[a-z_#'0-9\-]+[\\/a-z_#'0-9\-. ]+\.(dds|fxa|m3|tga|m3a)$/i,
     file: /^.*$/,
     link: /^[A-Za-z_@#0-9-]+(\/+[A-Za-z_@#0-9-]+)+\/?$/,
-    word: /^[\w@_%#]+$/,
+    word: /^[\w\s@_%#]+$/,
     abilcmd: /^([\w@_#]+[.,][\w]+|255)$/,
     words: /^[\w@_%#]+(,[\w@_%#]+)*$/,
+    ops: /^[\w@_%#]+(\s[\w@_%#]+)*$/,
     reference: /^.*$/,
     subject: /^.*$/,
     send: /^.*$/,
@@ -38,6 +41,9 @@ let regexps  = {
 }
 
 export function matchType(value, type){
+    if(type === 'text'){
+        type = 'link'
+    }
     if(type === 'link'){
         if(regexps.word.test(value))return true
     }
@@ -96,35 +102,37 @@ export function deep(a,b,c = 'merge'){
         let value = b[i]
         let target = a[i]
 
-        if(!value)continue;
-
-
+        if(value === undefined)continue;
         if(value.constructor === Array){
             value = deep([],value)
         }
-        if(value.constructor === Object){
+        else if(value.constructor === Object){
             value = deep({},value)
         }
-
-        if(value.constructor === String){
-            target = value
+        if(!target){
+            a[i] = value
         }
-        else if(target && target.constructor === Array && c === 'replace') {
-            target = value
+        else{
+            if(value.constructor === String){
+                target = value
+            }
+            else if(target && target.constructor === Array && c === 'replace') {
+                target = value
+            }
+            else if(target && target.constructor === Array && c === 'unite') {
+                deep(target,value,c)
+            }
+            else if(target && target.constructor === Array && c === 'merge') {
+                target = [...target,...value]
+            }
+            else if(target && target.constructor === Object){
+                deep(target,value,c)
+            }
+            else {
+                target = value
+            }
+            a[i] = target
         }
-        else if(target && target.constructor === Array && c === 'unite') {
-            deep(target,value,c)
-        }
-        else if(target && target.constructor === Array && c === 'merge') {
-            target = [...target,...value]
-        }
-        else if(target && target.constructor === Object){
-            deep(target,value,c)
-        }
-        else {
-            target = value
-        }
-        a[i] = target
     }
     return a
 }
@@ -149,6 +157,11 @@ export function matchPath(path1,path2){
 }
 
 export function resolveSchemaType(schema,property,schemaForResolvedArrays = false){
+
+    // if(property === "OperandArray"){
+    //     property
+    // }
+
     let type = schema[property] || schema['$' + property] || schema['*']
     if(!type)return false
     if(type.constructor === String && type.startsWith("{")) {
@@ -240,6 +253,36 @@ export function _addRelation({namespace, link, patharray, type, result, ignoreli
     result.push({namespace, link, path, type})
 }
 
+
+const entityType = {
+    TurretEnable: "turret",
+    Behavior: "behavior",
+    Abil: "abil",
+    AbilTransport: "abil",
+    WeaponStart: "weapon",
+    WeaponStop: "weapon",
+    Upgrade: "upgrade",
+    Confirmation: "unit",
+    UnitConstruction: "unit",
+    UnitDeath: "unit",
+    UnitBirth: "unit",
+    UnitRevive: "unit",
+    Effect: "effect",
+    Model: "model",
+    Actor: "actor",
+}
+const conditionEntityType = {
+    // ModelSwap: "model",
+    ValidateUnit: "validator",
+    MorphFrom: "unit",
+    MorphTo: "unit",
+}
+export function eventConditionEntityType(eventname){
+    return conditionEntityType[eventname]
+}
+export function eventEntityType(eventname){
+    return entityType[eventname]
+}
 /**
  *
  * @param object
@@ -253,26 +296,26 @@ export function _propertyRelations(value,type,result,patharray,ignorelist){
     let link , namespace
 
     switch (type) {
+        case 'ops':
+            let actors = value.split(" ")
+
+            for(let index =0; index < actors.length; index++){
+                _addRelation({
+                    namespace: 'actor',
+                    link: actors[index],
+                    patharray,
+                    type: 'actors',
+                    result,
+                    ignorelist
+                })
+            }
+            return;
         case 'terms': {
             let added = []
 
             let [event,...conditions] = value.split(";").map(term => term.trim())
             let [entityType, entityName] = event.split(".")
-            namespace = {
-                TurretEnable: "turret",
-                Behavior: "behavior",
-                Abil: "abil",
-                WeaponStart: "weapon",
-                Upgrade: "upgrade",
-                Confirmation: "unit",
-                UnitConstruction: "unit",
-                UnitDeath: "unit",
-                UnitBirth: "unit",
-                UnitRevive: "unit",
-                Effect: "effect",
-                Model: "model",
-                Actor: "actor",
-            }[entityType]
+            namespace = eventEntityType(entityType)
             link = entityName
 
             added.push(namespace+"."+link)
@@ -281,10 +324,7 @@ export function _propertyRelations(value,type,result,patharray,ignorelist){
             for(let index =0; index < conditions.length; index++){
                 let condition = conditions[index]
                 let [entityType, entityName] = condition.split(" ").map(term => term.trim())
-                namespace = {
-                    MorphFrom: "unit",
-                    MorphTo: "unit",
-                }[entityType]
+                namespace = eventConditionEntityType(entityType)
                 link = entityName
 
                 if(!added.includes(namespace+"."+link)){
@@ -301,24 +341,6 @@ export function _propertyRelations(value,type,result,patharray,ignorelist){
                 namespace = type
             }
             break;
-        case 'actor':
-        case 'model':
-        case 'race':
-        case 'unit':
-        case 'weapon':
-        case 'turret':
-        case 'upgrade':
-        case 'button':
-        case 'accumulator':
-        case 'requirementnode':
-        case 'requirement':
-        case 'behavior':
-        case 'abil':
-        case 'validator':
-        case 'effect':
-            link = value;
-            namespace = type
-            break;
         case 'reference':
             let [entityType, entityName, entityProperty] = value.split(",")
             link = entityName; namespace = entityType.toLowerCase()
@@ -328,7 +350,42 @@ export function _propertyRelations(value,type,result,patharray,ignorelist){
             link = abilName; namespace = "abil"
             break;
         default:
-            return
+            if([
+                'abil',
+                'actor',
+                'accumulator',
+                'attachmethod',
+                'alert',
+                'behavior',
+                'button',
+                'commander',
+                'effect',
+                'footprint',
+                'model',
+                'mover',
+                'kinetic',
+                'light',
+                'race',
+                'requirement',
+                'requirementnode',
+                'sound',
+                'soundtrack',
+                'tactical',
+                'texture',
+                'targetfind',
+                'targetsort',
+                'turret',
+                'unit',
+                'upgrade',
+                'validator',
+                'weapon'
+            ].includes(type)){
+                link = value;
+                namespace = type
+            }
+            else{
+                return
+            }
     }
 
     _addRelation({namespace, link, patharray,  type, result, ignorelist})
@@ -350,7 +407,8 @@ export function relations(object,schema,path = [], ignorelist = {}, result = [])
         let _path = [...path,property]
         if(!type){
             console.log("unknown field",_path.join(".") );
-            continue;
+
+
         }
 
         if(type.constructor === Array && type[0].constructor === String){
@@ -528,7 +586,12 @@ export function optimiseForXML(object,schema = object.$$schema, path = [object.c
 
 
     for(let property in object){
+
+
         let type = resolveSchemaType(schema,property), value = object[property]
+
+
+
 
         let isToken =  /[a-z]/.test(property[0]) || schema['$'+property]
 
@@ -560,7 +623,6 @@ export function optimiseForXML(object,schema = object.$$schema, path = [object.c
         }
         else if(type.constructor === Array){
             type = {...type[0]}
-
             if(type.index === "word" || type.index === "string"){
                 delete type.index
                 delete type.removed
@@ -584,18 +646,42 @@ export function optimiseForXML(object,schema = object.$$schema, path = [object.c
             }
             else{
 
+
+                for(let index  = value.length; index--;) {
+                    if(value[index] === undefined){
+                        value.splice(index,1)
+                    }
+                }
+                if(value.length === 0){
+                    delete object[property]
+                    continue;
+                }
+
                 for(let index  in value){
                     if(value[index].constructor !== Object){
                         if(type['%value']){
-                            value[index] = {_: value[index]}
+                            value[index] = {_: value[index], $: {}}
                         }
                         else{
                             value[index] = {$: {value: value[index]}}
                         }
+                        //
+                        // //force array indexes for requirementnode
+                        if(type.index === "int"){
+                            value[index].$.index = index
+                        }
                     }
                     else{
                         optimiseForXML(value[index],type, _path)
+                        // //force array indexes for requirementnode
+                        if(type.index === "int"){
+                            if(!value[index].$){
+                                value[index].$ = {}
+                            }
+                            value[index].$.index = index
+                        }
                     }
+
                 }
             }
 
@@ -604,6 +690,9 @@ export function optimiseForXML(object,schema = object.$$schema, path = [object.c
             optimiseForXML(value, type, _path)
         }
     }
+
+
+
     return object
 }
 
@@ -697,7 +786,24 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
             continue;
         }
         if(!type){
-            console.warn("unknown field", _path.join("."), JSON.stringify(value) );
+
+
+            let obj = unknowns
+            let li = _path.length - 1
+            for(let i = 0; i < li;i++){
+                let crumb = _path[i]
+                if(!obj[crumb]){
+                    obj[crumb] = {}
+                }
+                obj = obj[crumb]
+            }
+            if(!obj[_path[li]]){
+                obj[_path[li]] = []
+            }
+            obj = obj[_path[li]]
+            obj.push(value)
+
+            // console.warn("unknown field", _path.join("."), JSON.stringify(value) );
             continue;
         }
 
@@ -747,7 +853,6 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
             }
 
             if(value && !matchType(value,type)){
-                matchType(value,type)
                 console.warn("potentially wrong value", JSON.stringify(_path), JSON.stringify(object[property]))
             }
         }
@@ -755,6 +860,109 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
     }
 }
 
+
+
+
+
+export function resolveText(object, schema = object.$$schema, path = [], picked, mask) {
+    if(!schema) {
+        console.log("no schema", path )
+        return;
+    }
+    let result = {}
+    for(let property in object){
+        let type = resolveSchemaType(schema,property), value = object[property]
+
+        if (['id', 'class', 'parent', 'default', 'index', 'removed'].includes(property)) continue;
+        let _path = [...path, property];
+        if(!value || !type){
+            continue;
+        }
+
+        if(type.constructor === Object){
+            value = value[0]
+            let _result = resolveText(value, type, _path,picked, mask)
+            if(Object.keys(_result).length > 0){
+                result[property] = _result
+            }
+        }
+        else if(type.constructor === Array){
+            type = {...type[0]}
+
+            for(let item in value){
+                let _result = resolveText(value[item], type, _path,picked, mask)
+                if(Object.keys(_result).length > 0){
+                    if(! result[property]){
+                        if(value.constructor === Array) {
+                            result[property] = []
+                        }
+                        else{
+                            result[property] = {}
+                        }
+                    }
+                    result[property][item] = _result
+                }
+            }
+        }
+        else if(type.constructor === String){
+            if (type === 'text'){
+                let parts = object[property].split("/")
+                parts[parts.length - 1]  = mask.replace("*", parts[parts.length - 1])
+                result[property] = parts.join("/")
+                picked.push(object[property])
+            }
+        }
+    }
+    return result
+}
+export function resolveAssets(object, schema = object.$$schema, path = []) {
+    if(!schema) {
+        console.log("no schema", path )
+        return;
+    }
+    let result = {}
+    for(let property in object){
+        let type = resolveSchemaType(schema,property), value = object[property]
+
+        if (['id', 'class', 'parent', 'default', 'index', 'removed'].includes(property)) continue;
+        let _path = [...path, property];
+        if(!value || !type){
+            continue;
+        }
+
+        if(type.constructor === Object){
+            value = value[0]
+            let _result = resolveAssets(value, type, _path)
+            if(Object.keys(_result).length > 0){
+                result[property] = _result
+            }
+        }
+        else if(type.constructor === Array){
+            type = {...type[0]}
+
+            for(let item in value){
+                let _result = resolveAssets(value[item], type, _path)
+                if(Object.keys(_result).length > 0){
+                    if(! result[property]){
+                        if(value.constructor === Array) {
+                            result[property] = []
+                        }
+                        else{
+                            result[property] = {}
+                        }
+                    }
+                    result[property][item] = _result
+                }
+            }
+        }
+        else if(type.constructor === String){
+            if (type === 'file'){
+                result[property] = object[property]
+            }
+        }
+    }
+    return result
+}
 
 
 
@@ -802,7 +1010,9 @@ export function optimizeJSONObject(object, schema = object.$$schema, path = [obj
     }
 }
 
-
+export function getUnknowns(){
+    return unknowns
+}
 
 export function filterTypedProperties(object, filter, schema = object.$$schema) {
     if(!schema){

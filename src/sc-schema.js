@@ -1,46 +1,65 @@
+const Bit = 'bit'
+const Int = 'int'
+const Word = 'word'
+const Real = 'real'
 
-export const EffectBehaviorSchema = {
-  Flags: '{bit}', Behavior: 'behavior', Count: 'int', Duration: 'real'
+const Host = {
+  Subject: 'subject',
+  Actor: 'actor',
+  Scope: Word,
+  FailOnNoHost: Bit,
+  Effect: 'effect',
+  ReachAcrossEffectTrees: Bit
 }
 
-export const FieldSchema = {$Id: 'string', Index: 'int', Flags: '{bit}'}
+export const TargetSorts = {
+  SortArray: '[targetsort]',
+  RequestCount: Bit,
+  RequestPercentage: Real
+}
+
+export const EffectBehaviorSchema = {
+  Flags: '{bit}', Behavior: 'behavior', Count: Int, Duration: Real
+}
+
+export const FieldSchema = {$Id: 'string', Index: Int, Flags: '{bit}'}
 
 export const CostSchema = {
   Abil: 'string',
-  CooldownOperation: 'word',
-  CooldownTimeUse: 'real',
-  ChargeCountUse: 'int',
+  CooldownOperation: Word,
+  CooldownTimeUse: Real,
+  ChargeCountUse: Int,
   Fraction: {
-    Charge: 'int',
-    Cooldown: 'int',
+    Charge: Int,
+    Cooldown: Int,
   },
   Charge: {
     Flags: '{bit}',
-    CountMax: 'int',
-    CountStart: 'int',
-    CountUse: 'real',
+    CountMax: Int,
+    CountStart: Int,
+    CountUse: Real,
     Link: 'string',
-    Location: 'word',
-    TimeStart: 'real',
-    TimeUse: 'real',
-    HideCount: 'bit'
+    Location: Word,
+    TimeStart: Real,
+    TimeUse: Real,
+    HideCount: Bit
   },
   Player: {
-    Value: 'word'
+    Value: Word
   },
-  ChargeTimeUse: 'real',
+  ChargeTimeUse: Real,
   Behavior: 'behavior',
-  Vital: '{int}',
+  Vital: '{real}',
   Display: '{bit}',
   Cooldown: {
-    TimeStart: 'real',
-    TimeUse: 'real',
+    TimeStart: Real,
+    TimeUse: Real,
     Link: 'string',
     Operation: 'string',
-    Location: 'word'
+    Location: Word
   },
   Resource: '{int}',
-  VitalFraction: '{int}'
+  VitalFraction: '{real}'
 }
 
 export const ModificationSchema = {
@@ -48,23 +67,28 @@ export const ModificationSchema = {
   RadarFilters: 'filters',
   StateFlags: '{bit}',
   SoundArray: '{sound}',
+  TurretEnableArray: '{turret}',
   DamageDealtFraction: '{real}',
+  DamageDealtAttributeUnscaled: '{real}',
+  ResourceHarvestAmountMultiplier: '{real}',
   DamageDealtAttributeMultiplier: '{real}',
   BehaviorCategoryDurationFactor: '{real}',
   UnifiedDamageDealtFraction: '{real}',
   VitalMaxAdditiveMultiplierArray: '{real}',
   VitalDamageLeechArray: [{KindArray: '{real}',index:"word"}],
   AttributeChangeArray: [{Attribute:"behavior",Points:"int"}],
-  Radar: 'real',
-  DetectBonus: 'int',
-  AttackTargetPriority: 'int',
-  EnergyDamageRatioBonus: 'bit',
-  SightMinimum: 'real',
+  Radar: Real,
+  DetectBonus: Real,
+  WeaponMinRange: Real,
+  AttackTargetPriority: Int,
+  EnergyDamageRatioBonus: Bit,
+  SightMinimum: Real,
+  DecelerationMultiplier: Real,
   UnitNameOverride: 'link',
   LevelGainEffect: 'effect',
-  MoveSpeedMultiplier: 'real',
-  UnifiedAttackSpeedFactor: 'real',
-  RadiusMultiplier: 'real',
+  MoveSpeedMultiplier: Real,
+  UnifiedAttackSpeedFactor: Real,
+  RadiusMultiplier: Real,
   ModifyFlags: '{bit}',
   DamageDealtMaximum: '{bit}',
   DamageTakenFraction: '{real}',
@@ -81,36 +105,36 @@ export const ModificationSchema = {
   DeathResponse: {
     Relationship: '{bit}',
     Cost: CostSchema,
-    Chance: 'real',
+    Chance: Real,
     Effect: 'effect',
     Type: '{bit}'
   },
-  TimeScale: 'real',
+  TimeScale: Real,
   VitalRegenArray: [{
     index: "string",
     AccumulatorArray: [{value:"accumulator"}],
     value:"real"
   }],
   WeaponDisableArray: '[weapon]',
-  Height: 'real',
+  Height: Real,
   HeightTime: '{real}',
   PlaneDelta: '{int}',
   AbilClassEnableArray: '{bit}',
   BehaviorLinkEnableArray: '[behavior]',
-  AttackSpeedMultiplier: 'real',
-  Food: 'int',
-  QueueCount: 'int',
-  QueueSize: 'int',
-  WeaponRange: 'real',
-  Detect: 'real',
-  MoveSpeedMinimum: 'real',
-  LifeArmorMultiplier: 'real',
-  ShieldArmorMultiplier: 'bit',
-  SubgroupPriority: 'int',
-  SightBonus: 'int',
-  DetectArc: 'bit',
-  RadarArc: 'bit',
-  MoveSpeedBonus: 'real',
+  AttackSpeedMultiplier: Real,
+  Food: Int,
+  QueueCount: Int,
+  QueueSize: Int,
+  WeaponRange: Real,
+  Detect: Real,
+  MoveSpeedMinimum: Real,
+  LifeArmorMultiplier: Real,
+  ShieldArmorMultiplier: Bit,
+  SubgroupPriority: Int,
+  SightBonus: Real,
+  DetectArc: Bit,
+  RadarArc: Bit,
+  MoveSpeedBonus: Real,
   WeaponEnableArray: '[weapon]',
   VitalMaxArray: '{real}',
   WeaponArray: [
@@ -122,47 +146,80 @@ export const ModificationSchema = {
   BehaviorCategoriesEnable: [
     {
       index: 'behavior',
-      value: 'bit'
+      value: Bit
     }
   ],
-  CriticalAttackChanceUnscaledBonus: 'int',
+  CriticalAttackChanceUnscaledBonus: Int,
   ResourceHarvestAmountBonus: '{int}',
-  AccelerationBonus: 'real',
-  MoveSpeedMaximum: 'real',
+  AccelerationBonus: Real,
+  MoveSpeedMaximum: Real,
   RateMultiplierArray: '{real}',
-  SightMaximum: 'real',
-  DecelerationBonus: 'real',
+  SightMaximum: Real,
+  DecelerationBonus: Real,
   DamageDealtAttributeScaled: '{int}',
   DamageDealtUnscaled: [{index: 'string', AccumulatorArray:[{"value":"accumulator"}],value:"real"}],
   VitalMaxFractionArray: '{real}',
-  AccelerationMultiplier: 'real',
+  AccelerationMultiplier: Real,
   DamageDealtScaled: '{int}',
-  WeaponScanBonus: 'real',
-  SnareMultiplier: 'real',
-  LifeArmorBonus: 'real',
+  WeaponScanBonus: Real,
+  SnareMultiplier: Real,
+  LifeArmorBonus: Real,
   TurretDisableArray: '[turret]',
   VitalRegenMultiplier: '{real}',
-  RangedWeaponRange: 'int',
-  UnifiedMoveSpeedFactor: 'real',
-  ShieldArmorBonus: 'int',
+  RangedWeaponRange: Int,
+  UnifiedMoveSpeedFactor: Real,
+  ShieldArmorBonus: Real,
   BehaviorCategoriesDisable: '{bit}',
-  AdditiveMoveSpeedFactor: 'real',
-  AdditiveAttackSpeedFactor: 'real',
+  AdditiveMoveSpeedFactor: Real,
+  AdditiveAttackSpeedFactor: Real,
   AbilCategoriesEnable: '{bit}',
-  HealDealtMultiplier: 'int'
+  HealDealtMultiplier: Int
 }
 
 
 export const ConditionSchema ={
-    Value: "int",
-    "User": [{
-      "Instance":"word",
-      "Type":"word",
-      "Field":"word"
-    }],
-    "FixedId":"word",
-    "Operation":"word"
-  }
+  Value: "int",
+  "User": [{
+    "Instance":"word",
+    "Type":"word",
+    "Field":"word"
+  }],
+  "Index":"word",
+  "State":"word",
+  "FixedId":"word",
+  "Operation":"word"
+}
+
+
+export const LineSchema = {
+  $Id: Word,
+  Text: 'text',
+  Sound: 'sound',
+  OverlapPrevious: Int,
+  SpeakerVariation: Word,
+  CutsceneFile: 'file',
+  AnimProps: Word,
+  CustomSpeaker: 'link',
+  CutscenePosition: 'ints',
+  AnimBlendIn: Int,
+  AnimBlendOut: Int,
+  ApplyCutsceneToChildren: Bit,
+  SpeakerCharacter: 'character',
+  Comment: 'string',
+  Objects: '{word}',
+  Variations: '{word}',
+  FacialBlend: Int,
+  LookAtAttach: Word,
+  Conditions: [ConditionSchema],
+  Name: 'text',
+  LineSelection: Word,
+  MaxLines: Int,
+  Children: '[word]',
+  NoWait: Int,
+  AltLine: Int,
+  Tags: '[word]',
+  ConditionCheck: '[word]',
+}
 
 export const StarcraftSchema = {
   CEffectAddTrackedUnits: {catalog: 'effect'},
@@ -171,13 +228,14 @@ export const StarcraftSchema = {
   CEffectMorph: {catalog: 'effect'},
   CValidatorCompareTrackedUnitsCount: {catalog: 'validator'},
   CActorBlob: {catalog: 'actor'},
+  CActorSiteOpTether: {catalog: 'actor'},
   CActorMinimap: {catalog: 'actor'},
   CAbil: {catalog: 'abil'},
   CAbilArmMagazine: {
     prototype: 'CAbil',
     InfoArray: [
       {
-        index: 'word'
+        index: Word
       }
     ]
   },
@@ -191,7 +249,7 @@ export const StarcraftSchema = {
     prototype: 'CAbil',
     InfoArray: [
       {
-        index: 'word'
+        index: Word
       }
     ]
   },
@@ -206,7 +264,7 @@ export const StarcraftSchema = {
     prototype: 'CAbil',
     InfoArray: [
       {
-        index: 'word'
+        index: Word
       }
     ]
   },
@@ -219,7 +277,7 @@ export const StarcraftSchema = {
     prototype: 'CAbil',
     InfoArray: [
       {
-        index: 'word'
+        index: Word
       }
     ]
   },
@@ -234,7 +292,7 @@ export const StarcraftSchema = {
     prototype: 'CAbil',
     InfoArray: [
       {
-        index: 'word'
+        index: Word
       }
     ]
   },
@@ -243,7 +301,7 @@ export const StarcraftSchema = {
     prototype: 'CAbil',
     InfoArray: [
       {
-        index: 'word'
+        index: Word
       }
     ]
   },
@@ -252,7 +310,7 @@ export const StarcraftSchema = {
     prototype: 'CAbil',
     InfoArray: [
       {
-        index: 'word',
+        index: Word,
         Unit: '[unit]'
       }
     ]
@@ -262,7 +320,7 @@ export const StarcraftSchema = {
     prototype: 'CAbil',
     InfoArray: [
       {
-        index: 'word'
+        index: Word
       }
     ]
   },
@@ -282,20 +340,26 @@ export const StarcraftSchema = {
   CAccumulatorUserData: { prototype: 'CAccumulator'},
   CAccumulatorVitals: { prototype: 'CAccumulator'},
   achievement: {
-    Name: 'link',
+    Description: 'text',
+    Category: 'text',
+    Name: 'text',
+    MinTermCount: Int,
+    Race: 'race',
+    SharesTerms: 'achievement',
+    Supersedes: 'achievement',
     Filters: '{bit}',
     Flags: '{bit}',
     Icon: 'file',
-    Points: 'int',
+    Points: Int,
     TermTable: '[word]',
     RewardTable: "[word]",
     Tags: [{"Value":"word","Check":"word"}],
   },
   achievementterm: {
-    Name: 'link',
-    Description: 'link',
-    Compare: 'word',
-    Evaluate: 'word',
+    Name: 'text',
+    Description: 'text',
+    Compare: Word,
+    Evaluate: Word,
     AbilCmd: [{"value":"abilcmd"}],
     Effect: [{"value":"effect"}],
     ChildTable: [{"value":"word"}],
@@ -304,30 +368,30 @@ export const StarcraftSchema = {
     Unit: [{"value":"word"}],
     ValidatorArray: [{"value":"word"}]
   },
-  //CAchievement: { catalog: 'achievement'},
-  //CAchievementTerm: {catalog: 'achievementterm'},
-  //CAchievementTermAbilInteract: { prototype: 'CAchievementTerm'},
-  //CAchievementTermAbilLoad: { prototype: 'CAchievementTerm'},
-  //CAchievementTermAbilUse: { prototype: 'CAchievementTerm'},
-  //CAchievementTermAchievement: { prototype: 'CAchievementTerm'},
-  //CAchievementTermBehaviorCount: { prototype: 'CAchievementTerm'},
-  //CAchievementTermBehaviorState: { prototype: 'CAchievementTerm'},
-  //CAchievementTermCombine: { prototype: 'CAchievementTerm'},
-  //CAchievementTermEffectAbsorbed: { prototype: 'CAchievementTerm'},
-  //CAchievementTermEffectDamaged: { prototype: 'CAchievementTerm'},
-  //CAchievementTermEffectDodged: { prototype: 'CAchievementTerm'},
-  //CAchievementTermEffectHealed: { prototype: 'CAchievementTerm'},
-  //CAchievementTermEffectKilled: { prototype: 'CAchievementTerm'},
-  //CAchievementTermEffectUse: { prototype: 'CAchievementTerm'},
-  //CAchievementTermGeneric: { prototype: 'CAchievementTerm'},
-  //CAchievementTermReplay: { prototype: 'CAchievementTerm'},
-  //CAchievementTermScoreValue: { prototype: 'CAchievementTerm'},
-  //CAchievementTermTime: { prototype: 'CAchievementTerm'},
-  //CAchievementTermUnitBirth: { prototype: 'CAchievementTerm'},
-  //CAchievementTermUnitDeath: { prototype: 'CAchievementTerm'},
-  //CAchievementTermUnitKills: { prototype: 'CAchievementTerm'},
-  //CAchievementTermUnitRegen: { prototype: 'CAchievementTerm'},
-  //CAchievementTermUnitSupplyLoss: { prototype: 'CAchievementTerm'},
+  CAchievement: { catalog: 'achievement'},
+  CAchievementTerm: {catalog: 'achievementterm'},
+  CAchievementTermAbilInteract: { prototype: 'CAchievementTerm'},
+  CAchievementTermAbilLoad: { prototype: 'CAchievementTerm'},
+  CAchievementTermAbilUse: { prototype: 'CAchievementTerm'},
+  CAchievementTermAchievement: { prototype: 'CAchievementTerm'},
+  CAchievementTermBehaviorCount: { prototype: 'CAchievementTerm'},
+  CAchievementTermBehaviorState: { prototype: 'CAchievementTerm'},
+  CAchievementTermCombine: { prototype: 'CAchievementTerm'},
+  CAchievementTermEffectAbsorbed: { prototype: 'CAchievementTerm'},
+  CAchievementTermEffectDamaged: { prototype: 'CAchievementTerm'},
+  CAchievementTermEffectDodged: { prototype: 'CAchievementTerm'},
+  CAchievementTermEffectHealed: { prototype: 'CAchievementTerm'},
+  CAchievementTermEffectKilled: { prototype: 'CAchievementTerm'},
+  CAchievementTermEffectUse: { prototype: 'CAchievementTerm'},
+  CAchievementTermGeneric: { prototype: 'CAchievementTerm'},
+  CAchievementTermReplay: { prototype: 'CAchievementTerm'},
+  CAchievementTermScoreValue: { prototype: 'CAchievementTerm'},
+  CAchievementTermTime: { prototype: 'CAchievementTerm'},
+  CAchievementTermUnitBirth: { prototype: 'CAchievementTerm'},
+  CAchievementTermUnitDeath: { prototype: 'CAchievementTerm'},
+  CAchievementTermUnitKills: { prototype: 'CAchievementTerm'},
+  CAchievementTermUnitRegen: { prototype: 'CAchievementTerm'},
+  CAchievementTermUnitSupplyLoss: { prototype: 'CAchievementTerm'},
   CActor: { catalog: 'actor'},
   CActorAction: { prototype: 'CActor'},
   CActorActionOverride: { prototype: 'CActor'},
@@ -439,15 +503,26 @@ export const StarcraftSchema = {
   CActorMissile: { prototype: 'CActorUnit'},
   CAlert: { catalog: 'alert'},
   armycategory: {
-   Name: 'link',
-   Description: 'link',
-   BankPath: 'word',
+   Name: 'text',
+   Description: 'text',
+   BankPath: {Key: Word},
   },
-  // CArmyCategory: {catalog: 'armycategory'},
-  armyunit: {},
-  // CArmyUnit: {catalog: 'armyunit'},
-  armyupgrade: {},
-  // CArmyUpgrade: {catalog: 'armyupgrade'},
+  CArmyCategory: {catalog: 'armycategory'},
+  // armyunit: {},
+  CArmyUnit: {
+    catalog: 'armyunit',
+    "Name": 'text',
+    "Description":'text',
+    "Confirmation": 'text',
+    "BankPath": {"Key": Word}
+  },
+  // armyupgrade: {},
+  CArmyUpgrade: {
+    catalog: 'armyupgrade',
+    "Name": 'text',
+    "Description":'text',
+    "Tooltip":'text',
+  },
   CArtifact: { catalog: 'artifact'},
   CArtifactSlot: { catalog: 'artifactslot'},
   CAttachMethod: { catalog: 'attachmethod'},
@@ -468,9 +543,20 @@ export const StarcraftSchema = {
   CAttachMethodVolumesTargets: { prototype: 'CAttachMethod'},
   CAttachMethodVolumesWeightedPick: { prototype: 'CAttachMethod'},
   bankcondition: {catalog: 'bankcondition'},
-  // CBankConditionCompare: {catalog: 'bankcondition'},
-  // CBankConditionCompareValueCount: {prototype: 'CBankConditionCompare'},
-  // CBankConditionCompareValueSum: {prototype: 'CBankConditionCompare'},
+  CBankConditionCompare: {
+    catalog: 'bankcondition',
+    ValueName: Word
+  },
+  CBankConditionCompareValueCount: {
+    prototype: 'CBankConditionCompare',
+    AddCompare: Word,
+    Compare: Word,
+  },
+  CBankConditionCompareValueSum: {
+    prototype: 'CBankConditionCompare',
+    AddCompare: Word,
+    Compare: Word,
+  },
   CBeamAsyncLinear: { catalog: 'beam'},
   CBehavior: { catalog: 'behavior'},
   CBehaviorAttackModifier: { prototype: 'CBehavior'},
@@ -488,28 +574,36 @@ export const StarcraftSchema = {
   CBehaviorUnitTracker: { prototype: 'CBehavior'},
   CBehaviorVeterancy: { prototype: 'CBehavior'},
   CBehaviorWander: { prototype: 'CBehavior'},
-  // CBoost: {catalog: 'boost'},
-  // CBundle: {catalog: 'bundle'},
+  CBoost: {
+    catalog: 'boost',
+    "Name": 'text',
+    "StoreName": 'text',
+    "HyperlinkId": 'word',
+    "StoreTypeName": 'text'
+  },
+  CBundle: {
+    catalog: 'bundle'
+  },
   CButton: { catalog: 'button'},
   camera: {
-    FieldOfViewMin: 'real',
-    FieldOfViewMax: 'real',
-    FieldOfViewIncrement: 'real',
-    DistanceMin: 'real',
-    DistanceMax: 'real',
-    DistanceIncrement: 'real',
-    PitchMin: 'real',
-    PitchMax: 'real',
-    PitchIncrement: 'real',
-    YawLeft: 'real',
-    YawRight: 'real',
-    YawMax: 'real',
-    YawIncrement: 'real',
+    FieldOfViewMin: Real,
+    FieldOfViewMax: Real,
+    FieldOfViewIncrement: Real,
+    DistanceMin: Real,
+    DistanceMax: Real,
+    DistanceIncrement: Real,
+    PitchMin: Real,
+    PitchMax: Real,
+    PitchIncrement: Real,
+    YawLeft: Real,
+    YawRight: Real,
+    YawMax: Real,
+    YawIncrement: Real,
     FollowOffsetUpdateBandX: 'reals',
     FollowOffsetUpdateBandY: 'reals',
     FollowScrollLeash: 'reals',
-    BorderSizeX:'int',
-    BorderSizeY:'int',
+    BorderSizeX:Int,
+    BorderSizeY:Int,
     ParamInitial:  '{real}',
     ZoomTableObserver: [{"Param":[{"index":"word","Modify":"int","Value":"real"}]}],
     ParamSmooth: [{"index":"word","SmoothTimeMax":"real","VelocityMax":"real","SmoothTimeMin":"real"}],
@@ -521,54 +615,61 @@ export const StarcraftSchema = {
     ScrollDecelerationPeriod:  '{real}',
     ForwardScale: '{real}',
     StrafeScale:  '{real}',
-    HeightMap: 'word',
-    RotateScale: 'real',
-    FollowScrollLimit: 'real',
-    SmartPanJumpDistance: 'real',
-    SmartPanSkipDistance: 'real',
-    HeightDisplacementFactor: 'real',
-    HeightDisplacementPitchMin: 'real',
-    HeightDisplacementPitchMax: 'real',
-    HeightDisplacementMax: 'real',
-    FollowResetDecayDuration: 'real',
-    FollowResetDecayFactor: 'real',
-    FollowResetJumpDelay: 'real',
-    FollowResetJumpDistance: 'real',
-    FollowResetTimeoutNormal: 'real',
-    FollowResetTimeoutLeashed: 'real',
-    FollowResetTimeoutUnleashed: 'real',
+    HeightMap: Word,
+    RotateScale: Real,
+    FollowScrollLimit: Real,
+    SmartPanJumpDistance: Real,
+    SmartPanSkipDistance: Real,
+    HeightDisplacementFactor: Real,
+    HeightDisplacementPitchMin: Real,
+    HeightDisplacementPitchMax: Real,
+    HeightDisplacementMax: Real,
+    FollowResetDecayDuration: Real,
+    FollowResetDecayFactor: Real,
+    FollowResetJumpDelay: Real,
+    FollowResetJumpDistance: Real,
+    FollowResetTimeoutNormal: Real,
+    FollowResetTimeoutLeashed: Real,
+    FollowResetTimeoutUnleashed: Real,
     ZoomTable: [{
       "Param":[{"index":"word","Modify":"real","Value":"real"}]
     }]
   },
   CCamera: { catalog: 'camera'},
-  campaign: {},
- // CCampaign: {catalog: 'campaign'},
+  campaign: {
+    CampaignData: {
+      "SaveName": 'string',
+      "CompletedSaveName": 'string',
+      "FeaturedImagePath": 'file',
+      "FeaturedDescription": 'text'
+    }
+  },
+  CCampaign: {catalog: 'campaign'},
   character: {
-    Name: 'link',
+    Name: 'text',
     RaceCustom: 'link',
     Attitude: 'link',
     Timbre: 'link',
     Dialect: 'link',
     VoiceRef: 'link',
-    Description: 'link',
-    Gender: 'word',
+    Description: 'text',
+    Gender: Word,
     Voice: 'string',
     Race: 'race',
     Unit: 'unit',
     Color: 'ints',
-    Age: 'int',
+    Age: Int,
     Image: 'string',
     Variations: [
       {
         Model: 'model',
         DefaultCategories: '[string]',
-        Name: 'link',
+        Name: 'text',
         Actor: 'actor'
       }
     ],
-    Relevance: 'word',
-    Pitch: 'int'
+    Relevance: Word,
+    Pitch: Int
   },
   CCharacter: { catalog: 'character'},
   CCliff: { catalog: 'cliff'},
@@ -623,7 +724,7 @@ export const StarcraftSchema = {
   CEffectModifyPlayer: { prototype: 'CEffect'},
   CEffectModifyUnit: {
     prototype: 'CEffect',
-    Resources: 'int'
+    Resources: Int
   },
   CEffectRandomPointInCircle: { prototype: 'CEffect'},
   CEffectRedirectMissile: { prototype: 'CEffect'},
@@ -638,12 +739,12 @@ export const StarcraftSchema = {
   CEffectUseCalldown: { prototype: 'CEffect'},
   CEffectUseMagazine: { prototype: 'CEffect'},
   CEffectUserData: { prototype: 'CEffect'},
-  //CEmoticon: { catalog: 'emoticon'},
-  //CEmoticonPack: {catalog: 'emoticonpack'},
+  CEmoticon: { catalog: 'emoticon'},
+  CEmoticonPack: {catalog: 'emoticonpack'},
   CFootprint: { catalog: 'footprint'},
   CFoW: { catalog: 'fow'},
-  //CGame: { catalog: 'game'},
-  //CGameUI: { catalog: 'gameui'},
+  CGame: { catalog: 'game'},
+  CGameUI: { catalog: 'gameui'},
   gameui: {
     ResourceArray: [{
       index: "word",
@@ -651,132 +752,132 @@ export const StarcraftSchema = {
     }],
     SoundQuality: [
       {
-        AutoDetectCPUCoreMaximum: 'int',
-        Channels: 'int',
-        Name: 'link',
-        Format: 'word',
-        SampleRate: 'int',
-        SpeakerMode: 'word',
+        AutoDetectCPUCoreMaximum: Int,
+        Channels: Int,
+        Name: 'text',
+        Format: Word,
+        SampleRate: Int,
+        SpeakerMode: Word,
         VariationMaximum: '{int}',
-        Resampler: 'word',
+        Resampler: Word,
         Flags: '{bit}'
       }
     ],
-    RegionNameSize: 'int',
+    RegionNameSize: Int,
     SelectionData: {
-      SelectionWidth: 'real',
-      SelectionFallOff: 'real',
+      SelectionWidth: Real,
+      SelectionFallOff: Real,
       SelectionAlpha: 'reals',
       SelectionTiming: 'reals',
-      SelectionSegmentCount: 'bit',
-      SelectionSegmentPercentSolid: 'real',
-      SelectionInnerOffsetRatio: 'real',
-      SelectionInnerBoundaryRatio: 'real',
-      SelectionInnerBoundaryFallOffRatio: 'real',
-      PreselectionWidth: 'real',
-      PreselectionFallOff: 'real',
+      SelectionSegmentCount: Bit,
+      SelectionSegmentPercentSolid: Real,
+      SelectionInnerOffsetRatio: Real,
+      SelectionInnerBoundaryRatio: Real,
+      SelectionInnerBoundaryFallOffRatio: Real,
+      PreselectionWidth: Real,
+      PreselectionFallOff: Real,
       PreselectionAlpha: 'reals',
       PreselectionTiming: 'reals',
-      PreselectionSegmentCount: 'int',
-      PreselectionSegmentPercentSolid: 'real',
-      PreselectionRotationSpeed: 'real'
+      PreselectionSegmentCount: Int,
+      PreselectionSegmentPercentSolid: Real,
+      PreselectionRotationSpeed: Real
     },
     SoundData: [
       {
-        index: 'word',
-        MixerPriority: 'int',
-        Volume: 'real',
-        MuteControl: 'word',
+        index: Word,
+        MixerPriority: Int,
+        Volume: Real,
+        MuteControl: Word,
         MuteFadeOut: [
           {
-            Time: 'int'
+            Time: Int
           }
         ],
         VolumeRolloffPoints: [
           {
-            Distance: 'real'
+            Distance: Real
           }
         ],
-        VolumeControl: 'word',
+        VolumeControl: Word,
         DupeFadeOut: [
           {
-            Time: 'int'
+            Time: Int
           }
         ],
         AlertFadeVolume: 'reals',
         ThresholdPoints: [
           {
-            Count: 'int',
-            Volume: 'real'
+            Count: Int,
+            Volume: Real
           }
         ],
-        VolumeBaseline: 'real',
-        AlertFadeTimeOut: 'int',
-        AlertFadeTimeIn: 'int',
+        VolumeBaseline: Real,
+        AlertFadeTimeOut: Int,
+        AlertFadeTimeIn: Int,
         DSPArray: '[dsp]'
       }
     ],
     LookAtTypes: [
       {
-        $Id: 'word',
-        Name: 'link',
+        $Id: Word,
+        Name: 'text',
         Start: [
           {
-            Group: 'word',
-            Weight: 'real',
-            Time: 'int'
+            Group: Word,
+            Weight: Real,
+            Time: Int
           }
         ],
         Stop: [
           {
-            Group: 'word',
-            Weight: 'bit',
-            Time: 'int'
+            Group: Word,
+            Weight: Bit,
+            Time: Int
           }
         ]
       }
     ],
     CameraShakeAmplitudes: [
       {
-        $Id: 'word',
-        Name: 'link',
+        $Id: Word,
+        Name: 'text',
         Position: 'reals',
         Rotation: {
-          Yaw: 'real',
-          Pitch: 'real',
-          Roll: 'real'
+          Yaw: Real,
+          Pitch: Real,
+          Roll: Real
         }
       }
     ],
     CameraShakeFrequencies: [
       {
-        $Id: 'word',
-        Name: 'link',
+        $Id: Word,
+        Name: 'text',
         Position: 'reals',
         Rotation: {
-          Yaw: 'real',
-          Pitch: 'real',
-          Roll: 'real'
+          Yaw: Real,
+          Pitch: Real,
+          Roll: Real
         }
       }
     ],
     ListenerAngleRolloff: [
       {
-        CameraValue: 'real',
-        ListenerFactor: 'real'
+        CameraValue: Real,
+        ListenerFactor: Real
       }
     ],
     ListenerDistanceRolloff: [
       {
-        CameraValue: 'real',
-        ListenerFactor: 'real'
+        CameraValue: Real,
+        ListenerFactor: Real
       }
     ],
-    PlanetPanelDefaultBackground: 'word',
-    WayPointMultiUnitFadePoint: 'real',
-    WayPointMultiUnitFadeAlpha: 'real',
-    WayPointLineWidth: 'real',
-    WayPointTileLength: 'real',
+    PlanetPanelDefaultBackground: Word,
+    WayPointMultiUnitFadePoint: Real,
+    WayPointMultiUnitFadeAlpha: Real,
+    WayPointLineWidth: Real,
+    WayPointTileLength: Real,
     DefaultPathColor: '{ints}',
     DefaultPathLineWidth: '{real}',
     DefaultPathTexture: '{string}',
@@ -785,39 +886,39 @@ export const StarcraftSchema = {
     DefaultPathStepModelScale: '{real}',
     PointModels: [
       {
-        index: 'word',
+        index: Word,
         Model: 'file',
-        Scale: 'real',
-        NameSize: 'int',
+        Scale: Real,
+        NameSize: Int,
         SelectionOffset: 'reals',
-        SelectionRadius: 'real'
+        SelectionRadius: Real
       }
     ],
     OverrideColors: [
       {
-        index: 'word',
+        index: Word,
         Value: '{reals}'
       }
     ],
     ColorBlindColors: [
       {
-        index: 'word',
+        index: Word,
         Value: '{reals}'
       }
     ],
-    RadarAlpha: 'int',
+    RadarAlpha: Int,
     PlayerIdObserverColorMap: '{word}',
     InfoColorBuffed: 'ints',
     InfoColorDebuffed: 'ints',
     InfoColorUpgraded: 'ints',
     RequirementsSatisfiedColor: 'ints',
     RequirementsUnsatisfiedColor: 'ints',
-    UnitDamageFlashDuration: 'int',
-    UnitDamageNotificationCooldown: 'int',
-    UnitDamageNotificationDelay: 'int',
+    UnitDamageFlashDuration: Int,
+    UnitDamageNotificationCooldown: Int,
+    UnitDamageNotificationDelay: Int,
     CancelTargetModeButtonFace: 'button',
     CancelPlacementModeButtonFace: 'button',
-    PlacementDisplayBonusRadius: 'int',
+    PlacementDisplayBonusRadius: Int,
     PlacementErrorColor: 'ints',
     PlacementWarningColor: 'ints',
     PlacementPerfectColor: 'ints',
@@ -825,15 +926,15 @@ export const StarcraftSchema = {
     PlacementColorBlindWarningColor: 'ints',
     PlacementColorBlindDefaultColor: 'ints',
     PlacementGridDimensions: 'ints',
-    ScreenModeTransitionDuration: 'int',
-    PossibleEnemyPlacementPingDuration: 'int',
+    ScreenModeTransitionDuration: Int,
+    PossibleEnemyPlacementPingDuration: Int,
     PossibleEnemyPlacementPingModel: 'model',
     PossibleEnemyPlacementPingColor: 'ints',
-    CostDisplayFade: 'int',
-    CostDisplayHeight: 'int',
-    CostDisplayHeightOffset: 'real',
-    CostDisplaySpeed: 'int',
-    CostDisplayTime: 'int',
+    CostDisplayFade: Int,
+    CostDisplayHeight: Int,
+    CostDisplayHeightOffset: Real,
+    CostDisplaySpeed: Int,
+    CostDisplayTime: Int,
     MinimapData: {
       InnerBorderColor: 'ints',
       OuterBorderColor: 'ints',
@@ -844,16 +945,16 @@ export const StarcraftSchema = {
       UnitBorderColor: 'ints',
       SelectedUnitBorderColor: 'ints',
       BackGroundColor: 'ints',
-      BorderSize: 'real',
-      SelectedBorderSize: 'real',
-      MinUnitDotSize: 'real',
-      RadarAlpha: 'int'
+      BorderSize: Real,
+      SelectedBorderSize: Real,
+      MinUnitDotSize: Real,
+      RadarAlpha: Int
     },
     BehaviorIconColors: '{ints}',
     BehaviorBorderColors: '{ints}',
     VitalColors: [
       {
-        index: 'word',
+        index: Word,
         ColorArray: '[ints]'
       }
     ],
@@ -862,173 +963,173 @@ export const StarcraftSchema = {
     WireframeColorArray: '[ints]',
     CostDisplayColor: '{ints}',
     GlowPeakMultiplier: 'reals',
-    TransmissionSoundDepth: 'real',
-    AlertPanMaxVelocity: 'real',
-    AlertPanMaxDuration: 'real',
-    AlertPanMinDuration: 'real',
+    TransmissionSoundDepth: Real,
+    AlertPanMaxVelocity: Real,
+    AlertPanMaxDuration: Real,
+    AlertPanMinDuration: Real,
     BeaconMinimapIcon: 'file',
-    BeaconMinimapRenderPriority: 'word',
+    BeaconMinimapRenderPriority: Word,
     DefaultInfoTooltipTypes: 'words',
-    CameraEventThresholdDistance: 'real',
-    CameraEventThresholdPitch: 'real',
-    CameraEventThresholdYaw: 'real',
-    CameraEventThresholdTarget: 'real',
+    CameraEventThresholdDistance: Real,
+    CameraEventThresholdPitch: Real,
+    CameraEventThresholdYaw: Real,
+    CameraEventThresholdTarget: Real,
     GameCategories: [
       {
         Info: {
-          $Id: 'int',
-          Name: 'link',
-          Description: 'link'
+          $Id: Int,
+          Name: 'text',
+          Description: 'text'
         },
         Modes: [
           {
-            $Id: 'int',
-            CanOverrideText: 'bit',
-            Name: 'link',
-            Description: 'link',
-            IsTutorial: 'bit'
+            $Id: Int,
+            CanOverrideText: Bit,
+            Name: 'text',
+            Description: 'text',
+            IsTutorial: Bit
           }
         ],
-        Usage: 'word'
+        Usage: Word
       }
     ],
     AutoVariantArcade: {
-      CategoryId: 'bit',
-      ModeId: 'bit',
+      CategoryId: Bit,
+      ModeId: Bit,
       Options: '{bit}'
     },
     AutoVariantMelee: {
-      CategoryId: 'int',
-      ModeId: 'bit',
+      CategoryId: Int,
+      ModeId: Bit,
       Options: '{bit}'
     },
     DefaultVariants: [
       {
-        CategoryId: 'int',
-        ModeId: 'int',
-        MinPlayers: 'int',
-        MaxPlayers: 'int',
-        TeamCount: 'int',
-        PlayersPerTeam: 'int',
+        CategoryId: Int,
+        ModeId: Int,
+        MinPlayers: Int,
+        MaxPlayers: Int,
+        TeamCount: Int,
+        PlayersPerTeam: Int,
         Options: '{bit}',
-        AIDifficulty: 'int',
-        PlayersPerTandem: 'int'
+        AIDifficulty: Int,
+        PlayersPerTandem: Int
       }
     ],
     DefaultUIRace: 'race',
-    MinCooldownDisplayDuration: 'int',
-    MinTimeDisplayDuration: 'int',
+    MinCooldownDisplayDuration: Int,
+    MinTimeDisplayDuration: Int,
     AchievementTags: '[word]',
     AltSoundtrack: [
       {
         AltSoundtrackName: 'link',
-        Suffix: 'word'
+        Suffix: Word
       }
     ],
-    TargetModeValidation: 'word',
+    TargetModeValidation: Word,
     MusicArray: '[word]',
-    IntroMusic: 'word',
-    PostGameMusic: 'word',
-    CreditsMusic: 'word',
-    LoopAmbience: 'word',
+    IntroMusic: Word,
+    PostGameMusic: Word,
+    CreditsMusic: Word,
+    LoopAmbience: Word,
     ObjectGroupData: [
       {
         MinimapIcon: 'file',
-        MinLevel: 'int'
+        MinLevel: Int
       }
     ],
     LoadingScreenHelpIntro: [
       {
-        Text: 'link'
+        Text: 'text'
       }
     ],
     LoadingScreenHelp: [
       {
-        Text: 'link',
+        Text: 'text',
         Race: 'race'
       }
     ],
     LoadingBars: [
       {
-        Name: 'link',
-        FrameSuffix: 'word'
+        Name: 'text',
+        FrameSuffix: Word
       }
     ],
     UnitKillRank: [
       {
-        Text: 'link',
-        MinKills: 'int'
+        Text: 'text',
+        MinKills: Int
       }
     ],
     ObserverSoundtrack: 'soundtrack',
-    StrobeHaloEmission: 'real',
+    StrobeHaloEmission: Real,
     StrobeHighlightColor: 'ints',
     TutorialArray: [
       {
-        Title: 'link',
+        Title: 'text',
         Icon: 'file',
         Movie: 'string'
       }
     ],
     MixRouting: [
       {
-        index: 'word',
-        ParentCategory: 'word'
+        index: Word,
+        ParentCategory: Word
       }
     ],
     StartupMovieArray: [
       {
-        Name: 'link',
+        Name: 'text',
         Path: 'string',
         Source: 'string'
       }
     ],
-    HelpTechTitle: 'link',
+    HelpTechTitle: 'text',
     HelpGameMechanics: [
       {
         Icon: 'file',
         IconBackground: 'link',
-        Name: 'link',
-        Description: 'link'
+        Name: 'text',
+        Description: 'text'
       }
     ],
     HelpControlCategories: [
       {
-        Name: 'link',
-        Description: 'link'
+        Name: 'text',
+        Description: 'text'
       }
     ],
     HelpControls: [
       {
         Category: 'link',
-        Name: 'link',
-        Description: 'link',
-        Basic: 'bit'
+        Name: 'text',
+        Description: 'text',
+        Basic: Bit
       }
     ],
     HotkeyInfoArray: [
       {
-        index: 'word',
+        index: Word,
         Category: 'link',
-        Name: 'link',
-        Tooltip: 'link'
+        Name: 'text',
+        Tooltip: 'text'
       }
     ],
     CutsceneAssetPath: [
       {
         Path: 'string',
-        Theme: 'word'
+        Theme: Word
       }
     ],
     CutsceneThemeChoiceArray: '[link]',
-    CutsceneLatest: 'word',
-    StrobeCycleLength: 'int',
-    StrobeFalloff: 'real',
-    StrobeHeight: 'real',
-    HelpTechTreeSuffix: 'word',
+    CutsceneLatest: Word,
+    StrobeCycleLength: Int,
+    StrobeFalloff: Real,
+    StrobeHeight: Real,
+    HelpTechTreeSuffix: Word,
     DSPArray: '[dsp]',
-    HelpHiddenInGlue: 'bit',
-    DisplayScaledTime: 'bit'
+    HelpHiddenInGlue: Bit,
+    DisplayScaledTime: Bit
   },
   CHerd: { catalog: 'herd'},
   CHerdNode: { catalog: 'herdnode'},
@@ -1068,8 +1169,8 @@ export const StarcraftSchema = {
   CMoverMissile: { prototype: 'CMover'},
   CObjective: {
     catalog: 'objective',
-    Name: 'link',
-    Description: 'link'
+    Name: 'text',
+    Description: 'text'
   },
   CPhysicsMaterial: { catalog: 'physicsmaterial'},
   CPing: { catalog: 'ping'},
@@ -1079,16 +1180,16 @@ export const StarcraftSchema = {
   CPlayerResponseUnitDamage: { prototype: 'CPlayerResponse'},
   CPlayerResponseUnitDeath: { prototype: 'CPlayerResponse'},
   CPortraitPack: { catalog: 'portraitpack'},
-  // CPreload: { catalog: 'preload'},
-  // CPreloadActor: { prototype: 'CPreload'},
-  // CPreloadConversation: { prototype: 'CPreload'},
-  // CPreloadModel: { prototype: 'CPreload'},
-  // CPreloadSound: { prototype: 'CPreload'},
-  // CPreloadUnit: { prototype: 'CPreload'},
-  //CPremiumMap: { catalog: 'premiummap'},
-  //CRaceBannerPack: { catalog: 'racebannerpack'},
+  CPreload: { catalog: 'preload'},
+  CPreloadActor: { prototype: 'CPreload'},
+  CPreloadConversation: { prototype: 'CPreload'},
+  CPreloadModel: { prototype: 'CPreload'},
+  CPreloadSound: { prototype: 'CPreload'},
+  CPreloadUnit: { prototype: 'CPreload'},
+  CPremiumMap: { catalog: 'premiummap'},
+  CRaceBannerPack: { catalog: 'racebannerpack'},
   racebannerpack: {
-    Default: 'int',
+    Default: Int,
     RaceBannerArray: '[word]'
   },
   CRace: { catalog: 'race'},
@@ -1096,74 +1197,68 @@ export const StarcraftSchema = {
   requirementnode: {
     Tooltip: 'string',
     Flags: '{bit}',
-    Value: 'int',
+    Value: Int,
     Count: {
       Link: 'string',
-      State: 'word',
-      Unlock: 'word'
+      State: Word,
+      Unlock: Word
     },
-    Link: 'word',
-    OperandArray: '[requirementnode]',
-    Index: 'int'
+    Link: Word,
+    OperandArray: [{value: 'requirementnode', index: Int}],
+    Index: Int
   },
-  CRequirementAnd: {
-    prototype: 'CRequirementAllowAbil',
-    OperandArray: '[requirementnode]'
-  },
-  CRequirementOr: {
-    prototype: 'CRequirementAllowAbil',
-    OperandArray: '[requirementnode]'
-  },
-  CRequirementAllowAbil: { catalog: 'requirementnode'},
-  CRequirementAllowBehavior: { prototype: 'CRequirementAllowAbil'},
-  CRequirementAllowUnit: { prototype: 'CRequirementAllowAbil'},
-  CRequirementAllowUpgrade: { prototype: 'CRequirementAllowAbil'},
-  CRequirementConst: { prototype: 'CRequirementAllowAbil'},
-  CRequirementCountAbil: { prototype: 'CRequirementAllowAbil'},
+  CRequirementNode: {catalog: 'requirementnode'},
+  CRequirementAnd: { prototype: 'CRequirementNode'},
+  CRequirementOr: {prototype: 'CRequirementNode'},
+  CRequirementAllowAbil: {prototype: 'CRequirementNode'},
+  CRequirementAllowBehavior: {prototype: 'CRequirementNode'},
+  CRequirementAllowUnit: {prototype: 'CRequirementNode'},
+  CRequirementAllowUpgrade: {prototype: 'CRequirementNode'},
+  CRequirementConst: {prototype: 'CRequirementNode'},
+  CRequirementCountAbil: {prototype: 'CRequirementNode'},
   CRequirementCountBehavior: {
-    prototype: 'CRequirementAllowAbil',
+    prototype: 'CRequirementNode',
     Count: {
       Link: 'behavior'
     }
   },
   CRequirementCountUnit: {
-    prototype: 'CRequirementAllowAbil',
+    prototype: 'CRequirementNode',
     Count: {
       Link: 'unit'
     }
   },
   CRequirementCountUpgrade: {
-    prototype: 'CRequirementAllowAbil',
+    prototype: 'CRequirementNode',
     Count: {
       Link: 'upgrade'
     }
   },
-  CRequirementDiv: { prototype: 'CRequirementAllowAbil'},
-  CRequirementEq: { prototype: 'CRequirementAllowAbil'},
-  CRequirementGT: { prototype: 'CRequirementAllowAbil'},
-  CRequirementGTE: { prototype: 'CRequirementAllowAbil'},
-  CRequirementLT: { prototype: 'CRequirementAllowAbil'},
-  CRequirementLTE: { prototype: 'CRequirementAllowAbil'},
-  CRequirementMod: { prototype: 'CRequirementAllowAbil'},
-  CRequirementMul: { prototype: 'CRequirementAllowAbil'},
-  CRequirementNE: { prototype: 'CRequirementAllowAbil'},
-  CRequirementNode: { prototype: 'CRequirementAllowAbil'},
-  CRequirementNot: { prototype: 'CRequirementAllowAbil'},
-  CRequirementOdd: { prototype: 'CRequirementAllowAbil'},
-  CRequirementSum: { prototype: 'CRequirementAllowAbil'},
-  CRequirementXor: { prototype: 'CRequirementAllowAbil'},
+  CRequirementDiv: {prototype: 'CRequirementNode'},
+  CRequirementEq: {prototype: 'CRequirementNode'},
+  CRequirementGT: {prototype: 'CRequirementNode'},
+  CRequirementGTE: {prototype: 'CRequirementNode'},
+  CRequirementLT: {prototype: 'CRequirementNode'},
+  CRequirementLTE: {prototype: 'CRequirementNode'},
+  CRequirementMod: {prototype: 'CRequirementNode'},
+  CRequirementMul: {prototype: 'CRequirementNode'},
+  CRequirementNE: {prototype: 'CRequirementNode'},
+  CRequirementNot: {prototype: 'CRequirementNode'},
+  CRequirementOdd: {prototype: 'CRequirementNode'},
+  CRequirementSum: {prototype: 'CRequirementNode'},
+  CRequirementXor: {prototype: 'CRequirementNode'},
 
   CReverb: { catalog: 'reverb'},
   reward: {
-    $thumbnail: 'word',
-    $voicepack: 'word',
-    $prefix: 'word',
+    $thumbnail: Word,
+    $voicepack: Word,
+    $prefix: Word,
     Category: {"File":"word","Tag":"word"},
     Flags: '{bit}',
-    IconSlot: 'int',
-    IgnorePlayerRace: 'int',
+    IconSlot: Int,
+    IgnorePlayerRace: Int,
     Race: 'race',
-    RaceBannerPack: 'word',
+    RaceBannerPack: Word,
     Image1v1: 'file',
     Image2v2: 'file',
     Image3v3: 'file',
@@ -1175,27 +1270,27 @@ export const StarcraftSchema = {
     }],
     License: 'string'
   },
-  //CReward: { catalog: 'reward'},
-  //CRewardConsoleSkin: { prototype: 'CReward'},
-  //CRewardDecal: { prototype: 'CReward'},
-  //CRewardEmoticon: { prototype: 'CReward'},
-  //CRewardIcon: { prototype: 'CReward'},
-  //CRewardModel: {prototype: 'CReward'},
-  //CRewardPoints: {prototype: 'CReward'},
-  //CRewardPortrait: {prototype: 'CReward'},
-  //CRewardPortraitInGame: {prototype: 'CReward'},
-  //CRewardRaceBanner: {prototype: 'CReward'},
-  //CRewardSpray: {prototype: 'CReward'},
-  //CRewardSprayUseDecal: { prototype: 'CReward'},
-  //CRewardTrophy: { prototype: 'CReward'},
-  //CRewardVoicePack: { prototype: 'CReward'},
+  CReward: { catalog: 'reward'},
+  CRewardConsoleSkin: { prototype: 'CReward'},
+  CRewardDecal: { prototype: 'CReward'},
+  CRewardEmoticon: { prototype: 'CReward'},
+  CRewardIcon: { prototype: 'CReward'},
+  CRewardModel: {prototype: 'CReward'},
+  CRewardPoints: {prototype: 'CReward'},
+  CRewardPortrait: {prototype: 'CReward'},
+  CRewardPortraitInGame: {prototype: 'CReward'},
+  CRewardRaceBanner: {prototype: 'CReward'},
+  CRewardSpray: {prototype: 'CReward'},
+  CRewardSprayUseDecal: { prototype: 'CReward'},
+  CRewardTrophy: { prototype: 'CReward'},
+  CRewardVoicePack: { prototype: 'CReward'},
   CScoreResult: {
     catalog: 'scoreresult',
-    Name : 'link',
-    PublishName : 'link',
-    Tooltip: 'link',
-    UniqueTag: 'word',
-    Operation: 'word',
+    Name: 'text',
+    PublishName: 'text',
+    Tooltip: 'text',
+    UniqueTag: Word,
+    Operation: Word,
     Icon: 'file',
     Flags: '{bit}',
     HeaderTable: '[word]',
@@ -1210,16 +1305,16 @@ export const StarcraftSchema = {
   CScoreResultScore: { prototype: 'CScoreResult'},
   CScoreValue: {
     catalog: 'scorevalue',
-    Collapse: 'word',
+    Collapse: Word,
     Flags: '{bit}',
-    Name : 'link',
-    PublishName : 'link',
-    Tooltip: 'link',
-    UniqueTag: 'word',
-    Operation: 'word',
-    Report: 'word',
-    Sort: 'word',
-    Value: 'word',
+    Name: 'text',
+    PublishName: 'text',
+    Tooltip: 'text',
+    UniqueTag: Word,
+    Operation: Word,
+    Report: Word,
+    Sort: Word,
+    Value: Word,
     Icon: 'file',
     HeaderTable: '[word]',
     ValueTable: '[word]'
@@ -1238,13 +1333,13 @@ export const StarcraftSchema = {
   CSoundtrack: { catalog: 'soundtrack'},
   CSpray: { catalog: 'spray'},
   CSprayPack: { catalog: 'spraypack'},
-  //CStimPack: { catalog: 'stimpack'},
+  CStimPack: { catalog: 'stimpack'},
   CTacCooldown: { catalog: 'taccooldown'},
   CTactical: { catalog: 'tactical'},
   CTacticalOrder: { prototype: 'CTactical'},
   CTacticalSet: { prototype: 'CTactical'},
-  //CTalent: { catalog: 'talent'},
-  //CTalentProfile: { catalog: 'talentprofile'},
+  CTalent: { catalog: 'talent'},
+  CTalentProfile: { catalog: 'talentprofile'},
   CTargetFind: { catalog: 'targetfind'},
   CTargetFindBestPoint: { prototype: 'CTargetFind'},
   CTargetFindEffect: { prototype: 'CTargetFind'},
@@ -1279,9 +1374,10 @@ export const StarcraftSchema = {
   CTexture: { catalog: 'texture'},
   CTextureSheet: { catalog: 'texturesheet'},
   CTile: { catalog: 'tile'},
-  // CTrophy: { catalog: 'trophy'},
+  CTrophy: { catalog: 'trophy'},
   CTurret: { catalog: 'turret'},
   CUnit: { catalog: 'unit'},
+  CUnitHero: { catalog: 'unit'},
   CUpgrade: { catalog: 'upgrade'},
   CUser: { catalog: 'user'},
   CValidator: { catalog: 'validator'},
@@ -1322,6 +1418,7 @@ export const StarcraftSchema = {
   CValidatorPlayerCompareResult: { prototype: 'CValidator'},
   CValidatorPlayerCompareType: { prototype: 'CValidator'},
   CValidatorPlayerFood: { prototype: 'CValidator'},
+  CValidatorIsUnitTracked: {prototype: 'CValidator'},
   CValidatorPlayerRequirement: {
     prototype: 'CValidator',
     Value: 'requirement'
@@ -1388,52 +1485,57 @@ export const StarcraftSchema = {
   CValidatorUnitCompareAbilLevel: { prototype: 'CValidator'},
   CVoiceOver: { catalog: 'voiceover'},
   CVoicePack: { catalog: 'voicepack'},
-  // CWarChest: { catalog: 'warchest'},
-  // CWarChestSeason: { catalog: 'warchestseason'},
+  CWarChest: { catalog: 'warchest'},
+  CWarChestSeason: { catalog: 'warchestseason'},
   CWater: { catalog: 'water'},
   CWeapon: { catalog: 'weapon'},
   CWeaponLegacy: { prototype: 'CWeapon'},
   CWeaponStrafe: { prototype: 'CWeapon'},
   scorevalue: {
-    Type: 'word'
+    Type: Word
   },
   abil: {
-    Name: 'link',
-    TechPlayer: 'word',
+    Name: 'text',
+    TechPlayer: Word,
     UnloadTransportEffect: 'effect',
     LoadTransportEffect: 'effect',
     EditorCategories: 'categories',
     TargetMessage: 'link',
     CargoFilter: 'unit',
-    CastMovementLimit: 'int',
+    CastMovementLimit: Int,
     LevelButtonTooltip: '[link]',
     LevelButtonOffTooltip: '[link]',
+    ResourceAmountBonus: '{int}',
+    ReturnLifeFraction: Real,
     OrderArray: [
       {
-        DisplayType: 'word',
+        DisplayType: Word,
         Color: 'ints',
         Model: 'file',
         LineTexture: 'string',
-        Scale: 'real'
+        Scale: Real
       }
     ],
     SharedFlags: '{bit}',
-    DataCollection: 'word',
-    RangeSlop: 'real',
+    DataCollection: Word,
+    RangeSlop: Real,
     CancelDelay: '{real}',
     FinishCommand: 'abilcmd',
-    ArcSlop: 'real',
-    AutoCastAcquireLevel: 'word',
+    ArcSlop: Real,
+    AutoCastAcquireLevel: Word,
     AutoCastFilters: 'filters',
     Flags: '{bit}',
     Effect: '[effect]',
     EffectRange: '[reals]',
     AINotifyEffect: 'effect',
+    VeterancyBehavior: 'behavior',
     RefundArray: '{bit}',
     UnloadValidatorArray: '[validator]',
+    AutoCastToggleOnValidatorArray: '[validator]',
+    AutoCastToggleOffValidatorArray: '[validator]',
     RefundFraction: {
-      Charge: 'int',
-      Cooldown: 'int',
+      Charge: Int,
+      Cooldown: Int,
       Resource: '{real}',
       Vital: '{int}'
     },
@@ -1442,75 +1544,78 @@ export const StarcraftSchema = {
     PreemptableArray: '{bit}',
     ValidatedArray: '{bit}',
     DefaultError: 'string',
-    AcquirePriority: 'int',
-    SetLastTarget: 'word',
-    VeterancyLevelMin: 'bit',
-    VeterancyLevelSkip: 'bit',
+    AcquirePriority: Int,
+    Levels: Int,
+    Points: Int,
+    SetLastTarget: Word,
+    VeterancyLevelMin: Bit,
+    VeterancyLevelSkip: Bit,
     ErrorAlert: 'string',
     Activity: 'link',
-    Cancelable: 'bit',
-    Leash: 'real',
+    Cancelable: Bit,
+    Leash: Real,
     Alert: 'string',
     AbilSetId: 'abil',
-    DebugTrace: 'bit',
-    Alignment: 'word',
+    DebugTrace: Bit,
+    Alignment: Word,
     AcquireFilters: 'filters',
     SmartFilters: 'filters',
     SupportedFilters: 'filters',
     CmdButtonArray: [
       {
-        index: 'word',
+        index: Word,
         DefaultButtonFace: 'button',
         Flags: '{bit}',
-        ReviverIndex: 'int',
+        ReviverIndex: Int,
         ValidatorArray: '[validator]',
         Requirements: 'requirement',
-        State: 'word'
+        State: Word
       }
     ],
-    MaxAttackSpeedMultiplier: 'int',
-    MinAttackSpeedMultiplier: 'real',
+    MaxAttackSpeedMultiplier: Int,
+    MinAttackSpeedMultiplier: Real,
     TargetFilters: '[filters]',
     Range: '[real]',
-    EnumRange: 'int',
+    EnumRange: Int,
     HaltCmdButton: {
       DefaultButtonFace: 'button'
     },
     FlagArray: '{bit}',
     InfoArray: [
       {
-        index: 'int',
+        index: Int,
         Button: {
           Flags: '{bit}',
           DefaultButtonFace: 'button',
-          State: 'word',
+          State: Word,
           Requirements: 'requirement'
         },
+        Classes: '[itemclass]',
         Unit: 'unit',
         SectionArray: [
           {
-            index: 'word',
+            index: Word,
             DurationArray: '{real}',
             EffectArray: '{effect}'
           }
         ],
-        Time: 'real',
-        VeterancyLevelMin: 'int',
-        VeterancyLevelSkip: 'int',
-        AddOnParentCmdPriority: 'int',
-        Count: 'int',
-        CollideRange: 'real',
+        Time: Real,
+        VeterancyLevelMin: Int,
+        VeterancyLevelSkip: Int,
+        AddOnParentCmdPriority: Int,
+        Count: Int,
+        CollideRange: Real,
         Effect: 'effect',
         Charge: {
-          CountMax: 'int',
-          CountStart: 'int',
-          CountUse: 'real',
-          Location: 'word',
-          TimeStart: 'real',
-          TimeUse: 'real',
+          CountMax: Int,
+          CountStart: Int,
+          CountUse: Real,
+          Location: Word,
+          TimeStart: Real,
+          TimeUse: Real,
           Link: 'string',
           Flags: '{bit}',
-          HideCount: 'bit'
+          HideCount: Bit
         },
         Upgrade: 'upgrade',
         Resource: '{int}',
@@ -1521,137 +1626,134 @@ export const StarcraftSchema = {
         AllowSetValidators: '[validator]',
         SetValidators: '[validator]',
         UseValidators: '[validator]',
-        SetOnGround: 'bit',
+        SetOnGround: Bit,
         ValidatorArray: '[validator]',
         Cooldown: {
           Link: 'string',
-          TimeUse: 'real',
-          Location: 'word',
-          TimeStart: 'real'
+          TimeUse: Real,
+          Location: Word,
+          TimeStart: Real
         },
-        RandomDelayMax: 'real',
-        CountStart: 'int',
-        Manage: 'word',
-        Score: 'bit',
-        RandomDelayMin: 'real',
-        Delay: 'int',
+        RandomDelayMax: Real,
+        CountStart: Int,
+        Manage: Word,
+        Score: Bit,
+        RandomDelayMin: Real,
+        Delay: Int,
         Vital: '{int}',
-        RallyResetPhase: 'word',
+        RallyResetPhase: Word,
         Display: '{bit}',
-        Alignment: 'word',
-        Container: 'word',
-        EmptyFace: 'word',
+        Alignment: Word,
+        Container: Word,
+        EmptyFace: Word,
         Item: 'item',
         TargetFilters: 'filters',
         RefundFraction: '{bit}',
         Abil: 'abil',
-        Distance: 'int',
-        Rotation: 'word',
+        Distance: Real,
+        Rotation: Word,
         AllowSetFilters: 'filters',
-        AllowSetOnGround: 'bit'
+        AllowSetOnGround: Bit
       }
     ],
     VitalStartFactor: '{real}',
-    FollowRange: 'real',
-    AcquireRadius: 'int',
+    FollowRange: Real,
+    AcquireRadius: Int,
     ReservedMarker: {
       Link: 'link'
     },
     ResourceAllowed: '{bit}',
     ResourceAcquire: '{bit}',
     ResourceDestroy: '{bit}',
-    ResourceAmountMultiplier: '{int}',
+    ResourceAmountMultiplier: '{real}',
     ResourceTimeMultiplier: '{real}',
     UninterruptibleArray: '{bit}',
-    ActorKey: 'word',
+    ActorKey: Word,
     AbilClassEnableArray: '{bit}',
     AbilClassDisableArray: '{bit}',
-    QueueCount: 'int',
+    QueueCount: Int,
     NameOverride: 'link',
-    SelfReviveCmd: 'word',
-    TargetType: 'word',
+    SelfReviveCmd: Word,
+    TargetType: Word,
     VitalArray: '{word}',
     MaxInfo: {
-      TimeFactor: 'real',
-      Time: 'int',
+      TimeFactor: Real,
+      Time: Int,
       ResourceFactor: '{int}',
       Resource: '{int}'
     },
-    DeathTypeOnFinish: 'word',
-    DeathTypeOnCancel: 'word',
-    MaxUnloadRange: 'real',
-    TargetSorts: {
-      SortArray: '[targetsort]',
-      RequestCount: 'bit'
-    },
+    DeathTypeOnFinish: Word,
+    DeathTypeOnCancel: Word,
+    MaxUnloadRange: Real,
+    TargetSorts: TargetSorts,
     ReplaceFilters: 'filters',
     ValidatorArray: '[validator]',
-    AttackModifierBehavior: 'word',
-    FleeRange: 'int',
-    FleeTime: 'int',
-    FollowRangeSlop: 'bit',
-    FollowAcquireRange: 'int',
-    MinPatrolDistance: 'bit',
+    AttackModifierBehavior: Word,
+    FleeRange: Int,
+    FleeTime: Int,
+    FollowRangeSlop: Bit,
+    FollowAcquireRange: Int,
+    MinPatrolDistance: Bit,
     CursorEffect: '[effect]',
-    Type: 'word',
+    Type: Word,
     BehaviorArray: '[behavior]',
     Cost: [CostSchema],
     OffCost: CostSchema,
     ExpireCost: CostSchema,
     AbilityCategories: '{bit}',
-    DefaultButtonCardId: 'word',
+    DefaultButtonCardId: Word,
     CancelableArray: '{bit}',
-    AutoCastRange: 'real',
+    AutoCastRange: Real,
     PostEffectBehavior: EffectBehaviorSchema,
     PreEffectBehavior: EffectBehaviorSchema,
     UnloadCargoBehavior: 'behavior',
     UnloadTransportBehavior: 'behavior',
     AutoCastValidatorArray: '[validator]',
     Marker: {
-      Duration: 'real',
+      Duration: Real,
       Link: 'string',
       MatchFlags: '{bit}',
       MismatchFlags: '{bit}'
     },
     InheritAttackPriorityArray: '{bit}',
     MorphUnit: 'unit',
-    Arc: 'real',
-    Placeholder: 'word',
+    Arc: Real,
+    Placeholder: Word,
     ProducedUnitArray: '[unit]',
     PlaceUnit: 'unit',
-    InfoTooltipPriority: 'int',
+    InfoTooltipPriority: Int,
     CastIntroTime: '[real]',
     CastOutroTime: '[real]',
     FinishTime: '[real]',
     PrepTime: '[real]',
-    QueueSize: 'int',
+    QueueSize: Int,
     FollowFilters: 'filters',
     ConstructionMover: 'mover',
-    FidgetDelayMin: 'int',
-    FidgetDelayMax: 'int',
-    AcquireAttackers: 'bit',
+    FidgetDelayMin: Int,
+    FidgetDelayMax: Int,
+    AcquireAttackers: Bit,
     SmartValidatorArray: '[validator]',
-    MaxCargoCount: 'int',
-    MaxCargoSize: 'int',
-    TotalCargoSpace: 'int',
-    UnloadPeriod: 'real',
+    MaxCargoCount: Int,
+    MaxCargoSize: Int,
+    TotalCargoSpace: Int,
+    UnloadPeriod: Real,
     ShowProgressArray: '{bit}',
     ProgressButtonArray: '{button}',
     LoadCargoBehavior: 'behavior',
     LoadValidatorArray: '[validator]',
-    SearchRadius: 'int',
+    SearchRadius: Int,
     DeathUnloadEffect: 'effect',
     LoadCargoEffect: 'effect',
     UnloadCargoEffect: 'effect',
     BuildMorphAbil: 'abil',
-    Launch: 'word',
+    Launch: Word,
     CalldownEffect: 'effect',
     EffectArray: '{effect}',
-    AutoCastCountMin: 'bit',
-    LoadTransportBehavior: 'word',
+    AutoCastCountMin: Bit,
+    LoadTransportBehavior: Word,
     PowerUserBehavior: 'behavior',
-    InitialUnloadDelay: 'real',
-    LoadPeriod: 'real',
+    InitialUnloadDelay: Real,
+    LoadPeriod: Real,
     AlertArray: '{word}',
     Abil: 'abil',
     ProgressButton: 'button',
@@ -1659,53 +1761,53 @@ export const StarcraftSchema = {
       Charge: {Link: 'link'},
       Cooldown: {Link: 'link'},
       Unit: 'unit',
-      Time: 'real',
+      Time: Real,
       Resource: '{int}'
     },
     ExternalAngle: '[real]',
     AbilCmd: 'abilcmd',
     ResourceAmountRequest: '{int}',
-    Offset: 'ints',
-    MaxCount: 'int',
+    Offset: 'reals',
+    MaxCount: Int,
     CancelUnit: 'unit',
-    TrackingArc: 'real',
+    TrackingArc: Real,
     PrepEffect: 'effect',
-    MaxDropRange: 'bit',
+    MaxDropRange: Real,
     BaseInfo: {
-      Time: 'int',
+      Time: Int,
       Resource: '{int}',
       Cooldown: {
-        Location: 'word',
-        TimeUse: 'real'
+        Location: Word,
+        TimeUse: Real
       }
     },
     LevelInfo: {
-      Time: 'int',
+      Time: Int,
       Resource: '{int}'
     },
-    PointsPerLevel: 'bit',
+    PointsPerLevel: Int,
     IgnoreFilters: 'filters',
     ProxyOffset: 'ints',
     ProxyUnit: 'unit',
     AbilLinkEnableArray: '[abil]',
     InterruptCost: CostSchema,
     CastOutroTimeEffect: 'effect',
-    CursorRangeMode: 'word',
-    SmartPriority: 'int',
+    CursorRangeMode: Word,
+    SmartPriority: Int,
     CancelEffect: '{effect}',
-    ResourceQueueIndex: 'bit',
-    AutoCastCountMax: 'int',
+    ResourceQueueIndex: Bit,
+    AutoCastCountMax: Int,
     $unit: 'unit',
     CancelCost: CostSchema
   },
   accumulator: {
-    PreviousValueFactor: 'bit',
-    Scale: 'real',
-    Index: 'int',
-    Type: 'word',
-    AmountType: 'word',
+    PreviousValueFactor: Bit,
+    Scale: Real,
+    Index: Int,
+    Type: Word,
+    AmountType: Word,
     Attribute: 'behavior',
-    Key: 'word',
+    Key: Word,
     StartLocation: [{Effect:"effect",Value:"string"}],
     EndLocation : [{Effect:"effect",Value:"string"}],
     CaseArray: [
@@ -1715,15 +1817,15 @@ export const StarcraftSchema = {
       }
     ],
     Behavior: 'behavior',
-    CaseDefault: 'word',
-    ApplicationRule: 'word',
+    CaseDefault: Word,
+    ApplicationRule: Word,
     Amount: '[real]',
-    Ratio: 'real',
-    MinAccumulation: 'real',
-    MaxAccumulation: 'real',
+    Ratio: Real,
+    MinAccumulation: Real,
+    MaxAccumulation: Real,
     VitalType: 'string',
     ModificationType: 'string',
-    BonusPerLevel: 'real',
+    BonusPerLevel: Real,
     UnitSource: {
       "Value": "word"
     },
@@ -1731,177 +1833,167 @@ export const StarcraftSchema = {
     Parameters: [
       {
         AccumulatorArray: '[accumulator]',
-        value: 'real'
+        value: Real
       }
     ],
   },
   actor: {
-    FogVisibility: 'word',
+    FogVisibility: Word,
     EditorCategories: 'categories',
-    InheritType: 'word',
-    TiltType: 'word',
-    PlayerIdSource: 'word',
-    CustomUnitStatusAttachment: 'word',
+    InheritType: Word,
+    TiltType: Word,
+    EventDataSoundActor: 'actor',
+    PlayerIdSource: Word,
+    CustomUnitStatusAttachment: Word,
     QueryFilters: 'filters',
     VisibleTo: '{bit}',
     Inherits: '{bit}',
     FilterPlayers: '[int]',
-    AddToProximitySystem: 'bit',
+    VisibleToPlayers: '[int]',
+    AddToProximitySystem: Bit,
+    WalkAnimTimeScalingAsFlyer: Bit,
     HeightRange: 'reals',
     AcceptedTransfers: '{bit}',
+    InternalSplatHeight: Word,
+    PortraitCamera: 'camera',
     On: [
       {
         Terms: 'terms',
         Send: 'send',
-        Target: 'string'
+        Target: 'subject'
       }
     ],
     Camera: 'camera',
     Model: 'model',
     UnitIconVariations: [{Number:"int",Image: "file"}],
     CustomUnitStatusOffset: 'ints',
-    AnimBlendTime: 'real',
+    AnimBlendTime: Real,
     ModelFlags: '{bit}',
-    ProximityPosition: 'word',
+    ProximityPosition: Word,
     LaunchActor: 'actor',
-    LaunchHeight: 'real',
+    LaunchHeight: Real,
     CenterActor: 'actor',
-    CenterHeight: 'real',
+    CenterHeight: Real,
     ImpactActor: 'actor',
-    ImpactHeight: 'real',
+    ImpactHeight: Real,
     QuadFlags: '{bit}',
-    PowerSource: 'word',
-    SpawnTarget: 'word',
+    PowerSource: Word,
+    SpawnTarget: Word,
     HostSiteOps: {
-      Ops: 'string',
-      HoldPosition: 'bit',
-      HoldRotation: 'bit'
+      Ops: 'ops',
+      HoldPosition: Bit,
+      HoldRotation: Bit
     },
-    Host: {
-      Subject: 'subject',
-      Actor: 'word',
-      Scope: 'word',
-      FailOnNoHost: 'bit',
-      Effect: 'effect',
-      ReachAcrossEffectTrees: 'bit'
-    },
+    Host: Host,
     TerrainDeformerFlags: '{bit}',
-    FoliageFXDeathSpawnTarget: 'word',
-    Supporter: {
-      Subject: 'subject',
-      Actor: 'word',
-      Scope: 'word',
-      Effect: 'effect'
-    },
-    Arc: 'real',
+    FoliageFXDeathSpawnTarget: Word,
+    Supporter: Host,
+    Arc: Real,
     Icon: 'file',
-    IconArcLength: 'real',
+    IconArcLength: Real,
     CliffLevelFlags: '{bit}',
     RangeFlags: '{bit}',
     IconTint: 'ints',
     Flags: '{bit}',
-    RadiusMedium: 'real',
-    RadiusLarge: 'real',
-    MaxCountSmall: 'int',
-    MaxCountMedium: 'int',
-    MaxCountLarge: 'int',
+    RadiusMedium: Real,
+    RadiusLarge: Real,
+    MaxCountSmall: Int,
+    MaxCountMedium: Int,
+    MaxCountLarge: Int,
     Sound: 'sound',
     SoundFlags: '{bit}',
     Color: 'ints',
-    FadeIn: 'real',
-    FadeOut: 'real',
-    TextScale: 'real',
+    FadeIn: Real,
+    FadeOut: Real,
+    TextScale: Real,
     MaxSize: 'reals',
-    AlignH: 'word',
-    AlignV: 'word',
+    AlignH: Word,
+    AlignV: Word,
     PitchQuery: {
       Methods: 'string'
     },
     YawQuery: {
       Methods: 'string'
     },
-    TurretBody: {
-      Subject: 'subject',
-      Actor: 'word'
-    },
+    TurretBody: Host,
     Aliases: '[word]',
-    AngleAnimProps: 'word',
-    Beam: 'word',
+    AngleAnimProps: Word,
+    Beam: Word,
     DoodadFlags: '{bit}',
     EditorIcon: 'file',
     Radius: 'reals',
     RandomScaleRange: 'reals',
-    OccludeHeight: 'real',
+    OccludeHeight: Real,
     EditorFlags: '{bit}',
-    MinimapRenderPriority: 'word',
-    VisibleOpacity: 'real',
+    MinimapRenderPriority: Word,
+    VisibleOpacity: Real,
     Terms: 'terms',
-    HoldTime: 'real',
-    FallOff: 'real',
-    HalfHeight: 'real',
-    Attenuation: 'real',
-    Layer: 'word',
-    HostRadiusPercent: 'real',
+    HoldTime: Real,
+    FallOff: Real,
+    HalfHeight: Real,
+    Attenuation: Real,
+    Layer: Word,
+    HostRadiusPercent: Real,
     Alpha: 'reals',
     AttachQuery: {
       Methods: 'string',
-      Fallback: 'word'
+      Fallback: Word
     },
     RollMax: 'reals',
-    RollInActivationAngle: 'real',
+    RollInActivationAngle: Real,
     RollInArc: 'reals',
     RollOutDuration: 'reals',
-    Variance: 'real',
-    NotifyClosestScaleKey: 'word',
+    Variance: Real,
+    NotifyClosestScaleKey: Word,
     Quad: 'reals',
     AcceptedHostedPropTransfers: '{bit}',
     $unitName: 'unit',
-    AutoScaleFactor: 'real',
-    InnerWidth: 'real',
-    OuterWidth: 'real',
-    RotationSpeed: 'real',
-    SegmentCount: 'int',
-    SegmentPercentSolid: 'real',
-    InnerBoundaryFallOffRatio: 'real',
-    InnerBoundaryRatio: 'real',
-    InnerOffsetRatio: 'real',
+    AutoScaleFactor: Real,
+    InnerWidth: Real,
+    OuterWidth: Real,
+    RotationSpeed: Real,
+    SegmentCount: Int,
+    SegmentPercentSolid: Real,
+    InnerBoundaryFallOffRatio: Real,
+    InnerBoundaryRatio: Real,
+    InnerOffsetRatio: Real,
     SelectionFlags: '{bit}',
     SelectionFilter: '{bit}',
     ForceFlags: '{bit}',
-    Field: 'word',
+    Field: Word,
     StatusBarFlags: '{bit}',
     StatusBarGroups: '{bit}',
     StatusColors: [
       {
-        index: 'word',
+        index: Word,
         BackgroundColor: 'ints',
         EmptyColor: 'ints',
         ColorArray: '[ints]'
       }
     ],
-    BarDistance: 'int',
-    BarWidth: 'int',
-    BarHeight: 'int',
-    BarOffset: 'int',
-    NameOffset: 'int',
-    HighlightTooltip: 'string',
-    CopySource: 'word',
+    BarDistance: Int,
+    BarWidth: Int,
+    BarHeight: Int,
+    BarOffset: Int,
+    NameOffset: Int,
+    HighlightTooltip: 'text',
+    CopySource: Word,
     UnitFlags: '{bit}',
     GlossaryAnim: 'words',
-    MinimapIconScale: 'real',
-    MinimapIconBackgroundScale: 'real',
-    MinimapFlashWhenAttacked: 'bit',
-    MinimapUseSelfColor: 'bit',
-    MinimapUseSelectionColor: 'bit',
+    MinimapIconScale: Real,
+    MinimapIconBackgroundScale: Real,
+    MinimapFlashWhenAttacked: Bit,
+    MinimapUseSelfColor: Bit,
+    MinimapUseSelectionColor: Bit,
     Baselines: [
       {
-        index: 'word',
+        index: Word,
         AnimProps: 'words',
-        BlendIn: 'real',
-        BlendOut: 'real'
+        BlendIn: Real,
+        BlendOut: Real
       }
     ],
-    WalkAnimMoveSpeed: 'real',
+    WalkAnimMoveSpeed: Real,
     BuildModel: 'model',
     PlacementModel: 'model',
     PlacementActorModel: 'actor',
@@ -1916,14 +2008,14 @@ export const StarcraftSchema = {
     UnitIcon: 'file',
     HeroIcon: 'file',
     SoundArray: '{string}',
-    GroupSoundThreshold: 'int',
+    GroupSoundThreshold: Int,
     GroupSoundArray: '{string}',
     ShieldArmorIcon: 'file',
-    VarianceWindowStandIntro: 'real',
-    VarianceWindowStand: 'real',
-    VarianceWindowWalkIntro: 'real',
-    VarianceWindowWalk: 'real',
-    VarianceWindowWalkOutro: 'real',
+    VarianceWindowStandIntro: Real,
+    VarianceWindowStand: Real,
+    VarianceWindowWalkIntro: Real,
+    VarianceWindowWalk: Real,
+    VarianceWindowWalkOutro: Real,
     EventDataFootprint: [
       {
         Actor: 'actor',
@@ -1933,38 +2025,38 @@ export const StarcraftSchema = {
     EventDataSound: [
       {
         Actor: 'actor',
-        Name: 'word',
+        Name: Word,
         Sound: 'sound'
       }
     ],
     DeathArray: [
       {
-        index: 'word',
+        index: Word,
         AnimProps: 'words',
         ModelLink: 'string',
         SoundLink: 'sound',
-        VoiceLink: 'word',
+        VoiceLink: Word,
         ActorModel: 'actor',
         BodySquibs: [
           {
-            Name: 'word',
+            Name: Word,
             ActorModel: 'actor',
             Model: 'model',
             ModelSiteOps: {
-              Ops: 'string'
+              Ops: 'ops'
             },
             ModelAttachQuery: {
               Methods: 'string'
             },
             ActorSound: 'actor',
-            Sound: 'word',
+            Sound: Word,
             SoundSiteOps: {
-              Ops: 'string'
+              Ops: 'ops'
             },
             SoundAttachQuery: {
-              Methods: 'word'
+              Methods: Word
             },
-            RequiredSquibType: 'word'
+            RequiredSquibType: Word
           }
         ]
       }
@@ -1972,178 +2064,178 @@ export const StarcraftSchema = {
     DeathCustoms: [
       {
         ModelLink: 'string',
-        Name: 'word',
+        Name: Word,
         ActorModel: 'actor',
         PhysicsMatchKeysOrdered: 'words',
         BodySquibs: [
           {
-            Name: 'word',
-            IsFallback: 'bit',
+            Name: Word,
+            IsFallback: Bit,
             Model: 'model'
           }
         ],
-        InheritsFrom: 'word',
+        InheritsFrom: Word,
         AnimProps: 'words',
-        IsAbstract: 'bit',
+        IsAbstract: Bit,
         SoundLink: 'sound',
-        VoiceLink: 'word'
+        VoiceLink: Word
       }
     ],
     DeathCustomData: [
       {
-        Name: 'word',
-        SyncPassChance: 'int',
+        Name: Word,
+        SyncPassChance: Int,
         Members: 'filters',
         Supersedes: 'words'
       }
     ],
     OverkillByDamagePastRemainingHealth: {
-      Value: 'int',
-      TestType: 'word'
+      Value: Int,
+      TestType: Word
     },
     OverkillByDamageOverInterval: {
-      Value: 'int',
-      Interval: 'bit',
-      TestType: 'word'
+      Value: Int,
+      Interval: Bit,
+      TestType: Word
     },
     PhysicsMatchKeysOrdered: 'words',
     StatusTextInfo: {
       Offset: 'ints',
       Attachment: 'string',
-      FontSize: 'int',
+      FontSize: Int,
       BackgroundColor: 'ints',
       BackgroundImage: 'string'
     },
     $Sub : 'string',
     MaxScale: 'reals',
-    AutoScaleFromSelectionFactor: 'real',
+    AutoScaleFromSelectionFactor: Real,
     EndYawPeriod: 'reals',
-    EndRadiusInner: 'real',
-    EndRadiusOuter: 'real',
+    EndRadiusInner: Real,
+    EndRadiusOuter: Real,
     Macros: '[word]',
     EditorModel: 'model',
     Filter: '{bit}',
     HarnessModel: 'model',
-    HarnessSound: 'word',
+    HarnessSound: Word,
     Map: [
       {
-        index: 'word',
+        index: Word,
         Model: 'model',
         Sound: 'sound'
       }
     ],
-    PreHost: 'word',
-    IsTentacle: 'bit',
-    LaunchGuideAlias: 'word',
-    LaunchSite: 'word',
+    PreHost: Word,
+    IsTentacle: Bit,
+    LaunchGuideAlias: Word,
+    LaunchSite: Word,
     LaunchSiteOps: {
-      Ops: 'string',
-      HoldPosition: 'bit',
-      HoldRotation: 'bit'
+      Ops: 'ops',
+      HoldPosition: Bit,
+      HoldRotation: Bit
     },
-    LaunchSiteFallback: 'word',
+    LaunchSiteFallback: Word,
     LaunchAttachQuery: {
       Methods: 'string',
-      Fallback: 'word'
+      Fallback: Word
     },
     LaunchAssets: {
-      Scale: 'real',
+      Scale: Real,
       Model: 'model',
       AnimProps: 'string',
       Sound: 'sound'
     },
     LaunchModel: 'model',
-    LaunchSound: 'word',
+    LaunchSound: Word,
     LaunchTerrainSquibModel: 'model',
-    LaunchTerrainSquibSound: 'word',
-    ContainerSite: 'word',
+    LaunchTerrainSquibSound: Word,
+    ContainerSite: Word,
     ContainerSiteOps: {
-      Ops: 'string'
+      Ops: 'ops'
     },
     ContainerAttachQuery: {
       Methods: 'string',
-      Fallback: 'word'
+      Fallback: Word
     },
     ContainerAssets: {
       Model: 'model',
       Sound: 'sound'
     },
     ContainerModel: 'model',
-    ContainerSound: 'word',
+    ContainerSound: Word,
     ContainerTerrainSquibModel: 'model',
-    ContainerTerrainSquibSound: 'word',
-    BeamScope: 'word',
-    Missile: 'word',
-    ImpactGuideAlias: 'word',
+    ContainerTerrainSquibSound: Word,
+    BeamScope: Word,
+    Missile: 'actor',
+    ImpactGuideAlias: Word,
     ImpactSiteOps: {
-      Ops: 'string',
-      HoldPosition: 'bit',
-      HoldRotation: 'bit'
+      Ops: 'ops',
+      HoldPosition: Bit,
+      HoldRotation: Bit
     },
-    ImpactSite: 'word',
-    ImpactSiteFallback: 'word',
+    ImpactSite: Word,
+    ImpactSiteFallback: Word,
     ImpactAttachQuery: {
       Methods: 'string',
-      Fallback: 'word'
+      Fallback: Word
     },
     ImpactReattachQuery: {
-      Methods: 'word',
-      Fallback: 'word'
+      Methods: Word,
+      Fallback: Word
     },
-    ImpactPointSite: 'word',
+    ImpactPointSite: Word,
     ImpactPointSiteOps: {
-      Ops: 'string'
+      Ops: 'ops'
     },
     ImpactMap: [
       {
         AnimProps: 'string',
-        index: 'word',
+        index: Word,
         Model: 'model',
         Sound: 'sound',
         ModelReaction: 'string',
-        ScaleReaction: 'real',
-        Scale: 'real'
+        ScaleReaction: Real,
+        Scale: Real
       }
     ],
     ImpactModel: 'model',
-    ImpactModelReaction: 'word',
-    ImpactSound: 'word',
+    ImpactModelReaction: Word,
+    ImpactSound: Word,
     ImpactTerrainSquibModel: 'model',
-    ImpactTerrainSquibSound: 'word',
-    DamageSite: 'word',
+    ImpactTerrainSquibSound: Word,
+    DamageSite: Word,
     DamageSiteOps: {
-      Ops: 'string',
-      HoldPosition: 'bit',
-      HoldRotation: 'bit'
+      Ops: 'ops',
+      HoldPosition: Bit,
+      HoldRotation: Bit
     },
     DamageAttachQuery: {
       Methods: 'string',
-      Fallback: 'word'
+      Fallback: Word
     },
     DamageReattachQuery: {
-      Methods: 'word',
-      Fallback: 'word'
+      Methods: Word,
+      Fallback: Word
     },
     DamageMap: [
       {
-        index: 'word',
+        index: Word,
         Model: 'model',
-        Sound: 'word',
+        Sound: Word,
         ModelReaction: 'string'
       }
     ],
     DamageModel: 'model',
-    DamageModelReaction: 'word',
-    DamageSound: 'word',
+    DamageModelReaction: Word,
+    DamageSound: Word,
     DamageTerrainSquibModel: 'model',
-    DamageTerrainSquibSound: 'word',
+    DamageTerrainSquibSound: Word,
     AttackAnimSource: 'string',
-    AttackAnimName: 'word',
-    Lifetime: 'real',
+    AttackAnimName: Word,
+    Lifetime: Real,
     $effectAttack: 'effect',
     $effectImpact: 'effect',
     $effectLaunch: 'effect',
-    $ShieldFlashType: 'word',
+    $ShieldFlashType: Word,
     $effectHit: 'effect',
     Remove: [
       {
@@ -2153,159 +2245,132 @@ export const StarcraftSchema = {
       }
     ],
     HostTargetSiteOps: {
-      Ops: 'string'
+      Ops: 'ops'
     },
-    Type: 'word',
+    Type: Word,
     SceneActor: 'actor',
-    MainActor: 'word',
-    MissileBoundsOptSpeedThreshold: 'real',
+    MainActor: Word,
+    MissileBoundsOptSpeedThreshold: Real,
     ModelCacheFallback: 'model',
     AttachHarnessActor: 'actor',
-    AttachHarnessSOpAttach: 'word',
-    AttachHarnessSOpLocalOffset: 'word',
-    AttachHarnessSOpRotationExplicit: 'word',
+    AttachHarnessSOpAttach: Word,
+    AttachHarnessSOpLocalOffset: Word,
+    AttachHarnessSOpRotationExplicit: Word,
     ActorUnitFallback: 'actor',
     CommandUIActor: 'actor',
     CloakModel: 'model',
     CloakModelLow: 'model',
     CloakTransitionArray: [
       {
-        index: 'word',
+        index: Word,
         StateArray: [
           {
-            index: 'word',
+            index: Word,
             Enter: 'words',
             Loop: 'words'
           }
         ]
       }
     ],
-    MaxSpeedForSound: 'int',
+    MaxSpeedForSound: Int,
     RevealTint: 'ints',
-    PopulationLimitModel: 'int',
+    PopulationLimitModel: Int,
     CreepEngulfmentModel: 'model',
     CreepHeightClasses: [
       {
-        Name: 'word',
-        SolidHeight: 'real',
-        FadeHeight: 'real',
-        StartOffset: 'real'
+        Name: Word,
+        SolidHeight: Real,
+        FadeHeight: Real,
+        StartOffset: Real
       }
     ],
     CreepRates: [
       {
-        Name: 'word',
-        Rate: 'real'
+        Name: Word,
+        Rate: Real
       }
     ],
     DeathCustomPriorityList: '[word]',
     MinimapRenderPriorityList: '[word]',
     BodySquibs: [
       {
-        Name: 'word',
+        Name: Word,
         ActorModel: 'actor',
         Model: 'model',
         ModelSiteOps: {
-          Ops: 'string'
+          Ops: 'ops'
         },
         ModelAttachQuery: {
           Methods: 'string'
         },
         ActorSound: 'actor',
-        Sound: 'word',
+        Sound: Word,
         SoundSiteOps: {
-          Ops: 'string'
+          Ops: 'ops'
         },
         SoundAttachQuery: {
-          Methods: 'word'
+          Methods: Word
         },
-        RequiredSquibType: 'word'
+        RequiredSquibType: Word
       }
     ],
     ModelMaterialPriorityList: '[word]',
     Scale: 'reals',
-    Location: 'word',
-    ForceSoftAttach: 'bit',
-    HoldPosition: 'bit',
-    HoldRotation: 'bit',
-    HostIncoming: {
-      Subject: 'subject',
-      Actor: 'word',
-      Scope: 'word'
-    },
-    UpwardVisibilityEnhancement: 'bit',
-    UpwardVisibilityEnhancementVarianceUp: 'real',
-    UpwardVisibilityEnhancementVarianceDown: 'real',
-    RollAngleMax: 'real',
-    RollInRate: 'real',
-    RollOutRate: 'real',
-    RollOutRemainderFractionForLevelOff: 'real',
-    BasicType: 'word',
+    Location: Word,
+    ForceSoftAttach: Bit,
+    HoldPosition: Bit,
+    HoldRotation: Bit,
+    HostIncoming: Host,
+    UpwardVisibilityEnhancement: Bit,
+    UpwardVisibilityEnhancementVarianceUp: Real,
+    UpwardVisibilityEnhancementVarianceDown: Real,
+    RollAngleMax: Real,
+    RollInRate: Real,
+    RollOutRate: Real,
+    RollOutRemainderFractionForLevelOff: Real,
+    BasicType: Word,
     HostForwardSiteOps: {
-      Ops: 'string'
+      Ops: 'ops'
     },
-    Invert: 'bit',
-    ZOnly: 'bit',
-    HostForward: {
-      Subject: 'subject',
-      Scope: 'word',
-      Actor: 'word',
-      Effect: 'effect'
-    },
+    Invert: Bit,
+    ZOnly: Bit,
+    HostForward: Host,
     Forward: 'reals',
-    HostHeight: {
-      Subject: 'subject',
-      Scope: 'word',
-      Actor: 'word'
-    },
-    HeightSourceType: 'word',
+    HostHeight: Host,
+    HeightSourceType: Word,
     TerrainAndWaterFlags: '{bit}',
-    ForcedWadingMaxDepth: 'real',
-    HostBearings: {
-      Subject: 'subject',
-      Scope: 'word',
-      Actor: 'word'
-    },
+    ForcedWadingMaxDepth: Real,
+    HostBearings: Host,
     HostBearingsSiteOps: {
-      Ops: 'string'
+      Ops: 'ops'
     },
-    HostImpact: {
-      Effect: 'effect',
-      Subject: 'subject',
-      Actor: 'word',
-      Scope: 'word'
-    },
-    FreezePositionAtImpact: 'bit',
-    PullBack: 'real',
+    HostImpact: Host,
+    FreezePositionAtImpact: Bit,
+    PullBack: Real,
     LocalOffset: 'reals',
     OverridingLength: 'reals',
-    PatchAngle: 'real',
-    IsLocal: 'bit',
+    PatchAngle: Real,
+    IsLocal: Bit,
     Up: 'reals',
-    RestrictToCircumference: 'bit',
-    HalfWidth: 'real',
-    Distribution: 'word',
-    YawHalfAngle: 'real',
-    PitchHalfAngle: 'real',
-    ForwardAngle: 'real',
-    UpAngle: 'real',
-    IsUpDominantWhenOrthogonalized: 'bit',
-    Acceleration: 'real',
-    Deceleration: 'real',
-    MaxSpeed: 'real',
+    RestrictToCircumference: Bit,
+    HalfWidth: Real,
+    Distribution: Word,
+    YawHalfAngle: Real,
+    PitchHalfAngle: Real,
+    ForwardAngle: Real,
+    UpAngle: Real,
+    IsUpDominantWhenOrthogonalized: Bit,
+    Acceleration: Real,
+    Deceleration: Real,
+    MaxSpeed: Real,
     ShadowFlags: '{bit}',
     TipabilityFlags: '{bit}',
-    Sharing: 'word',
-    HostLaunch: {
-      Effect: 'effect',
-      Subject: 'subject',
-      Actor: 'word',
-      Scope: 'word'
-    },
+    Sharing: Word,
+    HostLaunch: Host,
     HostLaunchSiteOps: {
-      Ops: 'string',
-      HoldPosition: 'bit',
-      HoldRotation: 'bit'
+      Ops: 'ops',
+      HoldPosition: Bit,
+      HoldRotation: Bit
     },
     Subject: {
       Filters: 'words',
@@ -2315,92 +2380,82 @@ export const StarcraftSchema = {
       {
         Send: 'send',
         Target: 'string',
-        Scope: 'word'
+        Scope: Word
       }
     ],
-    NotifyArcKey: 'word',
-    NotifyRadiusKey: 'word',
+    NotifyArcKey: Word,
+    NotifyRadiusKey: Word,
     RegionFlags: '{bit}',
-    HostForProps: {
-      Subject: 'subject',
-      Effect: 'effect',
-      Scope: 'word',
-      Actor: 'word'
-    },
+    HostForProps: Host,
     Magnitude: 'reals',
-    Duration: 'real',
-    InfluenceRange: 'real',
-    BlendTime: 'real',
+    Duration: Real,
+    InfluenceRange: Real,
+    BlendTime: Real,
     HostInitialSiteOps: {
-      Ops: 'string'
+      Ops: 'ops'
     },
     PhysicsImpactDefault: {
       ActorModel: 'actor',
       ActorSound: 'actor',
       OccuranceThrottlingDistance: 'reals',
-      AutoVolumeRangeMin: 'real'
+      AutoVolumeRangeMin: Real
     },
     Receiver: {
       Scope: 'string',
       Subject: 'subject'
     },
-    Direction: 'word',
+    Direction: Word,
     HostEnd: {
       Subject: 'subject',
-      Scope: 'word'
+      Scope: Word
     },
     Length: 'reals',
-    FixedSize: 'int',
-    InitialAngle: 'real',
-    HeightOffset: 'real',
+    FixedSize: Int,
+    InitialAngle: Real,
+    HeightOffset: Real,
     DoFAttenuationStartModel: 'model',
     DoFAttenuationEndModel: 'model',
     MinimapIcon: 'file',
     Footprint: 'string',
-    CreepHeightClass: 'word',
-    Facing: 'real',
-    LaunchRequest: {
-      Subject: 'subject',
-      Actor: 'word',
-      Scope: 'word',
-      FailOnNoHost: 'bit'
-    },
-    FaceFXTarget: 'word',
-    AnimTargets: 'word',
-    CantSelectUncontrollableTooltip: 'link',
-    $sprayIndex: 'int',
+    CreepHeightClass: Word,
+    Facing: Real,
+    LaunchRequest: Host,
+    FaceFXTarget: Word,
+    AnimTargets: Word,
+    CantSelectUncontrollableTooltip: 'text',
+    $sprayIndex: Int,
     $effectPickup: 'effect',
     $actorCreate: 'actor',
-    Text: 'link',
-    RequiredSquibType: 'word',
-    StateThinkInterval: 'real',
+    Text: 'text',
+    RequiredSquibType: Word,
+    StateThinkInterval: Real,
     StateArray: [
       {
-        Name: 'word',
+        Name: Word,
         Terms: 'terms'
       }
     ],
-    CreepRateGrow: 'word',
-    CreepRateShrink: 'word',
+    CreepRateGrow: Word,
+    CreepRateShrink: Word,
     PlacementSound: 'sound',
     LifeArmorIcon: 'file',
     TerrainSquibs: [
       {
         MovementDistance: 'reals',
         IdlePeriod: 'reals',
-        RangeDown: 'real',
-        RangeDownFade: 'real',
+        RangeDown: Real,
+        RangeDownFade: Real,
         AttachQuery: {
-          Methods: 'word'
+          Methods: Word
         },
         Visuals: {
-          TerrainPhysicsMaterial: 'word',
+          TerrainPhysicsMaterial: Word,
           ActorModel: 'actor',
           ModelLink: 'string',
           Flags: '{bit}'
         },
-        RangeUp: 'real',
-        GroupName: 'word'
+        RangeUp: Real,
+        GroupName: Word
       }
     ],
     AddonIndicator: 'link',
@@ -2411,9 +2466,10 @@ export const StarcraftSchema = {
       Image: '[string]'
     },
     StatusHarvesterData: {
-      Text: 'link',
+      Text: 'text',
+      link: 'link',
       SearchFilters: 'filters',
-      SearchRadius: 'int'
+      SearchRadius: Int
     },
     WireframeShield: {
       Image: '[string]'
@@ -2428,12 +2484,12 @@ export const StarcraftSchema = {
       ProjectorModel: 'model',
       MaskBlobPath: 'file',
       ScaleDeltaTime: 'reals',
-      ScaleUpdateTime: 'int',
+      ScaleUpdateTime: Int,
       MaxBlobScale: 'reals',
       Tint: 'ints',
       TerrainUVTiling: 'reals',
-      MinHeightValue: 'real',
-      MaterialInfo: [{ReplacementLayers: '{int}',MaterialId: 'int'}]
+      MinHeightValue: Real,
+      MaterialInfo: [{ReplacementLayers: '{int}',MaterialId: Int}]
     },
 
      ModelAspectSets: {
@@ -2443,7 +2499,7 @@ export const StarcraftSchema = {
          Model: "modeel"
        }]
      },
-    MinimapIconIsTeamColored: 'bit',
+    MinimapIconIsTeamColored: Bit,
     VisibilityShape: {
       Shape: "shape"
     },
@@ -2455,14 +2511,14 @@ export const StarcraftSchema = {
     $unitname: 'unit',
     $behavior: 'behavior',
     $behaviorCloak: 'behavior',
-    $buildTime: 'real',
+    $buildTime: Real,
     $SoundLink: 'sound',
     $VoiceLink: 'sound',
     Height: 'reals',
-    Width: 'real',
+    Width: Real,
     //todo
     // <Layers Sound='Disruptor_DisruptionOvercharge_Discharge'>
-      // <Chance value='100'/>
+    //   <Chance value='100'/>
       // <Pitch value='0.000000,0.000000'/>
       // <PlayDelay value='0,0'/>
       // <Volume value='0.000000,0.000000'/>
@@ -2471,9 +2527,9 @@ export const StarcraftSchema = {
       {
         $Sound: 'sound',
         PlayDelay: '[ints]',
-        PitchSource: 'word',
-        PlayDelaySource: 'word',
-        VolumeSource: 'word',
+        PitchSource: Word,
+        PlayDelaySource: Word,
+        VolumeSource: Word,
         Chance: '[int]',
         Pitch: '[reals]',
         Volume: '[reals]',
@@ -2483,62 +2539,62 @@ export const StarcraftSchema = {
     StageArray: [
       {
         AnimProps: 'words',
-        BlendTime: 'real'
+        BlendTime: Real
       }
     ],
     LocalOffsetFor2ndVisibilityTest: 'reals',
-    Mean: 'real',
-    HeightOffsetOnCliff: 'real',
+    Mean: Real,
+    HeightOffsetOnCliff: Real,
     CliffTests: '[reals]',
-    Range: 'real',
-    AcquisitionYawHalfArc: 'real',
-    AcquisitionPitchHalfArc: 'real',
-    AccuracyHalfArc: 'real',
+    Range: Real,
+    AcquisitionYawHalfArc: Real,
+    AcquisitionPitchHalfArc: Real,
+    AccuracyHalfArc: Real,
     HostEndSiteOps: {
-      Ops: 'string',
-      HoldPosition: 'bit',
-      HoldRotation: 'bit'
+      Ops: 'ops',
+      HoldPosition: Bit,
+      HoldRotation: Bit
     },
     Types: {
-      $Id: 'word',
+      $Id: Word,
       Start: {
-        Group: 'word',
-        Weight: 'bit',
-        Time: 'int',
-        Rate: 'real'
+        Group: Word,
+        Weight: Bit,
+        Time: Int,
+        Rate: Real
       },
       Stop: {
-        Group: 'word',
-        Weight: 'bit',
-        Time: 'int',
-        Rate: 'real'
+        Group: Word,
+        Weight: Bit,
+        Time: Int,
+        Rate: Real
       },
-      Name: 'link'
+      Name: 'text'
     },
     HostImpactSiteOps: {
-      Ops: 'string',
-      HoldPosition: 'bit',
-      HoldRotation: 'bit'
+      Ops: 'ops',
+      HoldPosition: Bit,
+      HoldRotation: Bit
     },
     Angle: 'reals',
     TexSets: '[word]',
-    VisibleOpacityBlendDuration: 'real',
-    NoFlyZoneSoftRadius: 'int',
-    NoFlyZoneHardRadius: 'int',
-    EditorFacingAlignment: 'int',
-    Speed: 'real',
-    SpeedMax: 'real',
-    HeightDelta: 'real',
-    StandAnimTurnTime: 'real',
-    StandAnimTurnTimeScaleMin: 'real',
-    $type: 'word',
-    $sight: 'word',
+    VisibleOpacityBlendDuration: Real,
+    NoFlyZoneSoftRadius: Int,
+    NoFlyZoneHardRadius: Int,
+    EditorFacingAlignment: Int,
+    Speed: Real,
+    SpeedMax: Real,
+    HeightDelta: Real,
+    StandAnimTurnTime: Real,
+    StandAnimTurnTimeScaleMin: Real,
+    $type: Word,
+    $sight: Word,
     ErrorArray: [
       {
-        Error: 'word',
+        Error: Word,
         Sound: 'sound',
         GroupSound: 'sound',
-        Text: 'word'
+        Text: Word
       }
     ],
     AbilSoundArray: [
@@ -2547,134 +2603,114 @@ export const StarcraftSchema = {
         Sound: 'sound'
       }
     ],
-    ShieldRippleScaleFactor: 'real',
+    ShieldRippleScaleFactor: Real,
     HeightTests: '[reals]',
-    HeightTestType: 'word',
+    HeightTestType: Word,
     ImpactPhysics: [
       {
         Flags: '{bit}',
-        Name: 'word',
-        MatchKeys: 'word',
-        Physics: 'word',
+        Name: Word,
+        MatchKeys: Word,
+        Physics: Word,
         AttackAnimProps: 'words',
-        AttackModelVariation: 'bit'
+        AttackModelVariation: Bit
       }
     ],
     SelectAbilCmd: 'abilcmd',
-    Ripple: 'word',
-    ScaleDamageMin: 'real',
-    ScaleDamageMax: 'real',
-    RadiusMin: 'real',
-    RadiusMax: 'real',
-    VisualDirectionalFacer: 'word',
-    VisualDirectionalHeader: 'word',
-    VisualDirectionless: 'word',
+    Ripple: Word,
+    ScaleDamageMin: Real,
+    ScaleDamageMax: Real,
+    RadiusMin: Real,
+    RadiusMax: Real,
+    VisualDirectionalFacer: Word,
+    VisualDirectionalHeader: Word,
+    VisualDirectionless: Word,
     ActionFlags: '{bit}',
-
-
-      //todo
-      // <GroupIconVariations Number='0'>
-      // <Image value='Assets\Textures\Wireframe-Protoss-DarkTemplar00.dds'/>
-      // </GroupIconVariations>
-
-    WireframeShieldVariations: [{Number: 'bit', Image: '[file]'}],
-    GroupIconVariations: [{Number: 'int', Image: '[file]'}],
-    WireframeVariations: [{Number: 'int', Image: '[file]'}],
+    WireframeShieldVariations: [{Number: Bit, Image: '[file]'}],
+    GroupIconVariations: [{Number: Int, Image: '[file]'}],
+    WireframeVariations: [{Number: Int, Image: '[file]'}],
 
 
     CooldownDisplay: 'words',
-    HostImpactSource: {
-      Subject: 'subject',
-      ReachAcrossEffectTrees: 'bit'
-    },
+    HostImpactSource: Host,
     Elevation: 'reals',
     ElevationPeriod: 'reals',
     Pitch: 'reals',
     PitchPeriod: 'reals',
     Roll: 'reals',
     RollPeriod: 'reals',
-    FoliageSpawnTarget: 'word',
+    FoliageSpawnTarget: Word,
     SubjectResponses: [
       {
         Filters: 'words',
         Terms: 'terms',
         OnResponse: [
           {
-            Target: 'word',
+            Target: Word,
             Send: 'send'
           }
         ]
       }
     ],
     UnitModelFrameActor: 'actor',
-    HostFor2ndVisibilityTest: {
-      Effect: 'effect',
-      Scope: 'string',
-      Subject: 'subject',
-      Actor: 'word'
-    },
+    HostFor2ndVisibilityTest: Host,
     HostedAttaches: [
       {
-        Name: 'word',
+        Name: Word,
         AttachQuery: {
           Methods: 'string'
         },
         HostSiteOps: {
-          Ops: 'string'
+          Ops: 'ops'
         }
       }
     ],
     ImpactSiteOpsReaction: {
-      Ops: 'string',
-      HoldPosition: 'bit',
-      HoldRotation: 'bit'
+      Ops: 'ops',
+      HoldPosition: Bit,
+      HoldRotation: Bit
     },
-    CombatRevealDurationType: 'word',
-    HostReturn: {
-      Subject: 'subject',
-      Scope: 'word',
-      Actor: 'word',
-      Effect: 'effect'
-    },
+    CombatRevealDurationType: Word,
+    HostReturn: Host,
     HostReturnSiteOps: {
-      Ops: 'string'
+      Ops: 'ops'
     },
     MovementHerdNode: 'string',
     VisualArray: '[word]',
     EditorAnim: 'words',
-    BaseYaw: 'real',
-    BaseYawPeriod: 'real',
-    BaseRadiusInner: 'real',
-    BaseRadiusOuter: 'real',
-    BaseRadiusPeriod: 'real',
-    BasePitch: 'real',
-    BasePitchPeriod: 'real',
+    BaseYaw: Real,
+    BaseYawPeriod: Real,
+    BaseRadiusInner: Real,
+    BaseRadiusOuter: Real,
+    BaseRadiusPeriod: Real,
+    BasePitch: Real,
+    BasePitchPeriod: Real,
     LocalAxis: 'reals',
-    Rate: 'real',
+    Rate: Real,
     $weapon: 'weapon',
-    $deco: 'word',
+    $deco: Word,
     $unitNameAlt: 'unit',
-    $alt: 'word',
+    $alt: Word,
     HostOffset: {
       Subject: 'subject',
-      Scope: 'word'
+      Scope: Word
     },
     HostOffsetSiteOps: {
-      Ops: 'string'
+      Ops: 'ops'
     },
     PhysicsImpacts: [
       {
-        Name: 'word',
-        Group: 'word',
+        Name: Word,
+        Group: Word,
         ActorModel: 'actor',
-        ModelLink: 'word',
+        ModelLink: Word,
         OccuranceThrottlingDistance: 'reals',
         OccuranceThrottlingPeriod: 'reals',
         SoundLink: 'sound',
-        AutoVolumeRange: 'word',
-        AutoVolumeRangeMin: 'real',
-        AutoVolumeRangeMax: 'real',
-        ActorSound: 'word'
+        AutoVolumeRange: Word,
+        AutoVolumeRangeMin: Real,
+        AutoVolumeRangeMax: Real,
+        ActorSound: Word
       }
     ],
     Abil: {
@@ -2682,27 +2718,27 @@ export const StarcraftSchema = {
     },
     DamagePhysics: [
       {
-        Name: 'word',
-        MatchKeys: 'word',
-        Physics: 'word'
+        Name: Word,
+        MatchKeys: Word,
+        Physics: Word
       }
     ],
-    TiltAmount: 'real',
-    AngleRate: 'real',
+    TiltAmount: Real,
+    AngleRate: Real,
     Aggregate: {
-      Type: 'word',
-      BaseElementLengthMax: 'real',
-      SegmentRotationRate: 'real',
-      SwimmingUndulationElementLength: 'real',
-      SwimmingUndulationStartOffset: 'real',
-      SwimmingUndulationAmplitudePerUnit: 'real',
-      SwimmingUndulationWavelength: 'real',
-      SwimmingUndulationIdlePhaseVelocity: 'real',
-      TurnSmoothingActivationAngleMin: 'real',
-      TurnSmoothingActivationAngleMax: 'real',
-      TurnSmoothingRadiusMax: 'real',
-      UncoilingWhileIdleRotationRateMin: 'real',
-      UncoilingWhileIdleRotationRateMax: 'real',
+      Type: Word,
+      BaseElementLengthMax: Real,
+      SegmentRotationRate: Real,
+      SwimmingUndulationElementLength: Real,
+      SwimmingUndulationStartOffset: Real,
+      SwimmingUndulationAmplitudePerUnit: Real,
+      SwimmingUndulationWavelength: Real,
+      SwimmingUndulationIdlePhaseVelocity: Real,
+      TurnSmoothingActivationAngleMin: Real,
+      TurnSmoothingActivationAngleMax: Real,
+      TurnSmoothingRadiusMax: Real,
+      UncoilingWhileIdleRotationRateMin: Real,
+      UncoilingWhileIdleRotationRateMax: Real,
       Flags: '{bit}'
     },
     Head: 'actor',
@@ -2710,29 +2746,30 @@ export const StarcraftSchema = {
     UnloadTransportEffect: 'effect',
     SiteFlags: '{bit}',
     HostZ: {
-      Actor: 'word',
+      Scope: Word,
+      Actor: Word,
       Subject: 'subject'
     },
     Segment: {
-      Radius: 'real'
+      Radius: Real
     },
-    IsHemisphere: 'bit',
-    PlayMode: 'word',
-    LoopCount: 'int',
+    IsHemisphere: Bit,
+    PlayMode: Word,
+    LoopCount: Int,
     LookAtPriorityList: '[word]',
-    ScopeBearingsTracking: 'word',
+    ScopeBearingsTracking: Word,
     IconScale: 'reals',
     UnitBorderNormalColor: 'ints',
     UnitBorderSubgroupColor: 'ints',
     UnitKillRank: [{
-      MinKills: 'int',
-      Text: 'link'
+      MinKills: Int,
+      Text: 'text'
     }],
-    InfoText: 'link',
-    ForceCommencementFrom: 'word',
+    InfoText: 'text',
+    ForceCommencementFrom: Word,
     VitalColors: [
       {
-        index: 'word',
+        index: Word,
         ColorArray: '[ints]'
       }
     ],
@@ -2740,100 +2777,100 @@ export const StarcraftSchema = {
     WireframeShieldColor: 'ints',
     CustomUnitStatusFrame: 'link',
     StatusBarOn: '{bit}',
-    MinimapTooltip: 'link',
+    MinimapTooltip: 'text',
     BoostedHeight: '{int}',
     ImpactSoundActor: 'actor',
     Decoration: {
-      Actor: 'word',
-      SpawnInterval: 'real',
-      TravelSpeed: 'real',
+      Actor: Word,
+      SpawnInterval: Real,
+      TravelSpeed: Real,
       Flags: '{bit}'
     },
     MinimapIconTintColor: 'ints',
-    HighlightSubTooltip: 'link',
+    HighlightSubTooltip: 'text',
     $impactEffect: 'effect',
     $upgradedActorCreate: 'actor',
     $unitSound: 'unit',
     $buff: 'behavior',
-    Sight: 'word'
+    Sight: Word
   },
   alert: {
     Display: '{bit}',
     PrimaryActions: '{bit}',
     SecondaryActions: '{bit}',
     Flags: '{bit}',
-    Fade: 'real',
-    Life: 'real',
+    Fade: Real,
+    Life: Real,
     PingColor: 'ints',
-    PingTime: 'real',
+    PingTime: Real,
     Sound: 'sound',
-    Text: 'link',
-    Tooltip: 'link',
-    Voice: 'word',
-    SupersededVolume: 'real',
-    OverlapDuration: 'real',
-    OverlapGlobalCount: 'int',
-    OverlapLocalCount: 'bit',
-    OverlapLocalRadius: 'int',
-    QueueTime: 'real',
+    Text: 'text',
+    Tooltip: 'text',
+    Voice: Word,
+    SupersededVolume: Real,
+    OverlapDuration: Real,
+    OverlapGlobalCount: Int,
+    OverlapLocalCount: Bit,
+    OverlapLocalRadius: Int,
+    QueueTime: Real,
     Icon: 'file',
-    Peripheral: 'word',
+    Peripheral: Word,
     PingModel: 'model'
   },
   artifact: {
-    Name: 'link',
-    InfoText: 'link',
+    Name: 'text',
+    InfoText: 'text',
     Model: 'model',
-    TileCutsceneFile: 'string',
-    PreviewCutsceneFile: 'string',
-    HeroSelectCutsceneFile: 'string',
-    AdditionalSearchText: 'link',
-    Talent: 'word',
-    HyperlinkId: 'word',
+    TileCutsceneFile: 'file',
+    PreviewCutsceneFile: 'file',
+    HeroSelectCutsceneFile: 'file',
+    AdditionalSearchText: 'text',
+    Talent: Word,
+    HyperlinkId: Word,
     ApplyTo: '{bit}'
   },
   artifactslot: {
-    Name: 'link'
+    Name: 'text'
   },
   attachmethod: {
-    Multiplier: 'int',
-    RequestCount: 'int',
-    Offset: 'int',
+    Multiplier: Int,
+    RequestCount: Int,
+    Offset: Int,
     Location: {
-      Value: 'word'
+      Value: Word
     },
-    Distribution: 'word',
-    AttachType: 'word',
+    Distribution: Word,
+    AttachType: Word,
     Keys: [
       {
-        Keyword: 'word',
-        value: 'word',
-        Index: 'int'
+        Keyword: Word,
+        value: Word,
+        Index: Int
       }
     ],
-    PassChanceEach: 'real',
-    PassChanceFull: 'real',
+    PassChanceEach: Real,
+    PassChanceFull: Real,
     Targets: '[string]',
-    Logic: 'word',
+    Logic: Word,
     Tests: '{bit}',
-    Type: 'word',
-    FilterType: 'word',
-    Keyword: 'word',
+    Type: Word,
+    FilterType: Word,
+    Keyword: Word,
     Driver: 'string',
-    VolumeFactor: 'real',
-    ProximityFactorNear: 'real',
-    ProximityFactorFar: 'real',
-    SortResults: 'bit',
-    ExponentialMean: 'real',
-    ReductionType: 'word',
-    RequestPercentage: 'real',
+    VolumeFactor: Real,
+    ProximityFactorNear: Real,
+    ProximityFactorFar: Real,
+    SortResults: Bit,
+    ExponentialMean: Real,
+    ReductionType: Word,
+    RequestPercentage: Real,
     Base: 'string',
-    PortLimit: 'int',
-    RequestCountRange: 'int'
+    PortLimit: Int,
+    RequestCountRange: Int
   },
   behavior: {
-    Name: 'link',
-    Tooltip: 'link',
+    Name: 'text',
+    Tooltip: 'text',
     InfoIcon: 'file',
     TechAliasArray: '[behavior]',
     ValidatorArray: '[validator]',
@@ -2844,166 +2881,177 @@ export const StarcraftSchema = {
     AttackModifierFlags: '{bit}',
     InfoFlags: '{bit}',
     DamageDealtFraction: '{real}',
-    MaxStackCount: 'int',
-    MinPoints: 'int',
-    MaxPoints: 'int',
+    MaxStackCount: Int,
+    EmptyHarvestAmount: Int,
+    DepletionAlert: 'alert',
+    MinPoints: Int,
+    MaxPoints: Int,
+    MinVeterancyXPLevelFactor: Int,
+    MinVeterancyXPPreviousValueFactor: Int,
+    Levels: Int,
     PointDisplayFlags: '{bit}',
-    PrimaryName: 'link',
-    PrimaryTooltip: 'link',
-    DurationBonusMin: 'int',
-    DurationBonusMax: 'int',
+    PrimaryName: 'text',
+    PrimaryTooltip: 'text',
+    DurationBonusMin: Int,
+    DurationBonusMax: Int,
     TimeScaleSource: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
     Player: {
       Effect: 'effect',
-      Value: 'word'
+      Value: Word
     },
     AcquirePlayer: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
     BuffFlags: '{bit}',
     DamageResponse: {
-      Location: 'word',
-      ModifyFraction: 'real',
-      Chance: 'real',
-      ModifyMinimumDamage: 'bit',
+      Location: Word,
+      ModifyFraction: Real,
+      Chance: Real,
+      ModifyMinimumDamage: Bit,
       Cost: CostSchema,
       Kind: '{bit}',
       DamageType: '{bit}',
       ModifyAmount: { AccumulatorArray: [{value:"accumulator"}],value:"real"},
-      ClampMinimum: 'bit',
-      Handled: 'word',
-      Minimum: 'int',
-      Priority: 'int',
-      ClampMaximum: 'int',
+      ClampMinimum: Bit,
+      Handled: Word,
+      HandledValue: Word,
+      DamageValue: Word,
+      Minimum: Int,
+      Maximum: Int,
+      Priority: Int,
+      ClampMaximum: Int,
       TargetFilters: 'filters',
-      Fatal: 'bit',
+      Fatal: Bit,
       RequireEffectArray: '[effect]',
-      ModifyLimit: 'int',
+      ModifyLimit: Int,
       ExcludeEffectArray: '[effect]',
+      RequireEffectInChainArray: '[effect]',
       ValidatorArray: '[validator]'
     },
     KillCredit: {
       Effect: 'effect',
-      Value: 'word'
+      Value: Word
     },
     RevealUnit: {
-      Value: 'word'
+      Value: Word
     },
     SharedListPlayer: {
-      Value: 'word'
+      Value: Word
     },
     StackAlias: 'behavior',
-    StackAliasPriority: 'int',
+    StackAliasPriority: Int,
     Face: 'button',
     Modification: ModificationSchema,
-    DurationOverride: {Duration:'real',ValidatorArray: '[validator]'},
+    DurationOverride: [{Duration:Real,ValidatorArray: '[validator]'}],
     BehaviorCategories: '{bit}',
-    Chance: 'bit',
+    Chance: Bit,
     ConjoinedFlags: '{bit}',
-    PowerLink: 'word',
+    PowerLink: Word,
+    DeathType: Word,
     CliffLevelFlags: '{bit}',
     CarryResourceBehavior: 'behavior',
     EnabledSearchFilters: 'filters',
-    EnabledSearchRadius: 'int',
-    Range: 'real',
+    EnabledSearchRadius: Int,
+    Range: Real,
     Flags: '{bit}',
     ShareFilters: '{filters}',
     TargetFilters: '[filters]',
     XPFraction: '{bit}',
-    TimeLimitFactor: 'bit',
-    DurationRandomMax: 'real',
+    TimeLimitFactor: Bit,
+    DurationRandomMax: Real,
     DisplayDuration: '{bit}',
     ExpireEffect: 'effect',
-    Alignment: 'word',
+    Alignment: Word,
     Duration: {AccumulatorArray:[{"value":"accumulator"}],value:"real"},
     DisableValidatorArray: '[validator]',
     TrackingValidatorArray: '[validator]',
     PeriodicEffect: 'effect',
     RemoveValidatorArray: '[validator]',
-    Period: 'real',
-    Capacity: 'int',
-    HarvestTime: 'real',
-    HarvestAmount: 'int',
-    RequiredAlliance: 'word',
+    Period: Real,
+    Capacity: Int,
+    HarvestTime: Real,
+    HarvestAmount: Int,
+    RequiredAlliance: Word,
     ExhaustedAlert: 'alert',
-    IdealHarvesterCount: 'int',
-    Delay: 'real',
-    Leash: 'bit',
+    IdealHarvesterCount: Int,
+    Delay: Real,
+    Leash: Bit,
     PeriodCount: [{AccumulatorArray:[{value:"accumulator"}],value:"int"}],
     InitialEffect: 'effect',
-    MaxTrackedUnits: 'int',
-    UnitAddedAtMaxRule: 'word',
+    MaxTrackedUnits: Int,
+    UnitAddedAtMaxRule: Word,
     ReplacedEffect: 'effect',
     UnitTrackerFlags: '{bit}',
     Cost: CostSchema,
     OffCost: CostSchema,
-    Radius: 'real',
-    Contents: 'int',
-    ReturnDelay: 'real',
-    DepletionThreshold: 'int',
-    DepletionVariationCount: 'int',
-    TriggerHeightDeltaMin: 'real',
-    TriggerHeightDeltaMax: 'real',
-    InitiateRangeUp: 'real',
-    InitiateRangeDown: 'real',
-    JumpRangeMax: 'int',
+    Radius: Real,
+    Contents: Int,
+    ReturnDelay: Real,
+    DepletionThreshold: Int,
+    DepletionVariationCount: Int,
+    TriggerHeightDeltaMin: Real,
+    TriggerHeightDeltaMax: Real,
+    InitiateRangeUp: Real,
+    InitiateRangeDown: Real,
+    JumpRangeMax: Int,
     Mover: 'mover',
     MoverUp: 'mover',
     MoverDown: 'mover',
-    DurationPreLaunch: 'real',
-    DurationPostLand: 'real',
-    DurationMoveOut: 'real',
-    Placeholder: 'word',
-    LandAdjustmentDown: 'real',
-    LandArrivalRange: 'real',
-    LandCheckRadius: 'int',
-    PlacementMinPowerLevel: 'bit',
+    DurationPreLaunch: Real,
+    DurationPostLand: Real,
+    DurationMoveOut: Real,
+    Placeholder: Word,
+    LandAdjustmentDown: Real,
+    LandArrivalRange: Real,
+    LandCheckRadius: Int,
+    PlacementMinPowerLevel: Bit,
     PowerStageArray: [
       {
         Modification: ModificationSchema,
-        MinPowerLevel: 'int'
+        MinPowerLevel: Int
       }
     ],
-    PoweredWhileUnderConstruction: 'bit',
+    PoweredWhileUnderConstruction: Bit,
     InfoArray: [
       {
         Unit: 'unit',
-        MaxCount: 'int',
-        StartCount: 'int',
-        Delay: 'real',
+        MaxCount: Int,
+        Count: Int,
+        StartCount: Int,
+        Delay: Real,
         Requirements: 'requirement',
         Effect: 'effect'
       }
     ],
-    Slop: 'bit',
+    Slop: Bit,
     Center: 'reals',
     Offset: '[reals]',
-    Limit: 'int',
-    ConjoinedLink: 'word',
-    Birth: 'word',
-    Start: 'word',
-    Grown: 'word',
-    Build: 'word',
+    Limit: Int,
+    ConjoinedLink: Word,
+    Birth: Word,
+    Start: Word,
+    Grown: Word,
+    Build: Word,
     Requirements: 'requirement',
     AINotifyEffect: 'effect',
-    Replace: 'word',
+    Replace: Word,
     ReplaceLocation: {
       Effect: 'effect',
-      Value: 'word'
+      Value: Word
     },
     RefreshEffect: 'effect',
-    Count: 'int',
-    CountDelay: 'real',
+    Count: Int,
+    CountDelay: Real,
     CountEffect: 'effect',
-    ResetDelay: 'int',
-    ResetEffect: 'word',
+    ResetDelay: Int,
+    ResetEffect: Word,
     FinalEffect: 'effect',
-    MaxStackCountPerCaster: 'bit',
-    PowerLevel: 'int',
+    MaxStackCountPerCaster: Bit,
+    PowerLevel: Int,
     SharedXPFraction: '{real}',
     SharedXPRadius: '{int}',
     VeterancyLevelArray: [
@@ -3011,128 +3059,130 @@ export const StarcraftSchema = {
         RankNameSchema: 'link',
         LevelGainEffect: 'effect',
         LevelLossEffect: 'effect',
-        MinVeterancyXP: 'int',
+        MinVeterancyXP: Int,
         Modification: ModificationSchema
       }
     ],
-    DurationRandomMin: 'real',
-    LandAdjustmentUp: 'real',
-    MinimumRange: 'real',
+    DurationRandomMin: Real,
+    LandAdjustmentUp: Real,
+    MinimumRange: Real,
     $unit: 'unit'
   },
   button: {
-    Name: 'link',
-    Tooltip: 'link',
-    TooltipCooldownOverrideText: 'link',
-    ChargeText: 'link',
-    AlertName: 'link',
-    AlertTooltip: 'link',
-    Hotkey: 'link',
+    TooltipVitalOverrideText: '{int}',
+    Name: 'text',
+    Tooltip: 'text',
+    TooltipCooldownOverrideText: 'text',
+    ChargeText: 'text',
+    AlertName: 'text',
+    AlertTooltip: 'text',
+    Hotkey: 'text',
     TooltipTimeOverrideAbilCmd: {AbilCmd: 'abilcmd'},
-    HotkeyAlias: 'word',
+    HotkeyAlias: Word,
     TooltipFlags: '{bit}',
-    UseHotkeyLabel: 'bit',
+    UseHotkeyLabel: Bit,
     Icon: 'file',
+    TooltipImage: 'file',
     AlertIcon: 'file',
     EditorCategories: 'categories',
-    TintRacially: 'bit',
-    Universal: 'bit',
+    TintRacially: Bit,
+    Universal: Bit,
     DefaultButtonLayout: {
-      Column: 'int',
-      Row: 'int'
+      Column: Int,
+      Row: Int
     },
-    Placeholder: 'bit',
-    SimpleDisplayText: 'link',
-    HotkeySet: 'word',
-    HidesForSimpleText: 'bit',
+    Placeholder: Bit,
+    SimpleDisplayText: 'text',
+    HotkeySet: 'link',
+    HidesForSimpleText: Bit,
     TooltipAppender: [
       {
         Validator: 'validator',
-        Text: 'link'
+        Text: 'text'
       }
     ],
     $art: 'string',
     $originButton: 'button',
-    $num: 'int'
+    $num: Int
   },
   cliff: {
     CliffMesh: 'cliff',
     CliffMaterial: 'string',
     EditorIcon: 'file',
-    OccludeHeight: 'real',
-    TexSets: 'word',
+    OccludeHeight: Real,
+    TexSets: Word,
     CliffSet: 'cliff',
     Model: 'file',
-    NumCellsDown: 'int',
-    NumCellsAcross: 'int',
+    NumCellsDown: Int,
+    NumCellsAcross: Int,
     HeightCodes: '[string]',
     EditorCategories: 'categories',
     Footprint: 'footprint'
   },
   cliffmesh: {
     ModelPath: 'string',
-    WeldNormals: 'bit',
+    WeldNormals: Bit,
     CliffHeights: '[real]'
   },
   colorstyle: {
-    Name: 'link',
+    Name: 'text',
     ColorEntry: [
       {
-        index: 'word',
+        index: Word,
         Value: '{reals}'
       }
     ]
   },
   commander: {
     RequiredRewardArray: '[word]',
-    Name: 'link',
+    Name: 'text',
     UserReference: 'string',
     StoreName: 'link',
-    Description: 'link',
+    Description: 'text',
     PurchaseMessage: 'link',
     Details: 'link',
     Portrait: 'string',
     HomePanelImage: 'string',
-    CutsceneFilterSelf: 'word',
-    CutsceneFilterAlly: 'word',
+    CutsceneFilterSelf: Word,
+    CutsceneFilterAlly: Word,
     LoadingImage: 'string',
     LoadingImageAlly: 'string',
     TraitIcon: 'file',
-    CommanderAbilTitle: 'link',
+    CommanderAbilTitle: 'text',
     Movie: 'string',
-    MasteryMaxRank: 'int',
+    MasteryMaxRank: Int,
     FeaturedImagePath: 'string',
-    FeaturedDescription: 'link',
+    FeaturedDescription: 'text',
     ProfileImagePath: 'string',
     StoreTypeName: 'link',
     LearnMoreBackgroundImage: 'string',
     LearnMoreImage1: 'string',
     LearnMoreImage2: 'string',
     LearnMoreImage3: 'string',
-    LearnMoreTitleText1: 'link',
-    LearnMoreTitleText2: 'link',
-    LearnMoreTitleText3: 'link',
-    LearnMoreBodyText1: 'link',
-    LearnMoreBodyText2: 'link',
-    LearnMoreBodyText3: 'link',
+    LearnMoreTitleText1: 'text',
+    LearnMoreTitleText2: 'text',
+    LearnMoreTitleText3: 'text',
+    LearnMoreBodyText1: 'text',
+    LearnMoreBodyText2: 'text',
+    LearnMoreBodyText3: 'text',
     Color: 'ints',
-    CommanderPrestigeAchievementId: 'int',
-    AttributeId: 'word',
+    CommanderPrestigeAchievementId: Int,
+    AttributeId: Word,
     Race: 'race',
-    LevelAchievementId: 'int',
+    LevelAchievementId: Int,
     UnitArray: [
       {
         Unit: 'unit',
-        Upgrade: 'word'
+        Upgrade: Word
       }
     ],
     TalentTreeArray: [
       {
         Talent: 'talent',
-        Level: 'int',
-        Type: 'word',
+        Level: Int,
+        Type: Word,
         Unit: 'unit',
-        IsHidden: 'bit'
+        IsHidden: Bit
       }
     ],
     CommanderAbilArray: [
@@ -3143,47 +3193,47 @@ export const StarcraftSchema = {
     MasteryTalentArray: [
       {
         Talent: 'talent',
-        ValuePerRank: 'real',
-        MaxRank: 'int',
-        Type: 'word',
-        Bucket: 'int',
-        MaxValuePrecision: 'bit'
+        ValuePerRank: Real,
+        MaxRank: Int,
+        Type: Word,
+        Bucket: Int,
+        MaxValuePrecision: Bit
       }
     ],
     ConsoleSkin: 'consoleskin',
     PrestigeArray: '[word]',
-    ProductId: 'int',
-    Campaign: 'word',
+    ProductId: Int,
+    Campaign: Word,
     PurchaseImage: 'string'
   },
   config: {
-    Name: 'link',
+    Name: 'text',
     CommanderMastery: 'commander',
     CommanderDifficultyLevels: [
       {
-        DifficultyLevel: 'int',
+        DifficultyLevel: Int,
         Name: 'string',
         Description: 'string',
-        IsDefault: 'bit',
-        AISkillLevel: 'int',
-        CommanderLevel: 'int',
-        BeyondBrutalLevel: 'int',
-        RequirePartyToQueue: 'bit',
-        IsRetry: 'bit'
+        IsDefault: Bit,
+        AISkillLevel: Int,
+        CommanderLevel: Int,
+        BeyondBrutalLevel: Int,
+        RequirePartyToQueue: Bit,
+        IsRetry: Bit
       }
     ],
-    CommanderAchievementCategoryId: 'int',
-    CoopCampaignAchievementCategoryId: 'int',
-    SilencePenaltyLicense: 'int',
-    FreeNonKRIGRLicense: 'int',
-    BoostLicense: 'int',
+    CommanderAchievementCategoryId: Int,
+    CoopCampaignAchievementCategoryId: Int,
+    SilencePenaltyLicense: Int,
+    FreeNonKRIGRLicense: Int,
+    BoostLicense: Int,
     GameContentArray: '[words]'
   },
   consoleskin: {
-    Name: 'link',
+    Name: 'text',
     StoreName: 'link',
     StoreTypeName: 'link',
-    Description: 'link',
+    Description: 'text',
     ThumbnailImage: 'string',
     FeaturedImage: 'string',
     MinimapPanelModel: {
@@ -3203,31 +3253,31 @@ export const StarcraftSchema = {
     },
     Light: 'light',
     $race: 'race',
-    $assetname: 'word',
-    $preview: 'word',
-    Default: 'bit',
+    $assetname: Word,
+    $preview: Word,
+    Default: Bit,
     ReleaseDate: 'link',
     RequiredReward: 'reward',
-    SkinId: 'word',
-    ProductId: 'int',
+    SkinId: Word,
+    ProductId: Int,
     CommandPanelImage: 'string',
     InfoPanelImage: 'string',
     MinimapPanelImage: 'string'
   },
   cursor: {
     Texture: 'string',
-    HotspotX: 'int',
-    HotspotY: 'int'
+    HotspotX: Int,
+    HotspotY: Int
   },
   datacollection: {
-    Name: 'link',
-    Button: 'word',
-    ImplementionLevel: 'word',
+    Name: 'text',
+    Button: Word,
+    ImplementionLevel: Word,
     EditorCategories: 'categories',
-    EditorIconSource: 'word',
-    TechInfoUnit: 'word',
-    TechInfoAbil: 'word',
-    TechInfoUpgrade: 'word',
+    EditorIconSource: Word,
+    TechInfoUnit: Word,
+    TechInfoAbil: Word,
+    TechInfoUpgrade: Word,
     Pattern: 'datacollectionpattern',
     DataRecord: [
       {
@@ -3243,256 +3293,266 @@ export const StarcraftSchema = {
     }]
   },
   decalpack: {
-    Name: 'link',
+    Name: 'text',
     StoreName: 'link',
     StoreTypeName: 'link',
-    ProductId: 'int',
+    ProductId: Int,
     DecalArray: '[word]'
   },
   dsp: {
-    Delay: 'real',
-    Depth: 'real',
-    DryMix: 'real',
-    Rate: 'real',
-    WetMix1: 'real',
-    WetMix2: 'real',
-    WetMix3: 'real',
-    Attack: 'real',
-    Release: 'real',
-    Level: 'real',
-    DecayRatio: 'real',
-    WetMix: 'real',
-    Cutoff: 'real',
-    Resonance: 'real',
-    FadeTime: 'real',
-    MaxAmp: 'real',
-    Threshhold: 'real',
-    Bandwidth: 'real',
-    Center: 'real',
-    Gain: 'real',
-    FFTSize: 'int',
-    Pitch: 'real',
-    DecayTime: 'real',
-    DecayHFRatio: 'real',
-    Density: 'real',
-    Diffusion: 'real',
-    HFReference: 'real',
-    LFReference: 'real',
-    ReflectionsLevel: 'real',
-    ReflectionsDelay: 'real',
-    ReverbLevel: 'real',
-    ReverbDelay: 'real',
-    RoomRolloffFactor: 'real',
-    Room: 'real',
-    ReleaseMs: 'int',
-    UseARC: 'bit',
-    ThresholdDB: 'real',
-    MakeUpGainDB: 'real',
-    SoftKneeWidthDB: 'real',
-    ARCReleaseMs: 'int',
-    ARCMinReleaseMs: 'int',
-    ARCMaxReleaseMs: 'int',
-    ARCReleaseSweepMs: 'int',
-    AttackMs: 'int',
-    Ratio: 'real',
-    GainMakeUp: 'real',
-    Threshold: 'real',
-    RoomHF: 'real'
+    Delay: Real,
+    Depth: Real,
+    MaxChannels: Real,
+    DryLevel: Real,
+    RoomLF: Real,
+    DryMix: Real,
+    Rate: Real,
+    WetMix1: Real,
+    WetMix2: Real,
+    WetMix3: Real,
+    Attack: Real,
+    Release: Real,
+    Level: Real,
+    DecayRatio: Real,
+    WetMix: Real,
+    Cutoff: Real,
+    Resonance: Real,
+    FadeTime: Real,
+    MaxAmp: Real,
+    Threshhold: Real,
+    Bandwidth: Real,
+    Center: Real,
+    Gain: Real,
+    FFTSize: Int,
+    Pitch: Real,
+    DecayTime: Real,
+    DecayHFRatio: Real,
+    Density: Real,
+    Diffusion: Real,
+    HFReference: Real,
+    LFReference: Real,
+    ReflectionsLevel: Real,
+    ReflectionsDelay: Real,
+    ReverbLevel: Real,
+    ReverbDelay: Real,
+    RoomRolloffFactor: Real,
+    Room: Real,
+    ReleaseMs: Int,
+    UseARC: Bit,
+    ThresholdDB: Real,
+    MakeUpGainDB: Real,
+    SoftKneeWidthDB: Real,
+    ARCReleaseMs: Int,
+    ARCMinReleaseMs: Int,
+    ARCMaxReleaseMs: Int,
+    ARCReleaseSweepMs: Int,
+    AttackMs: Int,
+    Ratio: Real,
+    GainMakeUp: Real,
+    Threshold: Real,
+    RoomHF: Real
   },
   effect: {
-    Name: 'link',
+    Name: 'text',
     EditorCategories: 'categories',
     ExtraRadiusBonus: {AccumulatorArray:[{value:"accumulator"}],value:"int"},
-    Chance: 'real',
+    Chance: Real,
+    Minimum: Int,
     DisplayFlags: '{bit}',
     Marker: {
       Link: 'string',
       MatchFlags: '{bit}',
       MismatchFlags: '{bit}',
-      Count: 'bit',
-      Duration: 'real'
+      Count: Bit,
+      Duration: Real
     },
     DamageModifierSource: {
-      Value: 'word'
+      Value: Word
     },
     OwningPlayer: {
-      Value: 'word'
+      Value: Word
     },
     Behavior: 'behavior',
     ValidatorArray: '[validator]',
     PreloadValidatorArray: '[validator]',
     WhichUnit: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
-    Count: 'int',
-    FacingAdjustment: 'real',
-    CastMovementLimit: 'int',
-    AttributeFactor: '{int}',
-    ResourceRestoreBonus: 'int',
-    CheckOuter: 'int',
+    Count: Int,
+    RecycleCount: Int,
+    ShieldFactor: Real,
+    KillHallucination: Bit,
+    CanBeBlocked: Bit,
+    FacingAdjustment: Real,
+    Total: Word,
+    CastMovementLimit: Int,
+    AttributeFactor: '{real}',
+    ResourceRestoreBonus: Int,
+    CheckOuter: Int,
     ExpireOffset: 'ints',
-    MassFraction: 'bit',
-    Preserve: 'bit',
+    MassFraction: Bit,
+    Preserve: Bit,
     MagazineAbil: 'abil',
-    RechargeVitalFraction: 'real',
-    RestrictToCircumference: 'bit',
+    RechargeVitalFraction: Real,
+    RestrictToCircumference: Bit,
     StackAlias: 'effect',
     WhichLocation: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
-    Kinetic: 'word',
+    Kinetic: Word,
     ImpactUnit: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
     Flags: '{bit}',
     BehaviorCategories: '{bit}',
     TimeScaleSource: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
     OffsetVectorStartLocation: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
     OffsetVectorEndLocation: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
     OffsetFacingFallback: {
-      Value: 'word'
+      Value: Word
     },
-    SpawnCount: 'int',
+    SpawnCount: Int,
     CreateFlags: '{bit}',
     RallyUnit: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
-    SpawnRange: 'real',
+    SpawnRange: Real,
     SelectUnit: {
-      Value: 'word'
+      Value: Word
     },
     CreepFlags: '{bit}',
-    Radius: 'real',
-    Visibility: 'word',
+    Radius: Real,
+    Visibility: Word,
     MaxCount: {AccumulatorArray:[{"value":"accumulator"}],value:"int"},
     MinCountError: 'string',
     LaunchLocation: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
     ImpactLocation: {
-      Value: 'word',
+      History: Word,
+      Value: Word,
       Effect: 'effect'
     },
     SearchFlags: '{bit}',
-    Type: 'word',
-    Fraction: 'bit',
+    Type: Word,
+    Fraction: Bit,
     Player: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
     Target: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
-    DeathType: 'word',
+    DeathType: Word,
     AmmoOwner: {
-      Value: 'word'
+      Value: Word
     },
     AmmoUnit: 'unit',
     PlacementAround: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
     WhichPlayer: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
     BehaviorScope: {Behavior: 'behavior'},
     LaunchUnit: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
     KillCreditUnit: {
-      Value: 'word'
+      Value: Word
     },
     SelectTransferUnit: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
     FacingLocation: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
-    ArmorReduction: 'real',
-    Kind: 'word',
+    ArmorReduction: Real,
+    Kind: Word,
     ResponseFlags: '{bit}',
     ImpactFilters: 'filters',
-    BehaviorClass: 'word',
+    BehaviorClass: Word,
     BehaviorLink: 'behavior',
     ExcludeOriginPlayer: {
-      Value: 'word'
+      Value: Word
     },
     ExcludeCasterUnit: {
-      Value: 'word'
+      Value: Word
     },
     RequireOriginPlayer: {
-      Value: 'word'
+      Value: Word
     },
     RequireCasterUnit: {
-      Value: 'word'
+      Value: Word
     },
-    MatchesAll: 'bit',
-    KineticLink: 'word',
-    ClearQueuedOrders: 'bit',
-    MinDistance: 'real',
-    PlacementArc: 'int',
-    PlacementRange: 'real',
-    Range: 'int',
+    MatchesAll: Bit,
+    KineticLink: Word,
+    ClearQueuedOrders: Bit,
+    MinDistance: Real,
+    PlacementArc: Int,
+    PlacementRange: Real,
+    Range: Real,
     TeleportFlags: '{bit}',
-    BehaviorAlignment: 'word',
+    BehaviorAlignment: Word,
     TargetLocation: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
-    Key: 'word',
+    Key: Word,
     Amount: [
       {
         AccumulatorArray: '[accumulator]',
-        value: 'real'
+        value: Real
       }
     ],
-    SourceKey: 'word',
-    ValidateMin: 'bit',
-    TargetLocationType: 'word',
+    SourceKey: Word,
+    ValidateMin: Bit,
+    TargetLocationType: Word,
     ContainerUnit: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
-    ContainerType: 'word',
+    ContainerType: Word,
     AreaArray: [
       {
-        Radius: 'real',
+        Radius: Real,
         Effect: 'effect',
-        RectangleWidth: 'real',
-        RectangleHeight: 'real',
-        MaxCount: 'int',
-        Bonus: 'int',
-        Fraction: 'real',
-        Arc: 'real',
+        RectangleWidth: Real,
+        RectangleHeight: Real,
+        MaxCount: Int,
+        Bonus: Int,
+        Fraction: Real,
+        Arc: Real,
         Validator: 'validator',
-        RadiusBonus: 'real',
-        FacingAdjustment: 'real'
+        RadiusBonus: Real,
+        FacingAdjustment: Real
       }
     ],
-    Death: 'word',
-    DebugTrace: 'bit',
-    ExpireDelay: 'real',
-    ValidateMax: 'int',
-    FacingType: 'word',
+    Death: Word,
+    DebugTrace: Bit,
+    ExpireDelay: Real,
+    ValidateMax: Int,
+    FacingType: Word,
     Operation: 'string',
     TrackerUnit: {
       Value: "word"
@@ -3512,43 +3572,39 @@ export const StarcraftSchema = {
     PeriodicValidator: 'validator',
     PeriodCount: { AccumulatorArray: [{value:"accumulator"}],value:"int"},
     RevealerParams: {
-      Duration: 'real',
-      ShapeExpansion: 'real',
+      Duration: Real,
+      ShapeExpansion: Real,
       RevealFlags: '{bit}'
     },
     FinalEffect: 'effect',
     ExcludeArray: [
       {
-        Value: 'word',
+        Value: Word,
         Effect: 'effect'
       }
     ],
-    TargetSorts: {
-      SortArray: '[targetsort]',
-      RequestCount: 'int',
-      RequestPercentage: 'bit'
-    },
+    TargetSorts: TargetSorts,
     Abil: 'abil',
     CmdFlags: '{bit}',
     SpawnEffect: 'effect',
     SpawnOwner: {
       Effect: 'effect',
-      Value: 'word'
+      Value: Word
     },
-    SpawnUnit: 'unit',
+    SpawnUnit: '[unit]',
     VitalArray: [
       {
-        index: 'word',
-        ChangeFraction: {AccumulatorArray: '[accumulator]', value: 'real'},
-        Change: {AccumulatorArray: '[accumulator]', value: 'real'}
+        index: Word,
+        ChangeFraction: {AccumulatorArray: '[accumulator]', value: Real},
+        Change: {AccumulatorArray: '[accumulator]', value: Real}
       }
     ],
     TrackedUnit: {
-      Value: 'word'
+      Value: Word
     },
     Upgrades: {
       Upgrade: 'upgrade',
-      Count: 'int'
+      Count: Int
     },
     ExpireEffect: 'effect',
     Alert: 'alert',
@@ -3560,124 +3616,124 @@ export const StarcraftSchema = {
       {
         Validator: 'validator',
         Effect: 'effect',
-        FallThrough: 'bit'
+        FallThrough: Bit
       }
     ],
-    MinCount: 'int',
-    AbilCmdIndex: 'int',
+    MinCount: Int,
+    AbilCmdIndex: Int,
     SourceLocation: {
       Effect: 'effect',
-      Value: 'word'
+      Value: Word
     },
     PeriodicOffsetArray: '[reals]',
     FinishEffect: 'effect',
     Movers: [
       {
         Link: 'mover',
-        IfRangeLTE: 'real'
+        IfRangeLTE: Real
       }
     ],
-    InitialDelay: 'real',
+    InitialDelay: Real,
     Effect: 'effect',
     PlaceholderUnit: 'unit',
-    KindSplash: 'word',
+    KindSplash: Word,
     ModifyFlags: '{bit}',
     DrainResourceCostFactor: '{real}',
-    RechargeVitalRate: 'real',
-    TimeFactor: 'real',
+    RechargeVitalRate: Real,
+    TimeFactor: Real,
     AttributeBonus: '{real}',
-    CaseDefault: 'word',
-    RevealRadius: 'real',
+    CaseDefault: Word,
+    RevealRadius: Real,
     RevealFlags: '{bit}',
-    CalldownCount: 'bit',
+    CalldownCount: Bit,
     CalldownEffect: 'effect',
     ReturnMovers: [
       {
         Link: 'mover',
-        IfRangeLTE: 'int'
+        IfRangeLTE: Int
       }
     ],
-    ReturnDelay: 'real',
+    ReturnDelay: Real,
     SalvageFactor: {
       Resource: '{real}'
     },
     IncludeArray: [
       {
         Effect: 'effect',
-        Value: 'word'
+        Value: Word
       }
     ],
-    MoverRollingJump: 'bit',
-    DrainVital: 'word',
+    MoverRollingJump: Bit,
+    DrainVital: Word,
     DrainVitalCostFactor: {
-      value: 'real',
+      value: Real,
       AccumulatorArray: '[accumulator]'
     },
     AbilCmd: 'abilcmd',
     SpawnOffset: 'reals',
     TypeFallbackUnit: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
-    CopyOrderCount: 'int',
+    CopyOrderCount: Int,
     ModifyOwnerPlayer: {
-      Value: 'word'
+      Value: Word
     },
     FinalOffset: 'reals',
     Origin: {
       Effect: 'effect',
-      Value: 'word'
+      Value: Word
     },
     InitialOffset: 'reals',
     Resources: '{int}',
-    ShieldBonus: 'int',
+    ShieldBonus: Real,
     EffectExternal: 'effect',
-    RechargeVital: 'word',
+    RechargeVital: Word,
     ModifyTurret: {
       Turret: 'turret',
       Target: {
         Effect: 'effect',
-        Value: 'word'
+        Value: Word
       },
       Flags: '{bit}',
-      Action: 'word',
+      Action: Word,
       AimCompleteEffect: 'effect'
     },
     EffectInternal: 'effect',
     AmmoEffect: 'effect',
-    CopyRallyCount: 'int',
+    CopyRallyCount: Int,
     ImpactOffset: 'reals',
     LaunchOffset: 'reals',
     Cost: [CostSchema] ,
-    Duration: 'real',
+    Duration: Real,
     VitalBonus: '{int}',
-    Copy: 'bit',
+    Copy: Bit,
     AreaRelativeOffset: 'reals',
     VitalFractionMax: '{real}',
     RetargetFilters: 'filters',
-    RetargetRange: 'real',
+    RetargetRange: Real,
     ImpactUnitValidator: 'validator',
-    ResourcesHarvestedFraction: 'bit',
-    HeightMap: 'word',
+    ResourcesHarvestedFraction: Bit,
+    HeightMap: Word,
     TransferUnit: {
-      Value: 'word'
+      Value: Word
     },
-    Height: 'real',
-    HeightTime: 'real',
-    ImpactRange: 'real',
-    MoverExecuteJump: 'bit',
+    Height: Real,
+    HeightTime: Real,
+    ImpactRange: Real,
+    MoverExecuteJump: Bit,
     PeriodicEffect: 'effect',
     InterruptEffect: 'effect',
     TeleportEffect: 'effect',
-    PeriodicPeriod: 'real',
-    OffsetRandMode: 'word',
-    RechargeVitalMax: 'int',
-    Random: 'bit',
+    PeriodicPeriod: Real,
+    OffsetRandMode: Word,
+    RechargeVitalMax: Int,
+    Random: Real,
     Weapon: {
       Weapon: 'weapon',
-      CooldownOperation: 'word',
-      CooldownAmount: 'real',
-      CooldownFraction: 'real'
+      CooldownOperation: Word,
+      CooldownAmount: Real,
+      CooldownFraction: Real
     },
 
     MorphFlags: '{bit}',
@@ -3699,7 +3755,7 @@ export const StarcraftSchema = {
     Flags: '{bit}',
     Layers: [
       {
-        index: 'word',
+        index: Word,
         Area: 'ints',
         Sets: [
           {
@@ -3712,41 +3768,41 @@ export const StarcraftSchema = {
       }
     ],
     Shape: {
-      Radius: 'real',
+      Radius: Real,
       Offsets: 'string',
       Borders: 'string',
-      Mode: 'word'
+      Mode: Word
     },
     EditorCategories: 'categories'
   },
   fow: {
     Color: 'ints',
-    BlendSpeed: 'int',
-    Hidden: 'bit',
-    UnhideRadius: 'int',
-    Expand: 'bit'
+    BlendSpeed: Int,
+    Hidden: Bit,
+    UnhideRadius: Int,
+    Expand: Bit
   },
   herd: {
-    PositionBias: 'real',
-    NodeSearchRadius: 'real',
+    PositionBias: Real,
+    NodeSearchRadius: Real,
     Nodes: {
-      Weight: 'real',
-      Link: 'word'
+      Weight: Real,
+      Link: Word
     },
     Levels: [
       {
-        Weight: 'real'
+        Weight: Real
       }
     ],
     SpeedLimit: 'reals'
   },
   hero: {
-    Name: 'link',
+    Name: 'text',
     Flags: '{bit}',
     Model: 'model',
-    Description: 'link',
-    InfoText: 'link',
-    Title: 'link',
+    Description: 'text',
+    InfoText: 'text',
+    Title: 'text',
     RequiredRewardArray: '[word]',
     Portrait: 'string',
     SelectScreenButtonImage: 'string',
@@ -3759,24 +3815,24 @@ export const StarcraftSchema = {
     DraftScreenLargeImageBackground: 'string',
     DraftScreenPortrait: 'string',
     DraftScreenPortraitBackground: 'string',
-    ImageFacing: 'word',
-    AdditionalSearchText: 'link',
-    HyperlinkId: 'word',
+    ImageFacing: Word,
+    AdditionalSearchText: 'text',
+    HyperlinkId: Word,
     SkinVariationRequiredReward: '[word]',
     MountVariationRequiredReward: '[word]',
     ReleaseDate: {
-      Month: 'bit',
-      Day: 'bit',
-      Year: 'int'
+      Month: Bit,
+      Day: Bit,
+      Year: Int
     }
   },
   heroabil: {
-    Name: 'link',
-    Description: 'link',
-    Tooltip: 'link'
+    Name: 'text',
+    Description: 'text',
+    Tooltip: 'text'
   },
   herostat: {
-    Name: 'link'
+    Name: 'text'
   },
   item: {
     Face: 'button',
@@ -3784,22 +3840,23 @@ export const StarcraftSchema = {
     Charge: {
       Link: 'link'
     },
-    Abil: 'word',
+    Abil: Word,
+    EquipBehaviorArray: '[behavior]',
     Effect: 'effect',
-    Class: 'word',
-    Container: 'word',
+    Class: Word,
+    Container: Word,
     EffectCost: CostSchema,
-    Range: 'int'
+    Range: Int
   },
   itemclass: {
-    Name: 'link'
+    Name: 'text'
   },
   kinetic: {
-    Name: 'link',
-    Chance: 'bit',
-    Duration: 'real',
-    Yaw: 'int',
-    Cycles: 'int',
+    Name: 'text',
+    Chance: Bit,
+    Duration: Real,
+    Yaw: Int,
+    Cycles: Int,
     Where: {
       "Effect": "effect",
       "Value": "string"
@@ -3810,58 +3867,58 @@ export const StarcraftSchema = {
     Flare: [
       {
         Model: 'model',
-        Template: 'word'
+        Template: Word
       }
     ]
   },
   light: {
     TimePerDay: 'string',
-    TimePerLoop: 'word',
+    TimePerLoop: Word,
     TimeStart: 'string',
     TimeEventArray: [
       {
-        index: 'word',
+        index: Word,
         Time: 'string',
-        Name: 'word'
+        Name: Word
       }
     ],
     ToDInfoArray: [
       {
         AmbientColor: 'reals',
-        Colorize: 'bit',
+        Colorize: Bit,
         Param: '{real}',
         DirectionalLight: [
           {
-            index: 'word',
+            index: Word,
             Color: 'reals',
-            ColorMultiplier: 'real',
-            SpecColorMultiplier: 'real',
+            ColorMultiplier: Real,
+            SpecColorMultiplier: Real,
             Direction: 'reals',
             SpecularColor: 'reals',
-            UseAmbientOcclusion: 'bit'
+            UseAmbientOcclusion: Bit
           }
         ],
-        OperatorHDR: 'int',
+        OperatorHDR: Int,
         $Id: 'string',
-        AmbientEnvironmentMultiplier: 'real',
-        UseSeparateDetailSSAO: 'bit',
+        AmbientEnvironmentMultiplier: Real,
+        UseSeparateDetailSSAO: Bit,
         TimeOfDay: 'string',
         Variations: [
           {
-            Command: 'word',
-            Sensitivity: 'int',
-            Region: 'word'
+            Command: Word,
+            Sensitivity: Int,
+            Region: Word
           }
         ],
-        DirectionalLightShadows: 'bit',
-        TerrainUseBackLight: 'bit',
+        DirectionalLightShadows: Bit,
+        TerrainUseBackLight: Bit,
         LightRegions: [
           {
-            UseDefault: 'bit',
+            UseDefault: Bit,
             AmbientColor: 'reals',
-            AmbientEnvironmentMultiplier: 'real',
+            AmbientEnvironmentMultiplier: Real,
             SpecularColor: 'reals',
-            SpecularMultiplier: 'real',
+            SpecularMultiplier: Real,
             FogColor: 'reals',
             DiffuseColor: '{reals}',
             DiffuseMultiplier: '{real}'
@@ -3874,79 +3931,81 @@ export const StarcraftSchema = {
     LightingRegionMap: 'string'
   },
   location: {
-    Name: 'link',
-    Description: 'link'
+    Name: 'text',
+    Description: 'text'
   },
   loot: {
     ClassArray: '[string]',
-    SpawnOwner: 'word',
-    SpawnRange: 'int',
-    Effect: 'word',
-    Unit: 'word',
-    MinLevel: 'int'
+    SpawnOwner: Word,
+    SpawnRange: Int,
+    Effect: Word,
+    Unit: Word,
+    MinLevel: Int
   },
   map: {
-    Name: 'link',
-    Description: 'link',
+    Name: 'text',
+    Description: 'text',
     Summary: 'link',
-    LoadingTitle: 'link',
-    LoadingSubtitle: 'link',
+    LoadingTitle: 'text',
+    LoadingSubtitle: 'text',
     LoadingBody: 'link',
     LoadingHelp: 'link',
     LoadingHelpRestart: 'link',
     LoadingHelpAlternate: 'link',
-    BonusText: 'link',
-    BonusTitle: 'link',
-    MissionText: 'link',
-    MissionTitle: 'link',
-    PrimaryObjectiveText: 'link',
-    PrimaryObjectiveTitle: 'link',
-    ResearchText: 'link',
-    ResearchTitle: 'link',
-    RewardText: 'link',
-    RewardTitle: 'link',
-    SecondaryObjectiveText: 'link',
-    SecondaryObjectiveTitle: 'link',
-    TechnologyNameText: 'link',
-    TechnologyTitle: 'link'
+    BonusText: 'text',
+    BonusTitle: 'text',
+    MissionText: 'text',
+    MissionTitle: 'text',
+    PrimaryObjectiveText: 'text',
+    PrimaryObjectiveTitle: 'text',
+    ResearchText: 'text',
+    ResearchTitle: 'text',
+    RewardText: 'text',
+    RewardTitle: 'text',
+    SecondaryObjectiveText: 'text',
+    SecondaryObjectiveTitle: 'text',
+    TechnologyNameText: 'text',
+    TechnologyTitle: 'text'
   },
   model: {
-    $COOP: 'word',
+    $COOP: Word,
     $Race: 'string',
     $Prefix: 'string',
     $Parent: 'model',
     Flags: '{bit}',
     Lighting: 'string',
-    Quality: 'bit',
+    Quality: Bit,
     ScaleMax: 'reals',
     ScaleMin: 'reals',
-    Radius: 'real',
-    WalkAnimMoveSpeed: 'real',
-    FuzzyGeometryPadding: 'real',
-    Priority: 'int',
+    Radius: Real,
+    TipabilityPitchMax: Real,
+    TipabilityRollMax: Real,
+    WalkAnimMoveSpeed: Real,
+    FuzzyGeometryPadding: Real,
+    Priority: Int,
     PortraitOffset: 'reals',
-    SelectionRadius: 'real',
-    ShadowRadius: 'real',
-    AnimSpeed: 'real',
-    AnimBlendTime: 'real',
-    TechPurchaseCamera: 'word',
-    UnitGlossaryCamera: 'word',
-    PlanetPanelCamera: 'word',
-    TechPurchaseSpeed: 'real',
-    OccludingOpacity: 'real',
+    SelectionRadius: Real,
+    ShadowRadius: Real,
+    AnimSpeed: Real,
+    AnimBlendTime: Real,
+    TechPurchaseCamera: Word,
+    UnitGlossaryCamera: Word,
+    PlanetPanelCamera: Word,
+    TechPurchaseSpeed: Real,
+    OccludingOpacity: Real,
     EditorCategories: 'categories',
     Image: 'file',
     Model: 'file',
     FacialController: 'file',
-    PausedParticleSystemBehavior: 'word',
-    Occlusion: 'word',
-    RadiusLoose: 'real',
-    SelectionLayer: 'int',
+    PausedParticleSystemBehavior: Word,
+    Occlusion: Word,
+    RadiusLoose: Real,
+    SelectionLayer: Int,
     LowQualityModel: 'model',
-    SquibTypeDefault: 'word',
-    Tipability: 'real',
-    $low: 'word',
-    $name: 'word',
+    SquibTypeDefault: Word,
+    Tipability: Real,
+    $low: Word,
+    $name: Word,
     AnimAliases: [{
       Anim:"words",
       Alias:"words"
@@ -3955,26 +4014,28 @@ export const StarcraftSchema = {
       {
         Anim: 'words',
         Name: 'string',
-        Type: 'word',
-        Time: 'real',
-        Payload: 'word',
-        Variation: 'int',
+        Type: Word,
+        Time: Real,
+        Payload: Word,
+        Variation: Int,
         Attachment: 'string',
-        ModelQuality: 'word'
+        ModelQuality: Word
       }
     ],
-    TipabilityLength: 'real',
-    TipabilityWidth: 'real',
-    VariationCount: 'int',
+    TipabilityLength: Real,
+    TipabilityWidth: Real,
+    VariationCount: Int,
     TextureDeclares: [
       {
-        Prefix: 'word',
+        Slot: Word,
+        Prefix: Word,
         Adaptions: [
           {
             TriggerOnSubstring: 'string',
             Slot: 'string',
-            PropsRemove: 'word',
-            AppliesToFile: 'bit'
+            PropsSet: Word,
+            PropsRemove: Word,
+            AppliesToFile: Bit
           }
         ]
       }
@@ -3984,18 +4045,18 @@ export const StarcraftSchema = {
       {
         $Id: 'string',
         Keys: '{int}',
-        RadiusTarget: 'real',
-        SquibType: 'word',
-        RadiusShield: 'real'
+        RadiusTarget: Real,
+        SquibType: Word,
+        RadiusShield: Real
       }
     ],
     RequiredAnims: '[file]',
     Variations: [
       {
-        Number: 'bit',
-        Probability: 'int',
-        Radius: 'real',
-        RadiusLoose: 'real',
+        Number: Int,
+        Probability: Int,
+        Radius: Real,
+        RadiusLoose: Real,
         TextureExpressionsForEditor: {
           Slot: 'string',
           Expression: 'string'
@@ -4003,150 +4064,150 @@ export const StarcraftSchema = {
       }
     ],
     PhysicsDeathMotionFactor: 'reals',
-    PhysicsForceFactor: 'real',
-    PhysicsGravityFactor: 'real',
-    SpringDampening: 'real',
-    SpringStrength: 'real',
-    DragCoefficient: 'real',
-    WindInfluence: 'real',
+    PhysicsForceFactor: Real,
+    PhysicsGravityFactor: Real,
+    SpringDampening: Real,
+    SpringStrength: Real,
+    DragCoefficient: Real,
+    WindInfluence: Real,
     RequiredAnimsEx: {
       FilePath: 'string',
       Flags: '{bit}'
     },
-    PhysicsMaterialOverride: 'word',
+    PhysicsMaterialOverride: Word,
     OptionalAnims: '[string]',
-    TextureAppliedGroups: 'word',
+    TextureAppliedGroups: Word,
     TextureMatchesForEditor: {
       Slot: 'string',
-      Source: 'word'
+      Source: Word
     },
-    $baseKey: 'word',
+    $baseKey: Word,
     $race: 'race'
   },
   objective: {
     UserReference:  [{"value":"string"}],
-    Type: 'word',
+    Type: Word,
     RequiredCount: 'number'
   },
   mount: {
-    Name: 'link',
-    InfoText: 'link',
+    Name: 'text',
+    InfoText: 'text',
     Model: 'model',
     VariationIcon: 'file'
   },
   mover: {
-    HeightMap: 'word',
-    RestoreHeightDuration: 'real',
+    HeightMap: Word,
+    RestoreHeightDuration: Real,
     PlacementArray: [
       {
-        index: 'word',
+        index: Word,
         Bits: '{bit}'
       }
     ],
     MotionPhases: [
       {
-        Driver: 'word',
-        Acceleration: 'real',
-        MaxSpeed: 'real',
-        ClearanceAcceleration: 'int',
+        Driver: Word,
+        Acceleration: Real,
+        MaxSpeed: Real,
+        ClearanceAcceleration: Int,
         Outro: 'reals',
         YawPitchRoll: 'string',
-        Speed: 'real',
-        RotationLaunchActorType: 'word',
-        Gravity: 'real',
-        IgnoresTerrain: 'bit',
-        ActorTracking: 'word',
-        YawPitchRollAccel: 'real',
-        ThrowRotationType: 'word',
+        Speed: Real,
+        RotationLaunchActorType: Word,
+        Gravity: Real,
+        IgnoresTerrain: Bit,
+        ActorTracking: Word,
+        YawPitchRollAccel: Real,
+        ThrowRotationType: Word,
         ThrowVector: 'reals',
         Overlays: [{
           Scale: 'reals'
         }],
-        TurnType: 'word',
-        MinSpeed: 'real',
+        TurnType: Word,
+        MinSpeed: Real,
         ThrowForward: 'ints',
-        AdaptableParabolaIsUpright: 'bit',
+        AdaptableParabolaIsUpright: Bit,
         AdaptableParabolaClearance: 'reals',
         AdaptableParabolaDistances: '{real}',
         AdaptableParabolaAccels: '{int}',
-        Clearance: 'real',
-        ClearanceLookahead: 'int',
-        Timeout: 'real',
-        RotationActorType: 'word',
+        Clearance: Real,
+        ClearanceLookahead: Int,
+        Timeout: Real,
+        RotationActorType: Word,
         ThrowBandYaw: 'reals',
         ThrowBandPitch: 'reals',
         FlightTime: 'reals',
-        ClearanceIgnoresTargetProximity: 'bit',
-        ArrivalTestType: 'word',
-        AccelerationRange: 'int',
-        PowerslideAngle: 'real',
-        PowerslideDecel: 'int',
-        SpeedRange: 'real',
+        ClearanceIgnoresTargetProximity: Bit,
+        ArrivalTestType: Word,
+        AccelerationRange: Int,
+        PowerslideAngle: Real,
+        PowerslideDecel: Int,
+        SpeedRange: Real,
         OutroAltitude: 'reals',
-        BlendType: 'word'
+        BlendType: Word
       }
     ],
     Flags: '{bit}',
     MotionOverlays: [
       {
-        Type: 'word',
-        Polarity: 'word',
+        Type: Word,
+        Polarity: Word,
         Axis: 'reals',
         Wavelength: 'reals',
         PolarityDriver: 'string',
-        WavelengthChangeProbability: 'real',
-        RevolverSpeed: 'real',
-        RevolverSpeedRange: 'real',
-        RevolverMaxSpeed: 'real',
-        RevolverMaxSpeedRange: 'real',
-        RevolverAccel: 'real',
-        RevolverAccelRange: 'real'
+        WavelengthChangeProbability: Real,
+        RevolverSpeed: Real,
+        RevolverSpeedRange: Real,
+        RevolverMaxSpeed: Real,
+        RevolverMaxSpeedRange: Real,
+        RevolverAccel: Real,
+        RevolverAccelRange: Real
       }
     ],
-    PathMode: 'word',
-    RespectUnitHeightAtDestination: 'bit',
-    RotationIgnoredByUnit: 'bit'
+    PathMode: Word,
+    RespectUnitHeightAtDestination: Bit,
+    RotationIgnoredByUnit: Bit
   },
   physicsmaterial: {
-    Density: 'real',
-    Friction: 'real',
-    Restitution: 'real',
-    LinearDamping: 'real',
-    AngularDamping: 'real'
+    Density: Real,
+    Friction: Real,
+    Restitution: Real,
+    LinearDamping: Real,
+    AngularDamping: Real
   },
   ping: {
     Color: 'ints',
-    Duration: 'real',
-    Scale: 'real'
+    Duration: Real,
+    Scale: Real
   },
   playerresponse: {
-    Location: 'word',
-    Chance: 'bit',
-    ModifyFraction: 'real',
+    Location: Word,
+    Chance: Bit,
+    ModifyFraction: Real,
     Handled: 'effect',
     CasterFilters: 'filters',
     TargetFilters: 'filters',
     DeathType: '{bit}'
   },
   portraitpack: {
-    Name: 'link',
+    Name: 'text',
     StoreName: 'link',
     StoreTypeName: 'link',
-    ProductId: 'int',
+    ProductId: Int,
     PortraitArray: '[word]'
   },
   race: {
-    Name: 'link',
+    Name: 'text',
     RaceIcon: 'link',
     Icon: 'file',
     StartLocationAlert: 'alert',
-    GameMusic: 'word',
-    FoodCeiling: 'int',
+    GameMusic: Word,
+    FoodCeiling: Int,
     ShowResource: '{bit}',
     MiniMapBorderColor: 'ints',
     PlacementGridColorBlindColor: 'ints',
-    AttributeId: 'word',
-    ExpansionOrder: 'int',
+    AttributeId: Word,
+    ExpansionOrder: Int,
     DefaultConsoleSkin: 'consoleskin',
     StartingResource: '{int}',
     Flags: '{bit}',
@@ -4154,81 +4215,81 @@ export const StarcraftSchema = {
       {
         Unit: 'unit',
         Flags: '{bit}',
-        Count: 'int',
+        Count: Int,
         Offset: '[ints]'
       }
     ],
-    GlossaryTeamColorIndex: 'int',
+    GlossaryTeamColorIndex: Int,
     VictorySound: 'sound',
     DefeatSound: 'sound',
-    LevelAchievementId: 'int'
+    LevelAchievementId: Int
   },
   requirement: {
     CanBeSuppressed: '{bit}',
     NodeArray: [
       {
-        index: 'word',
+        index: Word,
         Link: 'requirementnode'
       }
     ],
     EditorCategories: 'categories'
   },
   reverb: {
-    Room: 'int',
-    DecayTime: 'real',
-    DecayHFRatio: 'real',
-    Reflections: 'int',
-    ReflectionsDelay: 'real',
-    Reverb: 'int',
-    ReverbDelay: 'real',
-    HFReference: 'real',
-    LFReference: 'real',
-    Diffusion: 'real',
-    Density: 'real',
-    RoomHF: 'int',
-    RoomRolloffFactor: 'real',
+    Room: Int,
+    DecayTime: Real,
+    DecayHFRatio: Real,
+    Reflections: Int,
+    ReflectionsDelay: Real,
+    Reverb: Int,
+    ReverbDelay: Real,
+    HFReference: Real,
+    LFReference: Real,
+    Diffusion: Real,
+    Density: Real,
+    RoomHF: Int,
+    RoomRolloffFactor: Real,
     SpeakerMix: '{real}',
-    RoomLF: 'int'
+    RoomLF: Int
   },
   shape: {
-    Name: 'link',
-    Radius: 'int',
+    Name: 'text',
+    Radius: Int,
     Quad: 'reals',
-    Arc: 'int'
+    Arc: Real
   },
   skin: {
-    Name: 'link',
-    InfoText: 'link',
+    Name: 'text',
+    InfoText: 'text',
     VariationIcon: 'file',
     ReplacementArray: [
       {
-        Catalog: 'word',
-        From: 'word',
-        To: 'word'
+        Catalog: Word,
+        From: Word,
+        To: Word
       }
     ],
-    Rotation: 'int',
+    Rotation: Int,
     DisplayModel: '[model]',
     WarChestUILight: 'light',
     CollectionDisplayModel: 'model',
-    Camera: 'word',
+    Camera: Word,
     CollectionDisplayUnit: 'unit',
     CollectionDisplayModelAlternate: 'model',
     CollectionDisplayUnitAlternate: 'unit',
     EffectArray: [
       {
-        Operation: 'word',
+        Operation: Word,
         Reference: 'reference',
         Value: 'string'
       }
     ],
-    IsDefaultSkin: 'bit',
+    IsDefaultSkin: Bit,
     CollectionDisplayActor: 'actor',
     ModelGroups: {
-      Name: 'word',
+      Name: Word,
       Models: '[model]'
     },
-    $collection: 'word',
+    $collection: Word,
     $race: 'race',
     $unit: 'unit',
     $unitAlter: 'unit',
@@ -4236,7 +4297,7 @@ export const StarcraftSchema = {
     $suffix: 'string'
   },
   skinpack: {
-    Name: 'link',
+    Name: 'text',
     StoreName: 'link',
     StoreTypeName: 'link',
     ShortName: 'link',
@@ -4248,200 +4309,200 @@ export const StarcraftSchema = {
         RewardAlternate: 'reward'
       }
     ],
-    CollectionId: 'word',
+    CollectionId: Word,
     ReleaseDate: 'link',
-    ProductId: 'int',
-    Default: 'bit',
-    $collection: 'word',
+    ProductId: Int,
+    Default: Bit,
+    $collection: Word,
     $unit: 'unit'
   },
   sound: {
-    $Subtitle: 'word',
-    $Speaker: 'word',
-    $Line: 'word',
-    $Portrait: 'word',
+    $Subtitle: Word,
+    $Speaker: Word,
+    $Line: Word,
+    $Portrait: Word,
     $Actor: 'actor',
     $Unit: 'unit',
     $SubPath: 'string',
     $Path: 'string',
-    Category: 'word',
+    $Race: 'race',
+    Category: Word,
     ConeAngle: 'reals',
     ConeVolume: 'reals',
     LocalVolumeAdjustment: 'reals',
-    DopplerLevel: 'real',
-    DupeDestroyCount: 'int',
-    DupeDestroyCountPerPlayer: 'int',
-    DupeHistoryCount: 'int',
-    DupeFadeBlend: 'word',
-    DupeMuteCount: 'int',
-    DupeMuteCountPerPlayer: 'int',
-    DupeRepeatCount: 'int',
-    MixerPriorityNonLocal: 'int',
-    DupeThresholdFadeTime: 'int',
+    DopplerLevel: Real,
+    DupeDestroyCount: Int,
+    DupeDestroyCountPerPlayer: Int,
+    DupeHistoryCount: Int,
+    DupeFadeBlend: Word,
+    DupeMuteCount: Int,
+    DupeMuteCountPerPlayer: Int,
+    DupeRepeatCount: Int,
+    MixerPriorityNonLocal: Int,
+    DupeThresholdFadeTime: Int,
     Flags: '{bit}',
-    FogFadeBlend: 'word',
-    LowPassGain: 'real',
-    MuteFadeBlend: 'word',
-    OverlapPitchDelta: 'real',
-    OverlapTimeDelta: 'int',
-    PanLevel: 'real',
-    ResourcePriority: 'int',
+    FogFadeBlend: Word,
+    LowPassGain: Real,
+    MuteFadeBlend: Word,
+    OverlapPitchDelta: Real,
+    OverlapTimeDelta: Int,
+    PanLevel: Real,
+    ResourcePriority: Int,
     ReverbBalance: {
-      Room: 'int',
-      Direct: 'int'
+      Room: Int,
+      Direct: Int
     },
-    ReverbRolloffBlend: 'word',
-    Select: 'word',
+    ReverbRolloffBlend: Word,
+    Select: Word,
     CategoryDuckingNonLocal: 'sound',
     SpeakerMix: '{real}',
     SustainFade: [
       {
-        Time: 'int',
-        Volume: 'real'
+        Time: Int,
+        Volume: Real
       }
     ],
-    VolumeRolloffBlend: 'word',
-    VolumeRolloffFadeBlend: 'word',
+    VolumeRolloffBlend: Word,
+    VolumeRolloffFadeBlend: Word,
     Volume: 'reals',
     AssetArray: [
       {
         PortraitAnim: 'string',
-        File: 'string',
+        File: 'file',
         Volume: 'reals',
         Speaker: 'link',
-        Subtitle: 'link',
-        FacialAnim: 'word',
+        Subtitle: 'text',
+        FacialAnim: Word,
         PortraitModel: 'model',
-        FacialGroup: 'word',
-        FacialFile: 'string',
+        FacialGroup: Word,
+        FacialFile: 'file',
         TemplateParam: 'string',
         Pitch: 'reals',
-        Weight: 'int',
-        LoopCount: 'int',
+        Weight: Int,
+        LoopCount: Int,
         LoopTime: 'ints',
         SyncPoints: '[int]',
         Offset: 'ints',
-        PortraitActor: 'word'
+        PortraitActor: Word
       }
     ],
-    Mode: 'word',
+    Mode: Word,
     MuteFadeOut: [
       {
-        Time: 'int',
-        Volume: 'real'
+        Time: Int,
+        Volume: Real
       }
     ],
     VolumeRolloffPoints: [
       {
-        Distance: 'real',
-        Volume: 'real'
+        Distance: Real,
+        Volume: Real
       }
     ],
     OffsetFadeIn: [
       {
-        Volume: 'real',
-        Time: 'int'
+        Volume: Real,
+        Time: Int
       }
     ],
-    LoopCount: 'int',
-    Chance: 'int',
+    LoopCount: Int,
+    Chance: Int,
     ReverbRolloffPoints: [
       {
-        Direct: 'real',
-        Room: 'real',
-        Distance: 'real'
+        Direct: Real,
+        Room: Real,
+        Distance: Real
       }
     ],
-    Race: 'race',
     EditorCategories: 'categories',
     AssetArrayTemplate: {
-      File: 'string',
+      File: 'file',
       FacialAnim: 'string',
       FacialGroup: 'string',
-      FacialFile: 'string'
+      FacialFile: 'file'
     },
-    Exclusivity: 'word',
-    CategoryDuckingLocal: 'word',
+    Exclusivity: Word,
+    CategoryDuckingLocal: Word,
     LoopDelay: 'ints',
-    MixerPriority: 'int',
+    MixerPriority: Int,
     Pitch: 'reals',
     PlayDelay: 'ints',
     PositionRandomOffset: 'reals',
-    DupeMaximumMethod: 'word',
-    VariationMinimum: 'int',
+    DupeMaximumMethod: Word,
+    VariationMinimum: Int,
     Pan: 'reals',
-    Spread: 'real',
-    DupePrioritization: 'word',
+    Spread: Real,
+    DupePrioritization: Word,
     DupeWait: 'ints',
     FogFadeIn: [
       {
-        Volume: 'real',
-        Time: 'int'
+        Volume: Real,
+        Time: Int
       }
     ],
     FogFadeOut: [
       {
-        Time: 'int',
-        Volume: 'real'
+        Time: Int,
+        Volume: Real
       }
     ],
     VolumeRolloffFadeIn: [
       {
-        Volume: 'real',
-        Time: 'int'
+        Volume: Real,
+        Time: Int
       }
     ],
     VolumeRolloffFadeOut: [
       {
-        Time: 'int',
-        Volume: 'real'
+        Time: Int,
+        Volume: Real
       }
     ],
-    SustainFadeBlend: 'word',
-    OffsetShiftBlend: 'word',
-    PanLevelNonLocal: 'real',
+    SustainFadeBlend: Word,
+    OffsetShiftBlend: Word,
+    PanLevelNonLocal: Real,
     DupeFadeOut: [
       {
-        Time: 'int',
-        Volume: 'real'
+        Time: Int,
+        Volume: Real
       }
     ],
     OffsetFadeOut: [
       {
-        Time: 'int',
-        Volume: 'real'
+        Time: Int,
+        Volume: Real
       }
     ],
-    OffsetFadeBlend: 'word',
+    OffsetFadeBlend: Word,
     OffsetShiftIn: [
       {
-        Time: 'int',
-        Pitch: 'real'
+        Time: Int,
+        Pitch: Real
       }
     ],
     DupeFadeIn: [
       {
-        Volume: 'real',
-        Time: 'int'
+        Volume: Real,
+        Time: Int
       }
     ],
     DupeThresholdPoints: [
       {
-        Count: 'int',
-        Volume: 'real'
+        Count: Int,
+        Volume: Real
       }
     ],
-    HerdNode: 'word',
+    HerdNode: Word,
     MuteFadeIn: [
       {
-        Volume: 'real',
-        Time: 'int'
+        Volume: Real,
+        Time: Int
       }
     ],
     NonLocalVolumeAdjustment: 'reals',
-    PositionRandomOffsetPower: 'real',
+    PositionRandomOffsetPower: Real,
     OcclusionReverb: 'reals',
-    CategoryLocal: 'word'
+    CategoryLocal: Word
   },
   soundtrack: {
     Flags: '{bit}',
@@ -4460,93 +4521,91 @@ export const StarcraftSchema = {
       }
     ],
     Delay: 'ints',
-    Select: 'word',
-    Next: 'word'
+    Select: Word,
+    Next: Word
   },
   spray: {
-    Button: 'word',
-    Texture: 'word',
+    Button: Word,
+    Texture: Word,
     Model: 'model'
   },
   spraypack: {
-    Name: 'link',
+    Name: 'text',
     StoreName: 'link',
     StoreTypeName: 'link',
     SprayArray: '[spray]',
-    ProductId: 'int'
+    ProductId: Int
   },
   targetfind: {
     AreaArray: [{
-      MaxCount: 'int',
+      MaxCount: Int,
       Validator: 'validator',
-      Radius: 'real'
+      Radius: Real
     }],
     Effect: 'effect',
-    MaxCount: 'int',
-    MinCountError: 'word',
+    MaxCount: Int,
+    MinCountError: Word,
     LaunchLocation: {
-      Value: 'word'
+      Value: Word
     },
     ImpactLocation: {
-      Value: 'word'
+      Value: Word
     },
     SearchFlags: '{bit}',
     TargetFilters: 'filters',
     Abil: 'abil',
-    Type: 'word',
+    Type: Word,
     Array: '[word]',
     CasterValidator: 'validator',
     SearchFilters: 'filters',
     TargetValidator: 'validator',
-    ExtendRadius: 'real',
-    TargetSorts: {
-      SortArray: '[targetsort]'
-    },
-    CommandIndex: 'bit',
+    ExtendRadius: Real,
+    TargetSorts: TargetSorts,
+    CommandIndex: Bit,
     Flags: '{bit}',
-    DamageBase: 'int',
-    MinCount: 'int',
-    MinScore: 'real',
-    BonusAttri: 'word',
-    Angle: 'int',
+    DamageBase: Int,
+    MinCount: Int,
+    MinScore: Real,
+    BonusAttri: Word,
+    Angle: Int,
     Distance: 'reals'
   },
   targetsort: {
     WhichUnit: {
-      Value: 'word'
+      Value: Word
     },
-    Alliance: 'word',
+    Alliance: Word,
     WhichLocation: {
-      Value: 'word'
+      Value: Word
     },
-    Descending: 'bit',
-    Value: 'bit',
-    Vital: 'word',
+    Descending: Bit,
+    Value: Bit,
+    Vital: Word,
     Behavior: 'behavior',
     Field: 'string',
     Validator: 'validator'
   },
   terrain: {
-    Name: 'link',
+    Name: 'text',
     Lighting: 'light',
     Camera: 'string',
-    Ambience: 'word',
+    Ambience: Word,
     ReverbGlobal: 'reverb',
     ReverbAmbient: 'string',
-    SoundDistanceFactor: 'real',
-    SoundDopplerFactor: 'real',
-    SoundRolloffFactor: 'real',
-    TilingFreq: 'real',
-    POMScale: 'real',
+    SoundDistanceFactor: Real,
+    SoundDopplerFactor: Real,
+    SoundRolloffFactor: Real,
+    TilingFreq: Real,
+    POMScale: Real,
     MinimapBackgroundColor: 'ints',
     FOWColor: 'ints',
     FogColor: 'ints',
-    Gravity: 'real',
-    PhysicsTimeScale: 'real',
-    WindAngleHorizontal: 'real',
-    WindSpeed: 'real',
-    WindTurbulencePower: 'real',
-    WindTurbulenceSpeed: 'real',
+    Gravity: Real,
+    PhysicsTimeScale: Real,
+    WindAngleHorizontal: Real,
+    WindSpeed: Real,
+    WindTurbulencePower: Real,
+    WindTurbulenceSpeed: Real,
     CreepBaseTexture: 'string',
     CreepBaseSpecularMap: 'string',
     CreepEdgeNormalMap: 'string',
@@ -4554,17 +4613,17 @@ export const StarcraftSchema = {
     CreepNoiseMap: 'string',
     CreepSettingsArray: [
       {
-        index: 'word',
-        CreepGroundNormalBlend: 'real',
-        CreepOpaqueAlphaThreshold: 'real',
-        CreepTranslucentMinThreshold: 'real',
+        index: Word,
+        CreepGroundNormalBlend: Real,
+        CreepOpaqueAlphaThreshold: Real,
+        CreepTranslucentMinThreshold: Real,
         CreepTranslucentPassTint: 'reals',
-        CreepTranslucentMaxThreshold: 'real'
+        CreepTranslucentMaxThreshold: Real
       }
     ],
     FoliageSettingsArray: [
       {
-        index: 'word',
+        index: Word,
         SamplingDistance: '{real}',
         AcceptWorldForces: '{bit}'
       }
@@ -4575,22 +4634,22 @@ export const StarcraftSchema = {
     BlendTextures: '[word]',
     CliffSets: '[cliff]',
     HardTiles: 'string',
-    FogEnabled: 'bit',
-    FogDensity: 'real',
-    FogFalloff: 'real',
-    FogStartingHeight: 'real',
-    HideLowestLevel: 'bit',
+    FogEnabled: Bit,
+    FogDensity: Real,
+    FogFalloff: Real,
+    FogStartingHeight: Real,
+    HideLowestLevel: Bit,
     FixedSkyboxModel: 'model',
     NonFixedSkyboxModel: 'model',
     EnvironmentMap: 'string',
-    MinimapBrightenFactor: 'real',
-    EditorHidden: 'bit',
-    TextureProp: 'word',
-    HeightMapEnabled: 'bit',
+    MinimapBrightenFactor: Real,
+    EditorHidden: Bit,
+    TextureProp: Word,
+    HeightMapEnabled: Bit,
     FixedSkyboxActor: 'actor'
   },
   terrainobject: {
-    EditorCursorOffset: 'real'
+    EditorCursorOffset: Real
   },
   terraintex: {
     Texture: 'string',
@@ -4600,135 +4659,146 @@ export const StarcraftSchema = {
     DoodadEntry: [
       {
         Model: 'model',
-        RandomRotation: 'bit',
-        Probability: 'real',
-        PlacementRadius: 'real'
+        RandomRotation: Bit,
+        Probability: Real,
+        PlacementRadius: Real
       }
     ],
     Heightmap: 'string',
-    HeightMapOffset: 'real',
-    HeightMapScale: 'real'
+    HeightMapOffset: Real,
+    HeightMapScale: Real
   },
   texture: {
-    File: 'string',
+    File: 'file',
     Flags: '{bit}',
     Slot: 'string',
+    PropsSet: Word,
     MovieSoundSettings5dot1: 'sound',
     MovieSoundSettingsStereo: 'sound',
     MovieSoundSettings: 'sound',
-    Prefix: 'word'
+    Prefix: Word
   },
   texturesheet: {
     Image: 'string',
-    Rows: 'int',
-    Columns: 'int'
+    Rows: Int,
+    Columns: Int
   },
   tile: {
     Material: 'string',
     EditorIcon: 'file',
-    TesselationDistance: 'real',
-    TileWidthDistance: 'real',
-    TileHeightRepetitions: 'bit',
-    CapLength: 'real',
-    DefaultSplineWidth: 'real',
-    DefaultWingWidth: 'real',
+    TesselationDistance: Real,
+    TileWidthDistance: Real,
+    TileHeightRepetitions: Bit,
+    CapLength: Real,
+    DefaultSplineWidth: Real,
+    DefaultWingWidth: Real,
     Flags: '{bit}'
   },
   turret: {
     Fidget: {
-      TurnAngle: 'int',
-      TurningRate: 'real',
+      TurnAngle: Int,
+      TurningRate: Real,
       ChanceArray: '{int}',
-      DelayMax: 'int',
-      DelayMin: 'int'
+      DelayMax: Int,
+      DelayMin: Int
     },
-    YawArc: 'real',
-    YawRate: 'real',
-    Idle: 'word',
-    YawStart: 'real',
-    YawIdleRate: 'real'
+    YawArc: Real,
+    YawRate: Real,
+    Idle: Word,
+    YawStart: Real,
+    YawIdleRate: Real
   },
   unit: {
     Name: 'string',
-    Description: 'link',
-    Gender: 'word',
+    Description: 'text',
+    Gender: Word,
     UserTag: 'link',
     DeathRevealFilters: 'filters',
-    DeathRevealRadius: 'real',
-    Level: 'int',
-    AcquireLeashRadius: 'int',
-    DeathRevealDuration: 'int',
-    DeathRevealType: 'word',
+    DeathRevealRadius: Real,
+    SpeedMaximum: Real,
+    SpeedMinimum: Real,
+    BuildTime: Real,
+    FormationRank: Int,
+    Level: Int,
+    AcquireLeashRadius: Int,
+    DeathRevealDuration: Int,
+    DeathRevealType: Word,
     Race: 'race',
-    DefaultAcquireLevel: 'word',
-    Response: 'word',
-    ResourceState: 'word',
-    ResourceType: 'word',
-    LifeStart: 'int',
-    LifeMax: 'int',
-    TacticalAIRange: 'int',
-    EnergyDamageRatio: 'int',
-    LifeArmorName: 'link',
-    LifeArmorTip: 'link',
-    ShieldArmorTip: 'link',
+    DefaultAcquireLevel: Word,
+    Response: Word,
+    ResourceState: Word,
+    ResourceType: Word,
+    LifeStart: Int,
+    LifeMax: Int,
+    TacticalAIRange: Int,
+    EnergyDamageRatio: Int,
+    LifeArmorName: 'text',
+    LifeArmorTip: 'text',
+    ShieldArmorTip: 'text',
     Mover: 'mover',
-    StationaryTurningRate: 'real',
-    TurningRate: 'real',
-    Radius: 'real',
-    SeparationRadius: 'real',
-    MinimapRadius: 'real',
+    StationaryTurningRate: Real,
+    TurningRate: Real,
+    Radius: Real,
+    SeparationRadius: Real,
+    MinimapRadius: Real,
     EditorCategories: 'categories',
     TacticalAIFilters: 'filters',
-    AIEvalFactor: 'real',
-    Mass: 'real',
+    AIEvalFactor: Real,
+    Mass: Real,
     FlagArray: '{bit}',
     EditorFlags: '{bit}',
-    PushPriority: 'int',
-    LeaderAlias: 'word',
-    HotkeyAlias: 'word',
-    SelectAlias: 'word',
-    SubgroupAlias: 'word',
-    OccludeHeight: 'real',
+    PushPriority: Int,
+    LeaderAlias: Word,
+    HotkeyAlias: Word,
+    SelectAlias: Word,
+    SubgroupAlias: Word,
+    OccludeHeight: Real,
     TacticalAI: 'string',
-    AIEvaluateAlias: 'word',
-    ReviveType: 'word',
-    PawnItemReduction: 'bit',
+    AIEvaluateAlias: Word,
+    ReviveType: Word,
+    PawnItemReduction: Bit,
     DataCollection: 'datacollection',
     IfArray: [{
       Test: 'validator',
       Return: 'validator'
     }],
+    ReviveInfoLevel: {
+      Cooldown: {
+        Link: 'link'
+      }
+    },
     Fidget: {
-      DelayMax: 'int',
-      DelayMin: 'int',
-      DistanceMax: 'int',
-      DistanceMin: 'int',
-      TurnAngle: 'int',
-      TurningRate: 'int',
+      DelayMax: Int,
+      DelayMin: Int,
+      DistanceMax: Int,
+      DistanceMin: Int,
+      TurnAngle: Int,
+      TurningRate: Int,
       ChanceArray: '{int}'
     },
     ReviveInfoBase: {
       Charge: {
         Link: 'link',
-        Location: 'word'
+        Location: Word,
+        TimeUse: Real
       },
       Cooldown: {
         Link: 'link',
-        Location: 'word',
-        TimeUse: 'real'
+        Location: Word,
+        TimeUse: Real
       },
-      Time: 'int',
+      Time: Int,
       Resource: '{int}'
     },
-    InnerRadiusSafetyMultiplier: 'bit',
-    ArmorType: 'word',
-    _: 'word',
-    FogVisibility: 'word',
-    Sight: 'real',
+    InnerRadiusSafetyMultiplier: Bit,
+    ArmorType: Word,
+    _: Word,
+    FogVisibility: Word,
+    Sight: Real,
     Item: 'item',
-    PowerupEffect: 'word',
+    PowerupEffect: Word,
     PowerupCost: CostSchema,
-    Mob: 'word',
+    Mob: Word,
     PlaneArray: '{bit}',
     Collide: '{bit}',
     AbilArray: [
@@ -4736,11 +4806,11 @@ export const StarcraftSchema = {
         Link: 'abil'
       }
     ],
-    Speed: 'real',
-    Acceleration: 'real',
-    LateralAcceleration: 'real',
-    Height: 'real',
-    SubgroupPriority: 'int',
+    Speed: Real,
+    Acceleration: Real,
+    LateralAcceleration: Real,
+    Height: Real,
+    SubgroupPriority: Int,
     BehaviorArray: [
       {
         Link: 'behavior'
@@ -4751,51 +4821,51 @@ export const StarcraftSchema = {
         LayoutButtons: [
           {
             Face: 'button',
-            Type: 'word',
+            Type: Word,
             AbilCmd: 'abilcmd',
-            Row: 'int',
-            Column: 'int',
+            Row: Int,
+            Column: Int,
             Requirements: 'requirement',
-            SubmenuCardId: 'word',
-            SubmenuFullSubCmdValidation: 'bit',
+            SubmenuCardId: Word,
+            SubmenuFullSubCmdValidation: Bit,
             Behavior: 'behavior',
             SubmenuAbilState: 'abil',
-            ShowInGlossary: 'bit',
-            SubmenuIsSticky: 'bit'
+            ShowInGlossary: Bit,
+            SubmenuIsSticky: Bit
           }
         ],
-        CardId: 'word',
+        CardId: Word,
         RowText: '[link]'
       }
     ],
     Attributes: '{bit}',
-    Deceleration: 'real',
-    InnerRadius: 'real',
-    LifeArmor: 'int',
-    ShieldsStart: 'int',
-    ShieldsMax: 'int',
-    ShieldRegenRate: 'real',
+    Deceleration: Real,
+    InnerRadius: Real,
+    LifeArmor: Int,
+    ShieldsStart: Int,
+    ShieldsMax: Int,
+    ShieldRegenRate: Real,
     CostResource: '{int}',
-    AttackTargetPriority: 'int',
+    AttackTargetPriority: Int,
     Footprint: 'string',
     PlacementFootprint: 'string',
-    ShieldArmorName: 'link',
-    LifeRegenRate: 'real',
-    DamageDealtXP: 'int',
-    DamageTakenXP: 'int',
-    KillXP: 'int',
-    Facing: 'real',
-    VisionHeight: 'int',
-    ShieldRegenDelay: 'int',
-    CostCategory: 'word',
+    ShieldArmorName: 'text',
+    LifeRegenRate: Real,
+    DamageDealtXP: Int,
+    DamageTakenXP: Int,
+    KillXP: Int,
+    Facing: Real,
+    VisionHeight: Real,
+    ShieldRegenDelay: Int,
+    CostCategory: Word,
     BuiltOn: '[word]',
-    ScoreMake: 'int',
-    ScoreKill: 'int',
+    ScoreMake: Int,
+    ScoreKill: Int,
     ScoreResult: 'string',
-    GlossaryPriority: 'int',
+    GlossaryPriority: Int,
     HotkeyCategory: 'link',
-    GlossaryAlias: 'word',
-    RepairTime: 'real',
+    GlossaryAlias: Word,
+    RepairTime: Real,
     AddedOnArray: [
       {
         UnitLink: 'unit',
@@ -4803,13 +4873,13 @@ export const StarcraftSchema = {
         ParentBehaviorLink: 'behavior'
       }
     ],
-    AddOnOffsetX: 'real',
-    AddOnOffsetY: 'real',
+    AddOnOffsetX: Real,
+    AddOnOffsetY: Real,
     TechAliasArray: '[word]',
     TechTreeUnlockedUnitArray: '[unit]',
-    SpeedMultiplierCreep: 'real',
-    Food: 'real',
-    CargoSize: 'int',
+    SpeedMultiplierCreep: Real,
+    Food: Real,
+    CargoSize: Int,
     EquipmentArray: [
       {
         Weapon: 'weapon',
@@ -4819,8 +4889,8 @@ export const StarcraftSchema = {
     ],
     GlossaryStrongArray: '[word]',
     GlossaryWeakArray: '[word]',
-    KillDisplay: 'word',
-    RankDisplay: 'word',
+    KillDisplay: Word,
+    RankDisplay: Word,
     WeaponArray: [
       {
         Link: 'weapon',
@@ -4829,225 +4899,232 @@ export const StarcraftSchema = {
     ],
     GlossaryCategory: 'link',
     EffectArray: '{effect}',
-    EnergyStart: 'int',
-    EnergyMax: 'int',
-    EnergyRegenRate: 'real',
-    AIOverideTargetPriority: 'int',
-    DeathTime: 'real',
+    EnergyStart: Int,
+    EnergyMax: Int,
+    EnergyRegenRate: Real,
+    AIOverideTargetPriority: Int,
+    DeathTime: Real,
     DeadFootprint: 'string',
     TauntDuration: '{int}',
-    TacticalAIThink: 'word',
+    TacticalAIThink: Word,
     BuildOnAs: '[unit]',
     ResourceDropOff: '{bit}',
     TechTreeProducedUnitArray: '[unit]',
     TurretArray: '[turret]',
     CargoOverlapFilters: 'filters',
-    EditorFacingAlignment: 'int',
-    AIKiteRange: 'int',
-    LifeRegenDelay: 'int',
+    EditorFacingAlignment: Int,
+    AIKiteRange: Int,
+    LifeRegenDelay: Int,
     AINotifyEffect: 'effect',
-    ShieldArmor: 'int',
+    ShieldArmor: Int,
     SyncModelData: 'string',
-    TacticalAIChannel: 'word',
-    ReviveDelay: 'real',
-    Subtitle: 'link',
-    AlliedPushPriority: 'int',
-    SpeedBonusCreep: 'real',
-    AIEvalConstant: 'real',
-    ScoreLost: 'int',
-    LifeArmorLevel:  'int',
-    AcquireMovementLimit: 'real',
-    ShieldArmorLevel:  'int',
+    TacticalAIChannel: Word,
+    ReviveDelay: Real,
+    Subtitle: 'text',
+    AlliedPushPriority: Int,
+    SpeedBonusCreep: Real,
+    AIEvalConstant: Real,
+    ScoreLost: Int,
+    LifeArmorLevel:  Int,
+    AcquireMovementLimit: Real,
+    ShieldArmorLevel:  Int,
     ScoreMakeCostFactor: '{int}',
     ScoreKillCostFactor: '{int}',
     $abil: 'abil'
   },
   upgrade: {
     Flags: '{bit}',
-    Name: 'string',
-    MaxLevel: 'int',
-    LeaderPriority: 'int',
-    $Level: 'int',
+    Name: 'text',
+    MaxLevel: Int,
+    BonusResourcePerLevel: '{int}',
+    LeaderPriority: Int,
+    $Level: Int,
     Alert: 'string',
-    ScoreCount: 'word',
+    ScoreCount: Word,
     ScoreValue: 'string',
     UnitDisallowed: 'unit',
-    WebPriority: 'bit',
-    LeaderAlias: 'word',
-    InfoTooltipPriority: 'int',
+    WebPriority: Bit,
+    LeaderAlias: Word,
+    InfoTooltipPriority: Int,
     Race: 'race',
     DataCollection: 'datacollection',
     EditorCategories: 'categories',
     ScoreResult: 'string',
+    LevelButton: '[button]',
+    LevelRequirements: '[requirement]',
+    BonusTimePerLevel: Real,
     EffectArray: [
       {
         Reference: 'reference',
         Value: 'string',
-        Operation: 'word'
+        Operation: Word
       }
     ],
     AffectedUnitArray: '[unit]',
-    ScoreAmount: 'int',
+    ScoreAmount: Int,
     Icon: 'file',
-    LeaderLevel: 'int',
+    LeaderLevel: Int,
     TechAliasArray: '[word]',
     $path: 'string',
-    $lvl: 'int',//todo use similar token
-    $level: 'int',//todo use similar token
+    $lvl: Int,
+    $level: Int,
     $terranairarmor: 'file',
     $icon: 'file',
     $airicon: 'file'
   },
   validator: {
     ResultFailed: 'string',
-    Type: 'word',
-    WhichEffect: 'word',
+    Type: Word,
+    WhichEffect: Word,
     Resource: 'string',
-    ResultNoEffect: 'word',
-    Compare: 'word',
-    State: 'word',
-    Enabled: 'bit',
-    Queued: 'bit',
-    CasterHeight: 'real',
-    TargetZ: 'int',
-    UnitSelectionNotRequired: 'bit',
-    CheckExistence: 'bit',
+    ResultNoEffect: Word,
+    IncludeArray: [{Value: Word}],
+    Compare: Word,
+    State: Word,
+    Enabled: Bit,
+    Queued: Bit,
+    CasterHeight: Real,
+    TargetZ: Int,
+    UnitSelectionNotRequired: Bit,
+    CheckExistence: Bit,
     ResultNoKey: 'string',
     WhichLocation: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
     OtherLocation: {
-      Value: 'word',
-      Effect: 'word'
+      Value: Word,
+      Effect: Word
     },
     FromUnit: {
-      Value: 'word'
+      Value: Word
     },
-    Find: 'bit',
+    Find: Bit,
     LaunchLocation: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
     BehaviorScope: {Behavior: 'behavior'},
     Key: 'string',
-    StackAlias: 'string', //todo what is this?
-    CombinedVital: 'word',
+    StackAlias: 'string',
+    CombinedVital: Word,
     SearchFlags: '{bit}',
     CmdFlags: '{bit}',
     Types: '{bit}',
     OtherUnit: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
-    Range: 'real',
+    Range: Real,
     OtherPlayer: {
-      Value: 'word'
+      Value: Word
     },
     WhichPlayer: {
-      Value: 'word'
+      Value: Word
     },
     ResultNoUnit: 'string',
     WhichUnit: {
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
     WithPlayer: {
-      Value: 'word'
+      Value: Word
     },
-    AbilClass: 'word',
-    ResultNoInventory: 'word',
+    AbilClass: Word,
+    ResultNoInventory: Word,
     Target: {
-      Value: 'word'
+      Value: Word
     },
     ExcludeOriginPlayer: {
-      Value: 'word'
+      Value: Word
     },
     ExcludeCasterUnit: {
-      Value: 'word'
+      Value: Word
     },
     RequireOriginPlayer: {
-      Value: 'word'
+      Value: Word
     },
     RequireCasterUnit: {
-      Value: 'word'
+      Value: Word
     },
-    BehaviorAlignment: 'word',
-    ResultMaxLevel: 'word',
-    IgnoreDisabledBehavior: 'bit',
-    AllowCheat: 'bit',
-    ResultFoodMax: 'word',
-    Count: 'int',
-    WeaponType: 'word',
-    RequireActivated: 'bit',
-    RequireEnabled: 'bit',
-    CountType: 'word',
+    BehaviorAlignment: Word,
+    ResultMaxLevel: Word,
+    IgnoreDisabledBehavior: Bit,
+    AllowCheat: Bit,
+    ResultFoodMax: Word,
+    Count: Int,
+    WeaponType: Word,
+    RequireActivated: Bit,
+    RequireEnabled: Bit,
+    CountType: Word,
     CombineArray: '[validator]',
     Field: 'string',
     Value: {
       value: 'string',
-      Value: 'word',
+      Value: Word,
       Effect: 'effect'
     },
     Filters: 'filters',
-    Plane: 'word',
-    Flag: 'word',
+    Plane: Word,
+    Flag: Word,
     Flags: '{bit}',
-    Vital: 'word',
+    Vital: Word,
     AbilLink: 'abil',
     Point: 'string',
     Behavior: 'behavior',
-    RadiusBonus: 'real',
-    ResultFallback: 'word',
-    Relationship: 'word',
-    Arc: 'real',
+    RadiusBonus: Real,
+    ResultFallback: Word,
+    Relationship: Word,
+    Arc: Real,
     SearchFilters: 'filters',
     Line: [
       {
-        Failure: 'word',
-        Ignored: 'word',
-        Success: 'word',
-        Test: 'word',
-        Return: 'word'
+        Failure: Word,
+        Ignored: Word,
+        Success: Word,
+        Test: Word,
+        Return: Word
       }
     ],
-    CachedSearch: 'word',
+    CachedSearch: Word,
     AreaArray: [
       {
-        Radius: 'real',
+        Arc: Real,
+        Radius: Real,
         Validator: 'validator',
-        Count: 'int',
-        Compare: 'word'
+        Count: Int,
+        Compare: Word,
+        IncludeArray: Word
       }
     ],
-    ResultNoPlayer: 'word',
-    Negate: 'bit',
-    AbilCmdIndex: 'int',
-    Active: 'bit',
-    PowerLink: 'word',
+    ResultNoPlayer: Word,
+    Negate: Bit,
+    AbilCmdIndex: Int,
+    Active: Bit,
+    PowerLink: Word,
     Unit: 'unit',
-    BehaviorState: 'word',
-    Pathing: 'bit',
-    PowerSource: 'word',
-    AttackerAlternateType: 'word',
-    CombinedVitalCompare: 'word',
+    BehaviorState: Word,
+    Pathing: Bit,
+    PowerSource: Word,
+    AttackerAlternateType: Word,
+    CombinedVitalCompare: Word,
     $unitLink: 'unit',
-    $maxVitals: 'int',
-    $minVitals: 'int',
+    $maxVitals: Int,
+    $minVitals: Int,
     Weapon: 'weapon',
-    Detected: 'bit',
-    Location: 'word',
+    Detected: Bit,
+    Location: Word,
     ChargeLink: 'string',
     ExcludeArray: [
       {
         Effect: 'effect',
-        Value: 'word'
+        Value: Word
       }
     ],
     Ability: 'abil',
-    CasterGroundHeight: 'bit',
-    CasterAdd: 'real',
-    TargetGroundHeight: 'bit',
+    CasterGroundHeight: Bit,
+    CasterAdd: Real,
+    TargetGroundHeight: Bit,
     Categories: '{bit}',
     CooldownLink: 'link',
     IfArray: [{
@@ -5055,185 +5132,161 @@ export const StarcraftSchema = {
       Return: 'validator'
     }],
     BehaviorLink: 'behavior',
-    TrackerUnit:  [{"Value":"word"}],
+    TrackerUnit:  [{Value:"word",History:"word"}],
+    TrackedUnit:  [{Value:"word",History:"word"}],
     TrackedUnitValidatorArray: '[validator]'
   },
   voicepack: {
-    Name: 'link',
+    Name: 'text',
     TypeName: 'link',
     StoreName: 'link',
-    Description: 'link',
+    Description: 'text',
     Icon: 'file',
     StoreTypeName: 'link',
-    Default: 'bit',
+    Default: Bit,
     ReleaseDate: 'link',
     ImageTexture: 'string',
     UnlockedRewardArray: '[reward]',
     ExampleLineArray: [
       {
-        Description: 'link',
+        Description: 'text',
         Sound: 'sound'
       }
     ],
-    ProductId: 'int',
-    LocaleRestriction: 'word',
+    ProductId: Int,
+    LocaleRestriction: Word,
     ParentBundle: 'bundle',
-    IsPurchaseHidden: 'bit'
+    IsPurchaseHidden: Bit
   },
   water: {
     TextureKey: 'string',
     TilingFreq: 'reals',
     ScrollVectors: 'reals',
     CausticsTilingFreq: 'reals',
-    CausticsFPS: 'real',
-    FramesPerSec: 'real',
+    CausticsFPS: Real,
+    FramesPerSec: Real,
     LavaModel: 'model',
     Sound: 'sound',
-    Density: 'real',
-    Drag: 'real',
-    AngularDamping: 'real',
-    MaxLinearVelocity: 'real',
+    Density: Real,
+    Drag: Real,
+    AngularDamping: Real,
+    MaxLinearVelocity: Real,
     State: [
       {
         Name: 'string',
-        Height: 'real',
+        Height: Real,
         Color: 'reals',
-        ColorFallOff: 'real',
-        Specularity: 'real',
-        SpecularScaler: 'real',
+        ColorFallOff: Real,
+        Specularity: Real,
+        SpecularScaler: Real,
         UvRate: 'reals',
-        ReflectionDistortion: 'real',
-        RefractionDistortion: 'real',
-        MinReflection: 'real',
-        ReflectivityPower: 'real',
-        MeshRoughness: 'real',
-        TextureRoughness: 'real',
-        CausticsFallOff: 'real',
-        UvRotate: 'real',
-        ShadowDistortion: 'real'
+        ReflectionDistortion: Real,
+        RefractionDistortion: Real,
+        MinReflection: Real,
+        ReflectivityPower: Real,
+        MeshRoughness: Real,
+        TextureRoughness: Real,
+        CausticsFallOff: Real,
+        UvRotate: Real,
+        ShadowDistortion: Real
       }
     ],
-    BeachShoreline: 'word',
-    CliffShoreline: 'word',
+    BeachShoreline: Word,
+    CliffShoreline: Word,
     Doodads: {
       Model: 'model',
-      Density: 'real',
-      MinSize: 'real',
-      MaxSize: 'real',
-      Lifetime: 'int'
+      Density: Real,
+      MinSize: Real,
+      MaxSize: Real,
+      Lifetime: Int
     },
-    ReceiveShadows: 'bit',
-    IsLava: 'bit'
+    ReceiveShadows: Bit,
+    IsLava: Bit
   },
   weapon: {
-    Name: 'link',
-    DisplayName: 'link',
+    Name: 'text',
+    DisplayName: 'text',
     EditorCategories: 'categories',
-    InfoTooltipPriority: 'bit',
+    InfoTooltipPriority: Bit,
     Icon: 'file',
-    Tip: 'link',
+    Tip: 'text',
     DisplayEffect: 'effect',
     PreEffect: 'effect',
-    MinScanRange: 'real',
-    PreswingBetweenAttacks: 'real',
-    Range: 'real',
-    RangeSlop: 'real',
-    Level: 'int',
-    TeleportResetRange: 'int',
-    ArcSlop: 'real',
-    Period: 'real',
-    DamagePoint: 'real',
-    Backswing: 'real',
+    MinScanRange: Real,
+    PreswingBetweenAttacks: Real,
+    Range: Real,
+    RangeSlop: Real,
+    Level: Int,
+    TeleportResetRange: Int,
+    ArcSlop: Real,
+    Period: Real,
+    DamagePoint: Real,
+    Backswing: Real,
     Options: '{bit}',
     Marker: {
       Link: 'string',
       MatchFlags: '{bit}',
       MismatchFlags: '{bit}',
-      Count: 'bit'
+      Count: Bit
     },
     CriticalEffect: 'effect',
     PostEffectBehavior: EffectBehaviorSchema,
     PreEffectBehavior: EffectBehaviorSchema,
     Cost: CostSchema,
     TargetFilters: 'filters',
-    AttackType: 'word',
+    AttackType: Word,
     SupportedFilters: 'filters',
     LegacyOptions: '{bit}',
-    RandomDelayMin: 'real',
-    RandomDelayMax: 'real',
+    RandomDelayMin: Real,
+    RandomDelayMax: Real,
     Effect: 'effect',
-    UninterruptibleDuration: 'real',
-    LoiterInnerRadius: 'int',
-    LoiterRadius: 'real',
-    DisplayAttackCount: 'int',
-    AllowedMovement: 'word',
+    PathingAmmoUnit: 'unit',
+    UninterruptibleDuration: Real,
+    LoiterInnerRadius: Int,
+    LoiterRadius: Real,
+    DisplayAttackCount: Int,
+    AllowedMovement: Word,
     AcquireFilters: 'filters',
-    Arc: 'real',
-    AcquirePrioritization: 'word',
-    MinimumRange: 'real',
+    Arc: Real,
+    AcquirePrioritization: Word,
+    MinimumRange: Real,
+    ReloadDuration: Real,
     ChaseFilters: 'filters',
     AcquireCliffLevelRange: 'ints',
     AcquireScanFilters: 'filters',
     RangeDisplayFlags: '{bit}',
     AcquireCallForHelpFilters: 'filters',
-    PreswingBeforeAttack: 'int',
-    AcquireTargetSorts: {
-      SortArray: '[targetsort]'
-    }
+    PreswingBeforeAttack: Int,
+    AcquireTargetSorts: TargetSorts
   },
   conversation: {
-    AnimBlendDefault: 'int',
-    AnimBlendOut: 'int',
+    AnimBlendDefault: Int,
+    AnimBlendOut: Int,
     ObjectStates: '{word}',
     SoundParent: 'sound',
     FixedConditions: [{
       Conditions: [ConditionSchema],
-      Text: 'link'
+      Text: 'text'
     }],
     FacialAnims: [
       {
-        $Id: 'word',
-        Text: 'link',
-        SpeechTag: 'word'
+        $Id: Word,
+        Text: 'text',
+        SpeechTag: Word
       }
     ],
     EditorCategories: 'categories',
-    ProductionLevel: 'int',
+    ProductionLevel: Int,
     Lines: [
-      {
-        $Id: 'word',
-        Text: 'link',
-        Sound: 'sound',
-        OverlapPrevious: 'int',
-        AnimProps: 'word',
-        AnimBlendIn: 'int',
-        AnimBlendOut: 'int',
-        SpeakerCharacter: 'character',
-        Comment: 'string',
-        Objects: '{word}',
-        Variations: '{word}',
-        FacialBlend: 'int',
-        LookAtAttach: 'word',
-        Conditions: [ConditionSchema]
-      }
+      LineSchema
     ],
     Groups: [
-      {
-        $Id: 'word',
-        Name: 'link',
-        LineSelection: 'word',
-        MaxLines: 'int',
-        Children: '[word]',
-        NoWait: 'int',
-        Tags: '[word]',
-        ConditionCheck: '[word]',
-        Conditions: [ConditionSchema]
-      }
+      LineSchema
     ],
     Comments: [
       {
-        $Id: 'word',
-        Text: 'link'
+        $Id: Word,
+        Text: 'text'
       }
     ],
     RootItems: '[word]',
@@ -5243,8 +5296,8 @@ export const StarcraftSchema = {
         Flags: '{bit}'
       }
     ],
-    DefaultSpeaker1: 'word',
-    DefaultSpeaker2: 'word'
+    DefaultSpeaker1: Word,
+    DefaultSpeaker2: Word
   },
   conversationstate: {
     ValueRange: 'ints',
@@ -5256,7 +5309,7 @@ export const StarcraftSchema = {
         Color: 'ints',
         Variations: [
           {
-            Value: 'word',
+            Value: Word,
             DefaultCategories: '[string]'
           }
         ],
@@ -5271,19 +5324,19 @@ export const StarcraftSchema = {
     CustomColors: '[ints]',
     InfoIds: [
       {
-        index: 'word',
-        $Id: 'string'
+        index: Word,
+        Id: 'string'
       }
     ]
   },
   game: {
     CreepDecaySound: 'sound',
     CreepGrowSound: 'sound',
-    JoinInProgress: 'bit',
-    PlayersRequiredForLargeFormat: 'int',
+    JoinInProgress: Bit,
+    PlayersRequiredForLargeFormat: Int,
     PlayerLeaveFlags: '{bit}',
     TriggerLibs: {
-      $Id: 'word',
+      $Id: Word,
       IncludePath: 'link'
     },
     EnforcedGameResultScoreResult: 'scoreresult',
@@ -5291,64 +5344,67 @@ export const StarcraftSchema = {
     SprayButtonReplacementTarget: '[button]',
     BeaconInfoArray: [
       {
-        index: 'word',
+        index: Word,
         Unit: 'unit',
-        Tooltip: 'link',
+        Tooltip: 'text',
         Clear: '{bit}'
       }
     ],
     AIBuilds: [
       {
-        AttributeId: 'word',
-        Name: 'link',
-        MenuTooltip: 'link',
-        Enabled: 'bit',
+        AttributeId: Word,
+        Name: 'text',
+        MenuTooltip: 'text',
+        Enabled: Bit,
         Race: 'race',
-        MaxDiff: 'int',
-        BuildScriptNum: 'int',
-        MinDiff: 'int'
+        MaxDiff: Int,
+        BuildScriptNum: Int,
+        MinDiff: Int
       }
     ],
-    DamageHistoryIntervalMax: 'bit'
+    DamageHistoryIntervalMax: Bit
   },
   itemcontainer: {
     Slots: [
       {
-        Row: 'int',
-        Column: 'int',
-        Equip: 'bit',
-        Classes: '[word]'
+        Row: Int,
+        Column: Int,
+        Equip: Bit,
+        EmptyFace: Word,
+        Model: 'model',
+        Classes: '[itemclass]',
       }
     ],
-    ModelWidth: 'int',
-    ModelHeight: 'int'
+    Model: 'model',
+    ModelWidth: Int,
+    ModelHeight: Int
   },
   soundexclusivity: {
-    Group: 'int',
-    CollideWithLower: 'word',
-    CollideWithEqual: 'word',
-    CollideWithHigher: 'word',
+    Group: Int,
+    CollideWithLower: Word,
+    CollideWithEqual: Word,
+    CollideWithHigher: Word,
     InterruptFade: [
       {
-        Time: 'int',
-        Volume: 'real'
+        Time: Int,
+        Volume: Real
       }
     ],
-    QCollideWithLower: 'word',
-    QCollideWithEqual: 'word',
-    QCollideWithHigher: 'word',
-    InterruptFadeBlend: 'word',
+    QCollideWithLower: Word,
+    QCollideWithEqual: Word,
+    QCollideWithHigher: Word,
+    InterruptFadeBlend: Word,
     SuppressGroups: '[int]',
     Flags: '{bit}',
-    Priority: 'real',
-    InterruptDelay: 'real',
-    QDelay: 'real',
-    QTimeout: 'int'
+    Priority: Real,
+    InterruptDelay: Real,
+    QDelay: Real,
+    QTimeout: Int
   },
   soundmixsnapshot: {
-    Attack: 'int',
-    Hold: 'int',
-    Release: 'int',
+    Attack: Int,
+    Hold: Int,
+    Release: Int,
     Flags: '{bit}',
     MixGlobal: '{real}',
     MixNonLocal: '{real}'
@@ -5356,10 +5412,10 @@ export const StarcraftSchema = {
   tactical: {
     Abil: 'abil',
     TargetFind: 'targetfind',
-    Retreat: 'bit',
+    Retreat: Bit,
     Array: '[word]',
     Validator: 'validator',
-    AbilCmdIndex: 'bit',
+    AbilCmdIndex: Bit,
     Marker: {
       Link: 'link'
     }
@@ -5367,18 +5423,18 @@ export const StarcraftSchema = {
   voiceover: {
     Groups: [
       {
-        $Id: 'word',
+        $Id: Word,
         SoundParent: 'sound'
       }
     ],
     Lines: [
       {
-        Group: 'word',
-        FacialBlend: 'int',
-        SoundIndex: 'int',
+        Group: Word,
+        FacialBlend: Int,
+        SoundIndex: Int,
         Comment: 'string',
-        SoundType: 'word',
-        SoundText: 'word'
+        SoundType: Word,
+        SoundText: Word
       }
     ],
     Character: 'character'
@@ -5387,12 +5443,12 @@ export const StarcraftSchema = {
     Fields: [
       {
         $Id: 'string',
-        Type: 'word',
-        Count: 'int',
-        EditorColumn: 'int',
+        Type: Word,
+        Count: Int,
+        EditorColumn: Int,
         Flags: '{bit}',
         EditorText: 'string',
-        GameLinkType: 'word',
+        GameLinkType: Word,
         UserType: 'user'
       }
     ],
@@ -5401,11 +5457,11 @@ export const StarcraftSchema = {
         $Id: 'string',
         AbilCmd: [{Abil: 'abil', Field: FieldSchema}],
         Unit: [{Unit: 'unit', Field: FieldSchema}],
-        User: [{Type: 'user', Instance: 'word', Field: FieldSchema}],
-        Int: [{Int: 'int', Field: FieldSchema}],
-        Fixed: [{Fixed: 'real', Field: FieldSchema}],
-        Text: [{Text: 'link', Field: FieldSchema}],
-        GameLink: [{GameLink: 'word', Field: FieldSchema}],
+        User: [{Type: 'user', Instance: Word, Field: FieldSchema}],
+        Int: [{Int: Int, Field: FieldSchema}],
+        Fixed: [{Fixed: Real, Field: FieldSchema}],
+        Text: [{Text: 'text', Field: FieldSchema}],
+        GameLink: [{GameLink: Word, Field: FieldSchema}],
         Image: [{Image: 'file', Field: FieldSchema}],
         Model: [{Model: 'model', Field: FieldSchema}],
         Upgrade: [{Upgrade: 'upgrade', Field: FieldSchema}],
@@ -5428,16 +5484,16 @@ export const StarcraftSchema = {
 }
 
 export const LibrarySchema = {
-  $Id: 'word',
+  $Id: Word,
   Root: [{
-    Item: [{ Id: 'word', Library: 'word', Type: 'word'}],
-    Library: 'word',
-    Type: 'word',
-    Id: 'word'
+    Item: [{ Id: Word, Library: Word, Type: Word}],
+    Library: Word,
+    Type: Word,
+    Id: Word
   }],
   Element: [{
-    $Type: 'word',
-    $Id: 'word',
+    $Type: Word,
+    $Id: Word,
     Internal: [{}],
     Disabled: [{}],
     FlagAction: [{}],
@@ -5452,13 +5508,13 @@ export const LibrarySchema = {
     ValueTypeInfo: [{Value: 'string'}],
     ValueContext: [{Value: 'string'}],
     ExpressionCode: [{Value: 'string'}],
-    Item: [{ Id: 'word', Library: 'word', Type: 'word'}],
-    Label: [{ Id: 'word', Library: 'word', Type: 'word'}],
-    Action: [{ Id: 'word', Library: 'word', Type: 'word'}],
-    FunctionDef: [{ Id: 'word', Library: 'word', Type: 'word'}],
-    ParameterDef: [{ Id: 'word', Library: 'word', Type: 'word'}],
-    Variable: [{ Id: 'word', Library: 'word', Type: 'word'}],
-    Array: [{ Id: 'word', Library: 'word', Type: 'word'}],
+    Item: [{ Id: Word, Library: Word, Type: Word}],
+    Label: [{ Id: Word, Library: Word, Type: Word}],
+    Action: [{ Id: Word, Library: Word, Type: Word}],
+    FunctionDef: [{ Id: Word, Library: Word, Type: Word}],
+    ParameterDef: [{ Id: Word, Library: Word, Type: Word}],
+    Variable: [{ Id: Word, Library: Word, Type: Word}],
+    Array: [{ Id: Word, Library: Word, Type: Word}],
     VariableType: [{
       "Type":[{"Value":"string"}],
       Constant: [{}],
@@ -5471,41 +5527,41 @@ export const LibrarySchema = {
         Id: "4B02FA25"
       }]
     }],
-    ValueElement: [{ Id: 'word', Library: 'word', Type: 'word'}],
-    ValuePreset: [{ Id: 'word', Library: 'word', Type: 'word'}],
-    Preset: [{ Id: 'word', Library: 'word', Type: 'word'}],
-    Parameter: [{ Id: 'word', Library: 'word', Type: 'word'}],
-    ValueParam: [{ Id: 'word', Library: 'word', Type: 'word'}],
-    ExpressionParam: [{ Id: 'word', Library: 'word', Type: 'word'}],
-    Default: [{ Id: 'word', Library: 'word', Type: 'word'}],
+    ValueElement: [{ Id: Word, Library: Word, Type: Word}],
+    ValuePreset: [{ Id: Word, Library: Word, Type: Word}],
+    Preset: [{ Id: Word, Library: Word, Type: Word}],
+    Parameter: [{ Id: Word, Library: Word, Type: Word}],
+    ValueParam: [{ Id: Word, Library: Word, Type: Word}],
+    ExpressionParam: [{ Id: Word, Library: Word, Type: Word}],
+    Default: [{ Id: Word, Library: Word, Type: Word}],
     ParameterType: [{
       "Type":[{"Value":"word"}],
       "TypeElement":[{"Type":"word","Library":"word","Id":"word"}],
       GameType : [{"Value":"word"}],
       EntryType : [{"Value":"word"}]
     }],
-    FunctionCall: [{ Id: 'word', Library: 'word', Type: 'word'}],
-    SubFunctionType: [{ Id: 'word', Library: 'word', Type: 'word'}],
-    Event: [{ Id: 'word', Library: 'word', Type: 'word'}],
-    Condition: [{ Id: 'word', Library: 'word', Type: 'word'}],
-    ValueId: [{ Id: 'word'}],
-    ValueType: [{ Type: 'word'}],
-    ValueGameType: [{ Type: 'word'}],
-    BaseType: [{ Type: 'word', "Value":"word"}],
+    FunctionCall: [{ Id: Word, Library: Word, Type: Word}],
+    SubFunctionType: [{ Id: Word, Library: Word, Type: Word}],
+    Event: [{ Id: Word, Library: Word, Type: Word}],
+    Condition: [{ Id: Word, Library: Word, Type: Word}],
+    ValueId: [{ Id: Word}],
+    ValueType: [{ Type: Word}],
+    ValueGameType: [{ Type: Word}],
+    BaseType: [{ Type: Word, "Value":"word"}],
     ReturnType: [{
       Type: [{Value: "word"}],
-      GameType: [{ Type: 'word' , Value: 'word'}],
-      TypeElement: [{ Id: 'word', Library: 'word', Type: 'word'}],
+      GameType: [{ Type: Word , Value: Word}],
+      TypeElement: [{ Id: Word, Library: Word, Type: Word}],
     }],
-    CustomType: [{ Type: 'word'}],
-    ExpressionType: [{ Type: 'word'}],
+    CustomType: [{ Type: Word}],
+    ExpressionType: [{ Type: Word}],
     Comment:  [{'%value' : 'string' }],
-    Value: [{ Id: 'word', Library: 'word', Type: 'word' , '%value': 'string'}],
+    Value: [{ Id: Word, Library: Word, Type: Word , '%value': 'string'}],
     Identifier: [{'%value' : 'string' }],
     ExpressionText:  [{'%value': 'string'}],
     ScriptCode: [{'%value': 'string'}],
     InitFunc:  [{'%value': 'string'}],
     //'_Value': 'string'   //<Value>UED</Value>
-        // <Value Type="Param" Library="UEDC" Id="5E564F11"/>
+    // <Value Type="Param" Library="UEDC" Id="5E564F11"/>
   }]
 }
