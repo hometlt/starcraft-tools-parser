@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Catalog>
+<CTargetSortAlliance id="TSAlliancePassive"/>
+<CTargetSortAlliance id="TSAllianceVision">
+  <Alliance value="Vision"/>
+</CTargetSortAlliance>
+<CTargetSortAlliance id="TSAllianceControl">
+  <Alliance value="Control"/>
+</CTargetSortAlliance>
+<CTargetSortAngle id="TSAngle"/>
+<CTargetSortChargeCount id="TSChargeCount"/>
+<CTargetSortChargeRegen id="TSChargeRegen"/>
+<CTargetSortCooldown id="TSCooldown"/>
+<CTargetSortDistance id="TSDistance"/>
+<CTargetSortDistance id="TSDistanceToTarget">
+  <WhichLocation Value="TargetUnitOrPoint"/>
+</CTargetSortDistance>
+<CTargetSortDistance id="TSFarthestDistance">
+  <Descending value="1"/>
+</CTargetSortDistance>
+<CTargetSortInterruptible id="TSInterruptible">
+  <Value value="1"/>
+</CTargetSortInterruptible>
+<CTargetSortMarker id="TSMarker"/>
+<CTargetSortRandom id="TSRandom"/>
+<CTargetSortPowerSourceLevel id="TSPowerSource"/>
+<CTargetSortPowerUserLevel id="TSPowerUser"/>
+<CTargetSortPriority id="TSPriority"/>
+<CTargetSortVital id="TSLife"/>
+<CTargetSortVital id="TSLifeLargestFirst">
+  <Descending value="1"/>
+</CTargetSortVital>
+<CTargetSortVital id="TSShields">
+  <Vital value="Shields"/>
+</CTargetSortVital>
+<CTargetSortVital id="TSEnergy">
+  <Vital value="Energy"/>
+</CTargetSortVital>
+<CTargetSortVitalFraction id="TSLifeFraction"/>
+<CTargetSortVitalFraction id="TSShieldsFraction">
+  <Vital value="Shields"/>
+</CTargetSortVitalFraction>
+<CTargetSortVitalFraction id="TSEnergyFraction">
+  <Vital value="Energy"/>
+</CTargetSortVitalFraction>
+<CTargetSortField id="GroundTarget">
+  <Field value="PlaneArray[Ground]"/>
+  <Value value="1"/>
+</CTargetSortField>
+<CTargetSortValidator id="TSGroundOrFiring">
+  <Validator value="TargetIsGroundorCasterIsFiringandNotMoving"/>
+</CTargetSortValidator>
+<CTargetSortMarker id="TSMarkerDesc">
+  <Descending value="1"/>
+</CTargetSortMarker>
+<CTargetSortPriority id="TSPriorityDesc">
+  <Descending value="1"/>
+</CTargetSortPriority>
+<CTargetSortValidator id="TSThreatenBattlecruiser">
+  <Validator value="ThreatensBattlecruiser"/>
+</CTargetSortValidator>
+<CTargetSortValidator id="TSTrackedByBattlecruiser">
+  <Validator value="AttackTrackedByBattlecruiser"/>
+</CTargetSortValidator>
+<CTargetSortValidator id="TSTransientBattlecruiser">
+  <Validator value="TransientTrackedByBattlecruiser"/>
+</CTargetSortValidator>
+
+</Catalog>

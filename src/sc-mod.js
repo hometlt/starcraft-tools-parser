@@ -6,9 +6,25 @@ import * as yaml from "js-yaml";
 import {SCGame} from "./sc-game.js";
 import {SCEntity} from "./sc-entity.js";
 
-import {deep,formatData, optimizeObject, optimizeJSONObject, fromXMLToObject, capitalize, optimiseForXML, convertObjectsToIndexedArray, stringValues,eventEntityType, eventConditionEntityType} from "./operations.js";
+import {
+    getDataScheme,
+    deep,
+    formatData,
+    optimizeObject,
+    optimizeJSONObject,
+    fromXMLToObject,
+    capitalize,
+    optimiseForXML,
+    convertObjectsToIndexedArray,
+    stringValues,
+    eventEntityType,
+    eventConditionEntityType,
+    resolveSchemaType, isNumeric, matchType, _addRelation
+} from "./operations.js";
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
+
+let __lastTag = 0;
 
 export class SCMod {
     constructor(mod){
@@ -194,6 +210,13 @@ export class SCMod {
                             if (catalog.data.Catalog.$$) {
                                 for (let entity of catalog.data.Catalog.$$) {
                                     fromXMLToObject(entity)
+                                    // if(entity.class === 'const'){
+                                    //     entity
+                                    //     if(!this.constants){
+                                    //         this.constants = {}
+                                    //     }
+                                    //     this.constants[entity.id] = entity
+                                    // }
                                     if(entity.class[0] === 'S'){
                                         continue;
                                     }
@@ -623,8 +646,6 @@ export class SCMod {
         }
     }
     pickEntity(entity){
-
-
         if(!entity) {
             return
         }
@@ -640,12 +661,14 @@ export class SCMod {
         // console.log(entity.class +" " + entity.id)
         for(let relation of entity.$$relations){
             let linkedEntity = this.cache[relation.namespace][relation.link]
+            // let linkedEntity = relation.target
+
             if(!linkedEntity)continue
             if(linkedEntity.$$references){
-                linkedEntity.addReferences(relation.path)
+                linkedEntity.addReferences(relation)
             }
             else{
-                linkedEntity.addReferences(relation.path)
+                linkedEntity.addReferences(relation)
                 this.pickEntity(linkedEntity)
             }
         }
@@ -659,7 +682,7 @@ export class SCMod {
             for(let link of include[namespace]){
                 let entity = this.cache[namespace][link]
                 if(!entity)continue;
-                entity.addReferences("")
+                entity.addReferences({})
                 this.pickEntity(entity)
             }
         }
@@ -674,9 +697,12 @@ export class SCMod {
                     // linkedEntity.addReferences(relation.path)
                     used = true;
                 }
+                if(linkedEntity.$$namespace === 'actor'){
+                    this.pickEntity(linkedEntity)
+                }
             }
             if(used) {
-                actor.addReferences("")
+                actor.addReferences({})
                 this.pickEntity(actor)
             }
         }
@@ -699,8 +725,9 @@ export class SCMod {
                 if(linkedEntity?.$$references){
                     let _path = relation.path.split(".")
 
-                    if(linkedEntity.$$references.includes(relation.path)){
-                        linkedEntity.$$references.splice(linkedEntity.$$references.indexOf(relation.path),1)
+                    let _ref = linkedEntity.$$references.find(ref => ref.path = relation.path)
+                    if(_ref){
+                        linkedEntity.$$references.splice(linkedEntity.$$references.indexOf(_ref),1)
                     }
 
                     if(!createdEntity){
@@ -710,7 +737,7 @@ export class SCMod {
                             $class: actor.$class
                         })
                         Object.defineProperty(createdEntity, '$created',{ configurable:true, writable: true,enumerable: false,value: true })
-                        createdEntity.addReferences("")
+                        createdEntity.addReferences({})
                     }
                     let property = _path[2]
 
@@ -771,6 +798,9 @@ export class SCMod {
         this.entities = this.entities.filter(item => item.$$references)
     }
     pickAll(){
+        SCGame.pickIgnoreObjects = {}
+        deep(SCGame.pickIgnoreObjects,SCGame.defaultPickIgnoreObjects)
+
         for(let catalog in this.catalogs) {
             for (let entity of this.catalogs[catalog]) {
                 this.pickEntity(entity)
@@ -793,14 +823,18 @@ export class SCMod {
         }
         for(let locale in this.locales){
             for(let localeCat in this.locales[locale]){
+                //Do not need to rename trigger Strings
+                if(localeCat === 'TriggerStrings'){
+                    continue
+                }
                 for(let localeCatString in this.locales[locale][localeCat]){
+
                     let parts = localeCatString.split("/")
                     parts[parts.length - 1]  = mask.replace("*", parts[parts.length - 1])
                     this.locales[locale][localeCat][parts.join("/")] =  this.locales[locale][localeCat][localeCatString]
 
                     delete this.locales[locale][localeCat][localeCatString]
 
-                    //
                     // // if(picked.includes(localeCatString)){
                     // this.locales[locale][localeCat][localeCatString + 'Legacy'] =
                     // // }
@@ -808,10 +842,14 @@ export class SCMod {
             }
         }
     }
+
+    //prefix all filtered entities with 'Legacy' word. where '*' is an old entity id
     renameEntities(mask){
         this.pickAll()
         this.resolveAssets()
         this.resolveText(mask)
+
+        // this.cache.actor.Overseer.On
 
         for(let catalog in this.catalogs) {
             // if(catalog === 'actor')continue
@@ -824,12 +862,13 @@ export class SCMod {
                 entity.id = mask.replace("*", oldName)
                 if (entity.$$references) {
                     for (let reference of entity.$$references) {
-                        if(reference === "") continue //nothing to rename
-                        let _path = reference.split(".")
+                        let refpath = reference.path
+                        if(refpath === "") continue //nothing to rename
+                        let _path = refpath.split(".")
                         let value,valueObject,valueProperty, valueEntity, newvalue
-                        let referenceEntity = this.cache[_path[0]][_path[1]]
+                        let referenceEntity = reference.target ;//this.cache[_path[0]][_path[1]]
                         if(!referenceEntity){
-                            console.warn("wrong reference " + reference)
+                            console.warn("wrong reference " + refpath)
                             continue;
                         }
                         if(SCGame.useResolve){
@@ -846,7 +885,7 @@ export class SCMod {
                             value = value[pathItem]
                         }
                         if(value === undefined){
-                            console.warn("wrong reference " + reference)
+                            console.warn("wrong refpath " + refpath)
                             continue;
                         }
                         if(value.constructor === Object){
@@ -854,22 +893,36 @@ export class SCMod {
                             valueProperty = "value"
                             value = valueObject.value
                         }
+
+
                         //todo objects????
+                        let propertySchema = referenceEntity.$$schema
+                        let _propertyPath = _path.slice(2)
+                        if(_propertyPath[0] === 'parent'){
+                            propertySchema = referenceEntity.$$namespace
+                        }
+                        else{
+                            for(let _propertyPathItem of _propertyPath){
 
-                        if(value.includes(".") || value.includes(" ") || value.includes(";")){
-                            if(_path[_path.length - 1] === "Ops"){
-                                let actors = value.split(" ")
-                                for(let index =0; index < actors.length; index++){
-
-                                    if(actors[index] === oldName){
-                                        actors[index] = entity.id
-                                    }
+                                if(propertySchema[0]?.index === 'word'){
+                                    propertySchema = propertySchema[0]
                                 }
-                                newvalue = actors.join(" ")
+                                else if( isNumeric(_propertyPathItem)){
+                                    propertySchema = propertySchema[0]
+                                }
+                                else{
+                                    propertySchema = resolveSchemaType(propertySchema, _propertyPathItem)
+                                }
+                                if(!propertySchema){
+                                    console.log("@@@")
+                                }
                             }
-                            else{
-                                //this is a term
+                            propertySchema = propertySchema.value || propertySchema
+                        }
 
+
+                        switch(propertySchema){
+                            case "terms": {
                                 let [event,...conditions] = value.split(";").map(term => term.trim())
                                 let eventParts = event.split(".")
                                 let namespace = eventEntityType(eventParts[0])
@@ -889,32 +942,107 @@ export class SCMod {
                                     }
                                 }
                                 newvalue = [event, ...conditions].join(";")
+                                break;
+                            }
+                            case "abilcmd": {
+                                let [entityName, cmd] = value.split(",")
+                                newvalue = [entity.id, cmd].join(",")
+                                break;
+                            }
+                            case "ops": {
+                                let actors = value.split(" ")
+                                for(let index =0; index < actors.length; index++){
+
+                                    if(actors[index] === oldName){
+                                        actors[index] = entity.id
+                                    }
+                                }
+                                newvalue = actors.join(" ")
+                                break;
+                            }
+                            case "reference": {
+                                let [entityType, entityName, entityProperty] = value.split(",")
+                                newvalue = [entityType, entity.id, entityProperty].join(",")
+                                break;
+                            }
+                            case "send": {
+
+                                let eventParts = value.split(" ")
+
+                                switch (eventParts[0]) {
+                                    case "AttachSetBearingsFrom": {
+                                        let parts = value.replace(/([\{\} }])/g,'\n$1\n').split('\n')
+                                        for(let i in parts){
+                                            if(parts[i] === oldName){
+                                                parts[i] = entity.id
+                                            }
+                                        }
+                                        newvalue = parts.join("")
+                                        break;
+                                    }
+                                    case "HostSiteOpsSet": {
+                                        let parts = value.replace(/([\{\} }])/g,'\n$1\n').split('\n')
+                                        for(let i in parts){
+                                            if(parts[i] === oldName){
+                                                parts[i] = entity.id
+                                            }
+                                        }
+                                        newvalue = parts.join("")
+                                        break;
+                                    }
+                                    case "ModelSwap": {
+                                        eventParts[1] = entity.id
+                                        newvalue = eventParts.join(" ")
+                                        break;
+                                    }
+                                    case "QueryRadius":
+                                    case "QueryRegion":
+                                    case "TimerSet":
+                                    {
+                                        eventParts[2] = entity.id
+                                        newvalue = eventParts.join(" ")
+                                        break;
+                                    }
+                                    case "Create":
+                                    case "CreateCopy":
+                                    case "ModelMaterialApply":
+                                    {
+                                        eventParts[1] = entity.id
+                                        newvalue = eventParts.join(" ")
+                                        break;
+                                    }
+                                    default: {
+                                        newvalue = eventParts.join(" ")
+                                    }
+                                }
+                                break;
+                            }
+                            default: {
+                                newvalue = entity.id
                             }
                         }
-                        else if(value.includes(",") && value.lastIndexOf(",") !==  value.indexOf(","))  {
-                            //this is a reference
-                            let [entityType, entityName, entityProperty] = value.split(",")
-                            newvalue = [entityType, entity.id, entityProperty].join(",")
-                        }
-                        else if(value.includes(",")) {
-                            //this is a abilcmd
-                            let [entityName, cmd] = value.split(",")
-                            newvalue = [entity.id, cmd].join(",")
-                        }
-                        else{
-                            //this is a link
-                            newvalue = entity.id
-                        }
+
                         valueObject[valueProperty] = newvalue
                     }
                 }
             }
         }
 
-
         for(let entity of this.entities) {
             delete entity.__resolved
             delete entity.__data
+        }
+    }
+    renameTags(mask){
+        if(this.catalogs.scorevalue){
+            for(let scorevalue of this.catalogs.scorevalue){
+                if(scorevalue.UniqueTag){
+                    let code3 = String.fromCharCode(65 + Math.floor(__lastTag / 26))
+                    let code4 = String.fromCharCode(65 + __lastTag  % 26 )
+                    scorevalue.UniqueTag = '__' +code3 + code4
+                    __lastTag++
+                }
+            }
         }
     }
     _readTextFile(localeFile) {
@@ -941,9 +1069,9 @@ export class SCMod {
 
         delete entitydata.class
 
-        if(classname === "const"){
-            return
-        }
+        // if(classname === "const"){
+        //     classname
+        // }
         if(!entityid){
             entityclass.mixin(entitydata)
             this.entities.push(entityclass)
@@ -984,6 +1112,17 @@ export class SCMod {
             this.entities.push(entityInstance)
             return entityInstance
         }
+    }
+
+    getUnknownDataScheme(){
+
+        let unk = getUnknowns()
+        if(Object.keys(unk).length){
+            console.log('unknown values exists')
+            let sch = getDataScheme(unk, mod)
+            return sch
+        }
+        return null
     }
 }
 

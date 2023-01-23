@@ -48,7 +48,7 @@ export class SCEntity {
     resolveAssets(){
         let resolvedAssets = resolveAssets(this.$$resolved,this.$$schema)
         if(Object.keys(resolvedAssets).length > 0){
-            this.mixin(resolvedAssets)
+            this.mixin(resolvedAssets,'unite')
         }
     }
     resolveText(mask,picked = []){
@@ -57,11 +57,11 @@ export class SCEntity {
             this.mixin(resolvedText)
         }
     }
-    mixin(data){
+    mixin(data,mergetype){
         if(!Object.keys(data).length)return;
         // arrayValues(data)
         // convertIndexedArrayToObjects(data)
-        deep(this,data)
+        deep(this,data,mergetype)
     }
     get $$namespace(){
         let namespace = this.$namespace || this.$class?.$$namespace || this.$parent?.$$namespace || ''
@@ -69,20 +69,24 @@ export class SCEntity {
         return namespace
     }
     get $$relations(){
+        if(this.__relations){
+            return this.__relations;
+        }
+
         let result
         // if(SCGame.useResolve){
-            result =  relations(this.$$resolved, this.$$schema,[this.$$namespace,this.id],SCGame.pickIgnoreObjects)
+            result =  relations(this,this.$$resolved, this.$$schema,[this.$$namespace,this.id],SCGame.pickIgnoreObjects)
         // }
         if(!SCGame.useResolve){
             for(let i in result){
                 result[i].path = ""
             }
-            result.push(...relations(this, this.$$schema,[this.$$namespace,this.id],SCGame.pickIgnoreObjects))
+            result.push(...relations(this,this, this.$$schema,[this.$$namespace,this.id],SCGame.pickIgnoreObjects))
             if(this.parent){
-                result.push({namespace: this.$$namespace, link: this.parent, path: [this.$$namespace,this.id, "parent"].join(".")})
+                result.push({target: this, namespace: this.$$namespace, link: this.parent, path: [this.$$namespace,this.id, "parent"].join(".")})
             }
         }
-        Object.defineProperty(this, '$$relations',{ configurable:true, writable: true,enumerable: false,value: result })
+        Object.defineProperty(this, '__relations',{ configurable:true, writable: true,enumerable: false,value: result })
         return result
     }
     get $$schema(){
@@ -93,7 +97,6 @@ export class SCEntity {
         deep(schema,this.$class?.$$schema,'unite')
         deep(schema,this.$parent?.$$schema,'unite')
         deep(schema,this.$schema,'unite')
-
 
         Object.defineProperty(this, '__schema',{ configurable:true, writable: true,enumerable: false,value: schema })
 
@@ -112,7 +115,7 @@ export class SCEntity {
         deep(resolved, this)
         Object.defineProperty(this, '__data',{ configurable:true, writable: true,enumerable: false,value: resolved })
         // Object.defineProperty(this, '$$data',{ configurable:true, writable: true,enumerable: false,value: resolved })
-        return this.$$data;
+        return this.__data;
     }
     //Object Data Combined With All Parents And Class Data
     get $$resolved (){
@@ -140,14 +143,7 @@ export class SCEntity {
                 return this[tokenID]
             })
         })
-
-        // for(let property in this.$$resolved){
-        //     if(/[a-z]/.test(property[0])){
-        //         delete resolved[property]
-        //     }
-        // }
-
-        return this.$$resolved;
+        return this.__resolved;
     }
     addReferences( ...references) {
         if(!this.$$references){

@@ -23,28 +23,223 @@ let regexps  = {
     bit: /^[01]$/,
     int: /^-?(0|[1-9]\d*)$/,
     real: /^(-?(0|[1-9]\d*)(\.\d+)?)$/,
-    ints: /^-?(0|[1-9]\d*)(,-?(0|[1-9]\d*))+$/,
-    reals: /^(-?(0|[1-9]\d*)(\.\d+)?)(\,-?(0|[1-9]\d*)(\.\d+)?)*$/,
+    ints: /^(-?(0|[1-9]\d*)(,-?(0|[1-9]\d*))+|NULL)$/,
+    reals: /^((-?(0|[1-9]\d*)(\.\d+)?)(\,-?(0|[1-9]\d*)(\.\d+)?)*|NULL)$/,
     filters: /^(-|\w+(,\w+){0,});(-|\w+(,\w+){0,})$/,
-    categories: /^(\w+\:[\w#]+)(,\w+\:[\w#]+)*$/,
-    // file: /^[a-z_#'0-9\-]+[\\/a-z_#'0-9\-. ]+\.(dds|fxa|m3|tga|m3a)$/i,
+    categories: /^(\w+\:[\w -#]+)(,\w+\:[\w -#]+)*$/,
     file: /^.*$/,
-    link: /^[A-Za-z_@#0-9-]+(\/+[A-Za-z_@#0-9-]+)+\/?$/,
-    word: /^[\w\s@_%#]+$/,
-    abilcmd: /^([\w@_#]+[.,][\w]+|255)$/,
+    link: /^[A-Za-z_@#0-9-]+(\/+[A-Za-z_@#0-9-]+)*\/?$/,
+    linkstrict: /^[A-Za-z_@#0-9-]+(\/+[A-Za-z_@#0-9-]+)+\/?$/,
+    links: /^[A-Za-z_@#0-9-]+(\/+[A-Za-z_@#0-9-]+)*\/?(,[A-Za-z_@#0-9-]+(\/+[A-Za-z_@#0-9-]+)*\/?)*$/,
+    text: /^[A-Za-z_@#0-9-]+((\/+[A-Za-z_@#0-9-]+)\/?)*(\/+.+)+\/?$/,
+    word: /^[\w@_%#]+$/,
+    wordstrict: /^[\w@_%#]+$/,
+    abilcmd: /^([\w@_#]+([.,][\w]+)?|255)$/,
+    abilcmdstrict: /^([\w@_#]+[.,][\w]+|255)$/,
     words: /^[\w@_%#]+(,[\w@_%#]+)*$/,
     ops: /^[\w@_%#]+(\s[\w@_%#]+)*$/,
     reference: /^.*$/,
+    referencestrict: /^\w+,\w+,[\w\[\].]+$/,
     subject: /^.*$/,
+    driver: /^.*$/,
     send: /^.*$/,
-    terms: /^.*$/
+    terms: /^.*$/,
+
+
+    filestrict: /^[Za-z_#'0-9\-]+[\\/a-z_#'0-9\-. ]+\.(dds|fxa|m3|tga|m3a|ogv|wav|mp3|SC2Map|SC2Layout|SC2Cutscene|SC2Campaign|SC2Mod)$/i,
 }
 
-export function matchType(value, type){
-    if(type === 'text'){
-        type = 'link'
+
+export function getDataScheme(u, mod, path){
+    if(!path)path = []
+
+    let s = {}
+    for(let ua in u){
+        if(u[ua].constructor === Object){
+            s[ua] = getDataScheme(u[ua], mod,[...path,ua])
+        }
+        else{
+            s[ua] = getValuesType(u[ua], mod,[...path,ua])
+        }
     }
-    if(type === 'link'){
+    return s
+}
+
+function matchTypeAll(values ,type){
+    for(let value of values){
+        if(!matchType(value,type,true)){
+            return false
+        }
+    }
+    return true
+}
+
+function getNotMatched(values ,type){
+    let notMatched = []
+    for(let value of values){
+        if(!matchType(value,type,true)){
+            notMatched.push(value)
+        }
+    }
+    return notMatched
+}
+
+let keywords = {
+    Display: "Default|Always|Never",
+    Key: "Default|DamageLoss|RefundEnergy|HitCount|Annex",
+    AmountType: "Damaged|DamageInherited",
+    Position: "Center|Top|Bottom",
+    CreepRates: "Grow|Shrink",
+    Mode: "Persist|Overlay",
+    HeightClass: "Default|Medium|Small|Smaller|Tiny|Large|Huge|Full",
+    Player: 'Creator|Upkeep|CasterPlayer|Owner',
+    Report: "Average|Samples",
+    DisplayType: 'Confirm|Legacy',
+    ContainerType: "Any|Transport",
+    DamageCategories: "Physical|Magical",
+    BuildType: 'AddOn',
+    PathMode: "Builder|Scaler|Jumper|Amphibious|Float|Flying",
+    HeightMap: "Glide|Air|Ground",
+    AcquireLevel: 'Offensive|Passive|Defensive',
+    Phase: "Delay",
+    Alignment: 'Negative|Positive|Neutral',
+    TargetLocationType: "UnitOrPoint|Point",
+    AccumulatorCargo: "Load|Free",
+    Target: 'Outer|Unknown|Caster|Origin|Target|CasterOuter',
+    Evaluate: "Failed|Attain|Expand",
+    Check: "Absent|Present",
+    Relationship: "Self|Ally|Enemy",
+    BehaviorState: "SuppressEnergy|Untargetable|SuppressInvulnerability|SuppressCloak|Hallucination|Summoned|Stun|Daze|SuppressItemUsage",
+    WhichLocation: 'Any|Attacker|Source|TargetPoint|TargetUnit|OriginUnit|CasterPoint|SourceUnit|CasterUnit|TargetOuter|TargetOuterUnitOrPoint|TargetUnitOrPoint|SourcePoint|OriginPoint|TargetOuter|TargetOuterUnit|CasterUnitOrPoint|SourceUnitOrPoint|TargetOuterPoint',
+    Vitals: 'Ignore|Start|Maximum',
+    Location: 'Global|Player|Unit|Abil|Behavior',
+    Select: "Sequential|Shuffle",
+    Compare: "GT|GE|Eq|LT|LE|NE",
+    Fraction: "Current|Fraction|Delta",
+    State: "Suppressed|Restricted|Available",
+    Count: "CompleteOnly|QueuedOrBetter|CompleteOnlyAtUnit|InProgressOrBetter|InProgressOnly|QueuedOrBetterAtUnit|InProgressOnlyAtUnit|QueuedOnly",
+    Sort: "Descending",
+    Operation: "Subtract|Set|Multiply|Divide|Add|AddBaseMultiply",
+    ChoiceSelection: "Multiple|Random",
+    Type: "Fixed",
+    Visibility: "Visible|Hidden|Dimmed|Snapshot"
+}
+let keywordsAll = Object.values(keywords).join('|').split('|')
+
+export function getValuesType(values, mod, path){
+    let isArray = false;
+    let flatten = []
+    let structure = {}
+    for(let value of values){
+        let subflatten = value.constructor === Array ? value : [value]
+        if(subflatten.length > 1) {
+            isArray = true;
+        }
+        for(let subvalue of subflatten){
+            if(subvalue){
+                subvalue = subvalue.value || subvalue
+                if(subvalue.constructor === Object){
+                    for(let prop in subvalue){
+                        if(!structure[prop])structure[prop] = []
+                        structure[prop].push(subvalue[prop])
+                    }
+                }
+                else{
+                    //todo remove this
+                    // if(keywordsAll.includes(subvalue)){
+                    //     continue
+                    // }
+                    if(subvalue.includes('#')){
+                        continue
+                    }
+                    if(flatten.includes(subvalue)){
+                        continue
+                    }
+                    flatten.push(subvalue)
+                }
+            }
+        }
+    }
+
+
+    if(Object.keys(structure).length > 0){
+        let subscheme = getDataScheme(structure,mod)
+        return isArray ? [subscheme] : subscheme
+    }
+    else{
+
+        if(!flatten.length ){
+            return 'unknown'
+        }
+
+        let types = ['int', 'real', 'ints', 'reals', 'filters', 'categories', 'file', 'link', 'word', 'abilcmd', 'words','reference']
+        for(let regexptype of types){
+            if(matchTypeAll(flatten,regexptype)){
+                if(regexptype === 'link'){
+                    let isTextAll = true
+                    for(let val of flatten) {
+                        let isTextCurrent = false
+                        for (let locale in mod.locales.enUS) {
+                            if (mod.locales.enUS[locale][val]) {
+                                isTextCurrent = true
+                                break
+                            }
+                        }
+                        if(!isTextCurrent){
+                            isTextAll = false
+                            break
+                        }
+                    }
+                    if(isTextAll){
+                        regexptype = 'text'
+                    }
+                }
+                else if(regexptype === 'word'){
+                    let catalogs = []
+                    for (let catalog in mod.cache) {
+                        let allFromCurrentCatalog = true
+
+                        for(let val of flatten) {
+                            if (!mod.cache[catalog][val]) {
+                                allFromCurrentCatalog = false
+                                break
+                            }
+                        }
+                        if(allFromCurrentCatalog){
+                            catalogs.push(catalog)
+                        }
+                    }
+
+
+                    if(catalogs.length > 0){
+                        regexptype = catalogs.join("|")
+                    }
+                    else{
+                        regexptype = '>'+flatten.join("|")
+                    }
+                }
+
+
+
+                return isArray ? '['+regexptype+']' : regexptype
+            }
+        }
+        getNotMatched(flatten,'word')
+        return 'unknown'
+    }
+}
+
+export function matchType(value, type, strict){
+    if(strict && type === 'file'){
+        type = 'filestrict'
+    }
+    if(strict && type === 'reference'){
+        type = 'referencestrict'
+    }
+    if(strict && type === 'link'){
+        type = 'linkstrict'
+    }
+    if(!strict && type === 'link'){
         if(regexps.word.test(value))return true
     }
     if(type === 'string'){
@@ -219,16 +414,14 @@ export function convertIndexedArrayToObjects(object) {
     })
 }
 
-
-export function _addRelation({namespace, link, patharray, type, result, ignorelist}){
-    let path = patharray.join(".")
-
-    if(SCGame.ignoredNamespaces.includes(namespace)){
-        return
-    }
-    if(link === "*" || !namespace || !link || ignorelist[namespace]?.includes(link)){
+export function _addRelation({target,namespace, link, patharray, type, result, ignorelist}){
+    if( !namespace || !link ||
+        link === "*" || link.startsWith(":") ||
+        SCGame.ignoredNamespaces.includes(namespace) || ignorelist[namespace]?.includes(link)){
         return;
     }
+
+    let path = patharray.join(".")
 
 
     if(ignorelist.path) {
@@ -250,9 +443,11 @@ export function _addRelation({namespace, link, patharray, type, result, ignoreli
             }
         }
     }
-    result.push({namespace, link, path, type})
-}
 
+
+
+    result.push({target,namespace, link, path, type})
+}
 
 const entityType = {
     TurretEnable: "turret",
@@ -271,18 +466,32 @@ const entityType = {
     Model: "model",
     Actor: "actor",
 }
+
 const conditionEntityType = {
     // ModelSwap: "model",
     ValidateUnit: "validator",
     MorphFrom: "unit",
     MorphTo: "unit",
 }
+
 export function eventConditionEntityType(eventname){
     return conditionEntityType[eventname]
 }
+
 export function eventEntityType(eventname){
     return entityType[eventname]
 }
+
+
+// let collect = []
+export function getDebugInfo(mod){
+
+    return {
+        unknowns: unknowns,
+        scheme: getDataScheme(unknowns,mod)
+    }
+}
+
 /**
  *
  * @param object
@@ -291,25 +500,85 @@ export function eventEntityType(eventname){
  * @param chain
  * @returns {{}}
  */
-export function _propertyRelations(value,type,result,patharray,ignorelist){
+export function _propertyRelations(target,value,type,result,patharray,ignorelist){
 
     let link , namespace
 
     switch (type) {
-        case 'ops':
-            let actors = value.split(" ")
-
+        case 'ops': {
+            let type = 'actors', namespace = 'actor', actors = value.split(" ")
             for(let index =0; index < actors.length; index++){
-                _addRelation({
-                    namespace: 'actor',
-                    link: actors[index],
-                    patharray,
-                    type: 'actors',
-                    result,
-                    ignorelist
-                })
+                let link = actors[index]
+                _addRelation({target,namespace, link, patharray, type, result, ignorelist})
             }
             return;
+        }
+        case 'send': {
+            let type = 'send'
+            let args = value.split(" ")
+
+            //
+            // if(!collect[args[0]]){
+            //     collect[args[0]] = []
+            // }
+            // collect[args[0]].push(value)
+            if(args.length > 1) {
+                switch (args[0]) {
+                    case "AttachSetBearingsFrom":
+                    {
+                        //AttachSetBearingsFrom {Weapon 0} {} {LurkerMPSOpAoEVariancer SOpShadow SOpForwardCasterPoint SOp2DRotation LurkerMPSOpShadowSpine SOpRotVariancerUp15}
+                        let namespace = 'actor'
+                        let _val = value
+                        _val = _val.substring(_val.indexOf('}')+1)
+                        _val = _val.substring(_val.indexOf('}')+1)
+                        let parts = _val.replace(/([\{\} }])/g,'\n$1\n').split('\n')
+                        for(let link of parts){
+                            if(matchType(link,'wordstrict')) {
+                                _addRelation({target, namespace, link, patharray, type, result, ignorelist})
+                            }
+                        }
+
+                        break;
+                    }
+                    case "HostSiteOpsSet":
+                    {
+                        //HostSiteOpsSet ::HostImpact SOpAttachCenter 1 1
+                        //HostSiteOpsSet ::Host {SOpAttachCenter SOp2DRotation NovaGriffinBombingRunBombRandomRotation}
+                        let namespace = 'actor'
+                        let _val = value
+                        _val = _val.substring(_val.indexOf(' '))
+                        _val = _val.substring(_val.indexOf(' '))
+                        let parts = _val.replace(/([\{\} }])/g,'\n$1\n').split('\n')
+                        for(let link of parts){
+                            if(matchType(link,'wordstrict')){
+                                _addRelation({target,namespace, link, patharray, type, result, ignorelist})
+                            }
+                        }
+                        break;
+                    }
+                    case "ModelSwap": {
+                        let link = args[1], namespace = 'model'
+                        _addRelation({target,namespace, link, patharray, type, result, ignorelist})
+                        break;
+                    }
+                    case "CreateCopy":
+                    case "ModelMaterialApply":
+                    case "Create": {
+                        let link = args[1], namespace = 'actor'
+                        _addRelation({target,namespace, link, patharray, type, result, ignorelist})
+                        break;
+                    }
+                    case "TimerSet":
+                    case "QueryRegion":
+                    case "QueryRadius": {
+                        let link = args[2], namespace = 'actor'
+                        _addRelation({target,namespace, link, patharray, type, result, ignorelist})
+                        break;
+                    }
+                }
+            }
+            return;
+        }
         case 'terms': {
             let added = []
 
@@ -319,7 +588,7 @@ export function _propertyRelations(value,type,result,patharray,ignorelist){
             link = entityName
 
             added.push(namespace+"."+link)
-            _addRelation({namespace, link, patharray,  type: 'terms', result, ignorelist})
+            _addRelation({target,namespace, link, patharray,  type: 'terms', result, ignorelist})
 
             for(let index =0; index < conditions.length; index++){
                 let condition = conditions[index]
@@ -329,11 +598,18 @@ export function _propertyRelations(value,type,result,patharray,ignorelist){
 
                 if(!added.includes(namespace+"."+link)){
                     added.push(namespace+"."+link)
-                    _addRelation({namespace, link, patharray,  type: 'terms', result, ignorelist})
+                    _addRelation({target,namespace, link, patharray,  type: 'terms', result, ignorelist})
                 }
             }
             return;
         }
+        case 'driver':
+            if(/[a-zA-Z]/.test(value[0])){
+                type = 'effect'
+                link = value;
+                namespace = type
+            }
+            break;
         case 'subject':
             if(/[a-zA-Z]/.test(value[0])){
                 type = 'actor'
@@ -388,11 +664,12 @@ export function _propertyRelations(value,type,result,patharray,ignorelist){
             }
     }
 
-    _addRelation({namespace, link, patharray,  type, result, ignorelist})
+    _addRelation({target,namespace, link, patharray,  type, result, ignorelist})
 
 
 }
-export function relations(object,schema,path = [], ignorelist = {}, result = []){
+
+export function relations(target,object,schema,path = [], ignorelist = {}, result = []){
     if(!object) return
     if( !schema){
         console.log("no schema",path)
@@ -425,11 +702,11 @@ export function relations(object,schema,path = [], ignorelist = {}, result = [])
                     if(_value.constructor === Object){
                         _value = _value.value
                     }
-                    _propertyRelations(_value,type,result,[..._path,index],ignorelist)
+                    _propertyRelations(target,_value,type,result,[..._path,index],ignorelist)
                 }
             }
             else if(value.constructor === String){
-                _propertyRelations(value,type,result,_path,ignorelist)
+                _propertyRelations(target,value,type,result,_path,ignorelist)
             }
         }
         else{
@@ -440,10 +717,10 @@ export function relations(object,schema,path = [], ignorelist = {}, result = [])
                     if(!value[index])continue;
 
                     if(value[index].constructor === String){
-                        _propertyRelations(value[index],typed.value,result,[..._path,index],ignorelist)
+                        _propertyRelations(target,value[index],typed.value,result,[..._path,index],ignorelist)
                     }
                     else{
-                        relations(value[index],typed, [..._path,index],ignorelist, result)
+                        relations(target,value[index],typed, [..._path,index],ignorelist, result)
                     }
 
 
@@ -454,11 +731,11 @@ export function relations(object,schema,path = [], ignorelist = {}, result = [])
                 if(type.constructor === Array){
 
                     for(let index in value){
-                        relations(value[index],typed, [..._path,index],ignorelist, result)
+                        relations(target,value[index],typed, [..._path,index],ignorelist, result)
                     }
                 }
                 else{
-                    relations(value, typed, [..._path],ignorelist, result)
+                    relations(target,value, typed, [..._path],ignorelist, result)
                 }
             }
         }
@@ -769,7 +1046,7 @@ export function fromXMLToObject (object) {
     return object
 }
 */
-export function optimizeObject(object, schema = object.$$schema, path = [object.class]) {
+export function optimizeObject(object, schema = object.$$schema, path = [object.class],id = object.id) {
     if(!schema) {
         console.log("no schema", path )
         return;
@@ -785,7 +1062,7 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
             delete object[property];
             continue;
         }
-        if(!type){
+        if(!type){// || type === 'word'|| type === 'string'){//todo
 
 
             let obj = unknowns
@@ -817,14 +1094,14 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
                 continue;
             }
             value = value[0]
-            optimizeObject(value, type, _path)
+            optimizeObject(value, type, _path, id)
         }
         else if(type.constructor === Array){
             type = {...type[0]}
 
             if(type.index === "word" || type.index === "string"){
                 value = convertIndexedArrayToObject(value)
-                optimizeObject(value,{'*': type},_path)
+                optimizeObject(value,{'*': type},_path, id)
 
                 delete type.index
                 delete type.removed
@@ -837,7 +1114,7 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
             }
             else{
                 for(let item in value){
-                    optimizeObject(value[item],type, _path)
+                    optimizeObject(value[item],type, _path, id)
                 }
             }
         }
@@ -853,16 +1130,14 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
             }
 
             if(value && !matchType(value,type)){
-                console.warn("potentially wrong value", JSON.stringify(_path), JSON.stringify(object[property]))
+                if(type !== 'text'){
+                    console.warn(`Warn: #${id}[${_path.join(".")}] = ${JSON.stringify(object[property])}`)
+                }
             }
         }
         object[property] = value
     }
 }
-
-
-
-
 
 export function resolveText(object, schema = object.$$schema, path = [], picked, mask) {
     if(!schema) {
@@ -915,13 +1190,16 @@ export function resolveText(object, schema = object.$$schema, path = [], picked,
     }
     return result
 }
+
 export function resolveAssets(object, schema = object.$$schema, path = []) {
     if(!schema) {
         console.log("no schema", path )
         return;
     }
     let result = {}
+
     for(let property in object){
+
         let type = resolveSchemaType(schema,property), value = object[property]
 
         if (['id', 'class', 'parent', 'default', 'index', 'removed'].includes(property)) continue;
@@ -931,7 +1209,7 @@ export function resolveAssets(object, schema = object.$$schema, path = []) {
         }
 
         if(type.constructor === Object){
-            value = value[0]
+            // value = value[0]
             let _result = resolveAssets(value, type, _path)
             if(Object.keys(_result).length > 0){
                 result[property] = _result
@@ -1010,9 +1288,6 @@ export function optimizeJSONObject(object, schema = object.$$schema, path = [obj
     }
 }
 
-export function getUnknowns(){
-    return unknowns
-}
 
 export function filterTypedProperties(object, filter, schema = object.$$schema) {
     if(!schema){

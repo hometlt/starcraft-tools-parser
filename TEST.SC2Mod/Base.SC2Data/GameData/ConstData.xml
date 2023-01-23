@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Catalog>
+<const id="$GenericAttackImpactSiteOpsHeader" type="CActorSiteOps" value="SOpAttachHarness SOpForwardLaunchGuide SOpAttachVolumeStandard SOp2DRotation"/>
+<const id="$GenericAttackLaunchMethods" type="CAttachMethods" value="AMFilterWeapon00"/>
+<const id="$GenericAttackTargetMethods" type="CAttachMethods" value="AMVolumesTargets AMArcTestWeapon AMVolumesWeightedPick"/>
+<const id="$GenericBunkerAttackLaunchMethods" type="CAttachMethods" value="AMFilterWeapon AMProximityTargetAll AMPortAllocatorBunker"/>
+<const id="$Spell" type="CActorMsgPayloadPtr" value="AnimPlay Spell Spell"/>
+<const id="$Stand" type="CActorMsgPayloadPtr" value="AnimPlay Stand Stand"/>
+<const id="$Death" type="CActorMsgPayloadPtr" value="AnimPlay Death Death"/>
+<const id="$Birth" type="CActorMsgPayloadPtr" value="AnimPlay Birth Birth"/>
+<const id="$AllowBlobShadow" type="CActorTerms" value="CompareField ::Main UnitFlags[ShowBlobShadow] Eq 1"/>
+<const id="$Decals1" value="ui_wol_achievementdecals_sheet1.dds"/>
+<const id="$Decals2" value="ui_wol_achievementdecals_sheet2.dds"/>
+<const id="$Decals3" value="ui_wol_achievementdecals_sheet3.dds"/>
+<const id="$Decals4" value="ui_wol_achievementdecals_sheet4.dds"/>
+<const id="$Decals5" value="ui_wol_achievementdecals_sheet5.dds"/>
+<const id="$Emoticons1" value="ui_wol_achievementemoticons_sheet1.dds"/>
+<const id="$Emoticons2" value="ui_wol_achievementemoticons_sheet2.dds"/>
+<const id="$Transparency" value="ui_wol_achievementicons_sheet_transparency.dds"/>
+<const id="$Portraits1" value="ui_wol_achievementportraits_sheet1.dds"/>
+<const id="$Portraits2" value="ui_wol_achievementportraits_sheet2.dds"/>
+<const id="$Portraits3" value="ui_wol_achievementportraits_sheet3.dds"/>
+<const id="$Portraits4" value="ui_wol_achievementportraits_sheet4.dds"/>
+<const id="$Portraits5" value="ui_wol_achievementportraits_sheet5.dds"/>
+<const id="$Portraits6" value="ui_wol_achievementportraits_sheet6.dds"/>
+<const id="$Portraits7" value="ui_wol_achievementportraits_sheet7.dds"/>
+<const id="$Portraits8" value="ui_wol_achievementportraits_sheet8.dds"/>
+<const id="$Portraits9" value="ui_wol_achievementportraits_sheet9.dds"/>
+<const id="$Portraits10" value="ui_wol_achievementportraits_sheet10.dds"/>
+<const id="$Portraits11" value="ui_wol_achievementportraits_sheet11.dds"/>
+<const id="$Portraits12" value="ui_wol_achievementportraits_sheet12.dds"/>
+<const id="$Portraits13" value="ui_wol_achievementportraits_sheet13.dds"/>
+<const id="$Portraits14" value="ui_wol_achievementportraits_sheet14.dds"/>
+<const id="$Portraits15" value="ui_wol_achievementportraits_sheet15.dds"/>
+<const id="$Portraits16" value="ui_wol_achievementportraits_sheet16.dds"/>
+<const id="$Achievements1" value="ui_wol_achievementicons_sheet1.dds"/>
+<const id="$Achievements2" value="ui_wol_achievementicons_sheet2.dds"/>
+<const id="$Achievements3" value="ui_wol_achievementicons_sheet3.dds"/>
+<const id="$Achievements4" value="ui_wol_achievementicons_sheet4.dds"/>
+<const id="$Achievements5" value="ui_wol_achievementicons_sheet5.dds"/>
+<const id="$Achievements6" value="ui_wol_achievementicons_sheet6.dds"/>
+<const id="$Achievements7" value="ui_wol_achievementicons_sheet7.dds"/>
+<const id="$Achievements8" value="ui_wol_achievementicons_sheet8.dds"/>
+<const id="$Achievements9" value="ui_wol_achievementicons_sheet9.dds"/>
+<const id="$Achievements10" value="ui_wol_achievementicons_sheet10.dds"/>
+<const id="$Achievements11" value="ui_wol_achievementicons_sheet11.dds"/>
+<const id="$Achievements12" value="ui_wol_achievementicons_sheet12.dds"/>
+<const id="$Achievements13" value="ui_wol_achievementicons_sheet13.dds"/>
+<const id="$Achievements14" value="ui_wol_achievementicons_sheet14.dds"/>
+<const id="$Achievements15" value="ui_wol_achievementicons_sheet15.dds"/>
+<const id="$Achievements16" value="ui_wol_achievementicons_sheet16.dds"/>
+<const id="$Icons10" value="ui_wol_achievementicons_sheetA.dds"/>
+<const id="$Icons11" value="ui_wol_achievementicons_sheetB.dds"/>
+<const id="$Sprays1" value="ui_wol_achievementsprays_sheet1.dds"/>
+<const id="$Sprays2" value="ui_wol_achievementsprays_sheet2.dds"/>
+<const id="$Consoles1" value="ui_wol_achievementconsoles_sheet1.dds"/>
+<const id="$Skins1" value="ui_wol_unitskinicons_sheet1.dds"/>
+<const id="$Skins2" value="ui_wol_unitskinicons_sheet2.dds"/>
+<const id="$WarChest1" value="ui_wol_unitskinicons_warchest1.dds"/>
+<const id="$WarChest2" value="ui_wol_unitskinicons_warchest2.dds"/>
+<const id="$WarChest3" value="ui_wol_unitskinicons_warchest3.dds"/>
+<const id="$WarChest4" value="ui_wol_unitskinicons_warchest4.dds"/>
+<const id="$WarChest5" value="ui_wol_unitskinicons_warchest5.dds"/>
+<const id="$WarChest6" value="ui_wol_unitskinicons_warchest6.dds"/>
+<const id="$Banners1" value="ui_wol_achievementbanners_sheet1.dds"/>
+<const id="$Banners2" value="ui_wol_achievementbanners_sheet2.dds"/>
+<const id="Small" path="CUnit.Collide.index" value="Land16"/>
+<const id="Burrow" path="CUnit.Collide.index" value="Land1"/>
+<const id="TinyCritter" path="CUnit.Collide.index" value="Land8"/>
+<const id="Swarm" path="CUnit.Collide.index" value="Land4"/>
+<const id="ForceField" path="CUnit.Collide.index" value="Land9"/>
+<const id="Locust" path="CUnit.Collide.index" value="Land11"/>
+<const id="DisruptorPhased" path="CUnit.Collide.index" value="Land15"/>
+<const id="Structure" path="CUnit.Collide.index" value="Land6"/>
+<const id="FlyingImmobile" path="CUnit.Collide.index" value="Air2"/>
+<const id="FlyingEscorts" path="CUnit.Collide.index" value="Air3"/>
+<const id="Ground" path="CUnit.Collide.index" value="Land2"/>
+<const id="LocustForceField" path="CUnit.Collide.index" value="Land12"/>
+<const id="Flying" path="CUnit.Collide.index" value="Air1"/>
+<const id="Colossus" path="CUnit.Collide.index" value="Land5"/>
+<const id="CreepTumor" path="CUnit.Collide.index" value="Land10"/>
+<const id="RoachBurrow" path="CUnit.Collide.index" value="Land7"/>
+<const id="Phased" path="CUnit.Collide.index" value="Land14"/>
+<const id="Larva" path="CUnit.Collide.index" value="Land3"/>
+
+</Catalog>

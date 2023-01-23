@@ -104,7 +104,11 @@ export const SCGame = {
             'Spray',
             'AttackBuilding',
             'Attack',
+            'Rally',
             'AttackWorker',
+        ],
+        actor: [
+            'CreepMgr'
         ],
         abil: [
             '255',
@@ -124,6 +128,7 @@ export const SCGame = {
 
             'SCVHarvest',
             'ProbeHarvest',
+            'ProgressRally',
             'DroneHarvest'
         ]
     },
@@ -207,35 +212,34 @@ export const SCGame = {
         function _setSchemaInstance(entityID){
             let entitydata = schemaData[entityID]
 
-            if(/[A-Z]/.test(entityID[0])){
-                let schema = {}
-                if(entitydata.catalog && schemaData[entitydata.catalog]){
-                    deep(schema,schemaData[entitydata.catalog],'unite');
-                }
-                let selfschema = {...entitydata}
-                delete selfschema.prototype
-                delete selfschema.catalog
-                if(Object.keys(selfschema).length){
-                    deep(schema,selfschema,'unite')
-                }
-                if(entitydata.prototype && !classlist[entitydata.prototype]){
-                    _setSchemaInstance(entitydata.prototype)
-                }
-
-                let entity = new SCEntity({
-                    class: entityID,
-                    $namespace: entitydata.catalog,
-                    $parent: entitydata.prototype && classlist[entitydata.prototype],
-                    $schema: schema
-                });
-                classlist[entityID] = entity
-
-                //todo remvoe this
-                if(schema.OperandArray){
-                    Object.freeze(entity.$$schema.OperandArray[0])
-                }
-
+            let schema = {}
+            if(entitydata.catalog && schemaData[entitydata.catalog]){
+                deep(schema,schemaData[entitydata.catalog],'unite');
             }
+            let selfschema = {...entitydata}
+            delete selfschema.prototype
+            delete selfschema.catalog
+            if(Object.keys(selfschema).length){
+                deep(schema,selfschema,'unite')
+            }
+            if(entitydata.prototype && !classlist[entitydata.prototype]){
+                _setSchemaInstance(entitydata.prototype)
+            }
+
+            let entity = new SCEntity({
+                class: entityID,
+                $namespace: entitydata.catalog,
+                $parent: entitydata.prototype && classlist[entitydata.prototype],
+                $schema: schema
+            });
+            classlist[entityID] = entity
+
+            //todo remvoe this
+            if(schema.OperandArray){
+                Object.freeze(entity.$$schema.OperandArray[0])
+            }
+
+
         }
         for (let entityID in schemaData){
             _setSchemaInstance(entityID)
