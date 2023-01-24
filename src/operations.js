@@ -20,6 +20,7 @@ export const TYPES = {
 }
 
 let regexps  = {
+    bool: /^true|false$/,
     bit: /^[01]$/,
     int: /^-?(0|[1-9]\d*)$/,
     real: /^(-?(0|[1-9]\d*)(\.\d+)?)$/,
@@ -351,7 +352,7 @@ export function matchPath(path1,path2){
     return true;
 }
 
-export function resolveSchemaType(schema,property,object,schemaForResolvedArrays = false){
+export function resolveSchemaType(schema,property,pathobject,schemaForResolvedArrays = false){
 
     // if(property === "OperandArray"){
     //     property
@@ -378,7 +379,54 @@ export function resolveSchemaType(schema,property,object,schemaForResolvedArrays
 
 
     if(type.constructor === String && type[0] === '.'){
-        type = object[type.substring(1)]
+
+        function getRelativeType(variation){
+
+            let _valueindex = pathobject.length
+            let path = variation.split('.')
+            let value;
+
+            while(path.length){
+                let crumb = path.shift()
+                if(crumb === ""){
+                    _valueindex --
+                }
+                else{
+                    if(!value){
+                        value = pathobject[_valueindex]
+                    }
+                    if(!isNumeric(crumb) && value.constructor === Array){
+                        value = value[0]
+                    }
+                    value = value[crumb]
+                    if(!value){
+                        return false
+                    }
+                }
+            }
+            if(value.constructor === String){
+                if(value === "Effect"){
+                    value
+                }
+                return value.toLowerCase()
+            }
+            else{
+                return value
+            }
+        }
+
+        let typesVariations = type.split("|")
+        for(let typesVariation of typesVariations){
+            if(typesVariation[0] === "."){
+                type = getRelativeType(typesVariation)
+            }
+            else{
+                type = typesVariation
+            }
+            if(type){
+                break;
+            }
+        }
     }
 
 
@@ -684,7 +732,7 @@ export function _propertyRelations(target,value,type,result,patharray,ignorelist
 
 }
 
-export function relations(target,object,schema,path = [], ignorelist = {}, result = []){
+export function relations(target,object,schema,path = [], ignorelist = {}, result = [],pathobject = [object]){
     if(!object) return
     if( !schema){
         console.log("no schema",path)
@@ -695,10 +743,11 @@ export function relations(target,object,schema,path = [], ignorelist = {}, resul
         // if(property !== 'value' && /[a-z]/.test(property))continue;
         let value = object[property]
         if(!value) continue;
-        let type = resolveSchemaType(schema,property,object,true);
+        let type = resolveSchemaType(schema,property,pathobject,true);
         let _path = [...path,property]
         if(!type){
             console.log("unknown field",_path.join(".") );
+            continue;
         }
 
 
@@ -734,22 +783,19 @@ export function relations(target,object,schema,path = [], ignorelist = {}, resul
                         _propertyRelations(target,value[index],typed.value,result,[..._path,index],ignorelist)
                     }
                     else{
-                        relations(target,value[index],typed, [..._path,index],ignorelist, result)
+                        relations(target,value[index],typed, [..._path,index],ignorelist, result, [...pathobject,value[index]])
                     }
-
-
-
                 }
             }
             if(value.constructor === Object){
                 if(type.constructor === Array){
 
                     for(let index in value){
-                        relations(target,value[index],typed, [..._path,index],ignorelist, result)
+                        relations(target,value[index],typed, [..._path,index],ignorelist, result, [...pathobject,value[index]])
                     }
                 }
                 else{
-                    relations(target,value, typed, [..._path],ignorelist, result)
+                    relations(target,value, typed, [..._path],ignorelist, result, [...pathobject,value])
                 }
             }
         }
@@ -868,7 +914,7 @@ export function resolveArrays(object, schema, path) {
  * token: "value"            => $: {token: "value"}
  * property: "value"         => property: {$: {token: "value"}}
  */
-export function optimiseForXML(object,schema = object.$$schema, path = [object.class]) {
+export function optimiseForXML(object,schema = object.$$schema, path = [object.class], pathobject = [object]) {
 
     if(!schema){
         console.log("no schema",path)
@@ -879,7 +925,7 @@ export function optimiseForXML(object,schema = object.$$schema, path = [object.c
     for(let property in object){
 
 
-        let type = resolveSchemaType(schema,property,object), value = object[property]
+        let type = resolveSchemaType(schema,property,pathobject), value = object[property]
 
 
 
@@ -898,25 +944,30 @@ export function optimiseForXML(object,schema = object.$$schema, path = [object.c
             continue;
         }
 
-        if(type._ && value.constructor === String){
-            object[property] = {_: value}
-        }
-        else if(type === 'bool'){
+        // if(type._ && value.constructor === String){
+        //     object[property] = {_: value}
+        // }
+        // else
+        if(type === 'void'){
             object[property] = {}
         }
         else if(type.constructor === String) {
+            if(property !== '_'){
 
-            value = value.replace('"','&quot;')
+                value = value.replace('"','&quot;')
 
-            //['id', 'class', 'parent', 'default', 'index', 'removed']
-            if(isToken || (path.length > 1 && !isToken)) {
-                if (!object.$) object.$ = {}
-                object.$[property] = value
-                delete object[property]
+                //['id', 'class', 'parent', 'default', 'index', 'removed']
+                if(isToken || (path.length > 1 && !isToken)) {
+                    if (!object.$) object.$ = {}
+                    object.$[property] = value
+                    delete object[property]
+                }
+                else{
+                    object[property] = {$: {value}}
+                }
+
             }
-            else{
-                object[property] = {$: {value}}
-            }
+
         }
         else if(type.constructor === Array){
             type = {...type[0]}
@@ -933,7 +984,7 @@ export function optimiseForXML(object,schema = object.$$schema, path = [object.c
                 else{
                     for (let index  in value) {
                         let itemvalue = {...value[index]}
-                        optimiseForXML(itemvalue, type, _path)
+                        optimiseForXML(itemvalue, type, _path,[...pathobject,itemvalue])
 
                         result.push(deep({$: {index}},itemvalue))
                     }
@@ -969,7 +1020,7 @@ export function optimiseForXML(object,schema = object.$$schema, path = [object.c
                         }
                     }
                     else{
-                        optimiseForXML(value[index],type, _path)
+                        optimiseForXML(value[index],type, _path,[...pathobject,value[index]])
                         // //force array indexes for requirementnode
                         if(type.index === "int"){
                             if(!value[index].$){
@@ -984,7 +1035,7 @@ export function optimiseForXML(object,schema = object.$$schema, path = [object.c
 
         }
         else if(type.constructor === Object) {
-            optimiseForXML(value, type, _path)
+            optimiseForXML(value, type, _path,[...pathobject,value])
         }
     }
 
@@ -1040,42 +1091,17 @@ export function fromXMLToObject (object) {
     return object
 }
 
-/**
- * For Better Value Resolving
- * proprety: "value" => proprety: [{value}]
- * proprety: {value} => proprety: [{value}]
- */
-/*export function arrayValues(object ){//,_path) {
-    for(let property in object){
-        if (/[a-z]/.test(property[0])) continue;
 
-        let value = object[property]
-        if(value.constructor === String) {
-            object[property] = [{value}]
-        }
-        else if(value.constructor === Object) {
-            arrayValues(value)//,[..._path,property])
-            object[property] = [value]
-        }
-        else if(value.constructor === Array) {
-            for(let item of value){
-                arrayValues(item)//,[..._path,property])
-            }
-        }
-    }
-    return object
-}
-*/
-export function optimizeObject(object, schema = object.$$schema, path = [object.class],id = object.id) {
+export function optimizeObject(object, schema = object.$$schema, path = [object.class],pathobject = [object]) {
     if(!schema) {
         console.log("no schema", path )
         return;
     }
     for(let property in object){
-        let type = resolveSchemaType(schema,property,object), value = object[property]
+        let type = resolveSchemaType(schema,property,pathobject), value = object[property]
+        let _path = [...path,property];
 
         if (['id', 'class', 'parent', 'default', 'index', 'removed'].includes(property)) continue;
-        let _path = [...path,property];
         if(value === undefined ||
             (value.constructor === Array && !value.length) ||
             (value.constructor === Object && !Object.keys(value).length)){
@@ -1083,8 +1109,6 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
             continue;
         }
         if(!type){// || type === 'word'|| type === 'string'){//todo
-
-
             let obj = unknowns
             let li = _path.length - 1
             for(let i = 0; i < li;i++){
@@ -1103,16 +1127,20 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
             // console.warn("unknown field", _path.join("."), JSON.stringify(value) );
             continue;
         }
-
-        if(type._ ){
-
-            if(value.constructor === Array && value[0].constructor === String) {
-                if(value.length > 1){
-                    console.warn('too many elemetns')
+        //
+        if(type._){
+            for(let i  in value){
+                if(value[i].constructor === String){
+                    value[i] = {_: value[i]}
                 }
-                value = value[0]
-                type = type._
             }
+            // if(value.constructor === Array && value[0].constructor === String) {
+            //     if(value.length > 1){
+            //         console.warn('too many elemetns')
+            //     }
+            //     value = value[0]
+            //     type = type._
+            // }
         }
 
 
@@ -1127,14 +1155,14 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
                 continue;
             }
             value = value[0]
-            optimizeObject(value, type, _path, id)
+            optimizeObject(value, type, _path, [...pathobject,value])
         }
         else if(type.constructor === Array){
             type = {...type[0]}
 
             if(type.index === "word" || type.index === "string"){
                 value = convertIndexedArrayToObject(value)
-                optimizeObject(value,{'*': type},_path, id)
+                optimizeObject(value,{'*': type},_path, [...pathobject,value])
 
                 delete type.index
                 delete type.removed
@@ -1147,7 +1175,7 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
             }
             else{
                 for(let item in value){
-                    optimizeObject(value[item],type, _path, id)
+                    optimizeObject(value[item],type, _path, [...pathobject,value[item]])
                 }
             }
         }
@@ -1161,16 +1189,19 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
                     value = value.value
                 }
             }
-            if(type === 'bool'){
+
+
+
+            if(type === 'void'){
                 if(value !== ''){
-                    console.warn(`Warn: #${id}[${_path.join(".")}] = ${JSON.stringify(object[property])}`)
+                    console.warn(`Warn: #${pathobject[0].id}[${_path.join(".")}] = ${JSON.stringify(object[property])}`)
                 }
                 value = true
             }
 
             if(value && !matchType(value,type)){
                 if(type !== 'text'){
-                    console.warn(`Warn: #${id}[${_path.join(".")}] = ${JSON.stringify(object[property])}`)
+                    console.warn(`Warn: #${pathobject[0].id}[${_path.join(".")}] = ${JSON.stringify(object[property])}`)
                 }
             }
         }

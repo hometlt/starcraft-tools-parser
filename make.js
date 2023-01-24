@@ -6,7 +6,7 @@ let output = ''
 let input = []
 let test = false
 
-let mode = process.argv[2]?.toLowerCase() || 'v';
+let mode = process.argv[2]?.toLowerCase() || 'Coop';
 
 let shortcuts = {
     Test: ['t'],
@@ -26,73 +26,115 @@ if(mode){
 console.log(`Active Config: ${mode}`)
 
 let mod = new SCMod()
-mod.directory('../data-input')
-await mod.read('0.Core')
+mod.directory('../../Mods/all-races-mods')
+await mod.read('Core - Core')
 mod.saveCore()
 
 switch(mode){
     case 'Liberty': {
-        input = ['1.Liberty', '2.Liberty Multi']
-
-        // input = [
-        //     '../data-input'
-        //     '< 1.Liberty',
-        //     '< 2.Liberty Multi',
-        //     '&race Terr,Zerg,Prot'
-        //     '@ WOL*',
-        //     '> ../../Mods/all-races-mods/MP - Liberty'
-        // ]
+        input = [
+            'Core - Liberty',
+            'Core - LibertyMulti'
+        ]
         prefix = 'WOL'
         output = 'MP - Liberty'
         break;
     }
     case 'Swarm': {
-        input = ['1.Liberty', '4.Swarm', '6.Swarm Multi']
+        input = [
+            'Core - Liberty',
+            'Core - Swarm',
+            'Core - SwarmMulti'
+        ]
         prefix = 'HOTS'
         output = 'MP - Swarm'
         break;
     }
     case 'Void': {
         input = [
-            '1.Liberty',
-            '4.Swarm',
-            '7.Void',
-            '9.Void Multi'
+            'Core - Liberty',
+            'Core - Swarm',
+            'Core - Void',
+            'Core - VoidMulti'
         ]
         prefix = 'LOTV'
         output = 'MP - Void'
         break;
     }
     case 'Broodwar': {
-        //this operation might need >2Gb of Memory
-        //node --max_old_space_size=4000 make.js
         input = [
-            '1.Liberty',
-            '2.Liberty Campaign',
-            '4.Swarm',
-            '5.Swarm Campaign',
-            '7.Void',
-            '8.Void Campaign',
-            '10.Nova',
-            './../../Mods/all-races-mods/BroodWar'
+            'Core - Liberty',
+            'Core - LibertyCampaign',
+            'Core - Swarm',
+            'Core - SwarmCampaign',
+            'Core - Void',
+            'Core - VoidCampaign',
+            'Core - Nova',
+            '>../../Mods/all-races-mods',
+            'BroodWar'
         ]
         prefix = 'BW'
         output = 'MP - Broodwar'
         break;
     }
+    case 'Coop': {
+        input = [
+            'Core - Liberty',
+            'Core - LibertyCampaign',
+            'Core - Swarm',
+            'Core - SwarmCampaign',
+            'Core - Void',
+            'Core - VoidCampaign',
+            '>../../Mods/all-races-mods',
+            'Campaign'
+        ]
+        prefix = 'ARC'
+        output = 'MP - Coop'
+        break;
+    }
+    case 'ARC': {
+        input = [
+            'Core - VoidMulti',
+            'Factions - Campaign',
+            'Factions - Scion',
+            'Factions - UED',
+            'Factions - Hybrids',
+            'Factions - Dragons',
+            'Factions - UPL',
+            'Factions - UPLCampaign',
+            'Factions - UPLBalance',
+            'Factions - LIB'
+        ]
+        output = 'Compiled - ARM'
+        break;
+    }
+    case 'ARM': {
+        input = [
+            'Factions - Scion',
+            'Factions - UED',
+            'Factions - Hybrids',
+            'Factions - Dragons',
+            'Factions - UPL',
+            'Factions - UPLBalance',
+            'LIB',
+            'PVP',
+        ]
+        output = 'Compiled - PVP'
+        break;
+    }
     case 'TEST': {
         input = [
             '1.Liberty',
-            '2.Liberty Campaign',
-            '3.Liberty Multi',
+            '2.LibertyCampaign',
+            '3.LibertyMulti',
             '4.Swarm',
-            '5.Swarm Campaign',
-            '6.Swarm Multi',
+            '5.SwarmCampaign',
+            '6.SwarmMulti',
             '7.Void',
-            '8.Void Campaign',
-            '9.Void Multi',
+            '8.VoidCampaign',
+            '9.VoidMulti',
             '10.Nova',
-            '11.Nova Campaign',
+            '11.NovaCampaign',
             '12.Warcraft',
             '13.Warcraft Coop',
             '>../../Mods/all-races-mods',
@@ -132,7 +174,7 @@ switch(mode){
             'COOP - TychusReworked',
             'COOP - WAR3'
         ]
-
+        output = 'Compiiled - TEST'
         break;
     }
 }
@@ -159,17 +201,16 @@ await mod.read(...input)
 // info
 
 if(!test){
-
-    // mod.pick({race: ["Terr","Zerg","Prot"]})
-    // mod.pickActors()
-    // mod.pickEntity(mod.cache.actor?.['SYSTEM_ActorConfig'])
-    // mod.filter()
-    mod.renameEntities(prefix + "*");
-    mod.renameTags();
-    mod.removeCore()
+    if(prefix){
+        mod.pick({race: ["Terr","Zerg","Prot"]})
+        mod.pickActors()
+        mod.pickEntity(mod.cache.actor?.['SYSTEM_ActorConfig'])
+        mod.pickTriggers()
+        mod.filter()
+        mod.renameEntities(prefix + "*");
+        mod.renameTags();
+        mod.removeCore()
+    }
 
     await mod.write('./../../Mods/all-races-mods/'+ output + '.SC2Mod')
-}
-else{
-    await mod.write('./TEST.SC2Mod')
 }

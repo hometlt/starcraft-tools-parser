@@ -6520,17 +6520,17 @@ export const LibrarySchema = {
   Element: [{
     $Type: Word,
     $Id: Word,
-    Internal: 'bool',
-    Disabled: 'bool',
-    FlagAction: 'bool',
-    FlagCall: 'bool',
-    FlagInline: 'bool',
-    InitOff: 'bool',
-    PresetInteger: 'bool',
-    ParamFlagPreload: 'bool',
-    FlagCondition: 'bool',
-    FlagCreateThread: 'bool',
-    PresetGenConstVar: 'bool',
+    Internal: 'void',
+    Disabled: 'void',
+    FlagAction: 'void',
+    FlagCall: 'void',
+    FlagInline: 'void',
+    InitOff: 'void',
+    PresetInteger: 'void',
+    ParamFlagPreload: 'void',
+    FlagCondition: 'void',
+    FlagCreateThread: 'void',
+    PresetGenConstVar: 'void',
     ValueTypeInfo: {Value: 'int'},
     ValueContext: {Value: 'word'},
     ExpressionCode: {Value: 'word'},
@@ -6543,7 +6543,7 @@ export const LibrarySchema = {
     Array: { Id: Word, Library: Word, Type: Word},
     VariableType: {
       Type: {Value:'string'},
-      Constant: 'bool',
+      Constant: 'void',
       GameType: {Value:Word},
       ArraySize: [{
         Dim:Int,
@@ -6582,13 +6582,11 @@ export const LibrarySchema = {
     CustomType: { Type: Word},
     ExpressionType: { Type: Word},
     Comment:  {_ : 'string' },
-    Value: { Id: Word, Library: Word, Type: Word , _: '.ValueType'},
+    Value: { Id: Word, Library: Word, Type: Word , _: '..ValueGameType.Type|..ValueType.Type|string'},
     Identifier: {_ : 'string' },
     ExpressionText:  {_: 'string'},
     ScriptCode: {_: 'string'},
-    InitFunc:  {_: 'string'},
-    //     //'_Value': 'string'   //<Value>UED</Value>
-    //     // <Value Type='Param' Library='UEDC' Id='5E564F11'/>
+    InitFunc:  {_: 'string'}
   }]
 }
 

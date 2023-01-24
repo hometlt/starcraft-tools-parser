@@ -160,8 +160,9 @@ export class SCMod {
                 if(triggersData?.Library){
                     fromXMLToObject(triggersData)
                     let libs = []
-                    for(let lib of triggersData.Library){
-                        optimizeObject(lib, LibrarySchema)
+                    for(let libindex in triggersData.Library){
+                        let lib = triggersData.Library[libindex]
+                        optimizeObject(lib, LibrarySchema,['library',libindex])
                         libs.push(lib)
                     }
 
@@ -892,9 +893,9 @@ export class SCMod {
         }
     }
 
-    parseTriggers(){
+    pickTriggers(){
         for(let libIndex in this.triggers){
-            let result = relations(this,this.triggers[libIndex], LibrarySchema,['triggers',libIndex],SCGame.pickIgnoreObjects)
+            let result = relations(this.triggers[libIndex],this.triggers[libIndex], LibrarySchema,['library',libIndex],SCGame.pickIgnoreObjects)
 
 
             for(let relation of result){
@@ -919,7 +920,6 @@ export class SCMod {
         console.log(`Renaming entities`)
 
 
-        this.parseTriggers()
         this.pickAll()
         this.resolveAssets()
         this.resolveText(mask)
@@ -953,6 +953,7 @@ export class SCMod {
                             valueEntity = referenceEntity;
                         }
                         value = valueEntity
+                        let pathobject = [valueEntity]
                         for(let pathItem of _path.slice(2)){
                             if(value === undefined)break;
                             valueObject = value
@@ -970,8 +971,13 @@ export class SCMod {
                         }
 
 
-                        //todo objects????
-                        let propertySchema = referenceEntity.$$schema
+                        let propertySchema
+                        if(_path[0] === 'library'){
+                            propertySchema = LibrarySchema
+                        }
+                        else{
+                            propertySchema = referenceEntity.$$schema
+                        }
                         let _propertyPath = _path.slice(2)
                         if(_propertyPath[0] === 'parent'){
                             propertySchema = referenceEntity.$$namespace
@@ -986,11 +992,14 @@ export class SCMod {
                                     propertySchema = propertySchema[0]
                                 }
                                 else{
-                                    propertySchema = resolveSchemaType(propertySchema, _propertyPathItem)
+                                    propertySchema = resolveSchemaType(propertySchema, _propertyPathItem,pathobject)
                                 }
                                 if(!propertySchema){
                                     console.log("@@@")
                                 }
+
+                                valueEntity = valueEntity[_propertyPathItem]
+                                pathobject.push(valueEntity)
                             }
                             propertySchema = propertySchema.value || propertySchema
                         }
@@ -1021,7 +1030,12 @@ export class SCMod {
                             }
                             case "abilcmd": {
                                 let [entityName, cmd] = value.split(",")
-                                newvalue = [entity.id, cmd].join(",")
+                                if(cmd){
+                                    newvalue = [entity.id, cmd].join(",")
+                                }
+                                else{
+                                    newvalue = entity.id
+                                }
                                 break;
                             }
                             case "ops": {
