@@ -2,6 +2,10 @@ const Bit = 'bit'
 const Int = 'int'
 const Word = 'word'
 const Real = 'real'
+const Text = 'text'
+const File = 'file'
+const Link = 'link'
+const Flags = '{bit}'
 
 const Host = {
   Subject: 'subject',
@@ -19,10 +23,10 @@ export const TargetSorts = {
 }
 
 export const EffectBehaviorSchema = {
-  Flags: '{bit}', Behavior: 'behavior', Count: Int, Duration: Real
+  Flags: Flags, Behavior: 'behavior', Count: Int, Duration: Real
 }
 
-export const FieldSchema = {$Id: 'string', Index: Int, Flags: '{bit}'}
+export const FieldSchema = {$Id: 'string', Index: Int, Flags: Flags}
 
 export const CostSchema = {
   Abil: 'string',
@@ -30,13 +34,13 @@ export const CostSchema = {
   CooldownTimeUse: Real,
   ChargeCountUse: Int,
   Fraction: {
-    Vital: "{int}",
+    Vital: '{int}',
     Charge: Int,
     Cooldown: Int,
   },
   Charge: {
-    TimeDelay: "real",
-    Flags: '{bit}',
+    TimeDelay: Real,
+    Flags: Flags,
     CountMax: Int,
     CountStart: Int,
     CountUse: Real,
@@ -51,9 +55,9 @@ export const CostSchema = {
   },
   ChargeTimeUse: Real,
   Behavior: 'behavior',
-  TimeDelay: "real",
+  TimeDelay: Real,
   Vital: '{real}',
-  Display: '{bit}',
+  Display: Flags,
   Cooldown: {
     TimeStart: Real,
     TimeUse: Real,
@@ -66,25 +70,25 @@ export const CostSchema = {
 }
 
 export const ModificationSchema = {
-  AbilCategoriesDisable: "[int]",
-  AbilTechAliasEnableArray: "[word]",
-  AbilTechAliasDisableArray: "[word]",
-  MoveSpeedBaseMaximumBonus: "int",
+  AbilCategoriesDisable: '[int]',
+  AbilTechAliasEnableArray: '[word]',
+  AbilTechAliasDisableArray: '[word]',
+  MoveSpeedBaseMaximumBonus: Int,
   DetectFilters: 'filters',
   RadarFilters: 'filters',
-  StateFlags: '{bit}',
+  StateFlags: Flags,
   SoundArray: '{string}',
-  VitalMaxDecreaseAffectsCurrentArray: "{int}",
-  HealTakenMultiplier: "real",
-  DamageTakenMaximum: "[int]",
-  MeleeWeaponRange: "int",
-  UnifiedDamageTakenFraction: "[real]",
-  XPMultiplier: "real",
-  CriticalAttackChanceMultiplier: "int",
-  CriticalAttackChanceScaledBonus: "real",
-  DamageTakenUnscaled: "[int]",
-  ResourceHarvestTimeBonus: "{real}",
-  BehaviorClassEnableArray: "{int}",
+  VitalMaxDecreaseAffectsCurrentArray: '{int}',
+  HealTakenMultiplier: Real,
+  DamageTakenMaximum: '[int]',
+  MeleeWeaponRange: Int,
+  UnifiedDamageTakenFraction: '[real]',
+  XPMultiplier: Real,
+  CriticalAttackChanceMultiplier: Int,
+  CriticalAttackChanceScaledBonus: Real,
+  DamageTakenUnscaled: '[int]',
+  ResourceHarvestTimeBonus: '{real}',
+  BehaviorClassEnableArray: '{int}',
   TurretEnableArray: '{turret}',
   DamageDealtFraction: '{real}',
   DamageDealtAttributeUnscaled: '{real}',
@@ -94,7 +98,7 @@ export const ModificationSchema = {
   UnifiedDamageDealtFraction: '{real}',
   VitalMaxAdditiveMultiplierArray: '{real}',
   VitalDamageLeechArray: [{KindArray: '{real}',index:Word}],
-  AttributeChangeArray: [{Attribute:"behavior",Points:"int"}],
+  AttributeChangeArray: [{Attribute:'behavior',Points:Int}],
   Radar: Real,
   DetectBonus: Real,
   WeaponMinRange: Real,
@@ -102,12 +106,12 @@ export const ModificationSchema = {
   EnergyDamageRatioBonus: Real,
   SightMinimum: Real,
   DecelerationMultiplier: Real,
-  UnitNameOverride: 'link',
+  UnitNameOverride: Link,
   LevelGainEffect: 'effect',
   MoveSpeedMultiplier: Real,
   UnifiedAttackSpeedFactor: Real,
   RadiusMultiplier: Real,
-  ModifyFlags: '{bit}',
+  ModifyFlags: Flags,
   DamageDealtMaximum: '{real}',
   DamageTakenFraction: '{real}',
   DamageTakenScaled: '{real}',
@@ -116,28 +120,28 @@ export const ModificationSchema = {
   VitalMaxIncreaseAffectsCurrentArray: '{real}',
   AbilLinkEnableArray: '[abil]',
   BehaviorLinkDisableArray: '[behavior]',
-  BehaviorClassDisableArray: '{bit}',
-  AbilClassDisableArray: '{bit}',
-  Relationship: '{bit}',
+  BehaviorClassDisableArray: Flags,
+  AbilClassDisableArray: Flags,
+  Relationship: Flags,
   AbilLinkDisableArray: '[abil]',
   DeathResponse: {
-    Relationship: '{bit}',
+    Relationship: Flags,
     Cost: CostSchema,
     Chance: Real,
     Effect: 'effect',
-    Type: '{bit}'
+    Type: Flags
   },
   TimeScale: Real,
   VitalRegenArray: [{
-    index: "string",
-    AccumulatorArray: [{value:"accumulator"}],
-    value:"real"
+    index: 'string',
+    AccumulatorArray: [{value:'accumulator'}],
+    value:Real
   }],
   WeaponDisableArray: '[weapon]',
   Height: Real,
   HeightTime: '{real}',
   PlaneDelta: '{int}',
-  AbilClassEnableArray: '{bit}',
+  AbilClassEnableArray: Flags,
   BehaviorLinkEnableArray: '[behavior]',
   AttackSpeedMultiplier: Real,
   Food: Real,
@@ -175,7 +179,7 @@ export const ModificationSchema = {
   SightMaximum: Real,
   DecelerationBonus: Real,
   DamageDealtAttributeScaled: '{int}',
-  DamageDealtUnscaled: [{index: 'word', AccumulatorArray:[{value:"accumulator"}],value:"real"}],
+  DamageDealtUnscaled: [{index: Word, AccumulatorArray:[{value:'accumulator'}],value:Real}],
   VitalMaxFractionArray: '{real}',
   AccelerationMultiplier: Real,
   DamageDealtScaled: '{real}',
@@ -187,17 +191,17 @@ export const ModificationSchema = {
   RangedWeaponRange: Real,
   UnifiedMoveSpeedFactor: Real,
   ShieldArmorBonus: Real,
-  BehaviorCategoriesDisable: '{bit}',
-  AdditiveMoveSpeedFactor: { AccumulatorArray:[{value:"accumulator"}],value:"real"},
-  AdditiveAttackSpeedFactor: { AccumulatorArray:[{value:"accumulator"}],value:"real"},
-  AbilCategoriesEnable: '{bit}',
+  BehaviorCategoriesDisable: Flags,
+  AdditiveMoveSpeedFactor: { AccumulatorArray:[{value:'accumulator'}],value:Real},
+  AdditiveAttackSpeedFactor: { AccumulatorArray:[{value:'accumulator'}],value:Real},
+  AbilCategoriesEnable: Flags,
   HealDealtMultiplier: Int
 }
 
 export const ConditionSchema ={
-  Value: "int",
+  Value: Int,
   User: [{
-    Instance:"tring",
+    Instance:'tring',
     Type:Word,
     Field:Word
   }],
@@ -209,17 +213,17 @@ export const ConditionSchema ={
 
 export const LineSchema = {
   $Id: Word,
-  Text: 'text',
+  Text: Text,
   Sound: 'sound',
   ChoiceSelection: Word,
-  MaxChoices: "int",
+  MaxChoices: Int,
   FacialAnim: Word,
-  AltLineMatchText: "int",
+  AltLineMatchText: Int,
   OverlapPrevious: Int,
   SpeakerVariation: Word,
-  CutsceneFile: 'file',
+  CutsceneFile: File,
   AnimProps: Word,
-  CustomSpeaker: 'link',
+  CustomSpeaker: Link,
   CutscenePosition: 'ints',
   AnimBlendIn: Int,
   AnimBlendOut: Int,
@@ -231,7 +235,7 @@ export const LineSchema = {
   FacialBlend: Int,
   LookAtAttach: Word,
   Conditions: [ConditionSchema],
-  Name: 'text',
+  Name: Text,
   LineSelection: Word,
   MaxLines: Int,
   Children: '[word]',
@@ -250,12 +254,12 @@ export const StarcraftSchema = {
   },
   CAbil: {
     catalog: 'abil',
-    Name: 'text',
+    Name: Text,
     TechPlayer: Word,
     UnloadTransportEffect: 'effect',
     LoadTransportEffect: 'effect',
     EditorCategories: 'categories',
-    TargetMessage: 'link',
+    TargetMessage: Link,
     CargoFilter: 'unit',
     CastMovementLimit: Int,
     LevelButtonTooltip: '[link]',
@@ -265,14 +269,14 @@ export const StarcraftSchema = {
     StateBehavior: 'behavior',
     OrderArray: [
       {
-        DisplayType: "word",
+        DisplayType: Word,
         Color: 'ints',
-        Model: 'file',
-        LineTexture: 'file',
+        Model: File,
+        LineTexture: File,
         Scale: Real
       }
     ],
-    SharedFlags: '{bit}',
+    SharedFlags: Flags,
     DataCollection: 'datacollection',
     RangeSlop: Real,
     CancelDelay: '{real}',
@@ -280,45 +284,45 @@ export const StarcraftSchema = {
     ArcSlop: Real,
     AutoCastAcquireLevel: Word,
     AutoCastFilters: 'filters',
-    Flags: '{bit}',
+    Flags: Flags,
     Effect: '[effect]',
-    IgnoreUnitCostRequirements: "requirement",
-    AgentUnitValidator: "validator",
-    $h5: "actor",
-    $h6: "actor",
-    $h7: "actor",
-    $h8: "actor",
-    ResourceAmountCapacity: "{int}",
-    EffectDelay: "real",
-    Requirements: "requirement",
-    LevelUnitBuildTimeFactor: "real",
+    IgnoreUnitCostRequirements: 'requirement',
+    AgentUnitValidator: 'validator',
+    $h5: 'actor',
+    $h6: 'actor',
+    $h7: 'actor',
+    $h8: 'actor',
+    ResourceAmountCapacity: '{int}',
+    EffectDelay: Real,
+    Requirements: 'requirement',
+    LevelUnitBuildTimeFactor: Real,
     EffectRange: '[reals]',
     AINotifyEffect: 'effect',
     VeterancyBehavior: 'behavior',
-    RefundArray: '{bit}',
+    RefundArray: Flags,
     UnloadValidatorArray: '[validator]',
     AutoCastToggleOnValidatorArray: '[validator]',
     AutoCastToggleOffValidatorArray: '[validator]',
     RefundFraction: {
-      VitalFraction: "{int}",
+      VitalFraction: '{int}',
       Charge: Int,
       Cooldown: Int,
       Resource: '{real}',
       Vital: '{int}'
     },
-    UseMarkerArray: '{bit}',
-    PauseableArray: '{bit}',
-    PreemptableArray: '{bit}',
-    ValidatedArray: '{bit}',
+    UseMarkerArray: Flags,
+    PauseableArray: Flags,
+    PreemptableArray: Flags,
+    ValidatedArray: Flags,
     DefaultError: 'string',
     AcquirePriority: Int,
     Levels: Int,
     Points: Int,
-    SetLastTarget: "alert",
+    SetLastTarget: 'alert',
     VeterancyLevelMin: Int,
     VeterancyLevelSkip: Int,
     ErrorAlert: 'alert',
-    Activity: 'link',
+    Activity: Link,
     Cancelable: Bit,
     Leash: Real,
     Alert: 'string',
@@ -332,7 +336,7 @@ export const StarcraftSchema = {
       {
         index: Word,
         DefaultButtonFace: 'button',
-        Flags: '{bit}',
+        Flags: Flags,
         ReviverIndex: Int,
         ValidatorArray: '[validator]',
         Requirements: 'requirement',
@@ -345,17 +349,17 @@ export const StarcraftSchema = {
     Range: '[real]',
     EnumRange: Real,
     HaltCmdButton: {
-      Flags: "{bit}",
+      Flags: Flags,
       DefaultButtonFace: 'button'
     },
-    FlagArray: '{bit}',
+    FlagArray: Flags,
     InfoArray: [
       {
-        Requirements: "requirement",
-        Location: "abil",
+        Requirements: 'requirement',
+        Location: 'abil',
         index: Int,
         Button: {
-          Flags: '{bit}',
+          Flags: Flags,
           DefaultButtonFace: 'button',
           State: Word,
           Requirements: 'requirement'
@@ -364,7 +368,7 @@ export const StarcraftSchema = {
         Unit: 'unit',
         SectionArray: [
           {
-            UseBuildTimeArray: "{bit}",
+            UseBuildTimeArray: Flags,
             index: Word,
             DurationArray: '{real}',
             EffectArray: '{effect}'
@@ -385,13 +389,13 @@ export const StarcraftSchema = {
           TimeStart: Real,
           TimeUse: Real,
           Link: 'string',
-          Flags: '{bit}',
+          Flags: Flags,
           HideCount: Bit
         },
         Upgrade: 'upgrade',
         Resource: '{int}',
         Alert: 'alert',
-        Flags: '{bit}',
+        Flags: Flags,
         UseFilters: 'filters',
         SetFilters: 'filters',
         AllowSetValidators: '[validator]',
@@ -413,13 +417,13 @@ export const StarcraftSchema = {
         Delay: Int,
         Vital: '{int}',
         RallyResetPhase: Word,
-        Display: '{bit}',
+        Display: Flags,
         Alignment: Word,
-        Container:  "itemcontainer",
-        EmptyFace: "button",
+        Container:  'itemcontainer',
+        EmptyFace: 'button',
         Item: 'item',
         TargetFilters: 'filters',
-        RefundFraction: '{bit}',
+        RefundFraction: Flags,
         Abil: 'abil',
         Distance: Real,
         Rotation: Word,
@@ -431,19 +435,19 @@ export const StarcraftSchema = {
     FollowRange: Real,
     AcquireRadius: Real,
     ReservedMarker: {
-      Link: 'link'
+      Link: Link
     },
-    ResourceAllowed: '{bit}',
-    ResourceAcquire: '{bit}',
-    ResourceDestroy: '{bit}',
+    ResourceAllowed: Flags,
+    ResourceAcquire: Flags,
+    ResourceDestroy: Flags,
     ResourceAmountMultiplier: '{real}',
     ResourceTimeMultiplier: '{real}',
-    UninterruptibleArray: '{bit}',
+    UninterruptibleArray: Flags,
     ActorKey: Word,
-    AbilClassEnableArray: '{bit}',
-    AbilClassDisableArray: '{bit}',
+    AbilClassEnableArray: Flags,
+    AbilClassDisableArray: Flags,
     QueueCount: Int,
-    NameOverride: 'link',
+    NameOverride: Link,
     SelfReviveCmd: Word,
     TargetType: Word,
     VitalArray: '{word}',
@@ -459,7 +463,7 @@ export const StarcraftSchema = {
     TargetSorts: TargetSorts,
     ReplaceFilters: 'filters',
     ValidatorArray: '[validator]',
-    AttackModifierBehavior: "behavior",
+    AttackModifierBehavior: 'behavior',
     FleeRange: Int,
     FleeTime: Int,
     FollowRangeSlop: Int,
@@ -471,9 +475,9 @@ export const StarcraftSchema = {
     Cost: [CostSchema],
     OffCost: CostSchema,
     ExpireCost: CostSchema,
-    AbilityCategories: '{bit}',
+    AbilityCategories: Flags,
     DefaultButtonCardId: Word,
-    CancelableArray: '{bit}',
+    CancelableArray: Flags,
     AutoCastRange: Real,
     PostEffectBehavior: EffectBehaviorSchema,
     PreEffectBehavior: EffectBehaviorSchema,
@@ -483,13 +487,13 @@ export const StarcraftSchema = {
     Marker: {
       Duration: Real,
       Link: 'string',
-      MatchFlags: '{bit}',
-      MismatchFlags: '{bit}'
+      MatchFlags: Flags,
+      MismatchFlags: Flags
     },
-    InheritAttackPriorityArray: '{bit}',
+    InheritAttackPriorityArray: Flags,
     MorphUnit: 'unit',
     Arc: Real,
-    Placeholder: "unit",
+    Placeholder: 'unit',
     ProducedUnitArray: '[unit]',
     PlaceUnit: 'unit',
     InfoTooltipPriority: Int,
@@ -508,7 +512,7 @@ export const StarcraftSchema = {
     MaxCargoSize: Int,
     TotalCargoSpace: Int,
     UnloadPeriod: Real,
-    ShowProgressArray: '{bit}',
+    ShowProgressArray: Flags,
     ProgressButtonArray: '{button}',
     LoadCargoBehavior: 'behavior',
     LoadValidatorArray: '[validator]',
@@ -529,8 +533,8 @@ export const StarcraftSchema = {
     Abil: 'abil',
     ProgressButton: 'button',
     Info: {
-      Charge: {Link: 'link'},
-      Cooldown: {Link: 'link'},
+      Charge: {Link: Link},
+      Cooldown: {Link: Link},
       Unit: 'unit',
       Time: Real,
       Resource: '{int}'
@@ -572,38 +576,38 @@ export const StarcraftSchema = {
     CancelCost: CostSchema,
 
 
-    InterruptArray: "[int]",
-    Placement: "actor",
-    Button: "button",
-    Unit: "unit",
-    MaxBuilders: "int",
+    InterruptArray: '[int]',
+    Placement: 'actor',
+    Button: 'button',
+    Unit: 'unit',
+    MaxBuilders: Int,
     TacticalAIFunc: Word,
-    PowerBuildBonusRate: "real",
-    PowerBuildCostFactor: "real",
-    ResourceTimeBonus: "[real]",
+    PowerBuildBonusRate: Real,
+    PowerBuildCostFactor: Real,
+    ResourceTimeBonus: '[real]',
     BaseUnitCostFactor: {
-      Resource: "[real]"
+      Resource: '[real]'
     },
     LevelUnitCostFactor: {
-      Resource: "[real]"
+      Resource: '[real]'
     },
-    MoveFilters: "filters",
-    PowerupSmartPriority: "int",
-    LevelButtonOnTooltip: "[link]",
-    TechAliasArray: "abil",
+    MoveFilters: 'filters',
+    PowerupSmartPriority: Int,
+    LevelButtonOnTooltip: '[link]',
+    TechAliasArray: 'abil',
 
-    "$race": 'race',
-    "$h1": "actor",
-    "$h2": "actor",
-    "$h3": "actor",
-    "$h4": "actor",
-    "$l1": "button",
-    "$l2": "button",
-    "$l3": "button",
-    "$l4": "button",
-    "$l5": "button",
-    "$toUnit": "actor",
-    "$unitID": 'unit',
+    '$race': 'race',
+    '$h1': 'actor',
+    '$h2': 'actor',
+    '$h3': 'actor',
+    '$h4': 'actor',
+    '$l1': 'button',
+    '$l2': 'button',
+    '$l3': 'button',
+    '$l4': 'button',
+    '$l5': 'button',
+    '$toUnit': 'actor',
+    '$unitID': 'unit',
   },
   CAbilArmMagazine: {
     prototype: 'CAbil',
@@ -623,7 +627,7 @@ export const StarcraftSchema = {
     prototype: 'CAbil',
     InfoArray: [
       {
-        PeonKillFinish: "int",
+        PeonKillFinish: Int,
         index: Word
       }
     ]
@@ -703,16 +707,16 @@ export const StarcraftSchema = {
   CAccumulator: {
     catalog: 'accumulator',
     PreviousValueFactor: Bit,
-    Flags: "{bit}",
+    Flags: Flags,
     Scale: Real,
     Index: Int,
     Type: Word,
     AmountType: Word,
-    FallbackValue: "int",
+    FallbackValue: Int,
     Attribute: 'behavior',
     Key: Word,
-    StartLocation: [{Effect:"effect",Value:"string"}],
-    EndLocation : [{Effect:"effect",Value:"string"}],
+    StartLocation: [{Effect:'effect',Value:'string'}],
+    EndLocation : [{Effect:'effect',Value:'string'}],
     CaseArray: [
       {
         Validator: 'validator',
@@ -720,7 +724,7 @@ export const StarcraftSchema = {
       }
     ],
     Behavior: 'behavior',
-    CaseDefault: "accumulator",
+    CaseDefault: 'accumulator',
     ApplicationRule: Word,
     Amount: '[real]',
     Ratio: Real,
@@ -755,43 +759,43 @@ export const StarcraftSchema = {
   CAccumulatorVitals: { prototype: 'CAccumulator'},
   CAchievement: {
     catalog: 'achievement',
-    Description: 'text',
-    Category: 'text',
-    Name: 'text',
+    Description: Text,
+    Category: Text,
+    Name: Text,
     MinTermCount: Int,
     Race: 'race',
     SharesTerms: 'achievement',
     Supersedes: 'achievement',
-    Filters: '{bit}',
-    Flags: '{bit}',
-    Icon: 'file',
+    Filters: Flags,
+    Flags: Flags,
+    Icon: File,
     Points: Int,
     TermTable: '[achievementterm]',
-    RewardTable: "[reward]",
+    RewardTable: '[reward]',
     Tags: [{Value:Word,Check:Word}],
   },
   CAchievementTerm: {
     catalog: 'achievementterm',
-    Name: 'text',
-    Description: 'text',
+    Name: Text,
+    Description: Text,
     Compare: Word,
     Evaluate: Word,
-    AbilCmd: [{value:"abilcmd"}],
-    Effect: [{value:"effect"}],
+    AbilCmd: [{value:'abilcmd'}],
+    Effect: [{value:'effect'}],
     ChildTable: [{value:'achievementterm'}],
-    Flags: '{bit}',
-    Quantity: [{value:"int"}],
+    Flags: Flags,
+    Quantity: [{value:Int}],
     Unit: [{value:'unit'}],
     ValidatorArray: '[validator]',
     WhichPlayer: {
       Value: Word
     },
-    Period: "int",
-    Behavior: "behavior",
-    State: "int",
-    ScoreValue: "scorevalue",
-    Vital: "colorstyle",
-    Child: "reward",
+    Period: Int,
+    Behavior: 'behavior',
+    State: Int,
+    ScoreValue: 'scorevalue',
+    Vital: 'colorstyle',
+    Child: 'reward',
     Type: Word,
   },
   CAchievementTermAbilInteract: { prototype: 'CAchievementTerm'},
@@ -829,7 +833,7 @@ export const StarcraftSchema = {
         Subject: Word
       }
     ],
-    DeltaSumFlags: "{int}",
+    DeltaSumFlags: '{int}',
     ReattachQuery: {
       Fallback: Word
     },
@@ -837,32 +841,32 @@ export const StarcraftSchema = {
       Subject: Word
     },
     EnableY: Word,
-    YMinimum: "real",
-    YMaximum: "real",
-    MissileModel: "model",
-    MinimapIconBackground: "file",
-    Buff: "behavior",
-    ModelMaterialGlazeDisplayLimit: "int",
-    UnitButton: "abil",
+    YMinimum: Real,
+    YMaximum: Real,
+    MissileModel: 'model',
+    MinimapIconBackground: File,
+    Buff: 'behavior',
+    ModelMaterialGlazeDisplayLimit: Int,
+    UnitButton: 'abil',
     Portrait: 'model',
-    "$anim": "words",
-    "$effectsound": "sound",
-    "$model": "actor",
-    "$effectsoundlooped": "sound",
-    "$dataeffect": "effect",
-    "$missile": "actor",
-    "$dropBehavior": 'behavior',
-    "$dropEffect": 'effect',
-    "$defType": Word,
-    "$tid": "actor",
-    "$art": "file",
-    "$effect": 'effect',
-    "$file": Word,
-    "$buffid": "actor",
-    "$A": 'abil',
-    "$B": 'abil',
-    "$C": 'abil',
-    "$D": 'abil',
+    '$anim': 'words',
+    '$effectsound': 'sound',
+    '$model': 'actor',
+    '$effectsoundlooped': 'sound',
+    '$dataeffect': 'effect',
+    '$missile': 'actor',
+    '$dropBehavior': 'behavior',
+    '$dropEffect': 'effect',
+    '$defType': Word,
+    '$tid': 'actor',
+    '$art': File,
+    '$effect': 'effect',
+    '$file': Word,
+    '$buffid': 'actor',
+    '$A': 'abil',
+    '$B': 'abil',
+    '$C': 'abil',
+    '$D': 'abil',
     $weaponId: 'weapon',
     $unitId: 'unit',
     WeaponSound: Word,
@@ -874,14 +878,14 @@ export const StarcraftSchema = {
     PlayerIdSource: Word,
     CustomUnitStatusAttachment: Word,
     QueryFilters: 'filters',
-    VisibleTo: '{bit}',
-    Inherits: '{bit}',
+    VisibleTo: Flags,
+    Inherits: Flags,
     FilterPlayers: '[int]',
     VisibleToPlayers: '[int]',
     AddToProximitySystem: Bit,
     WalkAnimTimeScalingAsFlyer: Bit,
     HeightRange: 'reals',
-    AcceptedTransfers: '{bit}',
+    AcceptedTransfers: Flags,
     InternalSplatHeight: Word,
     PortraitCamera: 'camera',
     On: [
@@ -893,10 +897,10 @@ export const StarcraftSchema = {
     ],
     Camera: 'camera',
     Model: 'model',
-    UnitIconVariations: [{Number:"int",Image: "file"}],
+    UnitIconVariations: [{Number:Int,Image: File}],
     CustomUnitStatusOffset: 'ints',
     AnimBlendTime: Real,
-    ModelFlags: '{bit}',
+    ModelFlags: Flags,
     ProximityPosition: Word,
     LaunchActor: 'actor',
     LaunchHeight: Real,
@@ -904,32 +908,32 @@ export const StarcraftSchema = {
     CenterHeight: Real,
     ImpactActor: 'actor',
     ImpactHeight: Real,
-    QuadFlags: '{bit}',
-    PowerSource:  "behavior",
-    SpawnTarget:  "actor",
+    QuadFlags: Flags,
+    PowerSource:  'behavior',
+    SpawnTarget:  'actor',
     HostSiteOps: {
       Ops: 'ops',
       HoldPosition: Bit,
       HoldRotation: Bit
     },
     Host: Host,
-    TerrainDeformerFlags: '{bit}',
+    TerrainDeformerFlags: Flags,
     FoliageFXDeathSpawnTarget: Word,
     Supporter: Host,
     Arc: Real,
-    Icon: 'file',
+    Icon: File,
     IconArcLength: Real,
-    CliffLevelFlags: '{bit}',
-    RangeFlags: '{bit}',
+    CliffLevelFlags: Flags,
+    RangeFlags: Flags,
     IconTint: 'ints',
-    Flags: '{bit}',
+    Flags: Flags,
     RadiusMedium: Real,
     RadiusLarge: Real,
     MaxCountSmall: Int,
     MaxCountMedium: Int,
     MaxCountLarge: Int,
     Sound: 'sound',
-    SoundFlags: '{bit}',
+    SoundFlags: Flags,
     Color: 'ints',
     FadeIn: Real,
     FadeOut: Real,
@@ -946,13 +950,13 @@ export const StarcraftSchema = {
     TurretBody: Host,
     Aliases: '[word]',
     AngleAnimProps: Word,
-    Beam: "actor",
-    DoodadFlags: '{bit}',
-    EditorIcon: 'file',
+    Beam: 'actor',
+    DoodadFlags: Flags,
+    EditorIcon: File,
     Radius: 'reals',
     RandomScaleRange: 'reals',
     OccludeHeight: Real,
-    EditorFlags: '{bit}',
+    EditorFlags: Flags,
     MinimapRenderPriority: Word,
     VisibleOpacity: Real,
     Terms: 'terms',
@@ -974,7 +978,7 @@ export const StarcraftSchema = {
     Variance: Real,
     NotifyClosestScaleKey: Word,
     Quad: 'reals',
-    AcceptedHostedPropTransfers: '{bit}',
+    AcceptedHostedPropTransfers: Flags,
     $unitName: 'unit',
     AutoScaleFactor: Real,
     InnerWidth: Real,
@@ -985,12 +989,12 @@ export const StarcraftSchema = {
     InnerBoundaryFallOffRatio: Real,
     InnerBoundaryRatio: Real,
     InnerOffsetRatio: Real,
-    SelectionFlags: '{bit}',
-    SelectionFilter: '{bit}',
-    ForceFlags: '{bit}',
+    SelectionFlags: Flags,
+    SelectionFilter: Flags,
+    ForceFlags: Flags,
     Field: Word,
-    StatusBarFlags: '{bit}',
-    StatusBarGroups: '{bit}',
+    StatusBarFlags: Flags,
+    StatusBarGroups: Flags,
     StatusColors: [
       {
         index: Word,
@@ -1004,9 +1008,9 @@ export const StarcraftSchema = {
     BarHeight: Int,
     BarOffset: Int,
     NameOffset: Int,
-    HighlightTooltip: 'text',
+    HighlightTooltip: Text,
     CopySource: Word,
-    UnitFlags: '{bit}',
+    UnitFlags: Flags,
     GlossaryAnim: 'string',
     MinimapIconScale: Real,
     MinimapIconBackgroundScale: Real,
@@ -1033,12 +1037,12 @@ export const StarcraftSchema = {
     DeathActorSound: 'actor',
     DeathActorVoice: 'actor',
     SnapshotActor: 'actor',
-    UnitIcon: 'file',
-    HeroIcon: 'file',
+    UnitIcon: File,
+    HeroIcon: File,
     SoundArray: '{sound}',
     GroupSoundThreshold: Int,
     GroupSoundArray: '{sound}',
-    ShieldArmorIcon: 'file',
+    ShieldArmorIcon: File,
     VarianceWindowStandIntro: Real,
     VarianceWindowStand: Real,
     VarianceWindowWalkIntro: Real,
@@ -1107,7 +1111,7 @@ export const StarcraftSchema = {
         AnimProps: 'words',
         IsAbstract: Bit,
         SoundLink: 'sound',
-        VoiceLink: "sound"
+        VoiceLink: 'sound'
       }
     ],
     DeathCustomData: [
@@ -1133,7 +1137,7 @@ export const StarcraftSchema = {
       Attachment: 'string',
       FontSize: Int,
       BackgroundColor: 'ints',
-      BackgroundImage: 'file'
+      BackgroundImage: File
     },
     $Sub : 'string',
     MaxScale: 'reals',
@@ -1143,12 +1147,12 @@ export const StarcraftSchema = {
     EndRadiusOuter: Real,
     Macros: '[actor]',
     EditorModel: 'model',
-    Filter: '{bit}',
+    Filter: Flags,
     HarnessModel: 'model',
-    HarnessSound: "actor",
+    HarnessSound: 'actor',
     Map: [
       {
-        Scale: "real",
+        Scale: Real,
         index: Word,
         Model: 'model',
         Sound: 'sound'
@@ -1175,10 +1179,10 @@ export const StarcraftSchema = {
       Sound: 'sound'
     },
     LaunchModel: 'model',
-    LaunchSound: "actor",
+    LaunchSound: 'actor',
     LaunchTerrainSquibModel: 'model',
-    LaunchTerrainSquibSound: "actor",
-    ContainerSite: "actor",
+    LaunchTerrainSquibSound: 'actor',
+    ContainerSite: 'actor',
     ContainerSiteOps: {
       Ops: 'ops'
     },
@@ -1203,16 +1207,16 @@ export const StarcraftSchema = {
       HoldRotation: Bit
     },
     ImpactSite: Word,
-    ImpactSiteFallback:"actor",
+    ImpactSiteFallback:'actor',
     ImpactAttachQuery: {
       Methods: 'string',
       Fallback: Word
     },
     ImpactReattachQuery: {
-      Methods:  "attachmethod",
+      Methods:  'attachmethod',
       Fallback: Word
     },
-    ImpactPointSite: "actor",
+    ImpactPointSite: 'actor',
     ImpactPointSiteOps: {
       Ops: 'ops'
     },
@@ -1220,7 +1224,7 @@ export const StarcraftSchema = {
       {
         AnimProps: 'string',
         index: Word,
-        AnimPropsReaction: "sound",
+        AnimPropsReaction: 'sound',
         Model: 'model',
         Sound: 'sound',
         ModelReaction: 'string',
@@ -1229,11 +1233,11 @@ export const StarcraftSchema = {
       }
     ],
     ImpactModel: 'model',
-    ImpactModelReaction:  "actor",
-    ImpactSound: "actor",
+    ImpactModelReaction:  'actor',
+    ImpactSound: 'actor',
     ImpactTerrainSquibModel: 'model',
-    ImpactTerrainSquibSound:"actor",
-    DamageSite: "actor",
+    ImpactTerrainSquibSound:'actor',
+    DamageSite: 'actor',
     DamageSiteOps: {
       Ops: 'ops',
       HoldPosition: Bit,
@@ -1244,23 +1248,23 @@ export const StarcraftSchema = {
       Fallback: Word
     },
     DamageReattachQuery: {
-      Methods:  "attachmethod",
+      Methods:  'attachmethod',
       Fallback: Word
     },
     DamageMap: [
       {
         index: Word,
-        AnimProps: "sound",
+        AnimProps: 'sound',
         Model: 'model',
         Sound: Word,
         ModelReaction: 'string'
       }
     ],
     DamageModel: 'model',
-    DamageModelReaction: "actor",
-    DamageSound: "actor",
+    DamageModelReaction: 'actor',
+    DamageSound: 'actor',
     DamageTerrainSquibModel: 'model',
-    DamageTerrainSquibSound:"actor",
+    DamageTerrainSquibSound:'actor',
     AttackAnimSource: 'string',
     AttackAnimName: Word,
     Lifetime: Real,
@@ -1273,7 +1277,7 @@ export const StarcraftSchema = {
       {
         Terms: 'terms',
         Send: 'send',
-        Target: 'actor'
+        Target: 'subject'
       }
     ],
     HostTargetSiteOps: {
@@ -1336,7 +1340,7 @@ export const StarcraftSchema = {
           Methods: 'string'
         },
         ActorSound: 'actor',
-        Sound: "sound",
+        Sound: 'sound',
         SoundSiteOps: {
           Ops: 'ops'
         },
@@ -1370,7 +1374,7 @@ export const StarcraftSchema = {
     Forward: 'reals',
     HostHeight: Host,
     HeightSourceType: Word,
-    TerrainAndWaterFlags: '{bit}',
+    TerrainAndWaterFlags: Flags,
     ForcedWadingMaxDepth: Real,
     HostBearings: Host,
     HostBearingsSiteOps: {
@@ -1395,8 +1399,8 @@ export const StarcraftSchema = {
     Acceleration: Real,
     Deceleration: Real,
     MaxSpeed: Real,
-    ShadowFlags: '{bit}',
-    TipabilityFlags: '{bit}',
+    ShadowFlags: Flags,
+    TipabilityFlags: Flags,
     Sharing: Word,
     HostLaunch: Host,
     HostLaunchSiteOps: {
@@ -1417,7 +1421,7 @@ export const StarcraftSchema = {
     ],
     NotifyArcKey: Word,
     NotifyRadiusKey: Word,
-    RegionFlags: '{bit}',
+    RegionFlags: Flags,
     HostForProps: Host,
     Magnitude: 'reals',
     Duration: Real,
@@ -1447,18 +1451,18 @@ export const StarcraftSchema = {
     HeightOffset: Real,
     DoFAttenuationStartModel: 'model',
     DoFAttenuationEndModel: 'model',
-    MinimapIcon: 'file',
-    Footprint: 'string',
+    MinimapIcon: File,
+    Footprint: 'footprint',
     CreepHeightClass: Word,
     Facing: Real,
     LaunchRequest: Host,
     FaceFXTarget: Word,
     AnimTargets: Word,
-    CantSelectUncontrollableTooltip: 'text',
+    CantSelectUncontrollableTooltip: Text,
     $sprayIndex: Int,
     $effectPickup: 'effect',
     $actorCreate: 'actor',
-    Text: 'text',
+    Text: Text,
     RequiredSquibType: Word,
     StateThinkInterval: Real,
     StateArray: [
@@ -1470,7 +1474,7 @@ export const StarcraftSchema = {
     CreepRateGrow: Word,
     CreepRateShrink: Word,
     PlacementSound: 'sound',
-    LifeArmorIcon: 'file',
+    LifeArmorIcon: File,
     TerrainSquibs: [
       {
         MovementDistance: 'reals',
@@ -1484,13 +1488,13 @@ export const StarcraftSchema = {
           TerrainPhysicsMaterial: 'physicsmaterial',
           ActorModel: 'actor',
           ModelLink: 'model',
-          Flags: '{bit}'
+          Flags: Flags
         },
         RangeUp: Real,
         GroupName: Word
       }
     ],
-    AddonIndicator: 'link',
+    AddonIndicator: Link,
     GroupIcon: {
       Image: '[file]'
     },
@@ -1498,8 +1502,8 @@ export const StarcraftSchema = {
       Image: '[file]'
     },
     StatusHarvesterData: {
-      Text: 'text',
-      link: 'link',
+      Text: Text,
+      link: Link,
       SearchFilters: 'filters',
       SearchRadius: Real
     },
@@ -1514,7 +1518,7 @@ export const StarcraftSchema = {
     SplatEmitterInit: {
       TextureResolution: 'ints',
       ProjectorModel: 'model',
-      MaskBlobPath: 'file',
+      MaskBlobPath: File,
       ScaleDeltaTime: 'reals',
       ScaleUpdateTime: Int,
       MaxBlobScale: 'reals',
@@ -1528,12 +1532,12 @@ export const StarcraftSchema = {
       Aspects: [{
         Name: Word,
         RegardsAs: Word,
-        Model: "modeel"
+        Model: 'modeel'
       }]
     },
     MinimapIconIsTeamColored: Bit,
     VisibilityShape: {
-      Shape: "shape"
+      Shape: 'shape'
     },
 
 
@@ -1601,7 +1605,7 @@ export const StarcraftSchema = {
         Time: Int,
         Rate: Real
       },
-      Name: 'text'
+      Name: Text
     },
     HostImpactSiteOps: {
       Ops: 'ops',
@@ -1641,7 +1645,7 @@ export const StarcraftSchema = {
     HeightTestType: Word,
     ImpactPhysics: [
       {
-        Flags: '{bit}',
+        Flags: Flags,
         Name: Word,
         MatchKeys: Word,
         Physics: 'actor',
@@ -1650,15 +1654,15 @@ export const StarcraftSchema = {
       }
     ],
     SelectAbilCmd: 'abilcmd',
-    Ripple: "actor",
+    Ripple: 'actor',
     ScaleDamageMin: Real,
     ScaleDamageMax: Real,
     RadiusMin: Real,
     RadiusMax: Real,
-    VisualDirectionalFacer: "actor",
-    VisualDirectionalHeader:  "actor",
-    VisualDirectionless:  "actor",
-    ActionFlags: '{bit}',
+    VisualDirectionalFacer: 'actor',
+    VisualDirectionalHeader:  'actor',
+    VisualDirectionless:  'actor',
+    ActionFlags: Flags,
     WireframeShieldVariations: [{Number: Bit, Image: '[file]'}],
     GroupIconVariations: [{Number: Int, Image: '[file]'}],
     WireframeVariations: [{Number: Int, Image: '[file]'}],
@@ -1672,7 +1676,7 @@ export const StarcraftSchema = {
     PitchPeriod: 'reals',
     Roll: 'reals',
     RollPeriod: 'reals',
-    FoliageSpawnTarget: "actor",
+    FoliageSpawnTarget: 'actor',
     SubjectResponses: [
       {
         Filters: 'words',
@@ -1721,7 +1725,7 @@ export const StarcraftSchema = {
     LocalAxis: 'reals',
     Rate: Real,
     $weapon: 'weapon',
-    $deco: "model",
+    $deco: 'model',
     $unitNameAlt: 'unit',
     $alt: Word,
     HostOffset: {
@@ -1743,18 +1747,18 @@ export const StarcraftSchema = {
         AutoVolumeRange: Word,
         AutoVolumeRangeMin: Real,
         AutoVolumeRangeMax: Real,
-        ActorSound: "actor"
+        ActorSound: 'actor'
       }
     ],
     Abil: {
-      Index: "int",
+      Index: Int,
       Link: 'abil'
     },
     DamagePhysics: [
       {
         Name: Word,
         MatchKeys: Word,
-        Physics: "actor"
+        Physics: 'actor'
       }
     ],
     TiltAmount: Real,
@@ -1773,12 +1777,12 @@ export const StarcraftSchema = {
       TurnSmoothingRadiusMax: Real,
       UncoilingWhileIdleRotationRateMin: Real,
       UncoilingWhileIdleRotationRateMax: Real,
-      Flags: '{bit}'
+      Flags: Flags
     },
     Head: 'actor',
     LoadTransportEffect: 'effect',
     UnloadTransportEffect: 'effect',
-    SiteFlags: '{bit}',
+    SiteFlags: Flags,
     HostZ: {
       Scope: Word,
       Actor: Word,
@@ -1797,10 +1801,10 @@ export const StarcraftSchema = {
     UnitBorderSubgroupColor: 'ints',
     UnitKillRank: [{
       MinKills: Int,
-      Text: 'text'
+      Text: Text
     }],
-    InfoText: 'text',
-    ForceCommencementFrom:"effect",
+    InfoText: Text,
+    ForceCommencementFrom:'effect',
     VitalColors: [
       {
         index: Word,
@@ -1809,19 +1813,19 @@ export const StarcraftSchema = {
     ],
     VitalNames: '{text}',
     WireframeShieldColor: 'ints',
-    CustomUnitStatusFrame: 'link',
-    StatusBarOn: '{bit}',
-    MinimapTooltip: 'text',
+    CustomUnitStatusFrame: Link,
+    StatusBarOn: Flags,
+    MinimapTooltip: Text,
     BoostedHeight: '{real}',
     ImpactSoundActor: 'actor',
     Decoration: {
       Actor: Word,
       SpawnInterval: Real,
       TravelSpeed: Real,
-      Flags: '{bit}'
+      Flags: Flags
     },
     MinimapIconTintColor: 'ints',
-    HighlightSubTooltip: 'text',
+    HighlightSubTooltip: Text,
     $impactEffect: 'effect',
     $upgradedActorCreate: 'actor',
     $unitSound: 'unit',
@@ -1941,17 +1945,17 @@ export const StarcraftSchema = {
   CActorMissile: { prototype: 'CActorUnit'},
   CAlert: {
     catalog: 'alert',
-    Display: '{bit}',
-    PrimaryActions: '{bit}',
-    SecondaryActions: '{bit}',
-    Flags: '{bit}',
+    Display: Flags,
+    PrimaryActions: Flags,
+    SecondaryActions: Flags,
+    Flags: Flags,
     Fade: Real,
     Life: Real,
     PingColor: 'ints',
     PingTime: Real,
     Sound: 'sound',
-    Text: 'text',
-    Tooltip: 'text',
+    Text: Text,
+    Tooltip: Text,
     Voice: Word,
     SupersededVolume: Real,
     OverlapDuration: Real,
@@ -1959,68 +1963,68 @@ export const StarcraftSchema = {
     OverlapLocalCount: Bit,
     OverlapLocalRadius: Int,
     QueueTime: Real,
-    Icon: 'file',
+    Icon: File,
     Peripheral: Word,
     PingModel: 'model',
-    "$race": "race"
+    '$race': 'race'
   },
   CArmyCategory: {
     catalog: 'armycategory',
-    Name: 'text',
-    Description: 'text',
-    Title: "link",
+    Name: Text,
+    Description: Text,
+    Title: Link,
     BankPath: {
       Key: Word,
       File: Word,
-      Section: "string"
+      Section: 'string'
     },
-    AbilCommandArray: "[abilcmd]",
-    UserReference: "string",
-    ArmyUnitArray: "armycategory",
-    Unit: "actor",
-    Flags: "{bit}"
+    AbilCommandArray: '[abilcmd]',
+    UserReference: 'string',
+    ArmyUnitArray: 'armycategory',
+    Unit: 'actor',
+    Flags: Flags
   },
   CArmyUnit: {
     catalog: 'armyunit',
-    Name: 'text',
-    Description:'text',
-    Confirmation: 'text',
-    Icon: "file",
-    UserReference: "string",
+    Name: Text,
+    Description:Text,
+    Confirmation: Text,
+    Icon: File,
+    UserReference: 'string',
     BankPath: {
       Key: Word,
       File: Word,
-      Section: "string"
+      Section: 'string'
     },
-    UpgradeArray: "upgrade",
-    Unit: "actor",
-    Movie: "file"
+    UpgradeArray: 'upgrade',
+    Unit: 'actor',
+    Movie: File
   },
   CArmyUpgrade: {
     catalog: 'armyupgrade',
-    Name: 'text',
-    Description:'text',
-    Tooltip:'text',
+    Name: Text,
+    Description:Text,
+    Tooltip:Text,
   },
   CArtifact: {
     catalog: 'artifact',
-    Name: 'text',
-    InfoText: 'text',
+    Name: Text,
+    InfoText: Text,
     Model: 'model',
-    TileCutsceneFile: 'file',
-    PreviewCutsceneFile: 'file',
-    HeroSelectCutsceneFile: 'file',
-    AdditionalSearchText: 'text',
+    TileCutsceneFile: File,
+    PreviewCutsceneFile: File,
+    HeroSelectCutsceneFile: File,
+    AdditionalSearchText: Text,
     Talent: Word,
     HyperlinkId: Word,
-    ApplyTo: '{bit}',
+    ApplyTo: Flags,
     Face: Word,
-    Upgrades: "[word]",
+    Upgrades: '[word]',
     PlayerResponses: Word
   },
   CArtifactSlot: {
     catalog: 'artifactslot',
-    Name: 'text'
+    Name: Text
   },
   CAttachMethod: {
     catalog: 'attachmethod',
@@ -2043,7 +2047,7 @@ export const StarcraftSchema = {
     PassChanceFull: Real,
     Targets: '[string]',
     Logic: Word,
-    Tests: '{bit}',
+    Tests: Flags,
     Type: Word,
     FilterType: Word,
     Keyword: Word,
@@ -2079,8 +2083,8 @@ export const StarcraftSchema = {
     catalog: 'bankcondition',
     ValueName: Word,
     Bank: Word,
-    Section: "string",
-    Key: "map",
+    Section: 'string',
+    Key: 'map',
     AddCompare: Word,
     Compare: Word
   },
@@ -2095,28 +2099,28 @@ export const StarcraftSchema = {
   },
   CBankConditionCurrentMap: {
     catalog: 'bankcondition',
-    Map: "map"
+    Map: 'map'
   },
   CBankConditionCombine: {
     catalog: 'bankcondition',
     Type: Word,
-    CombineArray: "[bankcondition]"
+    CombineArray: '[bankcondition]'
   },
   CBeamAsyncLinear: { catalog: 'beam'},
   CBehavior: {
     catalog: 'behavior',
 
-    Name: 'text',
-    Tooltip: 'text',
-    InfoIcon: 'file',
+    Name: Text,
+    Tooltip: Text,
+    InfoIcon: File,
     TechAliasArray: '[behavior]',
     ValidatorArray: '[validator]',
     PeriodicDisplayEffect: 'effect',
     EditorCategories: 'categories',
-    BehaviorFlags: '{bit}',
-    DisplayShield: '{bit}',
-    AttackModifierFlags: '{bit}',
-    InfoFlags: '{bit}',
+    BehaviorFlags: Flags,
+    DisplayShield: Flags,
+    AttackModifierFlags: Flags,
+    InfoFlags: Flags,
     DamageDealtFraction: '{real}',
     MaxStackCount: Int,
     EmptyHarvestAmount: Int,
@@ -2126,9 +2130,9 @@ export const StarcraftSchema = {
     MinVeterancyXPLevelFactor: Int,
     MinVeterancyXPPreviousValueFactor: Int,
     Levels: Int,
-    PointDisplayFlags: '{bit}',
-    PrimaryName: 'text',
-    PrimaryTooltip: 'text',
+    PointDisplayFlags: Flags,
+    PrimaryName: Text,
+    PrimaryTooltip: Text,
     DurationBonusMin: Real,
     DurationBonusMax: Real,
     TimeScaleSource: {
@@ -2143,30 +2147,30 @@ export const StarcraftSchema = {
       Value: Word,
       Effect: 'effect'
     },
-    BuffFlags: '{bit}',
+    BuffFlags: Flags,
     MultishotSearchPattern: Word,
     UniqueSetId: Word,
-    WeaponIndexEnableArray: "{bit}",
-    WeaponIndexDisableArray: "{int}",
+    WeaponIndexEnableArray: Flags,
+    WeaponIndexDisableArray: '{int}',
     $alias: Word,
     XPReceiveFraction: [
       {
-        TargetFilters: "filters",
-        Fraction: { AccumulatorArray: [{value:"accumulator"}],value:"real"},
+        TargetFilters: 'filters',
+        Fraction: { AccumulatorArray: [{value:'accumulator'}],value:Real},
       }
     ],
     DamageResponse: {
-      AttackType: "[int]",
-      Exhausted: "effect",
-      ExcludeEffectInChainArray: "effect",
+      AttackType: '[int]',
+      Exhausted: 'effect',
+      ExcludeEffectInChainArray: 'effect',
       Location: Word,
       ModifyFraction: Real,
       Chance: Real,
       ModifyMinimumDamage: Bit,
       Cost: CostSchema,
-      Kind: '{bit}',
-      DamageType: '{bit}',
-      ModifyAmount: { AccumulatorArray: [{value:"accumulator"}],value:"real"},
+      Kind: Flags,
+      DamageType: Flags,
+      ModifyAmount: { AccumulatorArray: [{value:'accumulator'}],value:Real},
       ClampMinimum: Int,
       Handled: Word,
       HandledValue: Word,
@@ -2198,26 +2202,26 @@ export const StarcraftSchema = {
     Face: 'button',
     Modification: ModificationSchema,
     DurationOverride: [{Duration:Real,ValidatorArray: '[validator]'}],
-    BehaviorCategories: '{bit}',
-    Chance: [{index: 'word', AccumulatorArray:[{value:"accumulator"}],value:"real"}],
-    ConjoinedFlags: '{bit}',
+    BehaviorCategories: Flags,
+    Chance: [{index: Word, AccumulatorArray:[{value:'accumulator'}],value:Real}],
+    ConjoinedFlags: Flags,
     PowerLink: Word,
     DeathType: Word,
-    CliffLevelFlags: '{bit}',
+    CliffLevelFlags: Flags,
     CarryResourceBehavior: 'behavior',
     EnabledSearchFilters: 'filters',
     EnabledSearchRadius: Int,
     Range: Real,
-    Flags: '{bit}',
+    Flags: Flags,
     ShareFilters: '{filters}',
     TargetFilters: '[filters]',
     XPFraction: '{real}',
     TimeLimitFactor: Bit,
     DurationRandomMax: Real,
-    DisplayDuration: '{bit}',
+    DisplayDuration: Flags,
     ExpireEffect: 'effect',
     Alignment: Word,
-    Duration: {AccumulatorArray:[{value:"accumulator"}],value:"real"},
+    Duration: {AccumulatorArray:[{value:'accumulator'}],value:Real},
     DisableValidatorArray: '[validator]',
     TrackingValidatorArray: '[validator]',
     PeriodicEffect: 'effect',
@@ -2231,12 +2235,12 @@ export const StarcraftSchema = {
     IdealHarvesterCount: Int,
     Delay: Real,
     Leash: Bit,
-    PeriodCount: [{AccumulatorArray:[{value:"accumulator"}],value:"int"}],
+    PeriodCount: [{AccumulatorArray:[{value:'accumulator'}],value:Int}],
     InitialEffect: 'effect',
     MaxTrackedUnits: Int,
     UnitAddedAtMaxRule: Word,
     ReplacedEffect: 'effect',
-    UnitTrackerFlags: '{bit}',
+    UnitTrackerFlags: Flags,
     Cost: CostSchema,
     OffCost: CostSchema,
     Radius: Real,
@@ -2255,7 +2259,7 @@ export const StarcraftSchema = {
     DurationPreLaunch: Real,
     DurationPostLand: Real,
     DurationMoveOut: Real,
-    Placeholder: "unit",
+    Placeholder: 'unit',
     LandAdjustmentDown: Real,
     LandArrivalRange: Real,
     LandCheckRadius: Int,
@@ -2282,11 +2286,11 @@ export const StarcraftSchema = {
     Center: 'reals',
     Offset: '[reals]',
     Limit: Int,
-    ConjoinedLink: "behavior",
-    Birth: "footprint",
-    Start: "footprint",
-    Grown: "footprint",
-    Build: "footprint",
+    ConjoinedLink: 'behavior',
+    Birth: 'footprint',
+    Start: 'footprint',
+    Grown: 'footprint',
+    Build: 'footprint',
     Requirements: 'requirement',
     AINotifyEffect: 'effect',
     Replace: Word,
@@ -2300,7 +2304,7 @@ export const StarcraftSchema = {
     CountDelay: Real,
     CountEffect: 'effect',
     ResetDelay: Int,
-    ResetEffect: "effect",
+    ResetEffect: 'effect',
     FinalEffect: 'effect',
     MaxStackCountPerCaster: Int,
     PowerLevel: Int,
@@ -2308,7 +2312,7 @@ export const StarcraftSchema = {
     SharedXPRadius: '{real}',
     VeterancyLevelArray: [
       {
-        RankNameSchema: 'link',
+        RankNameSchema: Link,
         LevelGainEffect: 'effect',
         LevelLossEffect: 'effect',
         MinVeterancyXP: Int,
@@ -2319,14 +2323,14 @@ export const StarcraftSchema = {
     LandAdjustmentUp: Real,
     MinimumRange: Real,
     $unit: 'unit',
-    DamageDealtUnscaled:  [{index: 'word', AccumulatorArray:[{value:"accumulator"}],value:"real"}],
-    PreImpactEffect: "effect",
-    PeriodicEffectRateMultiplier: "int",
-    DurationVitalArray: "{int}",
-    DurationVitalMaxArray: "{int}",
-    SortIndex: "int",
+    DamageDealtUnscaled:  [{index: Word, AccumulatorArray:[{value:'accumulator'}],value:Real}],
+    PreImpactEffect: 'effect',
+    PeriodicEffectRateMultiplier: Int,
+    DurationVitalArray: '{int}',
+    DurationVitalMaxArray: '{int}',
+    SortIndex: Int,
     EmptyDeathType: Word,
-    LimitDeath: "behavior"
+    LimitDeath: 'behavior'
   },
   CBehaviorAttackModifier: { prototype: 'CBehavior'},
   CBehaviorAttribute: { prototype: 'CBehavior'},
@@ -2345,28 +2349,28 @@ export const StarcraftSchema = {
   CBehaviorWander: { prototype: 'CBehavior'},
   CBoost: {
     catalog: 'boost',
-    Name: 'text',
-    StoreName: 'text',
-    HyperlinkId: 'word',
-    StoreTypeName: 'text'
+    Name: Text,
+    StoreName: Text,
+    HyperlinkId: Word,
+    StoreTypeName: Text
   },
   CButton: {
     catalog: 'button',
     TooltipVitalOverrideText: '{int}',
-    Name: 'text',
-    Tooltip: 'text',
-    TooltipCooldownOverrideText: 'text',
-    ChargeText: 'text',
-    AlertName: 'text',
-    AlertTooltip: 'text',
-    Hotkey: 'text',
+    Name: Text,
+    Tooltip: Text,
+    TooltipCooldownOverrideText: Text,
+    ChargeText: Text,
+    AlertName: Text,
+    AlertTooltip: Text,
+    Hotkey: Text,
     TooltipTimeOverrideAbilCmd: {AbilCmd: 'abilcmd'},
     HotkeyAlias: Word,
-    TooltipFlags: '{bit}',
+    TooltipFlags: Flags,
     UseHotkeyLabel: Bit,
-    Icon: 'file',
-    TooltipImage: 'file',
-    AlertIcon: 'file',
+    Icon: File,
+    TooltipImage: File,
+    AlertIcon: File,
     EditorCategories: 'categories',
     TintRacially: Bit,
     Universal: Bit,
@@ -2376,20 +2380,20 @@ export const StarcraftSchema = {
       Row: Int
     },
     Placeholder: Bit,
-    SimpleDisplayText: 'text',
-    HotkeySet: 'link',
+    SimpleDisplayText: Text,
+    HotkeySet: Link,
     HidesForSimpleText: Bit,
     TooltipAppender: [
       {
         Validator: 'validator',
-        Text: 'text'
+        Text: Text
       }
     ],
-    $art: 'file',
+    $art: File,
     $originButton: 'button',
     $num: Int,
 
-    HotkeyToggleUnit: "actor",
+    HotkeyToggleUnit: 'actor',
     $collection: Word,
     Targets: Word,
     Abil1: 'abil',
@@ -2400,7 +2404,7 @@ export const StarcraftSchema = {
   },
   CCamera: {
     catalog: 'camera',
-    ZoomDefault: "int",
+    ZoomDefault: Int,
     FieldOfViewMin: Real,
     FieldOfViewMax: Real,
     FieldOfViewIncrement: Real,
@@ -2420,9 +2424,9 @@ export const StarcraftSchema = {
     BorderSizeX:Int,
     BorderSizeY:Int,
     ParamInitial:  '{real}',
-    ZoomTableObserver: [{Param:[{index:Word,Modify:"int",Value:"real"}]}],
-    ParamSmooth: [{index:Word,SmoothTimeMax:"real",VelocityMax:"real",SmoothTimeMin:"real"}],
-    TargetSmooth: [{SmoothTimeMin:"real",SmoothTimeMax:"real",VelocityMax:"real"}],
+    ZoomTableObserver: [{Param:[{index:Word,Modify:Int,Value:Real}]}],
+    ParamSmooth: [{index:Word,SmoothTimeMax:Real,VelocityMax:Real,SmoothTimeMin:Real}],
+    TargetSmooth: [{SmoothTimeMin:Real,SmoothTimeMax:Real,VelocityMax:Real}],
     MaxScrollRate: '{real}',
     MaxScrollDistance:  '{real}',
     VerticalScrollRateMultiplier: '{real}',
@@ -2447,90 +2451,90 @@ export const StarcraftSchema = {
     FollowResetTimeoutLeashed: Real,
     FollowResetTimeoutUnleashed: Real,
     ZoomTable: [{
-      Param:[{index:Word,Modify:"real",Value:"real"}]
+      Param:[{index:Word,Modify:Real,Value:Real}]
     }]
   },
   CCampaign: {
     catalog: 'campaign',
-    Name: "link",
-    ShortName: "link",
-    StoreName: "link",
-    StoreTypeName: "text",
+    Name: Text,
+    ShortName: Text,
+    StoreName: Text,
+    StoreTypeName: Text,
     CampaignData: {
       Id: Word,
-      Name: "link",
-      Description: "link",
-      ImagePath: "file",
-      LaunchMap: "file",
-      TutorialMap: "file",
-      ProgressAchievement: "achievement",
-      PromoTextCN: "link",
-      CinematicsImagePath: "file",
-      StorySoFarImagePath: "file",
+      Name: Text,
+      Description: Text,
+      ImagePath: File,
+      LaunchMap: File,
+      TutorialMap: File,
+      ProgressAchievement: 'achievement',
+      PromoTextCN: Link,
+      CinematicsImagePath: File,
+      StorySoFarImagePath: File,
       Movie: {
-        Name: "link",
-        Path: "file",
-        Source: "file"
+        Name: Text,
+        Path: File,
+        Source: File
       },
-      CampaignBanks: "[word]",
-      TransitionBanks: "[word]",
+      CampaignBanks: '[word]',
+      TransitionBanks: '[word]',
       StorySoFarMovie: {
-        Name: "link",
-        Path: "file",
-        Source: "file"
+        Name: Text,
+        Path: File,
+        Source: File
       },
-      ProgressLaunchMap: "file",
-      PublishArchiveName: "abilcmd",
-      ShowArchivesButton: "int",
-      ArchiveDisabledTooltip: "link",
-      PromoProduct: "int",
-      PromoPurchaseWarningTitle: "link",
-      PromoPurchaseWarningMessage: "link",
-      PromoText: "link",
-      Subtitle: "link",
-      SubPanelImage: "file",
-      PrerequisiteCampaignId: "campaign",
-      PrerequisitesNotMetTooltip: "text",
-      CompletedCampaignImagePath: "file",
-      UnavailableMessageNotPurchased: "link",
-      UnavailableMessagePreReleaseOwned: "link",
-      UnavailableMessagePreReleaseNotOwned: "link",
+      ProgressLaunchMap: File,
+      PublishArchiveName: File,
+      ShowArchivesButton: Int,
+      ArchiveDisabledTooltip: Link,
+      PromoProduct: Int,
+      PromoPurchaseWarningTitle: Link,
+      PromoPurchaseWarningMessage: Link,
+      PromoText: Link,
+      Subtitle: Link,
+      SubPanelImage: File,
+      PrerequisiteCampaignId: 'campaign',
+      PrerequisitesNotMetTooltip: Text,
+      CompletedCampaignImagePath: File,
+      UnavailableMessageNotPurchased: Link,
+      UnavailableMessagePreReleaseOwned: Link,
+      UnavailableMessagePreReleaseNotOwned: Link,
 
-      SaveName: 'string',
-      CompletedSaveName: 'string',
-      FeaturedImagePath: 'file',
-      FeaturedDescription: 'text'
+      SaveName: Text,
+      CompletedSaveName: Text,
+      FeaturedImagePath: File,
+      FeaturedDescription: Text
     },
-    ProductId: "int",
-    PurchaseProductIdArray: "[int]",
-    ScreenshotImage1: "file",
-    ScreenshotImage2: "file",
-    ScreenshotImage3: "file",
-    ScreenshotImage4: "file",
-    ScreenshotImage5: "file",
-    LearnMoreBackgroundImage: "file",
-    LearnMoreImage1: "file",
-    LearnMoreImage2: "file",
-    LearnMoreImage3: "file",
-    LearnMoreTitleText1: "text",
-    LearnMoreTitleText2: "text",
-    LearnMoreTitleText3: "text",
-    LearnMoreBodyText1: "text",
-    LearnMoreBodyText2: "text",
-    LearnMoreBodyText3: "text"
+    ProductId: Int,
+    PurchaseProductIdArray: '[int]',
+    ScreenshotImage1: File,
+    ScreenshotImage2: File,
+    ScreenshotImage3: File,
+    ScreenshotImage4: File,
+    ScreenshotImage5: File,
+    LearnMoreBackgroundImage: File,
+    LearnMoreImage1: File,
+    LearnMoreImage2: File,
+    LearnMoreImage3: File,
+    LearnMoreTitleText1: Text,
+    LearnMoreTitleText2: Text,
+    LearnMoreTitleText3: Text,
+    LearnMoreBodyText1: Text,
+    LearnMoreBodyText2: Text,
+    LearnMoreBodyText3: Text
   },
   CCharacter: {
     catalog: 'character',
-    Name: 'text',
-    RaceCustom: 'link',
-    Attitude: 'link',
-    Timbre: 'link',
-    Dialect: 'link',
-    VoiceRef: 'link',
-    Description: 'text',
+    Name: Text,
+    RaceCustom: Link,
+    Attitude: Link,
+    Timbre: Link,
+    Dialect: Link,
+    VoiceRef: Link,
+    Description: Text,
     Gender: Word,
     Voice: 'string',
-    Race: 'word',
+    Race: Word,
     Unit: 'unit',
     Color: 'ints',
     Age: Int,
@@ -2539,7 +2543,7 @@ export const StarcraftSchema = {
       {
         Model: 'model',
         DefaultCategories: '[string]',
-        Name: 'text',
+        Name: Text,
         Actor: 'actor'
       }
     ],
@@ -2550,11 +2554,11 @@ export const StarcraftSchema = {
     catalog: 'cliff',
     CliffMesh: 'cliff',
     CliffMaterial: 'string', //file
-    EditorIcon: 'file',
+    EditorIcon: File,
     OccludeHeight: Real,
     TexSets: Word,
     CliffSet: 'cliff',
-    Model: 'file',
+    Model: File,
     NumCellsDown: Int,
     NumCellsAcross: Int,
     HeightCodes: '[string]',
@@ -2570,7 +2574,7 @@ export const StarcraftSchema = {
   },
   CColorStyle: {
     catalog: 'colorstyle',
-    Name: 'text',
+    Name: Text,
     ColorEntry: [
       {
         index: Word,
@@ -2582,36 +2586,36 @@ export const StarcraftSchema = {
     catalog: 'commander',
 
     RequiredRewardArray: '[word]',
-    Name: 'text',
+    Name: Text,
     UserReference: 'string',
-    StoreName: 'link',
-    Description: 'text',
-    PurchaseMessage: 'link',
-    Details: 'link',
-    Portrait: 'file',
-    HomePanelImage: 'file',
+    StoreName: Link,
+    Description: Text,
+    PurchaseMessage: Link,
+    Details: Link,
+    Portrait: File,
+    HomePanelImage: File,
     CutsceneFilterSelf: Word,
     CutsceneFilterAlly: Word,
-    LoadingImage: 'file',
-    LoadingImageAlly: 'file',
-    TraitIcon: 'file',
-    CommanderAbilTitle: 'text',
-    Movie: 'file',
+    LoadingImage: File,
+    LoadingImageAlly: File,
+    TraitIcon: File,
+    CommanderAbilTitle: Text,
+    Movie: File,
     MasteryMaxRank: Int,
-    FeaturedImagePath: 'file',
-    FeaturedDescription: 'text',
-    ProfileImagePath: 'file',
-    StoreTypeName: 'link',
-    LearnMoreBackgroundImage: 'file',
-    LearnMoreImage1: 'file',
-    LearnMoreImage2: 'file',
-    LearnMoreImage3: 'file',
-    LearnMoreTitleText1: 'text',
-    LearnMoreTitleText2: 'text',
-    LearnMoreTitleText3: 'text',
-    LearnMoreBodyText1: 'text',
-    LearnMoreBodyText2: 'text',
-    LearnMoreBodyText3: 'text',
+    FeaturedImagePath: File,
+    FeaturedDescription: Text,
+    ProfileImagePath: File,
+    StoreTypeName: Link,
+    LearnMoreBackgroundImage: File,
+    LearnMoreImage1: File,
+    LearnMoreImage2: File,
+    LearnMoreImage3: File,
+    LearnMoreTitleText1: Text,
+    LearnMoreTitleText2: Text,
+    LearnMoreTitleText3: Text,
+    LearnMoreBodyText1: Text,
+    LearnMoreBodyText2: Text,
+    LearnMoreBodyText3: Text,
     Color: 'ints',
     CommanderPrestigeAchievementId: Int,
     AttributeId: Word,
@@ -2650,18 +2654,18 @@ export const StarcraftSchema = {
     ConsoleSkin: 'consoleskin',
     PrestigeArray: '[word]',
     ProductId: Int,
-    Campaign: "campaign",
-    PurchaseImage: 'file'
+    Campaign: 'campaign',
+    PurchaseImage: File
   },
   CConfig: {
     catalog: 'config',
-    Name: 'text',
+    Name: Text,
     CommanderMastery: 'commander',
     CommanderDifficultyLevels: [
       {
         DifficultyLevel: Int,
-        Name: 'string',
-        Description: 'string',
+        Name: Text,
+        Description: Text,
         IsDefault: Bit,
         AISkillLevel: Int,
         CommanderLevel: Int,
@@ -2679,24 +2683,24 @@ export const StarcraftSchema = {
   },
   CConsoleSkin: {
     catalog: 'consoleskin',
-    Name: 'text',
-    StoreName: 'link',
-    StoreTypeName: 'link',
-    Description: 'text',
-    ThumbnailImage: 'file',
-    FeaturedImage: 'file',
+    Name: Text,
+    StoreName: Link,
+    StoreTypeName: Link,
+    Description: Text,
+    ThumbnailImage: File,
+    FeaturedImage: File,
     MinimapPanelModel: [{
-      Model: 'file',
+      Model: File,
       Position: 'reals',
       Scale: 'reals'
     }],
     InfoPanelModel: [{
-      Model: 'file',
+      Model: File,
       Position: 'reals',
       Scale: 'reals'
     }],
     CommandPanelModel: [{
-      Model: 'file',
+      Model: File,
       Position: 'reals',
       Scale: 'reals'
     }],
@@ -2705,13 +2709,13 @@ export const StarcraftSchema = {
     $assetname: Word,
     $preview: Word,
     Default: Bit,
-    ReleaseDate: 'link',
+    ReleaseDate: Link,
     RequiredReward: 'reward',
     SkinId: Word,
     ProductId: Int,
-    CommandPanelImage: 'file',
-    InfoPanelImage: 'file',
-    MinimapPanelImage: 'file'
+    CommandPanelImage: File,
+    InfoPanelImage: File,
+    MinimapPanelImage: File
   },
   CConversation: {
     catalog: 'conversation',
@@ -2721,12 +2725,12 @@ export const StarcraftSchema = {
     SoundParent: 'sound',
     FixedConditions: [{
       Conditions: [ConditionSchema],
-      Text: 'text'
+      Text: Text
     }],
     FacialAnims: [
       {
         $Id: Word,
-        Text: 'text',
+        Text: Text,
         SpeechTag: Word
       }
     ],
@@ -2741,14 +2745,14 @@ export const StarcraftSchema = {
     Comments: [
       {
         $Id: Word,
-        Text: 'text'
+        Text: Text
       }
     ],
     RootItems: '[word]',
     ProductionLevelInfo: [
       {
         SubtitlePrefix: 'string',
-        Flags: '{bit}'
+        Flags: Flags
       }
     ],
     DefaultSpeaker1: Word,
@@ -2762,11 +2766,11 @@ export const StarcraftSchema = {
   CConversationState: {
     catalog: 'conversationstate',
     ValueRange: 'ints',
-    Flags: '{bit}',
+    Flags: Flags,
     Indices: [
       {
         $Id: 'string',
-        Name: 'string',
+        Name: Text,
         Color: 'ints',
         Variations: [
           {
@@ -2782,7 +2786,7 @@ export const StarcraftSchema = {
         ],
         ImageEdge: Word,
         ImageAttach: Word,
-        EditorSuffix: "text"
+        EditorSuffix: Text
       }
     ],
     CustomColors: '[ints]',
@@ -2790,15 +2794,15 @@ export const StarcraftSchema = {
   },
   CCursor: {
     catalog: 'cursor',
-    Texture: 'file',
+    Texture: File,
     HotspotX: Int,
     HotspotY: Int
   },
   CDataCollection: {
     catalog: 'datacollection',
-    Name: 'text',
-    Button: "button",
-    InfoText: "link",
+    Name: Text,
+    Button: 'button',
+    InfoText: Link,
     ImplementionLevel: Word,
     EditorCategories: 'categories',
     EditorIconSource: Word,
@@ -2815,20 +2819,20 @@ export const StarcraftSchema = {
     TechInfoUnitReplaced: 'unit',
     UpgradeInfoWeapon: [
       {
-        DamagePerDice: "int"
+        DamagePerDice: Int
       }
     ],
-    AbilInfoNormal: "[abil]",
-    AbilInfoLearned: "[button]",
-    UpgradeInfoUnitLifeArmorPerLevel: "int",
-    TechInfoUpgradeUsed: "[upgrade]",
-    AbilInfoTrainUnit: "[actor]",
-    AbilInfoResearch: "[abil]",
-    AbilInfoMakeItem: "[abil]",
-    AbilInfoUpgradeTo: "[actor]",
-    AbilInfoBuilt: "[abil]",
-    AbilInfoSellUnit: "[actor]",
-    AbilInfoSellItem: "[abil]"
+    AbilInfoNormal: '[abil]',
+    AbilInfoLearned: '[button]',
+    UpgradeInfoUnitLifeArmorPerLevel: Int,
+    TechInfoUpgradeUsed: '[upgrade]',
+    AbilInfoTrainUnit: '[actor]',
+    AbilInfoResearch: '[abil]',
+    AbilInfoMakeItem: '[abil]',
+    AbilInfoUpgradeTo: '[actor]',
+    AbilInfoBuilt: '[abil]',
+    AbilInfoSellUnit: '[actor]',
+    AbilInfoSellItem: '[abil]'
   },
   CDataCollectionAbil: { prototype: 'CDataCollection'},
   CDataCollectionUnit: { prototype: 'CDataCollection'},
@@ -2836,21 +2840,21 @@ export const StarcraftSchema = {
   CDataCollectionPattern: {
     catalog: 'datacollectionpattern',
     Fields: [{
-      NameOverride: 'link',
+      NameOverride: Link,
       Reference: 'reference',
       UserData: 'user'
     }],
     Tokens: [
       {
-        Reference: "reference"
+        Reference: 'reference'
       }
     ]
   },
   CDecalPack: {
     catalog: 'decalpack',
-    Name: 'text',
-    StoreName: 'link',
-    StoreTypeName: 'link',
+    Name: Text,
+    StoreName: Link,
+    StoreTypeName: Link,
     ProductId: Int,
     DecalArray: '[reward]'
   },
@@ -2925,16 +2929,16 @@ export const StarcraftSchema = {
   CEffect: {
     catalog: 'effect',
 
-    Name: 'text',
+    Name: Text,
     EditorCategories: 'categories',
-    ExtraRadiusBonus: {AccumulatorArray:[{value:"accumulator"}],value:"int"},
+    ExtraRadiusBonus: {AccumulatorArray:[{value:'accumulator'}],value:Int},
     Chance: Real,
     Minimum: Int,
-    DisplayFlags: '{bit}',
+    DisplayFlags: Flags,
     Marker: {
       Link: 'string',
-      MatchFlags: '{bit}',
-      MismatchFlags: '{bit}',
+      MatchFlags: Flags,
+      MismatchFlags: Flags,
       Count: Bit,
       Duration: Real
     },
@@ -2973,13 +2977,13 @@ export const StarcraftSchema = {
       Value: Word,
       Effect: 'effect'
     },
-    Kinetic: "kinetic",
+    Kinetic: 'kinetic',
     ImpactUnit: {
       Value: Word,
       Effect: 'effect'
     },
-    Flags: '{bit}',
-    BehaviorCategories: '{bit}',
+    Flags: Flags,
+    BehaviorCategories: Flags,
     TimeScaleSource: {
       Value: Word,
       Effect: 'effect'
@@ -2996,20 +3000,20 @@ export const StarcraftSchema = {
       Value: Word
     },
     SpawnCount: Int,
-    CreateFlags: '{bit}',
+    CreateFlags: Flags,
     RallyUnit: {
       Value: Word,
       Effect: 'effect'
     },
     SpawnRange: Real,
     SelectUnit: {
-      Effect: "actor",
+      Effect: 'actor',
       Value: Word
     },
-    CreepFlags: '{bit}',
+    CreepFlags: Flags,
     Radius: Real,
     Visibility: Word,
-    MaxCount: {AccumulatorArray:[{value:"accumulator"}],value:"int"},
+    MaxCount: {AccumulatorArray:[{value:'accumulator'}],value:Int},
     MinCountError: 'string',
     LaunchLocation: {
       Value: Word,
@@ -3020,9 +3024,9 @@ export const StarcraftSchema = {
       Value: Word,
       Effect: 'effect'
     },
-    SearchFlags: '{bit}',
+    SearchFlags: Flags,
     Type: Word,
-    Fraction: [{index: 'word', AccumulatorArray:[{value:"accumulator"}],value:"real"}],
+    Fraction: [{index: Word, AccumulatorArray:[{value:'accumulator'}],value:Real}],
     Player: {
       Value: Word,
       Effect: 'effect'
@@ -3062,7 +3066,7 @@ export const StarcraftSchema = {
     },
     ArmorReduction: Real,
     Kind: Word,
-    ResponseFlags: '{bit}',
+    ResponseFlags: Flags,
     ImpactFilters: 'filters',
     BehaviorClass: Word,
     BehaviorLink: 'behavior',
@@ -3079,13 +3083,13 @@ export const StarcraftSchema = {
       Value: Word
     },
     MatchesAll: Bit,
-    KineticLink:  "kinetic",
+    KineticLink:  'kinetic',
     ClearQueuedOrders: Bit,
     MinDistance: Real,
     PlacementArc: Int,
     PlacementRange: Real,
     Range: Real,
-    TeleportFlags: '{bit}',
+    TeleportFlags: Flags,
     BehaviorAlignment: Word,
     TargetLocation: {
       Value: Word,
@@ -3131,7 +3135,7 @@ export const StarcraftSchema = {
       Value: Word
     },
     ContainerAbil: 'abil',
-    SelectTransferFlags: '{bit}',
+    SelectTransferFlags: Flags,
     SearchFilters: 'filters',
     ImpactEffect: 'effect',
     MagazineEffect: 'effect',
@@ -3143,25 +3147,25 @@ export const StarcraftSchema = {
     PeriodicEffectArray: '[effect]',
     PeriodicPeriodArray: '[real]',
     PeriodicValidator: 'validator',
-    PeriodCount: { AccumulatorArray: [{value:"accumulator"}],value:"int"},
+    PeriodCount: { AccumulatorArray: [{value:'accumulator'}],value:Int},
     RevealerParams: {
-      DetectFilters: "filters",
-      HeightMap: "mover",
+      DetectFilters: 'filters',
+      HeightMap: 'mover',
       Duration: Real,
       ShapeExpansion: Real,
-      RevealFlags: '{bit}'
+      RevealFlags: Flags
     },
     FinalEffect: 'effect',
     ExcludeArray: [
       {
         Value: Word,
-        History: "effect",
+        History: 'effect',
         Effect: 'effect'
       }
     ],
     TargetSorts: TargetSorts,
     Abil: 'abil',
-    CmdFlags: '{bit}',
+    CmdFlags: Flags,
     SpawnEffect: 'effect',
     SpawnOwner: {
       Effect: 'effect',
@@ -3187,7 +3191,7 @@ export const StarcraftSchema = {
     VitalFractionCurrent: '{real}',
     LeechFraction: '{real}',
     AINotifyEffect: 'effect',
-    AINotifyFlags: '{bit}',
+    AINotifyFlags: Flags,
     CaseArray: [
       {
         Validator: 'validator',
@@ -3213,14 +3217,14 @@ export const StarcraftSchema = {
     Effect: 'effect',
     PlaceholderUnit: 'unit',
     KindSplash: Word,
-    ModifyFlags: '{bit}',
+    ModifyFlags: Flags,
     DrainResourceCostFactor: '{real}',
     RechargeVitalRate: Real,
     TimeFactor: Real,
     AttributeBonus: '{real}',
     CaseDefault: 'effect',
     RevealRadius: Real,
-    RevealFlags: '{bit}',
+    RevealFlags: Flags,
     CalldownCount: Bit,
     CalldownEffect: 'effect',
     ReturnMovers: [
@@ -3231,7 +3235,7 @@ export const StarcraftSchema = {
     ],
     ReturnDelay: Real,
     SalvageFactor: {
-      VitalFraction: "{int}",
+      VitalFraction: '{int}',
       Resource: '{real}'
     },
     IncludeArray: [
@@ -3241,7 +3245,7 @@ export const StarcraftSchema = {
       }
     ],
     MoverRollingJump: Bit,
-    DrainVital: "colorstyle",
+    DrainVital: 'colorstyle',
     DrainVitalCostFactor: {
       value: Real,
       AccumulatorArray: '[accumulator]'
@@ -3265,14 +3269,14 @@ export const StarcraftSchema = {
     Resources: '{int}',
     ShieldBonus: Real,
     EffectExternal: 'effect',
-    RechargeVital:  "colorstyle",
+    RechargeVital:  'colorstyle',
     ModifyTurret: {
       Turret: 'turret',
       Target: {
         Effect: 'effect',
         Value: Word
       },
-      Flags: '{bit}',
+      Flags: Flags,
       Action: Word,
       AimCompleteEffect: 'effect'
     },
@@ -3313,7 +3317,7 @@ export const StarcraftSchema = {
       CooldownFraction: Real
     },
 
-    MorphFlags: '{bit}',
+    MorphFlags: Flags,
     MorphUnit: 'unit',
     AbilKeyFallback: 'unit',
 
@@ -3321,30 +3325,30 @@ export const StarcraftSchema = {
     TargetBehaviorLink: 'behavior',
     TargetTrackerUnit: [{Value:Word}],
     TrackedUnitFilters: 'filters',
-    SourceFailBackValue: "int",
-    DamageInheritEffect: "effect",
+    SourceFailBackValue: Int,
+    DamageInheritEffect: 'effect',
 
     $abil: 'abil',
     $weaponid: 'weapon',
-    ResourcesCollected: "{int}",
-    SearchEffect: "effect",
-    TransferBehavior: "abil",
-    ResourcesHarvestedBonus: "int",
-    XP: "int",
-    VeterancyBehavior: "behavior",
-    Maximum: "int",
+    ResourcesCollected: '{int}',
+    SearchEffect: 'effect',
+    TransferBehavior: 'abil',
+    ResourcesHarvestedBonus: Int,
+    XP: Int,
+    VeterancyBehavior: 'behavior',
+    Maximum: Int,
     AmountScoreArray: [
       {
-        Value: "scorevalue",
-        Validator: "validator"
+        Value: 'scorevalue',
+        Validator: 'validator'
       }
     ],
-    DetectFilters: "filters",
+    DetectFilters: 'filters',
     EffectRandMode: Word,
-    $unit: "actor",
-    $buff: "behavior",
-    $aura: "effect",
-    Parent: "effect",
+    $unit: 'actor',
+    $buff: 'behavior',
+    $aura: 'effect',
+    Parent: 'effect',
   },
   CEffectAddTrackedUnits: {prototype: 'CEffect'},
   CEffectEnumTrackedUnits: {prototype: 'CEffect'},
@@ -3372,8 +3376,8 @@ export const StarcraftSchema = {
   CEffectModifyPlayer: {
     prototype: 'CEffect',
     EffectArray: [{
-      Reference: "reference",
-      Value: "real",
+      Reference: 'reference',
+      Value: Real,
       Operation: Word
     }]
   },
@@ -3396,7 +3400,7 @@ export const StarcraftSchema = {
   CEffectUserData: { prototype: 'CEffect'},
   CFootprint: {
     catalog: 'footprint',
-    Flags: '{bit}',
+    Flags: Flags,
     Layers: [
       {
         index: Word,
@@ -3404,8 +3408,8 @@ export const StarcraftSchema = {
         Sets: [
           {
             Character: 'string',
-            Negative: '{bit}',
-            Positive: '{bit}'
+            Negative: Flags,
+            Positive: Flags
           }
         ],
         Rows: '[string]'
@@ -3445,26 +3449,26 @@ export const StarcraftSchema = {
   CHerdNode: { catalog: 'herdnode'},
   CHero: {
     catalog: 'hero',
-    Name: 'text',
-    Flags: '{bit}',
+    Name: Text,
+    Flags: Flags,
     Model: 'model',
-    Description: 'text',
-    InfoText: 'text',
-    Title: 'text',
+    Description: Text,
+    InfoText: Text,
+    Title: Text,
     RequiredRewardArray: '[word]',
     Portrait: 'string',
     SelectScreenButtonImage: 'string',
     PartyPanelButtonImage: 'string',
     LeaderboardImage: 'string',
     ScoreScreenImage: 'string',
-    VariationIcon: 'file',
-    CollectionIcon: 'file',
+    VariationIcon: File,
+    CollectionIcon: File,
     DraftScreenLargeImage: 'string',
     DraftScreenLargeImageBackground: 'string',
     DraftScreenPortrait: 'string',
     DraftScreenPortraitBackground: 'string',
     ImageFacing: Word,
-    AdditionalSearchText: 'text',
+    AdditionalSearchText: Text,
     HyperlinkId: Word,
     SkinVariationRequiredReward: '[word]',
     MountVariationRequiredReward: '[word]',
@@ -3476,24 +3480,24 @@ export const StarcraftSchema = {
   },
   CHeroAbil: {
     catalog: 'heroabil',
-    Name: 'text',
-    Description: 'text',
-    Tooltip: 'text'
+    Name: Text,
+    Description: Text,
+    Tooltip: Text
   },
   CHeroStat: {
     catalog: 'herostat',
-    Name: 'text'
+    Name: Text
   },
   CItem: {
     catalog: 'item',
-    CarryBehaviorArray: "behavior",
+    CarryBehaviorArray: 'behavior',
     Face: 'button',
-    Flags: '{bit}',
+    Flags: Flags,
     Charge: {
-      Link: 'link',
-      CountMax: "int",
-      CountStart: "int",
-      CountUse: "int"
+      Link: Link,
+      CountMax: Int,
+      CountStart: Int,
+      CountUse: Int
     },
     Abil: '[abil]',
     EquipBehaviorArray: '[behavior]',
@@ -3502,9 +3506,9 @@ export const StarcraftSchema = {
     Container: Word,
     EffectCost: CostSchema,
     Range: Int,
-    Level: "int",
-    AbilFlags: "{bit}",
-    Requirements: "requirement"
+    Level: Int,
+    AbilFlags: Flags,
+    Requirements: 'requirement'
   },
   CItemAbil: {prototype: 'CItem',},
   CItemAbilPowerUp: { prototype: 'CItem'},
@@ -3513,7 +3517,7 @@ export const StarcraftSchema = {
   CItemEffectTarget: { prototype: 'CItem'},
   CItemClass: {
     catalog: 'itemclass',
-    Name: 'text'
+    Name: Text
   },
   CItemContainer: {
     catalog: 'itemcontainer',
@@ -3533,14 +3537,14 @@ export const StarcraftSchema = {
   },
   CKinetic: {
     catalog: 'kinetic',
-    Name: 'text',
+    Name: Text,
     Chance: Bit,
     Duration: Real,
     Yaw: Int,
     Cycles: Int,
     Where: {
-      Effect: "effect",
-      Value: "string"
+      Effect: 'effect',
+      Value: 'string'
     },
     Follow: 'string'
   },
@@ -3617,14 +3621,14 @@ export const StarcraftSchema = {
       }
     ],
     EditorCategories: 'categories',
-    AmbientEnvironmentMap: 'file',
-    LightingRegionMap: 'file'
+    AmbientEnvironmentMap: File,
+    LightingRegionMap: File
   },
   CLocation: {
     catalog: 'location',
-    Name: 'text',
-    Description: 'text',
-    UserReference: "string"
+    Name: Text,
+    Description: Text,
+    UserReference: 'string'
   },
   CLoot: {
     catalog: 'loot',
@@ -3634,12 +3638,12 @@ export const StarcraftSchema = {
     Effect: Word,
     Unit: Word,
     MinLevel: Int,
-    MaxLevel: "int",
-    MinCount: "int",
-    MaxCount: "int",
+    MaxLevel: Int,
+    MinCount: Int,
+    MaxCount: Int,
     ChildArray: [
       {
-        Child: "actor"
+        Child: 'actor'
       }
     ]
 
@@ -3651,15 +3655,15 @@ export const StarcraftSchema = {
   CLootUnit: { prototype: 'CLoot'},
   CModel: {
     catalog: 'model',
-    RunAnimMoveSpeed: "real",
-    RunAnimMoveSpeedThreshold: "real",
+    RunAnimMoveSpeed: Real,
+    RunAnimMoveSpeedThreshold: Real,
     $model: 'model',
 
     $COOP: Word,
     $Race: 'race',
     $Prefix: 'string',
     $Parent: 'model',
-    Flags: '{bit}',
+    Flags: Flags,
     Lighting: 'string',
     Quality: Bit,
     ScaleMax: 'reals',
@@ -3681,9 +3685,9 @@ export const StarcraftSchema = {
     TechPurchaseSpeed: Real,
     OccludingOpacity: Real,
     EditorCategories: 'categories',
-    Image: 'file',
-    Model: 'file',
-    FacialController: 'file',
+    Image: File,
+    Model: File,
+    FacialController: File,
     PausedParticleSystemBehavior: Word,
     Occlusion: Word,
     RadiusLoose: Real,
@@ -3694,13 +3698,13 @@ export const StarcraftSchema = {
     $low: 'model',
     $name: Word,
     AnimAliases: [{
-      Anim:"words",
-      Alias:"words"
+      Anim:'words',
+      Alias:'words'
     }],
     Events: [
       {
         Anim: 'words',
-        Name: 'string',
+        Name: Text,
         Type: Word,
         Time: Real,
         Payload: Word,
@@ -3718,8 +3722,8 @@ export const StarcraftSchema = {
         Prefix: Word,
         Adaptions: [
           {
-            PropsAdd: "string",
-            AppliesToInnate: "int",
+            PropsAdd: 'string',
+            AppliesToInnate: Int,
             TriggerOnSubstring: 'string',
             Slot: 'string',
             PropsSet: Word,
@@ -3760,8 +3764,8 @@ export const StarcraftSchema = {
     DragCoefficient: Real,
     WindInfluence: Real,
     RequiredAnimsEx: {
-      FilePath: 'file',
-      Flags: '{bit}'
+      FilePath: File,
+      Flags: Flags
     },
     PhysicsMaterialOverride: Word,
     OptionalAnims: '[file]',
@@ -3771,17 +3775,17 @@ export const StarcraftSchema = {
       Source: Word
     },
     $baseKey: 'model',
-    "$cate": Word,
-    "$tile": Word,
+    '$cate': Word,
+    '$tile': Word,
     $race: 'race'
   },
   CModelFoliage: { prototype: 'CModel'},
   CMount: {
     catalog: 'mount',
-    Name: 'text',
-    InfoText: 'text',
+    Name: Text,
+    InfoText: Text,
     Model: 'model',
-    VariationIcon: 'file'
+    VariationIcon: File
   },
   CMover: {
     catalog: 'mover',
@@ -3790,7 +3794,7 @@ export const StarcraftSchema = {
     PlacementArray: [
       {
         index: Word,
-        Bits: '{bit}'
+        Bits: Flags
       }
     ],
     MotionPhases: [
@@ -3836,7 +3840,7 @@ export const StarcraftSchema = {
         BlendType: Word
       }
     ],
-    Flags: '{bit}',
+    Flags: Flags,
     MotionOverlays: [
       {
         Type: Word,
@@ -3862,10 +3866,10 @@ export const StarcraftSchema = {
   CMoverMissile: { prototype: 'CMover'},
   CObjective: {
     catalog: 'objective',
-    Name: 'text',
-    Description: 'text',
-    UserReference:  [{value:"string"}],
-    Type:  "colorstyle",
+    Name: Text,
+    Description: Text,
+    UserReference:  [{value:'string'}],
+    Type:  'colorstyle',
     RequiredCount: 'number'
   },
   CPhysicsMaterial: {
@@ -3890,7 +3894,7 @@ export const StarcraftSchema = {
     Handled: 'effect',
     CasterFilters: 'filters',
     TargetFilters: 'filters',
-    DeathType: '{bit}'
+    DeathType: Flags
   },
   CPlayerResponseUnit: { prototype: 'CPlayerResponse'},
   CPlayerResponseUnitBirth: { prototype: 'CPlayerResponse'},
@@ -3898,33 +3902,33 @@ export const StarcraftSchema = {
   CPlayerResponseUnitDeath: { prototype: 'CPlayerResponse'},
   CPortraitPack: {
     catalog: 'portraitpack',
-    Name: 'text',
-    StoreName: 'link',
-    StoreTypeName: 'link',
+    Name: Text,
+    StoreName: Link,
+    StoreTypeName: Link,
     ProductId: Int,
     PortraitArray: '[reward]'
   },
   CRace: {
     catalog: 'race',
-    Name: 'text',
-    RaceIcon: 'file',
-    Icon: 'file',
+    Name: Text,
+    RaceIcon: File,
+    Icon: File,
     StartLocationAlert: 'alert',
     GameMusic: Word,
     FoodCeiling: Int,
-    ShowResource: '{bit}',
+    ShowResource: Flags,
     MiniMapBorderColor: 'ints',
     PlacementGridColorBlindColor: 'ints',
     AttributeId: Word,
     ExpansionOrder: Int,
     DefaultConsoleSkin: 'consoleskin',
     StartingResource: '{int}',
-    Flags: '{bit}',
+    Flags: Flags,
     StartingUnitArray: [
       {
-        Range: "int",
+        Range: Int,
         Unit: 'unit',
-        Flags: '{bit}',
+        Flags: Flags,
         Count: Int,
         Offset: '[ints]'
       }
@@ -3935,14 +3939,14 @@ export const StarcraftSchema = {
     LevelAchievementId: Int,
     UpkeepTax: [
       {
-        FoodLevel: "int",
-        Tax: "{real}"
+        FoodLevel: Int,
+        Tax: '{real}'
       }
     ]
   },
   CRequirement: {
     catalog: 'requirement',
-    CanBeSuppressed: '{bit}',
+    CanBeSuppressed: Flags,
     NodeArray: [
       {
         index: Word,
@@ -3954,7 +3958,7 @@ export const StarcraftSchema = {
   CRequirementNode: {
     catalog: 'requirementnode',
     Tooltip: 'string',
-    Flags: '{bit}',
+    Flags: Flags,
     Value: Int,
     Count: {
       Link: 'string',
@@ -3967,11 +3971,11 @@ export const StarcraftSchema = {
   CRequirementOr: {prototype: 'CRequirementNode'},
   CRequirementAllowAbil: {
     prototype: 'CRequirementNode',
-    Link: "abil"
+    Link: 'abil'
   },
   CRequirementAllowBehavior: {
     prototype: 'CRequirementNode',
-    Link: "behavior"
+    Link: 'behavior'
   },
   CRequirementAllowUnit: {
     prototype: 'CRequirementNode',
@@ -3982,7 +3986,7 @@ export const StarcraftSchema = {
   },
   CRequirementAllowUpgrade: {
     prototype: 'CRequirementNode',
-    Link: "upgrade"
+    Link: 'upgrade'
   },
   CRequirementConst: {prototype: 'CRequirementNode'},
   CRequirementCountAbil: {prototype: 'CRequirementNode'},
@@ -3994,7 +3998,7 @@ export const StarcraftSchema = {
   },
   CRequirementCountUnit: {
     prototype: 'CRequirementNode',
-    Value: "unit",
+    Value: 'unit',
     Count: {
       Link: 'unit',
       Unlock: 'unit'
@@ -4002,7 +4006,7 @@ export const StarcraftSchema = {
   },
   CRequirementCountUpgrade: {
     prototype: 'CRequirementNode',
-    Value: "upgrade",
+    Value: 'upgrade',
     Count: {
       Link: 'upgrade'
     }
@@ -4040,13 +4044,13 @@ export const StarcraftSchema = {
   },
   CScoreResult: {
     catalog: 'scoreresult',
-    Name: 'text',
-    PublishName: 'text',
-    Tooltip: 'text',
+    Name: Text,
+    PublishName: Text,
+    Tooltip: Text,
     UniqueTag: Word,
     Operation: Word,
-    Icon: 'file',
-    Flags: '{bit}',
+    Icon: File,
+    Flags: Flags,
     HeaderTable: '[scoreresult]',
     ValueTable: '[scorevalue]'
   },
@@ -4060,16 +4064,16 @@ export const StarcraftSchema = {
     catalog: 'scorevalue',
     Type: Word,
     Collapse: Word,
-    Flags: '{bit}',
-    Name: 'text',
-    PublishName: 'text',
-    Tooltip: 'text',
+    Flags: Flags,
+    Name: Text,
+    PublishName: Text,
+    Tooltip: Text,
     UniqueTag: Word,
     Operation: Word,
     Report: Word,
     Sort: Word,
     Value: Word,
-    Icon: 'file',
+    Icon: File,
     HeaderTable: '[word]',
     ValueTable: '[scorevalue]'
   },
@@ -4082,7 +4086,7 @@ export const StarcraftSchema = {
   CScoreValueStandard: { prototype: 'CScoreValue'},
   CShape: {
     catalog: 'shape',
-    Name: 'text',
+    Name: Text,
     Radius: Real,
     Quad: 'reals',
     Arc: Real
@@ -4091,9 +4095,9 @@ export const StarcraftSchema = {
   CShapeQuad: { prototype: 'CShape'},
   CSkin: {
     catalog: 'skin',
-    Name: 'text',
-    InfoText: 'text',
-    VariationIcon: 'file',
+    Name: Text,
+    InfoText: Text,
+    VariationIcon: File,
     ReplacementArray: [
       {
         Catalog: Word,
@@ -4131,10 +4135,10 @@ export const StarcraftSchema = {
   },
   CSkinPack: {
     catalog: 'skinpack',
-    Name: 'text',
-    StoreName: 'link',
-    StoreTypeName: 'link',
-    ShortName: 'link',
+    Name: Text,
+    StoreName: Link,
+    StoreTypeName: Link,
+    ShortName: Link,
     EntryArray: [
       {
         Reward: 'reward',
@@ -4144,7 +4148,7 @@ export const StarcraftSchema = {
       }
     ],
     CollectionId: Word,
-    ReleaseDate: 'link',
+    ReleaseDate: Link,
     ProductId: Int,
     Default: Bit,
     $collection: Word,
@@ -4176,7 +4180,7 @@ export const StarcraftSchema = {
     DupeRepeatCount: Int,
     MixerPriorityNonLocal: Int,
     DupeThresholdFadeTime: Int,
-    Flags: '{bit}',
+    Flags: Flags,
     FogFadeBlend: Word,
     LowPassGain: Real,
     MuteFadeBlend: Word,
@@ -4204,19 +4208,19 @@ export const StarcraftSchema = {
     AssetArray: [
       {
         SyncPointRanges: {
-          TimeSignature: "ints",
-          BeatsPerMinute: "int",
-          SyncPointsPerBar: "int"
+          TimeSignature: 'ints',
+          BeatsPerMinute: Int,
+          SyncPointsPerBar: Int
         },
         PortraitAnim: 'string',
-        File: 'file',
+        File: File,
         Volume: 'reals',
-        Speaker: 'link',
-        Subtitle: 'text',
+        Speaker: Link,
+        Subtitle: Text,
         FacialAnim: Word,
         PortraitModel: 'model',
         FacialGroup: Word,
-        FacialFile: 'file',
+        FacialFile: File,
         TemplateParam: 'string',
         Pitch: 'reals',
         Weight: Int,
@@ -4257,14 +4261,14 @@ export const StarcraftSchema = {
     ],
     EditorCategories: 'categories',
     AssetArrayTemplate: {
-      File: 'file',
+      File: File,
       FacialAnim: 'string',
       FacialGroup: 'string',
-      FacialFile: 'file',
+      FacialFile: File,
       SyncPointRanges: {
-        TimeSignature: "ints",
-        BeatsPerMinute: "int",
-        SyncPointsPerBar: "int"
+        TimeSignature: 'ints',
+        BeatsPerMinute: Int,
+        SyncPointsPerBar: Int
       }
     },
     Exclusivity: Word,
@@ -4338,7 +4342,7 @@ export const StarcraftSchema = {
         Volume: Real
       }
     ],
-    HerdNode:  "herdnode",
+    HerdNode:  'herdnode',
     MuteFadeIn: [
       {
         Volume: Real,
@@ -4349,7 +4353,7 @@ export const StarcraftSchema = {
     PositionRandomOffsetPower: Real,
     OcclusionReverb: 'reals',
     CategoryLocal: Word,
-    race: "race"
+    race: 'race'
   },
   CSoundExclusivity: {
     catalog: 'soundexclusivity',
@@ -4368,7 +4372,7 @@ export const StarcraftSchema = {
     QCollideWithHigher: Word,
     InterruptFadeBlend: Word,
     SuppressGroups: '[int]',
-    Flags: '{bit}',
+    Flags: Flags,
     Priority: Real,
     InterruptDelay: Real,
     QDelay: Real,
@@ -4379,13 +4383,13 @@ export const StarcraftSchema = {
     Attack: Int,
     Hold: Int,
     Release: Int,
-    Flags: '{bit}',
+    Flags: Flags,
     MixGlobal: '{real}',
     MixNonLocal: '{real}'
   },
   CSoundtrack: {
     catalog: 'soundtrack',
-    Flags: '{bit}',
+    Flags: Flags,
     CueArray: [
       {
         MasterLayer: {
@@ -4412,9 +4416,9 @@ export const StarcraftSchema = {
   },
   CSprayPack: {
     catalog: 'spraypack',
-    Name: 'text',
-    StoreName: 'link',
-    StoreTypeName: 'link',
+    Name: Text,
+    StoreName: Link,
+    StoreTypeName: Link,
     SprayArray: '[spray]',
     ProductId: Int
   },
@@ -4437,7 +4441,7 @@ export const StarcraftSchema = {
     Validator: 'validator',
     AbilCmdIndex: Int,
     Marker: {
-      Link: 'link'
+      Link: Link
     }
   },
   CTacticalOrder: { prototype: 'CTactical'},
@@ -4462,7 +4466,7 @@ export const StarcraftSchema = {
     ImpactLocation: {
       Value: Word
     },
-    SearchFlags: '{bit}',
+    SearchFlags: Flags,
     TargetFilters: 'filters',
     Abil: 'abil',
     Type: Word,
@@ -4473,7 +4477,7 @@ export const StarcraftSchema = {
     ExtendRadius: Real,
     TargetSorts: TargetSorts,
     CommandIndex: Bit,
-    Flags: '{bit}',
+    Flags: Flags,
     DamageBase: Int,
     MinCount: Int,
     MinScore: Real,
@@ -4501,7 +4505,7 @@ export const StarcraftSchema = {
     },
     Descending: Bit,
     Value: Bit,
-    Vital: "colorstyle",
+    Vital: 'colorstyle',
     Behavior: 'behavior',
     Field: 'string',
     Validator: 'validator'
@@ -4525,11 +4529,11 @@ export const StarcraftSchema = {
   CTargetSortVitalFraction: { prototype: 'CTargetSort'},
   CTerrain: {
     catalog: 'terrain',
-    Name: 'text',
+    Name: Text,
     Lighting: 'light',
     Camera: 'camera',
     Ambience: Word,
-    RampNoBuild: "int",
+    RampNoBuild: Int,
     ReverbGlobal: 'reverb',
     ReverbAmbient: 'string',
     SoundDistanceFactor: Real,
@@ -4546,11 +4550,11 @@ export const StarcraftSchema = {
     WindSpeed: Real,
     WindTurbulencePower: Real,
     WindTurbulenceSpeed: Real,
-    CreepBaseTexture: 'file',
-    CreepBaseSpecularMap: 'file',
-    CreepEdgeNormalMap: 'file',
-    CreepHeightMap: 'file',
-    CreepNoiseMap: 'file',
+    CreepBaseTexture: File,
+    CreepBaseSpecularMap: File,
+    CreepEdgeNormalMap: File,
+    CreepHeightMap: File,
+    CreepNoiseMap: File,
     CreepSettingsArray: [
       {
         index: Word,
@@ -4565,15 +4569,15 @@ export const StarcraftSchema = {
       {
         index: Word,
         SamplingDistance: '{real}',
-        AcceptWorldForces: '{bit}'
+        AcceptWorldForces: Flags
       }
     ],
-    HeightFlags: '{bit}',
-    LoadingScreen: 'file',
+    HeightFlags: Flags,
+    LoadingScreen: File,
     EditorCategories: 'categories',
     BlendTextures: '[terraintex]',
     CliffSets: '[cliff]',
-    HardTiles: 'file',
+    HardTiles: File,
     FogEnabled: Bit,
     FogDensity: Real,
     FogFalloff: Real,
@@ -4581,7 +4585,7 @@ export const StarcraftSchema = {
     HideLowestLevel: Bit,
     FixedSkyboxModel: 'model',
     NonFixedSkyboxModel: 'model',
-    EnvironmentMap: 'file',
+    EnvironmentMap: File,
     MinimapBrightenFactor: Real,
     EditorHidden: Bit,
     TextureProp: Word,
@@ -4594,8 +4598,8 @@ export const StarcraftSchema = {
   },
   CTerrainTex: {
     catalog: 'terraintex',
-    Texture: 'file',
-    EditorIcon: 'file',
+    Texture: File,
+    EditorIcon: File,
     Normalmap: 'string',
     PhysicsMaterial: 'physicsmaterial',
     DoodadEntry: [
@@ -4606,15 +4610,15 @@ export const StarcraftSchema = {
         PlacementRadius: Real
       }
     ],
-    Heightmap: 'file',
+    Heightmap: File,
     HeightMapOffset: Real,
     HeightMapScale: Real
   },
   CTexture: {
     catalog: 'texture',
-    File: 'file',
-    PropsAdd: "string",
-    Flags: '{bit}',
+    File: File,
+    PropsAdd: 'string',
+    Flags: Flags,
     Slot: 'string',
     PropsSet: Word,
     MovieSoundSettings5dot1: 'sound',
@@ -4624,21 +4628,21 @@ export const StarcraftSchema = {
   },
   CTextureSheet: {
     catalog: 'texturesheet',
-    Image: 'file',
+    Image: File,
     Rows: Int,
     Columns: Int
   },
   CTile: {
     catalog: 'tile',
-    Material: 'file',
-    EditorIcon: 'file',
+    Material: File,
+    EditorIcon: File,
     TesselationDistance: Real,
     TileWidthDistance: Real,
     TileHeightRepetitions: Bit,
     CapLength: Real,
     DefaultSplineWidth: Real,
     DefaultWingWidth: Real,
-    Flags: '{bit}'
+    Flags: Flags
   },
   CTurret: {
     catalog: 'turret',
@@ -4657,44 +4661,44 @@ export const StarcraftSchema = {
   },
   CUnit: {
     catalog: 'unit',
-    UserFlagArray: "[bit]",
+    UserFlagArray: '[bit]',
     StockCharge: {
-      CountMax: "int",
-      TimeUse: "int",
-      TimeDelay: "int"
+      CountMax: Int,
+      TimeUse: Int,
+      TimeDelay: Int
     },
-    MainAttributeDamageBonus: "[int]",
+    MainAttributeDamageBonus: '[int]',
     LearnInfoArray: [
       {
         Button: {
-          Flags: "[bit]",
-          DefaultButtonFace: "button"
+          Flags: '[bit]',
+          DefaultButtonFace: 'button'
         },
         index: Word,
-        Abil: "abil"
+        Abil: 'abil'
       }
     ],
     TierRequirements: [
       {
         value: Word,
-        index: "int",
-        removed: "int"
+        index: Int,
+        removed: Int
       }
     ],
-    RandomNameArray: "[text]",
-    MainAttribute: "behavior",
+    RandomNameArray: '[text]',
+    MainAttribute: 'behavior',
     AttributePointsInfoArray: [
       {
-        Attribute: "behavior",
-        Points: "int",
-        PointsPerLevel: "real"
+        Attribute: 'behavior',
+        Points: Int,
+        PointsPerLevel: Real
       }
     ],
-    LifeRegenRateNight: "real",
-    Name: 'string',
-    Description: 'text',
+    LifeRegenRateNight: Real,
+    Name: Text,
+    Description: Text,
     Gender: Word,
-    UserTag: 'link',
+    UserTag: Link,
     DeathRevealFilters: 'filters',
     DeathRevealRadius: Real,
     SpeedMaximum: Real,
@@ -4714,9 +4718,9 @@ export const StarcraftSchema = {
     LifeMax: Int,
     TacticalAIRange: Int,
     EnergyDamageRatio: Int,
-    LifeArmorName: 'text',
-    LifeArmorTip: 'text',
-    ShieldArmorTip: 'text',
+    LifeArmorName: Text,
+    LifeArmorTip: Text,
+    ShieldArmorTip: Text,
     Mover: 'mover',
     StationaryTurningRate: Real,
     TurningRate: Real,
@@ -4727,8 +4731,8 @@ export const StarcraftSchema = {
     TacticalAIFilters: 'filters',
     AIEvalFactor: Real,
     Mass: Real,
-    FlagArray: '{bit}',
-    EditorFlags: '{bit}',
+    FlagArray: Flags,
+    EditorFlags: Flags,
     PushPriority: Int,
     LeaderAlias: 'unit',
     HotkeyAlias: 'unit',
@@ -4746,12 +4750,12 @@ export const StarcraftSchema = {
     }],
     ReviveInfoLevel: {
       Cooldown: {
-        TimeUse: "int",
-        Link: 'link'
+        TimeUse: Int,
+        Link: Link
       },
-      Resource: "[int]",
+      Resource: '[int]',
       Charge: {
-        Link: "link"
+        Link: Link
       }
     },
     Fidget: {
@@ -4765,12 +4769,12 @@ export const StarcraftSchema = {
     },
     ReviveInfoBase: {
       Charge: {
-        Link: 'link',
+        Link: Link,
         Location: Word,
         TimeUse: Real
       },
       Cooldown: {
-        Link: 'link',
+        Link: Link,
         Location: Word,
         TimeUse: Real
       },
@@ -4786,8 +4790,8 @@ export const StarcraftSchema = {
     PowerupEffect: Word,
     PowerupCost: CostSchema,
     Mob: Word,
-    PlaneArray: '{bit}',
-    Collide: '{bit}',
+    PlaneArray: Flags,
+    Collide: Flags,
     AbilArray: [
       {
         Link: 'abil'
@@ -4825,7 +4829,7 @@ export const StarcraftSchema = {
         RowText: '[link]'
       }
     ],
-    Attributes: '{bit}',
+    Attributes: Flags,
     Deceleration: Real,
     InnerRadius: Real,
     LifeArmor: Real,
@@ -4834,9 +4838,9 @@ export const StarcraftSchema = {
     ShieldRegenRate: Real,
     CostResource: '{int}',
     AttackTargetPriority: Int,
-    Footprint: 'string',
-    PlacementFootprint: 'string',
-    ShieldArmorName: 'text',
+    Footprint: 'footprint',
+    PlacementFootprint: 'footprint',
+    ShieldArmorName: Text,
     LifeRegenRate: Real,
     DamageDealtXP: Int,
     DamageTakenXP: Int,
@@ -4850,7 +4854,7 @@ export const StarcraftSchema = {
     ScoreKill: Int,
     ScoreResult: 'string',
     GlossaryPriority: Int,
-    HotkeyCategory: 'text',
+    HotkeyCategory: Text,
     GlossaryAlias: 'unit',
     RepairTime: Real,
     AddedOnArray: [
@@ -4869,10 +4873,10 @@ export const StarcraftSchema = {
     CargoSize: Int,
     EquipmentArray: [
       {
-        Tooltip: "text",
+        Tooltip: Text,
         Weapon: 'weapon',
         Effect: 'effect',
-        Icon: 'file'
+        Icon: File
       }
     ],
     GlossaryStrongArray: '[word]',
@@ -4885,18 +4889,18 @@ export const StarcraftSchema = {
         Turret: 'turret'
       }
     ],
-    GlossaryCategory: 'text',
+    GlossaryCategory: Text,
     EffectArray: '{effect}',
     EnergyStart: Int,
     EnergyMax: Int,
     EnergyRegenRate: Real,
     AIOverideTargetPriority: Int,
     DeathTime: Real,
-    DeadFootprint: 'string',
+    DeadFootprint: 'footprint',
     TauntDuration: '{int}',
     TacticalAIThink: Word,
     BuildOnAs: '[unit]',
-    ResourceDropOff: '{bit}',
+    ResourceDropOff: Flags,
     TechTreeProducedUnitArray: '[unit]',
     TurretArray: '[turret]',
     CargoOverlapFilters: 'filters',
@@ -4908,7 +4912,7 @@ export const StarcraftSchema = {
     SyncModelData: 'string',
     TacticalAIChannel: Word,
     ReviveDelay: Real,
-    Subtitle: 'text',
+    Subtitle: Text,
     AlliedPushPriority: Int,
     SpeedBonusCreep: Real,
     AIEvalConstant: Real,
@@ -4921,69 +4925,69 @@ export const StarcraftSchema = {
     $abil: 'abil',
 
 
-    EnergyRegenDelay: "int",
+    EnergyRegenDelay: Int,
     LifeArmorFormula: {
-      NegativeArmorMultiplier: "int",
-      NegativeDamageBase: "real",
-      PositiveArmorMultiplier: "int",
-      PositiveDamageRatio: "real"
+      NegativeArmorMultiplier: Int,
+      NegativeDamageBase: Real,
+      PositiveArmorMultiplier: Int,
+      PositiveDamageRatio: Real
     },
-    EnergyArmor: "int",
-    AttackSpeedMultiplierCreep: "real",
-    ReviveTime: "int",
-    LifeRegenRateCreep: "real",
-    ShieldRegenRateCreep: "real",
-    SubgroupPriorityDelta: "int",
+    EnergyArmor: Int,
+    AttackSpeedMultiplierCreep: Real,
+    ReviveTime: Int,
+    LifeRegenRateCreep: Real,
+    ShieldRegenRateCreep: Real,
+    SubgroupPriorityDelta: Int,
     EnerArmorFormula: {
-      NegativeArmorMultiplier: "int",
-      NegativeDamageBase: "real",
-      PositiveArmorMultiplier: "int",
-      PositiveDamageRatio: "real"
+      NegativeArmorMultiplier: Int,
+      NegativeDamageBase: Real,
+      PositiveArmorMultiplier: Int,
+      PositiveDamageRatio: Real
     },
-    SpeedDisplayFlags: "{bit}",
-    ResourceDamageLeechFilters: "filters",
+    SpeedDisplayFlags: Flags,
+    ResourceDamageLeechFilters: 'filters',
     ResourceDamageLeech: [
       {
-        Amount: "[real]",
+        Amount: '[real]',
         index: Word
       }
     ],
-    SightBonus: "[real]",
-    LifeArmorDisplayFlags: "[int]",
-    PowerupFilters: "filters",
-    PowerupRange: "real",
-    KillResource: "{int}",
+    SightBonus: '[real]',
+    LifeArmorDisplayFlags: '[int]',
+    PowerupFilters: 'filters',
+    PowerupRange: Real,
+    KillResource: '{int}',
     defType: Word,
-    l1: "button",
-    l2: "button",
-    l3: "button",
-    l4: "button",
-    aid: "actor",
-    alter: "actor",
-    l5: "button",
-    BoostedHeight: "{real}",
+    l1: 'button',
+    l2: 'button',
+    l3: 'button',
+    l4: 'button',
+    aid: 'actor',
+    alter: 'actor',
+    l5: 'button',
+    BoostedHeight: '{real}',
     AcquireLeashResetRadius: Real,
-    LifeDamageLeech: "[real]",
-    EnergyRegenRateCreep: "real",
-    ShieldDamageLeech: "{real}",
-    EnergyAgyRegenDelay: "int",
-    Lifermor: "int",
+    LifeDamageLeech: '[real]',
+    EnergyRegenRateCreep: Real,
+    ShieldDamageLeech: '{real}',
+    EnergyAgyRegenDelay: Int,
+    Lifermor: Int,
     EnergyArmorFormula: {
-      PositiveDamageRatio: "int"
+      PositiveDamageRatio: Int
     },
-    ShieldArmorDisplayFlags: "{bit}"
+    ShieldArmorDisplayFlags: Flags
   },
   CUnitHero: { prototype: 'CUnit'},
   CUpgrade: {
     catalog: 'upgrade',
-    Flags: '{bit}',
-    Name: 'text',
+    Flags: Flags,
+    Name: Text,
     MaxLevel: Int,
     BonusResourcePerLevel: '{int}',
     LeaderPriority: Int,
     $Level: Int,
     Alert: 'string',
-    ScoreCount: "scorevalue",
+    ScoreCount: 'scorevalue',
     ScoreValue: 'scorevalue',
     UnitDisallowed: 'unit',
     WebPriority: Int,
@@ -5005,23 +5009,23 @@ export const StarcraftSchema = {
     ],
     AffectedUnitArray: '[unit]',
     ScoreAmount: Int,
-    Icon: 'file',
+    Icon: File,
     LeaderLevel: Int,
     TechAliasArray: '[unit]',
-    UnitAllowed: "actor",
+    UnitAllowed: 'actor',
     EffectArrayTemplate: [
       {
-        Reference: "reference",
-        Value: "string",
+        Reference: 'reference',
+        Value: 'string',
         Operation: Word
       }
     ],
     $path: 'string',
     $lvl: Int,
     $level: Int,
-    $terranairarmor: 'file',
-    $icon: 'file',
-    $airicon: 'file'
+    $terranairarmor: File,
+    $icon: File,
+    $airicon: File
   },
   CUser: {
     catalog: 'user',
@@ -5031,7 +5035,7 @@ export const StarcraftSchema = {
         Type: Word,
         Count: Int,
         EditorColumn: Int,
-        Flags: '{bit}',
+        Flags: Flags,
         EditorText: 'string',
         GameLinkType: Word,
         UserType: 'user'
@@ -5040,19 +5044,19 @@ export const StarcraftSchema = {
     Instances: [
       {
         $Id: 'string',
-        AbilCmd: [{Abil: 'abil', Field: FieldSchema,Cmd: "int"}],
+        AbilCmd: [{Abil: 'abil', Field: FieldSchema,Cmd: Int}],
         Unit: [{Unit: 'unit', Field: FieldSchema}],
         User: [{Type: 'user', Instance: 'string', Field: FieldSchema}],
         Int: [{Int: Int, Field: FieldSchema}],
         Fixed: [{Fixed: Real, Field: FieldSchema}],
-        Text: [{Text: 'text', Field: FieldSchema}],
+        Text: [{Text: Text, Field: FieldSchema}],
         GameLink: [{GameLink: Word, Field: FieldSchema}],
-        Image: [{Image: 'file', Field: FieldSchema, Edge: Word, Attach: Word}],
+        Image: [{Image: File, Field: FieldSchema, Edge: Word, Attach: Word}],
         Model: [{Model: 'model', Field: FieldSchema}],
         Upgrade: [{Upgrade: 'upgrade', Field: FieldSchema}],
         String: [{String: 'string', Field: FieldSchema}],
-        Movie: [{Field: FieldSchema, Movie: "file"}],
-        Color: [{Field: FieldSchema, Color: "ints"}],
+        Movie: [{Field: FieldSchema, Movie: File}],
+        Color: [{Field: FieldSchema, Color: 'ints'}],
         Actor: [{Field: FieldSchema, Actor: 'actor'}],
         Sound: [{Field: FieldSchema, Sound: 'sound'}]
       }
@@ -5060,12 +5064,12 @@ export const StarcraftSchema = {
   },
   CValidator: {
     catalog: 'validator',
-    IgnoreWhileChanneling: "int",
-    ResultFailed: 'links',
+    IgnoreWhileChanneling: Int,
+    ResultFailed: 'string',
     Type: Word,
     WhichEffect: Word,
     Resource: 'string',
-    ResultNoEffect: "alert",
+    ResultNoEffect: 'alert',
     IncludeArray: [{Value: Word}],
     Compare: Word,
     State: Word,
@@ -5095,9 +5099,9 @@ export const StarcraftSchema = {
     BehaviorScope: {Behavior: 'behavior'},
     Key: 'string',
     CombinedVital: Word,
-    SearchFlags: '{bit}',
-    CmdFlags: '{bit}',
-    Types: '{bit}',
+    SearchFlags: Flags,
+    CmdFlags: Flags,
+    Types: Flags,
     OtherUnit: {
       Value: Word,
       Effect: 'effect'
@@ -5149,22 +5153,22 @@ export const StarcraftSchema = {
     Filters: 'filters',
     Plane: Word,
     Flag: Word,
-    Flags: '{bit}',
+    Flags: Flags,
     Vital: Word,
     AbilLink: 'abil',
     Behavior: 'behavior',
     RadiusBonus: Real,
-    ResultFallback: "alert",
+    ResultFallback: 'alert',
     Relationship: Word,
     Arc: Real,
     SearchFilters: 'filters',
     Line: [
       {
-        Failure: "validator",
-        Ignored: "validator",
-        Success: "validator",
-        Test: "validator",
-        Return:"validator",
+        Failure: 'validator',
+        Ignored: 'validator',
+        Success: 'validator',
+        Test: 'validator',
+        Return:'validator',
       }
     ],
     CachedSearch: Word,
@@ -5178,7 +5182,7 @@ export const StarcraftSchema = {
         IncludeArray: Word
       }
     ],
-    ResultNoPlayer: "alert",
+    ResultNoPlayer: 'alert',
     Negate: Bit,
     AbilCmdIndex: Int,
     Active: Bit,
@@ -5186,8 +5190,8 @@ export const StarcraftSchema = {
     Unit: 'unit',
     BehaviorState: Word,
     Pathing: Bit,
-    PowerSource: "behavior",
-    AttackerAlternateType: "unit",
+    PowerSource: 'behavior',
+    AttackerAlternateType: 'unit',
     CombinedVitalCompare: Word,
     $unitLink: 'unit',
     $maxVitals: Int,
@@ -5198,7 +5202,7 @@ export const StarcraftSchema = {
     ChargeLink: 'string',
     ExcludeArray: [
       {
-        History: "effect",
+        History: 'effect',
         Effect: 'effect',
         Value: Word
       }
@@ -5207,8 +5211,8 @@ export const StarcraftSchema = {
     CasterGroundHeight: Bit,
     CasterAdd: Real,
     TargetGroundHeight: Bit,
-    Categories: '{bit}',
-    CooldownLink: 'link',
+    Categories: Flags,
+    CooldownLink: Link,
     Value: {
       Effect: Word,
       Value: Word,
@@ -5302,7 +5306,7 @@ export const StarcraftSchema = {
   CValidatorUnitAlliance: { prototype: 'CValidator'},
   CValidatorUnitBehaviorStackAlias: {
     prototype: 'CValidator',
-    "StackAlias": "behavior"
+    'StackAlias': 'behavior'
   },
   CValidatorUnitBehaviorState: {
     prototype: 'CValidator'
@@ -5363,7 +5367,7 @@ export const StarcraftSchema = {
   },
   CValidatorUnitCompareRallyPointCount: {
     prototype: 'CValidator',
-    Point: 'int'
+    Point: Int
   },
   CValidatorUnitCompareResourceContents: {
     prototype: 'CValidator',
@@ -5389,14 +5393,14 @@ export const StarcraftSchema = {
   CValidatorUnitInventoryIsFull: { prototype: 'CValidator'},
   CValidatorUnitKinetic: {
     prototype: 'CValidator',
-    value: "kinetic",
-    Value: "kinetic"
+    value: 'kinetic',
+    Value: 'kinetic'
   },
   CValidatorUnitLastDamagePlayer: { prototype: 'CValidator'},
   CValidatorUnitMissileNullified: { prototype: 'CValidator'},
   CValidatorUnitMover: {
     prototype: 'CValidator',
-    value: "mover"
+    value: 'mover'
   },
   CValidatorUnitOrder: { prototype: 'CValidator'},
   CValidatorUnitOrderQueue: { prototype: 'CValidator'},
@@ -5440,19 +5444,19 @@ export const StarcraftSchema = {
   },
   CVoicePack: {
     catalog: 'voicepack',
-    Name: 'text',
-    TypeName: 'link',
-    StoreName: 'link',
-    Description: 'text',
-    Icon: 'file',
-    StoreTypeName: 'link',
+    Name: Text,
+    TypeName: Link,
+    StoreName: Link,
+    Description: Text,
+    Icon: File,
+    StoreTypeName: Link,
     Default: Bit,
-    ReleaseDate: 'link',
-    ImageTexture: 'file',
+    ReleaseDate: Link,
+    ImageTexture: File,
     UnlockedRewardArray: '[reward]',
     ExampleLineArray: [
       {
-        Description: 'text',
+        Description: Text,
         Sound: 'sound'
       }
     ],
@@ -5463,7 +5467,7 @@ export const StarcraftSchema = {
   },
   CWater: {
     catalog: 'water',
-    TextureKey: 'file',
+    TextureKey: File,
     TilingFreq: 'reals',
     ScrollVectors: 'reals',
     CausticsTilingFreq: 'reals',
@@ -5477,7 +5481,7 @@ export const StarcraftSchema = {
     MaxLinearVelocity: Real,
     State: [
       {
-        Name: 'string',
+        Name: Text,
         Height: Real,
         Color: 'reals',
         ColorFallOff: Real,
@@ -5495,8 +5499,8 @@ export const StarcraftSchema = {
         ShadowDistortion: Real
       }
     ],
-    BeachShoreline:  "model",
-    CliffShoreline:  "model",
+    BeachShoreline:  'model',
+    CliffShoreline:  'model',
     Doodads: {
       Model: 'model',
       Density: Real,
@@ -5509,12 +5513,12 @@ export const StarcraftSchema = {
   },
   CWeapon: {
     catalog: 'weapon',
-    Name: 'text',
-    DisplayName: 'text',
+    Name: Text,
+    DisplayName: Text,
     EditorCategories: 'categories',
     InfoTooltipPriority: Bit,
-    Icon: 'file',
-    Tip: 'text',
+    Icon: File,
+    Tip: Text,
     DisplayEffect: 'effect',
     PreEffect: 'effect',
     MinScanRange: Real,
@@ -5527,11 +5531,11 @@ export const StarcraftSchema = {
     Period: Real,
     DamagePoint: Real,
     Backswing: Real,
-    Options: '{bit}',
+    Options: Flags,
     Marker: {
       Link: 'string',
-      MatchFlags: '{bit}',
-      MismatchFlags: '{bit}',
+      MatchFlags: Flags,
+      MismatchFlags: Flags,
       Count: Int
     },
     CriticalEffect: 'effect',
@@ -5541,7 +5545,7 @@ export const StarcraftSchema = {
     TargetFilters: 'filters',
     AttackType: Word,
     SupportedFilters: 'filters',
-    LegacyOptions: '{bit}',
+    LegacyOptions: Flags,
     RandomDelayMin: Real,
     RandomDelayMax: Real,
     Effect: 'effect',
@@ -5559,122 +5563,122 @@ export const StarcraftSchema = {
     ChaseFilters: 'filters',
     AcquireCliffLevelRange: 'ints',
     AcquireScanFilters: 'filters',
-    RangeDisplayFlags: '{bit}',
+    RangeDisplayFlags: Flags,
     AcquireCallForHelpFilters: 'filters',
     PreswingBeforeAttack: Int,
     AcquireTargetSorts: TargetSorts,
-    CriticalChance: "real",
-    PeriodDisplayFlags: "{bit}",
-    AcquireProvokeFilters: "filters",
-    "$atkType": Word,
+    CriticalChance: Real,
+    PeriodDisplayFlags: Flags,
+    AcquireProvokeFilters: 'filters',
+    '$atkType': Word,
   },
   CWeaponLegacy: { prototype: 'CWeapon'},
   CWeaponStrafe: { prototype: 'CWeapon'},
   CMap: {
     catalog: 'map',
-    Name: 'text',
-    Description: 'text',
-    Summary: 'link',
-    LoadingTitle: 'text',
-    LoadingSubtitle: 'text',
-    LoadingBody: 'link',
-    LoadingHelp: 'link',
-    LoadingHelpRestart: 'link',
-    LoadingHelpAlternate: 'link',
-    BonusText: 'text',
-    BonusTitle: 'text',
-    MissionText: 'text',
-    MissionTitle: 'text',
-    PrimaryObjectiveText: 'text',
-    PrimaryObjectiveTitle: 'text',
-    ResearchText: 'text',
-    ResearchTitle: 'text',
-    RewardText: 'text',
-    RewardTitle: 'text',
-    SecondaryObjectiveText: 'text',
-    SecondaryObjectiveTitle: 'text',
-    TechnologyNameText: 'text',
-    TechnologyTitle: 'text',
-    LoadingImage: "file",
+    Name: Text,
+    Description: Text,
+    Summary: Link,
+    LoadingTitle: Text,
+    LoadingSubtitle: Text,
+    LoadingBody: Link,
+    LoadingHelp: Link,
+    LoadingHelpRestart: Link,
+    LoadingHelpAlternate: Link,
+    BonusText: Text,
+    BonusTitle: Text,
+    MissionText: Text,
+    MissionTitle: Text,
+    PrimaryObjectiveText: Text,
+    PrimaryObjectiveTitle: Text,
+    ResearchText: Text,
+    ResearchTitle: Text,
+    RewardText: Text,
+    RewardTitle: Text,
+    SecondaryObjectiveText: Text,
+    SecondaryObjectiveTitle: Text,
+    TechnologyNameText: Text,
+    TechnologyTitle: Text,
+    LoadingImage: File,
     File: Word,
-    ContactTitle: "text",
-    ContactNameText: "link",
-    ContactModelLink: "actor",
+    ContactTitle: Text,
+    ContactNameText: Link,
+    ContactModelLink: 'actor',
     Location: Word,
-    UserReference: "string",
+    UserReference: 'string',
     Kind: Word,
-    ObjectiveArray: "[objective]",
-    ContactActor: "actor"
+    ObjectiveArray: '[objective]',
+    ContactActor: 'actor'
   },
   CBundle: {
     catalog: 'bundle',
-    Name: "link",
-    StoreName: "link",
+    Name: Text,
+    StoreName: Text,
     HyperlinkId: Word,
-    Description: "link",
+    Description: Text,
     ReleaseDate: {
-      Month: "int",
-      Day: "int",
-      Year: "int"
+      Month: Int,
+      Day: Int,
+      Year: Int
     },
-    ShortName: "link",
-    StoreTypeName: "text",
-    Flags: "[int]",
-    ProductId: "int",
-    TileTexture: "file",
-    GameContentArray: "[abilcmd]",
-    MediumTileTexture: "file",
-    LargeTileTexture: "file",
-    LearnMoreImage1: "file",
-    LearnMoreImage2: "file",
-    LearnMoreImage3: "file",
-    CinematicsImagePath: "file",
-    SuppressCountryArray: "[word]",
-    LearnMoreBackgroundImage: "file",
-    LearnMoreTitleText1: "link",
-    LearnMoreTitleText2: "link",
-    LearnMoreTitleText3: "link",
-    LearnMoreBodyText1: "link",
-    LearnMoreBodyText2: "link",
-    LearnMoreBodyText3: "link"
+    ShortName: Text,
+    StoreTypeName: Text,
+    Flags: '[int]',
+    ProductId: Int,
+    TileTexture: File,
+    GameContentArray: '[abilcmd]',
+    MediumTileTexture: File,
+    LargeTileTexture: File,
+    LearnMoreImage1: File,
+    LearnMoreImage2: File,
+    LearnMoreImage3: File,
+    CinematicsImagePath: File,
+    SuppressCountryArray: '[word]',
+    LearnMoreBackgroundImage: File,
+    LearnMoreTitleText1: Link,
+    LearnMoreTitleText2: Link,
+    LearnMoreTitleText3: Link,
+    LearnMoreBodyText1: Link,
+    LearnMoreBodyText2: Link,
+    LearnMoreBodyText3: Link
   },
   CEmoticon: {
     catalog: 'emoticon',
-    Name: "text",
-    NameAlternate: "text",
-    NameInvalid: "text",
-    Description: "text",
-    DescriptionLocked: "text",
+    Name: Text,
+    NameAlternate: Text,
+    NameInvalid: Text,
+    Description: Text,
+    DescriptionLocked: Text,
     Image: {
-      TextureSheet: "texturesheet",
-      Index: "int"
+      TextureSheet: 'texturesheet',
+      Index: Int
     },
-    Hidden: "int",
-    RequiredReward: "reward"
+    Hidden: Int,
+    RequiredReward: 'reward'
   },
   CEmoticonPack: {
     catalog: 'emoticonpack',
-    Name: "text",
-    StoreName: "text",
-    ShortName: "text",
-    Description: "text",
+    Name: Text,
+    StoreName: Text,
+    ShortName: Text,
+    Description: Text,
     Image: {
-      TextureSheet: "texturesheet",
-      Index: "int"
+      TextureSheet: 'texturesheet',
+      Index: Int
     },
-    StoreTypeName: "text",
-    Default: "int",
-    ReleaseDate: "link",
-    EmoticonArray: "[emoticon]",
+    StoreTypeName: Text,
+    Default: Int,
+    ReleaseDate: Link,
+    EmoticonArray: '[emoticon]',
     RequiredCampaign: {
-      Campaign: "campaign"
+      Campaign: 'campaign'
     },
-    RequiredRewardArray: "[word]",
-    RequiredCommander: "commander",
-    ProductId: "int",
-    ParentBundle: "bundle",
-    HideAchievement: "int",
-    Hidden: "int"
+    RequiredRewardArray: '[word]',
+    RequiredCommander: 'commander',
+    ProductId: Int,
+    ParentBundle: 'bundle',
+    HideAchievement: Int,
+    Hidden: Int
   },
   CGame: {
     catalog: 'game',
@@ -5682,10 +5686,10 @@ export const StarcraftSchema = {
     CreepGrowSound: 'sound',
     JoinInProgress: Bit,
     PlayersRequiredForLargeFormat: Int,
-    PlayerLeaveFlags: '{bit}',
+    PlayerLeaveFlags: Flags,
     TriggerLibs: [{
       $Id: Word,
-      IncludePath: 'link'
+      IncludePath: Link
     }],
     EnforcedGameResultScoreResult: 'scoreresult',
     SprayAbil: 'abil',
@@ -5694,15 +5698,15 @@ export const StarcraftSchema = {
       {
         index: Word,
         Unit: 'unit',
-        Tooltip: 'text',
-        Clear: '{bit}'
+        Tooltip: Text,
+        Clear: Flags
       }
     ],
     AIBuilds: [
       {
         AttributeId: Word,
-        Name: 'text',
-        MenuTooltip: 'text',
+        Name: Text,
+        MenuTooltip: Text,
         Enabled: Bit,
         Race: 'race',
         MaxDiff: Int,
@@ -5711,152 +5715,152 @@ export const StarcraftSchema = {
       }
     ],
     DamageHistoryIntervalMax: Bit,
-    EnableRewardSkins: "int",
-    DefaultPauseCountPerPlayer: "int",
-    EnableRewardVoicePacks: "int",
-    SmartCommandContinuous: "int",
+    EnableRewardSkins: Int,
+    DefaultPauseCountPerPlayer: Int,
+    EnableRewardVoicePacks: Int,
+    SmartCommandContinuous: Int,
     MeleePointsThreshold: {
-      Value: "int",
-      Factor: "real"
+      Value: Int,
+      Factor: Real
     },
-    UnlimitedPause: "int",
-    PathingConfig: "{bit}",
-    DifficultyDefault: "int",
-    AirFormationDiameter: "int",
-    MixedFormationDiameter: "int",
-    MeleePointsGameDurationMin: "int",
-    WeaponHighGroundChanceToMiss: "real",
-    VeterancyLevelKillXPTable: "[int]",
-    VeterancyLevelKillXPPreviousValueFactor: "int",
-    VeterancyLevelKillXPBonusPerLevel: "int",
-    VeterancyKillerFilters: "filters",
-    UnitLevelKillXPTable: "int",
-    UnitLevelKillXPPreviousValueFactor: "int",
-    UnitLevelKillXPLevelFactor: "int",
-    UnitLevelKillXPBonusPerLevel: "int",
-    UnpathableMargin: "ints",
-    AcquireMovementLimit: "int",
-    AcquireLeashRadius: "real",
-    AcquireLeashResetRadius: "real",
-    CallForHelpPeriod: "int",
-    CallForHelpRadius: "int",
-    CameraMargin: "ints",
+    UnlimitedPause: Int,
+    PathingConfig: Flags,
+    DifficultyDefault: Int,
+    AirFormationDiameter: Int,
+    MixedFormationDiameter: Int,
+    MeleePointsGameDurationMin: Int,
+    WeaponHighGroundChanceToMiss: Real,
+    VeterancyLevelKillXPTable: '[int]',
+    VeterancyLevelKillXPPreviousValueFactor: Int,
+    VeterancyLevelKillXPBonusPerLevel: Int,
+    VeterancyKillerFilters: 'filters',
+    UnitLevelKillXPTable: Int,
+    UnitLevelKillXPPreviousValueFactor: Int,
+    UnitLevelKillXPLevelFactor: Int,
+    UnitLevelKillXPBonusPerLevel: Int,
+    UnpathableMargin: 'ints',
+    AcquireMovementLimit: Int,
+    AcquireLeashRadius: Real,
+    AcquireLeashResetRadius: Real,
+    CallForHelpPeriod: Int,
+    CallForHelpRadius: Int,
+    CameraMargin: 'ints',
     CameraMarginAspectAdjust: [
       {
-        AspectWidth: "int",
-        AspectHeight: "int",
-        Margin: "ints"
+        AspectWidth: Int,
+        AspectHeight: Int,
+        Margin: 'ints'
       }
     ],
-    SplashDamageEffect: "effect",
-    UnitSightRangeUnderConstruction: "int",
+    SplashDamageEffect: 'effect',
+    UnitSightRangeUnderConstruction: Int,
     DifficultyLevels: [
       {
         AttributeId: Word,
-        Name: "text",
-        NameMelee: "text",
-        MenuTooltip: "text",
-        index: "int",
-        NameCampaign: "text",
-        Enabled: "int",
-        ActionsPerMinute: "int",
-        Flags: "{int}",
-        DefaultRebuildUnit: "int",
-        DefaultRebuildStructure: "int"
+        Name: Text,
+        NameMelee: Text,
+        MenuTooltip: Text,
+        index: Int,
+        NameCampaign: Text,
+        Enabled: Int,
+        ActionsPerMinute: Int,
+        Flags: '{int}',
+        DefaultRebuildUnit: Int,
+        DefaultRebuildStructure: Int
       }
     ],
     HandicapValues: [
       {
-        MenuTooltip: "text",
-        Percent: "int"
+        MenuTooltip: Text,
+        Percent: Int
       }
     ],
     MapSizes: [
       {
-        index: "int",
-        Name: "text",
-        MaxCells: "int"
+        index: Int,
+        Name: Text,
+        MaxCells: Int
       }
     ],
     TeamColors: [
       {
-        Value: "[reals]",
-        Name: "text",
+        Value: '[reals]',
+        Name: Text,
         AttributeId: Word,
-        UserChoice: "int",
-        MinPlayerCount: "int",
-        index: "int"
+        UserChoice: Int,
+        MinPlayerCount: Int,
+        index: Int
       }
     ],
-    CreepBlendTime: "int",
-    CreepDecayTime: "real",
-    CreepDecayWeightMultiplier: "int",
-    CreepDecayWeightUnscaledBonus: "int",
-    DamageMinimum: "real",
-    AttackRevealTime: "real",
-    PenaltyRevealTime: "int",
-    StalemateTestTime: "int",
-    StalemateWarningTime: "int",
-    AttackRevealBehavior: "behavior",
+    CreepBlendTime: Int,
+    CreepDecayTime: Real,
+    CreepDecayWeightMultiplier: Int,
+    CreepDecayWeightUnscaledBonus: Int,
+    DamageMinimum: Real,
+    AttackRevealTime: Real,
+    PenaltyRevealTime: Int,
+    StalemateTestTime: Int,
+    StalemateWarningTime: Int,
+    AttackRevealBehavior: 'behavior',
     AI: {
       Id: Word,
-      Name: "text",
-      File: "file"
+      Name: Text,
+      File: File
     },
     FilterResults: [
       {
-        Filter: "filters",
-        Result: "words"
+        Filter: 'filters',
+        Result: 'words'
       }
     ],
-    UncontestedCombatPeriod: "int",
-    AIResourceRequest: "[int]",
+    UncontestedCombatPeriod: Int,
+    AIResourceRequest: '[int]',
     DamageCategories: [
       {
         index: Word,
         Category: Word,
-        SupportedFilters: "filters"
+        SupportedFilters: 'filters'
       }
     ],
     AttackArmorTable: [
       {
-        ArmorFactor: "[real]",
+        ArmorFactor: '[real]',
         index: Word,
-        FailThroughToDamageType: "int",
-        SupportedFilters: "filters"
+        FailThroughToDamageType: Int,
+        SupportedFilters: 'filters'
       }
     ],
-    VeterancySearchRadius: "real",
-    VeterancySearchFilters: "filters",
+    VeterancySearchRadius: Real,
+    VeterancySearchFilters: 'filters',
     ResourceConvertArray: [
       {
-        RatioArray: "{int}",
+        RatioArray: '{int}',
         index: Word
       }
     ],
-    FoodCappedMax: "int",
-    TeleportResetRange: "{int}",
-    DeepWaterThreshold: "real",
-    GenerateWaterPathing: "int",
-    TauntAbil: "abil",
-    FormationSeparationFactor: "real",
-    EnableRewardConsoleSkins: "int"
+    FoodCappedMax: Int,
+    TeleportResetRange: '{int}',
+    DeepWaterThreshold: Real,
+    GenerateWaterPathing: Int,
+    TauntAbil: 'abil',
+    FormationSeparationFactor: Real,
+    EnableRewardConsoleSkins: Int
   },
   CGameUI: {
     catalog: 'gameui',
-    SuppressSkinsForParticipants: "int",
-    SuppressSkinsInReplay: "int",
+    SuppressSkinsForParticipants: Int,
+    SuppressSkinsInReplay: Int,
     SoundQuality: [
       {
         AutoDetectCPUCoreMaximum: Int,
         Channels: Int,
-        Name: 'text',
+        Name: Text,
         Format: Word,
         SampleRate: Int,
         SpeakerMode: Word,
         VariationMaximum: '{int}',
         Resampler: Word,
-        Flags: '{bit}'
+        Flags: Flags
       }
     ],
     RegionNameSize: Int,
@@ -5916,7 +5920,7 @@ export const StarcraftSchema = {
     LookAtTypes: [
       {
         $Id: Word,
-        Name: 'text',
+        Name: Text,
         Start: [
           {
             Group: Word,
@@ -5936,7 +5940,7 @@ export const StarcraftSchema = {
     CameraShakeAmplitudes: [
       {
         $Id: Word,
-        Name: 'text',
+        Name: Text,
         Position: 'reals',
         Rotation: {
           Yaw: Real,
@@ -5948,7 +5952,7 @@ export const StarcraftSchema = {
     CameraShakeFrequencies: [
       {
         $Id: Word,
-        Name: 'text',
+        Name: Text,
         Position: 'reals',
         Rotation: {
           Yaw: Real,
@@ -5983,7 +5987,7 @@ export const StarcraftSchema = {
     PointModels: [
       {
         index: Word,
-        Model: 'file',
+        Model: File,
         Scale: Real,
         NameSize: Int,
         SelectionOffset: 'reals',
@@ -6063,7 +6067,7 @@ export const StarcraftSchema = {
     AlertPanMaxVelocity: Real,
     AlertPanMaxDuration: Real,
     AlertPanMinDuration: Real,
-    BeaconMinimapIcon: 'file',
+    BeaconMinimapIcon: File,
     BeaconMinimapRenderPriority: Word,
     DefaultInfoTooltipTypes: 'words',
     CameraEventThresholdDistance: Real,
@@ -6074,15 +6078,15 @@ export const StarcraftSchema = {
       {
         Info: {
           $Id: Int,
-          Name: 'text',
-          Description: 'text'
+          Name: Text,
+          Description: Text
         },
         Modes: [
           {
             $Id: Int,
             CanOverrideText: Bit,
-            Name: 'text',
-            Description: 'text',
+            Name: Text,
+            Description: Text,
             IsTutorial: Bit
           }
         ],
@@ -6092,12 +6096,12 @@ export const StarcraftSchema = {
     AutoVariantArcade: {
       CategoryId: Bit,
       ModeId: Bit,
-      Options: '{bit}'
+      Options: Flags
     },
     AutoVariantMelee: {
       CategoryId: Int,
       ModeId: Bit,
-      Options: '{bit}'
+      Options: Flags
     },
     DefaultVariants: [
       {
@@ -6107,7 +6111,7 @@ export const StarcraftSchema = {
         MaxPlayers: Int,
         TeamCount: Int,
         PlayersPerTeam: Int,
-        Options: '{bit}',
+        Options: Flags,
         AIDifficulty: Int,
         PlayersPerTandem: Int
       }
@@ -6118,42 +6122,42 @@ export const StarcraftSchema = {
     AchievementTags: '[word]',
     AltSoundtrack: [
       {
-        AltSoundtrackName: 'link',
+        AltSoundtrackName: Link,
         Suffix: Word
       }
     ],
     TargetModeValidation: Word,
     MusicArray: '[word]',
-    IntroMusic:  "soundtrack",
-    PostGameMusic:  "soundtrack",
-    CreditsMusic:  "soundtrack",
-    LoopAmbience:  "soundtrack",
+    IntroMusic:  'soundtrack',
+    PostGameMusic:  'soundtrack',
+    CreditsMusic:  'soundtrack',
+    LoopAmbience:  'soundtrack',
     ObjectGroupData: [
       {
-        MinimapIcon: 'file',
+        MinimapIcon: File,
         MinLevel: Int
       }
     ],
     LoadingScreenHelpIntro: [
       {
-        Text: 'text'
+        Text: Text
       }
     ],
     LoadingScreenHelp: [
       {
-        Text: 'text',
+        Text: Text,
         Race: 'race'
       }
     ],
     LoadingBars: [
       {
-        Name: 'text',
+        Name: Text,
         FrameSuffix: Word
       }
     ],
     UnitKillRank: [
       {
-        Text: 'text',
+        Text: Text,
         MinKills: Int
       }
     ],
@@ -6162,9 +6166,9 @@ export const StarcraftSchema = {
     StrobeHighlightColor: 'ints',
     TutorialArray: [
       {
-        Title: 'text',
-        Icon: 'file',
-        Movie: 'file'
+        Title: Text,
+        Icon: File,
+        Movie: File
       }
     ],
     MixRouting: [
@@ -6175,45 +6179,45 @@ export const StarcraftSchema = {
     ],
     StartupMovieArray: [
       {
-        Name: 'text',
-        Path: 'file',
-        Source: 'file'
+        Name: Text,
+        Path: File,
+        Source: File
       }
     ],
-    HelpTechTitle: 'text',
+    HelpTechTitle: Text,
     HelpGameMechanics: [
       {
-        Icon: 'file',
-        IconBackground: 'link',
-        Name: 'text',
-        Description: 'text'
+        Icon: File,
+        IconBackground: Link,
+        Name: Text,
+        Description: Text
       }
     ],
     HelpControlCategories: [
       {
-        Name: 'text',
-        Description: 'text'
+        Name: Text,
+        Description: Text
       }
     ],
     HelpControls: [
       {
-        Category: 'link',
-        Name: 'text',
-        Description: 'text',
+        Category: Link,
+        Name: Text,
+        Description: Text,
         Basic: Bit
       }
     ],
     HotkeyInfoArray: [
       {
         index: Word,
-        Category: 'link',
-        Name: 'text',
-        Tooltip: 'text'
+        Category: Link,
+        Name: Text,
+        Tooltip: Text
       }
     ],
     CutsceneAssetPath: [
       {
-        Path: 'file',
+        Path: File,
         Theme: Word
       }
     ],
@@ -6226,44 +6230,44 @@ export const StarcraftSchema = {
     DSPArray: '[dsp]',
     HelpHiddenInGlue: Bit,
     DisplayScaledTime: Bit,
-    ChallengeMasterAchievement: "achievement",
+    ChallengeMasterAchievement: 'achievement',
     ChallengeCategory: [
       {
         Challenge: [
           {
             Id: Word,
-            Name: "text",
-            Description: "text",
-            Score: "link",
-            MapPath: "file",
-            ThumbnailImagePath: "file",
-            IsAllowedInTrial: "int",
-            Achievement: "[achievement]"
+            Name: Text,
+            Description: Text,
+            Score: Link,
+            MapPath: File,
+            ThumbnailImagePath: File,
+            IsAllowedInTrial: Int,
+            Achievement: '[achievement]'
           }
         ],
-        Name: "text"
+        Name: Text
       }
     ],
-    Campaign: "[campaign]",
+    Campaign: '[campaign]',
     ResourceArray: [{
       index: Word,
-      Icon: 'file',
-      IconBackground: "link",
-      Tooltip: "text"
+      Icon: File,
+      IconBackground: Link,
+      Tooltip: Text
     }],
-    TrialAllowedSinglePlayerMaps: "[file]",
+    TrialAllowedSinglePlayerMaps: '[file]',
     GlobalSoundData: {
-      HeadphoneModeMinAngle: "real",
-      HeadphoneModeMaxAngle: "real",
-      HeadphoneModeFrequency: "real"
+      HeadphoneModeMinAngle: Real,
+      HeadphoneModeMaxAngle: Real,
+      HeadphoneModeFrequency: Real
     },
-    CustomLayoutFileArray: "[file]"
+    CustomLayoutFileArray: '[file]'
   },
   CPreload: {
     catalog: 'preload',
-    Flags: "[int]",
-    File: "file",
-    NormalConditions: "bankcondition"
+    Flags: '[int]',
+    File: File,
+    NormalConditions: 'bankcondition'
   },
   CPreloadActor: {
     prototype: 'CPreload',
@@ -6271,19 +6275,19 @@ export const StarcraftSchema = {
   },
   CPreloadConversation: {
     prototype: 'CPreload',
-    Link:  "conversation"
+    Link:  'conversation'
   },
   CPreloadModel: {
     prototype: 'CPreload',
-    Link: "model"
+    Link: 'model'
   },
   CPreloadSound: {
     prototype: 'CPreload',
-    Link: "sound"
+    Link: 'sound'
   },
   CPreloadUnit: {
     prototype: 'CPreload',
-    Link:  "uuit"
+    Link:  'uuit'
   },
   CPreloadScene: {
     prototype: 'CPreload',
@@ -6294,53 +6298,53 @@ export const StarcraftSchema = {
   CPremiumMap: {
     catalog: 'premiummap',
     Name: Word,
-    StoreName: "text",
-    ShortName: "text",
-    StoreTypeName: "text",
-    HyperlinkId: "link",
-    ProductId: "int",
-    LicenseId: "int",
-    Price: "int",
-    ScreenShotImageArray: "[file]",
-    ScreenShotImageThumbnailArray: "[file]",
-    ScreenShotDescriptionArray: "[text]",
-    Movie: "file",
-    MoviePreviewImage: "file",
-    MovieImageThumbnail: "file",
-    MovieDescription: "text",
-    Description: "text",
-    Title: "text",
-    PayToPlay: "int",
-    ShortDescription: "text",
-    LanguageWarning: "text",
-    CustomFeaturedDescription: "text"
+    StoreName: Text,
+    ShortName: Text,
+    StoreTypeName: Text,
+    HyperlinkId: Link,
+    ProductId: Int,
+    LicenseId: Int,
+    Price: Int,
+    ScreenShotImageArray: '[file]',
+    ScreenShotImageThumbnailArray: '[file]',
+    ScreenShotDescriptionArray: '[text]',
+    Movie: File,
+    MoviePreviewImage: File,
+    MovieImageThumbnail: File,
+    MovieDescription: Text,
+    Description: Text,
+    Title: Text,
+    PayToPlay: Int,
+    ShortDescription: Text,
+    LanguageWarning: Text,
+    CustomFeaturedDescription: Text
   },
   CRaceBannerPack: {
     catalog: 'racebannerpack',
     Default: Int,
     RaceBannerArray: '[reward]',
-    Name: "text",
-    StoreName: "text",
-    StoreTypeName: "text"
+    Name: Text,
+    StoreName: Text,
+    StoreTypeName: Text
   },
   CReward: {
     catalog: 'reward',
-    Name: "text",
-    Description: "text",
-    DescriptionUnearned: "text",
+    Name: Text,
+    Description: Text,
+    DescriptionUnearned: Text,
     $thumbnail: Word,
     $voicepack: Word,
     $prefix: Word,
     Category: {File:Word,Tag:Word},
-    Flags: '{bit}',
+    Flags: Flags,
     IconSlot: Int,
     IgnorePlayerRace: Int,
     Race: 'race',
     RaceBannerPack: Word,
-    Image1v1: 'file',
-    Image2v2: 'file',
-    Image3v3: 'file',
-    Image4v4: 'file',
+    Image1v1: File,
+    Image2v2: File,
+    Image3v3: File,
+    Image4v4: File,
     ReplacementArray : [{
       Catalog:Word,
       From:Word,
@@ -6352,239 +6356,239 @@ export const StarcraftSchema = {
   CRewardConsoleSkin: {
     prototype: 'CReward',
     ConsoleSkin: 'consoleskin',
-    IconFile: "file",
-    IconCols: "int",
-    IconRows: "int"
+    IconFile: File,
+    IconCols: Int,
+    IconRows: Int
   },
   CRewardDecal: {
     prototype: 'CReward',
     Texture: Word,
-    IconFile: "file",
-    IconCols: "int",
-    IconRows: "int",
+    IconFile: File,
+    IconCols: Int,
+    IconRows: Int,
     Spray: Word,
-    Description: "text",
-    ParentBundle: "bundle",
-    DescriptionUnearned: "text"
+    Description: Text,
+    ParentBundle: 'bundle',
+    DescriptionUnearned: Text
   },
   CRewardIcon: {
     prototype: 'CReward',
-    IconFile: "file",
-    IconCols: "int",
-    IconRows: "int"
+    IconFile: File,
+    IconCols: Int,
+    IconRows: Int
   },
   CRewardModel: {
     prototype: 'CReward',
     Model: 'model',
-    IconCols: "int",
-    IconRows: "int",
-    IconFile: "file",
+    IconCols: Int,
+    IconRows: Int,
+    IconFile: File,
     Skin: 'skin',
     collection: Word,
     fileindex: Word,
-    unit: "unit",
-    ParentBundle: "bundle",
-    Upgrades: "upgrade",
-    Description: "text"
+    unit: 'unit',
+    ParentBundle: 'bundle',
+    Upgrades: 'upgrade',
+    Description: Text
   },
   CRewardPortrait: {
     prototype: 'CReward',
     Model: Word,
-    IconFile: "file",
-    IconCols: "int",
-    IconRows: "int",
-    Description: "text",
-    ParentBundle: "bundle",
-    DescriptionUnearned: "text"
+    IconFile: File,
+    IconCols: Int,
+    IconRows: Int,
+    Description: Text,
+    ParentBundle: 'bundle',
+    DescriptionUnearned: Text
   },
   CRewardEmoticon: {
     prototype: 'CReward',
-    IconFile: "file",
-    IconCols: "int",
-    IconRows: "int",
+    IconFile: File,
+    IconCols: Int,
+    IconRows: Int,
     Emoticon: Word
   },
   CRewardSpray: {
     prototype: 'CReward',
     Texture: Word,
-    IconFile: "file",
-    IconCols: "int",
-    IconRows: "int",
+    IconFile: File,
+    IconCols: Int,
+    IconRows: Int,
     Spray: Word,
-    Description: "text",
-    ParentBundle: "bundle",
-    DescriptionUnearned: "text"
+    Description: Text,
+    ParentBundle: 'bundle',
+    DescriptionUnearned: Text
   },
   CRewardRaceBanner: {
     prototype: 'CReward',
-    IconFile: "file",
-    IconCols: "int",
-    IconRows: "int",
-    Description: "text"
+    IconFile: File,
+    IconCols: Int,
+    IconRows: Int,
+    Description: Text
   },
   CRewardVoicePack: {
     prototype: 'CReward',
     VoicePack: Word,
-    LargeImage: "file",
+    LargeImage: File,
     license: Word
   },
   CRewardTrophy: {
     prototype: 'CReward',
-    Trophy: "trophy"
+    Trophy: 'trophy'
   },
   CRewardPortraitInGame: {
     prototype: 'CReward',
-    Enabled: "int"
+    Enabled: Int
   },
   CRewardSprayUseDecal: {
     prototype: 'CReward',
-    Enabled: "int"
+    Enabled: Int
   },
   CStimPack: {
     catalog: 'stimpack',
-    Name: "text",
-    StoreName: "text",
-    ShortName: "text",
-    StoreTypeName: "text",
-    ProductId: "int",
-    Duration: "int",
-    ReleaseDate: "link"
+    Name: Text,
+    StoreName: Text,
+    ShortName: Text,
+    StoreTypeName: Text,
+    ProductId: Int,
+    Duration: Int,
+    ReleaseDate: Link
   },
   CTalentProfile: {
     catalog: 'talentprofile',
-    Name: "text"
+    Name: Text
   },
   CTrophy: {
     catalog: 'trophy',
-    CutsceneFile: "file",
+    CutsceneFile: File,
     GameModel: Word,
     Skin: 'skin',
-    DefinitionId: "int",
+    DefinitionId: Int,
     TopCutsceneFilter: Word,
     BottomCutsceneFilter: Word
   },
   CWarChest: {
     catalog: 'warchest',
-    Name: "text",
-    StoreName: "text",
-    ShortName: "text",
-    HyperlinkId: "link",
-    StoreTypeName: "text",
-    ReleaseDate: "link",
-    ProductId: "int",
-    SeasonId: "warchestseason",
+    Name: Text,
+    StoreName: Text,
+    ShortName: Text,
+    HyperlinkId: Link,
+    StoreTypeName: Text,
+    ReleaseDate: Link,
+    ProductId: Int,
+    SeasonId: 'warchestseason',
     CelebrationString: Word,
-    Default: "int",
-    IsBundle: "int"
+    Default: Int,
+    IsBundle: Int
   },
   CWarChestSeason: {
     catalog: 'warchestseason',
-    Name: "text",
-    ESportsSeason: "text",
-    ESportsName: "text",
-    ESportsLocation: "text",
-    ESportsDate: "link",
-    ESportsShowPlayers: "int",
-    HowItWorks1: "text",
-    HowItWorks2: "text",
-    HowItWorks3: "text",
-    HowItWorks4: "text",
-    LearnMoreTitle1: "text",
-    LearnMoreTitle2: "text",
-    LearnMoreTitle3: "text",
-    LearnMoreDescription1: "text",
-    LearnMoreDescription2: "text",
-    LearnMoreDescription3: "text",
-    LearnMoreImage1: "file",
-    LearnMoreImage2: "file",
-    LearnMoreImage3: "file",
-    PurchaseTitle: "text",
-    PurchaseDescription: "text",
-    PurchaseWarning: "text",
-    PurchaseImage: "file"
+    Name: Text,
+    ESportsSeason: Text,
+    ESportsName: Text,
+    ESportsLocation: Text,
+    ESportsDate: Link,
+    ESportsShowPlayers: Int,
+    HowItWorks1: Text,
+    HowItWorks2: Text,
+    HowItWorks3: Text,
+    HowItWorks4: Text,
+    LearnMoreTitle1: Text,
+    LearnMoreTitle2: Text,
+    LearnMoreTitle3: Text,
+    LearnMoreDescription1: Text,
+    LearnMoreDescription2: Text,
+    LearnMoreDescription3: Text,
+    LearnMoreImage1: File,
+    LearnMoreImage2: File,
+    LearnMoreImage3: File,
+    PurchaseTitle: Text,
+    PurchaseDescription: Text,
+    PurchaseWarning: Text,
+    PurchaseImage: File
   }
 }
 
 export const LibrarySchema = {
   $Id: Word,
-  Root: [{
+  Root: {
     Item: [{ Id: Word, Library: Word, Type: Word}],
     Library: Word,
     Type: Word,
     Id: Word
-  }],
+  },
   Element: [{
     $Type: Word,
     $Id: Word,
-    Internal: [{}],
-    Disabled: [{}],
-    FlagAction: [{}],
-    FlagCall: [{}],
-    FlagInline: [{}],
-    InitOff: [{}],
-    PresetInteger: [{}],
-    ParamFlagPreload: [{}],
-    FlagCondition: [{}],
-    FlagCreateThread: [{}],
-    PresetGenConstVar: [{}],
-    ValueTypeInfo: [{Value: 'string'}],
-    ValueContext: [{Value: 'string'}],
-    ExpressionCode: [{Value: 'string'}],
+    Internal: 'bool',
+    Disabled: 'bool',
+    FlagAction: 'bool',
+    FlagCall: 'bool',
+    FlagInline: 'bool',
+    InitOff: 'bool',
+    PresetInteger: 'bool',
+    ParamFlagPreload: 'bool',
+    FlagCondition: 'bool',
+    FlagCreateThread: 'bool',
+    PresetGenConstVar: 'bool',
+    ValueTypeInfo: {Value: 'int'},
+    ValueContext: {Value: 'word'},
+    ExpressionCode: {Value: 'word'},
     Item: [{ Id: Word, Library: Word, Type: Word}],
-    Label: [{ Id: Word, Library: Word, Type: Word}],
-    Action: [{ Id: Word, Library: Word, Type: Word}],
-    FunctionDef: [{ Id: Word, Library: Word, Type: Word}],
-    ParameterDef: [{ Id: Word, Library: Word, Type: Word}],
+    Label: { Id: Word, Library: Word, Type: Word},
+    Action: { Id: Word, Library: Word, Type: Word},
+    FunctionDef: { Id: Word, Library: Word, Type: Word},
+    ParameterDef: { Id: Word, Library: Word, Type: Word},
     Variable: [{ Id: Word, Library: Word, Type: Word}],
-    Array: [{ Id: Word, Library: Word, Type: Word}],
-    VariableType: [{
-      Type:[{Value:"string"}],
-      Constant: [{}],
-      GameType: [{Value:Word}],
+    Array: { Id: Word, Library: Word, Type: Word},
+    VariableType: {
+      Type: {Value:'string'},
+      Constant: 'bool',
+      GameType: {Value:Word},
       ArraySize: [{
-        Dim:"int",
-        Value:"int",
-        Type: "Variable",
-        Library: "NHBR",
-        Id: "4B02FA25"
+        Dim:Int,
+        Value:Int,
+        Type: 'Variable',
+        Library: 'NHBR',
+        Id: '4B02FA25'
       }]
-    }],
-    ValueElement: [{ Id: Word, Library: Word, Type: Word}],
-    ValuePreset: [{ Id: Word, Library: Word, Type: Word}],
-    Preset: [{ Id: Word, Library: Word, Type: Word}],
+    },
+    ValueElement: { Id: Word, Library: Word, Type: Word},
+    ValuePreset: { Id: Word, Library: Word, Type: Word},
+    Preset: { Id: Word, Library: Word, Type: Word},
     Parameter: [{ Id: Word, Library: Word, Type: Word}],
-    ValueParam: [{ Id: Word, Library: Word, Type: Word}],
-    ExpressionParam: [{ Id: Word, Library: Word, Type: Word}],
-    Default: [{ Id: Word, Library: Word, Type: Word}],
-    ParameterType: [{
-      Type:[{Value:Word}],
-      TypeElement:[{Type:Word,Library:Word,Id:Word}],
-      GameType : [{Value:Word}],
-      EntryType : [{Value:Word}]
-    }],
+    ValueParam: { Id: Word, Library: Word, Type: Word},
+    ExpressionParam: { Id: Word, Library: Word, Type: Word},
+    Default: { Id: Word, Library: Word, Type: Word},
+    ParameterType: {
+      Type:{Value:Word},
+      TypeElement:{Type:Word,Library:Word,Id:Word},
+      GameType : {Value:Word},
+      EntryType : {Value:Word}
+    },
     FunctionCall: [{ Id: Word, Library: Word, Type: Word}],
-    SubFunctionType: [{ Id: Word, Library: Word, Type: Word}],
+    SubFunctionType: { Id: Word, Library: Word, Type: Word},
     Event: [{ Id: Word, Library: Word, Type: Word}],
     Condition: [{ Id: Word, Library: Word, Type: Word}],
-    ValueId: [{ Id: Word}],
-    ValueType: [{ Type: Word}],
-    ValueGameType: [{ Type: Word}],
-    BaseType: [{ Type: Word, Value:Word}],
-    ReturnType: [{
-      Type: [{Value: Word}],
-      GameType: [{ Type: Word , Value: Word}],
-      TypeElement: [{ Id: Word, Library: Word, Type: Word}],
-    }],
-    CustomType: [{ Type: Word}],
-    ExpressionType: [{ Type: Word}],
-    Comment:  [{'%value' : 'string' }],
-    Value: [{ Id: Word, Library: Word, Type: Word , '%value': 'string'}],
-    Identifier: [{'%value' : 'string' }],
-    ExpressionText:  [{'%value': 'string'}],
-    ScriptCode: [{'%value': 'string'}],
-    InitFunc:  [{'%value': 'string'}],
-    //'_Value': 'string'   //<Value>UED</Value>
-    // <Value Type="Param" Library="UEDC" Id="5E564F11"/>
+    ValueId:{ Id: Word},
+    ValueType: { Type: Word},
+    ValueGameType: { Type: Word},
+    BaseType: { Type: Word, Value:Word},
+    ReturnType: {
+      Type: {Value: Word},
+      GameType: { Type: Word , Value: Word},
+      TypeElement: { Id: Word, Library: Word, Type: Word},
+    },
+    CustomType: { Type: Word},
+    ExpressionType: { Type: Word},
+    Comment:  {_ : 'string' },
+    Value: { Id: Word, Library: Word, Type: Word , _: '.ValueType'},
+    Identifier: {_ : 'string' },
+    ExpressionText:  {_: 'string'},
+    ScriptCode: {_: 'string'},
+    InitFunc:  {_: 'string'},
+    //     //'_Value': 'string'   //<Value>UED</Value>
+    //     // <Value Type='Param' Library='UEDC' Id='5E564F11'/>
   }]
 }
 

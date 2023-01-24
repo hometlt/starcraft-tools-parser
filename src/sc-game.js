@@ -2,7 +2,6 @@ import {SCMod} from "./sc-mod.js";
 import {deep, deepReplaceMatch, isNumeric, matchType, TYPES} from "./operations.js";
 import {SCEntity} from "./sc-entity.js";
 import {StarcraftSchema} from './sc-schema.js';
-import {CoreSchema} from "./make-schema.js";
 
 export const SCGame = {
     datafiles: [
@@ -106,6 +105,21 @@ export const SCGame = {
             'Attack',
             'Rally',
             'AttackWorker',
+            'LoadOutSprayDefault',
+            'LoadOutSpray@1',
+            'LoadOutSpray@2',
+            'LoadOutSpray@3',
+            'LoadOutSpray@4',
+            'LoadOutSpray@5',
+            'LoadOutSpray@6',
+            'LoadOutSpray@7',
+            'LoadOutSpray@8',
+            'LoadOutSpray@9',
+            'LoadOutSpray@10',
+            'LoadOutSpray@11',
+            'LoadOutSpray@12',
+            'LoadOutSpray@13',
+            'LoadOutSpray@14',
         ],
         actor: [
             'CreepMgr'
@@ -510,73 +524,6 @@ export const SCGame = {
 
             schema[property] = type
         }
-    },
-    async makeSchema({mod,path = '*',group = 'catalog' }){
-        let schema = deep({},CoreSchema)
-
-
-        this._schemaValues = {}
-        for(let catalog in mod.catalogs){
-            if(SCGame.ignoredNamespaces.includes(catalog))continue;
-
-            for(let entity of mod.catalogs[catalog]) {
-                let schemaName
-                if(group === "catalog"){
-                    schemaName = catalog
-                }
-                if(group === "class"){
-                    schemaName = entity.class
-                }
-                if(!schema[schemaName])schema[schemaName] = {}
-                this._objectScheme(entity,schema[schemaName],[schemaName] ,{path})
-            }
-        }
-
-        deepReplaceMatch(schema, val => val.constructor===Object && Object.keys(val).length === 0,null, ({val, obj, prop,x ,path,crumbs}) => {
-            let index
-            if(obj.constructor === Object){
-                index = path.length -1
-            }
-            if(obj.constructor === Array){
-                index = path.length -2
-            }
-            delete path[index][crumbs[index]]
-            while(index> 0 && path[index].constructor===Object && Object.keys(path[index]).length === 0){
-                index--
-                delete path[index][crumbs[index]]
-            }
-        })
-
-        delete this._schemaValues
-
-
-        deep(schema,{
-            requirementnode: {OperandArray:  "{string}"},
-            requirement: {NodeArray: [{Link : "requirementnode"}]},
-            validator: {
-                CombineArray: "[validator]",
-            },
-            actor: {
-                "Sight": "word",
-                "sight": "word",
-            },
-            CRequirementCountUpgrade: {Count: {Link: "upgrade",}},
-            CRequirementCountBehavior: {Count: {Link: "behavior",}},
-            CRequirementCountUnit: {Count: {Link: "unit",}},
-            CValidatorUnitType: {Value: "unit"},
-            CValidatorPlayerRequirement: {Value: "requirement"},
-            abil: {InfoArray: [{Unit : "unit",index:"int"}]},
-            CAbilTrain:{InfoArray:[{index:"word", "Unit": "[unit]"}]},
-            CAbilBuild:{InfoArray:[{index:"word"}]},
-            CAbilLearn:{InfoArray:[{index:"word"}]},
-            CAbilPawn:{InfoArray:[{index:"word"}]},
-            CAbilResearch:{InfoArray:[{index:"word"}]},
-            CAbilSpecialize:{InfoArray:[{index:"word"}]},
-            CAbilWarpTrain:{InfoArray:[{index:"word"}]},
-            CAbilArmMagazine:{InfoArray:[{index:"word"}]}
-        },'unite')
-
-        return schema;
     }
 }
 SCGame.setSchema(StarcraftSchema)

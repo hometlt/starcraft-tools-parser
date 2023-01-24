@@ -28,16 +28,16 @@ let regexps  = {
     filters: /^(-|\w+(,\w+){0,});(-|\w+(,\w+){0,})$/,
     categories: /^(\w+\:[\w -#]+)(,\w+\:[\w -#]+)*$/,
     file: /^.*$/,
-    link: /^[A-Za-z_@#0-9-]+(\/+[A-Za-z_@#0-9-]+)*\/?$/,
-    linkstrict: /^[A-Za-z_@#0-9-]+(\/+[A-Za-z_@#0-9-]+)+\/?$/,
-    links: /^[A-Za-z_@#0-9-]+(\/+[A-Za-z_@#0-9-]+)*\/?(,[A-Za-z_@#0-9-]+(\/+[A-Za-z_@#0-9-]+)*\/?)*$/,
-    text: /^[A-Za-z_@#0-9-]+((\/+[A-Za-z_@#0-9-]+)\/?)*(\/+.+)+\/?$/,
-    word: /^[\w@_%#]+$/,
-    wordstrict: /^[\w@_%#]+$/,
+    link: /^[A-Za-z_\-@#0-9-]+(\/+[A-Za-z_\-@#0-9-]+)*\/?$/,
+    linkstrict: /^[A-Za-z_\-@#0-9-]+(\/+[A-Za-z_\-@#0-9-]+)+\/?$/,
+    links: /^[A-Za-z_\-@#0-9-]+(\/+[A-Za-z_\-@#0-9-]+)*\/?(,[A-Za-z_@#0-9-]+(\/+[A-Za-z_@#0-9-]+)*\/?)*$/,
+    text: /^[A-Za-z_\-@#0-9-]+((\/+[A-Za-z_\-@#0-9-]+)\/?)*(\/+.+)+\/?$/,
+    word: /^[\w@_\-%#]+$/,
+    wordstrict: /^[\w@_\-%#]+$/,
     abilcmd: /^([\w@_#]+([.,][\w]+)?|255)$/,
     abilcmdstrict: /^([\w@_#]+[.,][\w]+|255)$/,
-    words: /^[\w@_%#]+(,[\w@_%#]+)*$/,
-    ops: /^[\w@_%#]+(\s[\w@_%#]+)*$/,
+    words: /^[\w@_\-%#]+(,[\w@_\-%#]+)*$/,
+    ops: /^[\w@_\-%#]+(\s[\w@_\-%#]+)*$/,
     reference: /^.*$/,
     referencestrict: /^\w+,\w+,[\w\[\].]+$/,
     subject: /^.*$/,
@@ -351,7 +351,7 @@ export function matchPath(path1,path2){
     return true;
 }
 
-export function resolveSchemaType(schema,property,schemaForResolvedArrays = false){
+export function resolveSchemaType(schema,property,object,schemaForResolvedArrays = false){
 
     // if(property === "OperandArray"){
     //     property
@@ -374,6 +374,14 @@ export function resolveSchemaType(schema,property,schemaForResolvedArrays = fals
         delete type.index
         return {'*': type }
     }
+
+
+
+    if(type.constructor === String && type[0] === '.'){
+        type = object[type.substring(1)]
+    }
+
+
     return type
 }
 
@@ -486,9 +494,16 @@ export function eventEntityType(eventname){
 // let collect = []
 export function getDebugInfo(mod){
 
+    // if(Object.keys(unknowns).length){
+    //     console.log('unknown values exists')
+    //     let sch = getDataScheme(unk, mod)
+    //     return sch
+    // }
+    // return null
+
     return {
         unknowns: unknowns,
-        scheme: getDataScheme(unknowns,mod)
+        scheme: mod && getDataScheme(unknowns,mod)
     }
 }
 
@@ -680,13 +695,12 @@ export function relations(target,object,schema,path = [], ignorelist = {}, resul
         // if(property !== 'value' && /[a-z]/.test(property))continue;
         let value = object[property]
         if(!value) continue;
-        let type = resolveSchemaType(schema,property,true);
+        let type = resolveSchemaType(schema,property,object,true);
         let _path = [...path,property]
         if(!type){
             console.log("unknown field",_path.join(".") );
-
-
         }
+
 
         if(type.constructor === Array && type[0].constructor === String){
             type = type[0];
@@ -773,7 +787,7 @@ export function resolveArrays(object, schema, path) {
     if( schema.constructor === String) return;
 
     for(let property in object){
-        let type = resolveSchemaType(schema,property), value = object[property]
+        let type = resolveSchemaType(schema,property,object), value = object[property]
         if(!type || !value || value.constructor === String)continue
         let _path = [...path,property];
         if(value.constructor === Array){
@@ -865,7 +879,7 @@ export function optimiseForXML(object,schema = object.$$schema, path = [object.c
     for(let property in object){
 
 
-        let type = resolveSchemaType(schema,property), value = object[property]
+        let type = resolveSchemaType(schema,property,object), value = object[property]
 
 
 
@@ -884,7 +898,13 @@ export function optimiseForXML(object,schema = object.$$schema, path = [object.c
             continue;
         }
 
-        if(type.constructor === String) {
+        if(type._ && value.constructor === String){
+            object[property] = {_: value}
+        }
+        else if(type === 'bool'){
+            object[property] = {}
+        }
+        else if(type.constructor === String) {
 
             value = value.replace('"','&quot;')
 
@@ -936,7 +956,7 @@ export function optimiseForXML(object,schema = object.$$schema, path = [object.c
 
                 for(let index  in value){
                     if(value[index].constructor !== Object){
-                        if(type['%value']){
+                        if(type._){
                             value[index] = {_: value[index], $: {}}
                         }
                         else{
@@ -1052,7 +1072,7 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
         return;
     }
     for(let property in object){
-        let type = resolveSchemaType(schema,property), value = object[property]
+        let type = resolveSchemaType(schema,property,object), value = object[property]
 
         if (['id', 'class', 'parent', 'default', 'index', 'removed'].includes(property)) continue;
         let _path = [...path,property];
@@ -1084,9 +1104,22 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
             continue;
         }
 
+        if(type._ ){
+
+            if(value.constructor === Array && value[0].constructor === String) {
+                if(value.length > 1){
+                    console.warn('too many elemetns')
+                }
+                value = value[0]
+                type = type._
+            }
+        }
+
+
         if(type.constructor === Object){
+
             //relpace 'value' with '{value: value}'
-            if(value.constructor === String && type.value.constructor === String){
+            if(value.constructor === String && (type.value?.constructor === String)){
                 value = [{value}]
             }
             if(value.constructor !== Array || value.length !== 1){
@@ -1128,6 +1161,12 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
                     value = value.value
                 }
             }
+            if(type === 'bool'){
+                if(value !== ''){
+                    console.warn(`Warn: #${id}[${_path.join(".")}] = ${JSON.stringify(object[property])}`)
+                }
+                value = true
+            }
 
             if(value && !matchType(value,type)){
                 if(type !== 'text'){
@@ -1146,7 +1185,7 @@ export function resolveText(object, schema = object.$$schema, path = [], picked,
     }
     let result = {}
     for(let property in object){
-        let type = resolveSchemaType(schema,property), value = object[property]
+        let type = resolveSchemaType(schema,property,object), value = object[property]
 
         if (['id', 'class', 'parent', 'default', 'index', 'removed'].includes(property)) continue;
         let _path = [...path, property];
@@ -1200,7 +1239,7 @@ export function resolveAssets(object, schema = object.$$schema, path = []) {
 
     for(let property in object){
 
-        let type = resolveSchemaType(schema,property), value = object[property]
+        let type = resolveSchemaType(schema,property,object), value = object[property]
 
         if (['id', 'class', 'parent', 'default', 'index', 'removed'].includes(property)) continue;
         let _path = [...path, property];
@@ -1250,7 +1289,7 @@ export function optimizeJSONObject(object, schema = object.$$schema, path = [obj
         return;
     }
     for(let property in object){
-        let type = resolveSchemaType(schema,property), value = object[property]
+        let type = resolveSchemaType(schema,property,object), value = object[property]
         if (['id', 'class', 'parent', 'default', 'index', 'removed'].includes(property)) continue;
         let _path = [...path,property];
         if(value === undefined ||
@@ -1298,7 +1337,7 @@ export function filterTypedProperties(object, filter, schema = object.$$schema) 
         if (['id', 'class', 'parent', 'default', 'index', 'removed'].includes(property)) {
             continue;
         }
-        let type = resolveSchemaType(schema,property), value = object[property]
+        let type = resolveSchemaType(schema,property,object), value = object[property]
 
         if(!type){
             console.warn("unknown field", JSON.stringify(value) );

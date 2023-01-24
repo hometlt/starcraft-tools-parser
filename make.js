@@ -1,23 +1,47 @@
 import {SCMod} from "./src/sc-mod.js";
 import {getDebugInfo} from "./src/operations.js";
 
-
-let mod = new SCMod()
-mod.directory('../data-input')
 let prefix = ''
 let output = ''
 let input = []
 let test = false
 
+let mode = process.argv[2]?.toLowerCase() || 'v';
+
+let shortcuts = {
+    Test: ['t'],
+    Broodwar: ['b','bw'],
+    Liberty: ['l','wol'],
+    Swarm: ['s','hots'],
+    Void: ['v','lotv']
+}
+if(mode){
+    for(let m in shortcuts){
+        if(shortcuts[m].includes(mode)){
+            mode = m;
+            break;
+        }
+    }
+}
+console.log(`Active Config: ${mode}`)
+
+let mod = new SCMod()
+mod.directory('../data-input')
 await mod.read('0.Core')
 mod.saveCore()
 
-
-
-let mode = 'Void'
 switch(mode){
     case 'Liberty': {
         input = ['1.Liberty', '2.Liberty Multi']
+
+        // input = [
+        //     '../data-input'
+        //     '< 1.Liberty',
+        //     '< 2.Liberty Multi',
+        //     '&race Terr,Zerg,Prot'
+        //     '@ WOL*',
+        //     '> ../../Mods/all-races-mods/MP - Liberty'
+        // ]
         prefix = 'WOL'
         output = 'MP - Liberty'
         break;
@@ -30,14 +54,16 @@ switch(mode){
     }
     case 'Void': {
         input = [
-            '1.Liberty', '4.Swarm', '7.Void',
+            '1.Liberty',
+            '4.Swarm',
+            '7.Void',
             '9.Void Multi'
         ]
         prefix = 'LOTV'
         output = 'MP - Void'
         break;
     }
-    case 'BroodWar': {
+    case 'Broodwar': {
         //this operation might need >2Gb of Memory
         //node --max_old_space_size=4000 make.js
         input = [
@@ -47,7 +73,7 @@ switch(mode){
             '5.Swarm Campaign',
             '7.Void',
             '8.Void Campaign',
-            '10.Nova.sc2mod',
+            '10.Nova',
             './../../Mods/all-races-mods/BroodWar'
         ]
         prefix = 'BW'
@@ -56,7 +82,6 @@ switch(mode){
     }
     case 'TEST': {
         input = [
-            '0.Core',
             '1.Liberty',
             '2.Liberty Campaign',
             '3.Liberty Multi',
@@ -69,12 +94,8 @@ switch(mode){
             '10.Nova',
             '11.Nova Campaign',
             '12.Warcraft',
-            '13.Warcraft Coop'
-        ]
-        await mod.read(...input)
-
-        mod.directory('../../Mods/all-races-mods')
-        input = [
+            '13.Warcraft Coop',
+            '>../../Mods/all-races-mods',
             'Campaign',
             'BroodWar',
             'Campaigns - Ambivalence',
@@ -138,16 +159,15 @@ await mod.read(...input)
 // info
 
 if(!test){
+
     // mod.pick({race: ["Terr","Zerg","Prot"]})
     // mod.pickActors()
+    // mod.pickEntity(mod.cache.actor?.['SYSTEM_ActorConfig'])
     // mod.filter()
-
-    // Object.freeze(mod.cache.unit.Battlecruiser.EquipmentArray)
-
     mod.renameEntities(prefix + "*");
-    mod.renameTags(prefix);
-
+    mod.renameTags();
     mod.removeCore()
+
     await mod.write('./../../Mods/all-races-mods/'+ output + '.SC2Mod')
 }
 else{

@@ -19,8 +19,9 @@ import {
     stringValues,
     eventEntityType,
     eventConditionEntityType,
-    resolveSchemaType, isNumeric, matchType, _addRelation
+    resolveSchemaType, isNumeric, matchType, _addRelation, getDebugInfo, relations
 } from "./operations.js";
+import {LibrarySchema} from "./sc-schema.js";
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
 
@@ -42,246 +43,267 @@ export class SCMod {
     async read (...input) {
         for (let item of input) {
             if(item){
-                await this._read(item)
+                if(item.constructor === String && item[0] === '>'){
+                    this.directory(item.substring(1))
+                }
+                else{
+                    let data = item
+                    if(item.constructor === String){
+                        if(!'./'.includes(item[0])){
+                            item = this._directory + item
+                        }
+                        data = await this.getModData(item)
+                    }
+                    this.apply(data)
+                }
             }
         }
         return this
     }
-    async _read (input){
-        let data
-        if(input.constructor === String){
+    async getModData (modpath){
+        let input = modpath
+        let data;
+        data = {};
+        data.path = modpath
 
-            if(!'./'.includes(input[0])){
-                input = this._directory + input
-            }
-            data = {};
+        //supports json, xml, yaml, sc2mod
+        let format = path.extname(input).substring(1).toUpperCase()
 
-            //supports json, xml, yaml, sc2mod
-            let format = path.extname(input).substr(1).toUpperCase()
+        if(format && !['JSON', 'XML', 'YAML', 'SC2MOD'].includes(format)){
+            format  = false
+        }
 
-            if(format && !['JSON', 'XML', 'YAML', 'SC2MOD'].includes(format)){
-                format  = false
-            }
-
-            if(!format){
-                for(let formatTemp of ['JSON', 'XML', 'YAML', 'SC2MOD'])
+        if(!format){
+            for(let formatTemp of ['JSON', 'XML', 'YAML', 'SC2MOD'])
                 if(fs.existsSync(input + '.' + formatTemp)){
                     format = formatTemp
                     input += '.' + formatTemp
                     break;
                 }
+        }
+        if(!fs.existsSync(input)) {
+            console.log(`Not exist: ${path}`)
+            return
+        }
+
+        // console.time(`Reading: ${data.path}`)
+
+        let isdir = fs.lstatSync(input).isDirectory()
+
+        if(format === 'SC2MOD' || isdir) {
+            if(!input.endsWith("/"))input += "/"
+
+            let componentsData = await this._readXMLFile(input + "ComponentList.SC2Components")
+            if(componentsData?.Components?.DataComponent){
+                data.components = componentsData.Components.DataComponent
             }
-            if(!fs.existsSync(input))return
 
-            let isdir = fs.lstatSync(input).isDirectory()
-
-            if(format === 'SC2MOD' || isdir) {
-                if(!input.endsWith("/"))input += "/"
-
-                let componentsData = await this._readXMLFile(input + "ComponentList.SC2Components")
-                if(componentsData?.Components?.DataComponent){
-                    data.components = componentsData.Components.DataComponent
-                }
-
-                ////////     Assets     ////////////////////////////////////////////////////////////////////////////////////
-                {
-                    let assetsTextData = await this._readTextFile(input + "Base.SC2Data/GameData/Assets.txt")
-                    if(assetsTextData){
-                        data.assets = assetsTextData
-                    }
-                }
-                ////////     dependencies     //////////////////////////////////////////////////////////////////////////////
-                {
-                    let documentInfo = await this._readXMLFile(input + "DocumentInfo")
-                    let dependencies = documentInfo?.DocInfo?.Dependencies?.[0].Value
-                    if(dependencies) {
-                        data.dependencies = dependencies
-                    }
-                }
-                ////////     styles     ////////////////////////////////////////////////////////////////////////////////////
-                {
-                    let stylesData = await this._readXMLFile(input + "Base.SC2Data/UI/FontStyles.SC2Style")
-                    if(stylesData){
-                        data.styles = stylesData
-                    }
-                }
-                ////////     TextData     //////////////////////////////////////////////////////////////////////////////////
-                {
-                    let textFiles = ["GameHotkeys", "GameStrings", "ObjectStrings", "TriggerStrings", "ConversationStrings"]
-                    let locales = {}
-                    let LocaleData = data.components?.filter(entity => entity.$?.Type.toLowerCase() === "text").map(entity => entity.$.Locale) || ["enUS"];
-                    if(LocaleData){
-                        for (let locale of LocaleData) {
-                            locales[locale] = {}
-                            for (let textFile of textFiles) {
-                                let filename = `${input}${locale}.sc2data/LocalizedData/${textFile}.txt`
-                                let data = this._readTextFile(filename)
-                                if (data) {
-                                    locales[locale][textFile] = data
-                                }
-                                filename = `${input}${locale}.sc2data/LocalizedData/${textFile}.json`
-                                if(fs.existsSync(filename)){
-                                    let data = JSON.parse(fs.readFileSync(filename, {encoding: 'utf-8'}))
-                                    locales[locale][textFile] = data
-                                }
-                            }
-                        }
-                        data.locales = locales
-                    }
-                }
-                ////////     Triggers     //////////////////////////////////////////////////////////////////////////////////
-                {
-                    let triggersFile = input + "Triggers"
-
-                    let raw = fs.existsSync(triggersFile) && fs.readFileSync(triggersFile, {encoding: 'utf-8'})
-                    if(raw){
-                        data.triggers = raw.substring(raw.indexOf("<TriggerData>") + 13, raw.indexOf("</TriggerData>"))
-                    }
-
-                    //todo : parse triggers
-                    // let triggersDataParsed = await this._readXMLFile(triggersFile, true)
-                    // let triggersData = triggersDataParsed?.TriggerData
-                    // if(triggersData){
-                    //     fromXMLToObject(triggersData)
-                    //     data.triggers = triggersData.Library
-                    // }
-                }
-                ////////     layouts     ///////////////////////////////////////////////////////////////////////////////////
-                {
-                    let layoutsData = await this._readXMLFile(input + "Base.SC2Data/UI/Layout/DescIndex.SC2Layout")
-                    let layouts = layoutsData?.Desc?.Include
-                    if(layouts){
-                        data.layouts = layouts
-                    }
-                }
-                ////////     Files     /////////////////////////////////////////////////////////////////////////////////////
-                {
-                    // this._getAllFiles(input).forEach(file => files[file] = input + file)//.filter(file => file.endsWith("m3"))
-                    // for(let m3File of files){
-                    //     let raw = fs.readFileSync(m3File, {encoding: 'utf-8'})
-                    //     const indexes = raw.matchAll(new RegExp(`Assets\\[\\\w_]+\.dds`, 'gi'))
-                    //     console.log(indexes)
-                    //
-                    // }
-                    let files = {}
-                    let galaxyFiles = fs.readdirSync(input + "Base.SC2Data").filter(file => file.endsWith(".galaxy"))
-
-                    if(data.layouts){
-                        for (let include of data.layouts) {
-                            files["Base.SC2Data/" + include.$.path] = {
-                                path: (input + "Base.SC2Data/" + include.$.path),
-                                scope: 'layouts'
-                            }
-                        }
-                    }
-
-                    for (let file of galaxyFiles) {
-                        files["Base.SC2Data/" + file] = {
-                            path: (input + "Base.SC2Data/" + file),
-                            scope: 'triggers'
-                        }
-                    }
-
-                    if(Object.keys(files).length){
-                        data.files = files
-                    }
-                }
-                ////////     GameData     //////////////////////////////////////////////////////////////////////////////////
-                {
-                    let includesData = await this._readXMLFile(input + "Base.SC2Data/GameData.xml")
-                    let commonFiles = SCGame.datafiles.map(el => "Base.SC2Data/GameData/" + el + "data.xml");
-                    let includes = commonFiles.filter(file => fs.existsSync(input + file))
-                    let additionalFiles = includesData?.Includes?.Catalog?.map(catalog => "Base.SC2Data/" + catalog.$.path)
-                    if (additionalFiles) {
-                        includes.push(...additionalFiles)
-                    }
-                    let catalogs = []
-                    for (let file of includes) {
-                        let data = await this._readXMLFile(input + file, true)
-                        if (!data) {
-                            console.log("File not found: " + input + file)
-                        } else {
-                            catalogs.push({id: file, data: data.Catalog?.constructor === Object ? data : {}});
-                        }
-                    }
-                    let entities = []
-                    for (let catalog of catalogs) {
-                        if (catalog.data.Catalog) {
-                            if (catalog.data.Catalog.$$) {
-                                for (let entity of catalog.data.Catalog.$$) {
-                                    fromXMLToObject(entity)
-                                    // if(entity.class === 'const'){
-                                    //     entity
-                                    //     if(!this.constants){
-                                    //         this.constants = {}
-                                    //     }
-                                    //     this.constants[entity.id] = entity
-                                    // }
-                                    if(entity.class[0] === 'S'){
-                                        continue;
-                                    }
-                                    if(SCGame.classlist[entity.class] === undefined){
-                                        console.log('ignored entity class: ' + entity.class)
-                                        SCGame.classlist[entity.class] = false;
-                                    }
-                                    if(SCGame.classlist[entity.class]?.$$namespace && !SCGame.ignoredNamespaces.includes(SCGame.classlist[entity.class]?.$$namespace)){
-                                        optimizeObject(entity, SCGame.classlist[entity.class].$$schema)
-                                        entities.push(entity)
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    let commonFilesJSON = SCGame.datafiles.map(el => "Base.SC2Data/GameData/" + el + "data.json");
-                    for (let file of commonFilesJSON) {
-                        if(fs.existsSync(input + file)){
-                            let data = JSON.parse(fs.readFileSync(input + file, {encoding: 'utf-8'}))
-                            for(let entityID in data){
-                                data[entityID].id = entityID
-                                entities.push(data[entityID])
-                            }
-                        }
-                    }
-                    if(entities.length){
-                        data.entities = entities
-                    }
+            ////////     Assets     ////////////////////////////////////////////////////////////////////////////////////
+            {
+                let assetsTextData = await this._readTextFile(input + "Base.SC2Data/GameData/Assets.txt")
+                if(assetsTextData){
+                    data.assets = assetsTextData
                 }
             }
-            else{
-
-
-                let raw = fs.readFileSync(input, {encoding: 'utf-8'})
-
-                if (format === 'JSON') {
-                    data = JSON.parse(raw)
+            ////////     dependencies     //////////////////////////////////////////////////////////////////////////////
+            {
+                let documentInfo = await this._readXMLFile(input + "DocumentInfo")
+                let dependencies = documentInfo?.DocInfo?.Dependencies?.[0].Value
+                if(dependencies) {
+                    data.dependencies = dependencies
                 }
-                if (format === 'YAML') {
-                    data = yaml.load(raw)
+            }
+            ////////     styles     ////////////////////////////////////////////////////////////////////////////////////
+            {
+                let stylesData = await this._readXMLFile(input + "Base.SC2Data/UI/FontStyles.SC2Style")
+                if(stylesData){
+                    data.styles = stylesData
                 }
-                if (format === 'XML') {
-                    data = {}
+            }
+            ////////     TextData     //////////////////////////////////////////////////////////////////////////////////
+            {
+                let textFiles = ["GameHotkeys", "GameStrings", "ObjectStrings", "TriggerStrings", "ConversationStrings"]
+                let locales = {}
+                let LocaleData = data.components?.filter(entity => entity.$?.Type.toLowerCase() === "text").map(entity => entity.$.Locale) || ["enUS"];
+                if(LocaleData){
+                    for (let locale of LocaleData) {
+                        locales[locale] = {}
+                        for (let textFile of textFiles) {
+                            let filename = `${input}${locale}.sc2data/LocalizedData/${textFile}.txt`
+                            let data = this._readTextFile(filename)
+                            if (data) {
+                                locales[locale][textFile] = data
+                            }
+                            filename = `${input}${locale}.sc2data/LocalizedData/${textFile}.json`
+                            if(fs.existsSync(filename)){
+                                let data = JSON.parse(fs.readFileSync(filename, {encoding: 'utf-8'}))
+                                locales[locale][textFile] = data
+                            }
+                        }
+                    }
+                    data.locales = locales
                 }
-                for(let entity of data.entities){
-                    optimizeJSONObject(entity, SCGame.classlist[entity.class].$$schema)
+            }
+            ////////     Triggers     //////////////////////////////////////////////////////////////////////////////////
+            {
+                let triggersFile = input + "Triggers"
+
+                // let raw = fs.existsSync(triggersFile) && fs.readFileSync(triggersFile, {encoding: 'utf-8'})
+                // if(raw){
+                //     data.triggers = raw.substring(raw.indexOf("<TriggerData>") + 13, raw.indexOf("</TriggerData>"))
+                // }
+                // data.triggers = triggersData.Library
+
+                //todo : parse triggers
+                let triggersDataParsed = await this._readXMLFile(triggersFile)
+                let triggersData = triggersDataParsed?.TriggerData
+                if(triggersData?.Library){
+                    fromXMLToObject(triggersData)
+                    let libs = []
+                    for(let lib of triggersData.Library){
+                        optimizeObject(lib, LibrarySchema)
+                        libs.push(lib)
+                    }
+
+                    data.triggers = libs
+                }
+            }
+            ////////     layouts     ///////////////////////////////////////////////////////////////////////////////////
+            {
+                let layoutsData = await this._readXMLFile(input + "Base.SC2Data/UI/Layout/DescIndex.SC2Layout")
+                let layouts = layoutsData?.Desc?.Include
+                if(layouts){
+                    data.layouts = layouts
+                }
+            }
+            ////////     Files     /////////////////////////////////////////////////////////////////////////////////////
+            {
+                // this._getAllFiles(input).forEach(file => files[file] = input + file)//.filter(file => file.endsWith("m3"))
+                // for(let m3File of files){
+                //     let raw = fs.readFileSync(m3File, {encoding: 'utf-8'})
+                //     const indexes = raw.matchAll(new RegExp(`Assets\\[\\\w_]+\.dds`, 'gi'))
+                //     console.log(indexes)
+                //
+                // }
+                let files = {}
+                let galaxyFiles = fs.readdirSync(input + "Base.SC2Data").filter(file => file.endsWith(".galaxy"))
+
+                if(data.layouts){
+                    for (let include of data.layouts) {
+                        files["Base.SC2Data/" + include.$.path] = {
+                            path: (input + "Base.SC2Data/" + include.$.path),
+                            scope: 'layouts'
+                        }
+                    }
+                }
+
+                for (let file of galaxyFiles) {
+                    files["Base.SC2Data/" + file] = {
+                        path: (input + "Base.SC2Data/" + file),
+                        scope: 'triggers'
+                    }
+                }
+
+                if(Object.keys(files).length){
+                    data.files = files
+                }
+            }
+            ////////     GameData     //////////////////////////////////////////////////////////////////////////////////
+            {
+                let includesData = await this._readXMLFile(input + "Base.SC2Data/GameData.xml")
+                let commonFiles = SCGame.datafiles.map(el => "Base.SC2Data/GameData/" + el + "data.xml");
+                let includes = commonFiles.filter(file => fs.existsSync(input + file))
+                let additionalFiles = includesData?.Includes?.Catalog?.map(catalog => "Base.SC2Data/" + catalog.$.path)
+                if (additionalFiles) {
+                    includes.push(...additionalFiles)
+                }
+                let catalogs = []
+                for (let file of includes) {
+                    let data = await this._readXMLFile(input + file, true)
+                    if (!data) {
+                        console.log("File not found: " + input + file)
+                    } else {
+                        catalogs.push({id: file, data: data.Catalog?.constructor === Object ? data : {}});
+                    }
+                }
+                let entities = []
+                for (let catalog of catalogs) {
+                    if (catalog.data.Catalog) {
+                        if (catalog.data.Catalog.$$) {
+                            for (let entity of catalog.data.Catalog.$$) {
+                                fromXMLToObject(entity)
+                                // if(entity.class === 'const'){
+                                //     entity
+                                //     if(!this.constants){
+                                //         this.constants = {}
+                                //     }
+                                //     this.constants[entity.id] = entity
+                                // }
+                                if(entity.class[0] === 'S'){
+                                    continue;
+                                }
+                                if(SCGame.classlist[entity.class] === undefined){
+                                    console.log('ignored entity class: ' + entity.class)
+                                    SCGame.classlist[entity.class] = false;
+                                }
+                                if(SCGame.classlist[entity.class]?.$$namespace && !SCGame.ignoredNamespaces.includes(SCGame.classlist[entity.class]?.$$namespace)){
+                                    optimizeObject(entity, SCGame.classlist[entity.class].$$schema)
+                                    entities.push(entity)
+                                }
+                            }
+                        }
+                    }
+                }
+
+                let commonFilesJSON = SCGame.datafiles.map(el => "Base.SC2Data/GameData/" + el + "data.json");
+                for (let file of commonFilesJSON) {
+                    if(fs.existsSync(input + file)){
+                        let data = JSON.parse(fs.readFileSync(input + file, {encoding: 'utf-8'}))
+                        for(let entityID in data){
+                            data[entityID].id = entityID
+                            entities.push(data[entityID])
+                        }
+                    }
+                }
+                if(entities.length){
+                    data.entities = entities
                 }
             }
         }
         else{
-            data = input
-        }
 
+
+            let raw = fs.readFileSync(input, {encoding: 'utf-8'})
+
+            if (format === 'JSON') {
+                data = JSON.parse(raw)
+            }
+            if (format === 'YAML') {
+                data = yaml.load(raw)
+            }
+            if (format === 'XML') {
+                data = {}
+            }
+            for(let entity of data.entities){
+                optimizeJSONObject(entity, SCGame.classlist[entity.class].$$schema)
+            }
+        }
+        // console.timeEnd(`Reading: ${data.path}`)
+        console.log(`Reading: ${data.path} (${data.entities.length} Entities)`)
+        return data
+    }
+    apply (data){
+        // console.time(`Applying: ${data.path}`)
 
         ////////     triggers     /////////////////////////////////////////////////////////////////////////////////////
 
         if(data.triggers){
 
-            if (!this.triggers) this.triggers = ""
-            this.triggers += data.triggers
+            // if (!this.triggers) this.triggers = ""
+            // this.triggers += data.triggers
 
-            //todo parsed triggers
-            // if (!this.triggers) this.triggers = []
-            // this.triggers.push(...data.triggers)
+            if (!this.triggers) this.triggers = []
+            this.triggers.push(...data.triggers)
         }
         ////////     dependencies     /////////////////////////////////////////////////////////////////////////////////////
         if(data.dependencies){
@@ -338,6 +360,8 @@ export class SCMod {
                 this.makeEntity(entity)
             }
         }
+        // console.timeEnd(`Applying: ${data.path}`)
+        return this
     }
     /**
      *
@@ -394,9 +418,9 @@ export class SCMod {
 
         let extension, formatting;
 
+        console.log(`Writing: ${destpath}`)
 
         fs.mkdirSync(destpath, {recursive: true});
-
 
         if(scopes.includes('components')){
             extension = format === 'auto' ? 'SC2Components' : format
@@ -559,16 +583,17 @@ export class SCMod {
         }
         if(scopes.includes('triggers') && this.triggers){
 
-            output[`Triggers`]  = `<?xml version="1.0" encoding="utf-8"?>\n<TriggerData>\n${this.triggers}\n</TriggerData>`
+            // output[`Triggers`]  = `<?xml version="1.0" encoding="utf-8"?>\n<TriggerData>\n${this.triggers}\n</TriggerData>`
 
             //todo parsed triggers
-            // let libraries = this.triggers.map(lib => optimiseForXML(lib, LibrarySchema))
-            // output[`Triggers`] = formatData({TriggerData: {Library: libraries}}, format === 'auto' ? 'xml' : format)
+            let libraries = this.triggers.map(lib => optimiseForXML(lib, LibrarySchema))
+            output[`Triggers`] = formatData({TriggerData: {Library: libraries}}, format === 'auto' ? 'xml' : format)
 
             if(scopes.includes('binary') && format === 'auto'){
                 fs.copyFileSync(path.resolve(__dirname ,'versions/Triggers.version'), destpath + `Triggers.version`)
             }
         }
+
         for (let file in this.files) {
             if(scopes.includes(this.files[file].scope)){
 
@@ -656,6 +681,10 @@ export class SCMod {
         if(entity.__picked){
             return
         }
+        if(!this.pickedCounter){
+            this.pickedCounter  = 0
+        }
+        this.pickedCounter++
         Object.defineProperty(entity, '__picked',{ configurable:true, writable: true,enumerable: false,value: true })
 
         // console.log(entity.class +" " + entity.id)
@@ -672,8 +701,11 @@ export class SCMod {
                 this.pickEntity(linkedEntity)
             }
         }
+
     }
     pick(include = {}, {exclude = {}} = {}){
+        console.log("Picking entities")
+        this.pickedCounter = 0
         SCGame.pickIgnoreObjects = {}
         deep(SCGame.pickIgnoreObjects,SCGame.defaultPickIgnoreObjects)
         deep(SCGame.pickIgnoreObjects,exclude)
@@ -683,21 +715,32 @@ export class SCMod {
                 let entity = this.cache[namespace][link]
                 if(!entity)continue;
                 entity.addReferences({})
+
                 this.pickEntity(entity)
+
             }
         }
+        console.log(`${this.pickedCounter} picked`)
     }
     pickActors(){
+        console.log("Picking actors")
+        this.pickedCounter = 0
         for (let actor of this.catalogs.actor){
             let termRelations = actor.$$relations.filter(rel => rel.type === "terms")
             let used = false
             for(let relation of termRelations){
+                if(relation.namespace === 'validator'){
+                    //do not pick actors by used validators
+                    continue
+                }
                 let linkedEntity = this.cache[relation.namespace][relation.link]
                 if(linkedEntity?.$$references){
-                    // linkedEntity.addReferences(relation.path)
+                    if(actor.id === 'FlashRescueSelectionProtossHuge'){
+                        console.log(actor)
+                    }
                     used = true;
                 }
-                if(linkedEntity.$$namespace === 'actor'){
+                if(linkedEntity?.$$namespace === 'actor'){
                     this.pickEntity(linkedEntity)
                 }
             }
@@ -706,6 +749,7 @@ export class SCMod {
                 this.pickEntity(actor)
             }
         }
+        console.log(`${this.pickedCounter} picked`)
     }
     createActorsForPickedUnits(){
 
@@ -780,6 +824,8 @@ export class SCMod {
         this.entities = this.entities.filter(item => !item.__core)
     }
     filter(){
+
+        let before = this.entities.length
         for(let catalog in this.catalogs){
             for(let entity of this.catalogs[catalog]){
                 if(!entity.$$references){
@@ -796,6 +842,9 @@ export class SCMod {
             }
         }
         this.entities = this.entities.filter(item => item.$$references)
+
+        let after = this.entities.length
+        console.log(`Filtering: ${before} > ${after}`)
     }
     pickAll(){
         SCGame.pickIgnoreObjects = {}
@@ -843,13 +892,39 @@ export class SCMod {
         }
     }
 
+    parseTriggers(){
+        for(let libIndex in this.triggers){
+            let result = relations(this,this.triggers[libIndex], LibrarySchema,['triggers',libIndex],SCGame.pickIgnoreObjects)
+
+
+            for(let relation of result){
+                let linkedEntity = this.cache[relation.namespace][relation.link]
+                if(!linkedEntity)continue
+                if(linkedEntity.$$references){
+                    linkedEntity.addReferences(relation)
+                }
+                else{
+                    linkedEntity.addReferences(relation)
+                    this.pickEntity(linkedEntity)
+                }
+            }
+        }
+
+
+
+
+    }
     //prefix all filtered entities with 'Legacy' word. where '*' is an old entity id
     renameEntities(mask){
+        console.log(`Renaming entities`)
+
+
+        this.parseTriggers()
         this.pickAll()
         this.resolveAssets()
         this.resolveText(mask)
 
-        // this.cache.actor.Overseer.On
+        let counter = 0
 
         for(let catalog in this.catalogs) {
             // if(catalog === 'actor')continue
@@ -863,7 +938,7 @@ export class SCMod {
                 if (entity.$$references) {
                     for (let reference of entity.$$references) {
                         let refpath = reference.path
-                        if(refpath === "") continue //nothing to rename
+                        if(!refpath) continue //nothing to rename
                         let _path = refpath.split(".")
                         let value,valueObject,valueProperty, valueEntity, newvalue
                         let referenceEntity = reference.target ;//this.cache[_path[0]][_path[1]]
@@ -1023,6 +1098,8 @@ export class SCMod {
                         }
 
                         valueObject[valueProperty] = newvalue
+
+                        counter++
                     }
                 }
             }
@@ -1032,8 +1109,10 @@ export class SCMod {
             delete entity.__resolved
             delete entity.__data
         }
+
+        console.log(`${counter} references modified`)
     }
-    renameTags(mask){
+    renameTags(){
         if(this.catalogs.scorevalue){
             for(let scorevalue of this.catalogs.scorevalue){
                 if(scorevalue.UniqueTag){
@@ -1112,17 +1191,6 @@ export class SCMod {
             this.entities.push(entityInstance)
             return entityInstance
         }
-    }
-
-    getUnknownDataScheme(){
-
-        let unk = getUnknowns()
-        if(Object.keys(unk).length){
-            console.log('unknown values exists')
-            let sch = getDataScheme(unk, mod)
-            return sch
-        }
-        return null
     }
 }
 
