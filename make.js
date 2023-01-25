@@ -1,68 +1,49 @@
 import {SCMod} from "./src/sc-mod.js";
-import {getDebugInfo} from "./src/operations.js";
-
-let prefix = ''
-let output = ''
-let input = []
-let test = false
-
-let mode = process.argv[2]?.toLowerCase() || 'Coop';
-
-let shortcuts = {
-    Test: ['t'],
-    Broodwar: ['b','bw'],
-    Liberty: ['l','wol'],
-    Swarm: ['s','hots'],
-    Void: ['v','lotv']
-}
-if(mode){
-    for(let m in shortcuts){
-        if(shortcuts[m].includes(mode)){
-            mode = m;
-            break;
-        }
-    }
-}
-console.log(`Active Config: ${mode}`)
 
 let mod = new SCMod()
 mod.directory('../../Mods/all-races-mods')
-await mod.read('Core - Core')
-mod.saveCore()
 
-switch(mode){
-    case 'Liberty': {
-        input = [
+switch(process.argv[2]?.toLowerCase()){
+    case 'liberty': {
+        await mod.readLibrary('Core')
+        await mod.read(
             'Core - Liberty',
             'Core - LibertyMulti'
-        ]
-        prefix = 'WOL'
-        output = 'MP - Liberty'
+        )
+        mod.pick({race: ["Terr","Zerg","Prot"]})
+        mod.renameEntities('WOL*');
+        await mod.write('MP - Liberty.SC2Mod')
         break;
     }
-    case 'Swarm': {
-        input = [
+    case 'swarm': {
+        await mod.readLibrary('Core')
+        await mod.read(
             'Core - Liberty',
             'Core - Swarm',
             'Core - SwarmMulti'
-        ]
-        prefix = 'HOTS'
-        output = 'MP - Swarm'
+        )
+        mod.pick({race: ["Terr","Zerg","Prot"]})
+        mod.renameEntities('HOTS*');
+        await mod.write('MP - Swarm.SC2Mod')
         break;
     }
-    case 'Void': {
-        input = [
+    default:
+    case 'void': {
+        await mod.readLibrary('Core')
+        await mod.read(
             'Core - Liberty',
             'Core - Swarm',
             'Core - Void',
             'Core - VoidMulti'
-        ]
-        prefix = 'LOTV'
-        output = 'MP - Void'
+        )
+        mod.pick({race: ["Terr","Zerg","Prot"]})
+        mod.renameEntities('LOTV*');
+        await mod.write('MP - Void.SC2Mod')
         break;
     }
-    case 'Broodwar': {
-        input = [
+    case 'broodwar': {
+        await mod.readLibrary('Core')
+        await mod.read(
             'Core - Liberty',
             'Core - LibertyCampaign',
             'Core - Swarm',
@@ -70,32 +51,39 @@ switch(mode){
             'Core - Void',
             'Core - VoidCampaign',
             'Core - Nova',
-            '>../../Mods/all-races-mods',
             'BroodWar'
-        ]
-        prefix = 'BW'
-        output = 'MP - Broodwar'
+        )
+        mod.renameEntities('BW*');
+        await mod.write('MP - Broodwar.SC2Mod')
         break;
     }
-    case 'Coop': {
-        input = [
+    case 'coop': {
+        await mod.readLibrary('Core')
+        await mod.read(
             'Core - Liberty',
             'Core - LibertyCampaign',
             'Core - Swarm',
             'Core - SwarmCampaign',
             'Core - Void',
             'Core - VoidCampaign',
-            '>../../Mods/all-races-mods',
             'Campaign'
-        ]
-        prefix = 'ARC'
-        output = 'MP - Coop'
+        )
+        mod.renameEntities('ARC*');
+        await mod.write('MP - Coop.SC2Mod')
         break;
     }
-    case 'ARC': {
-        input = [
+    case 'arc': {
+        await mod.read(
+            'Assets - Scion',
+            'Assets - UED',
+            'Assets - Hybrids',
+            'Assets - Dragons',
+            'Assets - Talon',
+            'Assets - UPL',
+            'Assets - UPLCampaign',
+            'Assets - COOP',
             'Core - VoidMulti',
-            'Factions - Campaign',
+            'Campaign',
             'Factions - Scion',
             'Factions - UED',
             'Factions - Hybrids',
@@ -103,13 +91,13 @@ switch(mode){
             'Factions - UPL',
             'Factions - UPLCampaign',
             'Factions - UPLBalance',
-            'Factions - LIB'
-        ]
-        output = 'Compiled - ARM'
+            'LIB'
+        )
+        await mod.write('../../Mods/ARM.SC2Mod')
         break;
     }
-    case 'ARM': {
-        input = [
+    case 'arm': {
+        await mod.read(
             'Factions - Scion',
             'Factions - UED',
             'Factions - Hybrids',
@@ -117,27 +105,28 @@ switch(mode){
             'Factions - UPL',
             'Factions - UPLBalance',
             'LIB',
-            'PVP',
-        ]
-        output = 'Compiled - PVP'
+            'PVP'
+        )
+        await mod.write('../../Mods/PVP.SC2Mod')
         break;
     }
-    case 'TEST': {
-        input = [
-            '1.Liberty',
-            '2.LibertyCampaign',
-            '3.LibertyMulti',
-            '4.Swarm',
-            '5.SwarmCampaign',
-            '6.SwarmMulti',
-            '7.Void',
-            '8.VoidCampaign',
-            '9.VoidMulti',
-            '10.Nova',
-            '11.NovaCampaign',
-            '12.Warcraft',
-            '13.Warcraft Coop',
-            '>../../Mods/all-races-mods',
+    case 'test': {
+        await mod.readLibrary('Core')
+        await mod.read(
+            // 'Core',
+            'Core - Liberty',
+            'Core - LibertyCampaign',
+            'Core - LibertyMulti',
+            'Core - Swarm',
+            'Core - SwarmCampaign',
+            'Core - SwarmMulti',
+            'Core - Void',
+            'Core - VoidCampaign',
+            'Core - VoidMulti',
+            'Core - Nova',
+            'Core - NovaCampaign',
+            'Core - Warcraft',
+            'Core - Warcraft Coop',
             'Campaign',
             'BroodWar',
             'Campaigns - Ambivalence',
@@ -172,45 +161,9 @@ switch(mode){
             'COOP - ARC',
             'COOP - Nexus',
             'COOP - TychusReworked',
-            'COOP - WAR3'
-        ]
-        output = 'Compiiled - TEST'
+            'COOP - WAR3',
+            'LIB')
+        await mod.write('../../Mods/TEST.SC2Mod')
         break;
     }
-}
-
-await mod.read(...input)
-
-// let info = getDebugInfo(mod)
-// function x(obj){
-//     for(let i in  obj){
-//         if(obj[i].constructor === String){
-//             if(obj[i] === 'unknown' || obj[i] === 'word' || obj[i] === 'link'){
-//               delete obj[i]
-//             }
-//         }
-//         else{
-//             x(obj[i])
-//             if(Object.keys(obj[i]).length === 0){
-//                 delete obj[i]
-//             }
-//         }
-//     }
-// }
-// x(info.scheme)
-// info
-
-if(!test){
-    if(prefix){
-        mod.pick({race: ["Terr","Zerg","Prot"]})
-        mod.pickActors()
-        mod.pickEntity(mod.cache.actor?.['SYSTEM_ActorConfig'])
-        mod.pickTriggers()
-        mod.filter()
-        mod.renameEntities(prefix + "*");
-        mod.renameTags();
-        mod.removeCore()
-    }
-
-    await mod.write('./../../Mods/all-races-mods/'+ output + '.SC2Mod')
 }

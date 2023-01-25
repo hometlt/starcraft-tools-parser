@@ -133,14 +133,26 @@ export class SCEntity {
         // this.resolveTokens()
         deepReplaceMatch(this.__resolved, val => val && val.constructor === String && val.includes("##"), null, ({val, obj, prop, id, path}) => {
             obj[prop] = val.replace(/##(\w+)##/g,(_,tokenID) =>  {
-                if(this.__resolved[tokenID]){
-                    return this.__resolved[tokenID]
+
+                let lookup = this
+                while(lookup){
+                    if(lookup.default || !lookup.$parent || lookup.$parent.default ){
+                        if(lookup[tokenID] !== undefined ){
+                            return lookup[tokenID]
+                        }
+                    }
+                    lookup = lookup.$parent
                 }
-                if(this.__resolved[tokenID] === undefined){
-                    // console.log("incorrect token value",this.class + "#" + this.id + ": "+  tokenID)
-                    return _;
-                }
-                return this[tokenID]
+                return _
+
+                // if(this.__resolved[tokenID]){
+                //     return this.__resolved[tokenID]
+                // }
+                // if(this.__resolved[tokenID] === undefined){
+                //     // console.log("incorrect token value",this.class + "#" + this.id + ": "+  tokenID)
+                //     return _;
+                // }
+                // return this[tokenID]
             })
         })
         return this.__resolved;

@@ -19,7 +19,7 @@ import {
     stringValues,
     eventEntityType,
     eventConditionEntityType,
-    resolveSchemaType, isNumeric, matchType, _addRelation, getDebugInfo, relations
+    resolveSchemaType, isNumeric, matchType, _addRelation, getDebugInfo, relations, getAllFiles
 } from "./operations.js";
 import {LibrarySchema} from "./sc-schema.js";
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
@@ -36,9 +36,16 @@ export class SCMod {
 
         mod && this.read(mod)
     }
+    debug(){
+        getDebugInfo(this)
+    }
     directory(url){
         if(!url.endsWith('/'))url += '/'
         this._directory = url
+    }
+    async readLibrary (...input) {
+        await this.read(...input)
+        this.saveCore()
     }
     async read (...input) {
         for (let item of input) {
@@ -54,7 +61,9 @@ export class SCMod {
                         }
                         data = await this.getModData(item)
                     }
-                    this.apply(data)
+                    if(data){
+                        this.apply(data)
+                    }
                 }
             }
         }
@@ -65,6 +74,8 @@ export class SCMod {
         let data;
         data = {};
         data.path = modpath
+
+        console.log(`Reading: ${data.path}`)
 
         //supports json, xml, yaml, sc2mod
         let format = path.extname(input).substring(1).toUpperCase()
@@ -82,7 +93,7 @@ export class SCMod {
                 }
         }
         if(!fs.existsSync(input)) {
-            console.log(`Not exist: ${path}`)
+            console.warn(`Not exist!`)
             return
         }
 
@@ -179,6 +190,32 @@ export class SCMod {
             }
             ////////     Files     /////////////////////////////////////////////////////////////////////////////////////
             {
+                let files = {}
+
+                let _dirs = [
+                    'Assets',
+                    'Base.SC2Assets',
+                    'TextureReduction'
+                ]
+                for(let _dir of _dirs){
+                    if(fs.existsSync(input + _dir)){
+                        let files2 = getAllFiles(input + _dir)
+
+                        for(let file of files2){
+                            files[_dir + '/' + file] = {
+                                path: (input + _dir + '/' + file),
+                                scope: 'media'
+                            }
+                        }
+
+                    }
+                }
+
+
+
+                 //   .forEach(file => files[file] = input + file)//.filter(file => file.endsWith("m3"))
+
+
                 // this._getAllFiles(input).forEach(file => files[file] = input + file)//.filter(file => file.endsWith("m3"))
                 // for(let m3File of files){
                 //     let raw = fs.readFileSync(m3File, {encoding: 'utf-8'})
@@ -186,9 +223,6 @@ export class SCMod {
                 //     console.log(indexes)
                 //
                 // }
-                let files = {}
-                let galaxyFiles = fs.readdirSync(input + "Base.SC2Data").filter(file => file.endsWith(".galaxy"))
-
                 if(data.layouts){
                     for (let include of data.layouts) {
                         files["Base.SC2Data/" + include.$.path] = {
@@ -198,10 +232,13 @@ export class SCMod {
                     }
                 }
 
-                for (let file of galaxyFiles) {
-                    files["Base.SC2Data/" + file] = {
-                        path: (input + "Base.SC2Data/" + file),
-                        scope: 'triggers'
+                if(fs.existsSync(input + "Base.SC2Data")) {
+                    let galaxyFiles = fs.readdirSync(input + "Base.SC2Data").filter(file => file.endsWith(".galaxy"))
+                    for (let file of galaxyFiles) {
+                        files["Base.SC2Data/" + file] = {
+                            path: (input + "Base.SC2Data/" + file),
+                            scope: 'triggers'
+                        }
                     }
                 }
 
@@ -290,7 +327,9 @@ export class SCMod {
             }
         }
         // console.timeEnd(`Reading: ${data.path}`)
-        console.log(`Reading: ${data.path} (${data.entities.length} Entities)`)
+        if(data.entities){
+            console.log(`${data.entities.length} Entities`)
+        }
         return data
     }
     apply (data){
@@ -373,15 +412,20 @@ export class SCMod {
      * @param scopes { ['components','documentinfo', 'assets', 'triggers', 'locales', 'styles', 'layouts', 'data'] | 'all' } which mod components to save
      * @returns {Promise<SCMod>}
      */
-    async write (destpath,{catalogs= 'all',resolve = false, format = 'auto', structure = 'auto', scopes = 'all'} = {}){
+    async write (destpath,{catalogs= 'all',resolve = false, format = 'auto', structure = 'auto', scopes = 'all',core = false} = {}){
 
 
+        if(!'/'.includes(destpath)){
+            destpath = this._directory + destpath
+        }
         destpath = path.resolve(destpath)
+
         if(scopes.constructor === String){
             scopes = [scopes]
         }
         if(scopes.includes('all')){
             scopes = [
+                'media',
                 'assets',
                 'triggers',
                 'locales',
@@ -449,20 +493,20 @@ export class SCMod {
             output[`ComponentList.${extension}`] = formatData({Components: {DataComponent: components}}, formatting)
         }
         if(scopes.includes('documentinfo')){
-            // let deps = []
+            let deps = []
             let voidCampaign = "bnet:Void (Campaign)/0.0/999,file:Campaigns/Void.SC2Campaign"
             let voidMod = "bnet:Void (Mod)/0.0/999,file:Mods/Void.SC2Mod"
 
             let includeCampaign = false;
             let includeVoid = false;
-            // if(this.dependencies?.includes(voidCampaign)){
-            //     deps.push({_: voidCampaign})
-            //     includeCampaign = true;
-            // }
-            // else if(this.dependencies?.includes(voidMod)){
-            //     deps.push({_: voidMod})
-            //     includeVoid = true;
-            // }
+            if(this.dependencies?.includes(voidCampaign)){
+                deps.push({_: voidCampaign})
+                includeCampaign = true;
+            }
+            else if(this.dependencies?.includes(voidMod)){
+                deps.push({_: voidMod})
+                includeVoid = true;
+            }
 
 
 
@@ -476,11 +520,11 @@ export class SCMod {
                 }
             }
             if(this.dependencies?.length){
-                Object.assign(info,{
+                Object.assign(info.DocInfo,{
                     Dependencies: {
-                        Value: this.dependencies.map(dep => ({_: dep})),
+                        // Value: this.dependencies.map(dep => ({_: dep})),
                         // Value: [{_: 'bnet:Void (Mod)/0.0/999,file:Mods/Void.SC2Mod'}]
-                        // Value: [{_: deps}]
+                        Value: deps
                     }
                 })
             }
@@ -557,6 +601,11 @@ export class SCMod {
                     let outputCatalogData
 
                     let entities = data[cat].filter(entity => !entity.$overriden)
+
+                    if(!core){
+                        entities = entities.filter(entity => !entity.__core)
+                    }
+
                     if(formatting === "xml") {
                         // let catalogXMLObjectData = data.map(entity => entity.getXMLObject())
                         // output[`Base.SC2Data/GameData/${capitalize(cat)}Data.xml`] = formatData({Catalog: catalogXMLObjectData}, 'xml')
@@ -588,7 +637,66 @@ export class SCMod {
 
             //todo parsed triggers
             let libraries = this.triggers.map(lib => optimiseForXML(lib, LibrarySchema))
-            output[`Triggers`] = formatData({TriggerData: {Library: libraries}}, format === 'auto' ? 'xml' : format)
+            let triggersString = formatData({TriggerData: {Library: libraries}}, format === 'auto' ? 'xml' : format)
+
+            function fixTriggers(text){
+                let chunks = []
+
+                let tagBodyStart = -1, tagBodyEnd = -1;
+                let openerTag = false
+                let closingTag = false
+                let tagBody = false
+                let lastChunkEnd = 0
+                for(let i =0 ; i < text.length; i++){
+                    if(text[i] === '<'){
+                        if(text[i+1] === '/'){
+                            closingTag = true
+                            tagBodyEnd = i
+                            if(tagBodyStart !== -1 && tagBodyStart !== tagBodyEnd){
+                                let original = text.substring(tagBodyStart, tagBodyEnd)
+                                let replacement = original
+                                    .replace(/&#xD;/g,'')
+                                    .replace(/"/g,'&quot;')
+                                    .replace(/'/g,'&apos;')
+
+                                if(replacement !== original){
+                                    // let l1 = tagBodyEnd - tagBodyStart
+                                    // let l2 = replacement.length
+
+                                    chunks.push(text.substring(lastChunkEnd,tagBodyStart),replacement)
+                                    lastChunkEnd = i
+                                    // text = text.substring(0,tagBodyStart) + replacement + text.substring(tagBodyEnd)
+                                    // i+= l2 - l1
+                                }
+                            }
+                            tagBodyStart = -1
+                            tagBodyEnd = -1
+                        }
+                        else{
+                            openerTag = true
+                            tagBodyStart = -1
+                            tagBodyEnd = -1
+                        }
+                    }
+                    else if(text[i] === '>'){
+                        if(openerTag){
+                            if(text[i -1] !== '/'){
+                                tagBody = true
+                                tagBodyStart = i + 1
+                            }
+                            openerTag = false
+                        }
+                        else{
+                            closingTag = false
+                        }
+                    }
+                }
+                chunks.push(text.substring(lastChunkEnd))
+                return chunks.join("")
+            }
+
+
+            output[`Triggers`] = fixTriggers(triggersString)
 
             if(scopes.includes('binary') && format === 'auto'){
                 fs.copyFileSync(path.resolve(__dirname ,'versions/Triggers.version'), destpath + `Triggers.version`)
@@ -599,9 +707,20 @@ export class SCMod {
             if(scopes.includes(this.files[file].scope)){
 
                 let foutput = destpath + file.replace(/\\/g, "\/")
-                fs.mkdirSync(foutput.substring(0, foutput.lastIndexOf("/")), {recursive: true});
-
                 let finput = this.files[file].path.replace(/\\/g, "\/")
+
+                if(this.files[file].scope === 'media'){
+                    if(fs.existsSync(foutput)){
+                        let stats1 = fs.statSync(finput)
+                        let stats2 = fs.statSync(foutput)
+                        if(stats1.size === stats2.size){
+                            continue;
+                        }
+                    }
+
+                }
+
+                fs.mkdirSync(foutput.substring(0, foutput.lastIndexOf("/")), {recursive: true});
                 fs.copyFileSync(finput, foutput)
             }
         }
@@ -611,6 +730,8 @@ export class SCMod {
             fs.mkdirSync(foutput.substring(0, foutput.lastIndexOf("/")), {recursive: true});
             fs.writeFileSync(foutput, output[file])
         }
+
+        this.debug()
 
         return this
 
@@ -630,18 +751,30 @@ export class SCMod {
                 return _
             })
 
+
+
+
+
+
+
+
+
+
         return new Promise((resolve, reject) => {
             let parser
             if(ordered){
                 parser = new xml2js.Parser({
-                    trim: true,
+                    // trim: true,
                     explicitArray: true,
                     explicitChildren: true,
                     preserveChildrenOrder: true
                 });
             }
             else{
-                parser = new xml2js.Parser({trim: true, explicitArray: true});
+                parser = new xml2js.Parser({
+                    // trim: true,
+                    explicitArray: true
+                });
             }
 
             parser.parseString(raw, function (err, result) {
@@ -690,7 +823,7 @@ export class SCMod {
 
         // console.log(entity.class +" " + entity.id)
         for(let relation of entity.$$relations){
-            let linkedEntity = this.cache[relation.namespace][relation.link]
+            let linkedEntity = this.cache[relation.namespace]?.[relation.link]
             // let linkedEntity = relation.target
 
             if(!linkedEntity)continue
@@ -711,21 +844,48 @@ export class SCMod {
         deep(SCGame.pickIgnoreObjects,SCGame.defaultPickIgnoreObjects)
         deep(SCGame.pickIgnoreObjects,exclude)
 
+        this.pickTriggers()
+
         for(let namespace in include){
             for(let link of include[namespace]){
                 let entity = this.cache[namespace][link]
                 if(!entity)continue;
                 entity.addReferences({})
-
                 this.pickEntity(entity)
-
+                if(namespace === 'race'){
+                    this.pickEntity(this.cache.soundtrack?.[`Music_${link}Low`])
+                }
             }
+            if(namespace === 'race'){
+
+                this.pickMisc(include[namespace])
+            }
+
         }
+
+        this.pickActors()
+        this.pickEntity(this.cache.actor?.['SYSTEM_ActorConfig'])
+        this.filter()
+
         console.log(`${this.pickedCounter} picked`)
     }
+    pickMisc(races){
+        for(let category of ["cursor","alert","sound","soundtrack"]){
+            if(this.catalogs[category]){
+                for(let entity of this.catalogs[category]){
+                    let li = entity.id.lastIndexOf('_') +1
+                    if(li){
+                        let race = entity.id.substring(li);
+                        if(races.includes(race)) {
+                            this.pickEntity(entity)
+                            Object.defineProperty(entity, '__misc',{ configurable:true, writable: true,enumerable: false,value: true })
+                        }
+                    }
+                }
+            }
+        }
+    }
     pickActors(){
-        console.log("Picking actors")
-        this.pickedCounter = 0
         for (let actor of this.catalogs.actor){
             let termRelations = actor.$$relations.filter(rel => rel.type === "terms")
             let used = false
@@ -736,9 +896,6 @@ export class SCMod {
                 }
                 let linkedEntity = this.cache[relation.namespace][relation.link]
                 if(linkedEntity?.$$references){
-                    if(actor.id === 'FlashRescueSelectionProtossHuge'){
-                        console.log(actor)
-                    }
                     used = true;
                 }
                 if(linkedEntity?.$$namespace === 'actor'){
@@ -750,61 +907,11 @@ export class SCMod {
                 this.pickEntity(actor)
             }
         }
-        console.log(`${this.pickedCounter} picked`)
-    }
-    createActorsForPickedUnits(){
-
-        let copiedEvents = []
-
-        for (let actor of this.catalogs.actor){
-            let createdEntity;
-            if(actor.$created)continue;
-            if(actor.$overriden)continue;
-
-            delete actor.$$references
-
-            let termRelations = actor.$$relations.filter(rel => rel.type === "terms")
-            for(let relation of termRelations){
-                let linkedEntity = this.cache[relation.namespace][relation.link]
-                if(!linkedEntity || !relation.path)continue
-                if(linkedEntity?.$$references){
-                    let _path = relation.path.split(".")
-
-                    let _ref = linkedEntity.$$references.find(ref => ref.path = relation.path)
-                    if(_ref){
-                        linkedEntity.$$references.splice(linkedEntity.$$references.indexOf(_ref),1)
-                    }
-
-                    if(!createdEntity){
-                        createdEntity = this.makeEntity({
-                            id: actor.id,
-                            class: actor.class,
-                            $class: actor.$class
-                        })
-                        Object.defineProperty(createdEntity, '$created',{ configurable:true, writable: true,enumerable: false,value: true })
-                        createdEntity.addReferences({})
-                    }
-                    let property = _path[2]
-
-                    if(!createdEntity[property])createdEntity[property] = []
-                    let event = actor.$$resolved[property][_path[3]]
-                    if(copiedEvents.includes(event)) continue;
-                    copiedEvents.push(event)
-                    _path[3] = createdEntity[property].length
-                    createdEntity[property].push({...event})
-                    linkedEntity.addReferences(_path.join("."))
-                }
-            }
-
-
-        }
     }
     saveCore(){
-
         for(let entity of this.entities){
             Object.defineProperty(entity, '__core',{ configurable:true, writable: true,enumerable: false,value: true })
         }
-
     }
     removeCore(){
         for(let catalog in this.catalogs){
@@ -871,35 +978,62 @@ export class SCMod {
                 entity.resolveText(mask,picked)
             }
         }
+        let races = this.cache.race && Object.keys(this.cache.race)
         for(let locale in this.locales){
             for(let localeCat in this.locales[locale]){
                 //Do not need to rename trigger Strings
                 if(localeCat === 'TriggerStrings'){
                     continue
                 }
-                for(let localeCatString in this.locales[locale][localeCat]){
+                for(let asset in this.locales[locale][localeCat]){
 
-                    let parts = localeCatString.split("/")
-                    parts[parts.length - 1]  = mask.replace("*", parts[parts.length - 1])
-                    this.locales[locale][localeCat][parts.join("/")] =  this.locales[locale][localeCat][localeCatString]
+                    let newAssetName;
 
-                    delete this.locales[locale][localeCat][localeCatString]
+                    let li = races && asset.lastIndexOf('_') +1
+                    let race = li && asset.substring(li);
+                    if(race && races.includes(race)) {
+                        newAssetName = asset.substring(0, li) + mask.replace("*", race)
+                    }
+                    else{
+                        let parts = asset.split("/")
+                        parts[parts.length - 1]  = mask.replace("*", parts[parts.length - 1])
+                        newAssetName =  parts.join("/")
+                    }
+                    this.locales[locale][localeCat][newAssetName] =  this.locales[locale][localeCat][asset]
 
-                    // // if(picked.includes(localeCatString)){
-                    // this.locales[locale][localeCat][localeCatString + 'Legacy'] =
-                    // // }
+                    delete this.locales[locale][localeCat][asset]
+
+                }
+            }
+        }
+
+        for(let asset in this.assets){
+            let li = asset.lastIndexOf('_') +1
+            if(li){
+                let race = asset.substring(li);
+                if(races.includes(race)) {
+
+                    let newAssetName = asset.substring(0, li) + mask.replace("*", race)
+                    this.assets[newAssetName] = this.assets[asset]
+                    delete this.assets[asset]
                 }
             }
         }
     }
 
     pickTriggers(){
+        console.log("Picking entities used by Triggers")
+        this.pickedCounter = 0
+        this.pickedCounter = 0
+        SCGame.pickIgnoreObjects = {}
+        deep(SCGame.pickIgnoreObjects,SCGame.defaultPickIgnoreObjects)
+
         for(let libIndex in this.triggers){
             let result = relations(this.triggers[libIndex],this.triggers[libIndex], LibrarySchema,['library',libIndex],SCGame.pickIgnoreObjects)
 
 
             for(let relation of result){
-                let linkedEntity = this.cache[relation.namespace][relation.link]
+                let linkedEntity = this.cache[relation.namespace]?.[relation.link]
                 if(!linkedEntity)continue
                 if(linkedEntity.$$references){
                     linkedEntity.addReferences(relation)
@@ -913,13 +1047,18 @@ export class SCMod {
 
 
 
-
     }
     //prefix all filtered entities with 'Legacy' word. where '*' is an old entity id
-    renameEntities(mask){
+    /**
+     *
+     * @param mask
+     * @param tags rename uniqueTags
+     */
+    renameEntities(mask,{tags = true} = {}){
         console.log(`Renaming entities`)
 
 
+        this.pickTriggers()
         this.pickAll()
         this.resolveAssets()
         this.resolveText(mask)
@@ -934,7 +1073,18 @@ export class SCMod {
                 }
 
                 let oldName = entity.id
-                entity.id = mask.replace("*", oldName)
+
+                // For Race-Specific stuff
+                if(entity.__misc){
+                    let li = entity.id.lastIndexOf('_') +1
+                    if(li) {
+                        let race = entity.id.substring(li);
+                        entity.id = entity.id.substring(0, li) + mask.replace("*", race)
+                    }
+                }else{
+                    entity.id = mask.replace("*", oldName)
+                }
+
                 if (entity.$$references) {
                     for (let reference of entity.$$references) {
                         let refpath = reference.path
@@ -1004,17 +1154,24 @@ export class SCMod {
                             propertySchema = propertySchema.value || propertySchema
                         }
 
-
+                        let namespace
                         switch(propertySchema){
                             case "terms": {
                                 let [event,...conditions] = value.split(";").map(term => term.trim())
                                 let eventParts = event.split(".")
-                                let namespace = eventEntityType(eventParts[0])
+                                namespace = eventEntityType(eventParts[0])
 
                                 if(namespace === entity.$$namespace && eventParts[1] === oldName){
                                     eventParts[1] = entity.id
                                     event = eventParts.join(".")
                                 }
+
+                                // namespace = eventEntityType2(eventParts[0])
+                                // if(namespace === entity.$$namespace && eventParts[2] === oldName){
+                                //     eventParts[2] = entity.id
+                                //     event = eventParts.join(".")
+                                // }
+
                                 for(let index =0; index < conditions.length; index++){
                                     let condition = conditions[index]
                                     let eventParts = condition.split(" ").map(term => term.trim())
@@ -1035,6 +1192,22 @@ export class SCMod {
                                 }
                                 else{
                                     newvalue = entity.id
+                                }
+                                break;
+                            }
+                            case "subject": {
+                                if(value.startsWith(':')){
+
+                                    let [subjjNamespace,subjLink] = value.substring(2).split(".")
+                                    newvalue= `::${subjjNamespace}.${entity.id}`
+                                }
+                                else{
+                                    if(value === oldName){
+                                        newvalue = entity.id
+                                    }
+                                    else{
+                                        console.log("#")
+                                    }
                                 }
                                 break;
                             }
@@ -1079,6 +1252,14 @@ export class SCMod {
                                         newvalue = parts.join("")
                                         break;
                                     }
+                                    case "RefSetFromMsg": {
+                                        let _val = value.split(" ")
+
+                                        let [namespace,link] = _val[1].substring(2).split(".")
+                                        _val[1] = `::${namespace}.${entity.id}`
+                                        newvalue = _val.join(" ")
+                                        break;
+                                    }
                                     case "ModelSwap": {
                                         eventParts[1] = entity.id
                                         newvalue = eventParts.join(" ")
@@ -1092,9 +1273,10 @@ export class SCMod {
                                         newvalue = eventParts.join(" ")
                                         break;
                                     }
+                                    case "ModelMaterialApply":
+                                    case "ModelMaterialRemove":
                                     case "Create":
                                     case "CreateCopy":
-                                    case "ModelMaterialApply":
                                     {
                                         eventParts[1] = entity.id
                                         newvalue = eventParts.join(" ")
@@ -1116,12 +1298,17 @@ export class SCMod {
                         counter++
                     }
                 }
+
             }
         }
 
         for(let entity of this.entities) {
             delete entity.__resolved
             delete entity.__data
+        }
+
+        if(tags){
+            this.renameTags();
         }
 
         console.log(`${counter} references modified`)

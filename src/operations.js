@@ -4,6 +4,9 @@ import * as yaml from "js-yaml";
 import xml2js from "xml2js";
 
 
+// <On Terms="Upgrade.LOTVCycloneLockOnDamageUpgrade.Remove" Target="CycloneUpgradeBeamLeft" Send="Destroy"/>
+
+
 const unknowns = {}
 
 export const TYPES = {
@@ -230,7 +233,34 @@ export function getValuesType(values, mod, path){
     }
 }
 
+
+let TriggerTypes = {
+    color: 'ints',
+    cooldown: 'string',
+    charge: 'string',
+    userfield: 'string',
+    userinstance: 'string',
+    attributegame: 'string',
+    attributevalue: 'string',
+    convcharacter: 'string',
+    convline: 'string',
+    attributeplayer: 'string',
+    layoutframe: 'link',
+    layoutframerel: 'link',
+    actormsg: 'string',
+    catalogfieldpath: 'string',
+    filepath: 'file',
+    modelanim: 'string',
+    timeofday: 'string',
+    modelcamera: 'string',
+    unitfilter: 'filters',
+    fixed: 'real',
+}
+
 export function matchType(value, type, strict){
+    if(TriggerTypes[type]){
+        type = TriggerTypes[type]
+    }
     if(strict && type === 'file'){
         type = 'filestrict'
     }
@@ -507,7 +537,10 @@ export function _addRelation({target,namespace, link, patharray, type, result, i
 
 const entityType = {
     TurretEnable: "turret",
+    TurretTarget: "turret",
     Behavior: "behavior",
+    BehaviorLevel: "behavior",
+    AbilTrain: "abil",
     Abil: "abil",
     AbilTransport: "abil",
     WeaponStart: "weapon",
@@ -524,8 +557,12 @@ const entityType = {
 }
 
 const conditionEntityType = {
+    ValidatePlayer: "validator",
     // ModelSwap: "model",
+    AbilTrainProduced: "unit",
     ValidateUnit: "validator",
+    "!ValidateUnit": "validator",
+    AbilTransport: "unit",
     MorphFrom: "unit",
     MorphTo: "unit",
 }
@@ -538,21 +575,48 @@ export function eventEntityType(eventname){
     return entityType[eventname]
 }
 
+// const entityType2 = {
+//     Signal: "model",
+// }
+// export function eventEntityType2(eventname){
+//     return entityType2[eventname]
+// }
+
+// <On Terms="AbilTransport.LOTVMedivacTransport.PassengerKilled;AbilTransport ThorAP" Target="::actor.Thor" Send="Signal Dead"/>
+//  <On Terms="Signal.*.ThorTransit" Send="RefSetFromMsg ::actor.Thor ::Sender"/>
+//  <On Terms="Signal.*.SiegeTankLoadTransit" Send="RefSetFromMsg ::actor.SiegeTankSieged ::Sender"/>
+
 
 // let collect = []
 export function getDebugInfo(mod){
 
-    // if(Object.keys(unknowns).length){
-    //     console.log('unknown values exists')
-    //     let sch = getDataScheme(unk, mod)
-    //     return sch
-    // }
-    // return null
 
-    return {
-        unknowns: unknowns,
-        scheme: mod && getDataScheme(unknowns,mod)
+
+    function x(obj){
+        for(let i in  obj){
+            if(obj[i].constructor === String){
+                if(obj[i] === 'unknown' || obj[i] === 'word' || obj[i] === 'link'){
+                  delete obj[i]
+                }
+            }
+            else{
+                x(obj[i])
+                if(Object.keys(obj[i]).length === 0){
+                    delete obj[i]
+                }
+            }
+        }
     }
+
+    let schema
+    if(Object.keys(unknowns).length){
+        console.log('unknown values exists')
+
+        schema = mod && getDataScheme(unknowns,mod)
+        // x(schema)
+    }
+
+    return {unknowns, schema}
 }
 
 /**
@@ -624,8 +688,17 @@ export function _propertyRelations(target,value,type,result,patharray,ignorelist
                         _addRelation({target,namespace, link, patharray, type, result, ignorelist})
                         break;
                     }
-                    case "CreateCopy":
+                    case "RefSetFromMsg": {
+                        // Send="RefSetFromMsg ::actor.SiegeTankSieged ::Sender"/>
+                        let _val = value.split(" ")
+                        if(_val[1][0] !== ":"){console.log("RefSetFromMsg! starts with character")}
+                        let [namespace,link] = _val[1].substring(2).split(".")
+                        _addRelation({target,namespace, link, patharray, type, result, ignorelist})
+                        break;
+                    }
+                    case "ModelMaterialRemove":
                     case "ModelMaterialApply":
+                    case "CreateCopy":
                     case "Create": {
                         let link = args[1], namespace = 'actor'
                         _addRelation({target,namespace, link, patharray, type, result, ignorelist})
@@ -646,16 +719,27 @@ export function _propertyRelations(target,value,type,result,patharray,ignorelist
             let added = []
 
             let [event,...conditions] = value.split(";").map(term => term.trim())
-            let [entityType, entityName] = event.split(".")
-            namespace = eventEntityType(entityType)
-            link = entityName
+            let [entityType, entityName, argumentName] = event.split(".")
 
-            added.push(namespace+"."+link)
-            _addRelation({target,namespace, link, patharray,  type: 'terms', result, ignorelist})
+            namespace = eventEntityType(entityType)
+
+            if(namespace){
+                link = entityName
+                added.push(namespace+"."+link)
+                _addRelation({target,namespace, link, patharray,  type: 'terms', result, ignorelist})
+            }
+
+            // namespace = eventEntityType2(entityType)
+            // if(namespace) {
+            //     link = argumentName
+            //     added.push(namespace + "." + link)
+            //     _addRelation({target, namespace, link, patharray, type: 'terms', result, ignorelist})
+            // }
 
             for(let index =0; index < conditions.length; index++){
                 let condition = conditions[index]
                 let [entityType, entityName] = condition.split(" ").map(term => term.trim())
+
                 namespace = eventConditionEntityType(entityType)
                 link = entityName
 
@@ -678,6 +762,14 @@ export function _propertyRelations(target,value,type,result,patharray,ignorelist
                 type = 'actor'
                 link = value;
                 namespace = type
+            }
+            else if(value.startsWith(':')){
+                let [subjjNamespace,subjLink] = value.substring(2).split(".")
+                if(subjLink){
+                    namespace = subjjNamespace
+                    type = 'subject'
+                    link = subjLink
+                }
             }
             break;
         case 'reference':
@@ -924,11 +1016,7 @@ export function optimiseForXML(object,schema = object.$$schema, path = [object.c
 
     for(let property in object){
 
-
         let type = resolveSchemaType(schema,property,pathobject), value = object[property]
-
-
-
 
         let isToken =  /[a-z]/.test(property[0]) || schema['$'+property]
 
@@ -952,10 +1040,9 @@ export function optimiseForXML(object,schema = object.$$schema, path = [object.c
             object[property] = {}
         }
         else if(type.constructor === String) {
+            // value = value.replace(/"/g,'&quot;')
+
             if(property !== '_'){
-
-                value = value.replace('"','&quot;')
-
                 //['id', 'class', 'parent', 'default', 'index', 'removed']
                 if(isToken || (path.length > 1 && !isToken)) {
                     if (!object.$) object.$ = {}
@@ -1011,7 +1098,16 @@ export function optimiseForXML(object,schema = object.$$schema, path = [object.c
                             value[index] = {_: value[index], $: {}}
                         }
                         else{
-                            value[index] = {$: {value: value[index]}}
+                            if(type.constructor === String || type.value){
+                                value[index] = {$: {value: value[index]}}
+                            }
+                            else{
+                                //for Empty Tags
+                                if(value[index]){
+                                    console.log("value is not empty")
+                                }
+                                value[index] = {}
+                            }
                         }
                         //
                         // //force array indexes for requirementnode
@@ -1190,8 +1286,6 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
                 }
             }
 
-
-
             if(type === 'void'){
                 if(value !== ''){
                     console.warn(`Warn: #${pathobject[0].id}[${_path.join(".")}] = ${JSON.stringify(object[property])}`)
@@ -1201,7 +1295,7 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
 
             if(value && !matchType(value,type)){
                 if(type !== 'text'){
-                    console.warn(`Warn: #${pathobject[0].id}[${_path.join(".")}] = ${JSON.stringify(object[property])}`)
+                    console.warn(`Warn: #${pathobject[0].id || pathobject[0].Id}[${_path.join(".")}] = ${JSON.stringify(object[property])}`)
                 }
             }
         }
@@ -1312,8 +1406,6 @@ export function resolveAssets(object, schema = object.$$schema, path = []) {
     return result
 }
 
-
-
 export function optimizeJSONObject(object, schema = object.$$schema, path = [object.class]) {
     if(!schema){
         console.log("no schema",path)
@@ -1357,7 +1449,6 @@ export function optimizeJSONObject(object, schema = object.$$schema, path = [obj
         }
     }
 }
-
 
 export function filterTypedProperties(object, filter, schema = object.$$schema) {
     if(!schema){
@@ -1461,8 +1552,8 @@ export function formatData(data, format) {
     }
 }
 
-
 const CMBuilder2 = new xml2js.Builder({headless: true});
+
 export const buildXMLObject = CMBuilder2.buildObject.bind(CMBuilder2)
 
 export function capitalize(str){

@@ -77,7 +77,7 @@ export const ModificationSchema = {
   DetectFilters: 'filters',
   RadarFilters: 'filters',
   StateFlags: Flags,
-  SoundArray: '{string}',
+  SoundArray: '{sound}',
   VitalMaxDecreaseAffectsCurrentArray: '{int}',
   HealTakenMultiplier: Real,
   DamageTakenMaximum: '[int]',
@@ -201,7 +201,7 @@ export const ModificationSchema = {
 export const ConditionSchema ={
   Value: Int,
   User: [{
-    Instance:'tring',
+    Instance: 'string',
     Type:Word,
     Field:Word
   }],
@@ -2172,7 +2172,7 @@ export const StarcraftSchema = {
       DamageType: Flags,
       ModifyAmount: { AccumulatorArray: [{value:'accumulator'}],value:Real},
       ClampMinimum: Int,
-      Handled: Word,
+      Handled: 'effect',
       HandledValue: Word,
       DamageValue: Word,
       Minimum: Int,
@@ -2203,9 +2203,9 @@ export const StarcraftSchema = {
     Modification: ModificationSchema,
     DurationOverride: [{Duration:Real,ValidatorArray: '[validator]'}],
     BehaviorCategories: Flags,
-    Chance: [{index: Word, AccumulatorArray:[{value:'accumulator'}],value:Real}],
+    Chance: Real,
     ConjoinedFlags: Flags,
-    PowerLink: Word,
+    PowerLink: 'behavior',
     DeathType: Word,
     CliffLevelFlags: Flags,
     CarryResourceBehavior: 'behavior',
@@ -6517,6 +6517,12 @@ export const LibrarySchema = {
     Type: Word,
     Id: Word
   },
+  LibraryShareToMods: "void",
+  SharedLib: [
+    {
+      Id: Word
+    }
+  ],
   Element: [{
     $Type: Word,
     $Id: Word,
@@ -6533,14 +6539,14 @@ export const LibrarySchema = {
     PresetGenConstVar: 'void',
     ValueTypeInfo: {Value: 'int'},
     ValueContext: {Value: 'word'},
-    ExpressionCode: {Value: 'word'},
+    ExpressionCode: {Value: 'string'},
     Item: [{ Id: Word, Library: Word, Type: Word}],
     Label: { Id: Word, Library: Word, Type: Word},
-    Action: { Id: Word, Library: Word, Type: Word},
+    Action: [{ Id: Word, Library: Word, Type: Word}],
     FunctionDef: { Id: Word, Library: Word, Type: Word},
     ParameterDef: { Id: Word, Library: Word, Type: Word},
     Variable: [{ Id: Word, Library: Word, Type: Word}],
-    Array: { Id: Word, Library: Word, Type: Word},
+    Array: [{ Id: Word, Library: Word, Type: Word}],
     VariableType: {
       Type: {Value:'string'},
       Constant: 'void',
@@ -6551,23 +6557,49 @@ export const LibrarySchema = {
         Type: 'Variable',
         Library: 'NHBR',
         Id: '4B02FA25'
-      }]
+      }],
+      UserType: {
+        Value: Word
+      },
+      AssetType: {
+        Value: Word
+      },
+      TypeElement: {
+        Type: Word,
+        Library: Word,
+        Id: Word
+      },
+      EntryType: {
+        Value: Word
+      }
     },
     ValueElement: { Id: Word, Library: Word, Type: Word},
-    ValuePreset: { Id: Word, Library: Word, Type: Word},
-    Preset: { Id: Word, Library: Word, Type: Word},
+    ValuePreset: [{ Id: Word, Library: Word, Type: Word}],
+    Preset: [{ Id: Word, Library: Word, Type: Word}],
     Parameter: [{ Id: Word, Library: Word, Type: Word}],
-    ValueParam: { Id: Word, Library: Word, Type: Word},
-    ExpressionParam: { Id: Word, Library: Word, Type: Word},
+    ValueParam: [{ Id: Word, Library: Word, Type: Word}],
+    ExpressionParam: [{ Id: Word, Library: Word, Type: Word}],
     Default: { Id: Word, Library: Word, Type: Word},
     ParameterType: {
       Type:{Value:Word},
       TypeElement:{Type:Word,Library:Word,Id:Word},
       GameType : {Value:Word},
-      EntryType : {Value:Word}
+      EntryType : {Value:Word},
+      CmdTarget: {
+        Value: ">Point"
+      },
+      VariableType: {
+        Value: Word
+      },
+      UserType: {
+        Value: Word
+      },
+      AssetType: {
+        Value: Word
+      }
     },
     FunctionCall: [{ Id: Word, Library: Word, Type: Word}],
-    SubFunctionType: { Id: Word, Library: Word, Type: Word},
+    SubFunctionType: [{ Id: Word, Library: Word, Type: Word}],
     Event: [{ Id: Word, Library: Word, Type: Word}],
     Condition: [{ Id: Word, Library: Word, Type: Word}],
     ValueId:{ Id: Word},
@@ -6578,6 +6610,15 @@ export const LibrarySchema = {
       Type: {Value: Word},
       GameType: { Type: Word , Value: Word},
       TypeElement: { Id: Word, Library: Word, Type: Word},
+      AssetType: {
+        Value: Word
+      },
+      EntryType: {
+        Value: Word
+      },
+      UserType: {
+        Value: Word
+      }
     },
     CustomType: { Type: Word},
     ExpressionType: { Type: Word},
@@ -6586,7 +6627,66 @@ export const LibrarySchema = {
     Identifier: {_ : 'string' },
     ExpressionText:  {_: 'string'},
     ScriptCode: {_: 'string'},
-    InitFunc:  {_: 'string'}
+    InitFunc:  {_: 'string'},
+    Limits: {
+      Value: "string"
+    },
+    NotYetImplemented: "void",
+    FlagSubFunctions: "void",
+    FlagAllowBreak: "void",
+    FlagOperator: 'void',
+    StructMember: {
+      Type: Word,
+      Library: Word,
+      Id: Word
+    },
+    Icon: {_: 'string'},
+    Template: 'void',
+    DisplayText: {_: 'string'},
+
+    ParamFlagVariableOnly: 'void',
+    FlagEvent: 'void',
+    PresetShowAsBasic: 'void',
+    Deprecated: 'void',
+    PresetGenIdentFunc: 'void',
+    FlagCustomScript: 'void',
+    FlagRestricted: "void",
+    Section: {
+      Value: Word
+    },
+    PresetCustom: 'void',
+    DefinesDefault: 'void',
+    PresetAsBits: 'void',
+    PresetExtends: {
+      Type: ">Preset",
+      Library: ">Ntve",
+      Id: ">37841D63"
+    },
+    FlagNative: 'void',
   }]
 }
 
+
+/*
+
+
+&apos;  '
+
+
+
+                if (#SUBFUNCS(if,&quot; &amp;&amp; &quot;)) {
+                if (#SUBFUNCS(if," &amp;&amp; ")) {
+
+
+    <Element Type="SubFuncType" Id="DBA59FE2"/>
+
+      <ScriptCode>&#xD;
+                #AUTOVAR(var,ancestor:PickEachAITown)&#xD;
+            </ScriptCode>
+
+
+
+      <Condition value=""/>
+      <Action value=""/>
+
+ */
