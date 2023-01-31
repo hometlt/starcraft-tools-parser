@@ -155,6 +155,21 @@ switch(process.argv[2]?.toLowerCase()){
         await mod.write('../../Mods/PVP.SC2Mod')
         break;
     }
+    case 'tester':
+        mod.directory('../../Mods/all-races-tester')
+        await mod.read(
+            // "CORE",
+            "LOTV",
+            "DRAGON",
+            "SCION",
+            "NHBR",
+            "UED",
+            "UPL",
+            // "COOP"
+        )
+        await mod.write('PVP.SC2Mod')
+        break;
+
     default:
     case 'web-pvp': {
         await mod.read(
