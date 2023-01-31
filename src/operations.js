@@ -328,18 +328,21 @@ export function deep(a,b,c = 'merge'){
         let value = b[i]
         let target = a[i]
 
-        if(value === undefined)continue;
+        if(value === undefined || value === null)continue;
+
         if(value.constructor === Array){
             value = deep([],value)
         }
         else if(value.constructor === Object){
             value = deep({},value)
         }
+
+
         if(!target){
             a[i] = value
         }
         else{
-            if(value.constructor === String){
+            if(value.constructor === String || value.constructor !== target.constructor){
                 target = value
             }
             else if(target && target.constructor === Array && c === 'replace') {
@@ -838,7 +841,7 @@ export function relations(target,object,schema,path = [], ignorelist = {}, resul
         let type = resolveSchemaType(schema,property,pathobject,true);
         let _path = [...path,property]
         if(!type){
-            console.log("unknown field",_path.join(".") );
+            // console.log("unknown field",_path.join(".") );
             continue;
         }
 
@@ -1293,9 +1296,18 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
                 value = true
             }
 
-            if(value && !matchType(value,type)){
-                if(type !== 'text'){
-                    console.warn(`Warn: #${pathobject[0].id || pathobject[0].Id}[${_path.join(".")}] = ${JSON.stringify(object[property])}`)
+            if(value){
+                if(!matchType(value,type)){
+                    if(type !== 'text'){
+                        console.warn(`Warn: #${pathobject[0].id || pathobject[0].Id}[${_path.join(".")}] = ${JSON.stringify(object[property])}`)
+                    }
+                }
+                else{
+
+
+                    if(type === 'int' || type === 'real' || type === 'bit'){
+                        value = +value
+                    }
                 }
             }
         }
@@ -1523,7 +1535,28 @@ export function filterTypedProperties(object, filter, schema = object.$$schema) 
     }
 }
 
+export function cleanup(object) {
+    for(let property in object){
+        let value = object[property]
+        if(value === undefined || value === null){
+            delete object[property];
+        }
+        else if(value.constructor === Object){
+            if(Object.keys(value) === 1 && value.value){
+                object[property] = value.value
+            }
+            cleanup(value)
+        }
+        else if(value.constructor === Array){
+            for(let item in value){
+                cleanup(value[item])
+            }
+        }
+    }
+}
+
 export function formatData(data, format) {
+    cleanup(data)
     switch(format){
         case 'xml':
             try{
@@ -1543,6 +1576,7 @@ export function formatData(data, format) {
                 }
                 debugx(data)
             }
+            return
         case 'ini':
             return Object.entries(data).map(([key, value]) => `${key}=${value}`).join("\n")
         case 'json':

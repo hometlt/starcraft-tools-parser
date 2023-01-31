@@ -106,9 +106,6 @@ SCMod.prototype.addActorsDataToUnits = function (){
 
 }
 
-
-
-
 for(let i = mod.catalogs.unit.length; i--;){
     let unit = mod.catalogs.unit[i]
     if(unit.EditorFlags?.NoPalettes || unit.EditorFlags?.NoPlacement){

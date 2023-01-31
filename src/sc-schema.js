@@ -256,6 +256,12 @@ export const StarcraftSchema = {
     catalog: 'abil',
     Name: Text,
     TechPlayer: Word,
+    "TargetCursorInfo": {
+      "Invalid": "cursor",
+      "Normal": "cursor",
+      "Allied": "cursor",
+      "Enemy": "cursor"
+    },
     UnloadTransportEffect: 'effect',
     LoadTransportEffect: 'effect',
     EditorCategories: 'categories',
@@ -326,7 +332,7 @@ export const StarcraftSchema = {
     Cancelable: Bit,
     Leash: Real,
     Alert: 'string',
-    AbilSetId: 'abil',
+    AbilSetId: 'string',
     DebugTrace: Bit,
     Alignment: Word,
     AcquireFilters: 'filters',
@@ -619,8 +625,13 @@ export const StarcraftSchema = {
   },
   CAbilAttack: { prototype: 'CAbil'},
   CAbilAttackModifier: { prototype: 'CAbil'},
-  CAbilAugment: { prototype: 'CAbil'},
-  CAbilBattery: { prototype: 'CAbil'},
+  CAbilAugment: {
+    prototype: 'CAbil',
+    Cost: CostSchema,
+  },
+  CAbilBattery: {
+    prototype: 'CAbil'
+  },
   CAbilBeacon: { prototype: 'CAbil'},
   CAbilBehavior: { prototype: 'CAbil'},
   CAbilBuild: {
@@ -2162,6 +2173,7 @@ export const StarcraftSchema = {
     DamageResponse: {
       AttackType: '[int]',
       Exhausted: 'effect',
+      Ignore: "[real]",
       ExcludeEffectInChainArray: 'effect',
       Location: Word,
       ModifyFraction: Real,
@@ -2928,7 +2940,7 @@ export const StarcraftSchema = {
   CDSPReverb: { prototype: 'CDSP'},
   CEffect: {
     catalog: 'effect',
-
+    SearchMaxCount: "int",
     Name: Text,
     EditorCategories: 'categories',
     ExtraRadiusBonus: {AccumulatorArray:[{value:'accumulator'}],value:Int},
@@ -2967,7 +2979,7 @@ export const StarcraftSchema = {
     ResourceRestoreBonus: Int,
     CheckOuter: Int,
     ExpireOffset: 'ints',
-    MassFraction: Int,
+    MassFraction: Real,
     Preserve: Bit,
     MagazineAbil: 'abil',
     RechargeVitalFraction: Real,
@@ -3096,12 +3108,7 @@ export const StarcraftSchema = {
       Effect: 'effect'
     },
     Key: Word,
-    Amount: [
-      {
-        AccumulatorArray: '[accumulator]',
-        value: Real
-      }
-    ],
+    Amount: {"AccumulatorArray":'[accumulator]',"value":Real},
     SourceKey: Word,
     ValidateMin: Bit,
     TargetLocationType: Word,
@@ -3350,6 +3357,7 @@ export const StarcraftSchema = {
     $aura: 'effect',
     Parent: 'effect',
   },
+  CEffectDestroyHealer: {prototype: 'CEffect'},
   CEffectAddTrackedUnits: {prototype: 'CEffect'},
   CEffectEnumTrackedUnits: {prototype: 'CEffect'},
   CEffectRemoveTrackedUnit: {prototype: 'CEffect'},
@@ -4661,6 +4669,7 @@ export const StarcraftSchema = {
   },
   CUnit: {
     catalog: 'unit',
+    IdleCommand: "abilcmd",
     UserFlagArray: '[bit]',
     StockCharge: {
       CountMax: Int,
@@ -4781,7 +4790,7 @@ export const StarcraftSchema = {
       Time: Int,
       Resource: '{int}'
     },
-    InnerRadiusSafetyMultiplier: Bit,
+    InnerRadiusSafetyMultiplier: Real,
     ArmorType: Word,
     _: Word,
     FogVisibility: Word,
@@ -5124,8 +5133,11 @@ export const StarcraftSchema = {
     AbilClass: Word,
     ResultNoInventory: 'links',
     Target: {
+      History: 'effect',
+      Effect: 'effect',
       Value: Word
     },
+    MaxDistance: "int",
     ExcludeOriginPlayer: {
       Value: Word
     },

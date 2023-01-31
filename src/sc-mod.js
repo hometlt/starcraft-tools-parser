@@ -30,6 +30,7 @@ let __lastTag = 0;
 export class SCMod {
     constructor(mod){
 
+        this._directory = './'
         this.entities = []
         Object.defineProperty(this, 'cache',{ configurable:true, writable: true,enumerable: false,value: {} })
         Object.defineProperty(this, 'catalogs',{ configurable:true, writable: true,enumerable: false,value: {} })
@@ -37,7 +38,8 @@ export class SCMod {
         mod && this.read(mod)
     }
     debug(){
-        getDebugInfo(this)
+       let info = getDebugInfo(this)
+        fs.writeFileSync('./log',JSON.stringify(info, null,"  "))
     }
     directory(url){
         if(!url.endsWith('/'))url += '/'
@@ -56,7 +58,7 @@ export class SCMod {
                 else{
                     let data = item
                     if(item.constructor === String){
-                        if(!'./'.includes(item[0])){
+                        if(!'./'.includes(item[0]) && !'.\\'.includes(item[0])){
                             item = this._directory + item
                         }
                         data = await this.getModData(item)
@@ -68,6 +70,258 @@ export class SCMod {
             }
         }
         return this
+    }
+    makeAbilCmds(){
+
+        this.cache.abilcmd = {}
+        this.catalogs.abilcmd = []
+        let abilcmds = this.catalogs.abil.filter(entry => entry.$$resolved.InfoArray).reduce((prev,ability)=> {
+            prev.push(...Object.entries(ability.$$resolved.InfoArray).map(([cmd,info]) => ({id: ability.id +"," + cmd, abil: ability.id, cmd})))
+            return prev
+        },[])
+        for(let abilcmd of abilcmds){
+            this.cache.abilcmd[abilcmd.id] = {
+                id: abilcmd.id,
+                abil: abilcmd.abil,
+                cmd: abilcmd.cmd
+            }
+            this.catalogs.abilcmd.push(abilcmd)
+        }
+    }
+    resolveTextValues(){
+        for (let locale in this.locales) {
+            for (let type in this.locales[locale]) {
+                for (let id in this.locales[locale][type]) {
+                    this.locales[locale][type][id] = this.resolveTextValue( this.locales[locale][type][id], id)
+                }
+            }
+        }
+    }
+    resolveTextValue(expresion){
+        if(!expresion) return ""
+        // dd<d ref="Behavior,ZerglingArmorShredTarget,Duration" precision="2"/>dd
+        // dd<d ref="Behavior,ZerglingArmorShredTarget,Duration"/>dd
+        return expresion
+            .replace(/<c val="(\w+)">/g,`<span style="color: #$1">`)
+            .replace(/<\/c>/g,"</span>")
+            .replace(/<d\s+(?:stringref)="(\w+),([\w@]+),(\w+)"\s*\/>/g, (_,catalog,entity,field)=>{
+                return this.cache[catalog.toLowerCase()]?.[entity]?.[field];
+            })
+            .replace(/<d\s+(?:time|ref)="(.+?)(?=")"((?:\s+\w+="\s*(\d+)?\s*")*)\s*\/>/gi, (_,ref,opts) => {
+                let precision = /(?:\s+precision="\s*(\d+)?\s*")/.exec(opts)?.[1]
+                let value = this.parseReference(ref)
+                value = precision ?  value.toFixed(precision) : Math.round(value)
+                return `<b>${value}</b>`
+            })
+            .replace(/<n\/>/g,"<br/>")
+    }
+    parseReference(expressionReference){
+
+
+        let ref = expressionReference.replace(/\[d\s+(?:time|ref)='(.+?)(?=')'((?:\s+\w+='\s*(\d+)?\s*')*)\s*\/\]/gi, (_,ref,opts) => {
+            let precision = /(?:\s+precision="\s*(\d+)?\s*")/.exec(opts)?.[1]
+            let value = this.parseReference(ref)
+            return precision ?  value.toFixed(precision) : Math.round(value)
+        })
+
+
+
+        ref = ref.replace(/<n\/>/g,"")
+
+        ref = ref.replace(/\$(.+?)\$/g,(_,cc)=>{
+            let options = cc.split(':')
+            switch(options[0]){
+                case 'UpgradeEffectArrayValue':
+                    let upgrade = options[1]
+                    let effectArrayValue = options[2]
+
+                    let refValue = this.cache.upgrade[upgrade]?.EffectArray.find(eff => eff.Reference === effectArrayValue)?.Value
+                    return refValue ? ' ' + refValue + ' ' : ' 0 '
+            }
+            return '0'
+        })
+
+        ref = ref.replace(/((\w+),([\w@]+),(\w+[\.\w\[\]]*))/g,(_,expr)=>{
+            let refValue = this.getReferenceValue(expr)
+            return refValue ? ' ' + refValue + ' ' : ' 0 '
+        })
+
+        let result
+        if(ref === 'TimeOfDay'){
+            result = 'TimeOfDay'
+        }
+        else{
+
+            try{
+                result = eval(ref)
+            }
+            catch(e){
+                console.warn('wrong Expression: ' + ref)
+                result = '0'
+            }
+
+        }
+        return result
+    }
+    readImages(imagesDiretory){
+        this._imagesDiretory = imagesDiretory;
+
+        this.images = fs.readdirSync(imagesDiretory).map(file => file.replace('.png','').toLowerCase())
+    }
+    checkImage(path){
+        if(!path)return null
+        path = (path.value || path)
+        path = path.toLowerCase().replace(/\\/g,'/').replace(/.*\//,'').replace('.dds','')
+        if(!this.images.includes(path)){
+            return null
+        }
+        return path
+    }
+    checkImages(){
+
+        for(let entity of this.catalogs.actor) {
+            entity = entity.$$resolved
+            if(entity.Wireframe?.Image){
+                for(let image in entity.Wireframe.Image){
+                    entity.Wireframe.Image[image] = this.checkImage(entity.Wireframe.Image[image]);
+                }
+            }
+            if(entity.UnitIcon){
+                entity.UnitIcon = this.checkImage(entity.UnitIcon)
+            }
+            if(entity.LifeArmorIcon) {
+                entity.LifeArmorIcon = this.checkImage(entity.LifeArmorIcon)
+            }
+            if(entity.ShieldArmorIcon) {
+                entity.ShieldArmorIcon = this.checkImage(entity.ShieldArmorIcon)
+            }
+        }
+        for(let entity of this.catalogs.weapon) {
+            entity = entity.$$resolved
+            if(entity.Icon){
+                entity.Icon = this.checkImage(entity.Icon)
+            }
+        }
+        for(let entity of this.catalogs.upgrade) {
+            entity = entity.$$resolved
+            if(entity.Icon) {
+                entity.Icon = this.checkImage(entity.Icon)
+            }
+        }
+        for(let entity of this.catalogs.button) {
+            entity = entity.$$resolved
+            if(entity.Icon) {
+                entity.Icon = this.checkImage(entity.Icon)
+            }
+        }
+        for(let entity of this.catalogs.behavior) {
+            entity = entity.$$resolved
+            if(entity.Icon) {
+                entity.Icon = this.checkImage(entity.InfoIcon)
+            }
+        }
+    }
+    populateUnitsWithActorsData(){
+        for(let entity of this.catalogs.actor) {
+            entity = entity.$$resolved;
+            let events = entity.On?.filter(event => event.Send === 'Create')
+            if(events){
+                for (let event of events){
+                    let eventname = event.Terms.split('.')[0]
+                    if(eventname === 'UnitBirth' || eventname === 'UnitConstruction' || eventname === 'UnitRevive'){
+                        let unitId = event.Terms.split('.')[1]
+                        if(!unitId)continue;
+                        let unit = this.cache.unit[unitId]
+                        if(!unit)continue;
+
+                        let UnitIcon = entity.UnitIcon || entity.Wireframe?.Image?.[0]  || unit.UnitIcon
+                        let LifeArmorIcon = entity.LifeArmorIcon  || unit.LifeArmorIcon
+                        let ShieldArmorIcon = entity.ShieldArmorIcon  || unit.ShieldArmorIcon
+
+                        if(UnitIcon){
+                            unit.Icon = UnitIcon
+                        }
+                        if(LifeArmorIcon){
+                            unit.LifeArmorIcon = LifeArmorIcon
+                        }
+                        if(ShieldArmorIcon){
+                            unit.ShieldArmorIcon = ShieldArmorIcon
+                        }
+                    }
+                }
+            }
+        }
+    }
+    getReferenceValue(expr){
+        try{
+            let [catalog,entityId,field] = expr.split(",")
+            let entity = this.cache[catalog.toLowerCase()]?.[entityId]
+
+            if(!entity){
+                console.warn('wrong entity? ' + catalog + ' ' + entityId)
+                return '';
+            }
+
+            let crumbs = field.replace(/\[/g,'.').replace(/]/g,'.').split(/[.\[\]]/)
+            for(let i = crumbs.length - 1; i>=0; i--){
+                if(crumbs[i] === '') {
+                    crumbs.splice(i,1)
+                }
+            }
+
+            let __val = entity.$$resolved
+            for(let crumb of crumbs){
+                if(crumb === '0' && __val.constructor !== Object && __val.constructor !== Array){
+
+                }
+                else if(isNumeric(crumb) && __val.constructor === Object && __val[crumb] === undefined){
+
+                    let consts = {
+                        Vital: [
+                            'Life',
+                            'Shields',
+                            'Energy',
+                            'Custom'
+                        ],
+                        AttributeBonus: [
+                            'Light',
+                            'Armored',
+                            'Biological',
+                            'Mechanical',
+                            'Robotic',
+                            'Psionic',
+                            'Massive',
+                            'Structure',
+                            'Hover',
+                            'Heroic',
+                            'Summoned',
+                            'User1',
+                            'MapBoss'
+                        ]
+                    }
+                    for(let constCat in consts){
+                        if(__val[consts[constCat][crumb]]){
+                            __val = __val[consts[constCat][crumb]]
+                            break;
+                        }
+                    }
+                }
+                else{
+                    __val = __val[crumb]
+                }
+                if(__val === undefined){
+                    console.warn('wrong value? ' + field)
+                 //   this.getReferenceValue(expr)
+                    return ''
+                }
+            }
+
+            __val = __val.value || __val
+            return +__val
+        }
+        catch(e){
+            return ''
+        }
     }
     async getModData (modpath){
         let input = modpath
@@ -194,9 +448,14 @@ export class SCMod {
 
                 let _dirs = [
                     'Assets',
+                    'LocalizedData',
                     'Base.SC2Assets',
                     'TextureReduction'
                 ]
+
+                for(let locale in this.locales){
+                    _dirs.push(`${locale}.SC2Assets`)
+                }
                 for(let _dir of _dirs){
                     if(fs.existsSync(input + _dir)){
                         let files2 = getAllFiles(input + _dir)
@@ -327,9 +586,9 @@ export class SCMod {
             }
         }
         // console.timeEnd(`Reading: ${data.path}`)
-        if(data.entities){
-            console.log(`${data.entities.length} Entities`)
-        }
+        // if(data.entities){
+        //     console.log(`${data.entities.length} Entities`)
+        // }
         return data
     }
     apply (data){
@@ -383,14 +642,15 @@ export class SCMod {
             if (!data.entities) data.entities = []
             for(let catalog in data.catalogs){
                 //catalog format
-                if(data.catalogs[catalog].constructor === Array){
-                    data.entities.push(...data.catalogs[catalog])
-                }
+                data.entities.push(...data.catalogs[catalog])
+            }
+        }
+        if(data.cache){
+            if (!data.entities) data.entities = []
+            for(let catalog in data.catalogs){
                 //cache format
-                if(data.catalogs[catalog].constructor === Object){
-                    for(let id in data.catalogs[catalog]) {
-                        data.entities.push(...data.catalogs[catalog][id])
-                    }
+                for(let id in data.catalogs[catalog]) {
+                    data.entities.push(...data.catalogs[catalog][id])
                 }
             }
         }
@@ -403,6 +663,91 @@ export class SCMod {
         // console.timeEnd(`Applying: ${data.path}`)
         return this
     }
+    unitProduction (unitname){
+
+        let productionUnits = []
+        let productionUpgrades = []
+        let unit = this.cache.unit[unitname].$$resolved
+        if(unit.CardLayouts){
+
+            for(let card of unit.CardLayouts){
+                for(let button of card.LayoutButtons) {
+                    let abilcmd = this.cache.abilcmd[button.AbilCmd]
+                    if (abilcmd) {
+                        let info = this.cache.abil[abilcmd.abil].InfoArray[abilcmd.cmd];
+                        if (info?.Unit) {
+                            if(info.Unit.constructor === Array){
+                                productionUnits.push( ...info.Unit.map(unit => unit.value || unit))
+                            }else{
+                                productionUnits.push( info.Unit)
+                            }
+                        }
+                        if (info?.Upgrade) {
+                            productionUpgrades.push( info.Upgrade)
+                        }
+                    }
+                }
+            }
+        }
+
+        return {productionUnits,productionUpgrades}
+
+    }
+    producingRequirements (unitname){
+        let abilCmds = this.catalogs.abilcmd.filter(entry => {
+            let abil = this.cache.abil[entry.abil].$$resolved;
+            let unit = abil.InfoArray[entry.cmd]?.Unit
+            if(!unit)return false;
+            if(unit.constructor !== Array)    unit = [unit]
+            return unit.includes(unitname)
+        })
+
+
+        let abilCmdsIds = abilCmds.map(abilcmd => abilcmd.id)
+
+        let requirements = abilCmds.map(entry => this.cache.abil[entry.abil].$$resolved.InfoArray[entry.cmd].Button?.Requirements).filter(Boolean)
+            .map(req => this.cache.requirement[req]?.$$resolved).filter(Boolean)
+            .map(req => req.NodeArray.Use?.Link || req.NodeArray.Show?.Link).filter(Boolean)
+            .map(reqNode => this.cache.requirementnode[reqNode].$$resolved).filter(Boolean)
+
+        let reqUnitsAliases = requirements.filter(req => req.class === 'CRequirementCountUnit').map(req => req.Count?.Link).filter(Boolean)
+        let reqUpgradeAliases = requirements.filter(req => req.class === 'CRequirementCountUpgrade').map(req => req.Count?.Link).filter(Boolean)
+
+        let requiredUnits = this.catalogs.unit.filter(entry => reqUnitsAliases.includes(entry.$$resolved.TechAliasArray) || reqUnitsAliases.includes(entry.id) ).map(unit => unit.id)
+        let requiredUpgrades = this.catalogs.upgrade.filter(entry => reqUpgradeAliases.includes(entry.$$resolved.TechAliasArray) || reqUpgradeAliases.includes(entry.id) ).map(unit => unit.id)
+
+        let producingUnits = this.catalogs.unit.filter(entry => entry.$$resolved.CardLayouts?.find(card => {
+            if(card.LayoutButtons){
+                for(let button of card.LayoutButtons) {
+                    if (button.AbilCmd && abilCmdsIds.includes(button.AbilCmd)) {
+                        return true
+                    }
+                }
+            }
+            return false
+        })).map(unit => unit.id)
+
+        return {abilCmdsIds,requiredUnits,requiredUpgrades,producingUnits}
+    }
+    // unitAbilCmds(unit){
+    //     let lbs = []
+    //     if(unit.CardLayouts){
+    //         for(let cl of unitData.CardLayouts){
+    //             if(cl.LayoutButtons){
+    //                 for(let lb of cl.LayoutButtons) {
+    //                     if(lb.AbilCmd){
+    //                         lbs.push({
+    //                             ...quickInfo(this.cache.button[lb.Face]),
+    //                             AbilCmd: lb.AbilCmd
+    //                         })
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return lbs
+    // }
+
     /**
      *
      * @param destpath {string}
@@ -412,10 +757,10 @@ export class SCMod {
      * @param scopes { ['components','documentinfo', 'assets', 'triggers', 'locales', 'styles', 'layouts', 'data'] | 'all' } which mod components to save
      * @returns {Promise<SCMod>}
      */
-    async write (destpath,{catalogs= 'all',resolve = false, format = 'auto', structure = 'auto', scopes = 'all',core = false} = {}){
+    async write (destpath,{outputFn = null, formatFn = null,catalogs= 'all',resolve = false, format = 'auto', structure = 'auto', scopes = 'all',core = false} = {}){
 
 
-        if(!'/'.includes(destpath)){
+        if(!'./'.includes(destpath) && !'.\\'.includes(destpath)){
             destpath = this._directory + destpath
         }
         destpath = path.resolve(destpath)
@@ -610,14 +955,27 @@ export class SCMod {
                         // let catalogXMLObjectData = data.map(entity => entity.getXMLObject())
                         // output[`Base.SC2Data/GameData/${capitalize(cat)}Data.xml`] = formatData({Catalog: catalogXMLObjectData}, 'xml')
                         let catalogXML =entities .reduce((acc, entity) => {
-                            return acc + entity.getXML(resolve)
+                            let entityData
+                            if(formatFn){
+                                entityData = formatFn(entity)
+                            }
+                            else{
+                                entityData = {...(resolve ? entity.$$resolved : entity)}
+                            }
+                            return acc + entity.getXML(entityData)
                         }, '')
                         outputCatalogData = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Catalog>\n${catalogXML}\n</Catalog>`
                     }
                     else {
                         let catalogCache = {}
                         for(let entity of entities){
-                            let entityData = {...(resolve ? entity.$$resolved : entity)}
+                            let entityData
+                            if(formatFn){
+                                entityData = formatFn(entity)
+                            }
+                            else{
+                                entityData = {...(resolve ? entity.$$resolved : entity)}
+                            }
                             catalogCache[entityData.id] = entityData
                             delete entityData.id;
                         }
@@ -703,12 +1061,15 @@ export class SCMod {
             }
         }
 
+        if(outputFn){
+            outputFn(this, output, {scopes})
+        }
+        
+        //writing process
         for (let file in this.files) {
             if(scopes.includes(this.files[file].scope)){
-
                 let foutput = destpath + file.replace(/\\/g, "\/")
                 let finput = this.files[file].path.replace(/\\/g, "\/")
-
                 if(this.files[file].scope === 'media'){
                     if(fs.existsSync(foutput)){
                         let stats1 = fs.statSync(finput)
@@ -717,9 +1078,7 @@ export class SCMod {
                             continue;
                         }
                     }
-
                 }
-
                 fs.mkdirSync(foutput.substring(0, foutput.lastIndexOf("/")), {recursive: true});
                 fs.copyFileSync(finput, foutput)
             }
@@ -804,7 +1163,7 @@ export class SCMod {
             }
         }
     }
-    pickEntity(entity){
+    pickEntity(entity,path = []){
         if(!entity) {
             return
         }
@@ -823,6 +1182,7 @@ export class SCMod {
 
         // console.log(entity.class +" " + entity.id)
         for(let relation of entity.$$relations){
+            relation.refpath = path
             let linkedEntity = this.cache[relation.namespace]?.[relation.link]
             // let linkedEntity = relation.target
 
@@ -832,7 +1192,7 @@ export class SCMod {
             }
             else{
                 linkedEntity.addReferences(relation)
-                this.pickEntity(linkedEntity)
+                this.pickEntity(linkedEntity,[...path,entity.$$namespace + '.' + entity.id])
             }
         }
 
@@ -866,6 +1226,7 @@ export class SCMod {
         this.pickActors()
         this.pickEntity(this.cache.actor?.['SYSTEM_ActorConfig'])
         this.filter()
+        this.entities.forEach(entity => entity.$$references = entity.$$references.filter(ref => ref.path))
 
         console.log(`${this.pickedCounter} picked`)
     }
@@ -910,7 +1271,7 @@ export class SCMod {
     }
     saveCore(){
         for(let entity of this.entities){
-            Object.defineProperty(entity, '__core',{ configurable:true, writable: true,enumerable: false,value: true })
+            entity.ghost()
         }
     }
     removeCore(){
@@ -1022,6 +1383,10 @@ export class SCMod {
     }
 
     pickTriggers(){
+        if(this._triggersPicked ){
+            return
+        }
+        this._triggersPicked = true
         console.log("Picking entities used by Triggers")
         this.pickedCounter = 0
         this.pickedCounter = 0
@@ -1071,7 +1436,6 @@ export class SCMod {
                 if(entity.__core){
                     continue
                 }
-
                 let oldName = entity.id
 
                 // For Race-Specific stuff
@@ -1373,10 +1737,12 @@ export class SCMod {
             let existed = this.cache[namespace][entityid]
             let parent = entityparent && this.cache[namespace][entityparent]
 
+            let _core = false
             if(existed) {
                 if (entityparent) {
                     Object.defineProperty(existed, '$overriden',{ configurable:true, writable: true,enumerable: false,value: true })
                     // console.log(entityid + ': overriding element parent ')
+                    if(existed.__core)_core = true
                 }
                 else{
                     existed.mixin(entitydata)
@@ -1387,6 +1753,9 @@ export class SCMod {
             entitydata.class = classname
             entitydata.$class = entityclass
             let entityInstance = new SCEntity(entitydata)
+            if(_core){
+                entityInstance.ghost()
+            }
             this.cache[namespace][entityid] = entityInstance
             catalog.push(entityInstance)
             this.entities.push(entityInstance)

@@ -41,6 +41,9 @@ export class SCEntity {
                 this[property] = data[property]
             }
         }
+        // if(this.$parent && this.$parent.id === this.id && this.$parent.__core){
+        //     Object.defineProperty(this, '__core',{ configurable:true, writable: true,enumerable: false,value: true })
+        // }
         // convertIndexedArrayToObjects(this)
         // arrayValues(this)
         // this.arrayValues()
@@ -88,6 +91,9 @@ export class SCEntity {
         }
         Object.defineProperty(this, '__relations',{ configurable:true, writable: true,enumerable: false,value: result })
         return result
+    }
+    ghost(){
+        Object.defineProperty(this, '__core',{ configurable:true, writable: true,enumerable: false,value: true })
     }
     get $$schema(){
         if(this.__schema){
@@ -163,8 +169,7 @@ export class SCEntity {
         }
         this.$$references.push(...references)
     }
-    getXML(resolve){
-        let entityData = {...(resolve ? this.$$resolved : this)}
+    getXML(entityData){
         entityData.id = this.id
         delete entityData.class
 
