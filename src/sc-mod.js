@@ -105,7 +105,8 @@ export class SCMod {
             .replace(/<c val="(\w+)">/g,`<span style="color: #$1">`)
             .replace(/<\/c>/g,"</span>")
             .replace(/<d\s+(?:stringref)="(\w+),([\w@]+),(\w+)"\s*\/>/g, (_,catalog,entity,field)=>{
-                return this.cache[catalog.toLowerCase()]?.[entity]?.[field];
+                let value = this.locales.enUS.GameStrings[this.cache[catalog.toLowerCase()]?.[entity]?.$$resolved[field]]
+                return `<b>${value}</b>`
             })
             .replace(/<d\s+(?:time|ref)="(.+?)(?=")"((?:\s+\w+="\s*(\d+)?\s*")*)\s*\/>/gi, (_,ref,opts) => {
                 let precision = /(?:\s+precision="\s*(\d+)?\s*")/.exec(opts)?.[1]

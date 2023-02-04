@@ -1,6 +1,5 @@
 import {SCMod} from "./src/sc-mod.js";
-import fs from "fs";
-import {capitalize, formatData, deep, cleanup} from "./src/operations.js";
+import {formatData, cleanup} from "./src/operations.js";
 import path from "path";
 //this operation might need >2Gb of Memory
 //node --max_old_space_size=4000 make
@@ -11,14 +10,14 @@ mod.directory('../../Mods/all-races-mods')
 console.time('time')
 switch(process.argv[2]?.toLowerCase()){
     case 'reforged': {
-        await mod.readLibrary('Core')
+        await mod.readLibrary('built-in/Core')
         await mod.read(
-            'Core - Liberty',
-            'Core - LibertyCampaign',
-            'Core - Swarm',
-            'Core - SwarmCampaign',
-            'Core - Void',
-            'Core - VoidCampaign',
+            'built-in/Liberty',
+            'built-in/LibertyCampaign',
+            'built-in/Swarm',
+            'built-in/SwarmCampaign',
+            'built-in/Void',
+            'built-in/VoidCampaign',
             'Factions - Reforged'
         )
         mod.pick({race: ["Tald","Puri","Scav","Hybr"]})
@@ -27,10 +26,10 @@ switch(process.argv[2]?.toLowerCase()){
         break;
     }
     case 'liberty': {
-        await mod.readLibrary('Core')
+        await mod.readLibrary('built-in/Core')
         await mod.read(
-            'Core - Liberty',
-            'Core - LibertyMulti'
+            'built-in/Liberty',
+            'built-in/LibertyMulti'
         )
         mod.pick({race: ["Terr","Zerg","Prot"]})
         mod.renameEntities('WOL*');
@@ -38,11 +37,11 @@ switch(process.argv[2]?.toLowerCase()){
         break;
     }
     case 'swarm': {
-        await mod.readLibrary('Core')
+        await mod.readLibrary('built-in/Core')
         await mod.read(
-            'Core - Liberty',
-            'Core - Swarm',
-            'Core - SwarmMulti'
+            'built-in/Liberty',
+            'built-in/Swarm',
+            'built-in/SwarmMulti'
         )
         mod.pick({race: ["Terr","Zerg","Prot"]})
         mod.renameEntities('HOTS*');
@@ -50,12 +49,12 @@ switch(process.argv[2]?.toLowerCase()){
         break;
     }
     case 'void': {
-        await mod.readLibrary('Core')
+        await mod.readLibrary('built-in/Core')
         await mod.read(
-            'Core - Liberty',
-            'Core - Swarm',
-            'Core - Void',
-            'Core - VoidMulti'
+            'built-in/Liberty',
+            'built-in/Swarm',
+            'built-in/Void',
+            'built-in/VoidMulti'
         )
         mod.pick({race: ["Terr","Zerg","Prot"]})
         mod.renameEntities('LOTV*');
@@ -63,15 +62,15 @@ switch(process.argv[2]?.toLowerCase()){
         break;
     }
     case 'broodwar': {
-        await mod.readLibrary('Core')
+        await mod.readLibrary('built-in/Core')
         await mod.read(
-            'Core - Liberty',
-            'Core - LibertyCampaign',
-            'Core - Swarm',
-            'Core - SwarmCampaign',
-            'Core - Void',
-            'Core - VoidCampaign',
-            'Core - Nova',
+            'built-in/Liberty',
+            'built-in/LibertyCampaign',
+            'built-in/Swarm',
+            'built-in/SwarmCampaign',
+            'built-in/Void',
+            'built-in/VoidCampaign',
+            'built-in/Nova',
             'BroodWar'
         )
         mod.pick({race: ["Terr","Zerg","Prot"]})
@@ -80,15 +79,15 @@ switch(process.argv[2]?.toLowerCase()){
         break;
     }
     case 'heresy': {
-        await mod.readLibrary('Core')
+        await mod.readLibrary('built-in/Core')
         await mod.read(
-            'Core - Liberty',
-            'Core - LibertyCampaign',
-            'Core - Swarm',
-            'Core - SwarmCampaign',
-            'Core - Void',
-            'Core - VoidCampaign',
-            'Core - VoidMulti'
+            'built-in/Liberty',
+            'built-in/LibertyCampaign',
+            'built-in/Swarm',
+            'built-in/SwarmCampaign',
+            'built-in/Void',
+            'built-in/VoidCampaign',
+            'built-in/VoidMulti'
         )
         for(let entity of mod.catalogs.sound){
             entity.ghost()
@@ -103,41 +102,43 @@ switch(process.argv[2]?.toLowerCase()){
         break;
     }
     case 'coop': {
-        await mod.readLibrary('Core')
+        await mod.readLibrary('built-in/Core')
         await mod.read(
-            'Core - Liberty',
-            'Core - LibertyCampaign',
-            'Core - Swarm',
-            'Core - SwarmCampaign',
-            'Core - Void',
-            'Core - VoidCampaign',
-            'Core - VoidMulti',
-            'Campaign',
-            'COOP - ARC'
+            'built-in/Liberty',
+            'built-in/LibertyCampaign',
+            'built-in/Swarm',
+            'built-in/SwarmCampaign',
+            'built-in/Void',
+            'built-in/VoidCampaign',
+            'built-in/VoidMulti',
+            'Factions - Campaign',
+            'COOP - Triggers'
         )
         mod.renameEntities('ARC*');
         await mod.write('MP - Coop.SC2Mod')
         break;
     }
+    default:
     case 'arc': {
         await mod.read(
-            'Assets - Scion',
-            'Assets - UED',
-            'Assets - Hybrids',
-            'Assets - Dragons',
-            'Assets - Talon',
-            'Assets - UPL',
-            'Assets - UPLCampaign',
-            'Assets - COOP',
-            'Core - VoidMulti',
-            'Campaign',
+            // 'Assets - Scion',
+            // 'Assets - UED',
+            // 'Assets - Hybrids',
+            // 'Assets - Dragons',
+            // 'Assets - Talon',
+            // 'Assets - UPL',
+            // 'Assets - UPLCampaign',
+            // 'Assets - COOP',
+            'built-in/VoidMulti',
+            'Factions - Campaign',
             'Factions - Scion',
-            'Factions - UED',
             'Factions - Hybrids',
+            'Factions - UED',
             'Factions - Dragons',
             'Factions - UPL',
             'Factions - UPLCampaign',
             'Factions - UPLBalance',
+            'Factions - Talon',
             'LIB'
         )
         await mod.write('../../Mods/ARM.SC2Mod')
@@ -155,7 +156,7 @@ switch(process.argv[2]?.toLowerCase()){
         await mod.write('../../Mods/PVP.SC2Mod')
         break;
     }
-    case 'tester':
+    case 'tester': {
         mod.directory('../../Mods/all-races-tester')
         await mod.read(
             // "CORE",
@@ -169,11 +170,10 @@ switch(process.argv[2]?.toLowerCase()){
         )
         await mod.write('PVP.SC2Mod')
         break;
-
-    default:
+    }
     case 'web-pvp': {
         await mod.read(
-            'Core',
+            'built-in/Core',
             {
                 cache: {
                     unit: {
@@ -197,10 +197,10 @@ switch(process.argv[2]?.toLowerCase()){
                     }
                 }
             },
-            'Core - Liberty',
-            'Core - Swarm',
-            'Core - Void',
-            'Core - VoidMulti',
+            'built-in/Liberty',
+            'built-in/Swarm',
+            'built-in/Void',
+            'built-in/VoidMulti',
             'Factions - Scion',
             'Factions - UED',
             'Factions - Hybrids',
@@ -259,8 +259,6 @@ switch(process.argv[2]?.toLowerCase()){
         await mod.write('data',{
             catalogs: ['unit', 'upgrade'],
             outputFn: (mod,output) => {
-
-
                 let quick = ['race','weapon','upgrade','abil','button','behavior']
                 for(let catalog of quick){
                     output[`${catalog}s.json`] =  formatData(mod.catalogs[catalog].map(entity => ({
@@ -273,9 +271,15 @@ switch(process.argv[2]?.toLowerCase()){
 
                 output[`images.json`] =  formatData({images: mod.images}, 'json')
 
-                let unitsData = []
+                let result = {
+                    races: []
+                }
                 for (let unit of mod.catalogs.unit) {
                     let unitData = unit.$$resolved
+
+                    if(unit.id === 'Citadel'){
+                        unit
+                    }
 
                     if (unit.$overriden || unit.__core){
                         continue;
@@ -312,6 +316,7 @@ switch(process.argv[2]?.toLowerCase()){
                         return lbs
                     }
 
+
                     let {abilCmdsIds,requiredUnits, requiredUpgrades, producingUnits} = mod.producingRequirements(unit.id)
                     let Producers = producingUnits.map(x => quickInfo(mod.cache.unit[x]));
                     // if(!Producers.length){
@@ -332,11 +337,25 @@ switch(process.argv[2]?.toLowerCase()){
                     ]
 
                     let Upgrades = mod.catalogs.upgrade
-                        .filter(entry => entry.$$resolved.AffectedUnitArray?.includes(unit.id))
-                        .map(entry => entry.id)
-                        .map(Link => ({Link}))
-
-                    Upgrades.forEach(entry => Object.assign(entry, {...quickInfo(mod.cache.upgrade[entry.Link])}))
+                        .map(u => u.$$resolved)
+                        .filter(u => u.AffectedUnitArray?.includes(unit.id))
+                        .map(u => ({
+                            ...u,
+                            Link: u.id,
+                            id: null,
+                            EffectArray: u.EffectArray
+                                // ?.filter(e => e.Reference?.split(',')[1] === unit.id)
+                                ?.map(e => ({
+                                    Operation: e.Operation,
+                                    Value: e.Value,
+                                    Catalog: e.Reference.split(',')[0],
+                                    Entity: e.Reference.split(',')[1],
+                                    Property: e.Reference.split(',')[2]
+                                }))
+                                .filter(e => !e.Property.includes("Icon"))
+                        }))
+                        .map(entry => ({...entry, ...quickInfo(mod.cache.upgrade[entry.Link])}))
+                        .filter(u => u.Icon)
 
                     let Abilities = unitData.AbilArray && unitData.AbilArray.map(entry => ({
                         ...entry,
@@ -361,6 +380,36 @@ switch(process.argv[2]?.toLowerCase()){
 
                     let categories = unitData.EditorCategories?.split(",").map(cat => cat.split(':'))
                         .reduce((acc, [category, value]) => ({...acc, [category]: value}), {}) || null
+
+
+                    function unitCard(unit) {
+                        if (unit.CardLayouts) {
+                            for (let cl of unitData.CardLayouts) {
+                                if (cl.LayoutButtons) {
+                                    cl.LayoutButtons = cl.LayoutButtons.filter(lb => lb.Face && lb.Type && lb.Type !== 'Undefined' && (!lb.Row || lb.Row <3)  && (!lb.Column || lb.Column <5))
+                                    for (let lb of cl.LayoutButtons) {
+                                        let btn = mod.cache.button[lb.Face]
+                                        if(btn){
+                                            let hotkey = mod.locales.enUS.GameHotkeys[btn.$$resolved.Hotkey];
+
+                                            let specialHotkeys = {
+                                                Escape: 'Esc'
+                                            }
+                                            if(specialHotkeys[hotkey]){
+                                                hotkey = specialHotkeys[hotkey]
+                                            }
+
+                                            Object.assign(lb, {
+                                                ...quickInfo(btn),
+                                                Hotkey: hotkey
+                                            })
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    unitCard(unitData)
 
                     output[`unit/${unit.id}.json`] = formatData({
                         ...unitData,
@@ -391,23 +440,50 @@ switch(process.argv[2]?.toLowerCase()){
                         EditorCategories: categories
                     }, 'json')
 
-                    unitsData.push({
+
+                    let raceObject = result.races.find(r => r.link === unitData.Race)
+                    if(!raceObject){
+                        let mods
+                        switch(unitData.Race){
+                            case 'Prot':
+                            case 'Zerg':
+                            case 'Terr':
+                                mods = ['lotv','arc','scion']
+                                break;
+                            case 'Gen':
+                            case 'Keir':
+                            case 'Xayi':
+                                mods = ['arc','scion']
+                                break;
+                            case 'Dragon':
+                            case 'UED':
+                            case 'UPL':
+                            case 'NHbr':
+                                mods = ['arc']
+                                break;
+                        }
+
+                        raceObject = {
+                            link: unitData.Race,
+                            name: mod.locales.enUS.GameStrings[mod.cache.race[unitData.Race].$$resolved.Name],
+                            mods,
+                            structures: [],
+                            units: []
+                        }
+                        result.races.push(raceObject)
+                    }
+                    let category = categories?.ObjectType === 'Structure' ? 'structures' : 'units'
+                    let i = raceObject[category].findIndex(e => e.priority > unitData.GlossaryPriority)
+                    if(i === -1){
+                        i = raceObject[category].length
+                    }
+                    raceObject[category].splice(i,0,{
                         ...quickInfo(mod.cache.unit[unit.id]),
-                        EditorCategories: categories,
-                        Race: unitData.Race,
-                        GlossaryPriority: unitData.GlossaryPriority
+                        priority: unitData.GlossaryPriority
                     })
                 }
 
-                // unitsData = unitsData.sort((a,b) => {
-                //     if(a.Race === b.Race){
-                //         return a.EditorCategories?.ObjectType > b.EditorCategories?.ObjectType ? -1 : 1
-                //     }
-                //     else{
-                //         return a.Race > b.Race ? -1 : 1
-                //     }
-                // })
-                output[`units.json`] =  formatData(unitsData, 'json')
+                output[`data.json`] =  formatData(result, 'json')
 
             },
             scopes: []
@@ -416,22 +492,22 @@ switch(process.argv[2]?.toLowerCase()){
         break;
     }
     case 'test': {
-        await mod.readLibrary('Core')
+        await mod.readLibrary('built-in/Core')
         await mod.read(
-            // 'Core',
-            'Core - Liberty',
-            'Core - LibertyCampaign',
-            'Core - LibertyMulti',
-            'Core - Swarm',
-            'Core - SwarmCampaign',
-            'Core - SwarmMulti',
-            'Core - Void',
-            'Core - VoidCampaign',
-            'Core - VoidMulti',
-            'Core - Nova',
-            'Core - NovaCampaign',
-            'Core - Warcraft',
-            'Core - Warcraft Coop',
+            // 'built-in/Core',
+            'built-in/Liberty',
+            'built-in/LibertyCampaign',
+            'built-in/LibertyMulti',
+            'built-in/Swarm',
+            'built-in/SwarmCampaign',
+            'built-in/SwarmMulti',
+            'built-in/Void',
+            'built-in/VoidCampaign',
+            'built-in/VoidMulti',
+            'built-in/Nova',
+            'built-in/NovaCampaign',
+            'built-in/Warcraft',
+            'built-in/Warcraft Coop',
             'Campaign',
             'BroodWar',
             'Campaigns - Ambivalence',
