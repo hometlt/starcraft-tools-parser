@@ -54,15 +54,11 @@ function resolveStringInterpolations(s){
     return substrings.map(ss => suffix + ss + postfix)
 }
 
-
 let args = process.argv.slice(2);
-
 (async function processArguments(argv){
     let mod = new SCMod()
 
-    console.log(argv)
     for(let i = 0 ; i< argv.length; i++){
-        console.log(argv[i])
         switch(argv[i]){
             case '--read':
                 let files = splitString(trimQuotes(argv[++i]))
@@ -73,5 +69,4 @@ let args = process.argv.slice(2);
                 break;
         }
     }
-
 })(args)
