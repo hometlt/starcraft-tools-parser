@@ -1,7 +1,7 @@
 {
-  "name": "sc2-all-races",
+  "name": "sc-parser",
   "version": "1.0.0",
-  "description": "SC2 All Races",
+  "description": "SC2 Data Parser",
   "main": "server.mjs",
   "private": true,
   "scripts": {

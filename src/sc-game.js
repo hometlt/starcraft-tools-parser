@@ -1,7 +1,7 @@
 import {SCMod} from "./sc-mod.js";
 import {deep, deepReplaceMatch, isNumeric, matchType, TYPES} from "./operations.js";
 import {SCEntity} from "./sc-entity.js";
-import {StarcraftSchema} from './sc-schema.js';
+import {SCSchema} from './sc-schema.js';
 
 export const SCGame = {
     datafiles: [
@@ -526,6 +526,6 @@ export const SCGame = {
         }
     }
 }
-SCGame.setSchema(StarcraftSchema)
+SCGame.setSchema(SCSchema)
 
 

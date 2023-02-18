@@ -3,10 +3,6 @@ import {SCGame} from "./sc-game.js";
 import * as yaml from "js-yaml";
 import xml2js from "xml2js";
 
-
-// <On Terms="Upgrade.LOTVCycloneLockOnDamageUpgrade.Remove" Target="CycloneUpgradeBeamLeft" Send="Destroy"/>
-
-
 const unknowns = {}
 
 export const TYPES = {
@@ -52,7 +48,6 @@ let regexps  = {
 
     filestrict: /^[Za-z_#'0-9\-]+[\\/a-z_#'0-9\-. ]+\.(dds|fxa|m3|tga|m3a|ogv|wav|mp3|SC2Map|SC2Layout|SC2Cutscene|SC2Campaign|SC2Mod)$/i,
 }
-
 
 export function getDataScheme(u, mod, path){
     if(!path)path = []
@@ -128,7 +123,6 @@ let keywords = {
     Type: "Fixed",
     Visibility: "Visible|Hidden|Dimmed|Snapshot"
 }
-let keywordsAll = Object.values(keywords).join('|').split('|')
 
 export function getValuesType(values, mod, path){
     let isArray = false;
@@ -232,7 +226,6 @@ export function getValuesType(values, mod, path){
         return 'unknown'
     }
 }
-
 
 let TriggerTypes = {
     color: 'ints',
@@ -494,6 +487,7 @@ function convertIndexedArrayToObject(value) {
     // Object.defineProperty(result, '$map',{ configurable:true, writable: true,enumerable: false ,value: true})
     return result
 }
+
 /**
  * [{property: value}] => {property: value}
  */
@@ -578,19 +572,6 @@ export function eventEntityType(eventname){
     return entityType[eventname]
 }
 
-// const entityType2 = {
-//     Signal: "model",
-// }
-// export function eventEntityType2(eventname){
-//     return entityType2[eventname]
-// }
-
-// <On Terms="AbilTransport.LOTVMedivacTransport.PassengerKilled;AbilTransport ThorAP" Target="::actor.Thor" Send="Signal Dead"/>
-//  <On Terms="Signal.*.ThorTransit" Send="RefSetFromMsg ::actor.Thor ::Sender"/>
-//  <On Terms="Signal.*.SiegeTankLoadTransit" Send="RefSetFromMsg ::actor.SiegeTankSieged ::Sender"/>
-
-
-// let collect = []
 export function getDebugInfo(mod){
 
 
@@ -1189,7 +1170,6 @@ export function fromXMLToObject (object) {
     }
     return object
 }
-
 
 export function optimizeObject(object, schema = object.$$schema, path = [object.class],pathobject = [object]) {
     if(!schema) {

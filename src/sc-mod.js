@@ -52,8 +52,11 @@ export class SCMod {
     async read (...input) {
         for (let item of input) {
             if(item){
-                if(item.constructor === String && item[0] === '>'){
+                if(item.constructor === String && item[item.length -1 ] === '/'){
                     this.directory(item.substring(1))
+                }
+                else if(item.constructor === String && item[0] === '>'){
+                    await this.write(item.substring(1))
                 }
                 else{
                     let data = item
@@ -157,8 +160,8 @@ export class SCMod {
                 result = eval(ref)
             }
             catch(e){
-                console.warn('wrong Expression: ' + ref)
-                result = '0'
+                console.warn('wrong Expression: ' + expressionReference)
+                result = 0
             }
 
         }
@@ -648,10 +651,22 @@ export class SCMod {
         }
         if(data.cache){
             if (!data.entities) data.entities = []
-            for(let catalog in data.catalogs){
+            for(let catalog in data.cache){
                 //cache format
-                for(let id in data.catalogs[catalog]) {
-                    data.entities.push(...data.catalogs[catalog][id])
+                for(let id in data.cache[catalog]) {
+
+
+                    let entity = data.cache[catalog][id];
+                    let existed = this.cache[catalog][id];
+
+
+                    entity.id = id;
+
+                    if(existed){
+                        entity.class = existed.class
+                    }
+
+                    data.entities.push(entity)
                 }
             }
         }
@@ -672,19 +687,21 @@ export class SCMod {
         if(unit.CardLayouts){
 
             for(let card of unit.CardLayouts){
-                for(let button of card.LayoutButtons) {
-                    let abilcmd = this.cache.abilcmd[button.AbilCmd]
-                    if (abilcmd) {
-                        let info = this.cache.abil[abilcmd.abil].InfoArray[abilcmd.cmd];
-                        if (info?.Unit) {
-                            if(info.Unit.constructor === Array){
-                                productionUnits.push( ...info.Unit.map(unit => unit.value || unit))
-                            }else{
-                                productionUnits.push( info.Unit)
+                if(card.LayoutButtons){
+                    for(let button of card.LayoutButtons) {
+                        let abilcmd = this.cache.abilcmd[button.AbilCmd]
+                        if (abilcmd) {
+                            let info = this.cache.abil[abilcmd.abil].$$resolved.InfoArray[abilcmd.cmd];
+                            if (info?.Unit) {
+                                if(info.Unit.constructor === Array){
+                                    productionUnits.push( ...info.Unit.map(unit => unit.value || unit))
+                                }else{
+                                    productionUnits.push( info.Unit)
+                                }
                             }
-                        }
-                        if (info?.Upgrade) {
-                            productionUpgrades.push( info.Upgrade)
+                            if (info?.Upgrade) {
+                                productionUpgrades.push( info.Upgrade)
+                            }
                         }
                     }
                 }
@@ -845,11 +862,12 @@ export class SCMod {
 
             let includeCampaign = false;
             let includeVoid = false;
-            if(this.dependencies?.includes(voidCampaign)){
+
+            if(this.dependencies?.find(d => d.endsWith('file:Campaigns/Void.SC2Campaign'))){
                 deps.push({_: voidCampaign})
                 includeCampaign = true;
             }
-            else if(this.dependencies?.includes(voidMod)){
+            else if(this.dependencies?.find(d => d.endsWith('file:Mods/Void.SC2Mod'))){
                 deps.push({_: voidMod})
                 includeVoid = true;
             }

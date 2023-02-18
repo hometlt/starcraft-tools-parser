@@ -245,7 +245,166 @@ export const LineSchema = {
   ConditionCheck: '[word]',
 }
 
-export const StarcraftSchema = {
+
+
+export const LibrarySchema = {
+  $Id: Word,
+  Root: {
+    Item: [{ Id: Word, Library: Word, Type: Word}],
+    Library: Word,
+    Type: Word,
+    Id: Word
+  },
+  LibraryShareToMods: "void",
+  SharedLib: [
+    {
+      Id: Word
+    }
+  ],
+  Element: [{
+    $Type: Word,
+    $Id: Word,
+    Internal: 'void',
+    Disabled: 'void',
+    FlagAction: 'void',
+    FlagCall: 'void',
+    FlagInline: 'void',
+    InitOff: 'void',
+    PresetInteger: 'void',
+    ParamFlagPreload: 'void',
+    FlagCondition: 'void',
+    FlagCreateThread: 'void',
+    PresetGenConstVar: 'void',
+    ValueTypeInfo: {Value: 'int'},
+    ValueContext: {Value: 'word'},
+    ExpressionCode: {Value: 'string'},
+    Item: [{ Id: Word, Library: Word, Type: Word}],
+    Label: { Id: Word, Library: Word, Type: Word},
+    Action: [{ Id: Word, Library: Word, Type: Word}],
+    FunctionDef: { Id: Word, Library: Word, Type: Word},
+    ParameterDef: { Id: Word, Library: Word, Type: Word},
+    Variable: [{ Id: Word, Library: Word, Type: Word}],
+    Array: [{ Id: Word, Library: Word, Type: Word}],
+    VariableType: {
+      Type: {Value:'string'},
+      Constant: 'void',
+      GameType: {Value:Word},
+      ArraySize: [{
+        Dim:Int,
+        Value:Int,
+        Type: 'Variable',
+        Library: 'NHBR',
+        Id: '4B02FA25'
+      }],
+      UserType: {
+        Value: Word
+      },
+      AssetType: {
+        Value: Word
+      },
+      TypeElement: {
+        Type: Word,
+        Library: Word,
+        Id: Word
+      },
+      EntryType: {
+        Value: Word
+      }
+    },
+    ValueElement: { Id: Word, Library: Word, Type: Word},
+    ValuePreset: [{ Id: Word, Library: Word, Type: Word}],
+    Preset: [{ Id: Word, Library: Word, Type: Word}],
+    Parameter: [{ Id: Word, Library: Word, Type: Word}],
+    ValueParam: [{ Id: Word, Library: Word, Type: Word}],
+    ExpressionParam: [{ Id: Word, Library: Word, Type: Word}],
+    Default: { Id: Word, Library: Word, Type: Word},
+    ParameterType: {
+      Type:{Value:Word},
+      TypeElement:{Type:Word,Library:Word,Id:Word},
+      GameType : {Value:Word},
+      EntryType : {Value:Word},
+      CmdTarget: {
+        Value: ">Point"
+      },
+      VariableType: {
+        Value: Word
+      },
+      UserType: {
+        Value: Word
+      },
+      AssetType: {
+        Value: Word
+      }
+    },
+    FunctionCall: [{ Id: Word, Library: Word, Type: Word}],
+    SubFunctionType: [{ Id: Word, Library: Word, Type: Word}],
+    Event: [{ Id: Word, Library: Word, Type: Word}],
+    Condition: [{ Id: Word, Library: Word, Type: Word}],
+    ValueId:{ Id: Word},
+    ValueType: { Type: Word},
+    ValueGameType: { Type: Word},
+    BaseType: { Type: Word, Value:Word},
+    ReturnType: {
+      Type: {Value: Word},
+      GameType: { Type: Word , Value: Word},
+      TypeElement: { Id: Word, Library: Word, Type: Word},
+      AssetType: {
+        Value: Word
+      },
+      EntryType: {
+        Value: Word
+      },
+      UserType: {
+        Value: Word
+      }
+    },
+    CustomType: { Type: Word},
+    ExpressionType: { Type: Word},
+    Comment:  {_ : 'string' },
+    Value: { Id: Word, Library: Word, Type: Word , _: '..ValueGameType.Type|..ValueType.Type|string'},
+    Identifier: {_ : 'string' },
+    ExpressionText:  {_: 'string'},
+    ScriptCode: {_: 'string'},
+    InitFunc:  {_: 'string'},
+    Limits: {
+      Value: "string"
+    },
+    NotYetImplemented: "void",
+    FlagSubFunctions: "void",
+    FlagAllowBreak: "void",
+    FlagOperator: 'void',
+    StructMember: {
+      Type: Word,
+      Library: Word,
+      Id: Word
+    },
+    Icon: {_: 'string'},
+    Template: 'void',
+    DisplayText: {_: 'string'},
+
+    ParamFlagVariableOnly: 'void',
+    FlagEvent: 'void',
+    PresetShowAsBasic: 'void',
+    Deprecated: 'void',
+    PresetGenIdentFunc: 'void',
+    FlagCustomScript: 'void',
+    FlagRestricted: "void",
+    Section: {
+      Value: Word
+    },
+    PresetCustom: 'void',
+    DefinesDefault: 'void',
+    PresetAsBits: 'void',
+    PresetExtends: {
+      Type: ">Preset",
+      Library: ">Ntve",
+      Id: ">37841D63"
+    },
+    FlagNative: 'void',
+  }]
+}
+
+export const SCSchema = {
   const: {
     catalog: 'const',
     $type: Word,
@@ -6518,166 +6677,9 @@ export const StarcraftSchema = {
     PurchaseDescription: Text,
     PurchaseWarning: Text,
     PurchaseImage: File
-  }
-}
-
-export const LibrarySchema = {
-  $Id: Word,
-  Root: {
-    Item: [{ Id: Word, Library: Word, Type: Word}],
-    Library: Word,
-    Type: Word,
-    Id: Word
   },
-  LibraryShareToMods: "void",
-  SharedLib: [
-    {
-      Id: Word
-    }
-  ],
-  Element: [{
-    $Type: Word,
-    $Id: Word,
-    Internal: 'void',
-    Disabled: 'void',
-    FlagAction: 'void',
-    FlagCall: 'void',
-    FlagInline: 'void',
-    InitOff: 'void',
-    PresetInteger: 'void',
-    ParamFlagPreload: 'void',
-    FlagCondition: 'void',
-    FlagCreateThread: 'void',
-    PresetGenConstVar: 'void',
-    ValueTypeInfo: {Value: 'int'},
-    ValueContext: {Value: 'word'},
-    ExpressionCode: {Value: 'string'},
-    Item: [{ Id: Word, Library: Word, Type: Word}],
-    Label: { Id: Word, Library: Word, Type: Word},
-    Action: [{ Id: Word, Library: Word, Type: Word}],
-    FunctionDef: { Id: Word, Library: Word, Type: Word},
-    ParameterDef: { Id: Word, Library: Word, Type: Word},
-    Variable: [{ Id: Word, Library: Word, Type: Word}],
-    Array: [{ Id: Word, Library: Word, Type: Word}],
-    VariableType: {
-      Type: {Value:'string'},
-      Constant: 'void',
-      GameType: {Value:Word},
-      ArraySize: [{
-        Dim:Int,
-        Value:Int,
-        Type: 'Variable',
-        Library: 'NHBR',
-        Id: '4B02FA25'
-      }],
-      UserType: {
-        Value: Word
-      },
-      AssetType: {
-        Value: Word
-      },
-      TypeElement: {
-        Type: Word,
-        Library: Word,
-        Id: Word
-      },
-      EntryType: {
-        Value: Word
-      }
-    },
-    ValueElement: { Id: Word, Library: Word, Type: Word},
-    ValuePreset: [{ Id: Word, Library: Word, Type: Word}],
-    Preset: [{ Id: Word, Library: Word, Type: Word}],
-    Parameter: [{ Id: Word, Library: Word, Type: Word}],
-    ValueParam: [{ Id: Word, Library: Word, Type: Word}],
-    ExpressionParam: [{ Id: Word, Library: Word, Type: Word}],
-    Default: { Id: Word, Library: Word, Type: Word},
-    ParameterType: {
-      Type:{Value:Word},
-      TypeElement:{Type:Word,Library:Word,Id:Word},
-      GameType : {Value:Word},
-      EntryType : {Value:Word},
-      CmdTarget: {
-        Value: ">Point"
-      },
-      VariableType: {
-        Value: Word
-      },
-      UserType: {
-        Value: Word
-      },
-      AssetType: {
-        Value: Word
-      }
-    },
-    FunctionCall: [{ Id: Word, Library: Word, Type: Word}],
-    SubFunctionType: [{ Id: Word, Library: Word, Type: Word}],
-    Event: [{ Id: Word, Library: Word, Type: Word}],
-    Condition: [{ Id: Word, Library: Word, Type: Word}],
-    ValueId:{ Id: Word},
-    ValueType: { Type: Word},
-    ValueGameType: { Type: Word},
-    BaseType: { Type: Word, Value:Word},
-    ReturnType: {
-      Type: {Value: Word},
-      GameType: { Type: Word , Value: Word},
-      TypeElement: { Id: Word, Library: Word, Type: Word},
-      AssetType: {
-        Value: Word
-      },
-      EntryType: {
-        Value: Word
-      },
-      UserType: {
-        Value: Word
-      }
-    },
-    CustomType: { Type: Word},
-    ExpressionType: { Type: Word},
-    Comment:  {_ : 'string' },
-    Value: { Id: Word, Library: Word, Type: Word , _: '..ValueGameType.Type|..ValueType.Type|string'},
-    Identifier: {_ : 'string' },
-    ExpressionText:  {_: 'string'},
-    ScriptCode: {_: 'string'},
-    InitFunc:  {_: 'string'},
-    Limits: {
-      Value: "string"
-    },
-    NotYetImplemented: "void",
-    FlagSubFunctions: "void",
-    FlagAllowBreak: "void",
-    FlagOperator: 'void',
-    StructMember: {
-      Type: Word,
-      Library: Word,
-      Id: Word
-    },
-    Icon: {_: 'string'},
-    Template: 'void',
-    DisplayText: {_: 'string'},
-
-    ParamFlagVariableOnly: 'void',
-    FlagEvent: 'void',
-    PresetShowAsBasic: 'void',
-    Deprecated: 'void',
-    PresetGenIdentFunc: 'void',
-    FlagCustomScript: 'void',
-    FlagRestricted: "void",
-    Section: {
-      Value: Word
-    },
-    PresetCustom: 'void',
-    DefinesDefault: 'void',
-    PresetAsBits: 'void',
-    PresetExtends: {
-      Type: ">Preset",
-      Library: ">Ntve",
-      Id: ">37841D63"
-    },
-    FlagNative: 'void',
-  }]
+  Library: LibrarySchema
 }
-
 
 /*
 
