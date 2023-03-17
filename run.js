@@ -10,7 +10,7 @@ function trimQuotes(s){
     return s
 }
 function splitString(s){
-    console.log(s)
+    // console.log(s)
     let pairs = {
         '}': '{',
         ']': '[',
