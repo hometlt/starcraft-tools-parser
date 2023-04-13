@@ -195,7 +195,7 @@ export const ModificationSchema = {
   AdditiveMoveSpeedFactor: { AccumulatorArray:[{value:'accumulator'}],value:Real},
   AdditiveAttackSpeedFactor: { AccumulatorArray:[{value:'accumulator'}],value:Real},
   AbilCategoriesEnable: Flags,
-  HealDealtMultiplier: Int
+  HealDealtMultiplier: Real
 }
 
 export const ConditionSchema ={
@@ -2438,7 +2438,9 @@ export const SCSchema = {
     PowerStageArray: [
       {
         Modification: ModificationSchema,
-        MinPowerLevel: Int
+        MinPowerLevel: Int,
+        LevelGainEffect: 'effect',
+        LevelLossEffect: 'effect'
       }
     ],
     PoweredWhileUnderConstruction: Bit,
