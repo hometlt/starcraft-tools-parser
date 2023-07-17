@@ -1,3 +1,5 @@
+import {resolveSchemaType} from "./operations.js";
+
 const Bit = 'bit'
 const Int = 'int'
 const Word = 'word'
@@ -7,6 +9,12 @@ const File = 'file'
 const Link = 'link'
 const Flags = '{bit}'
 
+function ByField(object){
+    //todo xml objects support with $ notation
+    let field = object.Field?.$?.value ||  object.Field
+    if(!field) return;
+  return resolveSchemaType(SCSchema.GameData.CUnit, field, [object])
+}
 const Host = {
   Subject: 'subject',
   Actor: 'actor',
@@ -28,6 +36,35 @@ export const EffectBehaviorSchema = {
 
 export const FieldSchema = {$Id: 'string', Index: Int, Flags: Flags}
 
+export const ChargeSchema = {
+  Link: Link,
+  CountMax: Real,
+  CountStart: Real,
+  CountUse: Real,
+  Location: Word,
+  TimeDelay: Real,
+  TimeStart: Real,
+  TimeUse: Real,
+  Flags: Flags,
+  HideCount: Bit
+}
+
+export const MarkerSchema = {
+  Count: "int",
+  Duration: Real,
+  Link: 'string',
+  MatchFlags: Flags,
+  MismatchFlags: Flags
+}
+
+export const CooldownSchema = {
+  Link: Link,
+  Location: Word,
+  TimeUse: Real,
+  TimeStart: Real,
+  Operation: 'string',
+}
+
 export const CostSchema = {
   Abil: 'string',
   CooldownOperation: Word,
@@ -38,18 +75,7 @@ export const CostSchema = {
     Charge: Int,
     Cooldown: Int,
   },
-  Charge: {
-    TimeDelay: Real,
-    Flags: Flags,
-    CountMax: Int,
-    CountStart: Int,
-    CountUse: Real,
-    Link: 'string',
-    Location: Word,
-    TimeStart: Real,
-    TimeUse: Real,
-    HideCount: Bit
-  },
+  Charge: ChargeSchema,
   Player: {
     Value: Word
   },
@@ -58,13 +84,7 @@ export const CostSchema = {
   TimeDelay: Real,
   Vital: '{real}',
   Display: Flags,
-  Cooldown: {
-    TimeStart: Real,
-    TimeUse: Real,
-    Link: 'string',
-    Operation: 'string',
-    Location: Word
-  },
+  Cooldown: CooldownSchema,
   Resource: '{int}',
   VitalFraction: '{real}'
 }
@@ -89,7 +109,7 @@ export const ModificationSchema = {
   DamageTakenUnscaled: '[int]',
   ResourceHarvestTimeBonus: '{real}',
   BehaviorClassEnableArray: '{int}',
-  TurretEnableArray: '{turret}',
+  TurretEnableArray: '[turret]',
   DamageDealtFraction: '{real}',
   DamageDealtAttributeUnscaled: '{real}',
   ResourceHarvestAmountMultiplier: '{real}',
@@ -133,7 +153,7 @@ export const ModificationSchema = {
   },
   TimeScale: Real,
   VitalRegenArray: [{
-    index: 'string',
+    index: Word,
     AccumulatorArray: [{value:'accumulator'}],
     value:Real
   }],
@@ -178,7 +198,7 @@ export const ModificationSchema = {
   RateMultiplierArray: '{real}',
   SightMaximum: Real,
   DecelerationBonus: Real,
-  DamageDealtAttributeScaled: '{int}',
+  DamageDealtAttributeScaled: '{real}',
   DamageDealtUnscaled: [{index: Word, AccumulatorArray:[{value:'accumulator'}],value:Real}],
   VitalMaxFractionArray: '{real}',
   AccelerationMultiplier: Real,
@@ -245,8 +265,148 @@ export const LineSchema = {
   ConditionCheck: '[word]',
 }
 
+export const LibraryElement =   [{
+  $Type: Word,
+  $Id: Word,
+  Internal: 'void',
+  Disabled: 'void',
+  FlagAction: 'void',
+  FlagCall: 'void',
+  FlagInline: 'void',
+  FlagNoScriptPrefix: 'void',
+  InitOff: 'void',
+  PresetInteger: 'void',
+  ParamFlagPreload: 'void',
+  FlagCondition: 'void',
+  FlagCreateThread: 'void',
+  PresetGenConstVar: 'void',
+  ValueTypeInfo: {Value: 'int'},
+  ValueContext: {Value: 'word'},
+  ExpressionCode: {Value: 'string'},
+  Item: [{ Id: Word, Library: Word, Type: Word}],
+  Label: { Id: Word, Library: Word, Type: Word},
+  Action: [{ Id: Word, Library: Word, Type: Word}],
+  FunctionDef: { Id: Word, Library: Word, Type: Word},
+  ParameterDef: { Id: Word, Library: Word, Type: Word},
+  Variable: [{ Id: Word, Library: Word, Type: Word}],
+  Array: [{ Id: Word, Library: Word, Type: Word}],
+  VariableType: {
+    Type: {Value:'string'},
+    Constant: 'void',
+    GameType: {Value:Word},
+    ArraySize: [{
+      Dim:Int,
+      Value:Int,
+      Type: 'Variable',
+      Library: 'NHBR',
+      Id: '4B02FA25'
+    }],
+    UserType: {
+      Value: Word
+    },
+    AssetType: {
+      Value: Word
+    },
+    TypeElement: {
+      Type: Word,
+      Library: Word,
+      Id: Word
+    },
+    EntryType: {
+      Value: Word
+    }
+  },
+  ValueElement: { Id: Word, Library: Word, Type: Word},
+  ValuePreset: [{ Id: Word, Library: Word, Type: Word}],
+  Preset: [{ Id: Word, Library: Word, Type: Word}],
+  Parameter: [{ Id: Word, Library: Word, Type: Word}],
+  ValueParam: [{ Id: Word, Library: Word, Type: Word}],
+  ExpressionParam: [{ Id: Word, Library: Word, Type: Word}],
+  Default: { Id: Word, Library: Word, Type: Word},
+  ParameterType: {
+    Type:{Value:Word},
+    TypeElement:{Type:Word,Library:Word,Id:Word},
+    GameType : {Value:Word},
+    EntryType : {Value:Word},
+    CmdTarget: {
+      Value: '>Point'
+    },
+    VariableType: {
+      Value: Word
+    },
+    UserType: {
+      Value: Word
+    },
+    AssetType: {
+      Value: Word
+    }
+  },
+  FunctionCall: [{ Id: Word, Library: Word, Type: Word}],
+  SubFunctionType: [{ Id: Word, Library: Word, Type: Word}],
+  Event: [{ Id: Word, Library: Word, Type: Word}],
+  Condition: [{ Id: Word, Library: Word, Type: Word}],
+  ValueId:{ Id: Word},
+  ValueType: { Type: Word},
+  ValueGameType: { Type: Word},
+  BaseType: { Type: Word, Value:Word},
+  ReturnType: {
+    Type: {Value: Word},
+    GameType: { Type: Word , Value: Word},
+    TypeElement: { Id: Word, Library: Word, Type: Word},
+    AssetType: {
+      Value: Word
+    },
+    EntryType: {
+      Value: Word
+    },
+    UserType: {
+      Value: Word
+    }
+  },
+  CustomType: { Type: Word},
+  ExpressionType: { Type: Word},
+  Comment:  {_ : 'string' },
+  Value: { Id: Word, Library: Word, Type: Word , _: '..ValueGameType.Type|..ValueType.Type|string'},
+  Identifier: {_ : 'string' },
+  ExpressionText:  {_: 'string'},
+  ScriptCode: {_: 'string'},
+  InitFunc:  {_: 'string'},
+  Limits: {
+    Value: 'string'
+  },
+  NotYetImplemented: 'void',
+  FlagSubFunctions: 'void',
+  FlagAllowBreak: 'void',
+  FlagOperator: 'void',
+  StructMember: {
+    Type: Word,
+    Library: Word,
+    Id: Word
+  },
+  Icon: {_: 'string'},
+  Template: 'void',
+  DisplayText: {_: 'string'},
 
-
+  ParamFlagVariableOnly: 'void',
+  FlagEvent: 'void',
+  PresetShowAsBasic: 'void',
+  Deprecated: 'void',
+  PresetGenIdentFunc: 'void',
+  FlagCustomScript: 'void',
+  FlagRestricted: 'void',
+  Section: {
+    Value: Word
+  },
+  PresetCustom: 'void',
+  DefinesDefault: 'void',
+  PresetAsBits: 'void',
+  PresetExtends: {
+    Type: '>Preset',
+    Library: '>Ntve',
+    Id: '>37841D63'
+  },
+  FlagNative: 'void',
+}]
 export const LibrarySchema = {
   $Id: Word,
   Root: {
@@ -255,171 +415,34 @@ export const LibrarySchema = {
     Type: Word,
     Id: Word
   },
-  LibraryShareToMods: "void",
+  LibraryShareToMods: 'void',
   SharedLib: [
     {
       Id: Word
     }
   ],
-  Element: [{
-    $Type: Word,
-    $Id: Word,
-    Internal: 'void',
-    Disabled: 'void',
-    FlagAction: 'void',
-    FlagCall: 'void',
-    FlagInline: 'void',
-    InitOff: 'void',
-    PresetInteger: 'void',
-    ParamFlagPreload: 'void',
-    FlagCondition: 'void',
-    FlagCreateThread: 'void',
-    PresetGenConstVar: 'void',
-    ValueTypeInfo: {Value: 'int'},
-    ValueContext: {Value: 'word'},
-    ExpressionCode: {Value: 'string'},
-    Item: [{ Id: Word, Library: Word, Type: Word}],
-    Label: { Id: Word, Library: Word, Type: Word},
-    Action: [{ Id: Word, Library: Word, Type: Word}],
-    FunctionDef: { Id: Word, Library: Word, Type: Word},
-    ParameterDef: { Id: Word, Library: Word, Type: Word},
-    Variable: [{ Id: Word, Library: Word, Type: Word}],
-    Array: [{ Id: Word, Library: Word, Type: Word}],
-    VariableType: {
-      Type: {Value:'string'},
-      Constant: 'void',
-      GameType: {Value:Word},
-      ArraySize: [{
-        Dim:Int,
-        Value:Int,
-        Type: 'Variable',
-        Library: 'NHBR',
-        Id: '4B02FA25'
-      }],
-      UserType: {
-        Value: Word
-      },
-      AssetType: {
-        Value: Word
-      },
-      TypeElement: {
-        Type: Word,
-        Library: Word,
-        Id: Word
-      },
-      EntryType: {
-        Value: Word
-      }
-    },
-    ValueElement: { Id: Word, Library: Word, Type: Word},
-    ValuePreset: [{ Id: Word, Library: Word, Type: Word}],
-    Preset: [{ Id: Word, Library: Word, Type: Word}],
-    Parameter: [{ Id: Word, Library: Word, Type: Word}],
-    ValueParam: [{ Id: Word, Library: Word, Type: Word}],
-    ExpressionParam: [{ Id: Word, Library: Word, Type: Word}],
-    Default: { Id: Word, Library: Word, Type: Word},
-    ParameterType: {
-      Type:{Value:Word},
-      TypeElement:{Type:Word,Library:Word,Id:Word},
-      GameType : {Value:Word},
-      EntryType : {Value:Word},
-      CmdTarget: {
-        Value: ">Point"
-      },
-      VariableType: {
-        Value: Word
-      },
-      UserType: {
-        Value: Word
-      },
-      AssetType: {
-        Value: Word
-      }
-    },
-    FunctionCall: [{ Id: Word, Library: Word, Type: Word}],
-    SubFunctionType: [{ Id: Word, Library: Word, Type: Word}],
-    Event: [{ Id: Word, Library: Word, Type: Word}],
-    Condition: [{ Id: Word, Library: Word, Type: Word}],
-    ValueId:{ Id: Word},
-    ValueType: { Type: Word},
-    ValueGameType: { Type: Word},
-    BaseType: { Type: Word, Value:Word},
-    ReturnType: {
-      Type: {Value: Word},
-      GameType: { Type: Word , Value: Word},
-      TypeElement: { Id: Word, Library: Word, Type: Word},
-      AssetType: {
-        Value: Word
-      },
-      EntryType: {
-        Value: Word
-      },
-      UserType: {
-        Value: Word
-      }
-    },
-    CustomType: { Type: Word},
-    ExpressionType: { Type: Word},
-    Comment:  {_ : 'string' },
-    Value: { Id: Word, Library: Word, Type: Word , _: '..ValueGameType.Type|..ValueType.Type|string'},
-    Identifier: {_ : 'string' },
-    ExpressionText:  {_: 'string'},
-    ScriptCode: {_: 'string'},
-    InitFunc:  {_: 'string'},
-    Limits: {
-      Value: "string"
-    },
-    NotYetImplemented: "void",
-    FlagSubFunctions: "void",
-    FlagAllowBreak: "void",
-    FlagOperator: 'void',
-    StructMember: {
-      Type: Word,
-      Library: Word,
-      Id: Word
-    },
-    Icon: {_: 'string'},
-    Template: 'void',
-    DisplayText: {_: 'string'},
-
-    ParamFlagVariableOnly: 'void',
-    FlagEvent: 'void',
-    PresetShowAsBasic: 'void',
-    Deprecated: 'void',
-    PresetGenIdentFunc: 'void',
-    FlagCustomScript: 'void',
-    FlagRestricted: "void",
-    Section: {
-      Value: Word
-    },
-    PresetCustom: 'void',
-    DefinesDefault: 'void',
-    PresetAsBits: 'void',
-    PresetExtends: {
-      Type: ">Preset",
-      Library: ">Ntve",
-      Id: ">37841D63"
-    },
-    FlagNative: 'void',
-  }]
+  Element: LibraryElement
 }
 
-export const SCSchema = {
-  const: {
-    catalog: 'const',
-    $type: Word,
-    $value: 'string',
-    $path: 'string',
-  },
+export const ConstSchema = {
+  catalog: 'const',
+  $type: Word,
+  $value: 'string',
+  $path: 'string',
+}
+
+export const GameDataSchema = {
+  const: ConstSchema,
   CAbil: {
+    parent: 'abil',
     catalog: 'abil',
     Name: Text,
     TechPlayer: Word,
-    "TargetCursorInfo": {
-      "Invalid": "cursor",
-      "Normal": "cursor",
-      "Allied": "cursor",
-      "Enemy": "cursor"
+    TargetCursorInfo: {
+      Invalid: 'cursor',
+      Normal: 'cursor',
+      Allied: 'cursor',
+      Enemy: 'cursor'
     },
     UnloadTransportEffect: 'effect',
     LoadTransportEffect: 'effect',
@@ -490,7 +513,7 @@ export const SCSchema = {
     Activity: Link,
     Cancelable: Bit,
     Leash: Real,
-    Alert: 'string',
+    Alert: 'alert',
     AbilSetId: 'string',
     DebugTrace: Bit,
     Alignment: Word,
@@ -546,17 +569,7 @@ export const SCSchema = {
         Count: Int,
         CollideRange: Real,
         Effect: 'effect',
-        Charge: {
-          CountMax: Int,
-          CountStart: Int,
-          CountUse: Real,
-          Location: Word,
-          TimeStart: Real,
-          TimeUse: Real,
-          Link: 'string',
-          Flags: Flags,
-          HideCount: Bit
-        },
+        Charge: ChargeSchema,
         Upgrade: 'upgrade',
         Resource: '{int}',
         Alert: 'alert',
@@ -568,12 +581,7 @@ export const SCSchema = {
         UseValidators: '[validator]',
         SetOnGround: Bit,
         ValidatorArray: '[validator]',
-        Cooldown: {
-          Link: 'string',
-          TimeUse: Real,
-          Location: Word,
-          TimeStart: Real
-        },
+        Cooldown: CooldownSchema,
         RandomDelayMax: Real,
         CountStart: Int,
         Manage: Word,
@@ -649,12 +657,7 @@ export const SCSchema = {
     UnloadCargoBehavior: 'behavior',
     UnloadTransportBehavior: 'behavior',
     AutoCastValidatorArray: '[validator]',
-    Marker: {
-      Duration: Real,
-      Link: 'string',
-      MatchFlags: Flags,
-      MismatchFlags: Flags
-    },
+    Marker: MarkerSchema,
     InheritAttackPriorityArray: Flags,
     MorphUnit: 'unit',
     Arc: Real,
@@ -698,8 +701,8 @@ export const SCSchema = {
     Abil: 'abil',
     ProgressButton: 'button',
     Info: {
-      Charge: {Link: Link},
-      Cooldown: {Link: Link},
+      Charge: ChargeSchema,
+      Cooldown: CooldownSchema,
       Unit: 'unit',
       Time: Real,
       Resource: '{int}'
@@ -716,10 +719,7 @@ export const SCSchema = {
     BaseInfo: {
       Time: Int,
       Resource: '{int}',
-      Cooldown: {
-        Location: Word,
-        TimeUse: Real
-      }
+      Cooldown: CooldownSchema
     },
     LevelInfo: {
       Time: Int,
@@ -819,7 +819,13 @@ export const SCSchema = {
   },
   CAbilMerge: { prototype: 'CAbil'},
   CAbilMergeable: { prototype: 'CAbil'},
-  CAbilMorph: { prototype: 'CAbil'},
+  CAbilMorph: {
+    prototype: 'CAbil',
+    CostUnmorph: {
+      Charge: ChargeSchema,
+      Cooldown: CooldownSchema
+    }
+  },
   CAbilMorphPlacement: { prototype: 'CAbil'},
   CAbilMove: { prototype: 'CAbil'},
   CAbilPawn: {
@@ -875,6 +881,7 @@ export const SCSchema = {
   },
   CAbilWarpable: { prototype: 'CAbil'},
   CAccumulator: {
+    parent: 'accumulator',
     catalog: 'accumulator',
     PreviousValueFactor: Bit,
     Flags: Flags,
@@ -893,6 +900,7 @@ export const SCSchema = {
         Accumulator: 'accumulator'
       }
     ],
+    BehaviorScope: {Behavior: 'behavior'},
     Behavior: 'behavior',
     CaseDefault: 'accumulator',
     ApplicationRule: Word,
@@ -904,7 +912,8 @@ export const SCSchema = {
     ModificationType: Word,
     BonusPerLevel: Real,
     UnitSource: {
-      Value: Word
+      Value: Word,
+      Effect: 'effect'
     },
     Operation: 'string',
     Parameters: [
@@ -928,6 +937,7 @@ export const SCSchema = {
   CAccumulatorUserData: { prototype: 'CAccumulator'},
   CAccumulatorVitals: { prototype: 'CAccumulator'},
   CAchievement: {
+    parent: 'achievement',
     catalog: 'achievement',
     Description: Text,
     Category: Text,
@@ -945,6 +955,7 @@ export const SCSchema = {
     Tags: [{Value:Word,Check:Word}],
   },
   CAchievementTerm: {
+    parent: 'achievementterm',
     catalog: 'achievementterm',
     Name: Text,
     Description: Text,
@@ -991,6 +1002,7 @@ export const SCSchema = {
   CAchievementTermUnitRegen: { prototype: 'CAchievementTerm'},
   CAchievementTermUnitSupplyLoss: { prototype: 'CAchievementTerm'},
   CActor: {
+    parent: 'actor',
     catalog: 'actor',
     Deltas: [
       {
@@ -1019,27 +1031,29 @@ export const SCSchema = {
     ModelMaterialGlazeDisplayLimit: Int,
     UnitButton: 'abil',
     Portrait: 'model',
-    '$anim': 'words',
-    '$effectsound': 'sound',
-    '$model': 'actor',
-    '$effectsoundlooped': 'sound',
-    '$dataeffect': 'effect',
-    '$missile': 'actor',
-    '$dropBehavior': 'behavior',
-    '$dropEffect': 'effect',
-    '$defType': Word,
-    '$tid': 'actor',
-    '$art': File,
-    '$effect': 'effect',
-    '$file': Word,
-    '$buffid': 'actor',
-    '$A': 'abil',
-    '$B': 'abil',
-    '$C': 'abil',
-    '$D': 'abil',
+    $BSub: 'word',//On|Off    scion races token
+    $ESub: 'word',//Impact|Start  scion races token
+    $anim: 'words',
+    $effectsound: 'sound',
+    $model: 'actor',
+    $effectsoundlooped: 'sound',
+    $dataeffect: 'effect',
+    $missile: 'actor',
+    $dropBehavior: 'behavior',
+    $dropEffect: 'effect',
+    $defType: Word,
+    $tid: 'actor',
+    $art: File,
+    $effect: 'effect',
+    $file: Word,
+    $buffid: 'actor',
+    $A: 'abil',
+    $B: 'abil',
+    $C: 'abil',
+    $D: 'abil',
     $weaponId: 'weapon',
     $unitId: 'unit',
-    WeaponSound: Word,
+    $WeaponSound: Word,
     FogVisibility: Word,
     EditorCategories: 'categories',
     InheritType: Word,
@@ -1397,7 +1411,7 @@ export const SCSchema = {
         AnimPropsReaction: 'sound',
         Model: 'model',
         Sound: 'sound',
-        ModelReaction: 'string',
+        ModelReaction: 'model',
         ScaleReaction: Real,
         Scale: Real
       }
@@ -1453,7 +1467,7 @@ export const SCSchema = {
     HostTargetSiteOps: {
       Ops: 'ops'
     },
-    Type: 'actor',
+    Type: 'string',//todo 'actor' ??
     SceneActor: 'actor',
     MainActor: Word,
     MissileBoundsOptSpeedThreshold: Real,
@@ -1683,8 +1697,6 @@ export const SCSchema = {
     HostTarget: {
       Subject: 'subject'
     },
-
-
     SplatEmitterInit: {
       TextureResolution: 'ints',
       ProjectorModel: 'model',
@@ -1702,7 +1714,7 @@ export const SCSchema = {
       Aspects: [{
         Name: Word,
         RegardsAs: Word,
-        Model: 'modeel'
+        Model: 'model'
       }]
     },
     MinimapIconIsTeamColored: Bit,
@@ -2114,6 +2126,7 @@ export const SCSchema = {
   CActorUnit: { prototype: 'CActor'},
   CActorMissile: { prototype: 'CActorUnit'},
   CAlert: {
+    parent: 'alert',
     catalog: 'alert',
     Display: Flags,
     PrimaryActions: Flags,
@@ -2131,14 +2144,15 @@ export const SCSchema = {
     OverlapDuration: Real,
     OverlapGlobalCount: Int,
     OverlapLocalCount: Bit,
-    OverlapLocalRadius: Int,
+    OverlapLocalRadius: Real,
     QueueTime: Real,
     Icon: File,
     Peripheral: Word,
     PingModel: 'model',
-    '$race': 'race'
+    $race: 'string'
   },
   CArmyCategory: {
+    parent: 'armycategory',
     catalog: 'armycategory',
     Name: Text,
     Description: Text,
@@ -2155,6 +2169,7 @@ export const SCSchema = {
     Flags: Flags
   },
   CArmyUnit: {
+    parent: 'armyunit',
     catalog: 'armyunit',
     Name: Text,
     Description:Text,
@@ -2171,12 +2186,14 @@ export const SCSchema = {
     Movie: File
   },
   CArmyUpgrade: {
+    parent: 'armyupgrade',
     catalog: 'armyupgrade',
     Name: Text,
     Description:Text,
     Tooltip:Text,
   },
   CArtifact: {
+    parent: 'artifact',
     catalog: 'artifact',
     Name: Text,
     InfoText: Text,
@@ -2193,10 +2210,12 @@ export const SCSchema = {
     PlayerResponses: Word
   },
   CArtifactSlot: {
+    parent: 'artifactslot',
     catalog: 'artifactslot',
     Name: Text
   },
   CAttachMethod: {
+    parent: 'attachmethod',
     catalog: 'attachmethod',
     Multiplier: Int,
     RequestCount: Int,
@@ -2250,6 +2269,7 @@ export const SCSchema = {
   CAttachMethodVolumesTargets: { prototype: 'CAttachMethod'},
   CAttachMethodVolumesWeightedPick: { prototype: 'CAttachMethod'},
   CBankConditionCompare: {
+    parent: 'bankcondition',
     catalog: 'bankcondition',
     ValueName: Word,
     Bank: Word,
@@ -2268,16 +2288,19 @@ export const SCSchema = {
     prototype: 'CBankConditionCompare'
   },
   CBankConditionCurrentMap: {
+    parent: 'bankcondition',
     catalog: 'bankcondition',
     Map: 'map'
   },
   CBankConditionCombine: {
+    parent: 'bankcondition',
     catalog: 'bankcondition',
     Type: Word,
     CombineArray: '[bankcondition]'
   },
   CBeamAsyncLinear: { catalog: 'beam'},
   CBehavior: {
+    parent: 'behavior',
     catalog: 'behavior',
 
     Name: Text,
@@ -2332,8 +2355,8 @@ export const SCSchema = {
     DamageResponse: {
       AttackType: '[int]',
       Exhausted: 'effect',
-      Ignore: "[real]",
-      ExcludeEffectInChainArray: 'effect',
+      Ignore: '[real]',
+      ExcludeEffectInChainArray: '[effect]',
       Location: Word,
       ModifyFraction: Real,
       Chance: Real,
@@ -2381,7 +2404,7 @@ export const SCSchema = {
     CliffLevelFlags: Flags,
     CarryResourceBehavior: 'behavior',
     EnabledSearchFilters: 'filters',
-    EnabledSearchRadius: Int,
+    EnabledSearchRadius: Real,
     Range: Real,
     Flags: Flags,
     ShareFilters: '{filters}',
@@ -2407,6 +2430,7 @@ export const SCSchema = {
     Delay: Real,
     Leash: Bit,
     PeriodCount: [{AccumulatorArray:[{value:'accumulator'}],value:Int}],
+    Effect: 'effect',
     InitialEffect: 'effect',
     MaxTrackedUnits: Int,
     UnitAddedAtMaxRule: Word,
@@ -2433,7 +2457,7 @@ export const SCSchema = {
     Placeholder: 'unit',
     LandAdjustmentDown: Real,
     LandArrivalRange: Real,
-    LandCheckRadius: Int,
+    LandCheckRadius: Real,
     PlacementMinPowerLevel: Bit,
     PowerStageArray: [
       {
@@ -2503,7 +2527,7 @@ export const SCSchema = {
     DurationVitalMaxArray: '{int}',
     SortIndex: Int,
     EmptyDeathType: Word,
-    LimitDeath: 'behavior'
+    LimitDeath: 'word'
   },
   CBehaviorAttackModifier: { prototype: 'CBehavior'},
   CBehaviorAttribute: { prototype: 'CBehavior'},
@@ -2521,6 +2545,7 @@ export const SCSchema = {
   CBehaviorVeterancy: { prototype: 'CBehavior'},
   CBehaviorWander: { prototype: 'CBehavior'},
   CBoost: {
+    parent: 'boost',
     catalog: 'boost',
     Name: Text,
     StoreName: Text,
@@ -2528,6 +2553,7 @@ export const SCSchema = {
     StoreTypeName: Text
   },
   CButton: {
+    parent: 'button',
     catalog: 'button',
     TooltipVitalOverrideText: '{int}',
     Name: Text,
@@ -2576,6 +2602,7 @@ export const SCSchema = {
     Upgrade: 'upgrade'
   },
   CCamera: {
+    parent: 'camera',
     catalog: 'camera',
     ZoomDefault: Int,
     FieldOfViewMin: Real,
@@ -2628,6 +2655,7 @@ export const SCSchema = {
     }]
   },
   CCampaign: {
+    parent: 'campaign',
     catalog: 'campaign',
     Name: Text,
     ShortName: Text,
@@ -2697,6 +2725,7 @@ export const SCSchema = {
     LearnMoreBodyText3: Text
   },
   CCharacter: {
+    parent: 'character',
     catalog: 'character',
     Name: Text,
     RaceCustom: Link,
@@ -2724,6 +2753,7 @@ export const SCSchema = {
     Pitch: Int
   },
   CCliff: {
+    parent: 'cliff',
     catalog: 'cliff',
     CliffMesh: 'cliff',
     CliffMaterial: 'string', //file
@@ -2738,14 +2768,16 @@ export const SCSchema = {
     EditorCategories: 'categories',
     Footprint: 'footprint'
   },
-  CCliffDoodad: { prototype: 'CCliff'},
+  CCliffDoodad: { prototype: 'CCliff' },
   CCliffMesh: {
+    parent: 'cliffmesh',
     catalog: 'cliffmesh',
     ModelPath: 'string',
     WeldNormals: Bit,
     CliffHeights: '[real]'
   },
   CColorStyle: {
+    parent: 'colorstyle',
     catalog: 'colorstyle',
     Name: Text,
     ColorEntry: [
@@ -2756,8 +2788,8 @@ export const SCSchema = {
     ]
   },
   CCommander: {
+    parent: 'commander',
     catalog: 'commander',
-
     RequiredRewardArray: '[word]',
     Name: Text,
     UserReference: 'string',
@@ -2811,6 +2843,7 @@ export const SCSchema = {
     ],
     CommanderAbilArray: [
       {
+        Abil: "abil",
         Button: 'button'
       }
     ],
@@ -2831,6 +2864,7 @@ export const SCSchema = {
     PurchaseImage: File
   },
   CConfig: {
+    parent: 'config',
     catalog: 'config',
     Name: Text,
     CommanderMastery: 'commander',
@@ -2855,6 +2889,7 @@ export const SCSchema = {
     GameContentArray: '[words]'
   },
   CConsoleSkin: {
+    parent: 'consoleskin',
     catalog: 'consoleskin',
     Name: Text,
     StoreName: Link,
@@ -2891,6 +2926,7 @@ export const SCSchema = {
     MinimapPanelImage: File
   },
   CConversation: {
+    parent: 'conversation',
     catalog: 'conversation',
     AnimBlendDefault: Int,
     AnimBlendOut: Int,
@@ -2937,6 +2973,7 @@ export const SCSchema = {
     ],
   },
   CConversationState: {
+    parent: 'conversationstate',
     catalog: 'conversationstate',
     ValueRange: 'ints',
     Flags: Flags,
@@ -2966,12 +3003,14 @@ export const SCSchema = {
     InfoIds: [{index: Word, Id: '[string]'}]
   },
   CCursor: {
+    parent: 'cursor',
     catalog: 'cursor',
     Texture: File,
     HotspotX: Int,
     HotspotY: Int
   },
   CDataCollection: {
+    parent: 'datacollection',
     catalog: 'datacollection',
     Name: Text,
     Button: 'button',
@@ -3011,6 +3050,7 @@ export const SCSchema = {
   CDataCollectionUnit: { prototype: 'CDataCollection'},
   CDataCollectionUpgrade: { prototype: 'CDataCollection'},
   CDataCollectionPattern: {
+    parent: 'datacollectionpattern',
     catalog: 'datacollectionpattern',
     Fields: [{
       NameOverride: Link,
@@ -3024,6 +3064,7 @@ export const SCSchema = {
     ]
   },
   CDecalPack: {
+    parent: 'decalpack',
     catalog: 'decalpack',
     Name: Text,
     StoreName: Link,
@@ -3032,6 +3073,7 @@ export const SCSchema = {
     DecalArray: '[reward]'
   },
   CDSP: {
+    parent: 'dsp',
     catalog: 'dsp',
     Delay: Real,
     Depth: Real,
@@ -3100,22 +3142,19 @@ export const SCSchema = {
   CDSPPitchShift: { prototype: 'CDSP'},
   CDSPReverb: { prototype: 'CDSP'},
   CEffect: {
+    $Race: 'race',
+    parent: 'effect',
     catalog: 'effect',
-    SearchMaxCount: "int",
+    SearchMaxCount: 'int',
     Name: Text,
     EditorCategories: 'categories',
     ExtraRadiusBonus: {AccumulatorArray:[{value:'accumulator'}],value:Int},
     Chance: Real,
     Minimum: Int,
     DisplayFlags: Flags,
-    Marker: {
-      Link: 'string',
-      MatchFlags: Flags,
-      MismatchFlags: Flags,
-      Count: Bit,
-      Duration: Real
-    },
+    Marker: MarkerSchema,
     DamageModifierSource: {
+      Effect: 'effect',
       Value: Word
     },
     OwningPlayer: {
@@ -3128,7 +3167,7 @@ export const SCSchema = {
       Value: Word,
       Effect: 'effect'
     },
-    Count: Int,
+    Count: {AccumulatorArray:[{value:'accumulator'}],value:Int},
     RecycleCount: Int,
     ShieldFactor: Real,
     KillHallucination: Bit,
@@ -3269,7 +3308,7 @@ export const SCSchema = {
       Effect: 'effect'
     },
     Key: Word,
-    Amount: {"AccumulatorArray":'[accumulator]',"value":Real},
+    Amount: {'AccumulatorArray':'[accumulator]','value':Real},
     SourceKey: Word,
     ValidateMin: Bit,
     TargetLocationType: Word,
@@ -3300,7 +3339,8 @@ export const SCSchema = {
     FacingType: Word,
     Operation: 'string',
     TrackerUnit: {
-      Value: Word
+      Value: Word,
+      Effect: 'effect'
     },
     ContainerAbil: 'abil',
     SelectTransferFlags: Flags,
@@ -3348,6 +3388,7 @@ export const SCSchema = {
       }
     ],
     TrackedUnit: {
+      Effect: 'effect',
       Value: Word
     },
     Upgrades: [{
@@ -3533,7 +3574,10 @@ export const SCSchema = {
   CEffectCreatePersistent: { prototype: 'CEffect'},
   CEffectCreateUnit: { prototype: 'CEffect'},
   CEffectCreep: { prototype: 'CEffect'},
-  CEffectDamage: { prototype: 'CEffect'},
+  CEffectDamage: {
+    prototype: 'CEffect',
+    Fraction: {AccumulatorArray:[{value:'accumulator'}],value:Real},
+  },
   CEffectDestroyPersistent: { prototype: 'CEffect'},
   CEffectEnumArea: { prototype: 'CEffect'},
   CEffectEnumMagazine: { prototype: 'CEffect'},
@@ -3568,6 +3612,7 @@ export const SCSchema = {
   CEffectUseMagazine: { prototype: 'CEffect'},
   CEffectUserData: { prototype: 'CEffect'},
   CFootprint: {
+    parent: 'footprint',
     catalog: 'footprint',
     Flags: Flags,
     Layers: [
@@ -3593,14 +3638,16 @@ export const SCSchema = {
     EditorCategories: 'categories'
   },
   CFoW: {
+    parent: 'fow',
     catalog: 'fow',
     Color: 'ints',
     BlendSpeed: Int,
     Hidden: Bit,
-    UnhideRadius: Int,
+    UnhideRadius: Real,
     Expand: Bit
   },
   CHerd: {
+    parent: 'herd',
     catalog: 'herd',
     PositionBias: Real,
     NodeSearchRadius: Real,
@@ -3617,6 +3664,7 @@ export const SCSchema = {
   },
   CHerdNode: { catalog: 'herdnode'},
   CHero: {
+    parent: 'hero',
     catalog: 'hero',
     Name: Text,
     Flags: Flags,
@@ -3648,26 +3696,24 @@ export const SCSchema = {
     }
   },
   CHeroAbil: {
+    parent: 'heroabil',
     catalog: 'heroabil',
     Name: Text,
     Description: Text,
     Tooltip: Text
   },
   CHeroStat: {
+    parent: 'herostat',
     catalog: 'herostat',
     Name: Text
   },
   CItem: {
+    parent: 'item',
     catalog: 'item',
     CarryBehaviorArray: 'behavior',
     Face: 'button',
     Flags: Flags,
-    Charge: {
-      Link: Link,
-      CountMax: Int,
-      CountStart: Int,
-      CountUse: Int
-    },
+    Charge: ChargeSchema,
     Abil: '[abil]',
     EquipBehaviorArray: '[behavior]',
     Effect: 'effect',
@@ -3685,10 +3731,12 @@ export const SCSchema = {
   CItemEffectInstant: { prototype: 'CItem'},
   CItemEffectTarget: { prototype: 'CItem'},
   CItemClass: {
+    parent: 'itemclass',
     catalog: 'itemclass',
     Name: Text
   },
   CItemContainer: {
+    parent: 'itemcontainer',
     catalog: 'itemcontainer',
     Slots: [
       {
@@ -3705,6 +3753,7 @@ export const SCSchema = {
     ModelHeight: Int
   },
   CKinetic: {
+    parent: 'kinetic',
     catalog: 'kinetic',
     Name: Text,
     Chance: Bit,
@@ -3724,6 +3773,7 @@ export const SCSchema = {
   CKineticSet: { prototype: 'CKinetic'},
   CKineticTranslate: { prototype: 'CKinetic'},
   CLensFlareSet: {
+    parent: 'lensflareset',
     catalog: 'lensflareset',
     Flare: [
       {
@@ -3733,6 +3783,7 @@ export const SCSchema = {
     ]
   },
   CLight: {
+    parent: 'light',
     catalog: 'light',
 
     TimePerDay: 'string',
@@ -3794,12 +3845,14 @@ export const SCSchema = {
     LightingRegionMap: File
   },
   CLocation: {
+    parent: 'location',
     catalog: 'location',
     Name: Text,
     Description: Text,
     UserReference: 'string'
   },
   CLoot: {
+    parent: 'loot',
     catalog: 'loot',
     ClassArray: '[itemclass]',
     SpawnOwner: Word,
@@ -3823,13 +3876,14 @@ export const SCSchema = {
   CLootSpawn: { prototype: 'CLoot'},
   CLootUnit: { prototype: 'CLoot'},
   CModel: {
+    parent: 'model',
     catalog: 'model',
     RunAnimMoveSpeed: Real,
     RunAnimMoveSpeedThreshold: Real,
     $model: 'model',
 
     $COOP: Word,
-    $Race: 'race',
+    $Race: 'string',
     $Prefix: 'string',
     $Parent: 'model',
     Flags: Flags,
@@ -3876,7 +3930,7 @@ export const SCSchema = {
         Name: Text,
         Type: Word,
         Time: Real,
-        Payload: Word,
+        Payload: 'sound',
         Variation: Int,
         Attachment: 'string',
         ModelQuality: Word
@@ -3950,6 +4004,7 @@ export const SCSchema = {
   },
   CModelFoliage: { prototype: 'CModel'},
   CMount: {
+    parent: 'mount',
     catalog: 'mount',
     Name: Text,
     InfoText: Text,
@@ -3957,6 +4012,7 @@ export const SCSchema = {
     VariationIcon: File
   },
   CMover: {
+    parent: 'mover',
     catalog: 'mover',
     HeightMap: Word,
     RestoreHeightDuration: Real,
@@ -4034,6 +4090,7 @@ export const SCSchema = {
   CMoverFlock: { prototype: 'CMover'},
   CMoverMissile: { prototype: 'CMover'},
   CObjective: {
+    parent: 'objective',
     catalog: 'objective',
     Name: Text,
     Description: Text,
@@ -4042,6 +4099,7 @@ export const SCSchema = {
     RequiredCount: 'number'
   },
   CPhysicsMaterial: {
+    parent: 'physicsmaterial',
     catalog: 'physicsmaterial',
     Density: Real,
     Friction: Real,
@@ -4050,12 +4108,14 @@ export const SCSchema = {
     AngularDamping: Real
   },
   CPing: {
+    parent: 'ping',
     catalog: 'ping',
     Color: 'ints',
     Duration: Real,
     Scale: Real
   },
   CPlayerResponse: {
+    parent: 'playerresponse',
     catalog: 'playerresponse',
     Location: Word,
     Chance: Bit,
@@ -4070,6 +4130,7 @@ export const SCSchema = {
   CPlayerResponseUnitDamage: { prototype: 'CPlayerResponse'},
   CPlayerResponseUnitDeath: { prototype: 'CPlayerResponse'},
   CPortraitPack: {
+    parent: 'portraitpack',
     catalog: 'portraitpack',
     Name: Text,
     StoreName: Link,
@@ -4078,12 +4139,13 @@ export const SCSchema = {
     PortraitArray: '[reward]'
   },
   CRace: {
+    parent: 'race',
     catalog: 'race',
     Name: Text,
     RaceIcon: File,
     Icon: File,
     StartLocationAlert: 'alert',
-    GameMusic: Word,
+    GameMusic: 'soundtrack',
     FoodCeiling: Int,
     ShowResource: Flags,
     MiniMapBorderColor: 'ints',
@@ -4114,6 +4176,7 @@ export const SCSchema = {
     ]
   },
   CRequirement: {
+    parent: 'requirement',
     catalog: 'requirement',
     CanBeSuppressed: Flags,
     NodeArray: [
@@ -4125,6 +4188,7 @@ export const SCSchema = {
     EditorCategories: 'categories'
   },
   CRequirementNode: {
+    parent: 'requirementnode',
     catalog: 'requirementnode',
     Tooltip: 'string',
     Flags: Flags,
@@ -4166,6 +4230,7 @@ export const SCSchema = {
     }
   },
   CRequirementCountUnit: {
+    $x: 'unit',
     prototype: 'CRequirementNode',
     Value: 'unit',
     Count: {
@@ -4174,6 +4239,7 @@ export const SCSchema = {
     }
   },
   CRequirementCountUpgrade: {
+    $x: 'upgrade',
     prototype: 'CRequirementNode',
     Value: 'upgrade',
     Count: {
@@ -4194,6 +4260,7 @@ export const SCSchema = {
   CRequirementSum: {prototype: 'CRequirementNode'},
   CRequirementXor: {prototype: 'CRequirementNode'},
   CReverb: {
+    parent: 'reverb',
     catalog: 'reverb',
     Room: Int,
     DecayTime: Real,
@@ -4212,6 +4279,7 @@ export const SCSchema = {
     RoomLF: Int
   },
   CScoreResult: {
+    parent: 'scoreresult',
     catalog: 'scoreresult',
     Name: Text,
     PublishName: Text,
@@ -4230,6 +4298,7 @@ export const SCSchema = {
   CScoreResultRoot: { prototype: 'CScoreResult'},
   CScoreResultScore: { prototype: 'CScoreResult'},
   CScoreValue: {
+    parent: 'scorevalue',
     catalog: 'scorevalue',
     Type: Word,
     Collapse: Word,
@@ -4254,6 +4323,7 @@ export const SCSchema = {
   CScoreValueCombine: { prototype: 'CScoreValueCustom'},
   CScoreValueStandard: { prototype: 'CScoreValue'},
   CShape: {
+    parent: 'shape',
     catalog: 'shape',
     Name: Text,
     Radius: Real,
@@ -4263,6 +4333,7 @@ export const SCSchema = {
   CShapeArc: { prototype: 'CShape'},
   CShapeQuad: { prototype: 'CShape'},
   CSkin: {
+    parent: 'skin',
     catalog: 'skin',
     Name: Text,
     InfoText: Text,
@@ -4303,6 +4374,7 @@ export const SCSchema = {
     $suffix: 'string'
   },
   CSkinPack: {
+    parent: 'skinpack',
     catalog: 'skinpack',
     Name: Text,
     StoreName: Link,
@@ -4324,6 +4396,7 @@ export const SCSchema = {
     $unit: 'unit'
   },
   CSound: {
+    parent: 'sound',
     catalog: 'sound',
 
     $Subtitle: Word,
@@ -4525,6 +4598,7 @@ export const SCSchema = {
     race: 'race'
   },
   CSoundExclusivity: {
+    parent: 'soundexclusivity',
     catalog: 'soundexclusivity',
     Group: Int,
     CollideWithLower: Word,
@@ -4548,6 +4622,7 @@ export const SCSchema = {
     QTimeout: Int
   },
   CSoundMixSnapshot: {
+    parent: 'soundmixsnapshot',
     catalog: 'soundmixsnapshot',
     Attack: Int,
     Hold: Int,
@@ -4557,6 +4632,7 @@ export const SCSchema = {
     MixNonLocal: '{real}'
   },
   CSoundtrack: {
+    parent: 'soundtrack',
     catalog: 'soundtrack',
     Flags: Flags,
     CueArray: [
@@ -4578,12 +4654,14 @@ export const SCSchema = {
     Next: 'soundtrack'
   },
   CSpray: {
+    parent: 'spray',
     catalog: 'spray',
     Button: Word,
     Texture: Word,
     Model: 'model'
   },
   CSprayPack: {
+    parent: 'spraypack',
     catalog: 'spraypack',
     Name: Text,
     StoreName: Link,
@@ -4592,6 +4670,7 @@ export const SCSchema = {
     ProductId: Int
   },
   CTacCooldown: {
+    parent: 'taccooldown',
     catalog: 'taccooldown',
     UnitLink: 'unit',
     TacAbilData: [
@@ -4602,6 +4681,7 @@ export const SCSchema = {
     ]
   },
   CTactical: {
+    parent: 'tactical',
     catalog: 'tactical',
     Abil: 'abil',
     TargetFind: 'targetfind',
@@ -4609,9 +4689,7 @@ export const SCSchema = {
     Array: '[tactical]',
     Validator: 'validator',
     AbilCmdIndex: Int,
-    Marker: {
-      Link: Link
-    }
+    Marker: MarkerSchema
   },
   CTacticalOrder: { prototype: 'CTactical'},
   CTacticalSet: { prototype: 'CTactical'},
@@ -4620,6 +4698,7 @@ export const SCSchema = {
     catalog: 'talent'
   },
   CTargetFind: {
+    parent: 'targetfind',
     catalog: 'targetfind',
     AreaArray: [{
       MaxCount: Int,
@@ -4664,6 +4743,7 @@ export const SCSchema = {
   CTargetFindSet: { prototype: 'CTargetFind'},
   CTargetFindWorkerRallyPoint: { prototype: 'CTargetFind'},
   CTargetSort: {
+    parent: 'targetsort',
     catalog: 'targetsort',
     WhichUnit: {
       Value: Word
@@ -4697,6 +4777,7 @@ export const SCSchema = {
   CTargetSortVital: { prototype: 'CTargetSort'},
   CTargetSortVitalFraction: { prototype: 'CTargetSort'},
   CTerrain: {
+    parent: 'terrain',
     catalog: 'terrain',
     Name: Text,
     Lighting: 'light',
@@ -4762,10 +4843,12 @@ export const SCSchema = {
     FixedSkyboxActor: 'actor'
   },
   CTerrainObject: {
+    parent: 'terrainobject',
     catalog: 'terrainobject',
     EditorCursorOffset: Real
   },
   CTerrainTex: {
+    parent: 'terraintex',
     catalog: 'terraintex',
     Texture: File,
     EditorIcon: File,
@@ -4784,6 +4867,7 @@ export const SCSchema = {
     HeightMapScale: Real
   },
   CTexture: {
+    parent: 'texture',
     catalog: 'texture',
     File: File,
     PropsAdd: 'string',
@@ -4796,12 +4880,14 @@ export const SCSchema = {
     Prefix: Word
   },
   CTextureSheet: {
+    parent: 'texturesheet',
     catalog: 'texturesheet',
     Image: File,
     Rows: Int,
     Columns: Int
   },
   CTile: {
+    parent: 'tile',
     catalog: 'tile',
     Material: File,
     EditorIcon: File,
@@ -4814,6 +4900,7 @@ export const SCSchema = {
     Flags: Flags
   },
   CTurret: {
+    parent: 'turret',
     catalog: 'turret',
     Fidget: {
       TurnAngle: Real,
@@ -4829,14 +4916,11 @@ export const SCSchema = {
     YawIdleRate: Real
   },
   CUnit: {
+    parent: 'unit',
     catalog: 'unit',
-    IdleCommand: "abilcmd",
+    IdleCommand: 'abilcmd',
     UserFlagArray: '[bit]',
-    StockCharge: {
-      CountMax: Int,
-      TimeUse: Int,
-      TimeDelay: Int
-    },
+    StockCharge: ChargeSchema,
     MainAttributeDamageBonus: '[int]',
     LearnInfoArray: [
       {
@@ -4919,14 +5003,9 @@ export const SCSchema = {
       Return: 'validator'
     }],
     ReviveInfoLevel: {
-      Cooldown: {
-        TimeUse: Int,
-        Link: Link
-      },
+      Cooldown: CooldownSchema,
       Resource: '[int]',
-      Charge: {
-        Link: Link
-      }
+      Charge: ChargeSchema
     },
     Fidget: {
       DelayMax: Int,
@@ -4938,16 +5017,8 @@ export const SCSchema = {
       ChanceArray: '{int}'
     },
     ReviveInfoBase: {
-      Charge: {
-        Link: Link,
-        Location: Word,
-        TimeUse: Real
-      },
-      Cooldown: {
-        Link: Link,
-        Location: Word,
-        TimeUse: Real
-      },
+      Charge: ChargeSchema,
+      Cooldown: CooldownSchema,
       Time: Int,
       Resource: '{int}'
     },
@@ -5043,6 +5114,7 @@ export const SCSchema = {
     CargoSize: Int,
     EquipmentArray: [
       {
+        Name: 'string',
         Tooltip: Text,
         Weapon: 'weapon',
         Effect: 'effect',
@@ -5149,6 +5221,7 @@ export const SCSchema = {
   },
   CUnitHero: { prototype: 'CUnit'},
   CUpgrade: {
+    parent: 'upgrade',
     catalog: 'upgrade',
     Flags: Flags,
     Name: Text,
@@ -5156,7 +5229,7 @@ export const SCSchema = {
     BonusResourcePerLevel: '{int}',
     LeaderPriority: Int,
     $Level: Int,
-    Alert: 'string',
+    Alert: 'alert',
     ScoreCount: 'scorevalue',
     ScoreValue: 'scorevalue',
     UnitDisallowed: 'unit',
@@ -5198,6 +5271,7 @@ export const SCSchema = {
     $airicon: File
   },
   CUser: {
+    parent: 'user',
     catalog: 'user',
     Fields: [
       {
@@ -5233,6 +5307,7 @@ export const SCSchema = {
     ]
   },
   CValidator: {
+    parent: 'validator',
     catalog: 'validator',
     IgnoreWhileChanneling: Int,
     ResultFailed: 'string',
@@ -5272,6 +5347,7 @@ export const SCSchema = {
     SearchFlags: Flags,
     CmdFlags: Flags,
     Types: Flags,
+    Attacker: {Value: Word},
     OtherUnit: {
       Value: Word,
       Effect: 'effect'
@@ -5298,7 +5374,7 @@ export const SCSchema = {
       Effect: 'effect',
       Value: Word
     },
-    MaxDistance: "int",
+    MaxDistance: 'int',
     ExcludeOriginPlayer: {
       Value: Word
     },
@@ -5337,6 +5413,7 @@ export const SCSchema = {
     SearchFilters: 'filters',
     Line: [
       {
+        Break: 'int',
         Failure: 'validator',
         Ignored: 'validator',
         Success: 'validator',
@@ -5398,11 +5475,16 @@ export const SCSchema = {
     AbilityStage: Word,
     TimeEvent: Word,
     BehaviorLink: 'behavior',
-    TrackerUnit:  [{Value:Word,History:Word}],
-    TrackedUnit:  [{Value:Word,History:Word}],
+    TrackerUnit:  [{
+      Effect: 'effect',Value:Word,History:Word}],
+    TrackedUnit:  [{
+      Effect: 'effect',Value:Word,History:Word}],
     TrackedUnitValidatorArray: '[validator]'
   },
-  CValidatorCompareTrackedUnitsCount: {prototype: 'CValidator'},
+  CValidatorCompareTrackedUnitsCount: {
+    prototype: 'CValidator',
+    TrackedUnitFilters: 'filters'
+  },
   CValidatorUnitCompareAbilStage: { prototype: 'CValidator'},
   CValidatorUnitCompareCooldown: {
     prototype: 'CValidator',
@@ -5513,7 +5595,8 @@ export const SCSchema = {
     Value: Word
   },
   CValidatorUnitCompareField: {
-    prototype: 'CValidator'
+    prototype: 'CValidator',
+    Value: ByField
   },
   CValidatorUnitCompareHeight: { prototype: 'CValidator'},
   CValidatorUnitCompareKillCount: { prototype: 'CValidator'},
@@ -5596,6 +5679,7 @@ export const SCSchema = {
     Value: Int
   },
   CVoiceOver: {
+    parent: 'voiceover',
     catalog: 'voiceover',
     Groups: [
       {
@@ -5616,6 +5700,7 @@ export const SCSchema = {
     Character: 'character'
   },
   CVoicePack: {
+    parent: 'voicepack',
     catalog: 'voicepack',
     Name: Text,
     TypeName: Link,
@@ -5639,6 +5724,7 @@ export const SCSchema = {
     IsPurchaseHidden: Bit
   },
   CWater: {
+    parent: 'water',
     catalog: 'water',
     TextureKey: File,
     TilingFreq: 'reals',
@@ -5685,7 +5771,9 @@ export const SCSchema = {
     IsLava: Bit
   },
   CWeapon: {
+    parent: 'weapon',
     catalog: 'weapon',
+    CursorRangeMode: Word,//">ForceToMax"
     Name: Text,
     DisplayName: Text,
     EditorCategories: 'categories',
@@ -5705,12 +5793,7 @@ export const SCSchema = {
     DamagePoint: Real,
     Backswing: Real,
     Options: Flags,
-    Marker: {
-      Link: 'string',
-      MatchFlags: Flags,
-      MismatchFlags: Flags,
-      Count: Int
-    },
+    Marker: MarkerSchema,
     CriticalEffect: 'effect',
     PostEffectBehavior: EffectBehaviorSchema,
     PreEffectBehavior: EffectBehaviorSchema,
@@ -5724,7 +5807,7 @@ export const SCSchema = {
     Effect: 'effect',
     PathingAmmoUnit: 'unit',
     UninterruptibleDuration: Real,
-    LoiterInnerRadius: Int,
+    LoiterInnerRadius: Real,
     LoiterRadius: Real,
     DisplayAttackCount: Int,
     AllowedMovement: Word,
@@ -5748,6 +5831,7 @@ export const SCSchema = {
   CWeaponLegacy: { prototype: 'CWeapon'},
   CWeaponStrafe: { prototype: 'CWeapon'},
   CMap: {
+    parent: 'map',
     catalog: 'map',
     Name: Text,
     Description: Text,
@@ -5784,6 +5868,7 @@ export const SCSchema = {
     ContactActor: 'actor'
   },
   CBundle: {
+    parent: 'bundle',
     catalog: 'bundle',
     Name: Text,
     StoreName: Text,
@@ -5816,6 +5901,7 @@ export const SCSchema = {
     LearnMoreBodyText3: Link
   },
   CEmoticon: {
+    parent: 'emoticon',
     catalog: 'emoticon',
     Name: Text,
     NameAlternate: Text,
@@ -5830,6 +5916,7 @@ export const SCSchema = {
     RequiredReward: 'reward'
   },
   CEmoticonPack: {
+    parent: 'emoticonpack',
     catalog: 'emoticonpack',
     Name: Text,
     StoreName: Text,
@@ -5854,6 +5941,7 @@ export const SCSchema = {
     Hidden: Int
   },
   CGame: {
+    parent: 'game',
     catalog: 'game',
     CreepDecaySound: 'sound',
     CreepGrowSound: 'sound',
@@ -5916,7 +6004,7 @@ export const SCSchema = {
     AcquireLeashRadius: Real,
     AcquireLeashResetRadius: Real,
     CallForHelpPeriod: Int,
-    CallForHelpRadius: Int,
+    CallForHelpRadius: Real,
     CameraMargin: 'ints',
     CameraMarginAspectAdjust: [
       {
@@ -6020,6 +6108,7 @@ export const SCSchema = {
     EnableRewardConsoleSkins: Int
   },
   CGameUI: {
+    parent: 'gameui',
     catalog: 'gameui',
     SuppressSkinsForParticipants: Int,
     SuppressSkinsInReplay: Int,
@@ -6191,7 +6280,7 @@ export const SCSchema = {
     UnitDamageNotificationDelay: Int,
     CancelTargetModeButtonFace: 'button',
     CancelPlacementModeButtonFace: 'button',
-    PlacementDisplayBonusRadius: Int,
+    PlacementDisplayBonusRadius: Real,
     PlacementErrorColor: 'ints',
     PlacementWarningColor: 'ints',
     PlacementPerfectColor: 'ints',
@@ -6437,6 +6526,7 @@ export const SCSchema = {
     CustomLayoutFileArray: '[file]'
   },
   CPreload: {
+    parent: 'preload',
     catalog: 'preload',
     Flags: '[int]',
     File: File,
@@ -6469,6 +6559,7 @@ export const SCSchema = {
     prototype: 'CPreload',
   },
   CPremiumMap: {
+    parent: 'premiummap',
     catalog: 'premiummap',
     Name: Word,
     StoreName: Text,
@@ -6493,6 +6584,7 @@ export const SCSchema = {
     CustomFeaturedDescription: Text
   },
   CRaceBannerPack: {
+    parent: 'racebannerpack',
     catalog: 'racebannerpack',
     Default: Int,
     RaceBannerArray: '[reward]',
@@ -6501,6 +6593,7 @@ export const SCSchema = {
     StoreTypeName: Text
   },
   CReward: {
+    parent: 'reward',
     catalog: 'reward',
     Name: Text,
     Description: Text,
@@ -6618,6 +6711,7 @@ export const SCSchema = {
     Enabled: Int
   },
   CStimPack: {
+    parent: 'stimpack',
     catalog: 'stimpack',
     Name: Text,
     StoreName: Text,
@@ -6628,10 +6722,12 @@ export const SCSchema = {
     ReleaseDate: Link
   },
   CTalentProfile: {
+    parent: 'talentprofile',
     catalog: 'talentprofile',
     Name: Text
   },
   CTrophy: {
+    parent: 'trophy',
     catalog: 'trophy',
     CutsceneFile: File,
     GameModel: Word,
@@ -6641,6 +6737,7 @@ export const SCSchema = {
     BottomCutsceneFilter: Word
   },
   CWarChest: {
+    parent: 'warchest',
     catalog: 'warchest',
     Name: Text,
     StoreName: Text,
@@ -6655,6 +6752,7 @@ export const SCSchema = {
     IsBundle: Int
   },
   CWarChestSeason: {
+    parent: 'warchestseason',
     catalog: 'warchestseason',
     Name: Text,
     ESportsSeason: Text,
@@ -6680,7 +6778,276 @@ export const SCSchema = {
     PurchaseWarning: Text,
     PurchaseImage: File
   },
-  Library: LibrarySchema
+}
+
+export const SCSchema = {
+  GameData: GameDataSchema,
+  Library: LibrarySchema,
+  Objects: {
+    ObjectDoodad: [{
+      Flag: [
+        {
+          Index: Word,//'>HeightOffset|HeightAbsolute|ForcePlacement|NoDoodadFootprint|DisableNoFlyZone|CameraHidden',
+          Value: 'int'
+        }
+      ],
+      Id: 'int',
+      Variation: 'int',
+      Position: 'reals',
+      Rotation: 'real',
+      Scale: 'reals',
+      Type: 'actor',
+      TintColor: 'unknown',
+      Pitch: 'real',
+      Roll: 'real',
+      TeamColor: 'int',
+      Name: 'string',
+      UserTag: 'string',//'>Prot|Terr|Zerg|Neutral',
+      Texture: {
+        TexSlot: '>main',
+        TexProps: 'unknown',
+        TexLink: 'unknown'
+      },
+      TileSet: 'terrain'
+    }],
+    ObjectPoint: [{
+      Id: 'int',
+      Position: 'reals',
+      Scale: 'ints',
+      Type: 'word',//'NoFlyZone|Normal|StartLoc|BlockPathing|ThreeD|SoundEmitter',
+      Name: 'string',
+      Color: 'ints',
+      PathingRadiusSoft: 'real',
+      PathingRadiusHard: 'real',
+      Flag: [
+        {
+          index: Word,//'>PointHidden|ForcePlacement|HeightOffset|SoundFogVisible',
+          Value: 'int'
+        }
+      ],
+      Rotation: 'real',
+      UserTag: 'race',
+      Sound: 'sound',
+      Model: 'model',
+      Animation: '>Default|Stand',
+      SoundActor: 'actor'
+    }],
+    ObjectCamera: [{
+      CameraValue: [
+        {
+          index: Word,//'FieldOfView|NearClip|FarClip|ShadowClip|Distance|Pitch|Yaw|HeightOffset|FocalDepth|FalloffEnd|BokehFStop|BokehMaxCoC|FalloffStart|FalloffStartNear|FalloffEndNear|DepthOfField',
+          Value: 'real'
+        }
+      ],
+      Id: 'int',
+      Position: 'reals',
+      Rotation: 'real',
+      Scale: 'ints',
+      Name: 'string',
+      Color: 'ints',
+      CameraTarget: 'reals',
+      Flag: {
+        index: Word,//'CameraHidden|ForcePlacement',
+        Value: 'int'
+      }
+    }],
+    ObjectUnit: [{
+      Flag: [
+        {
+          index: Word,//'ForcePlacement|UnitHidden|UnitNoCreate|HeightOffset|CameraHidden',
+          Value: 'int'
+        }
+      ],
+      AIRebuild: [
+        {
+          Index: 'int',
+          Value: 'int'
+        }
+      ],
+      Id: 'int',
+      Variation: 'int',
+      Position: 'reals',
+      Scale: 'ints',
+      UnitType: 'unit',
+      Resources: 'int',
+      AIFlag: [{
+        index: Word,//'IsUseable',
+        Value: 'int'
+      }],
+      Rotation: 'real',
+      UserTag: 'unknown',
+      Player: 'int',
+      AIActive: [
+        {
+          Index: 'int',
+          Value: 'int'
+        }
+      ],
+      Name: 'string',
+      Texture: {
+        TexSlot: 'word',//'main|decal',
+        TexProps: 'words',
+        TexLink: 'texture'
+      },
+      Footprint: 'footprint'
+    }],
+    Group: [{
+      GroupObject: [
+        {
+          Id: 'int'
+        }
+      ],
+      Type: 'word',//'ObjectUnit|ObjectPoint|ObjectDoodad',
+      Name: 'string',
+      Icon: 'file',
+      Id: 'int'
+    }],
+    $Version: 'int'
+  },
+  Preload: {
+    Asset: [{
+      path: 'file',
+      Type: 'word',//'Layout|Cutscene|Image'
+    }],
+    Unit: [{id: 'unit', UserTag: 'unknown', Variations: 'reals'}],
+    Actor: [{id: 'actor', Variations: 'reals'}],
+    Sound: [{id: 'sound', Variations: 'ints'}],
+    Race: [{'id': 'race'}],
+    User: [{'id': 'user'}],
+    Upgrade: [{'id': 'upgrade'}],
+    Achievement: [{'id': 'achievement '}],
+    Weapon: [{'id': 'weapon'}],
+    Spray: [{id: 'spray'}],
+    Button: [{id: 'button'}],
+    Commander: [{id: 'commander'}],
+    Behavior: [{id: 'behavior'}],
+    Model: [{id: 'model'}],
+    Terrain: [{id: 'terrain'}],
+    Effect: [{id: 'effect'}],
+    Objective: [{id: 'objective'}],
+    Light: [{id: 'light'}],
+    Soundtrack: [{id: 'soundtrack'}],
+    Abil: [{id: 'abil'}],
+    TerrainObject: [{id: 'cliff'}],
+    Map: [{id: 'map'}]
+  },
+  Terrain: {
+    heightMap: [{
+      cliffSetList: {
+        cliffSet: [
+          {
+            i: 'int',
+            name: 'cliff'
+          }
+        ],
+        num: 'int'
+      },
+      rampList: {
+        ramp: [
+          {
+            dir: 'int',
+            hi: 'int',
+            lo: 'int',
+            leftLo: 'unknown',
+            leftHi: 'unknown',
+            rightLo: 'unknown',
+            rightHi: 'unknown',
+            base: 'unknown',
+            mid: 'unknown',
+            cid: 'int',
+            leftLoVar: 'int',
+            leftHiVar: 'int',
+            rightLoVar: 'int',
+            rightHiVar: 'int'
+          }
+        ],
+        num: 'int'
+      },
+      vertData: {
+        quantizeBias: 'unknown',
+        quantizeScale: 'unknown',
+        standardHeight: 'unknown',
+        name: 'string'
+      },
+      masks: {
+        name: 'string'
+      },
+      textureSetList: {
+        textureSet: [
+          {
+            i: 'int',
+            name: 'terrain'
+          }
+        ],
+        num: 'int'
+      },
+      textureList: {
+        texture: [
+          {
+            i: 'int',
+            name: 'terraintex'
+          }
+        ],
+        num: 'int'
+      },
+      blockTextureSetList: {
+        blockTextureSet: [
+          {
+            i: 'int',
+            tileSet: 'int'
+          }
+        ],
+        num: 'int'
+      },
+      cliffCellList: {
+        cc: [
+          {
+            i: 'int',
+            f: 'int',
+            cid: 'int',
+            cvar: 'int'
+          }
+        ],
+        num: 'int',
+        numOccupied: 'int'
+      },
+      tileSet: 'terrain',
+      uvtiling: 'unknown',
+      dim: 'unknown',
+      offset: 'unknown',
+      scale: 'unknown',
+      cliffDoodadList: {
+        cliffDoodad: [
+          {
+            name: 'cliff',
+            pos: 'unknown',
+            rot: 'int'
+          }
+        ],
+        num: 'int'
+      }
+    }],
+    version: 'int'
+  },
+  Regions: {
+    region: [{
+      name: 'string',
+      invisible: 'unknown',
+      shape: [
+        {
+          center: 'reals',
+          radius: 'real',
+          type: Word,//'>circle|rect|diamond',
+          quad: 'reals',
+          width: 'real',
+          height: 'real',
+          negative: 'unknown'
+        }
+      ],
+      id: 'int',
+      color: 'ints'
+    }]
+  }
 }
 
 /*
@@ -6690,11 +7057,9 @@ export const SCSchema = {
 
 
 
-                if (#SUBFUNCS(if,&quot; &amp;&amp; &quot;)) {
-                if (#SUBFUNCS(if," &amp;&amp; ")) {
-
-
-    <Element Type="SubFuncType" Id="DBA59FE2"/>
+if (#SUBFUNCS(if,&quot; &amp;&amp; &quot;)) {
+if (#SUBFUNCS(if,' &amp;&amp; ')) {
+    <Element Type='SubFuncType' Id='DBA59FE2'/>
 
       <ScriptCode>&#xD;
                 #AUTOVAR(var,ancestor:PickEachAITown)&#xD;
@@ -6702,7 +7067,9 @@ export const SCSchema = {
 
 
 
-      <Condition value=""/>
-      <Action value=""/>
+      <Condition value=''/>
+      <Action value=''/>
 
  */
+
+

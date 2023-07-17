@@ -1,7 +1,6 @@
 import fs from "fs";
 import {SCGame} from "./sc-game.js";
-import * as yaml from "js-yaml";
-import xml2js from "xml2js";
+import "./libs.js"
 
 const unknowns = {}
 
@@ -22,8 +21,8 @@ let regexps  = {
     bool: /^true|false$/,
     bit: /^[01]$/,
     int: /^-?(0|[1-9]\d*)$/,
-    real: /^(-?(0|[1-9]\d*)(\.\d+)?)$/,
-    ints: /^(-?(0|[1-9]\d*)(,-?(0|[1-9]\d*))+|NULL)$/,
+    real: /^(-?(0|[1-9]\d*)(\.\d+)?)|\.\d+$/,
+    ints: /^(-?(0|[1-9]\d*)(,-?(0|[1-9]\d*))*|NULL)$/,
     reals: /^((-?(0|[1-9]\d*)(\.\d+)?)(\,-?(0|[1-9]\d*)(\.\d+)?)*|NULL)$/,
     filters: /^(-|\w+(,\w+){0,});(-|\w+(,\w+){0,})$/,
     categories: /^(\w+\:[\w -#]+)(,\w+\:[\w -#]+)*$/,
@@ -380,12 +379,45 @@ export function matchPath(path1,path2){
 
 export function resolveSchemaType(schema,property,pathobject,schemaForResolvedArrays = false){
 
+    let type
+
+    if(property.includes('[') || property.includes('.')){
+        let path = property.replace(/]/g,"").replace(/\[/g,".").split(".")
+        type = schema
+        while (path.length){
+            let crumb = path.shift()
+            if(type.constructor === Array){
+                type = type[0]
+                if(!path.length && type?.value){
+                    type = type.value
+                }
+            }
+            else{
+                type = resolveSchemaType(type,crumb,pathobject)
+            }
+        }
+        if(!type){
+            console.log(object)
+        }
+    }
+    else{
+        type = schema[property] || schema['$' + property] || schema['*']
+    }
+
+
     // if(property === "OperandArray"){
     //     property
     // }
 
-    let type = schema[property] || schema['$' + property] || schema['*']
     if(!type)return false
+
+    if(type.constructor === Function){
+        type = type(pathobject[0])
+        if(!type){
+            //todo cant resolve by field if field defined in arent objects
+            return 'string'
+        }
+    }
     if(type.constructor === String && type.startsWith("{")) {
         let valueType = type.replace("{", "").replace("}", "")
         if(schemaForResolvedArrays) return {'*': valueType}
@@ -557,15 +589,18 @@ const conditionEntityType = {
     ValidatePlayer: "validator",
     // ModelSwap: "model",
     AbilTrainProduced: "unit",
+    ValidateCreationEffect: "validator",
     ValidateUnit: "validator",
-    "!ValidateUnit": "validator",
+    ValidateEffect: "validator",
+    // "!ValidateUnit": "validator",
     AbilTransport: "unit",
     MorphFrom: "unit",
     MorphTo: "unit",
 }
 
 export function eventConditionEntityType(eventname){
-    return conditionEntityType[eventname]
+
+    return conditionEntityType[eventname.replace(/^\!/,"")]
 }
 
 export function eventEntityType(eventname){
@@ -667,6 +702,7 @@ export function _propertyRelations(target,value,type,result,patharray,ignorelist
                         }
                         break;
                     }
+                    case "PortraitCustomize":
                     case "ModelSwap": {
                         let link = args[1], namespace = 'model'
                         _addRelation({target,namespace, link, patharray, type, result, ignorelist})
@@ -702,34 +738,32 @@ export function _propertyRelations(target,value,type,result,patharray,ignorelist
         case 'terms': {
             let added = []
 
-            let [event,...conditions] = value.split(";").map(term => term.trim())
-            let [entityType, entityName, argumentName] = event.split(".")
-
-            namespace = eventEntityType(entityType)
-
-            if(namespace){
-                link = entityName
-                added.push(namespace+"."+link)
-                _addRelation({target,namespace, link, patharray,  type: 'terms', result, ignorelist})
-            }
-
-            // namespace = eventEntityType2(entityType)
-            // if(namespace) {
-            //     link = argumentName
-            //     added.push(namespace + "." + link)
-            //     _addRelation({target, namespace, link, patharray, type: 'terms', result, ignorelist})
-            // }
+            let [...conditions] = value.split(";").map(term => term.trim())
 
             for(let index =0; index < conditions.length; index++){
                 let condition = conditions[index]
-                let [entityType, entityName] = condition.split(" ").map(term => term.trim())
+                if(condition.includes(".")){
 
-                namespace = eventConditionEntityType(entityType)
-                link = entityName
+                    let [entityType, entityName, argumentName] = condition.split(".")
 
-                if(!added.includes(namespace+"."+link)){
-                    added.push(namespace+"."+link)
-                    _addRelation({target,namespace, link, patharray,  type: 'terms', result, ignorelist})
+                    namespace = eventEntityType(entityType)
+
+                    if(namespace){
+                        link = entityName
+                        added.push(namespace+"."+link)
+                        _addRelation({target,namespace, link, patharray,  type: 'terms', result, ignorelist})
+                    }
+                }
+                else{
+                    let [entityType, entityName] = condition.split(" ").map(term => term.trim())
+
+                    namespace = eventConditionEntityType(entityType)
+                    link = entityName
+
+                    if(!added.includes(namespace+"."+link)){
+                        added.push(namespace+"."+link)
+                        _addRelation({target,namespace, link, patharray,  type: 'terms', result, ignorelist})
+                    }
                 }
             }
             return;
@@ -762,7 +796,7 @@ export function _propertyRelations(target,value,type,result,patharray,ignorelist
             break;
         case 'abilcmd':
             let [abilName, cmd] = value.split(",")
-            link = abilName; namespace = "abil"
+            link = value; namespace = "abil"
             break;
         default:
             if([
@@ -815,7 +849,7 @@ export function relations(target,object,schema,path = [], ignorelist = {}, resul
         return;
     }
     for(let property in object){
-        if(["index",'class', "removed" ,'id','parent','default'].includes(property))continue;
+        if(["index",'class', "removed" ,'id','ID','parent','default'].includes(property))continue;
         // if(property !== 'value' && /[a-z]/.test(property))continue;
         let value = object[property]
         if(!value) continue;
@@ -909,7 +943,7 @@ export function resolveArrays(object, schema, path) {
     if( schema.constructor === String) return;
 
     for(let property in object){
-        let type = resolveSchemaType(schema,property,object), value = object[property]
+        let type = resolveSchemaType(schema,property,[object]), value = object[property]
         if(!type || !value || value.constructor === String)continue
         let _path = [...path,property];
         if(value.constructor === Array){
@@ -1002,13 +1036,14 @@ export function optimiseForXML(object,schema = object.$$schema, path = [object.c
 
         let type = resolveSchemaType(schema,property,pathobject), value = object[property]
 
-        let isToken =  /[a-z]/.test(property[0]) || schema['$'+property]
 
 
-        if(['id', 'parent', 'default', 'index', 'removed'].includes(property)) {
+        let isToken =  /[a-z]/.test(property[0]) || schema['$'+property] || property === 'ID'
+
+
+        if(['id','ID', 'parent', 'default', 'index', 'removed','$tokens'].includes(property)) {
             type = 'string'
         }
-
 
         let _path = [...path,property];
         if(!type){
@@ -1144,11 +1179,15 @@ export function fromXMLToObject (object) {
         let value = object[property]
 
         if (/^__(.*)__$/.test(property)) {
-            if(property === "__Prefix__"){
-                property
+            let tokenID = property.substring(2, property.length - 2)
+            let tokenType = value[0].$?.type?.substr(1,value[0].$.type.length -5).toLowerCase() || 'string';
+            let tokenValue = value[0].$?.value || ''
+            if(!object.$tokens){
+                object.$tokens = {}
             }
+            object.$tokens[tokenID] = {type: tokenType , value: tokenValue}
             // object[property.substring(2, property.length - 2)] = object[property][0].value
-            object[property.substring(2, property.length - 2)] = object[property][0].$.value
+            // object[tokenID] = tokenValue
             delete object[property]
         }
         else if(property === "#name"){
@@ -1180,7 +1219,7 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
         let type = resolveSchemaType(schema,property,pathobject), value = object[property]
         let _path = [...path,property];
 
-        if (['id', 'class', 'parent', 'default', 'index', 'removed'].includes(property)) continue;
+        if (['id', 'ID','class', 'parent', 'default', 'index', 'removed','$tokens'].includes(property)) continue;
         if(value === undefined ||
             (value.constructor === Array && !value.length) ||
             (value.constructor === Object && !Object.keys(value).length)){
@@ -1188,23 +1227,30 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
             continue;
         }
         if(!type){// || type === 'word'|| type === 'string'){//todo
-            let obj = unknowns
-            let li = _path.length - 1
-            for(let i = 0; i < li;i++){
-                let crumb = _path[i]
-                if(!obj[crumb]){
-                    obj[crumb] = {}
+            if(value.constructor === String){
+                //possibly token?
+                type = 'string'
+            }
+            else{
+                //unknown field
+                let obj = unknowns
+                let li = _path.length - 1
+                for(let i = 0; i < li;i++){
+                    let crumb = _path[i]
+                    if(!obj[crumb]){
+                        obj[crumb] = {}
+                    }
+                    obj = obj[crumb]
                 }
-                obj = obj[crumb]
-            }
-            if(!obj[_path[li]]){
-                obj[_path[li]] = []
-            }
-            obj = obj[_path[li]]
-            obj.push(value)
+                if(!obj[_path[li]]){
+                    obj[_path[li]] = []
+                    console.warn("unknown field", _path.join("."), JSON.stringify(value) );
+                }
+                obj = obj[_path[li]]
+                obj.push(value)
 
-            // console.warn("unknown field", _path.join("."), JSON.stringify(value) );
-            continue;
+                continue;
+            }
         }
         //
         if(type._){
@@ -1230,7 +1276,7 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
                 value = [{value}]
             }
             if(value.constructor !== Array || value.length !== 1){
-                console.warn(`wrong value.  path: ${JSON.stringify(_path)}. ${JSON.stringify(object[property])}.`)
+                console.warn(`wrong value. #${object.id}  path: ${JSON.stringify(_path)}. ${JSON.stringify(object[property])}.`)
                 continue;
             }
             value = value[0]
@@ -1278,8 +1324,14 @@ export function optimizeObject(object, schema = object.$$schema, path = [object.
 
             if(value){
                 if(!matchType(value,type)){
-                    if(type !== 'text'){
-                        console.warn(`Warn: #${pathobject[0].id || pathobject[0].Id}[${_path.join(".")}] = ${JSON.stringify(object[property])}`)
+                    if(type !== 'text' && type !== 'unknown'){
+                        //if Token
+                        if(schema['$' + property] && object[property] === "*"){
+                         //its fine. we allow to use "*" for tokens
+                        }
+                        else{
+                            console.warn(`Warn: #${pathobject[0].id || pathobject[0].Id}[${_path.join(".")}] = ${JSON.stringify(object[property])}`)
+                        }
                     }
                 }
                 else{
@@ -1302,9 +1354,9 @@ export function resolveText(object, schema = object.$$schema, path = [], picked,
     }
     let result = {}
     for(let property in object){
-        let type = resolveSchemaType(schema,property,object), value = object[property]
+        let type = resolveSchemaType(schema,property,[object]), value = object[property]
 
-        if (['id', 'class', 'parent', 'default', 'index', 'removed'].includes(property)) continue;
+        if (['id', 'ID','class', 'parent', 'default', 'index', 'removed','$tokens'].includes(property)) continue;
         let _path = [...path, property];
         if(!value || !type){
             continue;
@@ -1356,9 +1408,9 @@ export function resolveAssets(object, schema = object.$$schema, path = []) {
 
     for(let property in object){
 
-        let type = resolveSchemaType(schema,property,object), value = object[property]
+        let type = resolveSchemaType(schema,property,[object]), value = object[property]
 
-        if (['id', 'class', 'parent', 'default', 'index', 'removed'].includes(property)) continue;
+        if (['id', 'ID','class', 'parent', 'default', 'index', 'removed'].includes(property)) continue;
         let _path = [...path, property];
         if(!value || !type){
             continue;
@@ -1404,8 +1456,8 @@ export function optimizeJSONObject(object, schema = object.$$schema, path = [obj
         return;
     }
     for(let property in object){
-        let type = resolveSchemaType(schema,property,object), value = object[property]
-        if (['id', 'class', 'parent', 'default', 'index', 'removed'].includes(property)) continue;
+        let type = resolveSchemaType(schema,property,[object]), value = object[property]
+        if (['id','ID', 'class', 'parent', 'default', 'index', 'removed'].includes(property)) continue;
         let _path = [...path,property];
         if(value === undefined ||
             (value.constructor === Array && !value.length) ||
@@ -1448,10 +1500,10 @@ export function filterTypedProperties(object, filter, schema = object.$$schema) 
         return;
     }
     for(let property in object){
-        if (['id', 'class', 'parent', 'default', 'index', 'removed'].includes(property)) {
+        if (['id','ID', 'class', 'parent', 'default', 'index', 'removed'].includes(property)) {
             continue;
         }
-        let type = resolveSchemaType(schema,property,object), value = object[property]
+        let type = resolveSchemaType(schema,property,[object]), value = object[property]
 
         if(!type){
             console.warn("unknown field", JSON.stringify(value) );
@@ -1535,26 +1587,29 @@ export function cleanup(object) {
     }
 }
 
+
+function debugXMLBuild(builder , data){
+    for(let i in data){
+        try{
+            return builder.buildObject(data[i]);
+        }
+        catch(e){
+            console.log(i)
+            debugXMLBuild(data[i])
+        }
+    }
+}
+
 export function formatData(data, format) {
     cleanup(data)
     switch(format){
         case 'xml':
+            let builder = new XML.Builder()
             try{
-                return (new xml2js.Builder()).buildObject(data);
+                return builder.buildObject(data);
             }
             catch(e){
-                function debugx(data){
-                    for(let i in data){
-                        try{
-                            return (new xml2js.Builder()).buildObject(data[i]);
-                        }
-                        catch(e){
-                            console.log(i)
-                            debugx(data[i])
-                        }
-                    }
-                }
-                debugx(data)
+                debugXMLBuild(builder,data)
             }
             return
         case 'ini':
@@ -1562,13 +1617,20 @@ export function formatData(data, format) {
         case 'json':
             return JSON.stringify(data, null,"  ")
         case 'yaml':
-            return yaml.dump(data, {flowLevel: 4, lineWidth: -1, noCompatMode: true});
+            return YAML.dump(data, {flowLevel: 4, lineWidth: -1, noCompatMode: true});
     }
 }
 
-const CMBuilder2 = new xml2js.Builder({headless: true});
+const CMBuilder2 = new XML.Builder({headless: true});
 
-export const buildXMLObject = CMBuilder2.buildObject.bind(CMBuilder2)
+export const buildXMLObject = function(value){
+    try{
+        return CMBuilder2.buildObject(value)
+    }
+    catch (e){
+        debugXMLBuild(CMBuilder2,value)
+    }
+}
 
 export function capitalize(str){
     return str.at(0).toUpperCase() + str.substring(1)

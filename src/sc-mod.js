@@ -1,13 +1,9 @@
 import fs from 'fs'
 import path from 'path'
-import url from 'url'
-import xml2js from 'xml2js'
-import * as yaml from "js-yaml";
 import {SCGame} from "./sc-game.js";
 import {SCEntity} from "./sc-entity.js";
 
 import {
-    getDataScheme,
     deep,
     formatData,
     optimizeObject,
@@ -15,21 +11,22 @@ import {
     fromXMLToObject,
     capitalize,
     optimiseForXML,
-    convertObjectsToIndexedArray,
-    stringValues,
-    eventEntityType,
-    eventConditionEntityType,
-    resolveSchemaType, isNumeric, matchType, _addRelation, getDebugInfo, relations, getAllFiles
+    isNumeric,
+    getDebugInfo,
+    relations,
+    getAllFiles,
+    buildXMLObject,
+    cleanup
 } from "./operations.js";
-import {LibrarySchema} from "./sc-schema.js";
-const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+import {LibrarySchema, SCSchema} from "./sc-schema.js";
+
+const __dirname = process.cwd()
 
 
 let __lastTag = 0;
 
 export class SCMod {
     constructor(mod){
-
         this._directory = './'
         this.entities = []
         Object.defineProperty(this, 'cache',{ configurable:true, writable: true,enumerable: false,value: {} })
@@ -49,27 +46,29 @@ export class SCMod {
         await this.read(...input)
         this.saveCore()
     }
-    async read (...input) {
+    async read (input,options) {
+        if(input.constructor !== Array){
+            input = [input]
+        }
         for (let item of input) {
             if(item){
-                if(item.constructor === String && item[item.length -1 ] === '/'){
-                    this.directory(item.substring(1))
-                }
-                else if(item.constructor === String && item[0] === '>'){
-                    await this.write(item.substring(1))
-                }
-                else{
-                    let data = item
-                    if(item.constructor === String){
-                        if(!'./'.includes(item[0]) && !'.\\'.includes(item[0])){
-                            item = this._directory + item
-                        }
-                        data = await this.getModData(item)
+                let data
+                if(item.constructor === String){
+                    for(let dir in SCGame.directories){
+                        item = item.replace("$"+ dir , SCGame.directories[dir])
                     }
-                    if(data){
-                        this.apply(data)
+                    if( item[item.length -1 ] === '/'){
+                        this.directory(item.substring(1))
                     }
+                    if(item[0] === '>'){
+                        await this.write(item.substring(1))
+                    }
+                    data = await this.getModData(item,options)
                 }
+                else {
+                    data = item
+                }
+                this.apply(data)
             }
         }
         return this
@@ -95,12 +94,12 @@ export class SCMod {
         for (let locale in this.locales) {
             for (let type in this.locales[locale]) {
                 for (let id in this.locales[locale][type]) {
-                    this.locales[locale][type][id] = this.resolveTextValue( this.locales[locale][type][id], id)
+                    this.locales[locale][type][id] = this.resolveTextValue( this.locales[locale][type][id], ["locales",locale,type,id])
                 }
             }
         }
     }
-    resolveTextValue(expresion){
+    resolveTextValue(expresion,path){
         if(!expresion) return ""
         // dd<d ref="Behavior,ZerglingArmorShredTarget,Duration" precision="2"/>dd
         // dd<d ref="Behavior,ZerglingArmorShredTarget,Duration"/>dd
@@ -111,30 +110,65 @@ export class SCMod {
                 let value = this.locales.enUS.GameStrings[this.cache[catalog.toLowerCase()]?.[entity]?.$$resolved[field]]
                 return `<b>${value}</b>`
             })
-            .replace(/<d\s+(?:time|ref)="(.+?)(?=")"((?:\s+\w+="\s*(\d+)?\s*")*)\s*\/>/gi, (_,ref,opts) => {
-                let precision = /(?:\s+precision="\s*(\d+)?\s*")/.exec(opts)?.[1]
-                let value = this.parseReference(ref)
+            .replace(/<d\s+(?:time|ref)\s*=\s*"(.+?)(?=")"((?:\s+\w+\s*=\s*"\s*([\d\w]+)?\s*")*)\s*\/>/gi, (_,ref,opts) => {
+                let precision = /(?:\s+precision\s*=\s*"\s*(\d+)?\s*")/.exec(opts)?.[1]
+                let value = this.parseReference(ref,path)
                 value = precision ?  value.toFixed(precision) : Math.round(value)
                 return `<b>${value}</b>`
             })
             .replace(/<n\/>/g,"<br/>")
     }
-    parseReference(expressionReference){
+    cleaup(){
+
+        for(let cat in mod.catalogs) {
+            for(let entity of mod.catalogs[cat]) {
+                cleanup(entity.$$resolved)
+            }
+        }
+    }
+    ignoreEntities (data){
+        for(let catalog in data){
+            if(this.cache[catalog]){
+                for(let unit of data[catalog]) {
+                    if (this.cache[catalog][unit]) {
+                        if(this.cache[catalog][unit]) {
+                            this.cache[catalog][unit].ignore = true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    parseReference(expressionReference,path){
 
 
-        let ref = expressionReference.replace(/\[d\s+(?:time|ref)='(.+?)(?=')'((?:\s+\w+='\s*(\d+)?\s*')*)\s*\/\]/gi, (_,ref,opts) => {
-            let precision = /(?:\s+precision="\s*(\d+)?\s*")/.exec(opts)?.[1]
-            let value = this.parseReference(ref)
+        let ref = expressionReference.replace(/\[d\s+(?:time|ref)\s*=\s*'(.+?)(?=')'((?:\s+\w+\s*=\s*'\s*([\d\w]+)?\s*')*)\s*\/?\]/gi, (_,ref,opts) => {
+            let precision = /(?:\s+precision\s*=\s*"\s*(\d+)?\s*")/.exec(opts)?.[1]
+            let value = this.parseReference(ref,path)
             return precision ?  value.toFixed(precision) : Math.round(value)
         })
-
-
 
         ref = ref.replace(/<n\/>/g,"")
 
         ref = ref.replace(/\$(.+?)\$/g,(_,cc)=>{
             let options = cc.split(':')
             switch(options[0]){
+                case 'AbilChargeCount':
+                    let ability = options[1]
+                    let index = options[2]
+                    let refObject = this.cache.abil[ability]
+                    if(!refObject){
+                        console.warn(`Entity not found:  abil.${ability} (${path.join(".")})`)
+                        return '0'
+                    }
+
+                    let refIndex = "Train" + (index+ 1)
+                    let refInfo = refObject.InfoArray[refIndex]
+                    if(!refInfo){
+                        console.warn(`Wrong Ability InfoArray index:  abil.${ability}.${refIndex} (${path.join(".")})`)
+                    }
+                    return ` ${refObject.Charge?.CountStart || 0} `
+
                 case 'UpgradeEffectArrayValue':
                     let upgrade = options[1]
                     let effectArrayValue = options[2]
@@ -146,7 +180,7 @@ export class SCMod {
         })
 
         ref = ref.replace(/((\w+),([\w@]+),(\w+[\.\w\[\]]*))/g,(_,expr)=>{
-            let refValue = this.getReferenceValue(expr)
+            let refValue = this.getReferenceValue(expr,path)
             return refValue ? ' ' + refValue + ' ' : ' 0 '
         })
 
@@ -160,7 +194,7 @@ export class SCMod {
                 result = eval(ref)
             }
             catch(e){
-                console.warn('wrong Expression: ' + expressionReference)
+                console.warn('wrong Expression: ' + expressionReference + "   (" + path.join(".") + ")")
                 result = 0
             }
 
@@ -172,14 +206,15 @@ export class SCMod {
 
         this.images = fs.readdirSync(imagesDiretory).map(file => file.replace('.png','').toLowerCase())
     }
-    checkImage(path){
-        if(!path)return null
-        path = (path.value || path)
-        path = path.toLowerCase().replace(/\\/g,'/').replace(/.*\//,'').replace('.dds','')
-        if(!this.images.includes(path)){
+    checkImage(imagePath,path){
+        if(!imagePath)return null
+        imagePath = (imagePath.value || imagePath)
+        let imagePath2 = imagePath.toLowerCase().replace(/\\/g,'/').replace(/.*\//,'').replace('.dds','')
+        if(!this.images.includes(imagePath2)){
+            console.log("Image not found: " + imagePath + " (" + path.join(".") + ")" )
             return null
         }
-        return path
+        return imagePath2
     }
     checkImages(){
 
@@ -187,45 +222,45 @@ export class SCMod {
             entity = entity.$$resolved
             if(entity.Wireframe?.Image){
                 for(let image in entity.Wireframe.Image){
-                    entity.Wireframe.Image[image] = this.checkImage(entity.Wireframe.Image[image]);
+                    entity.Wireframe.Image[image] = this.checkImage(entity.Wireframe.Image[image],["actor",entity.id]);
                 }
             }
             if(entity.UnitIcon){
-                entity.UnitIcon = this.checkImage(entity.UnitIcon)
+                entity.UnitIcon = this.checkImage(entity.UnitIcon,["actor",entity.id]);
             }
             if(entity.LifeArmorIcon) {
-                entity.LifeArmorIcon = this.checkImage(entity.LifeArmorIcon)
+                entity.LifeArmorIcon = this.checkImage(entity.LifeArmorIcon,["actor",entity.id]);
             }
             if(entity.ShieldArmorIcon) {
-                entity.ShieldArmorIcon = this.checkImage(entity.ShieldArmorIcon)
+                entity.ShieldArmorIcon = this.checkImage(entity.ShieldArmorIcon,["actor",entity.id]);
             }
         }
         for(let entity of this.catalogs.weapon) {
             entity = entity.$$resolved
             if(entity.Icon){
-                entity.Icon = this.checkImage(entity.Icon)
+                entity.Icon = this.checkImage(entity.Icon,["actor",entity.id]);
             }
         }
         for(let entity of this.catalogs.upgrade) {
             entity = entity.$$resolved
             if(entity.Icon) {
-                entity.Icon = this.checkImage(entity.Icon)
+                entity.Icon = this.checkImage(entity.Icon,["actor",entity.id]);
             }
         }
         for(let entity of this.catalogs.button) {
             entity = entity.$$resolved
             if(entity.Icon) {
-                entity.Icon = this.checkImage(entity.Icon)
+                entity.Icon = this.checkImage(entity.Icon,["actor",entity.id]);
             }
         }
         for(let entity of this.catalogs.behavior) {
             entity = entity.$$resolved
             if(entity.Icon) {
-                entity.Icon = this.checkImage(entity.InfoIcon)
+                entity.Icon = this.checkImage(entity.InfoIcon,["actor",entity.id]);
             }
         }
     }
-    populateUnitsWithActorsData(){
+    resolveUnitActors(){
         for(let entity of this.catalogs.actor) {
             entity = entity.$$resolved;
             let events = entity.On?.filter(event => event.Send === 'Create')
@@ -238,34 +273,28 @@ export class SCMod {
                         let unit = this.cache.unit[unitId]
                         if(!unit)continue;
 
-                        let UnitIcon = entity.UnitIcon || entity.Wireframe?.Image?.[0]  || unit.UnitIcon
-                        let LifeArmorIcon = entity.LifeArmorIcon  || unit.LifeArmorIcon
-                        let ShieldArmorIcon = entity.ShieldArmorIcon  || unit.ShieldArmorIcon
-
-                        if(UnitIcon){
-                            unit.Icon = UnitIcon
+                        if(!entity.UnitIcon && ! entity.Wireframe?.Image?.[0]){
+                            continue;
                         }
-                        if(LifeArmorIcon){
-                            unit.LifeArmorIcon = LifeArmorIcon
+                        if(unit.$actor){
+                            console.log("!")
                         }
-                        if(ShieldArmorIcon){
-                            unit.ShieldArmorIcon = ShieldArmorIcon
-                        }
+                        Object.defineProperty(entity, '$actor',{ configurable:true, writable: true,enumerable: false,value: entity })
                     }
                 }
             }
         }
     }
-    getReferenceValue(expr){
-        try{
+    getReferenceValue(expr,path){
             let [catalog,entityId,field] = expr.split(",")
             let entity = this.cache[catalog.toLowerCase()]?.[entityId]
 
             if(!entity){
-                console.warn('wrong entity? ' + catalog + ' ' + entityId)
-                return '';
+                console.warn('Entity not found:  ' + catalog + '.' + entityId + " (" + path.join(".") + ")")
+                return ''
             }
 
+        try{
             let crumbs = field.replace(/\[/g,'.').replace(/]/g,'.').split(/[.\[\]]/)
             for(let i = crumbs.length - 1; i>=0; i--){
                 if(crumbs[i] === '') {
@@ -314,8 +343,7 @@ export class SCMod {
                     __val = __val[crumb]
                 }
                 if(__val === undefined){
-                    console.warn('wrong value? ' + field)
-                 //   this.getReferenceValue(expr)
+                    console.warn('Value is undefined:  '  + expr + " (" + path.join(".") + ")")
                     return ''
                 }
             }
@@ -324,16 +352,41 @@ export class SCMod {
             return +__val
         }
         catch(e){
+            console.warn('Wrong Expression: '  + e + " (" + path.join(".") + ")")
             return ''
         }
     }
-    async getModData (modpath){
-        let input = modpath
+    async getModData (modpath,{catalogs= 'all', scopes = 'all'} = {}){
+
+
+        if(scopes.constructor === String){
+            scopes = [scopes]
+        }
+        if(scopes.includes('all')){
+            scopes = [
+                'media',
+                'assets',
+                'triggers',
+                'locales',
+                'styles',
+                'layouts',
+                'data',
+                'components',
+                'binary',
+                'files',
+                'banklist',
+                'mapdata',
+                'documentinfo'
+            ]
+        }
+
+
+        let input = this.resolvePath(modpath)
         let data;
         data = {};
         data.path = modpath
 
-        console.log(`Reading: ${data.path}`)
+        console.log(`Reading: ${input.replace(/.*StarCraft II/,'$')}`)
 
         //supports json, xml, yaml, sc2mod
         let format = path.extname(input).substring(1).toUpperCase()
@@ -368,14 +421,14 @@ export class SCMod {
             }
 
             ////////     Assets     ////////////////////////////////////////////////////////////////////////////////////
-            {
+            if(scopes.includes('assets')){
                 let assetsTextData = await this._readTextFile(input + "Base.SC2Data/GameData/Assets.txt")
                 if(assetsTextData){
                     data.assets = assetsTextData
                 }
             }
             ////////     dependencies     //////////////////////////////////////////////////////////////////////////////
-            {
+            if(scopes.includes('documentinfo')){
                 let documentInfo = await this._readXMLFile(input + "DocumentInfo")
                 let dependencies = documentInfo?.DocInfo?.Dependencies?.[0].Value
                 if(dependencies) {
@@ -383,14 +436,14 @@ export class SCMod {
                 }
             }
             ////////     styles     ////////////////////////////////////////////////////////////////////////////////////
-            {
+            if(scopes.includes('styles')){
                 let stylesData = await this._readXMLFile(input + "Base.SC2Data/UI/FontStyles.SC2Style")
                 if(stylesData){
                     data.styles = stylesData
                 }
             }
             ////////     TextData     //////////////////////////////////////////////////////////////////////////////////
-            {
+            if(scopes.includes('locales')){
                 let textFiles = ["GameHotkeys", "GameStrings", "ObjectStrings", "TriggerStrings", "ConversationStrings"]
                 let locales = {}
                 let LocaleData = data.components?.filter(entity => entity.$?.Type.toLowerCase() === "text").map(entity => entity.$.Locale) || ["enUS"];
@@ -414,7 +467,7 @@ export class SCMod {
                 }
             }
             ////////     Triggers     //////////////////////////////////////////////////////////////////////////////////
-            {
+            if(scopes.includes('triggers')){
                 let triggersFile = input + "Triggers"
 
                 // let raw = fs.existsSync(triggersFile) && fs.readFileSync(triggersFile, {encoding: 'utf-8'})
@@ -439,7 +492,7 @@ export class SCMod {
                 }
             }
             ////////     layouts     ///////////////////////////////////////////////////////////////////////////////////
-            {
+            if(scopes.includes('layouts')){
                 let layoutsData = await this._readXMLFile(input + "Base.SC2Data/UI/Layout/DescIndex.SC2Layout")
                 let layouts = layoutsData?.Desc?.Include
                 if(layouts){
@@ -447,7 +500,7 @@ export class SCMod {
                 }
             }
             ////////     Files     /////////////////////////////////////////////////////////////////////////////////////
-            {
+            if(scopes.includes('files')){
                 let files = {}
 
                 let _dirs = [
@@ -474,10 +527,7 @@ export class SCMod {
                     }
                 }
 
-
-
                  //   .forEach(file => files[file] = input + file)//.filter(file => file.endsWith("m3"))
-
 
                 // this._getAllFiles(input).forEach(file => files[file] = input + file)//.filter(file => file.endsWith("m3"))
                 // for(let m3File of files){
@@ -509,8 +559,40 @@ export class SCMod {
                     data.files = files
                 }
             }
+            ////////     BankList     //////////////////////////////////////////////////////////////////////////////////
+            if(scopes.includes('banklist')){
+                data.banklist = await this._readXMLFile(input + "BankList.xml")
+            }
+            ////////     MapData      //////////////////////////////////////////////////////////////////////////////////
+            if(scopes.includes('mapdata')){
+                // data.CellAttribute_Pde  = await this._readTextFile(input + "CellAttribute_Pde")
+                // data.CellAttribute_Pnb  = await this._readTextFile(input + "CellAttribute_Pnb")
+                // data.CellAttribute_Pnp  = await this._readTextFile(input + "CellAttribute_Pnp")
+                let objectsRaw =  await this._readXMLFile(input + "Objects")
+                let preloadRaw =  await this._readXMLFile(input + "Preload.xml")
+                let terrainRaw =  await this._readXMLFile(input + "t3Terrain.xml")
+                let regionsRaw =  await this._readXMLFile(input + "Regions")
+
+                if(objectsRaw) {
+                    data.objects = fromXMLToObject(objectsRaw.PlacedObjects)
+                    optimizeObject(data.objects, SCSchema.Objects)
+                }
+                if(preloadRaw) {
+                    data.preload = fromXMLToObject(preloadRaw.Preload)
+                    optimizeObject(data.preload, SCSchema.Preload)
+                }
+                if(terrainRaw) {
+                    data.terrain = fromXMLToObject(terrainRaw.terrain)
+                    optimizeObject(data.terrain, SCSchema.Terrain)
+                }
+                if(regionsRaw) {
+                    data.regions = fromXMLToObject(regionsRaw.Regions)
+                    optimizeObject(data.regions, SCSchema.Regions)
+                }
+
+            }
             ////////     GameData     //////////////////////////////////////////////////////////////////////////////////
-            {
+            if(scopes.includes('data')){
                 let includesData = await this._readXMLFile(input + "Base.SC2Data/GameData.xml")
                 let commonFiles = SCGame.datafiles.map(el => "Base.SC2Data/GameData/" + el + "data.xml");
                 let includes = commonFiles.filter(file => fs.existsSync(input + file))
@@ -580,7 +662,7 @@ export class SCMod {
                 data = JSON.parse(raw)
             }
             if (format === 'YAML') {
-                data = yaml.load(raw)
+                data = YAML.load(raw)
             }
             if (format === 'XML') {
                 data = {}
@@ -642,6 +724,32 @@ export class SCMod {
             this.layouts.push(...data.layouts)
         }
 
+        if(data.banklist){
+            if (!this.banklist) this.banklist = {}
+            deep(this.banklist, data.banklist)
+        }
+
+
+
+        if(data.objects) {
+            if (!this.objects) this.objects = {}
+            deep(this.objects, data.objects)
+        }
+        if(data.preload) {
+            if (!this.preload) this.preload = {}
+            deep(this.preload, data.preload)
+        }
+        if(data.terrain) {
+            if (!this.terrain) this.terrain = {}
+            deep(this.terrain, data.terrain)
+        }
+        if(data.regions) {
+            if (!this.regions) this.regions = {}
+            deep(this.regions, data.regions)
+        }
+
+
+
         if(data.catalogs){
             if (!data.entities) data.entities = []
             for(let catalog in data.catalogs){
@@ -654,18 +762,12 @@ export class SCMod {
             for(let catalog in data.cache){
                 //cache format
                 for(let id in data.cache[catalog]) {
-
-
                     let entity = data.cache[catalog][id];
                     let existed = this.cache[catalog][id];
-
-
                     entity.id = id;
-
                     if(existed){
                         entity.class = existed.class
                     }
-
                     data.entities.push(entity)
                 }
             }
@@ -678,74 +780,6 @@ export class SCMod {
         }
         // console.timeEnd(`Applying: ${data.path}`)
         return this
-    }
-    unitProduction (unitname){
-
-        let productionUnits = []
-        let productionUpgrades = []
-        let unit = this.cache.unit[unitname].$$resolved
-        if(unit.CardLayouts){
-
-            for(let card of unit.CardLayouts){
-                if(card.LayoutButtons){
-                    for(let button of card.LayoutButtons) {
-                        let abilcmd = this.cache.abilcmd[button.AbilCmd]
-                        if (abilcmd) {
-                            let info = this.cache.abil[abilcmd.abil].$$resolved.InfoArray[abilcmd.cmd];
-                            if (info?.Unit) {
-                                if(info.Unit.constructor === Array){
-                                    productionUnits.push( ...info.Unit.map(unit => unit.value || unit))
-                                }else{
-                                    productionUnits.push( info.Unit)
-                                }
-                            }
-                            if (info?.Upgrade) {
-                                productionUpgrades.push( info.Upgrade)
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        return {productionUnits,productionUpgrades}
-
-    }
-    producingRequirements (unitname){
-        let abilCmds = this.catalogs.abilcmd.filter(entry => {
-            let abil = this.cache.abil[entry.abil].$$resolved;
-            let unit = abil.InfoArray[entry.cmd]?.Unit
-            if(!unit)return false;
-            if(unit.constructor !== Array)    unit = [unit]
-            return unit.includes(unitname)
-        })
-
-
-        let abilCmdsIds = abilCmds.map(abilcmd => abilcmd.id)
-
-        let requirements = abilCmds.map(entry => this.cache.abil[entry.abil].$$resolved.InfoArray[entry.cmd].Button?.Requirements).filter(Boolean)
-            .map(req => this.cache.requirement[req]?.$$resolved).filter(Boolean)
-            .map(req => req.NodeArray.Use?.Link || req.NodeArray.Show?.Link).filter(Boolean)
-            .map(reqNode => this.cache.requirementnode[reqNode].$$resolved).filter(Boolean)
-
-        let reqUnitsAliases = requirements.filter(req => req.class === 'CRequirementCountUnit').map(req => req.Count?.Link).filter(Boolean)
-        let reqUpgradeAliases = requirements.filter(req => req.class === 'CRequirementCountUpgrade').map(req => req.Count?.Link).filter(Boolean)
-
-        let requiredUnits = this.catalogs.unit.filter(entry => reqUnitsAliases.includes(entry.$$resolved.TechAliasArray) || reqUnitsAliases.includes(entry.id) ).map(unit => unit.id)
-        let requiredUpgrades = this.catalogs.upgrade.filter(entry => reqUpgradeAliases.includes(entry.$$resolved.TechAliasArray) || reqUpgradeAliases.includes(entry.id) ).map(unit => unit.id)
-
-        let producingUnits = this.catalogs.unit.filter(entry => entry.$$resolved.CardLayouts?.find(card => {
-            if(card.LayoutButtons){
-                for(let button of card.LayoutButtons) {
-                    if (button.AbilCmd && abilCmdsIds.includes(button.AbilCmd)) {
-                        return true
-                    }
-                }
-            }
-            return false
-        })).map(unit => unit.id)
-
-        return {abilCmdsIds,requiredUnits,requiredUpgrades,producingUnits}
     }
     // unitAbilCmds(unit){
     //     let lbs = []
@@ -766,6 +800,13 @@ export class SCMod {
     //     return lbs
     // }
 
+    resolvePath(destpath){
+
+        if(!destpath.startsWith('./') && !destpath.startsWith('.\\') && !destpath.includes(":")){
+            destpath = this._directory + destpath
+        }
+        return path.resolve(destpath)
+    }
     /**
      *
      * @param destpath {string}
@@ -775,13 +816,25 @@ export class SCMod {
      * @param scopes { ['components','documentinfo', 'assets', 'triggers', 'locales', 'styles', 'layouts', 'data'] | 'all' } which mod components to save
      * @returns {Promise<SCMod>}
      */
-    async write (destpath,{outputFn = null, formatFn = null,catalogs= 'all',resolve = false, format = 'auto', structure = 'auto', scopes = 'all',core = false} = {}){
+    async write (destpath,{text = {}, outputFn = null, formatFn = null,catalogs= 'all',resolve = false, format = 'auto', structure = 'auto', scopes = 'all',core = false} = {}){
+
+        // set mod name
+            for(let locale in this.locales){
+                this.locales[locale].GameStrings["DocInfo/Website"] = text.Website
+                this.locales[locale].GameStrings["DocInfo/Name"] = text.Name
+                if(text.DescLong){
+                    this.locales[locale].GameStrings["DocInfo/DescLong"] = `${text.DescLong}${text.Signature || ''}`
+                }
+                if(text.DescShort){
+                    this.locales[locale].GameStrings["DocInfo/DescShort"] = text.DescShort
+                }
+            }
 
 
-        if(!'./'.includes(destpath) && !'.\\'.includes(destpath)){
-            destpath = this._directory + destpath
-        }
-        destpath = path.resolve(destpath)
+
+
+
+        destpath = this.resolvePath(destpath)
 
         if(scopes.constructor === String){
             scopes = [scopes]
@@ -826,7 +879,7 @@ export class SCMod {
 
         let extension, formatting;
 
-        console.log(`Writing: ${destpath}`)
+        console.log(`Writing: ${destpath.replace(/.*StarCraft II/,'$')}`)
 
         fs.mkdirSync(destpath, {recursive: true});
 
@@ -895,15 +948,15 @@ export class SCMod {
             output[`DocumentInfo`] = formatData(info , 'xml')
 
             if(scopes.includes('binary') && format === 'auto'){
-                fs.copyFileSync(path.resolve(__dirname ,'versions/DocumentInfo.version'), destpath + `DocumentInfo.version`)
+                fs.copyFileSync(path.resolve(__dirname ,'binary/DocumentInfo.version'), destpath + `DocumentInfo.version`)
             }
 
             if(scopes.includes('binary')){
                 if(includeVoid){
-                    fs.copyFileSync(path.resolve(__dirname ,'versions/DocumentHeader VOID'), destpath + `DocumentHeader`)
+                    fs.copyFileSync(path.resolve(__dirname ,'binary/DocumentHeader VOID'), destpath + `DocumentHeader`)
                 }
                 if(includeCampaign) {
-                    fs.copyFileSync(path.resolve(__dirname ,'versions/DocumentHeader VOID CAMPAIGN'), destpath + `DocumentHeader`)
+                    fs.copyFileSync(path.resolve(__dirname ,'binary/DocumentHeader VOID CAMPAIGN'), destpath + `DocumentHeader`)
                 }
             }
         }
@@ -938,7 +991,7 @@ export class SCMod {
             }
 
             if(scopes.includes('binary') && format === 'auto'){
-                fs.copyFileSync(path.resolve(__dirname ,'versions/GameText.version'), destpath + `GameText.version`)
+                fs.copyFileSync(path.resolve(__dirname ,'binary/GameText.version'), destpath + `GameText.version`)
             }
         }
         if(scopes.includes('styles') && this.styles){
@@ -947,7 +1000,7 @@ export class SCMod {
             output[`Base.SC2Data/UI/FontStyles.${extension}`] = formatData(this.styles, formatting)
             if(scopes.includes('binary') && format === 'auto'){
                 fs.mkdirSync(destpath+  `Base.SC2Data/UI/`, {recursive: true});
-                fs.copyFileSync(path.resolve(__dirname ,'versions/FontStyles.version'), destpath + `Base.SC2Data/UI/FontStyles.version`)
+                fs.copyFileSync(path.resolve(__dirname ,'binary/FontStyles.version'), destpath + `Base.SC2Data/UI/FontStyles.version`)
             }
         }
         if(scopes.includes('layouts') && this.layouts){
@@ -955,6 +1008,39 @@ export class SCMod {
             formatting = format === 'auto' ? 'xml' : format;
             output[`Base.SC2Data/UI/Layout/DescIndex.${extension}`] = formatData({Desc: {Include: this.layouts }}, formatting)
         }
+        if(scopes.includes('data') && this.banklist){
+            formatting = format === 'auto' ? 'xml' : 'xml';
+
+            if(formatting === "xml") {
+                let catalogXML = buildXMLObject(this.banklist)
+                output[`BankList.xml`] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n${catalogXML}\n`
+            }
+        }
+
+
+        // entityData = JSON.parse(JSON.stringify(entityData))
+        if(this.objects) {
+            let objectsData = JSON.parse(JSON.stringify(this.objects))
+            optimiseForXML(objectsData, SCSchema.Objects)
+            output[`Objects`] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n${buildXMLObject({PlacedObjects: objectsData})}\n`
+        }
+        if(this.preload) {
+            let preloadData = JSON.parse(JSON.stringify(this.preload))
+            optimiseForXML(preloadData, SCSchema.Preload,['Preload'])
+            output[`Preload.xml`] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n${buildXMLObject({Preload: preloadData})}\n`
+        }
+        if(this.terrain) {
+            let terrainData = JSON.parse(JSON.stringify(this.terrain))
+            optimiseForXML(terrainData, SCSchema.Terrain)
+            output[`t3Terrain.xml`] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n${buildXMLObject({terrain: terrainData})}\n`
+        }
+        if(this.regions) {
+        //     optimiseForXML(this.regions, SCSchema.Regions)
+        //     output[`Regions`] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n${buildXMLObject(this.regions)}\n`
+        }
+
+
+
         if(scopes.includes('data') && this.entities){
             extension = format === 'auto' ? 'xml' : format
             formatting = format === 'auto' ? 'xml' : format;
@@ -964,7 +1050,7 @@ export class SCMod {
 
                     let outputCatalogData
 
-                    let entities = data[cat].filter(entity => !entity.$overriden)
+                    let entities = data[cat];//.filter(entity => !entity.$overriden)
 
                     if(!core){
                         entities = entities.filter(entity => !entity.__core)
@@ -973,7 +1059,7 @@ export class SCMod {
                     if(formatting === "xml") {
                         // let catalogXMLObjectData = data.map(entity => entity.getXMLObject())
                         // output[`Base.SC2Data/GameData/${capitalize(cat)}Data.xml`] = formatData({Catalog: catalogXMLObjectData}, 'xml')
-                        let catalogXML =entities .reduce((acc, entity) => {
+                        let catalogXML = entities.reduce((acc, entity) => {
                             let entityData
                             if(formatFn){
                                 entityData = formatFn(entity)
@@ -983,6 +1069,8 @@ export class SCMod {
                             }
                             return acc + entity.getXML(entityData)
                         }, '')
+
+                        catalogXML = catalogXML.replace(/<__token__ (.*)\/>/g,`<?token $1?>`)
                         outputCatalogData = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n<Catalog>\n${catalogXML}\n</Catalog>`
                     }
                     else {
@@ -1002,7 +1090,7 @@ export class SCMod {
                     }
                     output[`Base.SC2Data/GameData/${capitalize(cat)}Data.${extension}`] = outputCatalogData
                     if(scopes.includes('binary') && format === 'auto'){
-                        fs.copyFileSync(path.resolve(__dirname ,'versions/GameData.version'), destpath + `GameData.version`)
+                        fs.copyFileSync(path.resolve(__dirname ,'binary/GameData.version'), destpath + `GameData.version`)
                     }
                 }
 
@@ -1013,7 +1101,7 @@ export class SCMod {
             // output[`Triggers`]  = `<?xml version="1.0" encoding="utf-8"?>\n<TriggerData>\n${this.triggers}\n</TriggerData>`
 
             //todo parsed triggers
-            let libraries = this.triggers.map(lib => optimiseForXML(lib, LibrarySchema))
+            let libraries = this.triggers.map(lib => optimiseForXML(JSON.parse(JSON.stringify(lib)), LibrarySchema))
             let triggersString = formatData({TriggerData: {Library: libraries}}, format === 'auto' ? 'xml' : format)
 
             function fixTriggers(text){
@@ -1072,11 +1160,10 @@ export class SCMod {
                 return chunks.join("")
             }
 
-
             output[`Triggers`] = fixTriggers(triggersString)
 
             if(scopes.includes('binary') && format === 'auto'){
-                fs.copyFileSync(path.resolve(__dirname ,'versions/Triggers.version'), destpath + `Triggers.version`)
+                fs.copyFileSync(path.resolve(__dirname ,'binary/Triggers.version'), destpath + `Triggers.version`)
             }
         }
 
@@ -1099,7 +1186,12 @@ export class SCMod {
                     }
                 }
                 fs.mkdirSync(foutput.substring(0, foutput.lastIndexOf("/")), {recursive: true});
-                fs.copyFileSync(finput, foutput)
+                if(fs.existsSync(finput)) {
+                    fs.copyFileSync(finput, foutput)
+                }
+                else{
+                    console.warn("File not exist: " + finput)
+                }
             }
         }
 
@@ -1122,26 +1214,22 @@ export class SCMod {
 
         let raw = fs.readFileSync(localeFile, {encoding: 'utf-8'})
             .replace(/<\?xml(.*)\?>/g,'')
-            .replace(/<\?token\s+id="(\w+)"\s+(?:type="(\w+)"\s+)?value="(.*)"\?>/g,(_,tokenID,tokenType,tokenValue) =>{
-                return `<__${tokenID}__ value="${tokenValue}"/>`
+            .replace(/<\?token(.*?)\?>/g,(_,row) =>{
+                let tokenID = /id="(\w+)"/.exec(row)[1]
+                row = row.replace(/id="(\w+)"/,"");
+                return `<__${tokenID}__ ${row} />`
             })
+            // .replace(/<\?token\s+id="(\w+)"\s+(?:type="(\w+)"\s+)?value="(.*)"\?>/g,(_,tokenID,tokenType,tokenValue) =>{
+            //     return `<__${tokenID}__ value="${tokenValue}"/>`
+            // })
             .replace(/<\?(.*)\?>/g,function(_){
                 return _
             })
 
-
-
-
-
-
-
-
-
-
         return new Promise((resolve, reject) => {
             let parser
             if(ordered){
-                parser = new xml2js.Parser({
+                parser = new XML.Parser({
                     // trim: true,
                     explicitArray: true,
                     explicitChildren: true,
@@ -1149,7 +1237,7 @@ export class SCMod {
                 });
             }
             else{
-                parser = new xml2js.Parser({
+                parser = new XML.Parser({
                     // trim: true,
                     explicitArray: true
                 });
@@ -1173,7 +1261,7 @@ export class SCMod {
             }
         }
         let a = this.cache
-        for(let i in b){
+        for(let i in b) {
             if(a.constructor === Object && b.constructor === Object && a[i]) {
                 mixin(a[i], b[i])
             }
@@ -1182,14 +1270,13 @@ export class SCMod {
             }
         }
     }
-    pickEntity(entity,path = []){
+    pickEntity (entity,path = []){
         if(!entity) {
             return
         }
         if(SCGame.pickIgnoreObjects[entity.$$namespace]?.includes(entity.id)){
             return
         }
-
         if(entity.__picked){
             return
         }
@@ -1199,22 +1286,34 @@ export class SCMod {
         this.pickedCounter++
         Object.defineProperty(entity, '__picked',{ configurable:true, writable: true,enumerable: false,value: true })
 
-        // console.log(entity.class +" " + entity.id)
-        for(let relation of entity.$$relations){
-            relation.refpath = path
-            let linkedEntity = this.cache[relation.namespace]?.[relation.link]
-            // let linkedEntity = relation.target
-
-            if(!linkedEntity)continue
-            if(linkedEntity.$$references){
-                linkedEntity.addReferences(relation)
-            }
-            else{
-                linkedEntity.addReferences(relation)
-                this.pickEntity(linkedEntity,[...path,entity.$$namespace + '.' + entity.id])
+        if(entity.$$relations){
+            // console.log(entity.class +" " + entity.id)
+            for(let relation of entity.$$relations){
+                relation.refpath = path
+                this._pickRelation(relation,[...path,entity.$$namespace + '.' + entity.id])
             }
         }
 
+    }
+    index(){
+        if(this.supportEntities){
+
+            for(let namespace in this.supportEntities){
+                for(let entityID in this.supportEntities[namespace]){
+                    let entity = this.supportEntities[namespace][entityID]
+                    this.pickEntity(entity)
+                }
+            }
+        }
+        for(let namespace in this.catalogs){
+            for(let entity of this.catalogs[namespace]){
+                // entity.addReferences({})
+                this.pickEntity(entity)
+            }
+        }
+        this.pickTriggers()
+        this.pickObjects()
+        this.pickActors()
     }
     pick(include = {}, {exclude = {}} = {}){
         console.log("Picking entities")
@@ -1224,6 +1323,7 @@ export class SCMod {
         deep(SCGame.pickIgnoreObjects,exclude)
 
         this.pickTriggers()
+        this.pickObjects()
 
         for(let namespace in include){
             for(let link of include[namespace]){
@@ -1246,7 +1346,6 @@ export class SCMod {
         this.pickEntity(this.cache.actor?.['SYSTEM_ActorConfig'])
         this.filter()
         this.entities.forEach(entity => entity.$$references = entity.$$references.filter(ref => ref.path))
-
         console.log(`${this.pickedCounter} picked`)
     }
     pickMisc(races){
@@ -1266,6 +1365,9 @@ export class SCMod {
         }
     }
     pickActors(){
+        if(!this.catalogs.actor){
+            return
+        }
         for (let actor of this.catalogs.actor){
             let termRelations = actor.$$relations.filter(rel => rel.type === "terms")
             let used = false
@@ -1292,6 +1394,7 @@ export class SCMod {
         for(let entity of this.entities){
             entity.ghost()
         }
+        delete this.locales
     }
     removeCore(){
         for(let catalog in this.catalogs){
@@ -1310,6 +1413,12 @@ export class SCMod {
             }
         }
         this.entities = this.entities.filter(item => !item.__core)
+    }
+    remove(entity){
+        let catalog = this.catalogs[entity.$$namespace]
+        catalog.splice(catalog.indexOf(entity),1)
+        this.entities.splice(this.entities.indexOf(entity),1)
+        delete this.cache[entity.$$namespace][entity.id]
     }
     filter(){
 
@@ -1347,7 +1456,12 @@ export class SCMod {
     resolveAssets(){
         for(let catalog in this.catalogs) {
             for (let entity of this.catalogs[catalog]) {
-                entity.resolveAssets()
+                if(entity.__core){
+                    continue
+                }
+                if(entity.__picked){
+                    entity.resolveAssets()
+                }
             }
         }
     }
@@ -1355,7 +1469,12 @@ export class SCMod {
         let picked = []
         for(let catalog in this.catalogs) {
             for (let entity of this.catalogs[catalog]) {
-                entity.resolveText(mask,picked)
+                if(entity.__core){
+                    continue
+                }
+                if(entity.__picked) {
+                    entity.resolveText(mask, picked)
+                }
             }
         }
         let races = this.cache.race && Object.keys(this.cache.race)
@@ -1401,12 +1520,121 @@ export class SCMod {
         }
     }
 
+    removeUnusedSounds(){
+
+        let removed = 0
+        for(let i = this.catalogs.actor.length; i--;){
+            let entity = this.catalogs.actor[i]
+            if(entity.SoundArray?.Pissed){
+                delete entity.SoundArray?.Pissed
+            }
+        }
+        for(let i = this.catalogs.sound.length; i--;){
+            let entity = this.catalogs.sound[i]
+            if((
+                    entity.id.endsWith("_NP") ||
+                    entity.id.endsWith("_MC")
+                    // entity.id.includes("Warcry") ||
+                    // entity.id.includes("Pissed") ||
+                    // entity.id.endsWith("Help") ||
+                    // entity.id.includes("_Help") ||
+                    // entity.id.endsWith("HelpAlt") ||
+                    // entity.id.includes("YesAttack")
+                ) &&
+                (!["MindControlled_Yes_MC", "MindControlled_Death_MC", "MindControlled_Pissed_MC", "MindControlled_Ready_MC", "MindControlled_What_MC"].includes(entity.id)) &&
+                (!["TerranPissed","ZergPissed","ProtossPissed"].includes(entity.id))){
+                this.catalogs.sound.splice(i,1)
+                delete this.cache.sound[entity.id]
+                this.entities.splice(this.entities.indexOf(entity))
+                removed++
+            }
+        }
+        console.log("removed " + removed + " sounds")
+
+    }
+    collectDataForRenaming () {
+        let pick = {
+            unit: [],
+            abil: [],
+            actor: [],
+            behavior: [],
+            button: [],
+            sound: [],
+            effect: [],
+            footprint: [],
+            model: [],
+            mover: [],
+            requirement: [],
+            requirementnode: [],
+            turret: [],
+            upgrade: [],
+            validator: [],
+            weapon: [],
+        }
+
+        {
+            let catalog
+            let entityid
+            for (catalog in pick) {
+                if(this.catalogs[catalog]){
+                    for (let entity of this.catalogs[catalog]) {
+                        if(entity.__core || entity.__cantBeRenamed){
+                            continue;
+                        }
+                        entityid = entity.id
+                        if(entityid && !entity.__core && !SCGame.defaultPickIgnoreObjects[catalog]?.includes(entityid)){
+                            pick[catalog].push(entityid)
+                        }
+                    }
+                }
+            }
+        }
+        return pick;
+    }
+    _pickRelation(relation,path){
+
+        let linkedEntity = this.cache[relation.namespace]?.[relation.link]
+        if(!linkedEntity){
+            if(!this[relation.namespace]?.[relation.link] && !this.supportEntities?.[relation.namespace]?.[relation.link]){
+
+
+                let parts = relation.xpath.split(".").slice(2)
+                let val = relation.target;
+                for (let part of parts) {
+                    if(!val) {
+                        break;
+                    }
+                    val = parts[part]
+                }
+                if(val) {
+                    console.log("no entity found " + relation.namespace + "#" + relation.link)
+                }
+            }
+            if(!this.cache[relation.namespace]){
+                this.cache[relation.namespace] = {}
+            }
+            linkedEntity = new SCEntity({
+                $mod: this,
+                $namespace: relation.namespace
+            });
+            linkedEntity.ghost()
+            this.cache[relation.namespace][relation.link]  = linkedEntity
+        }
+        if(linkedEntity.$$references){
+            linkedEntity.addReferences(relation)
+        }
+        else{
+            linkedEntity.addReferences(relation)
+            this.pickEntity(linkedEntity,path)
+        }
+
+    }
     pickTriggers(){
         if(this._triggersPicked ){
             return
         }
         this._triggersPicked = true
-        console.log("Picking entities used by Triggers")
+        // console.log("Picking entities used by Triggers")
         this.pickedCounter = 0
         this.pickedCounter = 0
         SCGame.pickIgnoreObjects = {}
@@ -1415,273 +1643,97 @@ export class SCMod {
         for(let libIndex in this.triggers){
             let result = relations(this.triggers[libIndex],this.triggers[libIndex], LibrarySchema,['library',libIndex],SCGame.pickIgnoreObjects)
 
+            for(let i in result){
+                if(!result[i].xpath) {
+                    result[i].xpath = result[i].path
+                }
+            }
 
             for(let relation of result){
-                let linkedEntity = this.cache[relation.namespace]?.[relation.link]
-                if(!linkedEntity)continue
-                if(linkedEntity.$$references){
-                    linkedEntity.addReferences(relation)
-                }
-                else{
-                    linkedEntity.addReferences(relation)
-                    this.pickEntity(linkedEntity)
-                }
+                this._pickRelation(relation)
+            }
+        }
+    }
+
+
+    pickObjects(){
+        if(!this.objects || this._objectsPicked){
+            return
+        }
+        this._objectsPicked = true
+        console.log("Picking entities used by Objects")
+        this.pickedCounter = 0
+
+        SCGame.pickIgnoreObjects = {}
+        deep(SCGame.pickIgnoreObjects,SCGame.defaultPickIgnoreObjects)
+
+        let result = relations(this.objects, this.objects, SCSchema.Objects,['map','objects'],SCGame.pickIgnoreObjects)
+
+        for(let i in result){
+            if(!result[i].xpath) {
+                result[i].xpath = result[i].path
             }
         }
 
-
-
+        for(let relation of result){
+            this._pickRelation(relation)
+        }
     }
+
     //prefix all filtered entities with 'Legacy' word. where '*' is an old entity id
     /**
      *
      * @param mask
      * @param tags rename uniqueTags
      */
-    renameEntities(mask,{tags = true} = {}){
+    renameEntities(mask,{tags = true,pick = null} = {}){
+
+        // for(let type in DataSchema){
+        //     if(!DataSchema[type].prototype){
+        //         DataSchema[type].$ID = 'string'
+        //     }
+        // }
         console.log(`Renaming entities`)
 
-
-        this.pickTriggers()
-        this.pickAll()
-        this.resolveAssets()
-        this.resolveText(mask)
+        if(!pick){
+            this.pickTriggers()
+            this.pickObjects()
+            this.pickAll()
+        }
+        // this.resolveAssets()
+        // this.resolveText(mask)
 
         let counter = 0
+
+
+        function doRenaming(entity){
+            if(entity.__cantBeRenamed) {
+                return
+            }
+            if(!entity.__picked) {
+                return
+            }
+            if(entity.__core){
+                return
+            }
+            if(entity.__renamed){
+                return
+            }
+
+            // if(entity.$children){
+            //     for(let child of entity.$children){
+            //         doRenaming(child)
+            //     }
+            // }
+
+
+            counter += entity.rename(mask)
+        }
 
         for(let catalog in this.catalogs) {
             // if(catalog === 'actor')continue
             for (let entity of this.catalogs[catalog]) {
-                if(entity.__core){
-                    continue
-                }
-                let oldName = entity.id
-
-                // For Race-Specific stuff
-                if(entity.__misc){
-                    let li = entity.id.lastIndexOf('_') +1
-                    if(li) {
-                        let race = entity.id.substring(li);
-                        entity.id = entity.id.substring(0, li) + mask.replace("*", race)
-                    }
-                }else{
-                    entity.id = mask.replace("*", oldName)
-                }
-
-                if (entity.$$references) {
-                    for (let reference of entity.$$references) {
-                        let refpath = reference.path
-                        if(!refpath) continue //nothing to rename
-                        let _path = refpath.split(".")
-                        let value,valueObject,valueProperty, valueEntity, newvalue
-                        let referenceEntity = reference.target ;//this.cache[_path[0]][_path[1]]
-                        if(!referenceEntity){
-                            console.warn("wrong reference " + refpath)
-                            continue;
-                        }
-                        if(SCGame.useResolve){
-                            valueEntity = referenceEntity.$created ? referenceEntity : referenceEntity.$$resolved;
-                        }
-                        else{
-                            valueEntity = referenceEntity;
-                        }
-                        value = valueEntity
-                        let pathobject = [valueEntity]
-                        for(let pathItem of _path.slice(2)){
-                            if(value === undefined)break;
-                            valueObject = value
-                            valueProperty = pathItem
-                            value = value[pathItem]
-                        }
-                        if(value === undefined){
-                            console.warn("wrong refpath " + refpath)
-                            continue;
-                        }
-                        if(value.constructor === Object){
-                            valueObject = value
-                            valueProperty = "value"
-                            value = valueObject.value
-                        }
-
-
-                        let propertySchema
-                        if(_path[0] === 'library'){
-                            propertySchema = LibrarySchema
-                        }
-                        else{
-                            propertySchema = referenceEntity.$$schema
-                        }
-                        let _propertyPath = _path.slice(2)
-                        if(_propertyPath[0] === 'parent'){
-                            propertySchema = referenceEntity.$$namespace
-                        }
-                        else{
-                            for(let _propertyPathItem of _propertyPath){
-
-                                if(propertySchema[0]?.index === 'word'){
-                                    propertySchema = propertySchema[0]
-                                }
-                                else if( isNumeric(_propertyPathItem)){
-                                    propertySchema = propertySchema[0]
-                                }
-                                else{
-                                    propertySchema = resolveSchemaType(propertySchema, _propertyPathItem,pathobject)
-                                }
-                                if(!propertySchema){
-                                    console.log("@@@")
-                                }
-
-                                valueEntity = valueEntity[_propertyPathItem]
-                                pathobject.push(valueEntity)
-                            }
-                            propertySchema = propertySchema.value || propertySchema
-                        }
-
-                        let namespace
-                        switch(propertySchema){
-                            case "terms": {
-                                let [event,...conditions] = value.split(";").map(term => term.trim())
-                                let eventParts = event.split(".")
-                                namespace = eventEntityType(eventParts[0])
-
-                                if(namespace === entity.$$namespace && eventParts[1] === oldName){
-                                    eventParts[1] = entity.id
-                                    event = eventParts.join(".")
-                                }
-
-                                // namespace = eventEntityType2(eventParts[0])
-                                // if(namespace === entity.$$namespace && eventParts[2] === oldName){
-                                //     eventParts[2] = entity.id
-                                //     event = eventParts.join(".")
-                                // }
-
-                                for(let index =0; index < conditions.length; index++){
-                                    let condition = conditions[index]
-                                    let eventParts = condition.split(" ").map(term => term.trim())
-                                    let namespace = eventConditionEntityType(eventParts[0])
-
-                                    if(namespace === entity.$$namespace && eventParts[1] === oldName){
-                                        eventParts[1] = entity.id
-                                        conditions[index] = eventParts.join(" ")
-                                    }
-                                }
-                                newvalue = [event, ...conditions].join(";")
-                                break;
-                            }
-                            case "abilcmd": {
-                                let [entityName, cmd] = value.split(",")
-                                if(cmd){
-                                    newvalue = [entity.id, cmd].join(",")
-                                }
-                                else{
-                                    newvalue = entity.id
-                                }
-                                break;
-                            }
-                            case "subject": {
-                                if(value.startsWith(':')){
-
-                                    let [subjjNamespace,subjLink] = value.substring(2).split(".")
-                                    newvalue= `::${subjjNamespace}.${entity.id}`
-                                }
-                                else{
-                                    if(value === oldName){
-                                        newvalue = entity.id
-                                    }
-                                    else{
-                                        console.log("#")
-                                    }
-                                }
-                                break;
-                            }
-                            case "ops": {
-                                let actors = value.split(" ")
-                                for(let index =0; index < actors.length; index++){
-
-                                    if(actors[index] === oldName){
-                                        actors[index] = entity.id
-                                    }
-                                }
-                                newvalue = actors.join(" ")
-                                break;
-                            }
-                            case "reference": {
-                                let [entityType, entityName, entityProperty] = value.split(",")
-                                newvalue = [entityType, entity.id, entityProperty].join(",")
-                                break;
-                            }
-                            case "send": {
-
-                                let eventParts = value.split(" ")
-
-                                switch (eventParts[0]) {
-                                    case "AttachSetBearingsFrom": {
-                                        let parts = value.replace(/([\{\} }])/g,'\n$1\n').split('\n')
-                                        for(let i in parts){
-                                            if(parts[i] === oldName){
-                                                parts[i] = entity.id
-                                            }
-                                        }
-                                        newvalue = parts.join("")
-                                        break;
-                                    }
-                                    case "HostSiteOpsSet": {
-                                        let parts = value.replace(/([\{\} }])/g,'\n$1\n').split('\n')
-                                        for(let i in parts){
-                                            if(parts[i] === oldName){
-                                                parts[i] = entity.id
-                                            }
-                                        }
-                                        newvalue = parts.join("")
-                                        break;
-                                    }
-                                    case "RefSetFromMsg": {
-                                        let _val = value.split(" ")
-
-                                        let [namespace,link] = _val[1].substring(2).split(".")
-                                        _val[1] = `::${namespace}.${entity.id}`
-                                        newvalue = _val.join(" ")
-                                        break;
-                                    }
-                                    case "ModelSwap": {
-                                        eventParts[1] = entity.id
-                                        newvalue = eventParts.join(" ")
-                                        break;
-                                    }
-                                    case "QueryRadius":
-                                    case "QueryRegion":
-                                    case "TimerSet":
-                                    {
-                                        eventParts[2] = entity.id
-                                        newvalue = eventParts.join(" ")
-                                        break;
-                                    }
-                                    case "ModelMaterialApply":
-                                    case "ModelMaterialRemove":
-                                    case "Create":
-                                    case "CreateCopy":
-                                    {
-                                        eventParts[1] = entity.id
-                                        newvalue = eventParts.join(" ")
-                                        break;
-                                    }
-                                    default: {
-                                        newvalue = eventParts.join(" ")
-                                    }
-                                }
-                                break;
-                            }
-                            default: {
-                                newvalue = entity.id
-                            }
-                        }
-
-                        valueObject[valueProperty] = newvalue
-
-                        counter++
-                    }
-                }
-
+                doRenaming(entity)
             }
         }
 
@@ -1756,18 +1808,66 @@ export class SCMod {
             let existed = this.cache[namespace][entityid]
             let parent = entityparent && this.cache[namespace][entityparent]
 
+
             let _core = false
             if(existed) {
                 if (entityparent) {
-                    Object.defineProperty(existed, '$overriden',{ configurable:true, writable: true,enumerable: false,value: true })
-                    // console.log(entityid + ': overriding element parent ')
-                    if(existed.__core)_core = true
+                    //new behavior. replace old entities with new one
+                    if(true){
+                        entitydata.$mod = this
+                        entitydata.$parent =  parent || null;
+                        entitydata.class = classname
+                        entitydata.$class = entityclass
+                        let entityInstance = new SCEntity(entitydata)
+                        if(existed.__core){
+                            entityInstance
+                            // entityInstance.ghost()
+                        }
+                        catalog.splice(catalog.indexOf(existed),1,entityInstance)
+                        this.cache[namespace][entityid] = entityInstance
+                        this.entities.splice(this.entities.indexOf(existed),1,entityInstance)
+                        return entityInstance
+                    }
+
+                    // Object.defineProperty(existed, '$overriden',{ configurable:true, writable: true,enumerable: false,value: true })
+                    // console.info('OVERRIDING: ' + namespace+ '#' + entityid)
+                    // if(existed.__core)_core = true
                 }
                 else{
-                    existed.mixin(entitydata)
-                    return existed
+                    //replace Core with new value
+                    if(existed.__core && !_core){
+                        entitydata.$mod = this
+                        entitydata.$parent =  parent || existed;
+                        entitydata.class = classname
+                        entitydata.$class = entityclass
+                        let entityInstance = new SCEntity(entitydata)
+                        Object.defineProperty(entityInstance, '__cantBeRenamed',{ configurable:true, writable: true,enumerable: false,value: true })
+
+                        catalog.splice(catalog.indexOf(existed),1,entityInstance)
+                        this.cache[namespace][entityid] = entityInstance
+                        this.entities.splice(this.entities.indexOf(existed),1,entityInstance)
+                        return entityInstance
+
+                    }
+                    else{
+                        existed.mixin(entitydata)
+                        if(existed.class === "CUser"){
+                            for(let index = 0; index < existed.Instances.length - 1 ; index++){
+                                let item = existed.Instances[index]
+                                for(let index2 = index + 1; index2 < existed.Instances.length ; index2++){
+                                    let item2 = existed.Instances[index2]
+                                    if(item2.Id === item.Id){
+                                        deep(item,item2)
+                                        existed.Instances.splice(index2,1)
+                                    }
+                                }
+                            }
+                        }
+                        return existed
+                    }
                 }
             }
+            entitydata.$mod = this
             entitydata.$parent =  parent || null;
             entitydata.class = classname
             entitydata.$class = entityclass
@@ -1784,6 +1884,20 @@ export class SCMod {
 }
 
 
+
+export async function createMod({mods = [], core  = null}){
+    let mod = new SCMod()
+
+    if(core){
+        await mod.read(core,{scopes: ['data']});
+        mod.saveCore()
+    }
+    // else{
+    //     mod.supportEntities =  getPickData()
+    // }
+    await mod.read(mods);
+    return mod
+}
 
 /**
  *
