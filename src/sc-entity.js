@@ -133,6 +133,7 @@ export class SCEntity {
         let abilCmdsIds = abilCmds.map(abilcmd => abilcmd.id)
 
         let requirements = abilCmds.map(entry => mod.cache.abil[entry.abil].$$resolved.InfoArray[entry.cmd].Button?.Requirements).filter(Boolean)
+            .map(req => req.$$resolved)
             .map(req => mod.cache.requirement[req]?.$$resolved).filter(Boolean)
             .map(req => req.NodeArray.Use?.Link || req.NodeArray.Show?.Link).filter(Boolean)
             .map(reqNode => mod.cache.requirementnode[reqNode].$$resolved).filter(Boolean)

@@ -202,9 +202,7 @@ export class SCMod {
         return result
     }
     readImages(imagesDiretory){
-        this._imagesDiretory = imagesDiretory;
-
-        this.images = fs.readdirSync(imagesDiretory).map(file => file.replace('.png','').toLowerCase())
+        this.images = fs.readdirSync(imagesDiretory).map(file => file.replace(/\.png|\.dds/,'').toLowerCase())
     }
     checkImage(imagePath,path){
         if(!imagePath)return null
