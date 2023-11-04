@@ -4,6 +4,10 @@ import {SCEntity} from "./sc-entity.js";
 import {SCSchema} from './sc-schema.js';
 
 export const SCGame = {
+    debug: false,
+    directories: {
+
+    },
     infoArrayIndexes: {
         Train1: 0,
         Train2: 1,

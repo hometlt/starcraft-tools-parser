@@ -101,8 +101,14 @@ export class SCEntity {
 
         return {affectingUpgrades}
     }
+    rels(){
+        return this.$$relations
+    }
     getRelations(){
         return this.$$relations
+    }
+    data(){
+        return this.$$resolved
     }
     getResolvedData(){
         return this.$$resolved
@@ -155,7 +161,7 @@ export class SCEntity {
             return false
         })).map(unit => unit.id)
 
-        return {abilCmdsIds,requiredUnits,requiredUpgrades,producingUnits}
+        return {abilcmds: abilCmdsIds,units: requiredUnits,upgrades: requiredUpgrades,producers: producingUnits}
     }
 
     rename(mask){
@@ -669,6 +675,9 @@ export class SCEntity {
     }
     getReferences(filterFunction) {
         let refs = this.$$references
+        if(!refs){
+            return []
+        }
         if(filterFunction){
             refs.filter(ref => ref.target.$$resolved && filterFunction(ref.target.$$resolved))
         }
@@ -681,8 +690,8 @@ export class SCEntity {
         this.$$references.push(...references)
     }
     getXML(entityData){
+        if(!entityData)entityData = this.$$resolved
         entityData = JSON.parse(JSON.stringify(entityData))
-
 
         entityData.id = this.id
         delete entityData.class

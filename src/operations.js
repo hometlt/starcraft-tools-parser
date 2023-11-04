@@ -560,8 +560,12 @@ export function _addRelation({target,namespace, link, patharray, type, result, i
     }
 
 
+    let relation = {target, namespace, link, type}
+    // if(SCGame.debug){
+        relation.path = path;
+    // }
 
-    result.push({target,namespace, link, path, type})
+    result.push(relation)
 }
 
 const entityType = {
@@ -1457,7 +1461,8 @@ export function optimizeJSONObject(object, schema = object.$$schema, path = [obj
     }
     for(let property in object){
         let type = resolveSchemaType(schema,property,[object]), value = object[property]
-        if (['id','ID', 'class', 'parent', 'default', 'index', 'removed'].includes(property)) continue;
+        //todo ignore from json files should be removed
+        if (['id','ID', 'class', 'parent', 'default', 'index', 'removed', '$tokens','ignore'].includes(property)) continue;
         let _path = [...path,property];
         if(value === undefined ||
             (value.constructor === Array && !value.length) ||
@@ -1595,7 +1600,7 @@ function debugXMLBuild(builder , data){
         }
         catch(e){
             console.log(i)
-            debugXMLBuild(data[i])
+            debugXMLBuild(builder,data[i])
         }
     }
 }

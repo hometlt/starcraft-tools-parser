@@ -208,10 +208,10 @@ export class SCMod {
         if(!imagePath)return null
         imagePath = (imagePath.value || imagePath)
         let imagePath2 = imagePath.toLowerCase().replace(/\\/g,'/').replace(/.*\//,'').replace('.dds','')
-        if(!this.images.includes(imagePath2)){
-            console.log("Image not found: " + imagePath + " (" + path.join(".") + ")" )
-            return null
-        }
+        // if(!this.images.includes(imagePath2)){
+        //     // console.log("Image not found: " + imagePath + " (" + path.join(".") + ")" )
+        //     return null
+        // }
         return imagePath2
     }
     checkImages(){
@@ -274,10 +274,10 @@ export class SCMod {
                         if(!entity.UnitIcon && ! entity.Wireframe?.Image?.[0]){
                             continue;
                         }
-                        if(unit.$actor){
-                            console.log("!")
-                        }
-                        Object.defineProperty(entity, '$actor',{ configurable:true, writable: true,enumerable: false,value: entity })
+                        // if(unit.$actor){
+                        //     console.log("!")
+                        // }
+                        Object.defineProperty(unit, '$actor',{ configurable:true, writable: true,enumerable: false,value: entity })
                     }
                 }
             }
@@ -1044,6 +1044,7 @@ export class SCMod {
             formatting = format === 'auto' ? 'xml' : format;
             let data = (structure === 'compact') ? {mod: this.entities} : this.catalogs
             for (let cat in data) {
+                if(cat === "abilcmd")continue
                 if(catalogs === 'all' || catalogs.includes(cat)){
 
                     let outputCatalogData
@@ -1275,9 +1276,23 @@ export class SCMod {
         if(SCGame.pickIgnoreObjects[entity.$$namespace]?.includes(entity.id)){
             return
         }
+
+        if(entity.__core){
+            return
+        }
+
+        let readablePath = path.join(".")
+
+        if(!entity.__paths){
+            Object.defineProperty(entity, '__paths',{ configurable:true, writable: true,enumerable: false,value: [] })
+        }
+        entity.__paths.push(readablePath)
+        console.log(entity.class,entity.id,readablePath)
+
         if(entity.__picked){
             return
         }
+
         if(!this.pickedCounter){
             this.pickedCounter  = 0
         }
@@ -1288,10 +1303,15 @@ export class SCMod {
             // console.log(entity.class +" " + entity.id)
             for(let relation of entity.$$relations){
                 relation.refpath = path
+
+
+                if(entity.id ==="Requirements"){
+
+                }
+
                 this._pickRelation(relation,[...path,entity.$$namespace + '.' + entity.id])
             }
         }
-
     }
     index(){
         if(this.supportEntities){
@@ -1423,7 +1443,7 @@ export class SCMod {
         let before = this.entities.length
         for(let catalog in this.catalogs){
             for(let entity of this.catalogs[catalog]){
-                if(!entity.$$references){
+                if(!entity.$$references || !entity.__picked){
                     if(this.cache[catalog][entity.id] === entity){
                         delete this.cache[catalog][entity.id]
                     }
@@ -1589,10 +1609,15 @@ export class SCMod {
         }
         return pick;
     }
-    _pickRelation(relation,path){
+    _pickRelation(relation,path,createGhostEntities = false){
 
         let linkedEntity = this.cache[relation.namespace]?.[relation.link]
+
+
         if(!linkedEntity){
+            if(!createGhostEntities){
+                return;
+            }
             if(!this[relation.namespace]?.[relation.link] && !this.supportEntities?.[relation.namespace]?.[relation.link]){
 
 
@@ -1878,6 +1903,88 @@ export class SCMod {
             this.entities.push(entityInstance)
             return entityInstance
         }
+    }
+
+
+
+
+    async writeMod(target,files,{
+        Name,
+        DescLong,
+        DescShort,
+        Signature = `<n/>mod By Visceroid<n/>ALL RACES COOP<n/>ponomarevtlt@gmail.com`,
+        Website = `https://discord.gg/2RbcjRkddw`
+    } = {}){
+// set mod name
+        for(let locale in this.locales){
+            this.locales[locale].GameStrings["DocInfo/Website"] = Website
+            this.locales[locale].GameStrings["DocInfo/Name"] = Name
+            if(DescLong){
+                this.locales[locale].GameStrings["DocInfo/DescLong"] = `${DescLong}${Signature}`
+            }
+            if(DescShort){
+                this.locales[locale].GameStrings["DocInfo/DescShort"] = DescShort
+            }
+        }
+        let mods =
+        //
+        // let directory = target.substring(0,target.indexOf("/"))
+        //
+        // // write compiled mod
+        // mod.directory(`${mods}/${directory}`);
+        await this.write(`${target}.SC2Mod`);
+        // fs.cpSync(files, `${target}.SC2Mod`, {recursive: true});
+    }
+
+
+     renamePickedEntities(){
+
+        // for(let cat in this.catalogs){
+        //     for(let entity of this.catalogs[cat]){
+        //         if(entity.__core){
+        //             continue;
+        //         }
+        //
+        //         if(entity.Race){
+        //             if (entity.Race === "Zerg" || entity.Race === "Prot" || entity.Race === "Terr" ){
+        //                 this.pickEntity(entity)
+        //             }
+        //         }
+        //         else if(entity.EditorCategories){
+        //             if(entity.EditorCategories.includes("Race:Protoss") || entity.EditorCategories.includes("Race:Zerg") || entity.EditorCategories.includes("Race:Terran")){
+        //                 this.pickEntity(entity)
+        //             }
+        //         }
+        //     }
+        // }
+        // this.filter()
+
+
+        //todo for legacy
+        // let pick = this.renaming()
+
+        this.supportEntities =  Object.entries(JSON.parse(fs.readFileSync("data/pick.json",{encoding: 'utf-8'}))).reduce((prev,curr) => Object.assign(prev, {[curr[0]]: curr[1].reduce((prev,curr) => Object.assign(prev,{[curr]:{}}),{})}), {})
+
+
+        // this.renameEntities("ARC@*",{pick})
+
+        //for others
+        this.index();
+
+
+        for(let namespace in this.supportEntities){
+            for(let entityID in this.supportEntities[namespace]){
+                // this.supportEntities[namespace] = new SCEntity({})
+                // let entity = this.supportEntities[namespace]
+                let entity = this.cache[namespace][entityID]
+                if(entity){
+                    entity.rename("ARC@*")
+                }
+            }
+        }
+
+
+        //  for(let catalog in pick) for(let entityid in pick[catalog]) mod.cache[catalog]?.[entityid]?.rename("ARC" + entityid)
     }
 }
 
