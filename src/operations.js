@@ -274,18 +274,6 @@ export function matchType(value, type, strict){
     return regexps[type].test(value)
 }
 
-export function getAllFiles (dirPath, relativePath, arrayOfFiles = []) {
-    let files = fs.readdirSync(dirPath)
-    files.forEach(function (file) {
-        let relativeFile = relativePath ? relativePath + "/" + file : file
-        if (fs.statSync(dirPath + "/" + file).isDirectory()) {
-            arrayOfFiles = getAllFiles(dirPath + "/" + file, relativeFile, arrayOfFiles)
-        } else {
-            arrayOfFiles.push(relativeFile)
-        }
-    })
-    return arrayOfFiles
-}
 
 export function deepReplaceMatch(obj, testVal, testProp, cb, id, _path = [], _pathids = []) {
     const keys = Object.keys(obj)
