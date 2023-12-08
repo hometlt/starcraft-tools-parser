@@ -129,7 +129,7 @@ export class SCComponentReader extends Reader{
     async getLayouts(){
         let files = await this.getFiles('Base.SC2Data/ui', true)
         return  files.filter(f => f.match(/\.(sc2layout)$/i))
-            .map(file => 'Base.SC2Data' + "/"+  file)
+            .map(file => 'Base.SC2Data/UI/' +  file)
     }
 
     async getGalaxy(){
@@ -219,6 +219,13 @@ export class SCComponentReader extends Reader{
             if(layouts){
                 data.layouts = layouts
             }
+
+            //todo
+            // let desc = layoutsData?.Desc
+            // if(desc){
+            //     fromXMLToObject(desc)
+            //     data.desc = desc?.Include
+            // }
         }
         if(scopes.files){
 
@@ -235,11 +242,11 @@ export class SCComponentReader extends Reader{
 
             let layoutFiles = await this.getLayouts()
             if(layoutFiles.length){
-                data.layoutFiles = layoutFiles
-            //     data.layouts = {}
-            //     for(let layoutFile of layoutFiles ){
-            //         data.galaxy[layoutFile] = fs.readFileSync(this.path + layoutFile, {encoding: 'utf-8'})
-            //     }
+                // data.layoutFiles = layoutFiles
+                data.layoutFilesData = {}
+                for(let layoutFile of layoutFiles ){
+                    data.layoutFilesData[layoutFile] = fs.readFileSync(this.path + layoutFile, {encoding: 'utf-8'})
+                }
             }
 
             let galaxyFiles = await this.getGalaxy()
@@ -314,17 +321,23 @@ export class SCComponentReader extends Reader{
                     includes.push("Base.SC2Data/GameData/" + file)
                 }
             }
-            let additionalFiles = includesData?.Includes?.Catalog?.map(catalog => "Base.SC2Data/" + catalog.$.path)
-            if (additionalFiles) {
-                includes.push(...additionalFiles)
-            }
             let catalogs = []
             for (let file of includes) {
                 let data = await this.readXMLFile( file, true)
-                if (!data) {
-                    console.log("File not found: " + this.path + file)
-                } else {
+                if (data) {
                     catalogs.push({id: file, data: data.Catalog?.constructor === Object ? data : {}});
+                }
+            }
+
+            let additionalFiles = includesData?.Includes?.Catalog?.map(catalog => "Base.SC2Data/" + catalog.$.path)
+            if (additionalFiles) {
+                for (let file of additionalFiles) {
+                    let data = await this.readXMLFile( file, true)
+                    if (!data) {
+                        console.log("File not found: " + this.path + file)
+                    } else {
+                        catalogs.push({id: file, data: data.Catalog?.constructor === Object ? data : {}});
+                    }
                 }
             }
             let entities = []

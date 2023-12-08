@@ -75,6 +75,7 @@ export const CostSchema = {
     Charge: Int,
     Cooldown: Int,
   },
+    Unit: [{Value: 'word'}],
   Charge: ChargeSchema,
   Player: {
     Value: Word
@@ -104,6 +105,7 @@ export const ModificationSchema = {
   MeleeWeaponRange: Int,
   UnifiedDamageTakenFraction: '[real]',
   XPMultiplier: Real,
+  ShieldDamageRatioBonus: Real,
   CriticalAttackChanceMultiplier: Int,
   CriticalAttackChanceScaledBonus: Real,
   DamageTakenUnscaled: '[int]',
@@ -158,7 +160,7 @@ export const ModificationSchema = {
     value:Real
   }],
   WeaponDisableArray: '[weapon]',
-  Height: Real,
+  Height: 'string',//Real,
   HeightTime: '{real}',
   PlaneDelta: '{int}',
   AbilClassEnableArray: Flags,
@@ -1232,6 +1234,10 @@ export const GameDataSchema = {
     VarianceWindowWalkIntro: Real,
     VarianceWindowWalk: Real,
     VarianceWindowWalkOutro: Real,
+    StatusChargeData: {
+        Text: Text,
+        AbilCmd: 'abilcmd',
+    },
     EventDataFootprint: [
       {
         Actor: 'actor',
@@ -1254,6 +1260,7 @@ export const GameDataSchema = {
         SoundLink: 'sound',
         VoiceLink: 'actor',
         ActorModel: 'actor',
+        ActorModelLow: 'actor',
         BodySquibs: [
           {
             Name: Word,
@@ -2034,6 +2041,7 @@ export const GameDataSchema = {
   CActorDoodadPreserver: { prototype: 'CActor'},
   CActorEditorCamera: { prototype: 'CActor'},
   CActorEventMacro: { prototype: 'CActor'},
+  CActorEventMacroRunnable: { prototype: 'CActor'},
   CActorFoliageFXSpawner: { prototype: 'CActor'},
   CActorForce: { prototype: 'CActor'},
   CActorForceBox: { prototype: 'CActor'},
@@ -2116,7 +2124,10 @@ export const GameDataSchema = {
   CActorSiteRocker: { prototype: 'CActor'},
   CActorSnapshot: { prototype: 'CActor'},
   CActorSound: { prototype: 'CActor'},
-  CActorSplat: { prototype: 'CActor'},
+  CActorSplat: {
+    prototype: 'CActor',
+    Height: Word,
+  },
   CActorSquib: { prototype: 'CActor'},
   CActorStateMonitor: { prototype: 'CActor'},
   CActorTerrain: { prototype: 'CActor'},
@@ -4924,6 +4935,7 @@ export const GameDataSchema = {
     UserFlagArray: '[bit]',
     StockCharge: ChargeSchema,
     MainAttributeDamageBonus: '[int]',
+      ShieldDamageRatio: '[real]',
     LearnInfoArray: [
       {
         Button: {
@@ -5362,6 +5374,7 @@ export const GameDataSchema = {
       Value: Word
     },
     ResultNoUnit: 'string',
+    None: 'string',
     WhichUnit: {
       Value: Word,
       Effect: 'effect'
@@ -5474,6 +5487,7 @@ export const GameDataSchema = {
       Test: 'validator',
       Return: 'validator'
     }],
+    Else: 'validator',
     AbilityStage: Word,
     TimeEvent: Word,
     BehaviorLink: 'behavior',

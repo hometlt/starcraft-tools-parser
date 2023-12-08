@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import {SCGame} from "./sc-game.js";
 import {SCEntity} from "./sc-entity.js";
+import config from "./config.js";
 
 import { Octokit} from "octokit";
 import {
@@ -67,7 +68,9 @@ export class SCMod {
                 else {
                     data = item
                 }
-                this.apply(data)
+                if(data){
+                    this.apply(data)
+                }
             }
         }
         return this
@@ -481,6 +484,10 @@ export class SCMod {
             if (!this.layouts) this.layouts = []
             this.layouts.push(...data.layouts)
         }
+        if(data.layoutFilesData){
+            if (!this.layoutFilesData) this.layoutFilesData = {}
+            Object.assign(this.layoutFilesData,data.layoutFilesData)
+        }
 
         if(data.banklist){
             if (!this.banklist) this.banklist = {}
@@ -565,6 +572,7 @@ export class SCMod {
         }
         return path.resolve(destpath)
     }
+
     /**
      *
      * @param destpath {string}
@@ -574,7 +582,7 @@ export class SCMod {
      * @param scopes { ['components','documentinfo', 'assets', 'triggers', 'locales', 'styles', 'layouts', 'data'] | 'all' } which mod components to save
      * @returns {Promise<SCMod>}
      */
-    async write (destpath,{text = {}, outputFn = null, formatFn = null,catalogs= 'all',resolve = false, format = 'auto', structure = 'auto', scopes = 'all',core = false} = {}){
+    write (destpath,{text = {}, outputFn = null, formatFn = null,catalogs= 'all',resolve = false, format = 'auto', structure = 'auto', scopes = 'all', core = false} = {}){
 
         // set mod name
         for(let locale in this.locales){
@@ -670,14 +678,14 @@ export class SCMod {
             let includeCampaign = false;
             let includeVoid = false;
 
-            if(this.dependencies?.find(d => d.endsWith('file:Campaigns/Void.SC2Campaign'))){
-                deps.push({_: voidCampaign})
-                includeCampaign = true;
-            }
-            else if(this.dependencies?.find(d => d.endsWith('file:Mods/Void.SC2Mod'))){
-                deps.push({_: voidMod})
-                includeVoid = true;
-            }
+            // if(this.dependencies?.find(d => d.endsWith('file:Campaigns/Void.SC2Campaign'))){
+            //     deps.push({_: voidCampaign})
+            //     includeCampaign = true;
+            // }
+            // else if(this.dependencies?.find(d => d.endsWith('file:Mods/Void.SC2Mod'))){
+            //     deps.push({_: voidMod})
+            //     includeVoid = true;
+            // }
 
 
 
@@ -693,24 +701,24 @@ export class SCMod {
             if(this.dependencies?.length){
                 Object.assign(info.DocInfo,{
                     Dependencies: {
-                        // Value: this.dependencies.map(dep => ({_: dep})),
+                        Value: this.dependencies.map(dep => ({_: dep})),
                         // Value: [{_: 'bnet:Void (Mod)/0.0/999,file:Mods/Void.SC2Mod'}]
-                        Value: deps
+                        // Value: deps
                     }
                 })
             }
             output[`DocumentInfo`] = formatData(info , 'xml')
 
             if(scopes.includes('binary') && format === 'auto'){
-                fs.copyFileSync(path.resolve(__dirname ,'binary/DocumentInfo.version'), destpath + `DocumentInfo.version`)
+                fs.copyFileSync(path.resolve(__dirname ,config.binaryFolder+  '/DocumentInfo.version'), destpath + `DocumentInfo.version`)
             }
 
             if(scopes.includes('binary')){
                 if(includeVoid){
-                    fs.copyFileSync(path.resolve(__dirname ,'binary/DocumentHeader VOID'), destpath + `DocumentHeader`)
+                    fs.copyFileSync(path.resolve(__dirname ,config.binaryFolder+ '/DocumentHeader VOID'), destpath + `DocumentHeader`)
                 }
                 if(includeCampaign) {
-                    fs.copyFileSync(path.resolve(__dirname ,'binary/DocumentHeader VOID CAMPAIGN'), destpath + `DocumentHeader`)
+                    fs.copyFileSync(path.resolve(__dirname ,config.binaryFolder+ '/DocumentHeader VOID CAMPAIGN'), destpath + `DocumentHeader`)
                 }
             }
         }
@@ -745,7 +753,7 @@ export class SCMod {
             }
 
             if(scopes.includes('binary') && format === 'auto'){
-                fs.copyFileSync(path.resolve(__dirname ,'binary/GameText.version'), destpath + `GameText.version`)
+                fs.copyFileSync(path.resolve(__dirname ,config.binaryFolder+ '/GameText.version'), destpath + `GameText.version`)
             }
         }
         if(scopes.includes('styles') && this.styles){
@@ -754,13 +762,20 @@ export class SCMod {
             output[`Base.SC2Data/UI/FontStyles.${extension}`] = formatData(this.styles, formatting)
             if(scopes.includes('binary') && format === 'auto'){
                 fs.mkdirSync(destpath+  `Base.SC2Data/UI/`, {recursive: true});
-                fs.copyFileSync(path.resolve(__dirname ,'binary/FontStyles.version'), destpath + `Base.SC2Data/UI/FontStyles.version`)
+                fs.copyFileSync(path.resolve(__dirname ,config.binaryFolder+ '/FontStyles.version'), destpath + `Base.SC2Data/UI/FontStyles.version`)
             }
         }
         if(scopes.includes('layouts') && this.layouts){
             extension = format === 'auto' ? 'SC2Layout' : format
             formatting = format === 'auto' ? 'xml' : format;
             output[`Base.SC2Data/UI/Layout/DescIndex.${extension}`] = formatData({Desc: {Include: this.layouts }}, formatting)
+
+            for(let layout in this.layoutFilesData){
+                if(layout.toLowerCase() === "base.sc2data/ui/layout/descindex.sc2layout"){
+                    continue
+                }
+                output[layout] = this.layoutFilesData[layout]
+            }
         }
         if(scopes.includes('data') && this.banklist){
             formatting = format === 'auto' ? 'xml' : 'xml';
@@ -845,7 +860,7 @@ export class SCMod {
                     }
                     output[`Base.SC2Data/GameData/${capitalize(cat)}Data.${extension}`] = outputCatalogData
                     if(scopes.includes('binary') && format === 'auto'){
-                        fs.copyFileSync(path.resolve(__dirname ,'binary/GameData.version'), destpath + `GameData.version`)
+                        fs.copyFileSync(path.resolve(__dirname ,config.binaryFolder+ '/GameData.version'), destpath + `GameData.version`)
                     }
                 }
 
@@ -918,7 +933,7 @@ export class SCMod {
             output[`Triggers`] = fixTriggers(triggersString)
 
             if(scopes.includes('binary') && format === 'auto'){
-                fs.copyFileSync(path.resolve(__dirname ,'binary/Triggers.version'), destpath + `Triggers.version`)
+                fs.copyFileSync(path.resolve(__dirname ,config.binaryFolder+ '/Triggers.version'), destpath + `Triggers.version`)
             }
         }
 
@@ -1605,16 +1620,13 @@ export class SCMod {
     }
 
 
-
-
-    async writeMod(target,files,{
-        Name,
-        DescLong,
-        DescShort,
-        Signature = `<n/>mod By Visceroid<n/>ALL RACES COOP<n/>ponomarevtlt@gmail.com`,
-        Website = `https://discord.gg/2RbcjRkddw`
-    } = {}){
-// set mod name
+    setDocInfo({
+       Name,
+       DescLong,
+       DescShort,
+       Website  = `https://discord.gg/2RbcjRkddw`,
+       Signature = `<n/>mod By Visceroid<n/>ALL RACES COOP<n/>ponomarevtlt@gmail.com`,
+   }){
         for(let locale in this.locales){
             this.locales[locale].GameStrings["DocInfo/Website"] = Website
             this.locales[locale].GameStrings["DocInfo/Name"] = Name
@@ -1625,15 +1637,8 @@ export class SCMod {
                 this.locales[locale].GameStrings["DocInfo/DescShort"] = DescShort
             }
         }
-        let mods =
-        //
-        // let directory = target.substring(0,target.indexOf("/"))
-        //
-        // // write compiled mod
-        // mod.directory(`${mods}/${directory}`);
-        await this.write(`${target}.SC2Mod`);
-        // fs.cpSync(files, `${target}.SC2Mod`, {recursive: true});
     }
+
 
 
      renamePickedEntities(){

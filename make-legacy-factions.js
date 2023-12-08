@@ -125,23 +125,26 @@ if(false){
 /**
  * Mace Factions Mod
  */
-if(false){
+if(true){
 
     let mod = await SCParser.createMod({
         core: [
             '$mods/dependencies/Core',
             '$mods/dependencies/Base',
+            '$mods/factions/Legacy',
         ],
         mods: [
             // '$mods/dependencies/LegacyCoop',
             // '$mods/factions/ProtossTalon',
+            '$mods/dependencies/Triggers',
             '$mods/factions/Scion',
-            // '$mods/factions/ScionCampaign',
             '$mods/factions/Hybrids',
             '$mods/factions/UED',
             '$mods/factions/Dragons',
             '$mods/factions/UPL',
-            // '$mods/factions/Umojan',
+            '$mods/factions/Umojan',
+            '$mods/factions/Synoid',
+            '$mods/dependencies/Melee',
             // '$mods/factions/Colonial',
             // '$mods/factions/Tyranid',
             // '$mods/factions/WarCraft',
@@ -160,103 +163,105 @@ if(false){
     }
 
 
-    //removeUnusedSounds(mod)
     mod.index()
-    mod.removeUnusedSounds()
 
-    function removeSoundReference(actor,sound, events, type){
-        if(sound?.id){
-            for(let event of events){
-                let unit = event.Terms.split(".")[1]
-                if(!result[type]){
-                    result[type] = {}
-                }
+    if(false){
+        mod.removeUnusedSounds()
 
-                let assets = sound.$$resolved.AssetArray?.map(asset => {
-                    if(asset.TemplateParam){
-                        let template = sound.$$resolved.AssetArrayTemplate
-                        asset = Object.assign(asset,{
-                            File: template.File.replace(/\^TemplateParam[1-9]\^/,asset.TemplateParam),
-                            FacialAnim: template.FacialAnim.replace(/\^TemplateParam[1-9]\^/,asset.TemplateParam),
-                            FacialGroup: template.FacialGroup.replace(/\^TemplateParam[1-9]\^/,asset.TemplateParam),
-                            FacialFile: template.FacialFile.replace(/\^TemplateParam[1-9]\^/,asset.TemplateParam),
-                            Volume: asset.Volume?.replace(/\.0+/g,""),
-                            Pitch: asset.Pitch?.replace(/\.0+/g,"")
-                        })
-                        delete asset.TemplateParam
-                        // <AssetArrayTemplate File="LocalizedData\Sounds\VO\Protoss\^TemplateParam2^.ogg" FacialAnim="^TemplateParam1^" FacialGroup="^TemplateParam1^" FacialFile="LocalizedData\Sounds\VO\Protoss\^TemplateParam1^.fxe"/>
-                        // return asset.File
+        function removeSoundReference(actor,sound, events, type){
+            if(sound?.id){
+                for(let event of events){
+                    let unit = event.Terms.split(".")[1]
+                    if(!result[type]){
+                        result[type] = {}
                     }
-                    for(let prop in asset){
-                        if(!asset[prop]){
-                            delete asset[prop]
+
+                    let assets = sound.$$resolved.AssetArray?.map(asset => {
+                        if(asset.TemplateParam){
+                            let template = sound.$$resolved.AssetArrayTemplate
+                            asset = Object.assign(asset,{
+                                File: template.File.replace(/\^TemplateParam[1-9]\^/,asset.TemplateParam),
+                                FacialAnim: template.FacialAnim.replace(/\^TemplateParam[1-9]\^/,asset.TemplateParam),
+                                FacialGroup: template.FacialGroup.replace(/\^TemplateParam[1-9]\^/,asset.TemplateParam),
+                                FacialFile: template.FacialFile.replace(/\^TemplateParam[1-9]\^/,asset.TemplateParam),
+                                Volume: asset.Volume?.replace(/\.0+/g,""),
+                                Pitch: asset.Pitch?.replace(/\.0+/g,"")
+                            })
+                            delete asset.TemplateParam
+                            // <AssetArrayTemplate File="LocalizedData\Sounds\VO\Protoss\^TemplateParam2^.ogg" FacialAnim="^TemplateParam1^" FacialGroup="^TemplateParam1^" FacialFile="LocalizedData\Sounds\VO\Protoss\^TemplateParam1^.fxe"/>
+                            // return asset.File
+                        }
+                        for(let prop in asset){
+                            if(!asset[prop]){
+                                delete asset[prop]
+                            }
+                        }
+
+                        return asset
+                    })
+
+                    if(assets){
+                        result[type][unit] = {
+                            //  id: sound.id,
+                            AssetArray: assets,
+                            Pitch: sound.$$resolved.Pitch?.replace(/\.0+/g,""),
+                            Volume: sound.$$resolved.Volume?.replace(/\.0+/g,""),
                         }
                     }
 
-                    return asset
-                })
 
-                if(assets){
-                    result[type][unit] = {
-                        //  id: sound.id,
-                        AssetArray: assets,
-                        Pitch: sound.$$resolved.Pitch?.replace(/\.0+/g,""),
-                        Volume: sound.$$resolved.Volume?.replace(/\.0+/g,""),
-                    }
+                }
+                if(!sound.$$references){
+                    console.log("removeSoundReference - No Refenrces: " + sound.id + " actor: " + actor.id)
                 }
 
+                sound.$$references = sound.$$references?.filter(ref =>  ref.target !== actor)
 
-            }
-            if(!sound.$$references){
-                console.log("removeSoundReference - No Refenrces: " + sound.id + " actor: " + actor.id)
-            }
-
-            sound.$$references = sound.$$references?.filter(ref =>  ref.target !== actor)
-
-            if(!sound.$$references || sound.$$references.length === 0){
-                mod.remove(sound)
-                console.log("Sound Removed: "  + sound.id)
-                count++
-                return;
-            }
-        }
-    }
-
-    let count = 0
-    for(let actor of mod.catalogs.actor){
-        if(actor.default || actor.__core)continue
-        let events = actor.$$resolved.On?.filter(On => /UnitBirth.[\w@]+/.test(On.Terms) && On.Send === "Create")
-        if(!events?.length) continue
-
-        let types = ['Birth','Ready','What','Pissed','Yes','Attack']
-        for(let type of types){
-            if(actor.$$resolved.DeathArray){
-                for(let deathType in actor.$$resolved.DeathArray){
-                    let deathArrayValue = actor.$$resolved.DeathArray[deathType]
-                    if(deathArrayValue.SoundLink){
-                        SCParser.deep(actor,{DeathArray: {[deathType]: {SoundLink: ""}}})
-                        removeSoundReference(actor,mod.cache.sound[deathArrayValue.SoundLink], events, "Death" + deathType)
-                    }
-                }
-            }
-
-            let soundArrayTypes = ['GroupSoundArray','SoundArray']
-            for(let soundArrayType of soundArrayTypes){
-                let soundArray = actor.$$resolved[soundArrayType]
-                if(soundArray?.[type]){
-                    SCParser.deep(actor,{SoundArray: {[type]: ""}})
-                    removeSoundReference(actor,mod.cache.sound[soundArray[type]],  events, type)
-                    // let symbol = sound?.id ? '✔' : '⨉'
-                    // console.log(symbol + ' Birth Sound ID: ' + soundArray.Birth)
+                if(!sound.$$references || sound.$$references.length === 0){
+                    mod.remove(sound)
+                    console.log("Sound Removed: "  + sound.id)
+                    count++
+                    return;
                 }
             }
         }
-    }
 
-    console.log("removed sounds: " + count)
+        let count = 0
+        for(let actor of mod.catalogs.actor){
+            if(actor.default || actor.__core)continue
+            let events = actor.$$resolved.On?.filter(On => /UnitBirth.[\w@]+/.test(On.Terms) && On.Send === "Create")
+            if(!events?.length) continue
+
+            let types = ['Birth','Ready','What','Pissed','Yes','Attack']
+            for(let type of types){
+                if(actor.$$resolved.DeathArray){
+                    for(let deathType in actor.$$resolved.DeathArray){
+                        let deathArrayValue = actor.$$resolved.DeathArray[deathType]
+                        if(deathArrayValue.SoundLink){
+                            SCParser.deep(actor,{DeathArray: {[deathType]: {SoundLink: ""}}})
+                            removeSoundReference(actor,mod.cache.sound[deathArrayValue.SoundLink], events, "Death" + deathType)
+                        }
+                    }
+                }
+
+                let soundArrayTypes = ['GroupSoundArray','SoundArray']
+                for(let soundArrayType of soundArrayTypes){
+                    let soundArray = actor.$$resolved[soundArrayType]
+                    if(soundArray?.[type]){
+                        SCParser.deep(actor,{SoundArray: {[type]: ""}})
+                        removeSoundReference(actor,mod.cache.sound[soundArray[type]],  events, type)
+                        // let symbol = sound?.id ? '✔' : '⨉'
+                        // console.log(symbol + ' Birth Sound ID: ' + soundArray.Birth)
+                    }
+                }
+            }
+        }
+
+        console.log("removed sounds: " + count)
+        fs.writeFileSync('result2.json',JSON.stringify(result),{encoding: 'utf-8'})
+    }
 
     await mod.writeMod('./result2','./data/combined-factions',{Name:`[ARC] Factions`, LongDest: `Combined Factions dependency`, ShortDesc: `1-16`})
-    fs.writeFileSync('result2.json',JSON.stringify(result),{encoding: 'utf-8'})
 }
 
 /**
