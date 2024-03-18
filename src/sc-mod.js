@@ -1034,7 +1034,7 @@ export class SCMod {
                 relation.refpath = path
 
 
-                if(entity.id ==="Requirements"){
+                if(entity.id === "Requirements"){
 
                 }
 

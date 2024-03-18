@@ -70,7 +70,7 @@ let mod = await SCParser.createMod({
 //pick specific races
 // mod.pick({race: ["Nafash"]})
 
-mod.pick({unit: ["CerberusHunter"]})
+// mod.pick({unit: ["CerberusHunter"]})
 
 
 mod.filter()

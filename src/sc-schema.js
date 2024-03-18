@@ -112,7 +112,11 @@ export const ModificationSchema = {
   ResourceHarvestTimeBonus: '{real}',
   BehaviorClassEnableArray: '{int}',
   TurretEnableArray: '[turret]',
-  DamageDealtFraction: '{real}',
+  DamageDealtFraction: [{
+    index: Word,
+    AccumulatorArray: [{value:'accumulator'}],
+    value:Real
+  }],
   DamageDealtAttributeUnscaled: '{real}',
   ResourceHarvestAmountMultiplier: '{real}',
   DamageDealtAttributeMultiplier: '{real}',
@@ -889,6 +893,7 @@ export const GameDataSchema = {
     Flags: Flags,
     Scale: Real,
     Index: Int,
+    Missing: Bit,
     Type: Word,
     AmountType: Word,
     FallbackValue: Int,
@@ -1055,6 +1060,7 @@ export const GameDataSchema = {
     $D: 'abil',
     $weaponId: 'weapon',
     $unitId: 'unit',
+    Source : Word,
     $WeaponSound: Word,
     FogVisibility: Word,
     EditorCategories: 'categories',
@@ -1195,7 +1201,7 @@ export const GameDataSchema = {
     BarOffset: Int,
     NameOffset: Int,
     HighlightTooltip: Text,
-    CopySource: Word,
+    CopySource: 'string',
     UnitFlags: Flags,
     GlossaryAnim: 'string',
     MinimapIconScale: Real,
@@ -1409,6 +1415,8 @@ export const GameDataSchema = {
     },
     ImpactPointSite: 'actor',
     ImpactPointSiteOps: {
+      HoldRotation : Bit,
+      HoldPosition: Bit,
       Ops: 'ops'
     },
     ImpactMap: [
@@ -3153,6 +3161,8 @@ export const GameDataSchema = {
   CDSPPitchShift: { prototype: 'CDSP'},
   CDSPReverb: { prototype: 'CDSP'},
   CEffect: {
+    "AbilTechAlias":  '[word]',
+    "TechAliasArray": '[word]',
     SetSource: Int,
     $Race: 'race',
     parent: 'effect',
@@ -3164,6 +3174,7 @@ export const GameDataSchema = {
     Chance: Real,
     Minimum: Int,
     ActorKey: Word,
+    PeriodRandMode: Word,
     DisplayFlags: Flags,
     Marker: MarkerSchema,
     DamageModifierSource: {
@@ -3222,7 +3233,8 @@ export const GameDataSchema = {
       Effect: 'effect'
     },
     OffsetFacingFallback: {
-      Value: Word
+      Value: Word,
+      Effect: 'effect'
     },
     SpawnCount: Int,
     CreateFlags: Flags,
@@ -3323,7 +3335,7 @@ export const GameDataSchema = {
     Key: Word,
     Amount: {'AccumulatorArray':'[accumulator]','value':Real},
     SourceKey: Word,
-    ValidateMin: Bit,
+    ValidateMin: Real,
     TargetLocationType: Word,
     ContainerUnit: {
       Value: Word,
@@ -3348,7 +3360,7 @@ export const GameDataSchema = {
     Death: Word,
     DebugTrace: Bit,
     ExpireDelay: Real,
-    ValidateMax: Int,
+    ValidateMax: Real,
     FacingType: Word,
     Operation: 'string',
     TrackerUnit: {
@@ -3532,13 +3544,12 @@ export const GameDataSchema = {
     OffsetRandMode: Word,
     RechargeVitalMax: Int,
     Random: Real,
-    Weapon: {
+    Weapon: [{
       Weapon: 'weapon',
       CooldownOperation: Word,
       CooldownAmount: Real,
       CooldownFraction: Real
-    },
-
+    }],
     MorphFlags: Flags,
     MorphUnit: 'unit',
     AbilKeyFallback: 'unit',
@@ -4777,6 +4788,7 @@ export const GameDataSchema = {
   CTargetSortAlliance: { prototype: 'CTargetSort'},
   CTargetSortAngle: { prototype: 'CTargetSort'},
   CTargetSortBehaviorCount: { prototype: 'CTargetSort'},
+  CTargetSortBehaviorDuration: { prototype: 'CTargetSort'},
   CTargetSortChargeCount: { prototype: 'CTargetSort'},
   CTargetSortChargeRegen: { prototype: 'CTargetSort'},
   CTargetSortCooldown: { prototype: 'CTargetSort'},
@@ -4935,7 +4947,8 @@ export const GameDataSchema = {
     UserFlagArray: '[bit]',
     StockCharge: ChargeSchema,
     MainAttributeDamageBonus: '[int]',
-      ShieldDamageRatio: '[real]',
+    ShieldDamageRatio: '[real]',
+    LifeDamageGain: '{real}',
     LearnInfoArray: [
       {
         Button: {

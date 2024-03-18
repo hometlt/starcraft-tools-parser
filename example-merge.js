@@ -8,12 +8,13 @@ let mod = await SCParser.createMod({
         './mods/Multi'
     ],
     mods: [
-        'C:\\Program Files (x86)\\StarCraft II\\mods\\all-races-mods\\factions\\Hybrids.SC2Mod',
-        'C:\\Program Files (x86)\\StarCraft II\\mods\\all-races-mods\\factions\\UED.SC2Mod'
+        'C:\\Program Files (x86)\\StarCraft II\\mods\\all-races-mods\\builtin\\LibertyCampaign.SC2Mod',
+        'C:\\Program Files (x86)\\StarCraft II\\mods\\all-races-mods\\builtin\\SwarmCampaign.SC2Mod',
+        'C:\\Program Files (x86)\\StarCraft II\\mods\\all-races-mods\\builtin\\VoidCampaign.SC2Mod'
     ]
 })
 
-await mod.write( 'C:\\Program Files (x86)\\StarCraft II\\mods\\output.SC2Mod', {
+await mod.write( 'C:\\Program Files (x86)\\StarCraft II\\mods\\all-races-mods\\output.SC2Mod', {
     text: {
         Name: `mod name`,
         DescLong: `combined mod`,

@@ -1,4 +1,3 @@
-import fs from "fs";
 import {SCGame} from "./sc-game.js";
 import "./libs.js"
 
@@ -1094,7 +1093,7 @@ export function optimiseForXML(object,schema = object.$$schema, path = [object.c
 
 
                 for(let index  = value.length; index--;) {
-                    if(value[index] === undefined){
+                    if(value[index] === undefined || value[index] === null){
                         value.splice(index,1)
                     }
                 }
@@ -1104,6 +1103,9 @@ export function optimiseForXML(object,schema = object.$$schema, path = [object.c
                 }
 
                 for(let index  in value){
+                    if(!value[index]){
+                        console.log("!!!!")
+                    }
                     if(value[index].constructor !== Object){
                         if(type._){
                             value[index] = {_: value[index], $: {}}
@@ -1451,8 +1453,8 @@ export function optimizeJSONObject(object, schema = object.$$schema, path = [obj
         let type = resolveSchemaType(schema,property,[object]), value = object[property]
         //todo ignore from json files should be removed
         if (['id','ID', 'class', 'parent', 'default', 'index', 'removed', '$tokens','ignore'].includes(property)) continue;
-        let _path = [...path,property];
-        if(value === undefined ||
+        let _path = [...path,object.id,property];
+        if(value === undefined || value === null ||
             (value.constructor === Array && !value.length) ||
             (value.constructor === Object && !Object.keys(value).length)){
             delete object[property];
