@@ -517,8 +517,7 @@ export function convertIndexedArrayToObjects(object) {
 }
 
 export function _addRelation({target,namespace, link, patharray, type, result, ignorelist}){
-    if( !namespace || !link ||
-        link === "*" || link.startsWith(":") ||
+    if( !namespace || !link || link === "*" || link.startsWith(":") ||
         SCGame.ignoredNamespaces.includes(namespace) || ignorelist[namespace]?.includes(link)){
         return;
     }
@@ -787,7 +786,7 @@ export function _propertyRelations(target,value,type,result,patharray,ignorelist
             break;
         case 'abilcmd':
             let [abilName, cmd] = value.split(",")
-            link = value; namespace = "abil"
+            link = abilName; namespace = "abil"
             break;
         default:
             if([
@@ -1103,7 +1102,7 @@ export function optimiseForXML(object,schema = object.$$schema, path = [object.c
                 }
 
                 for(let index  in value){
-                    if(!value[index]){
+                    if(value[index] === null || value[index] === undefined){
                         console.log("!!!!")
                     }
                     if(value[index].constructor !== Object){

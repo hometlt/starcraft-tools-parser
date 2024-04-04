@@ -4,7 +4,6 @@ import {SCGame} from "./sc-game.js";
 import {SCEntity} from "./sc-entity.js";
 import config from "./config.js";
 
-import { Octokit} from "octokit";
 import {
     deep,
     formatData,
@@ -14,6 +13,7 @@ import {
     getDebugInfo,
     relations,
     buildXMLObject,
+    _addRelation,
     cleanup
 } from "./operations.js";
 import {LibrarySchema, SCSchema} from "./sc-schema.js";
@@ -140,6 +140,52 @@ export class SCMod {
                 }
             }
         }
+    }
+    getReferenceRelations (expressionReference,patharray,target, result, ignorelist){
+
+        let ref = expressionReference.replace(/\[d\s+(?:time|ref)\s*=\s*'(.+?)(?=')'((?:\s+\w+\s*=\s*'\s*([\d\w]+)?\s*')*)\s*\/?\]/gi, (_,ref,opts) => {
+            this.getReferenceRelations(ref,patharray,target, result, ignorelist)
+            return ' '
+        })
+        ref = ref.replace(/\$(.+?)\$/g,(_,cc)=>{
+            let options = cc.split(':')
+            switch(options[0]){
+                case 'AbilChargeCount':
+                    let ability = options[1]
+                    let index = options[2]
+                    let refObject = this.cache.abil[ability]
+                    if(!refObject){
+                        console.warn(`Entity not found:  abil.${ability} (${patharray.join(".")})`)
+                        return ' '
+                    }
+
+                    let refIndex = "Train" + (index+ 1)
+                    let refInfo = refObject.InfoArray[refIndex]
+                    if(!refInfo){
+                        console.warn(`Wrong Ability InfoArray index:  abil.${ability}.${refIndex} (${patharray.join(".")})`)
+                    }
+                    _addRelation({target, namespace: "abil", link: ability, patharray, type: "text", result, ignorelist})
+                    return ' '
+                    
+
+                case 'UpgradeEffectArrayValue':
+                    let upgrade = options[1]
+                    let effectArrayValue = options[2]
+                    {
+                        let [namespace,entity] = effectArrayValue.split(",")
+                        _addRelation({target, namespace, link: entity, patharray, type: "text", result, ignorelist})
+                    }
+                    _addRelation({target,  namespace: "upgrade", link: upgrade, patharray, type: "text", result, ignorelist})
+                    return ' '
+            }
+            return ''
+        })
+
+        ref = ref.replace(/((\w+),([\w@]+),(\w+[\.\w\[\]]*))/g,(_,expr, namespace,entity,fields)=>{
+            _addRelation({target,  namespace: namespace.toLowerCase(), link: entity, patharray, type: "text", result, ignorelist})
+            return ' ' 
+        })
+
     }
     parseReference(expressionReference,path){
 
@@ -1058,6 +1104,7 @@ export class SCMod {
                 this.pickEntity(entity)
             }
         }
+        this.pickText()
         this.pickTriggers()
         this.pickObjects()
         this.pickActors()
@@ -1381,6 +1428,50 @@ export class SCMod {
         }
 
     }
+    pickText(){
+        if(!this.matches){
+            this.matches = []
+        }
+
+// Массив для хранения найденных фрагментов текста
+        let result = []
+        let ignorelist = SCGame.pickIgnoreObjects
+        let target
+        for(let locale in this.locales){
+            target = this.locales[locale]
+            for(let localeCat in this.locales[locale]){
+                //Do not need to rename trigger Strings
+                if(localeCat === 'TriggerStrings'){
+                    continue
+                }
+                for(let key in target[localeCat]){
+                    let expresion = target[localeCat][key]
+                    let patharray = ["locales",locale,localeCat,key]
+
+                    expresion
+                        .replace(/<d\s+(?:stringref)="(\w+),([\w@]+),(\w+)"\s*\/>/g, (_,namespace,entity,field)=>{
+                            _addRelation({target, namespace: namespace.toLowerCase(), link: entity, patharray, type, result, ignorelist})
+                            return ''
+                        })
+                        .replace(/<d\s+(?:time|ref)\s*=\s*"(.+?)(?=")"((?:\s+\w+\s*=\s*"\s*([\d\w]+)?\s*")*)\s*\/>/gi, (_,ref,opts) => {
+                            this.getReferenceRelations(ref,patharray,target, result, ignorelist)
+                            return ''   
+                        })
+                        .replace(/<n\/>/g,"<br/>")
+                }
+            }
+        }
+        
+        for(let i in result){
+            if(!result[i].xpath) {
+                result[i].xpath = result[i].path
+            }
+        }
+
+        for(let relation of result){
+            this._pickRelation(relation)
+        }
+    }
     pickTriggers(){
         if(this._triggersPicked ){
             return
@@ -1448,6 +1539,7 @@ export class SCMod {
         console.log(`Renaming entities`)
 
         if(!pick){
+            this.pickText()
             this.pickTriggers()
             this.pickObjects()
             this.pickAll()
@@ -1604,6 +1696,8 @@ export class SCMod {
                     }
                 }
             }
+            entitydata.$modfile = entity.$modfile
+            entitydata.$dataspace = entity.$dataspace
             entitydata.$mod = this
             entitydata.$parent =  parent || null;
             entitydata.class = classname

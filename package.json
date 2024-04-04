@@ -2,9 +2,6 @@
   "name": "sc-parser",
   "version": "1.0.0",
   "description": "SC2 Data Parser",
-  "engines": {
-    "node": "16.x"
-  },
   "type": "module",
   "author": "visceroid",
   "license": "MIT",

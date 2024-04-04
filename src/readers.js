@@ -342,6 +342,7 @@ export class SCComponentReader extends Reader{
             }
             let entities = []
             for (let catalog of catalogs) {
+                let dataSpace = catalog.id.replace(/.*\/GameData\//,"").replace(".xml","")
                 if (catalog.data.Catalog) {
                     if (catalog.data.Catalog.$$) {
                         for (let entity of catalog.data.Catalog.$$) {
@@ -362,6 +363,8 @@ export class SCComponentReader extends Reader{
                             }
                             if(SCGame.classlist[entity.class]?.$$namespace && !SCGame.ignoredNamespaces.includes(SCGame.classlist[entity.class]?.$$namespace)){
                                 optimizeObject(entity, SCGame.classlist[entity.class].$$schema)
+                                Object.defineProperty(entity,"$dataspace",{enumerable: false, value: dataSpace})
+                                Object.defineProperty(entity,"$modfile",{enumerable: false, value: this.path})
                                 entities.push(entity)
                             }
                         }

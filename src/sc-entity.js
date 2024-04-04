@@ -193,7 +193,6 @@ export class SCEntity {
             this.$mod.cache[newName] = this
         }
 
-
         let counter = 0
         if (this.$$references) {
             for (let reference of this.$$references) {
@@ -206,7 +205,7 @@ export class SCEntity {
                     console.warn("wrong reference " + refpath)
                     continue;
                 }
-                if (SCGame.useResolve) {
+                if (SCGame.useResolve && reference.type !== "text") {
                     valueEntity = referenceEntity.$created ? referenceEntity : referenceEntity.$$resolved;
                 } else {
                     valueEntity = referenceEntity;
@@ -231,44 +230,59 @@ export class SCEntity {
 
 
                 let propertySchema
-                if (_path[0] === 'map') {
-                    if(_path[1] === 'objects'){
-                        propertySchema = SCSchema.Objects
-                    }
-                    else{
-                        console.log("???")
-                    }
+                
+                if(reference.type === "text"){ 
+                    propertySchema = "text"
                 }
-                else if (_path[0] === 'library') {
-                    propertySchema = LibrarySchema
-                } else {
-                    propertySchema = referenceEntity.$$schema
-                }
-                let _propertyPath = _path.slice(2)
-                if (_propertyPath[0] === 'parent') {
-                    propertySchema = referenceEntity.$$namespace
-                } else {
-                    for (let _propertyPathItem of _propertyPath) {
-
-                        if (propertySchema[0]?.index === 'word') {
-                            propertySchema = propertySchema[0]
-                        } else if (isNumeric(_propertyPathItem)) {
-                            propertySchema = propertySchema[0]
-                        } else {
-                            propertySchema = resolveSchemaType(propertySchema, _propertyPathItem, pathobject)
+                else{
+                    if (_path[0] === 'map') {
+                        if(_path[1] === 'objects'){
+                            propertySchema = SCSchema.Objects
                         }
-                        if (!propertySchema) {
-                            console.log("@@@")
+                        else{
+                            console.log("???")
                         }
-
-                        valueEntity = valueEntity[_propertyPathItem]
-                        pathobject.push(valueEntity)
                     }
-                    propertySchema = propertySchema.value || propertySchema
+                    else if (_path[0] === 'library') {
+                        propertySchema = LibrarySchema
+                    } else {
+                        propertySchema = referenceEntity.$$schema
+                    }
+                    let _propertyPath = _path.slice(2)
+                    if (_propertyPath[0] === 'parent') {
+                        propertySchema = referenceEntity.$$namespace
+                    } else {
+                        for (let _propertyPathItem of _propertyPath) {
+
+                            if (propertySchema[0]?.index === 'word') {
+                                propertySchema = propertySchema[0]
+                            } else if (isNumeric(_propertyPathItem)) {
+                                propertySchema = propertySchema[0]
+                            } else {
+                                propertySchema = resolveSchemaType(propertySchema, _propertyPathItem, pathobject)
+                            }
+                            if (!propertySchema) {
+                                console.log("@@@")
+                            }
+
+                            valueEntity = valueEntity[_propertyPathItem]
+                            pathobject.push(valueEntity)
+                        }
+                        propertySchema = propertySchema.value || propertySchema
+                    }
                 }
 
                 let namespace
                 switch (propertySchema) {
+                    case "text": {
+                        let nameSpace = this.$$namespace.substring(0,1).toUpperCase() + this.$$namespace.substring(1)
+                        let oldString = [nameSpace,oldName].join(",")
+                        let newString = [nameSpace,newName].join(",")
+
+                        const regex = new RegExp('\\b' + oldString + '\\b', 'g');
+                        newvalue =  value.replace(regex, newString);
+                        break;
+                    }
                     case "terms": {
                         let [ ...conditions] = value.split(";").map(term => term.trim())
 
@@ -542,7 +556,7 @@ export class SCEntity {
 
         let result
         // if(SCGame.useResolve){
-            result =  relations(this,this.$$resolved, this.$$schema,[this.$$namespace,this.id],SCGame.pickIgnoreObjects)
+            result =  relations(this,this.$$resolved, this.$$schema,[this.$$namespace,this.id || ""],SCGame.pickIgnoreObjects)
         // }
         if(!SCGame.useResolve){
             for(let i in result){
@@ -553,7 +567,7 @@ export class SCEntity {
             }
 
 
-            let relations2 = relations(this,this, this.$$schema,[this.$$namespace,this.id],SCGame.pickIgnoreObjects)
+            let relations2 = relations(this,this, this.$$schema,[this.$$namespace,this.id || ""],SCGame.pickIgnoreObjects)
             for(let i in relations2){
                 if(!relations2[i].xpath) {
                     relations2[i].xpath = relations2[i].path
@@ -565,8 +579,8 @@ export class SCEntity {
                     target: this,
                     namespace: this.$$namespace,
                     link: this.parent,
-                    path: [this.$$namespace,this.id, "parent"].join("."),
-                    xpath: [this.$$namespace,this.id, "parent"].join(".")
+                    path: [this.$$namespace,this.id || "", "parent"].join("."),
+                    xpath: [this.$$namespace,this.id || "", "parent"].join(".")
                 })
             }
         }

@@ -277,8 +277,8 @@ export const SCGame = {
             'CloneDummy',
             'ForceLowDeath',
             'KillsToCaster',
-            'CloakFieldEffect',
-            'CloakField',
+            // 'CloakFieldEffect',
+            // 'CloakField',
 
             'SCVHarvest',
             'ProbeHarvest',
