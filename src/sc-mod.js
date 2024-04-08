@@ -1090,7 +1090,6 @@ export class SCMod {
     }
     index(){
         if(this.supportEntities){
-
             for(let namespace in this.supportEntities){
                 for(let entityID in this.supportEntities[namespace]){
                     let entity = this.supportEntities[namespace][entityID]
@@ -1757,18 +1756,15 @@ export class SCMod {
         // }
         // this.filter()
 
-
         //todo for legacy
         // let pick = this.renaming()
 
         this.supportEntities =  Object.entries(JSON.parse(fs.readFileSync("data/pick.json",{encoding: 'utf-8'}))).reduce((prev,curr) => Object.assign(prev, {[curr[0]]: curr[1].reduce((prev,curr) => Object.assign(prev,{[curr]:{}}),{})}), {})
 
-
         // this.renameEntities("ARC@*",{pick})
 
         //for others
         this.index();
-
 
         for(let namespace in this.supportEntities){
             for(let entityID in this.supportEntities[namespace]){

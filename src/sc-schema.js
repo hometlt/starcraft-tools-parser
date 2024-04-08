@@ -943,6 +943,7 @@ export const GameDataSchema = {
   CAccumulatorUnitCustomValue: { prototype: 'CAccumulator'},
   CAccumulatorUserData: { prototype: 'CAccumulator'},
   CAccumulatorVitals: { prototype: 'CAccumulator'},
+  CAccumulatorTrackedUnitCount: { prototype: 'CAccumulator'},
   CAchievement: {
     parent: 'achievement',
     catalog: 'achievement',
@@ -1844,7 +1845,7 @@ export const GameDataSchema = {
       {
         Flags: Flags,
         Name: Word,
-        MatchKeys: Word,
+        MatchKeys: 'words',
         Physics: 'actor',
         AttackAnimProps: 'words',
         AttackModelVariation: Bit
@@ -2398,7 +2399,9 @@ export const GameDataSchema = {
       ModifyLimit: Real,
       ExcludeEffectArray: '[effect]',
       RequireEffectInChainArray: '[effect]',
-      ValidatorArray: '[validator]'
+      ValidatorArray: '[validator]',
+      ProvideCategories: '{int}',
+      MissingChance: [{AccumulatorArray:[{value:"accumulator"}],value:Real}]
     },
     KillCredit: {
       Effect: 'effect',
@@ -3360,7 +3363,7 @@ export const GameDataSchema = {
     Death: Word,
     DebugTrace: Bit,
     ExpireDelay: Real,
-    ValidateMax: Real,
+    ValidateMax: { AccumulatorArray: [{value:'accumulator'}],value:Real},
     FacingType: Word,
     Operation: 'string',
     TrackerUnit: {
@@ -3569,7 +3572,7 @@ export const GameDataSchema = {
     ResourcesHarvestedBonus: Int,
     XP: Int,
     VeterancyBehavior: 'behavior',
-    Maximum: Int,
+    Maximum: Real,
     AmountScoreArray: [
       {
         Value: 'scorevalue',
@@ -4014,6 +4017,7 @@ export const GameDataSchema = {
       FilePath: File,
       Flags: Flags
     },
+    UnitGlossaryTeamColorIndex: Int,
     PhysicsMaterialOverride: Word,
     OptionalAnims: '[file]',
     TextureAppliedGroups: 'words',
@@ -4145,6 +4149,8 @@ export const GameDataSchema = {
     Chance: Bit,
     ModifyFraction: Real,
     Handled: 'effect',
+    Priority: Int,
+    ValidatorArray: '[validator]',
     CasterFilters: 'filters',
     TargetFilters: 'filters',
     DeathType: Flags
@@ -5438,6 +5444,7 @@ export const GameDataSchema = {
     ResultFallback: 'alert',
     Relationship: Word,
     Arc: Real,
+    TargetAdd: Real,
     SearchFilters: 'filters',
     Line: [
       {
@@ -5846,7 +5853,7 @@ export const GameDataSchema = {
     MinimumRange: Real,
     ReloadDuration: Real,
     ChaseFilters: 'filters',
-    AcquireCliffLevelRange: 'ints',
+    AcquireCliffLevelRange: 'reals',
     AcquireScanFilters: 'filters',
     RangeDisplayFlags: Flags,
     AcquireCallForHelpFilters: 'filters',
@@ -6958,7 +6965,8 @@ export const SCSchema = {
     Soundtrack: [{id: 'soundtrack'}],
     Abil: [{id: 'abil'}],
     TerrainObject: [{id: 'cliff'}],
-    Map: [{id: 'map'}]
+    Map: [{id: 'map'}],
+    PlayerResponse: [{"id":"playerresponse"}]
   },
   Terrain: {
     heightMap: [{
