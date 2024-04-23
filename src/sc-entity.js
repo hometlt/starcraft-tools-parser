@@ -119,6 +119,67 @@ export class SCEntity {
     getActor(){
         return this.$actor
     }
+    resolveButtons (){
+        let modified = false
+        let unitData = this.$$resolved
+        if(unitData.AbilArray){
+            //let test = this.$mod.cache.button[this.$mod.cache.abil[this.$$resolved.AbilArray[3].Link].$$resolved.InfoArray.Build1.Button.DefaultButtonFace]
+            for(let abilArrayItem of unitData.AbilArray){
+                let abilData = this.$mod.cache.abil[abilArrayItem.Link]?.$$resolved
+                if(abilData?.InfoArray){
+                    for(let index in abilData.InfoArray){
+                        let info = abilData.InfoArray[index]
+                        let buttonData = info.Button?.Flags?.CreateDefaultButton && info.Button.DefaultButtonFace && this.$mod.cache.button[info.Button.DefaultButtonFace]?.$$resolved
+
+                            if(buttonData){//UseDefaultButton
+
+                            let cardId = buttonData.DefaultButtonLayout?.CardId || abilData.DefaultButtonCardId || null
+                            let row = buttonData.DefaultButtonLayout?.Row || 0
+                            let column = buttonData.DefaultButtonLayout?.Column || 0
+
+                            // if(!cardId){
+                            //     continue;
+                            // }
+
+                            if(!this.CardLayouts){
+                                this.CardLayouts = []
+                            }
+                            let cardLayout = cardId ? this.CardLayouts.find(layout => layout.CardId === cardId) : this.CardLayouts.find(layout => +layout.index === 0)
+                            if(!cardLayout){
+                                if(cardId){
+                                    cardLayout = {cardId}
+                                }
+                                else{
+                                    cardLayout = {index: "0"}
+                                }
+                                this.CardLayouts.push(cardLayout)
+                            }
+
+                            if(!cardLayout.LayoutButtons){
+                                cardLayout.LayoutButtons = []
+                            }
+
+                            cardLayout.LayoutButtons.push({
+                                "Face": buttonData.id,
+                                "Type": "AbilCmd",
+                                "AbilCmd": `${abilData.id},${index}`,
+                                "Row": row,
+                                "Column": column
+                            })
+
+                            modified = true;
+                        }
+                    }
+                }
+            }
+        }
+
+        if(modified){
+            delete this.__resolved
+            delete this.__data
+        }
+
+    }
     getRequirements (detailed){
 
         let mod = this.$mod

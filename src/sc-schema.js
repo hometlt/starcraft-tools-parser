@@ -907,7 +907,7 @@ export const GameDataSchema = {
         Accumulator: 'accumulator'
       }
     ],
-    BehaviorScope: {Behavior: 'behavior'},
+    BehaviorScope: {Behavior: 'behavior',Value: Word},
     Behavior: 'behavior',
     CaseDefault: 'accumulator',
     ApplicationRule: Word,
@@ -2401,6 +2401,7 @@ export const GameDataSchema = {
       RequireEffectInChainArray: '[effect]',
       ValidatorArray: '[validator]',
       ProvideCategories: '{int}',
+      PreventCategories:  '{int}',// [{"index":"Reduction","value":"1"}]
       MissingChance: [{AccumulatorArray:[{value:"accumulator"}],value:Real}]
     },
     KillCredit: {
@@ -3288,7 +3289,7 @@ export const GameDataSchema = {
       Value: Word,
       Effect: 'effect'
     },
-    BehaviorScope: {Behavior: 'behavior'},
+    BehaviorScope: {Behavior: 'behavior',Value: Word},
     LaunchUnit: {
       Value: Word,
       Effect: 'effect'
@@ -5374,7 +5375,7 @@ export const GameDataSchema = {
       Value: Word,
       Effect: 'effect'
     },
-    BehaviorScope: {Behavior: 'behavior'},
+    BehaviorScope: {Behavior: 'behavior',Value: Word},
     Key: 'string',
     CombinedVital: Word,
     SearchFlags: Flags,

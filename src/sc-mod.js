@@ -75,6 +75,11 @@ export class SCMod {
         }
         return this
     }
+    resolveButtons(){
+        for(let unit of this.catalogs.unit){
+            unit.resolveButtons()
+        }
+    }
     makeAbilCmds(){
 
         this.cache.abilcmd = {}
@@ -107,7 +112,9 @@ export class SCMod {
         // dd<d ref="Behavior,ZerglingArmorShredTarget,Duration"/>dd
         return expresion
             .replace(/<c val="(\w+)">/g,`<span style="color: #$1">`)
+            .replace(/<s val="(\w+)">/g,`<span class="style-$1">`)
             .replace(/<\/c>/g,"</span>")
+            .replace(/<\/s>/g,"</span>")
             .replace(/<d\s+(?:stringref)="(\w+),([\w@]+),(\w+)"\s*\/>/g, (_,catalog,entity,field)=>{
                 let value = this.locales.enUS.GameStrings[this.cache[catalog.toLowerCase()]?.[entity]?.$$resolved[field]]
                 return `<b>${value}</b>`
@@ -264,45 +271,70 @@ export class SCMod {
     }
     checkImages(){
 
-        for(let entity of this.catalogs.actor) {
-            entity = entity.$$resolved
-            if(entity.Wireframe?.Image){
-                for(let image in entity.Wireframe.Image){
-                    entity.Wireframe.Image[image] = this.checkImage(entity.Wireframe.Image[image],["actor",entity.id]);
+        if(this.catalogs.actor){
+
+            for(let entity of this.catalogs.actor) {
+                let entityResolved = entity.$$resolved
+                if(entityResolved.Wireframe?.Image){
+                    for(let image in entityResolved.Wireframe.Image){
+                        entityResolved.Wireframe.Image[image] = this.checkImage(entityResolved.Wireframe.Image[image],["actor",entityResolved.id]);
+                    }
+                }
+                if(entityResolved.UnitIcon){
+                    entityResolved.UnitIcon = this.checkImage(entityResolved.UnitIcon,["actor",entityResolved.id]);
+                }
+                if(entityResolved.LifeArmorIcon) {
+                    entityResolved.LifeArmorIcon = this.checkImage(entityResolved.LifeArmorIcon,["actor",entityResolved.id]);
+                }
+                if(entityResolved.ShieldArmorIcon) {
+                    entityResolved.ShieldArmorIcon = this.checkImage(entityResolved.ShieldArmorIcon,["actor",entityResolved.id]);
                 }
             }
-            if(entity.UnitIcon){
-                entity.UnitIcon = this.checkImage(entity.UnitIcon,["actor",entity.id]);
-            }
-            if(entity.LifeArmorIcon) {
-                entity.LifeArmorIcon = this.checkImage(entity.LifeArmorIcon,["actor",entity.id]);
-            }
-            if(entity.ShieldArmorIcon) {
-                entity.ShieldArmorIcon = this.checkImage(entity.ShieldArmorIcon,["actor",entity.id]);
+            for(let entity of this.catalogs.actor) {
+                let entityResolved = entity.$$resolved
+                if(entityResolved.Icon) {
+                    entityResolved.Icon = this.checkImage(entityResolved.Icon,["actor",entity.id]);
+                }
             }
         }
-        for(let entity of this.catalogs.weapon) {
-            entity = entity.$$resolved
-            if(entity.Icon){
-                entity.Icon = this.checkImage(entity.Icon,["actor",entity.id]);
+        if(this.catalogs.weapon){
+            for(let entity of this.catalogs.weapon) {
+                let entityResolved = entity.$$resolved
+                if(entityResolved.Icon) {
+                    entityResolved.Icon = this.checkImage(entityResolved.Icon,["weapon",entity.id]);
+                }
             }
         }
-        for(let entity of this.catalogs.upgrade) {
-            entity = entity.$$resolved
-            if(entity.Icon) {
-                entity.Icon = this.checkImage(entity.Icon,["actor",entity.id]);
+        if(this.catalogs.upgrade){
+            for(let entity of this.catalogs.upgrade) {
+                let entityResolved = entity.$$resolved
+                if(entityResolved.Icon) {
+                    entityResolved.Icon = this.checkImage(entityResolved.Icon,["upgrade",entity.id]);
+                }
             }
         }
-        for(let entity of this.catalogs.button) {
-            entity = entity.$$resolved
-            if(entity.Icon) {
-                entity.Icon = this.checkImage(entity.Icon,["actor",entity.id]);
+        if(this.catalogs.button){
+            for(let entity of this.catalogs.button) {
+                let entityResolved = entity.$$resolved
+                if(entityResolved.Icon) {
+                    entityResolved.Icon = this.checkImage(entityResolved.Icon,["button",entity.id]);
+                }
             }
         }
-        for(let entity of this.catalogs.behavior) {
-            entity = entity.$$resolved
-            if(entity.Icon) {
-                entity.Icon = this.checkImage(entity.InfoIcon,["actor",entity.id]);
+        if(this.catalogs.race){
+            for(let entity of this.catalogs.race) {
+                let entityResolved = entity.$$resolved
+                if(entityResolved.Icon) {
+                    entityResolved.Icon = this.checkImage(entityResolved.Icon,["race",entity.id]);
+                }
+            }
+        }
+        if(this.catalogs.behavior){
+            for(let entity of this.catalogs.behavior) {
+                let entityResolved = entity.$$resolved
+                if(entityResolved.InfoIcon) {
+                    entityResolved.Icon = this.checkImage(entityResolved.InfoIcon,["behavior",entity.id]);
+                }
             }
         }
     }
@@ -1449,7 +1481,7 @@ export class SCMod {
 
                     expresion
                         .replace(/<d\s+(?:stringref)="(\w+),([\w@]+),(\w+)"\s*\/>/g, (_,namespace,entity,field)=>{
-                            _addRelation({target, namespace: namespace.toLowerCase(), link: entity, patharray, type, result, ignorelist})
+                            _addRelation({target, namespace: namespace.toLowerCase(), link: entity, patharray, type : "text", result, ignorelist})
                             return ''
                         })
                         .replace(/<d\s+(?:time|ref)\s*=\s*"(.+?)(?=")"((?:\s+\w+\s*=\s*"\s*([\d\w]+)?\s*")*)\s*\/>/gi, (_,ref,opts) => {
