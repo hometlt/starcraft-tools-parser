@@ -14,7 +14,7 @@ import {
     relations,
     buildXMLObject,
     _addRelation,
-    cleanup
+    cleanup, deepReplaceMatch, resolveSchemaType
 } from "./operations.js";
 import {LibrarySchema, SCSchema} from "./sc-schema.js";
 import {FileReader, LocalSCComponentReader, GithubSCComponentReader} from "./readers.js";
@@ -97,22 +97,158 @@ export class SCMod {
             this.catalogs.abilcmd.push(abilcmd)
         }
     }
+    // resolveDataTextValues(){
+    //     for(let entity of this.entities){
+    //
+    //         function getPropertyType(entity,crumbs){
+    //             let _temp = {}
+    //             let _obj = _temp
+    //             let _sch = entity.$$schema
+    //             for(let i = 0; i < crumbs.length - 1; i++){
+    //                 let crumb = crumbs[i]
+    //                 if(_sch.constructor === Array){
+    //                     _sch = _sch[0]
+    //                 }
+    //                 else{
+    //                     _sch = resolveSchemaType(_sch,crumb,path)
+    //                 }
+    //                 if(!_obj[crumb]) {
+    //                     _obj[crumb] = _sch.constructor === Array && _sch[0].index !== 'word' ? [] :  {}
+    //                 }
+    //                 _obj = _obj[crumb]
+    //             }
+    //             if(_sch.constructor === Array){
+    //                 _sch = _sch[0]
+    //             }
+    //             return _sch[crumbs[crumbs.length -1]]
+    //         }
+    //         deepReplaceMatch(entity.$$resolved, val => val?.constructor === String, prop => prop !== "class", ({val, obj, prop, id, path, crumbs}) => {
+    //
+    //             let type = getPropertyType(entity,crumbs)
+    //             if(type === "text" && !val.includes("#")){
+    //
+    //                 let textEntity = this.text[val]
+    //
+    //
+    //                 //     "target": {
+    //                 //     "SharedFlags": {
+    //                 //         "DisableWhileDead": 0
+    //                 //     },
+    //                 //     "SelfReviveCmd": "Revive1",
+    //                 //         "default": "1",
+    //                 //         "id": "ReviveSelf",
+    //                 //         "class": "CAbilRevive"
+    //                 // },
+    //                 //     "namespace": "alert",
+    //                 //     "link": "ReviveComplete",
+    //                 //     "patharray": [
+    //                 //     "abil",
+    //                 //     "ReviveSelf",
+    //                 //     "Alert"
+    //                 // ],
+    //                 //     "type": "alert",
+    //                 //     "result": [],
+    //                 //     "ignorelist": {}
+    //                 // }
+    //
+    //                 let result = []
+    //                 let ignorelist = {}
+    //                 _addRelation({target:entity, namespace: entity.$$namespace, link: val, patharray: [entity.$$namespace,entitycrumbs], type : "text", result, ignorelist})
+    //
+    //                 // if(!textEntity.$$references){
+    //                 //     Object.defineProperty(textEntity, '$$references',{ configurable:true, writable: true,enumerable: false,value: []})
+    //                 // }
+    //                 // textEntity.$$references.push({target, namespace: namespace.toLowerCase(), link: entity, patharray, type : "text", result, ignorelist}))
+    //                 // //
+    //
+    //                 // this.mixin(_temp,'unite')
+    //             }
+    //         })
+    //     }
+    //
+    // }
+//     pickText(){
+//         if(!this.matches){
+//             this.matches = []
+//         }
+//
+// // Массив для хранения найденных фрагментов текста
+//         let result = []
+//         let ignorelist = SCGame.pickIgnoreObjects
+//         let target
+//         for(let locale in this.locales){
+//             target = this.locales[locale]
+//             for(let localeCat in this.locales[locale]){
+//                 //Do not need to rename trigger Strings
+//                 if(localeCat === 'TriggerStrings'){
+//                     continue
+//                 }
+//                 for(let key in target[localeCat]){
+//                     let expresion = target[localeCat][key]
+//                     let patharray = ["locales",locale,localeCat,key]
+//
+//                     expresion
+//                         .replace(/<d\s+(?:stringref)="(\w+),([\w@]+),(\w+)"\s*\/>/g, (_,namespace,entity,field)=>{
+//                             _addRelation({target, namespace: namespace.toLowerCase(), link: entity, patharray, type : "text", result, ignorelist})
+//                             return ''
+//                         })
+//                         .replace(/<d\s+(?:time|ref)\s*=\s*"(.+?)(?=")"((?:\s+\w+\s*=\s*"\s*([\d\w]+)?\s*")*)\s*\/>/gi, (_,ref,opts) => {
+//                             getReferenceRelations(ref,patharray,target, result, ignorelist)
+//                             return ''
+//                         })
+//                         .replace(/<n\/>/g,"<br/>")
+//                 }
+//             }
+//         }
+//
+//         for(let i in result){
+//             if(!result[i].xpath) {
+//                 result[i].xpath = result[i].path
+//             }
+//         }
+//
+//         for(let relation of result){
+//             this._pickRelation(relation)
+//         }
+//     }
     resolveTextValues(){
-        for (let locale in this.locales) {
-            for (let type in this.locales[locale]) {
-                for (let id in this.locales[locale][type]) {
-                    this.locales[locale][type][id] = this.resolveTextValue( this.locales[locale][type][id], ["locales",locale,type,id])
+        for (let textKey in this.text) {
+            for (let locale in this.text[textKey].Value) {
+
+                if(this.text[textKey].$$references){
+                    this.text[textKey].Value[locale] = this.resolveTextValue(  this.text[textKey].Value[locale], ["text",textKey,"Value",locale])
+                }else{
+                    //console.log(`Text key ${textKey} is not used`)
                 }
             }
         }
+        // for (let locale in this.locales) {
+        //     for (let type in this.locales[locale]) {
+        //         for (let id in this.locales[locale][type]) {
+        //             this.locales[locale][type][id] = this.resolveTextValue( this.locales[locale][type][id], ["locales",locale,type,id])
+        //         }
+        //     }
+        // }
     }
     resolveTextValue(expresion,path){
         if(!expresion) return ""
         // dd<d ref="Behavior,ZerglingArmorShredTarget,Duration" precision="2"/>dd
         // dd<d ref="Behavior,ZerglingArmorShredTarget,Duration"/>dd
         return expresion
-            .replace(/<c val="(\w+)">/g,`<span style="color: #$1">`)
+            .replace(/<c val="([\w#]+)">/g,(_,value)=> {
+                let color
+                switch(value){
+                    case "#ColorAttackInfo":
+                        color = "#ffff8a"
+                        break;
+                    default:
+                        color = value
+                }
+                return `<span style="color: ${color}">`
+                // return `<span style="color: #$1">`
+            })
             .replace(/<s val="(\w+)">/g,`<span class="style-$1">`)
+            .replace(/<\/n>/g,"<br/>")
             .replace(/<\/c>/g,"</span>")
             .replace(/<\/s>/g,"</span>")
             .replace(/<d\s+(?:stringref)="(\w+),([\w@]+),(\w+)"\s*\/>/g, (_,catalog,entity,field)=>{
@@ -147,52 +283,6 @@ export class SCMod {
                 }
             }
         }
-    }
-    getReferenceRelations (expressionReference,patharray,target, result, ignorelist){
-
-        let ref = expressionReference.replace(/\[d\s+(?:time|ref)\s*=\s*'(.+?)(?=')'((?:\s+\w+\s*=\s*'\s*([\d\w]+)?\s*')*)\s*\/?\]/gi, (_,ref,opts) => {
-            this.getReferenceRelations(ref,patharray,target, result, ignorelist)
-            return ' '
-        })
-        ref = ref.replace(/\$(.+?)\$/g,(_,cc)=>{
-            let options = cc.split(':')
-            switch(options[0]){
-                case 'AbilChargeCount':
-                    let ability = options[1]
-                    let index = options[2]
-                    let refObject = this.cache.abil[ability]
-                    if(!refObject){
-                        console.warn(`Entity not found:  abil.${ability} (${patharray.join(".")})`)
-                        return ' '
-                    }
-
-                    let refIndex = "Train" + (index+ 1)
-                    let refInfo = refObject.InfoArray[refIndex]
-                    if(!refInfo){
-                        console.warn(`Wrong Ability InfoArray index:  abil.${ability}.${refIndex} (${patharray.join(".")})`)
-                    }
-                    _addRelation({target, namespace: "abil", link: ability, patharray, type: "text", result, ignorelist})
-                    return ' '
-                    
-
-                case 'UpgradeEffectArrayValue':
-                    let upgrade = options[1]
-                    let effectArrayValue = options[2]
-                    {
-                        let [namespace,entity] = effectArrayValue.split(",")
-                        _addRelation({target, namespace, link: entity, patharray, type: "text", result, ignorelist})
-                    }
-                    _addRelation({target,  namespace: "upgrade", link: upgrade, patharray, type: "text", result, ignorelist})
-                    return ' '
-            }
-            return ''
-        })
-
-        ref = ref.replace(/((\w+),([\w@]+),(\w+[\.\w\[\]]*))/g,(_,expr, namespace,entity,fields)=>{
-            _addRelation({target,  namespace: namespace.toLowerCase(), link: entity, patharray, type: "text", result, ignorelist})
-            return ' ' 
-        })
-
     }
     parseReference(expressionReference,path){
 
@@ -521,6 +611,9 @@ export class SCMod {
 
         ////////     triggers     /////////////////////////////////////////////////////////////////////////////////////
 
+        if(data.components){
+            this.components = data.components
+        }
         if(data.triggers){
 
             // if (!this.triggers) this.triggers = ""
@@ -548,6 +641,34 @@ export class SCMod {
         if(data.locales) {
             if (!this.locales) this.locales = {}
             deep(this.locales, data.locales)
+        }
+        ////////     text (replacing locales)     /////////////////////////////////////////////////////////////////////////////////////
+        if(data.text) {
+            if (!this.text) this.text = {}
+
+            for (let textKey in data.text) {
+                let textEntity = data.text[textKey]
+
+                if(!this.text[textKey]){
+                    this.text[textKey] = new SCEntity({
+                        $mod: this,
+                        $schema: SCSchema.TextString,
+                        $namespace: 'text',
+                        id: textKey,
+                        $modname: textEntity.$mod,
+                        $category: textEntity.$category,
+                        Value: {}
+                    })
+                }
+                else{
+                    // console.log(`Text Entity Override ${textKey}: ${this.text[textKey].$mod} => ${textEntity.$mod}`)
+                    this.text[textKey].modname = textEntity.$mod
+                }
+                for (let locale in textEntity.Value) {
+                    this.text[textKey].Value[locale] = textEntity.Value[locale]
+                }
+            }
+            // deep(this.text, data.text)
         }
         ////////     assets     /////////////////////////////////////////////////////////////////////////////////////
         if(data.assets){
@@ -662,8 +783,9 @@ export class SCMod {
      */
     write (destpath,{text = {}, outputFn = null, formatFn = null,catalogs= 'all',resolve = false, format = 'auto', structure = 'auto', scopes = 'all', core = false} = {}){
 
-        // set mod name
-        for(let locale in this.locales){
+        if(this.locales){
+            // set mod name
+            for(let locale in this.locales){
                 this.locales[locale].GameStrings["DocInfo/Website"] = text.Website
                 this.locales[locale].GameStrings["DocInfo/Name"] = text.Name
                 if(text.DescLong){
@@ -673,6 +795,20 @@ export class SCMod {
                     this.locales[locale].GameStrings["DocInfo/DescShort"] = text.DescShort
                 }
             }
+        }
+        if(this.text){
+            // set mod name
+            for(let locale in this.locales){
+                this.text.GameStrings["DocInfo/Website"].Value[locale] = text.Website
+                this.locales[locale].GameStrings["DocInfo/Name"].Value[locale]  = text.Name
+                if(text.DescLong){
+                    this.locales[locale].GameStrings["DocInfo/DescLong"].Value[locale]  = `${text.DescLong}${text.Signature || ''}`
+                }
+                if(text.DescShort){
+                    this.locales[locale].GameStrings["DocInfo/DescShort"].Value[locale]  = text.DescShort
+                }
+            }
+        }
 
         destpath = this.resolvePath(destpath)
 
@@ -809,21 +945,50 @@ export class SCMod {
             formatting = format === 'auto' ? 'ini' : format;
             output[`Base.SC2Data/GameData/Assets.${extension}`] = formatData(this.assets, formatting)
         }
-        if(scopes.includes('locales') && this.locales){
+
+        let locales = this.locales
+        if(this.text) {
+            locales = {}
+            for (let locale in this.locales) {
+                locales[locale] = {}
+            }
+
+            for (let type in this.text) {
+                for (let locale in this.locales) {
+                    locales[locale][type] = {}
+                }
+            }
+
+            for (let type in this.text) {
+                for (let textKey in this.text[type]) {
+                    let textEntity = this.text[type][textKey]
+                    for (let locale in this.locales) {
+                        if (textEntity.Value[locale].hasOwnProperty(textKey)) {
+                            locales[locale][type][textKey] = textEntity.Value[locale]
+                        } else {
+                            locales[locale][type][textKey] = textEntity.Value[baseLocale]
+                        }
+
+                    }
+                }
+            }
+        }
+
+        if(scopes.includes('locales') && locales){
             extension = format === 'auto' ? 'txt' : format
             formatting = format === 'auto' ? 'ini' : format;
-            let baseLocale = this.locales['enUS'] && 'enUS'
+            let baseLocale = locales['enUS'] && 'enUS'
 
-            for (let locale in this.locales) {
+            for (let locale in locales) {
 
-                for (let type in this.locales[baseLocale || locale]) {
+                for (let type in locales[baseLocale || locale]) {
                     let localeData
-                    if (locale !== baseLocale && this.locales[baseLocale]) {
+                    if (locale !== baseLocale && locales[baseLocale]) {
                         localeData = {}
-                        deep(localeData, this.locales[baseLocale][type])
-                        deep(localeData, this.locales[locale][type])
+                        deep(localeData, locales[baseLocale][type])
+                        deep(localeData, locales[locale][type])
                     } else {
-                        localeData = this.locales[locale][type]
+                        localeData = locales[locale][type]
                     }
 
                     output[`${locale}.SC2Data/LocalizedData/${type}.${extension}`] = formatData(localeData, formatting)
@@ -1111,11 +1276,6 @@ export class SCMod {
             for(let relation of entity.$$relations){
                 relation.refpath = path
 
-
-                if(entity.id === "Requirements"){
-
-                }
-
                 this._pickRelation(relation,[...path,entity.$$namespace + '.' + entity.id])
             }
         }
@@ -1135,7 +1295,7 @@ export class SCMod {
                 this.pickEntity(entity)
             }
         }
-        this.pickText()
+        // this.pickText()
         this.pickTriggers()
         this.pickObjects()
         this.pickActors()
@@ -1218,6 +1378,9 @@ export class SCMod {
     saveCore(){
         for(let entity of this.entities){
             entity.ghost()
+        }
+        for (let textKey in this.text[type]) {
+            this.text[textKey].ghost()
         }
         delete this.locales
     }
@@ -1417,39 +1580,45 @@ export class SCMod {
         return pick;
     }
     _pickRelation(relation,path,createGhostEntities = false){
-
-        let linkedEntity = this.cache[relation.namespace]?.[relation.link]
-
-
-        if(!linkedEntity){
-            if(!createGhostEntities){
+        let linkedEntity
+        if(relation.namespace === "text"){
+            linkedEntity = this.text[relation.link]
+            if(!linkedEntity){
+                // console.log("Text Not Found " + relation.link)
                 return;
             }
-            if(!this[relation.namespace]?.[relation.link] && !this.supportEntities?.[relation.namespace]?.[relation.link]){
-
-
-                let parts = relation.xpath.split(".").slice(2)
-                let val = relation.target;
-                for (let part of parts) {
-                    if(!val) {
-                        break;
-                    }
-                    val = parts[part]
-                }
-                if(val) {
-                    console.log("no entity found " + relation.namespace + "#" + relation.link)
-                }
-            }
-            if(!this.cache[relation.namespace]){
-                this.cache[relation.namespace] = {}
-            }
-            linkedEntity = new SCEntity({
-                $mod: this,
-                $namespace: relation.namespace
-            });
-            linkedEntity.ghost()
-            this.cache[relation.namespace][relation.link]  = linkedEntity
         }
+        else {
+            linkedEntity = this.cache[relation.namespace]?.[relation.link]
+            if(!linkedEntity){
+                if(!createGhostEntities){
+                    return;
+                }
+                if(!this[relation.namespace]?.[relation.link] && !this.supportEntities?.[relation.namespace]?.[relation.link]){
+                    let parts = relation.xpath.split(".").slice(2)
+                    let val = relation.target;
+                    for (let part of parts) {
+                        if(!val) {
+                            break;
+                        }
+                        val = parts[part]
+                    }
+                    if(val) {
+                        console.log("no entity found " + relation.namespace + "#" + relation.link)
+                    }
+                }
+                if(!this.cache[relation.namespace]){
+                    this.cache[relation.namespace] = {}
+                }
+                linkedEntity = new SCEntity({
+                    $mod: this,
+                    $namespace: relation.namespace
+                });
+                linkedEntity.ghost()
+                this.cache[relation.namespace][relation.link]  = linkedEntity
+            }
+        }
+
         if(linkedEntity.$$references){
             linkedEntity.addReferences(relation)
         }
@@ -1458,50 +1627,8 @@ export class SCMod {
             this.pickEntity(linkedEntity,path)
         }
 
-    }
-    pickText(){
-        if(!this.matches){
-            this.matches = []
-        }
 
-// Массив для хранения найденных фрагментов текста
-        let result = []
-        let ignorelist = SCGame.pickIgnoreObjects
-        let target
-        for(let locale in this.locales){
-            target = this.locales[locale]
-            for(let localeCat in this.locales[locale]){
-                //Do not need to rename trigger Strings
-                if(localeCat === 'TriggerStrings'){
-                    continue
-                }
-                for(let key in target[localeCat]){
-                    let expresion = target[localeCat][key]
-                    let patharray = ["locales",locale,localeCat,key]
 
-                    expresion
-                        .replace(/<d\s+(?:stringref)="(\w+),([\w@]+),(\w+)"\s*\/>/g, (_,namespace,entity,field)=>{
-                            _addRelation({target, namespace: namespace.toLowerCase(), link: entity, patharray, type : "text", result, ignorelist})
-                            return ''
-                        })
-                        .replace(/<d\s+(?:time|ref)\s*=\s*"(.+?)(?=")"((?:\s+\w+\s*=\s*"\s*([\d\w]+)?\s*")*)\s*\/>/gi, (_,ref,opts) => {
-                            this.getReferenceRelations(ref,patharray,target, result, ignorelist)
-                            return ''   
-                        })
-                        .replace(/<n\/>/g,"<br/>")
-                }
-            }
-        }
-        
-        for(let i in result){
-            if(!result[i].xpath) {
-                result[i].xpath = result[i].path
-            }
-        }
-
-        for(let relation of result){
-            this._pickRelation(relation)
-        }
     }
     pickTriggers(){
         if(this._triggersPicked ){
@@ -1570,7 +1697,7 @@ export class SCMod {
         console.log(`Renaming entities`)
 
         if(!pick){
-            this.pickText()
+            // this.pickText()
             this.pickTriggers()
             this.pickObjects()
             this.pickAll()

@@ -628,6 +628,53 @@ export function getDebugInfo(mod){
     return {unknowns, schema}
 }
 
+
+
+export function getReferenceRelations (expressionReference,patharray,target, result, ignorelist){
+
+    let ref = expressionReference.replace(/\[d\s+(?:time|ref)\s*=\s*'(.+?)(?=')'((?:\s+\w+\s*=\s*'\s*([\d\w]+)?\s*')*)\s*\/?\]/gi, (_,ref,opts) => {
+        getReferenceRelations(ref,patharray,target, result, ignorelist)
+        return ' '
+    })
+    ref = ref.replace(/\$(.+?)\$/g,(_,cc)=>{
+        let options = cc.split(':')
+        switch(options[0]){
+            case 'AbilChargeCount':
+                let ability = options[1]
+                // let index = options[2]
+                // let refObject = this.cache.abil[ability]
+                // if(!refObject){
+                //     console.warn(`Entity not found:  abil.${ability} (${patharray.join(".")})`)
+                //     return ' '
+                // }
+                // let refIndex = "Train" + (index+ 1)
+                // let refInfo = refObject.InfoArray[refIndex]
+                // if(!refInfo){
+                //     console.warn(`Wrong Ability InfoArray index:  abil.${ability}.${refIndex} (${patharray.join(".")})`)
+                // }
+                _addRelation({target, namespace: "abil", link: ability, patharray, type: "text", result, ignorelist})
+                return ' '
+
+            case 'UpgradeEffectArrayValue':
+                let upgrade = options[1]
+                let effectArrayValue = options[2]
+                {
+                    let [namespace,entity] = effectArrayValue.split(",")
+                    _addRelation({target, namespace, link: entity, patharray, type: "text", result, ignorelist})
+                }
+                _addRelation({target,  namespace: "upgrade", link: upgrade, patharray, type: "text", result, ignorelist})
+                return ' '
+        }
+        return ''
+    })
+
+    ref = ref.replace(/((\w+),([\w@]+),(\w+[\.\w\[\]]*))/g,(_,expr, namespace,entity,fields)=>{
+        _addRelation({target,  namespace: namespace.toLowerCase(), link: entity, patharray, type: "text", result, ignorelist})
+        return ' '
+    })
+
+}
+
 /**
  *
  * @param object
@@ -638,9 +685,42 @@ export function getDebugInfo(mod){
  */
 export function _propertyRelations(target,value,type,result,patharray,ignorelist){
 
+    if(value === undefined){
+        return
+    }
     let link , namespace
 
     switch (type) {
+        case 'markup': {
+            // let patharray = ["locales",locale,localeCat,key]
+
+            value
+                .replace(/<d\s+(?:stringref)="(\w+),([\w@]+),(\w+)"\s*\/>/g, (_,namespace,entity,field)=>{
+                    _addRelation({target, namespace: namespace.toLowerCase(), link: entity, patharray, type : "text", result, ignorelist})
+                    return ''
+                })
+                .replace(/<d\s+(?:time|ref)\s*=\s*"(.+?)(?=")"((?:\s+\w+\s*=\s*"\s*([\d\w]+)?\s*")*)\s*\/>/gi, (_,ref,opts) => {
+                    getReferenceRelations(ref,patharray,target, result, ignorelist)
+                    return ''
+                })
+                .replace(/<n\/>/g,"<br/>")
+
+            // for(let i in result){
+            //     if(!result[i].xpath) {
+            //         result[i].xpath = result[i].path
+            //     }
+            // }
+
+            // for(let relation of result){
+            //     this._pickRelation(relation)
+            // }
+            
+            
+            
+            
+            // console.log([target,value,type,result,patharray,ignorelist])
+            return;
+        }
         case 'ops': {
             let type = 'actors', namespace = 'actor', actors = value.split(" ")
             for(let index =0; index < actors.length; index++){
@@ -648,6 +728,20 @@ export function _propertyRelations(target,value,type,result,patharray,ignorelist
                 _addRelation({target,namespace, link, patharray, type, result, ignorelist})
             }
             return;
+        }
+        case 'text': {
+            link = value; namespace = "text"
+            if(value.includes("#")){
+                return
+            }
+            break;
+        }
+        case 'file': {
+            link = value; namespace = "file"
+            if(value.includes("#")){
+                return
+            }
+            break;
         }
         case 'send': {
             let type = 'send'

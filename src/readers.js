@@ -22,11 +22,16 @@ export class SCComponentReader extends Reader{
             return null
         }
         let data = {}
-        rawtext.replace(/\r/g, "").split("\n").forEach(el => {
-            let key = el.substring(0, el.indexOf("="))
-            let value = el.substring(el.indexOf("=") + 1)
-            data[key] = value
-        })
+
+        rawtext
+            .replace("﻿","")  //Zero Width No-Break Space
+            .replace(/\r/g, "")
+            .split("\n")
+            .forEach(el => {
+                let key = el.substring(0, el.indexOf("="))
+                let value = el.substring(el.indexOf("=") + 1)
+                data[key] = value
+            })
         delete data[""]
         return data;
     }
@@ -150,10 +155,12 @@ export class SCComponentReader extends Reader{
     async read(scopesArray){
         let scopes = scopesArray.reduce((o,s) => {o[s] = true; return o},{})
 
+        let modpathParts = this.path.split(/[\\\/]/).filter(el => el)
+        let modName = modpathParts[modpathParts.length - 1].split(".")[0]
         let data = {}
         if(scopes.components) {
             let componentsData = await this.readXMLFile( "ComponentList.SC2Components")
-            data.components = componentsData?.Components?.DataComponent
+            data.components = componentsData?.Components?.DataComponent.map(component => ({...component.$,Value: component._}))
         }
         if(scopes.assets) {
             data.assets = await this.readTextFile( "Base.SC2Data/GameData/Assets.txt")
@@ -171,26 +178,46 @@ export class SCComponentReader extends Reader{
                 data.styles = stylesData
             }
         }
+
+
         if(scopes.locales){
             let {folders} = await this.getFilesList();
 
             let textFiles = ["GameHotkeys", "GameStrings", "ObjectStrings", "TriggerStrings", "ConversationStrings"]
             let locales = {}
-            let LocaleData = data.components?.filter(entity => entity.$?.Type.toLowerCase() === "text").map(entity => entity.$.Locale) || ["enUS"];
+            let LocaleData = data.components?.filter(entity => entity.Type.toLowerCase() === "text").map(entity => entity.Locale) || ["enUS"];
             if(LocaleData){
+
+
+
                 for (let locale of LocaleData) {
                     locales[locale] = {}
                     for (let textFile of textFiles) {
-
-                        data.components.filter(el => el.$.type === "text")
 
                         let folder = folders.find( f => f.toLowerCase() === `${locale.toLowerCase()}.sc2data`)
 
                         if(folder){
                             let filename = `${folder}/LocalizedData/${textFile}.txt`
                             let textdata = await this.readTextFile(filename)
+
                             if (textdata) {
                                 locales[locale][textFile] = textdata
+                            }
+
+                            if(!data.text){
+                                data.text = {}
+                            }
+
+                            for(let textKey in textdata){
+
+                                if(!data.text[textKey]){
+                                    data.text[textKey] = {
+                                        $category: textFile,
+                                        $mod: modName,
+                                        Value: {}
+                                    }
+                                }
+                                data.text[textKey].Value[locale] = textdata[textKey]
                             }
                         }
                     }
@@ -198,6 +225,7 @@ export class SCComponentReader extends Reader{
                 data.locales = locales
             }
         }
+
         if(scopes.triggers){
             let triggersFile = "Triggers"
             let triggersDataParsed = await this.readXMLFile(triggersFile)

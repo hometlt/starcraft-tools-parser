@@ -6820,6 +6820,9 @@ export const GameDataSchema = {
 export const SCSchema = {
   GameData: GameDataSchema,
   Library: LibrarySchema,
+  TextString: {
+    Value: '{markup}'
+  },
   Objects: {
     ObjectDoodad: [{
       Flag: [
